@@ -1,0 +1,238 @@
+syntax = "proto3";
+package services;
+option go_package = ".;services";
+import "common/base.proto";
+import "itemGalleryService.proto";
+import "itemPriceService.proto";
+import "itemRightService.proto";
+import "tagService.proto";
+import "brandService.proto";
+import "skuService.proto";
+import "catService.proto";
+import "specService.proto";
+import "itemPresaleService.proto";
+import "foodService.proto";
+
+service ItemService {
+    //创建商品
+    rpc Create (Item) returns (ItemResponse) {}
+    //修改商品
+    rpc Update (Item) returns (ItemResponse) {}
+    //删除商品
+    rpc Delete (Item) returns (ItemResponse) {}
+    //商品加锁
+    rpc Lock (Item) returns (ItemResponse) {}
+    //商品解锁
+    rpc Unlock (Item) returns (ItemResponse) {}
+    //商品上架
+    rpc Listing (Item) returns (ItemResponse) {}
+    //商品下架
+    rpc Delisting (Item) returns (ItemResponse) {}
+    //恢复商品
+    rpc Recovery (Item) returns (ItemResponse) {}
+    //永久删除商品
+    rpc Destroy (Item) returns (ItemResponse) {}
+    //商品基本信息
+    rpc Get (Item) returns (ItemResponse) {}
+    //商品基本信息列表(SRV专用)
+    rpc GoodsList (GoodsWhere) returns (ItemResponse) {}
+    //商品详细信息（后台专用）
+    rpc Detail (Item) returns (ItemResponse) {}
+    //商品显示详情（前端专用）
+    rpc Display (Item) returns (ItemResponse) {}
+    //商品规格详情
+    rpc SkuDetail (Item) returns (ItemResponse) {}
+    //商品列表（来源基本信息）
+    rpc List (Item) returns (ItemResponse) {}
+    //查询商品
+    rpc Search (ItemWhere) returns (ItemResponse) {}
+    //查询已删除商品
+    rpc SearchDeleted (ItemWhere) returns (ItemResponse) {}
+    // 批量删除商品
+    rpc DeleteByIds (Item) returns (ItemResponse) {}
+    // 商品排序
+    rpc Sort(ItemWhere) returns (ItemResponse) {}
+}
+
+message Item {
+    int64	id	=1;
+    string	name	=2;
+    string	unit	=3;
+    string	item_sn	=4;
+    int32	brand_id	=5;
+    int64	taxonomy_id	=6;
+    int32	buy_quota	=7;
+    int32	quantity	=8  ;
+    int32	sold_num	=9;
+    int32	init_sold_num	=10;
+    string	model_type	=11;
+    bool	listed	=12;
+    bool	locked	=13;
+    bool	hide_stock	=14;
+    bool	join_level_discount	=15;
+    bool	purchase_right	=16;
+    string	auto_listing_time	=17;
+    string	out_item_no	=18;
+    string	content	=19;
+    string	summary	=20;
+    string	selling_point	=21;
+    int32	min_buy	=22;
+    bool	nostore_sell	=23;
+    int64	thumb_id	=24;
+    string	thumb_url	=25;
+    int32	template_id	=26;
+    string	barcode	=27;
+    float	price	=28;
+    float	origin_price	=29;
+    float	cost_price	=30;
+    float	min_price	=31;
+    float	max_price	=32;
+    float	weight	=33;
+    int32	review_num	=34;
+    int32	view_count	=35;
+    int32	buy_count	=36;
+    int32	sorting	=37;
+    string listed_at =38;
+    string	created_at	=39;
+    string	updated_at	=40;
+    Brand brand =41;
+    // @inject_tag: gorm:"many2many:item_cats;"
+    repeated Cat cats =42;
+    // @inject_tag: gorm:"many2many:item_tags;"
+    repeated Tag tags =43;
+    repeated  Sku skus  =44;
+    repeated  ItemGallery galleries  =45;
+    repeated  ItemPrice prices  =46;
+    repeated  ItemRight rights  =47;
+    repeated  SpecItemIndex spec_indexes  =48; //规格更新专用
+    repeated  int64 ids  =49;
+    // @inject_tag: gorm:"many2many:spec_item_indices;"
+    repeated  Spec specs  =50; //(详情显示专用)
+    Sku skuitem =51; //单一规格商品（在购物车，营销活动等场景用到）
+    int64 sku_id =52; //单一规格商品输入参数（在获取规格商品时使用）
+    bool is_presale = 53;
+    ItemPresale item_presale = 54;
+    bool is_sku = 55; // 是否多规格商品
+    Food food = 56; // 餐饮商品附加信息
+    int64	video_id	=57;
+    string	video_url	=58;
+}
+
+message GoodsWhere {
+    repeated int64 item_ids = 1;
+    repeated int64 sku_ids = 2;
+}
+
+message ItemWhere {
+    int32 paged =1;
+    int32 page_size =2;
+    string	sorting	=3;
+    string	keywords =4;
+    string	name =5;
+    string	item_sn	=6;
+    int32	brand_id =7;
+    int32	tag_id	=8;
+    int32	cat_id	=9;
+    int64	taxonomy_id	=10;
+    float	min_price =11;
+    float	max_price =12;
+    string model_type =13;
+    string	status	=14;
+    int64	coupon_id	=15;
+    bool valid = 16;// 是否有效商品
+    string invite = 17;// 加密后的邀请码
+    int64	id	= 18;
+    repeated int64 ids = 19;
+    int64 sku_id = 20; //单一规格商品输入参数（在获取规格商品时使用）
+    string cat_slug = 21;
+    bool is_sku = 22;
+    string kind_type = 23; // 菜品类型【餐饮商品】: in-堂食菜品,out-外卖菜品
+    int64 kind_id = 24; // 菜单ID【餐饮商品】
+    repeated int64 kind_ids = 25; // 菜单ID集合【餐饮商品】
+    int32 sort = 26;
+}
+
+message MemberGoods {
+    int64 item_id = 1;
+    int64 sku_id = 2;
+    float min_member_price = 3;
+    float max_member_price = 4;
+    float discount = 5;
+}
+
+message ItemResponse {
+    Item entity = 1;
+    common.Pager pager =2;
+    repeated Item items = 3;
+    common.Error error = 4;
+    common.Info info =5;
+}
+
+service MyItemService {
+    // 查询商品
+    rpc Search (ItemWhere) returns (ItemDisplayResponse) {}
+    // 获取商品信息
+    rpc Get (ItemWhere) returns (ItemDisplayResponse) {}
+    // 增加商品销量
+    rpc AddSoldNum (ItemDisplayWhere) returns (ItemDisplayResponse) {}
+}
+
+message ItemDisplay {
+    int64	id	=1;
+    string	name	=2;
+    string	unit	=3;
+    string	item_sn	=4;
+    int64	taxonomy_id	=5;
+    int32	quantity	=6  ;
+    int32	sold_num	=7;
+    string	model_type	=8;
+    bool	hide_stock	=9;
+    string	content	=10;
+    string	summary	=11;
+    string	selling_point	=12;
+    int32	min_buy	=13;
+    bool	nostore_sell	=14;
+    string	thumb_url	=15;
+    int32	template_id	=16;
+    string	barcode	=17;
+    float	price	=18;
+    float	origin_price	=19;
+    float	min_price	=20;
+    float	max_price	=21;
+    float	weight	=22;
+    int32	review_num	=23;
+    int32	view_count	=24;
+    Brand brand =25;
+    repeated Cat cats =26;
+    repeated Tag tags =27;
+    repeated  Sku skus  =28;
+    repeated  ItemGallery galleries  =29;
+    repeated  Spec specs  =30; //(详情显示专用)
+    bool is_member_goods = 31; // 是否会员专享
+    bool is_buy = 32; // 商品是否可购买
+    bool is_member = 33; // 登录用户是否会员
+    float member_price = 34; // 会员价
+    bool is_distribution = 35; // 是否参与分销
+    string distribution_share_icon = 36; // 分销图标
+    bool listed = 37;
+    bool is_sku = 38; // 是否多规格商品
+    Food food = 39; // 餐饮商品附加信息
+    int32	buy_quota	= 40;
+    int64	video_id	=41;
+    string	video_url	=42;
+}
+
+message ItemDisplayWhere {
+    int64 id = 1;
+    repeated int64 ids = 2;
+    int32 sold_num = 3;
+    int64 sku_id = 4;
+}
+
+message ItemDisplayResponse {
+    ItemDisplay entity = 1;
+    common.Pager pager =2;
+    repeated ItemDisplay items = 3;
+    common.Error error = 4;
+    common.Info info =5;
+}

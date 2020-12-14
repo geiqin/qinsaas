@@ -1,0 +1,36 @@
+syntax = "proto3";
+package services;
+option go_package = ".;services";
+import "common/base.proto";
+
+service BrandService {
+    rpc Create (Brand) returns (BrandResponse) {}
+    rpc Update (Brand) returns (BrandResponse) {}
+    rpc Delete (Brand) returns (BrandResponse) {}
+    rpc Get (Brand) returns (BrandResponse) {}
+    rpc Search (common.BaseWhere) returns (BrandResponse) {}
+    rpc List (Brand) returns (BrandResponse) {}
+}
+
+
+message Brand {
+    int32	id	=1;
+    string	name	=2;
+    string	website	=3;
+    int64	logo_id	=4;
+    string	logo_url	=5;
+    string	brand_type	=6;
+    int32	item_num	=7;
+    string	description	=8;
+    string	created_at	=9;
+    string	updated_at	=10;
+}
+
+
+message BrandResponse {
+    Brand entity = 1;
+    common.Pager pager =2;
+    repeated Brand items = 3;
+    common.Error error = 4;
+    common.Info info =5;
+}
