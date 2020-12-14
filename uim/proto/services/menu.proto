@@ -1,0 +1,44 @@
+syntax = "proto3";
+package services;
+option go_package =".;services";
+import "common/base.proto";
+
+service MenuService {
+    rpc Get (Menu) returns (MenuResponse) {}
+    rpc Search (common.BaseWhere) returns (MenuResponse) {}
+    rpc List (Menu) returns (MenuResponse) {}
+    rpc Tree (Menu) returns (MenuResponse) {}
+}
+
+// 字典信息
+message Menu {
+    int64 id =1;
+    string name	 =3;
+    string title =4;
+    string title_en	 =5;
+    string icon	 =6;
+    bool nocache =7;
+    string meta  =8;
+    int64 menu_id =9;
+    string redirect_url  =10;
+    string contain_routes =11;
+    int64 permission_id  =12;
+    bool hide_sidebar =13;
+    bool disabled =14;
+    string sorting =15;
+    string memo  =16;
+    string created_at =17;
+    string updated_at =18;
+    repeated Menu children = 19;
+}
+
+
+
+//
+message MenuResponse {
+    Menu entity = 1;
+    common.Pager pager =2;
+    repeated Menu items = 3;
+    common.Error error = 4;
+    common.Info info =5;
+}

@@ -1,0 +1,25 @@
+syntax = "proto3";
+package services;
+option go_package =".;services";
+import "common/base.proto";
+
+service ProfileService {
+    rpc Get (Profile) returns (ProfileResponse) {}
+    rpc Search (common.BaseWhere) returns (ProfileResponse) {}
+}
+
+// 用户信息
+message Profile {
+    int64 id = 1;
+    string company_name = 2;
+    string created_at = 3;
+    string updated_at = 4;
+}
+
+message ProfileResponse {
+    Profile entity = 1;
+    common.Pager pager =2;
+    repeated Profile items = 3;
+    common.Error error = 4;
+    common.Info info =5;
+}

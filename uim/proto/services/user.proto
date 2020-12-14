@@ -1,0 +1,74 @@
+syntax = "proto3";
+
+package services;
+option go_package =".;services";
+import "common/base.proto";
+import "profile.proto";
+import "role.proto";
+
+
+service UserService {
+    rpc Create (User) returns (UserResponse) {}
+    rpc Update (User) returns (UserResponse) {}
+    rpc ModifyMobile (User) returns (UserResponse) {}
+    rpc ModifyAvatar (User) returns (UserResponse) {}
+    rpc ModifyPwd (UserPassword) returns (UserResponse) {}
+    rpc Get (User) returns (UserResponse) {}
+    rpc Delete (User) returns (UserResponse) {}
+    rpc Search (UserWhere) returns (UserResponse) {}
+    rpc Login (UserWhere) returns (common.TokenResponse) {}
+    rpc Info (common.Empty) returns (UserResponse) {}
+    rpc ValidateToken (common.Token) returns (common.TokenResponse) {}
+}
+
+// 用户信息
+message User {
+    int64  id = 1;
+    string name = 2;
+    string display_name = 3;
+    int64 avatar_id = 4;
+    string avatar_url = 5;
+    string password = 6;
+    string email = 7;
+    string mobile =8;
+    string gender = 9;
+    string created_at =10;
+    string updated_at = 11;
+    Profile profile = 12;
+    repeated Role roles =13;
+    repeated int64 ids =14;
+}
+
+//密码信息
+message UserPassword {
+    int64  id = 1;
+    string name = 2;
+    string password = 3;
+    string old_password = 4;
+    string email = 5;
+    string mobile =6;
+}
+
+
+// 用户信息
+message UserWhere {
+    int32 paged =1;
+    int32 page_size=2;
+    string sorting =3;
+    string name = 4;
+    string display_name = 5;
+    string email = 6;
+    string mobile =7;
+    string gender = 8;
+    string password = 9; //此字段是额外字段
+}
+
+
+message UserResponse {
+    User entity = 1;
+    common.Pager pager =2;
+    repeated User items = 3;
+    common.Error error = 4;
+    common.Info info =5;
+}
+
