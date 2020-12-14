@@ -1,0 +1,33 @@
+syntax = "proto3";
+
+package services;
+option go_package =".;services";
+import "common/base.proto";
+
+service TaxonomyService {
+    rpc Get (Taxonomy) returns (TaxonomyResponse) {}
+    rpc Search (common.BaseWhere) returns (TaxonomyResponse) {}
+    rpc Tree (Taxonomy) returns (TaxonomyResponse) {}
+    rpc List (Taxonomy) returns (TaxonomyResponse) {}
+}
+
+//标准分类信息
+message Taxonomy {
+    int64 id =1;
+    string name	 =2;
+    string type =3;
+    int64 taxonomy_id	 =4;
+    int32 depth	 =5;
+    string path	 =6;
+    string memo	 =7;
+    int32 sorting =8;
+    repeated Taxonomy children=9;
+}
+
+message TaxonomyResponse {
+    Taxonomy entity = 1;
+    common.Pager pager =2;
+    repeated Taxonomy items = 3;
+    common.Error error = 4;
+    common.Info info =5;
+}

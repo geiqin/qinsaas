@@ -1,0 +1,35 @@
+syntax = "proto3";
+
+package services;
+option go_package =".;services";
+import "common/base.proto";
+import "dictService.proto";
+
+service DictTypeService {
+    rpc Get (DictType) returns (DictTypeResponse) {}
+    rpc Search (common.BaseWhere) returns (DictTypeResponse) {}
+    rpc List (DictTypeRequest) returns (DictTypeResponse) {}
+}
+
+//字段类型
+message DictType {
+    int32 id =1;
+    string name	=2;
+    string title=3;
+    bool editable=4;
+    repeated Dict dicts=5;
+}
+
+
+message DictTypeRequest {
+    repeated string types = 1;
+}
+
+
+message DictTypeResponse {
+    DictType entity = 1;
+    common.Pager pager =2;
+    repeated DictType items = 3;
+    common.Error error = 4;
+    common.Info info =5;
+}
