@@ -1,0 +1,77 @@
+syntax = "proto3";
+package services;
+option go_package =".;services";
+import "common/base.proto";
+import "cardService.proto";
+
+//我的会员卡
+service MyVipcardService {
+    //会员卡申请
+    rpc Apply (Vipcard) returns (VipcardResponse) {}
+    //会员卡续展
+    rpc Renew (Vipcard) returns (VipcardResponse) {}
+    //获取会员卡
+    rpc Get (Vipcard) returns (VipcardResponse) {}
+    //获取默认使用的会员卡
+    rpc GetDefault (Vipcard) returns (VipcardResponse) {}
+    //查询会员卡
+    rpc Search (VipcardWhere) returns (VipcardResponse) {}
+    //会员是否有会员卡
+    rpc HasCard (VipcardWhere) returns (VipcardResponse) {}
+    //获取有效的会员卡列表
+    rpc ValidList (VipcardWhere) returns (VipcardResponse) {}
+}
+
+service VipcardService {
+    //后台颁发会员卡
+    rpc Create (Vipcard) returns (VipcardResponse) {}
+    //后台会员卡续展
+    rpc Renew (Vipcard) returns (VipcardResponse) {}
+    //删除会员卡
+    rpc Delete (Vipcard) returns (VipcardResponse) {}
+    //获取会员卡
+    rpc Get (Vipcard) returns (VipcardResponse) {}
+    //会员卡列表
+    rpc List (Vipcard) returns (VipcardResponse) {}
+    //查询会员卡
+    rpc Search (VipcardWhere) returns (VipcardResponse) {}
+}
+
+message Vipcard {
+    int64 id =1;
+    int32 card_id =2;
+    int64 customer_id =3;
+    string number =4;
+    int64 user_id =5;
+    string open_date =6;
+    string validate_date =7;
+    string display_name =8;
+    string issuer = 9;
+    int32 status = 10;
+    string created_at =11;
+    string updated_at =12;
+    string deleted_at =13;
+    Card card =14;
+    repeated int64 ids =15;
+}
+
+//查询参数
+message VipcardWhere {
+    int32 paged = 1;
+    int32 page_size = 2;
+    string sorting = 3;
+    //以下为自定义参数
+    string number =4;
+    int64 customer_id =5;
+    int32 card_id =6;
+    int32 status =7;
+}
+
+//
+message VipcardResponse {
+    Vipcard entity = 1;
+    common.Pager pager =2;
+    repeated Vipcard items = 3;
+    common.Error error = 4;
+    common.Info info =5;
+}

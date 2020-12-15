@@ -1,0 +1,84 @@
+syntax = "proto3";
+package services;
+option go_package =".;services";
+import "common/base.proto";
+
+service AddressService {
+    rpc Create (Address) returns (AddressResponse) {}
+    rpc Update (Address) returns (AddressResponse) {}
+    rpc Delete (Address) returns (AddressResponse) {}
+    rpc Get (Address) returns (AddressResponse) {}
+    rpc Search (AddressWhere) returns (AddressResponse) {}
+    rpc List (AddressWhere) returns (AddressResponse) {}
+}
+
+service MyAddressService {
+    rpc Create (Address) returns (AddressResponse) {}
+    rpc Update (Address) returns (AddressResponse) {}
+    rpc Delete (Address) returns (AddressResponse) {}
+    rpc Get (Address) returns (AddressResponse) {}
+    rpc GetDefault (common.Empty) returns (AddressResponse) {}
+    rpc List (AddressWhere) returns (AddressResponse) {}
+}
+
+message Address {
+    int64 id =1;
+    int64 customer_id =2;
+    string name =3;
+    string last_name =4;
+    string first_name =5;
+    int64 area_id =6;
+    int64 street_id =7;
+    string addr =8;
+    string postcode =9;
+    string mobile =10;
+    string tel =11;
+    string delivery_day =12;
+    string delivery_time =13;
+    string lng =14;
+    string lat =15;
+    bool defaulted =16;
+    string created_at =17;
+    string updated_at =18;
+    Area area = 19;
+}
+
+message Area {
+   int64 id = 1;
+   int64 area_id = 2;
+   string level_type = 3;
+   string name = 4;
+   string shortname = 5;
+   string parent_path = 6;
+   string province = 7;
+   string city = 8;
+   string district = 9;
+   string province_shortname = 10;
+   string city_shortname = 11;
+   string district_shortname = 12;
+   string province_pinyin = 13;
+   string city_pinyin = 14;
+   string district_pinyin = 15;
+   string pinyin = 16;
+   string jianpin = 17;
+   string first_char = 18;
+   string city_code = 19;
+   string zip_code = 20;
+}
+
+//地址查询参数
+message AddressWhere {
+    int32 paged = 1;
+    int32 page_size = 2;
+    //以下为自定义参数
+    int64 customer_id = 4;
+}
+
+//
+message AddressResponse {
+    Address entity = 1;
+    common.Pager pager =2;
+    repeated Address items = 3;
+    common.Error error = 4;
+    common.Info info =5;
+}

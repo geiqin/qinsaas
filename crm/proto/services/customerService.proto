@@ -1,0 +1,126 @@
+syntax = "proto3";
+package services;
+option go_package =".;services";
+import "common/base.proto";
+import "vipcardService.proto";
+import "tagService.proto";
+import "levelService.proto";
+import "addressService.proto";
+
+service CustomerService {
+    //手动添加用户
+    rpc Create (Customer) returns (CustomerResponse) {}
+    //手动添加单位用户
+    rpc CreateCompany (Customer) returns (CustomerResponse) {}
+    //手动修改单位用户
+    rpc UpdateCompany (Customer) returns (CustomerResponse) {}
+    //从粉丝添加用户
+    rpc CreateByFan (Customer) returns (CustomerResponse) {}
+    //客户注册
+    rpc Register (Customer) returns (CustomerResponse) {}
+    //修改客户
+    rpc Update (Customer) returns (CustomerResponse) {}
+    //删除客户
+    rpc Delete (Customer) returns (CustomerResponse) {}
+    //锁定客户
+    rpc Lock (Customer) returns (CustomerResponse) {}
+    //解锁客户
+    rpc Unlock (Customer) returns (CustomerResponse) {}
+    //获得客户
+    rpc Get (Customer) returns (CustomerResponse) {}
+    //获得客户详情
+    rpc Detail (Customer) returns (CustomerResponse) {}
+    //根据ids获得客户
+    rpc List (Customer) returns (CustomerResponse) {}
+    //查询客户
+    rpc Search (CustomerWhere) returns (CustomerResponse) {}
+    //设置会员标签
+    rpc SetTags (Customer) returns (CustomerResponse) {}
+    //设置会员卡
+    rpc SetCards (Customer) returns (CustomerResponse) {}
+    //修改客户手机号
+    rpc UpdateMobile (Customer) returns (CustomerResponse) {}
+}
+
+service MyCustomerService {
+    // 修改密码
+    rpc ChangePwd (CustomerWhere) returns (CustomerResponse) {}
+}
+
+message Customer {
+    int64 id =1;
+    string customer_sn =2;
+    string name =3;
+    string display_name =4;
+    string realname =5;
+    string idcard =6;
+    int32 gender =7;
+    string mobile =8;
+    string email =9;
+    int64 avatar_id =10;
+    string avatar_url =11;
+    int32 level_id =12;
+    float capital =13;
+    int32 growth_value =14;
+    int32 integral =15;
+    int32 traded_num =16;
+    float traded_money =17;
+    int32 review_num =18;
+    int32 favorite_num =19;
+    int64 refer_customer_id =20;
+    string refer_url =21;
+    bool locked =22;
+    bool trusted =23;
+    bool binded_mobile =24;
+    bool binded_email =25;
+    int64 area_id =26;
+    int32 source_type =27;
+    int32 type = 28;
+    string birthday =29;
+    string memo =30;
+    string contacts = 31;
+    string created_at =32;
+    string updated_at =33;
+    string deleted_at =34;
+    Level level =35;
+    // @inject_tag: gorm:"many2many:customer_tags;"
+    repeated Tag tags = 36;
+    repeated Vipcard vipcards =37;
+    repeated Address addrs = 38;
+    repeated int64 ids = 39;
+}
+
+//客户查询参数
+message CustomerWhere {
+    int32 paged = 1;
+    int32 page_size = 2;
+    string sorting = 3;
+    //以下为自定义参数
+    string name = 4;
+    string display_name =5;
+    string realname =6;
+    int32 gender =7;
+    string mobile =8;
+    string email =9;
+    int32 level_id =10;
+    int32 card_id =11;
+    int32 tag_id =12;
+    int32 source_type =13;
+    int64 area_id =14;
+    string status =15;
+    string keywords =16;
+    int32 type = 17;
+    int64 customer_id = 18;
+    string old_pwd = 19;
+    string new_pwd = 20;
+    string confirm_pwd = 21;
+}
+
+//
+message CustomerResponse {
+    Customer entity = 1;
+    common.Pager pager =2;
+    repeated Customer items = 3;
+    common.Error error = 4;
+    common.Info info =5;
+}

@@ -1,0 +1,35 @@
+syntax = "proto3";
+package services;
+option go_package =".;services";
+import "common/base.proto";
+
+service WebsiteSettingService {
+    rpc Get(WebsiteSetting) returns(WebsiteSettingResponse) {};
+    rpc Save(WebsiteSetting) returns(WebsiteSettingResponse) {};
+}
+
+message WebsiteSetting {
+    int32 id = 1;
+    string name = 2;
+    string root_url = 3;
+    string keywords = 4;
+    string describe = 5;
+    string tel = 6;
+    string mobile = 7;
+    int64 area_id = 8;
+    string address = 9;
+    string lng = 10;
+    string lat = 11;
+    string email = 12;
+    string qq = 13;
+    string record_no = 14;
+    string copyright = 15;
+    string created_at = 16;
+    string updated_at = 17;
+}
+
+message WebsiteSettingResponse {
+    common.Error error = 1;
+    common.Info info = 2;
+    WebsiteSetting entity = 3;
+}
