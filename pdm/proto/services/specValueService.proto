@@ -1,0 +1,30 @@
+syntax = "proto3";
+package services;
+option go_package = ".;services";
+import "common/base.proto";
+
+service SpecValueService {
+    rpc Create (SpecValue) returns (SpecValueResponse) {}
+    rpc Delete (SpecValue) returns (SpecValueResponse) {}
+    rpc Get (SpecValue) returns (SpecValueResponse) {}
+    rpc List (SpecValue) returns (SpecValueResponse) {}
+    rpc IsUsed (SpecValue) returns (SpecValueResponse) {}
+}
+
+message SpecValue {
+    int32	id	=1;
+    int32	spec_id	=2;
+    string	alias	=3;
+    string	spec_value	=4;
+    int64	spec_img_id	=5;
+    string	spec_img_url =6;
+    int32	sorting	=7;
+}
+
+message SpecValueResponse {
+    SpecValue entity = 1;
+    common.Pager pager =2;
+    repeated SpecValue items = 3;
+    common.Error error = 4;
+    common.Info info =5;
+}

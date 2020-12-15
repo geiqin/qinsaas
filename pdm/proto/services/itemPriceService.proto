@@ -1,0 +1,56 @@
+syntax = "proto3";
+package services;
+option go_package = ".;services";
+import "common/base.proto";
+import "skuService.proto";
+import "specService.proto";
+service ItemPriceService {
+    rpc Set (PriceScheme) returns (PriceSchemeResponse) {}
+    rpc Get (ItemPrice) returns (ItemPriceResponse) {}
+    rpc Scheme (ItemPrice) returns (PriceSchemeResponse) {}
+}
+
+message ItemPrice {
+    int64	id	=1;
+    string	type	=2;
+    int64	type_value_id	=3;
+    int64	item_id	=4;
+    int64	sku_id	=5;
+    string	method	=6;
+    float	price	=7;
+    float	discount	=8;
+    Sku sku =9;
+}
+
+message ItemPriceResponse {
+    ItemPrice entity = 1;
+    common.Pager pager =2;
+    repeated ItemPrice items = 3;
+    common.Error error = 4;
+    common.Info info =5;
+}
+
+
+//价格方案
+message PriceScheme {
+    int64 item_id = 1;
+    string item_sn = 2;
+    string item_name = 3;
+    float item_price =4;
+    float item_origin_price = 5;
+    string	model_type	=7;
+    string type = 8;
+    string method =9;
+    repeated ItemPrice details = 10;
+    repeated Sku skus  =11;
+    repeated Spec specs =12;
+}
+
+
+message PriceSchemeResponse {
+    PriceScheme entity = 1;
+    common.Pager pager =2;
+    repeated PriceScheme items = 3;
+    common.Error error = 4;
+    common.Info info =5;
+}

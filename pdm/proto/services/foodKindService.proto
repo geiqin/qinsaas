@@ -1,0 +1,39 @@
+syntax = "proto3";
+package services;
+option go_package = ".;services";
+import "common/base.proto";
+import "itemService.proto";
+
+// 外卖
+service FrontOutFoodKindService {
+    rpc List(common.Empty) returns(FoodKindResponse) {}; // 获取外卖菜单【包含所有商品】
+}
+
+// 堂食
+service FrontInFoodKindService {
+    rpc List(common.Empty) returns(FoodKindResponse) {}; // 获取堂食菜单【包含所有商品】
+}
+
+message FoodKind {
+    int64 id = 1;
+    string name = 2;
+    bool require_choose = 3;
+    int32 require_least_count = 4;
+    int32 item_count = 5; // 商品数量
+    int32 on_shelf_item_count = 6; // 在售商品数量
+    FoodKindTag tag = 7;
+    repeated ItemDisplay goods = 8;
+}
+
+message FoodKindTag {
+    string name = 1;
+    string icon = 2;
+}
+
+message FoodKindResponse {
+    FoodKind entity = 1;
+    common.Pager pager = 2;
+    repeated FoodKind items = 3;
+    common.Error error = 4;
+    common.Info info = 5;
+}

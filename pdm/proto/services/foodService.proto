@@ -1,0 +1,11 @@
+syntax = "proto3";
+package services;
+option go_package = ".;services";
+
+message Food {
+    int64 id = 1;
+    int64 item_id = 2;
+    string food_type = 3;
+    int64 kind_id = 4;
+    float box_fee = 5;
+}

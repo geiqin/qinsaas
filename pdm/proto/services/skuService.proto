@@ -1,0 +1,51 @@
+syntax = "proto3";
+package services;
+option go_package = ".;services";
+import "common/base.proto";
+import "specValueService.proto";
+
+service SkuService {
+    rpc BatchUpdateSpecDesc (Sku) returns (SkuResponse) {}
+    rpc List (Sku) returns (SkuResponse) {}
+}
+
+message Sku {
+    int64	id	=1;
+    int64	item_id	=2;
+    string	sku_sn	=3;
+    string	name	=4;
+    string	barcode	=5;
+    float	price	=6;
+    float	origin_price	=7;
+    float	cost_price	=8;
+    float	weight	=9;
+    int32	quantity	=10;
+    int32	sold_num	=11;
+    int32	init_sold_num	=12;
+    int32	frozen_num	=13;
+    bool	listed	=14;
+    string	out_sku_no	=15;
+    string  spec_desc = 16;
+    bool	defaulted	=17;
+    int32	buy_quota	=18;
+    string	created_at	=19;
+    string	updated_at	=20;
+    // @inject_tag: gorm:"many2many:spec_item_indices;"
+    repeated SpecValue spec_values =21;
+}
+
+message SpecItemIndex{
+    int64	id	=1;
+    int64	item_id	=2;
+    int64	sku_id	=3;
+    int32	spec_id	=4;
+    int32	spec_value_id	=5;
+}
+
+message SkuResponse {
+    Sku entity = 1;
+    common.Pager pager =2;
+    repeated Sku items = 3;
+    common.Error error = 4;
+    common.Info info =5;
+}

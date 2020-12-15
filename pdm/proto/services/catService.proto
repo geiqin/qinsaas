@@ -1,0 +1,41 @@
+syntax = "proto3";
+package services;
+option go_package = ".;services";
+import "common/base.proto";
+
+service CatService {
+    rpc Create (Cat) returns (CatResponse) {}
+    rpc Update (Cat) returns (CatResponse) {}
+    rpc Delete (Cat) returns (CatResponse) {}
+    rpc Get (Cat) returns (CatResponse) {}
+    rpc Tree (Cat) returns (CatResponse) {}
+    rpc Search (common.BaseWhere) returns (CatResponse) {}
+    rpc List (common.BaseWhere) returns (CatResponse) {}
+}
+
+service MyCatService{
+    rpc List (common.BaseWhere) returns (CatResponse) {}
+}
+
+message Cat {
+    int32	id	=1;
+    string	slug	=2;
+    string	name	=3;
+    int32	cat_id	=4;
+    int32	depth	=5;
+    int64 media_id =6;
+    string media_url =7;
+    string	memo	=8;
+    int32	sorting	=9;
+    string	created_at	=10;
+    string	updated_at	=11;
+    repeated Cat children =12;
+}
+
+message CatResponse {
+    Cat entity = 1;
+    common.Pager pager =2;
+    repeated Cat items = 3;
+    common.Error error = 4;
+    common.Info info =5;
+}

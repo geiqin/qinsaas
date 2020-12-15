@@ -1,0 +1,31 @@
+syntax = "proto3";
+package services;
+option go_package = ".;services";
+import "common/base.proto";
+import "itemStatsService.proto";
+import "itemSaleStatsService.proto";
+import "skuSaleStatsService.proto";
+
+service Statistics {
+    //商品汇总统计
+    rpc ItemAmount (StatsRequest) returns (ItemStatsResponse) {}
+    //商品销量统计
+    rpc ItemSale (StatsRequest) returns (ItemSaleStatsInfoResponse) {}
+    //货品销量统计
+    rpc SkuSale (StatsRequest) returns (SkuSaleStatsResponse) {}
+    //统计重置
+    rpc Reset (common.Empty) returns (ItemStatsResponse) {}
+
+}
+
+message StatsRequest {
+    int32 paged = 1;
+    int32 page_size = 2;
+    int32 top = 3;
+    string type =4;
+    int32 days = 5;
+    int64 item_id = 6;
+    string start_at = 7;
+    string end_at = 8;
+    repeated int64 item_ids = 9;
+}
