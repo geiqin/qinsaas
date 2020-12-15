@@ -7,7 +7,7 @@
 package services
 
 import (
-	common "geiqin.saas.uim/app/proto/common"
+	common "github.com/geiqin/microkit/protobuf/common"
 	proto "github.com/golang/protobuf/proto"
 	protoreflect "google.golang.org/protobuf/reflect/protoreflect"
 	protoimpl "google.golang.org/protobuf/runtime/protoimpl"
