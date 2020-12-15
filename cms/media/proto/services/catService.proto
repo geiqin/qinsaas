@@ -1,0 +1,38 @@
+syntax = "proto3";
+package services;
+option go_package =".;services";
+import "common/base.proto";
+
+service CatService {
+    rpc Create (Cat) returns (CatResponse) {}
+    rpc Update (Cat) returns (CatResponse) {}
+    rpc Delete (Cat) returns (CatResponse) {}
+    rpc Get (Cat) returns (CatResponse) {}
+    rpc List (Cat) returns (CatResponse) {}
+    rpc Tree (Cat) returns (CatResponse) {}
+    rpc Search (common.BaseWhere) returns (CatResponse) {}
+
+}
+
+// 字典信息
+message Cat {
+    int32 id =1;
+    string name =2;
+    string type =3;
+    string taxonomy =4;
+    int32 total_num	=5;
+    float total_size =6;
+    int32 cat_id=7; //父亲节点
+    int64 user_id =8;
+    repeated Cat children =9;
+    repeated int32 ids =10;
+}
+
+//
+message CatResponse {
+    Cat entity = 1;
+    common.Pager pager =2;
+    repeated Cat items = 3;
+    common.Error error = 4;
+    common.Info info =5;
+}

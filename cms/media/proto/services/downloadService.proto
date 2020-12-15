@@ -1,0 +1,60 @@
+syntax = "proto3";
+package services;
+option go_package =".;services";
+import "common/base.proto";
+
+service DownloadService {
+    rpc BuildStart (Download) returns (DownloadResponse) {}
+    rpc BuildEnd (Download) returns (DownloadResponse) {}
+    rpc Create (Download) returns (DownloadResponse) {}
+    rpc Update (Download) returns (DownloadResponse) {}
+    rpc Delete (Download) returns (DownloadResponse) {}
+    rpc Get (Download) returns (DownloadResponse) {}
+    rpc Search (DownloadWhere) returns (DownloadResponse) {}
+}
+
+// 下载信息
+message Download {
+    int64 id =1;
+    string hash =2;
+    string title =3;
+    string type	 =4;
+    string file_name =5;
+    string raw_name =6;
+    string path	 =7;
+    string url	 =8;
+    string mime_type =9;
+    int32 size	 =10;
+    string memo	 =11;
+    int64 user_id	=12;
+    int32 status	=13;
+    string built_at =14;
+    string created_at =15;
+    string updated_at =16;
+    repeated int64 ids =17;
+}
+
+message DownloadWhere {
+    int32 paged = 1;
+    int32 page_size = 2;
+    int32 top = 3;
+    //base params
+    int64 id = 4;
+    string name = 6;
+    string title = 7;
+    string hash = 8;
+    string status =9;
+    string built_at =10;
+    string created_at =11;
+    string updated_at =12;
+    repeated int64 ids = 13;
+}
+
+//
+message DownloadResponse {
+    Download entity = 1;
+    common.Pager pager =2;
+    repeated Download items = 3;
+    common.Error error = 4;
+    common.Info info =5;
+}
