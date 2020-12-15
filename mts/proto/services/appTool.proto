@@ -1,0 +1,50 @@
+syntax = "proto3";
+package services;
+option go_package =".;services";
+import "common/base.proto";
+
+service AppToolService {
+    rpc Create (AppTool) returns (AppToolResponse) {}
+    rpc Update (AppTool) returns (AppToolResponse) {}
+    rpc Delete (AppToolWhere) returns (AppToolResponse) {}
+    rpc Get (AppTool) returns (AppToolResponse) {}
+    rpc List (AppToolWhere) returns (AppToolResponse) {}
+    rpc Search (AppToolWhere) returns (AppToolResponse) {}
+    // 禁用|启用应用工具 disabled=true禁用 disabled=false启用
+    rpc Disable (AppToolWhere) returns (AppToolResponse) {}
+}
+
+message AppToolWhere {
+    int32 paged = 1;
+    int32 page_size = 2;
+    string keywords = 3;
+    int32 id = 4;
+    repeated int32 ids = 5;
+    int32 app_tool_type_id = 6;
+    bool disabled = 7;
+}
+
+// 应用信息
+message AppTool {
+    int32 id = 1;
+    int32 app_tool_type_id = 2;
+    string slug = 3;
+    string name = 4;
+    string mode = 5;
+    string icon = 6;
+    string url = 7;
+    string memo = 8;
+    bool disabled = 9;
+    string tags = 10;
+    string created_at = 11;
+    string updated_at = 12;
+}
+
+//
+message AppToolResponse {
+    AppTool entity = 1;
+    common.Pager pager = 2;
+    repeated AppTool items = 3;
+    common.Error error = 4;
+    common.Info info = 5;
+}

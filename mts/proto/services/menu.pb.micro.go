@@ -4,7 +4,7 @@
 package services
 
 import (
-	common "geiqin.saas.uim/app/proto/common"
+	common "geiqin.saas.mts/app/proto/common"
 	fmt "fmt"
 	proto "github.com/golang/protobuf/proto"
 	math "math"
@@ -47,6 +47,7 @@ type MenuService interface {
 	Search(ctx context.Context, in *common.BaseWhere, opts ...client.CallOption) (*MenuResponse, error)
 	List(ctx context.Context, in *Menu, opts ...client.CallOption) (*MenuResponse, error)
 	Tree(ctx context.Context, in *Menu, opts ...client.CallOption) (*MenuResponse, error)
+	StoreTree(ctx context.Context, in *MenuWhere, opts ...client.CallOption) (*MenuResponse, error)
 }
 
 type menuService struct {
@@ -101,6 +102,16 @@ func (c *menuService) Tree(ctx context.Context, in *Menu, opts ...client.CallOpt
 	return out, nil
 }
 
+func (c *menuService) StoreTree(ctx context.Context, in *MenuWhere, opts ...client.CallOption) (*MenuResponse, error) {
+	req := c.c.NewRequest(c.name, "MenuService.StoreTree", in)
+	out := new(MenuResponse)
+	err := c.c.Call(ctx, req, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
 // Server API for MenuService service
 
 type MenuServiceHandler interface {
@@ -108,6 +119,7 @@ type MenuServiceHandler interface {
 	Search(context.Context, *common.BaseWhere, *MenuResponse) error
 	List(context.Context, *Menu, *MenuResponse) error
 	Tree(context.Context, *Menu, *MenuResponse) error
+	StoreTree(context.Context, *MenuWhere, *MenuResponse) error
 }
 
 func RegisterMenuServiceHandler(s server.Server, hdlr MenuServiceHandler, opts ...server.HandlerOption) error {
@@ -116,6 +128,7 @@ func RegisterMenuServiceHandler(s server.Server, hdlr MenuServiceHandler, opts .
 		Search(ctx context.Context, in *common.BaseWhere, out *MenuResponse) error
 		List(ctx context.Context, in *Menu, out *MenuResponse) error
 		Tree(ctx context.Context, in *Menu, out *MenuResponse) error
+		StoreTree(ctx context.Context, in *MenuWhere, out *MenuResponse) error
 	}
 	type MenuService struct {
 		menuService
@@ -142,4 +155,8 @@ func (h *menuServiceHandler) List(ctx context.Context, in *Menu, out *MenuRespon
 
 func (h *menuServiceHandler) Tree(ctx context.Context, in *Menu, out *MenuResponse) error {
 	return h.MenuServiceHandler.Tree(ctx, in, out)
+}
+
+func (h *menuServiceHandler) StoreTree(ctx context.Context, in *MenuWhere, out *MenuResponse) error {
+	return h.MenuServiceHandler.StoreTree(ctx, in, out)
 }

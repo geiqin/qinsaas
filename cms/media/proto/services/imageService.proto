@@ -1,0 +1,55 @@
+syntax = "proto3";
+package services;
+option go_package =".;services";
+import "common/base.proto";
+import "catService.proto";
+
+service ImageService {
+    rpc Update (UpdateImage) returns (ImageResponse) {}
+    rpc Delete (Image) returns (ImageResponse) {}
+    rpc Get (Image) returns (ImageResponse) {}
+    rpc List (Image) returns (ImageResponse) {}
+    rpc Search (common.BaseWhere) returns (ImageResponse) {}
+    rpc SetCat (Image) returns (ImageResponse) {}
+}
+
+// 图片信息
+message Image {
+    int64 id =1;
+    string title =2;
+    string type	 =3;
+    int32 cat_id =4;
+    string file_name =5;
+    string raw_name =6;
+    string hash =7;
+    string path	 =8;
+    string url	 =9;
+    string mime_type =10;
+    float size	 =11;
+    int32 width	 =12;
+    int32 height =13;
+    string memo	 =14;
+    string taxonomy	 =15;
+    int64 user_id	=19;
+    string created_at =20;
+    string updated_at =21;
+    Cat cat =22;
+    repeated int64 ids =23;
+}
+
+// 修改图片信息
+message UpdateImage {
+    int64 id =1;
+    string title =2;
+    int32 cat_id =4;
+    string memo	 =14;
+}
+
+//
+message ImageResponse {
+    Image entity = 1;
+    common.Pager pager =2;
+    repeated Image items = 3;
+    common.Error error = 4;
+    common.Info info =5;
+}

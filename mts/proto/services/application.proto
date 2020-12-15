@@ -1,0 +1,39 @@
+syntax = "proto3";
+
+package services;
+option go_package =".;services";
+import "common/base.proto";
+
+service ApplicationService {
+    rpc Get (Application) returns (ApplicationResponse) {}
+    rpc Search (common.BaseWhere) returns (ApplicationResponse) {}
+}
+
+// 应用信息
+message Application {
+    int32	id	=1;
+    string	slug	=2;
+    string	name	=3;
+    string	short_name	=4;
+    string	type	=5;
+    string	icon	=6;
+    string	css_class	=7;
+    string	url	=8;
+    string	desc	=9;
+    string	intro	=10;
+    bool	released	=11;
+    bool	disabled	=12;
+    string	created_at	=13;
+    string	updated_at	=14;
+}
+
+
+
+//
+message ApplicationResponse {
+    Application entity = 1;
+    common.Pager pager =2;
+    repeated Application items = 3;
+    common.Error error = 4;
+    common.Info info =5;
+}
