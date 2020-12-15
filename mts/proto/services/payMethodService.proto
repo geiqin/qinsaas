@@ -1,0 +1,43 @@
+syntax = "proto3";
+package services;
+option go_package =".;services";
+import "common/base.proto";
+
+service PayMethodService {
+    rpc Lock (PayMethod) returns (PayMethodResponse) {}
+    rpc Unlock (PayMethod) returns (PayMethodResponse) {}
+    rpc Get (PayMethod) returns (PayMethodResponse) {}
+    rpc List (PayMethodWhere) returns (PayMethodResponse) {}
+    rpc Search (PayMethodWhere) returns (PayMethodResponse) {}
+}
+
+message PayMethod {
+    int64	id	=1;
+    string	name	=2;
+    string	title	=3;
+    string	icon	=4;
+    string	memo	=5;
+    string supports =6;
+    bool	disabled	=7;
+}
+
+message PayMethodWhere {
+    int32 paged = 1;
+    int32 page_size = 2;
+    string sorting = 3;
+    int64	id	=4;
+    string	name	=5;
+    string	title	=6;
+    int64	store_id	=7;
+    string	channel	=8;
+    int64	status	=9;
+}
+
+//
+message PayMethodResponse {
+    PayMethod entity = 1;
+    common.Pager pager =2;
+    repeated PayMethod items = 3;
+    common.Error error = 4;
+    common.Info info =5;
+}

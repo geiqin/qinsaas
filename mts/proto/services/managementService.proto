@@ -1,0 +1,39 @@
+syntax = "proto3";
+package services;
+option go_package =".;services";
+import "common/base.proto";
+import "storeService.proto";
+
+service ManagementService {
+    rpc Add (Management) returns (ManagementResponse) {}
+    rpc Update (Management) returns (ManagementResponse) {}
+    rpc Remove (Management) returns (ManagementResponse) {}
+    rpc Get (Management) returns (ManagementResponse) {}
+    rpc Flag (Management) returns (FlagResponse) {}
+    rpc Search (common.BaseWhere) returns (ManagementResponse) {}
+}
+
+message Management {
+    int64 id =1;
+    int64 user_id =2;
+    int64 store_id =3;
+    int64 role_id =4;
+    Store store =5;
+}
+
+message FlagResponse {
+    repeated string tags = 1;
+    repeated string alias = 2;
+    common.Error error = 3;
+    common.Info info =4;
+}
+
+
+//
+message ManagementResponse {
+    Management entity = 1;
+    common.Pager pager =2;
+    repeated Management items = 3;
+    common.Error error = 4;
+    common.Info info =5;
+}
