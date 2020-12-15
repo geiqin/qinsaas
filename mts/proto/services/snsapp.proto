@@ -1,0 +1,41 @@
+syntax = "proto3";
+package services;
+option go_package =".;services";
+import "common/base.proto";
+
+service SnsappService {
+    rpc Create (Snsapp) returns (SnsappResponse) {}
+    rpc Update (Snsapp) returns (SnsappResponse) {}
+    rpc Delete (Snsapp) returns (SnsappResponse) {}
+    rpc Lock (Snsapp) returns (SnsappResponse) {}
+    rpc Unlock (Snsapp) returns (SnsappResponse) {}
+    rpc Get (Snsapp) returns (SnsappResponse) {}
+    rpc Search (common.BaseWhere) returns (SnsappResponse) {}
+}
+
+message Snsapp {
+    int64	id	=1;
+    string	name	=2;
+    string	channel	=3;
+    int64	store_id	=4;
+    string	app_id	=5;
+    string	app_secret	=6;
+    string	scope	=7;
+    string	pem_private	=8;
+    string	pem_public	=9;
+    string	configs	=10;
+    bool	disabled	=11;
+    string	created_at	=12;
+    string	updated_at	=13;
+}
+
+
+
+//
+message SnsappResponse {
+    Snsapp entity = 1;
+    common.Pager pager =2;
+    repeated Snsapp items = 3;
+    common.Error error = 4;
+    common.Info info =5;
+}

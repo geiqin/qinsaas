@@ -1,0 +1,35 @@
+syntax = "proto3";
+package services;
+option go_package =".;services";
+import "common/base.proto";
+
+service PaygateService {
+    rpc Create (Paygate) returns (PaygateResponse) {}
+    rpc Update (Paygate) returns (PaygateResponse) {}
+    rpc Delete (Paygate) returns (PaygateResponse) {}
+    rpc Lock (Paygate) returns (PaygateResponse) {}
+    rpc Unlock (Paygate) returns (PaygateResponse) {}
+    rpc Get (Paygate) returns (PaygateResponse) {}
+    rpc Search (common.BaseWhere) returns (PaygateResponse) {}
+}
+
+message Paygate {
+    int64	id	=1;
+    string	channel	=2;
+    string	mode	=3;
+    string	configs	=4;
+    int64	store_id	=5;
+    int64	user_id	=6;
+    bool	disabled	=7;
+}
+
+
+
+//
+message PaygateResponse {
+    Paygate entity = 1;
+    common.Pager pager =2;
+    repeated Paygate items = 3;
+    common.Error error = 4;
+    common.Info info =5;
+}

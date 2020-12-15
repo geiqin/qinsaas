@@ -1,0 +1,39 @@
+syntax = "proto3";
+package services;
+option go_package =".;services";
+import "common/base.proto";
+
+service BranchService {
+    rpc Create (Branch) returns (BranchResponse) {}
+    rpc Update (Branch) returns (BranchResponse) {}
+    rpc Delete (Branch) returns (BranchResponse) {}
+    rpc Get (Branch) returns (BranchResponse) {}
+    rpc Search (common.BaseWhere) returns (BranchResponse) {}
+}
+
+message Branch {
+    int64	id	=1;
+    string	slug	=2;
+    string	name	=3;
+    int64	store_id	=4;
+    int64	area_id	=5;
+    string	address	=6;
+    string	lng	=7;
+    string	lat	=8;
+    int64	creator_id	=9;
+    bool	locked	=10;
+    string	created_at	=11;
+    string	updated_at	=12;
+    repeated int64 ids = 13;
+}
+
+
+
+//
+message BranchResponse {
+    Branch entity = 1;
+    common.Pager pager =2;
+    repeated Branch items = 3;
+    common.Error error = 4;
+    common.Info info =5;
+}
