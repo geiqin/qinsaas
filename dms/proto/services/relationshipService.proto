@@ -1,0 +1,47 @@
+syntax = "proto3";
+package services;
+option go_package = ".;services";
+import "common/base.proto";
+import "distributorService.proto";
+
+service RelationshipService {
+    //更改关系
+    rpc Change (Relationship) returns (RelationshipResponse) {}
+    //删除关联
+    rpc Delete (Relationship) returns (RelationshipResponse) {}
+    //查看关系
+    rpc Get (Relationship) returns (RelationshipResponse) {}
+    //查询关系记录
+    rpc Search (RelationshipWhere) returns (RelationshipResponse) {}
+}
+
+message Relationship {
+    int64 id = 1;
+    int64 distributor_id = 2;
+    int64 customer_id = 3;
+    int32 type = 4;
+    string status = 5;
+    int32 continue_num = 6;
+    string last_continue_at =7;
+    string created_at = 8;
+    string updated_at = 9;
+    Distributor distributor = 10;
+    Distributor invitee = 11;
+}
+
+
+message RelationshipWhere{
+    int32 paged =1;
+    int32 page_size =2;
+    string	sorting	=3;
+    int32	type =4;
+    string	status =5;
+}
+
+message RelationshipResponse {
+    Relationship entity = 1;
+    common.Pager pager =2;
+    repeated Relationship items = 3;
+    common.Error error = 4;
+    common.Info info =5;
+}

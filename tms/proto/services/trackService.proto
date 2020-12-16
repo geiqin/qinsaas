@@ -1,0 +1,41 @@
+syntax = "proto3";
+package services;
+option go_package = ".;services";
+import "common/base.proto";
+
+service TrackService {
+  rpc Query (Track) returns (TrackResponse) {}
+}
+
+message Track {
+  int64 id =1;
+  string shipper_code =2;
+  string order_code =3;
+  string logistic_code =4;
+  bool success =5;
+  string reason =6;
+  string state =7;
+  string stateEx =8;
+  string location  =9;
+  repeated  TrackDetail details=10;
+  string customer_name = 11;
+}
+
+message TrackDetail {
+  int64 id =1;
+  int32 track_id =2;
+  string accept_time =3;
+  string accept_station =4;
+  string location =5;
+  string action =6;
+  string remark =7;
+}
+
+message TrackResponse {
+  Track entity = 1;
+  common.Pager pager =2;
+  repeated Track items = 3;
+  common.Error error = 4;
+  common.Info info =5;
+}
+

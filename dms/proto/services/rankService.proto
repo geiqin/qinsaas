@@ -1,0 +1,69 @@
+syntax = "proto3";
+package services;
+option go_package = ".;services";
+import "common/base.proto";
+import "goodsConditionService.proto";
+
+service RankService {
+    //创建分销员等级
+    rpc Create (Rank) returns (RankResponse) {}
+    //修改分销员等级
+    rpc Update (Rank) returns (RankResponse) {}
+    //删除分销员等级
+    rpc Delete (Rank) returns (RankResponse) {}
+    //获取分销员等级
+    rpc Get (Rank) returns (RankResponse) {}
+    //获取分销员等级列表
+    rpc List (Rank) returns (RankResponse) {}
+    //查询分销员等级
+    rpc Search (RankWhere) returns (RankResponse) {}
+}
+
+message RankWhere {
+    int32 paged = 1;
+    int32 page_size = 2;
+    int32 top = 3;
+    int64 id = 4;
+    repeated int64 ids = 5;
+    string type = 6;
+}
+
+message Rank {
+    int32 id =1;
+    string name =2;
+    float primary_rate =3;
+    float second_rate =4;
+    float three_rate =5;
+    float reward_money =6;
+    float month_draw_money =7;
+    int32 month_draw_num =8;
+    int32 level_id =9;
+    bool is_condition =10;
+    float promotion_amount =11;
+    int32 primary_num =12;
+    int32 second_num =13;
+    bool is_bought =14;
+    float consume_amount =15;
+    int32 consume_num =16;
+    bool is_bind_idcard =17;
+    bool is_bind_mobile =18;
+    float join_fee =19;
+    bool defaulted =20;
+    repeated GoodsCondition goodses =21;
+    repeated int32 ids =22;
+    string type = 23;
+    float team_rate = 24;
+    bool is_checked = 25;
+    int64 agreement_id = 26;
+    int64 introduce_id = 27;
+    int32 weight = 28;
+    bool is_bonus_same = 29;
+}
+
+message RankResponse {
+    Rank entity = 1;
+    common.Pager pager = 2;
+    repeated Rank items = 3;
+    common.Error error = 4;
+    common.Info info = 5;
+}

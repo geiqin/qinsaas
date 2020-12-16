@@ -1,0 +1,55 @@
+syntax = "proto3";
+package services;
+option go_package = ".;services";
+import "common/base.proto";
+
+service MyStatementService {
+    //获取佣金收支明细
+    rpc Get (Statement) returns (StatementResponse) {}
+    //查询佣金收支明细
+    rpc Search (StatementWhere) returns (StatementResponse) {}
+}
+
+service StatementService {
+    //获取佣金收支明细
+    rpc Get (Statement) returns (StatementResponse) {}
+    //查询佣金收支明细
+    rpc Search (StatementWhere) returns (StatementResponse) {}
+    //整合数据（表结构发生改变：队长分红收支明细和佣金收支明细整合成一张表）版本升级时执行
+    rpc Upgrade (common.Empty)  returns (StatementResponse) {}
+}
+
+message Statement {
+    int64 id = 1;
+    int64 target_id = 2;
+    int64 source_id = 3;
+    string source_type = 4;
+    int32 source_method = 5;
+    float money = 6;
+    string type = 7;
+    float balance = 8;
+    string created_at = 9;
+    string updated_at = 10;
+    int64 distributor_id = 11;
+}
+
+message StatementWhere {
+    int32 paged = 1;
+    int32 page_size = 2;
+    int32 top = 3;
+    //base params
+    int64 id = 4;
+    repeated int64 ids = 5;
+    string type = 6;
+    int64 target_id = 7;
+    string source_type = 8;
+    int32 source_method = 9;
+}
+
+message StatementResponse {
+    Statement entity = 1;
+    common.Pager pager =2;
+    repeated Statement items = 3;
+    common.Error error = 4;
+    common.Info info =5;
+}

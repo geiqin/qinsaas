@@ -1,0 +1,68 @@
+syntax = "proto3";
+package services;
+option go_package = ".;services";
+import "common/base.proto";
+import "distributorService.proto";
+import "rankService.proto";
+
+service MyLeaderService {
+    //获取团长信息
+    rpc Get (Leader) returns (LeaderResponse) {}
+    //检查用户是否是团长
+    rpc Exists (LeaderWhere) returns (LeaderResponse) {}
+}
+
+service LeaderService {
+    //获取团长信息
+    rpc Get (Leader) returns (LeaderResponse) {}
+    //查询团长列表
+    rpc Search (LeaderWhere) returns (LeaderResponse) {}
+}
+
+message Leader {
+    int64 id = 1;
+    int64 distributor_id = 2;
+    int64 rank_id = 3;
+    int64 customer_id = 25;
+    int32 team_count = 4;
+    float bonus = 5;
+    float total_bonus = 6;
+    float apply_bonus = 7;
+    float wait_settle_bonus = 8;
+    float wait_grant_bonus = 9;
+    float frozen_bonus = 10;
+    float withdrew_bonus = 11;
+    int32 withdrew_num = 12;
+    string created_at = 13;
+    string updated_at = 14;
+    repeated int64 ids = 15;
+    Rank rank = 16;
+    Distributor distributor = 17;
+    string leader_name = 18;// 团长昵称
+    string mobile = 19;// 手机号
+    string avatar_url = 20;// 用户头像
+    string rank_name = 21;// 等级名称
+    int32 status = 22;
+}
+
+message LeaderWhere {
+    int32 paged = 1;
+    int32 page_size = 2;
+    string sorting = 3;
+    string mobile =4;
+    int32 rank_id = 5;
+    string keywords =6;
+    int64 id = 7;
+    repeated int64 ids = 8;
+    int64 distributor_id = 9;
+    int64 customer_id = 10;
+    int32 status = 11;
+}
+
+message LeaderResponse {
+    Leader entity = 1;
+    common.Pager pager =2;
+    repeated Leader items = 3;
+    common.Error error = 4;
+    common.Info info =5;
+}

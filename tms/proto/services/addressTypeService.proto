@@ -1,0 +1,10 @@
+syntax = "proto3";
+package services;
+option go_package = ".;services";
+
+message AddressType {
+   int64 id = 1;
+   int64 address_id = 2;
+   int32 type = 3;
+   bool is_default = 4;
+}

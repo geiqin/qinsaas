@@ -1,0 +1,25 @@
+syntax = "proto3";
+package services;
+option go_package = ".;services";
+import "common/base.proto";
+import "applierService.proto";
+
+service MyLeaderApplierService {
+    // 发起申请团长
+    rpc Apply (common.Empty) returns (ApplyInfoResponse) {}
+    // 提交团长申请
+    rpc Submit (Applier) returns (ApplierResponse) {}
+    //获取申请者信息
+    rpc Get (Applier) returns (ApplierResponse) {}
+    //检查用户是否已经提交申请信息
+    rpc Exists (Applier) returns (ApplierResponse) {}
+}
+
+service LeaderApplierService {
+    //审核申请者
+    rpc Check (Applier) returns (ApplierResponse) {}
+    //获取申请者信息
+    rpc Get (Applier) returns (ApplierResponse) {}
+    //分页查询申请者
+    rpc Search (ApplierWhere) returns (ApplierResponse) {}
+}

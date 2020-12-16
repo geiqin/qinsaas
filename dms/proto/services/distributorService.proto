@@ -1,0 +1,138 @@
+syntax = "proto3";
+package services;
+option go_package = ".;services";
+import "common/base.proto";
+import "rankService.proto";
+
+service MyDistributorService {
+    //获取分销员信息
+    rpc Get (Distributor) returns (DistributorResponse) {}
+    //检查用户是否是分销员
+    rpc Exists (DistributorWhere) returns (DistributorResponse) {}
+    //获取我的团队数量
+    rpc TeamNum (DistributorTeamWhere) returns (DistributorTeamNumResponse) {}
+    //查询我的团队
+    rpc TeamSearch (DistributorTeamWhere) returns (DistributorTeamResponse) {}
+}
+
+service DistributorService {
+    //编辑销售员信息
+    rpc Update (Distributor) returns (DistributorResponse) {}
+    //批量设置销售员等级
+    rpc SetRank (Distributor) returns (DistributorResponse) {}
+    //清退销售员
+    rpc Remove (DistributorWhere) returns (DistributorResponse) {}
+    //获取销售员信息
+    rpc Get (Distributor) returns (DistributorResponse) {}
+    //分页查询销售员列表
+    rpc Search (DistributorWhere) returns (DistributorResponse) {}
+    //获取销售员的团队数量
+    rpc TeamNum (DistributorTeamWhere) returns (DistributorTeamNumResponse) {}
+    //查询销售员团队
+    rpc TeamSearch (DistributorTeamWhere) returns (DistributorTeamResponse) {}
+}
+
+message Distributor {
+    int64 id = 1;
+    string code = 2;
+    int64 customer_id = 3;
+    int64 inviter_id = 4;
+    string display_name = 5;
+    int32 rank_id = 6;
+    float deposit = 7;
+    float commission = 8;
+    float apply_commission = 9;
+    float wait_settle_commission = 10;
+    float wait_grant_commission = 11;
+    float commission_total = 12;
+    float commission_frozen = 13;
+    float commission_withdrew = 14;
+    float recommend_amount = 15;
+    int32 recommend_num = 16;
+    int32 customer_num = 17;
+    float promotion_amount = 18;
+    int32 promotion_num = 19;
+    int32 withdrew_num = 20;
+    int32 status = 21;
+    string created_at = 22;
+    string updated_at = 23;
+    Rank rank = 24;
+    // @inject_tag: gorm:"ForeignKey:inviter_id"
+    Distributor inviter = 25;
+    repeated Distributor children = 26;
+    repeated int64 ids = 27;
+    string mobile = 28;
+    int32 statement_num = 29;
+}
+
+message DistributorWhere {
+    int32 paged = 1;
+    int32 page_size = 2;
+    string sorting = 3;
+    string mobile =4;
+    int32 rank_id = 5;
+    string keywords =6;
+    int64 id = 7;
+    repeated int64 ids = 8;
+    int64 inviter_id = 9;
+    repeated int64 inviter_ids = 10;
+    int32 status = 11;
+    string display_name = 12;
+    string inviter_display_name = 13;
+}
+
+// 分销员团队层级统计
+message DistributorTeamNum {
+    int32 primary_num = 1;
+    int32 second_num = 2;
+}
+
+// 分销员团队
+message DistributorTeam {
+    int64 id = 1;
+    int64 customer_id = 2;
+    int64 inviter_id = 3;
+    string display_name = 4;
+    string avatar_url = 5;
+    int32 rank_id = 6;
+    float recommend_amount = 15;
+    int32 recommend_num = 16;
+    int32 customer_num = 17;
+    float promotion_amount = 18;
+    int32 promotion_num = 19;
+    int32 status = 21;
+    string created_at = 22;
+}
+
+message DistributorTeamWhere {
+    int32 paged = 1;
+    int32 page_size = 2;
+    string sorting = 3;
+    int32 level = 4;
+    int64 distributor_id = 5;
+    int64 customer_id = 6;
+}
+
+message DistributorResponse {
+    Distributor entity = 1;
+    common.Pager pager =2;
+    repeated Distributor items = 3;
+    common.Error error = 4;
+    common.Info info =5;
+}
+
+message DistributorTeamNumResponse {
+    DistributorTeamNum entity = 1;
+    common.Pager pager =2;
+    repeated DistributorTeamNum items = 3;
+    common.Error error = 4;
+    common.Info info =5;
+}
+
+message DistributorTeamResponse {
+    DistributorTeam entity = 1;
+    common.Pager pager =2;
+    repeated DistributorTeam items = 3;
+    common.Error error = 4;
+    common.Info info =5;
+}

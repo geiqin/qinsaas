@@ -1,0 +1,82 @@
+syntax = "proto3";
+package services;
+option go_package = ".;services";
+import "common/base.proto";
+import "timesService.proto";
+import "fetchGalleryService.proto";
+import "areaInfoService.proto";
+import "settingService.proto";
+
+service FetchCfgService {
+  // 启用上门自提功能
+  rpc Open (common.Empty) returns (SettingResponse) {}
+  // 关闭上门自提功能
+  rpc Close (common.Empty) returns (SettingResponse) {}
+  // 检查上门自提功能是否开启
+  rpc IsOpen (common.Empty) returns (SettingResponse) {}
+}
+
+service FetchService {
+  rpc Create (Fetch) returns (FetchResponse) {}
+  rpc Update (Fetch) returns (FetchResponse) {}
+  rpc Delete (FetchWhere) returns (FetchResponse) {}
+  rpc Get (Fetch) returns (FetchResponse) {}
+  rpc Search (FetchWhere) returns (FetchResponse) {}
+  rpc List (FetchWhere) returns (FetchResponse) {}
+  // 获取上门自提时间
+  rpc GetTimes (FetchWhere) returns (DateListResponse) {}
+  // 获取距离用户最近的自提点
+  rpc GetLatest (FetchWhere) returns (FetchResponse) {}
+}
+
+message FetchWhere {
+  int32 paged = 1;
+  int32 page_size = 2;
+  string sorting = 3;
+  string keywords = 4;
+  int64 id = 5;
+  repeated int64 ids = 6;
+  string lng = 7;
+  string lat = 8;
+  string name = 9;
+}
+
+message Fetch {
+  int64 id = 1;
+  string name = 2;
+  int64 area_id = 3;
+  string addr = 4;
+  string lng = 5;
+  string lat = 6;
+  string tel = 7;
+  string mobile = 8;
+  string reception = 9;
+  int32 reception_repeat_weeks = 10;
+  repeated int32 reception_repeat_week_arr = 11;
+  bool is_fetch_time = 12;
+  string fetch = 13;
+  int32 fetch_repeat_weeks = 14;
+  repeated int32 fetch_repeat_week_arr = 15;
+  string sub_fetch_time = 16;
+  string appointment = 17;
+  int32 appointment_num = 18;
+  int32 max_appointment_num = 19;
+  string memo = 20;
+  string created_at = 21;
+  string updated_at = 22;
+  repeated Times reception_times = 23;
+  repeated Times fetch_times = 24;
+  repeated FetchGallery galleries = 25;
+  AreaInfo area = 26;
+  float distance = 27;
+}
+
+
+message FetchResponse {
+  Fetch entity = 1;
+  common.Pager pager =2;
+  repeated Fetch items = 3;
+  common.Error error = 4;
+  common.Info info =5;
+}
+

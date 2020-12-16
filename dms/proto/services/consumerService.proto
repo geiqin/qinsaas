@@ -1,0 +1,60 @@
+syntax = "proto3";
+package services;
+option go_package = ".;services";
+import "common/base.proto";
+import "distributorService.proto";
+
+service MyConsumerService {
+    //邀请新客户
+    rpc Create (Consumer) returns (ConsumerResponse) {}
+    //获取我的客户信息
+    //rpc Get (Consumer) returns (ConsumerResponse) {}
+    //查询我的客户
+    rpc Search (ConsumerWhere) returns (ConsumerResponse) {}
+}
+
+service ConsumerService {
+    //分页查询客户
+    rpc Search (ConsumerWhere) returns (ConsumerResponse) {}
+}
+
+message Consumer {
+    int64 id = 1;
+    int64 distributor_id = 2;
+    int64 customer_id = 3;
+    int32 order_num = 4;
+    float order_amount =5;
+    int32 total_order_num = 6;
+    float total_order_amount =7;
+    int32 status = 8;
+    int32 change_num = 9;
+    string last_change_at = 10;
+    string join_at = 11;
+    string mobile = 12;
+    string consumer_display_name =13;
+    string consumer_avatar_url =14;
+    string dis_display_name = 15;
+    string created_at = 16;
+    string updated_at = 17;
+    Distributor distributor = 18;
+
+}
+
+message ConsumerWhere{
+    int32 paged =1;
+    int32 page_size =2;
+    string mobile =3;  //分销员手机号
+    string status = 4;  //当前关系
+    string start_date = 5; //开始日期
+    string end_date = 6;   //结束日期
+    int64 customer_id = 7;
+    int64 distributor_id = 8; //所属分销员ID
+}
+
+message ConsumerResponse {
+    Consumer entity = 1;
+    common.Pager pager =2;
+    repeated Consumer items = 3;
+    common.Error error = 4;
+    common.Info info =5;
+}

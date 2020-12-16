@@ -1,0 +1,52 @@
+syntax = "proto3";
+package services;
+option go_package = ".;services";
+import "common/base.proto";
+import "goodsCommissionService.proto";
+
+message GoodsInfo {
+	int64	id	=1;
+	string	item_sn	=2;
+	string	model_type	=3;
+	string	name	=4;
+	string	unit	=5;
+	int32	brand_id	=6;
+	int64	taxonomy_id	=7;
+	int32	quantity	=8  ;
+	int64	thumb_id	=9;
+	string	thumb_url	=10;
+	string	barcode	=11;
+	float	price	=12;
+	float	origin_price	=13;
+	float	cost_price	=14;
+	float	weight	=15;
+	int64   sku_id =16; // 规格商品时使用
+	string sku_sn =17;
+	string sku_name =18;
+	int32 sold_num = 19;
+	int32	buy_count	=20;
+	float	min_price	=21;
+	float	max_price	=22;
+	bool disabled = 23;
+	string updated_at = 24;
+	bool is_commission_display = 25;
+	bool is_commission_rate_display = 26;
+	float min_primary_rate = 27;
+	float max_primary_rate = 28;
+	float min_second_rate = 29;
+	float max_second_rate = 30;
+	float min_primary = 31;
+	float max_primary = 32;
+	float min_second = 33;
+	float max_second = 34;
+	repeated GoodsCommission goods_commission = 35;
+	bool default = 36;
+}
+
+message GoodsInfoResponse {
+	GoodsInfo entity = 1;
+	common.Pager pager =2;
+	repeated GoodsInfo items = 3;
+	common.Error error = 4;
+	common.Info info =5;
+}

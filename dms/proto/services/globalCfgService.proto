@@ -1,0 +1,48 @@
+syntax = "proto3";
+package services;
+option go_package = ".;services";
+import "common/base.proto";
+import "posterGalleryService.proto";
+
+service GlobalCfgService {
+    //设置销分销配置信息
+    rpc Set (GlobalCfg) returns (GlobalCfgResponse) {}
+    //获取分销配置信息
+    rpc Get (common.Empty) returns (GlobalCfgResponse) {}
+}
+
+message GlobalCfg {
+    int64 id = 1;
+    string	name  =2;
+    int64 	share_id  =3;
+    string	share_url =4;
+    int32 	mode =5;
+    int32 	settle_method =6;
+    bool  	is_recruit =7;
+    bool  	is_checked =8;
+    bool  	is_inner_buy  =9;
+    bool  	is_commission_display =10;
+    bool  	is_commission_rate_display =11;
+    bool  	auto_upgrade =12;
+    int32 	relate_expire =13;
+    int32 	relate_rob =14;
+    int32 	relate_protect_days =15;
+    bool  	is_inner_relate  =16;
+    bool is_bonus_same = 17;
+    bool is_open_poster = 18;
+    string poster_share_url = 19;
+    int32 poster_type = 20;
+    int64 poster_img_id = 21;
+    string poster_img_url = 22;
+    string poster_share_content = 23;
+    repeated PosterGallery poster_galleries = 24;
+}
+
+
+message GlobalCfgResponse {
+    GlobalCfg entity = 1;
+    common.Pager pager =2;
+    repeated GlobalCfg items = 3;
+    common.Error error = 4;
+    common.Info info =5;
+}

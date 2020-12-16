@@ -1,0 +1,21 @@
+syntax = "proto3";
+package services;
+option go_package = ".;services";
+import "common/base.proto";
+import "shipperService.proto";
+
+service FypCallService {
+    rpc Auth(common.Empty) returns(FypCallResponse) {}; // 丰云配平台授权
+}
+
+message FypCall {
+    int64 order_id = 1;
+    string logistics_no = 2;
+    Shipper shipper = 3;
+}
+
+message FypCallResponse {
+    common.Info info = 1;
+    common.Error error = 2;
+    FypCall entity = 3;
+}

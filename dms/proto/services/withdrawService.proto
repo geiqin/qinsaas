@@ -1,0 +1,109 @@
+syntax = "proto3";
+package services;
+option go_package = ".;services";
+import "common/base.proto";
+import "distributorService.proto";
+import "leaderService.proto";
+import "customerInfoService.proto";
+
+//佣金提现服务(客户专用)
+service MyWithdrawService {
+    //申请佣金提现
+    rpc Apply (WithdrawApply) returns (WithdrawApplyResponse) {}
+    //提交佣金提现申请
+    rpc Submit (Withdraw) returns (WithdrawResponse) {}
+    //获取佣金提现信息
+    rpc Get (Withdraw) returns (WithdrawResponse) {}
+    //查询我的提现记录
+    rpc Search (WithdrawWhere) returns (WithdrawResponse) {}
+}
+
+//佣金提现服务(后台专用)
+service WithdrawService {
+    //审核佣金提现
+    rpc Check (WithdrawWhere) returns (WithdrawResponse) {}
+    //确认打款（自动打款）
+    rpc ConfirmAuto (WithdrawWhere) returns (WithdrawResponse) {}
+    //确认打款（手动打款）
+    rpc ConfirmManual (WithdrawWhere) returns (WithdrawResponse) {}
+    //获取佣金提现信息
+    rpc Get (Withdraw) returns (WithdrawResponse) {}
+    //分页查询佣金提现记录
+    rpc Search (WithdrawWhere) returns (WithdrawResponse) {}
+}
+
+message Withdraw {
+    int64 id = 1;
+    string withdraw_sn = 2;
+    string type = 3;
+    int64 customer_id = 4;
+    int64 target_id = 5;
+    float money = 6;
+    float service_money = 7;
+    float service_money_rate = 8;
+    float actual_money = 9;
+    int64 transfer_id = 10;
+    string transactionId_id = 11;
+    string method = 12;
+    int32 cash_account_id= 13;
+    string payee_name = 14;
+    string payee_account = 15;
+    string payee_bank = 16;
+    string platform_account =17;
+    string payment = 18;
+    string memo = 19;
+    int32 status = 20;
+    string failure = 21;
+    string audit_at = 22;
+    string payment_at = 23;
+    string created_at = 24;
+    string updated_at = 25;
+    Distributor distributor = 26;
+    Leader leader = 27;
+    CustomerInfo customer = 28;
+}
+
+message WithdrawWhere {
+    int32 paged = 1;
+    int32 page_size = 2;
+    int32 top = 3;
+    //base params
+    int64 id = 4;
+    repeated int64 ids = 5;
+    int32 status = 6;
+    int64 customer_id = 7;
+    string start_at = 8;
+    string end_at = 9;
+    string type = 10;
+    int64 target_id = 11;
+    string method = 12;
+    string payment = 13;
+    bool ok = 14;
+    string failure = 15;
+    string mobile = 16;
+}
+
+message WithdrawApply {
+    bool disabled = 1; // 是否可提现
+    float min_money = 2; // 最小提现佣金
+    float max_money = 3; // 最大提现佣金
+    float service_money_rate = 4; // 手续费比例
+    float min_service_money = 5; // 最小手续费
+    float balance = 6; // 剩余提现余额
+}
+
+message WithdrawResponse {
+    Withdraw entity = 1;
+    common.Pager pager =2;
+    repeated Withdraw items = 3;
+    common.Error error = 4;
+    common.Info info =5;
+}
+
+message WithdrawApplyResponse {
+    WithdrawApply entity = 1;
+    common.Pager pager =2;
+    repeated WithdrawApply items = 3;
+    common.Error error = 4;
+    common.Info info =5;
+}

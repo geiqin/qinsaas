@@ -1,0 +1,29 @@
+syntax = "proto3";
+package services;
+option go_package = ".;services";
+import "common/base.proto";
+
+service FypConfigService {
+    rpc Get(FypConfig) returns(FypConfigResponse) {};
+    rpc Save(FypConfig) returns(FypConfigResponse) {};
+}
+
+message FypConfig {
+    int32 id = 1;
+    string app_code = 2;
+    string app_key = 3;
+    string monthly_cust = 4;
+    int32 express_type = 5;
+    int32 pay_method = 6;
+    string access_toke = 7;
+    string expired_at = 8;
+    int64 address_id = 9;
+    string created_at = 10;
+    string updated_at = 11;
+}
+
+message FypConfigResponse {
+    common.Info info = 1;
+    common.Error error = 2;
+    FypConfig entity = 3;
+}

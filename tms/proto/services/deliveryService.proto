@@ -1,0 +1,75 @@
+syntax = "proto3";
+package services;
+option go_package = ".;services";
+import "common/base.proto";
+import "settingService.proto";
+import "timesService.proto";
+import "deliveryRangeService.proto";
+
+service DeliveryCfgService {
+    // 启用同城配送功能
+    rpc Open (common.Empty) returns (SettingResponse) {}
+    // 关闭同城配送功能
+    rpc Close (common.Empty) returns (SettingResponse) {}
+    // 检查同城配送功能是否开启
+    rpc IsOpen (common.Empty) returns (SettingResponse) {}
+}
+
+service DeliveryService {
+    rpc Get (Delivery) returns (DeliveryResponse) {}
+    rpc Update (Delivery) returns (DeliveryResponse) {}
+    // 获取同城配送时间
+    rpc GetTimes (DeliveryWhere) returns (DateListResponse) {}
+}
+
+message DeliveryWhere {
+    int32 paged = 1;
+    int32 page_size = 2;
+    string sorting = 3;
+    string keywords = 4;
+    int64 id = 5;
+    repeated int64 ids = 6;
+}
+
+message Delivery {
+    int64 id = 1;
+    int64 location_id = 3;
+    int32 method = 4;
+    repeated int32 method_arr = 31;
+    int32 template = 5;
+    string range_name = 6;
+    string range_content = 7;
+    string range_image_url = 8;
+    float range_start_price = 9;
+    float range_fee = 10;
+    int32 standard = 11;
+    float first_km = 12;
+    float first_km_fee = 13;
+    float additional_km = 14;
+    float additional_km_fee = 15;
+    float first_weight = 16;
+    float additional_weight = 17;
+    float additional_weight_fee = 18;
+    bool is_timed_arrival = 19;
+    string delivery = 20;
+    int32 delivery_repeat_weeks = 21;
+    repeated int32 delivery_repeat_week_arr = 22;
+    string sub_delivery_time = 23;
+    string appointment = 24;
+    int32 appointment_num = 25;
+    int32 max_appointment_num = 26;
+    string created_at = 27;
+    string updated_at = 28;
+    repeated Times delivery_times = 29;
+    repeated DeliveryRange ranges = 30;
+}
+
+
+message DeliveryResponse {
+    Delivery entity = 1;
+    common.Pager pager =2;
+    repeated Delivery items = 3;
+    common.Error error = 4;
+    common.Info info =5;
+}
+

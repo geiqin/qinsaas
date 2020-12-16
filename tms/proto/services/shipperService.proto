@@ -1,0 +1,34 @@
+syntax = "proto3";
+package services;
+option go_package = ".;services";
+import "common/base.proto";
+
+service ShipperService {
+  rpc Create (Shipper) returns (ShipperResponse) {}
+  rpc Update (Shipper) returns (ShipperResponse) {}
+  rpc Get (Shipper) returns (ShipperResponse) {}
+  rpc Search (common.BaseWhere) returns (ShipperResponse) {}
+  rpc List (common.BaseWhere) returns (ShipperResponse) {}
+}
+
+message Shipper {
+    int32 id =1;
+    string code =2;
+    string name =3;
+    string logo_id =4;
+    string logo_url =5;
+    string tel =6;
+    string memo =7;
+    bool foreign =8;
+    bool is_access = 9;
+}
+
+
+message ShipperResponse {
+  Shipper entity = 1;
+  common.Pager pager =2;
+  repeated Shipper items = 3;
+  common.Error error = 4;
+  common.Info info =5;
+}
+

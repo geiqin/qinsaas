@@ -1,0 +1,19 @@
+syntax = "proto3";
+package services;
+option go_package = ".;services";
+import "rankService.proto";
+
+service LeaderRankService {
+    //创建团长等级
+    rpc Create (Rank) returns (RankResponse) {}
+    //修改团长等级
+    rpc Update (Rank) returns (RankResponse) {}
+    //删除团长等级
+    rpc Delete (Rank) returns (RankResponse) {}
+    //获取团长等级
+    rpc Get (Rank) returns (RankResponse) {}
+    //获取团长等级列表
+    rpc List (Rank) returns (RankResponse) {}
+    //查询团长等级
+    rpc Search (RankWhere) returns (RankResponse) {}
+}

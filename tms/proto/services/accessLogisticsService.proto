@@ -1,0 +1,35 @@
+syntax = "proto3";
+package services;
+option go_package = ".;services";
+import "common/base.proto";
+
+service AccessLogisticsService {
+    // 快递下单
+    rpc Submit(AccessLogisticsReq) returns(AccessLogisticsResponse) {};
+}
+
+message AccessLogistics {
+    string logistics_no = 1;
+}
+
+message AccessLogisticsReq {
+    int32 shipper_id = 1;
+    int64 order_id = 2;
+    string delivery_sn = 3;
+    repeated AccessLogisticsDetailReq details = 4;
+}
+
+message AccessLogisticsDetailReq {
+    int64 order_detail_id = 1;
+    int64 item_id = 2;
+    int64 sku_id = 3;
+    int32 num = 4;
+}
+
+message AccessLogisticsResponse {
+    AccessLogistics entity = 1;
+    common.Pager pager = 2;
+    repeated AccessLogistics items = 3;
+    common.Error error = 4;
+    common.Info info = 5;
+}

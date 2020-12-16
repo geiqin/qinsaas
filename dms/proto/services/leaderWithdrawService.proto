@@ -1,0 +1,30 @@
+syntax = "proto3";
+package services;
+option go_package = ".;services";
+import "withdrawService.proto";
+
+//奖金提现服务(客户专用)
+service MyLeaderWithdrawService {
+    //申请奖金提现
+    rpc Apply (WithdrawApply) returns (WithdrawApplyResponse) {}
+    //提交奖金提现申请
+    rpc Submit (Withdraw) returns (WithdrawResponse) {}
+    //获取奖金提现信息
+    rpc Get (Withdraw) returns (WithdrawResponse) {}
+    //查询我的提现记录
+    rpc Search (WithdrawWhere) returns (WithdrawResponse) {}
+}
+
+//奖金提现服务(后台专用)
+service LeaderWithdrawService {
+    //审核佣金提现
+    rpc Check (WithdrawWhere) returns (WithdrawResponse) {}
+    //确认打款（自动打款）
+    rpc ConfirmAuto (WithdrawWhere) returns (WithdrawResponse) {}
+    //确认打款（手动打款）
+    rpc ConfirmManual (WithdrawWhere) returns (WithdrawResponse) {}
+    //获取佣金提现信息
+    rpc Get (Withdraw) returns (WithdrawResponse) {}
+    //分页查询佣金提现记录
+    rpc Search (WithdrawWhere) returns (WithdrawResponse) {}
+}

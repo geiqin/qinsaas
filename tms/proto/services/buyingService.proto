@@ -1,0 +1,64 @@
+syntax = "proto3";
+package services;
+option go_package = ".;services";
+import "common/base.proto";
+import "fetchService.proto";
+import "deliveryService.proto";
+import "expressService.proto";
+
+service BuyingService {
+    // 获取配送信息
+    rpc GetData (Buying) returns (BuyingResponse) {}
+}
+
+//购买清单
+message Buying {
+    float total = 1;
+    int32 count = 2;
+    float total_weight = 3;
+    float freight = 4;
+    int64 address_id = 5;
+    repeated BuyingItem items = 6;
+    DeliveryMethod shipment = 7; // 配送信息
+}
+
+//购买清单明细
+message BuyingItem {
+    int64 item_id =1;
+    int64 sku_id =2;
+    int32 num =3;
+    float price =4;
+    float origin_price =5;
+    float sub_total =6;
+}
+
+// 配送信息
+message DeliveryMethod {
+    string lng = 1; //定位的经度
+    string lat = 2; // 定位的纬度
+    bool is_fetch = 3; // 是否可上门自提
+    bool is_delivery = 4; // 是否可同城配送
+    bool is_express = 5;  // 是否可快递发货
+    string method = 6; // 下单选择的配送方式
+    int32 fetch_count = 7; // 自提点数量
+    int64 fetch_location_id = 8; // 下单选择的自提点ID【上门自提】
+    string fetch_at = 9; // 下单选择的自提时间【上门自提】
+    bool deliverable = 10; // 收货地址是否在配送区域
+    string delivery_at = 11; // 下单选择的配送时间【同城配送】
+    float express_fee = 12; // 快递发货运费
+    float delivery_fee = 13; // 同城配送配送费
+    float start_price = 19; // 起送价
+    Delivery deliver_info = 14; // 同城配送信息
+    Fetch fetch_info = 15; // 上门自提信息
+    Express express_info = 16; // 快递发货信息
+    string start_time = 17; // 选择的配送或自提的开始时间
+    string end_time = 18; // 选择的配送或自提的结束时间
+}
+
+message BuyingResponse {
+    Buying entity = 1;
+    common.Pager pager =2;
+    repeated Buying items = 3;
+    common.Error error = 4;
+    common.Info info =5;
+}

@@ -1,0 +1,30 @@
+syntax = "proto3";
+package services;
+option go_package = ".;services";
+
+message AreaInfo {
+	int64 id = 1;
+	int64 area_id = 2;
+	string level_type = 3;
+	string name = 4;
+	string shortname = 5;
+	string parent_path = 6;
+	string province = 7;
+	string city = 8;
+	string district = 9;
+	string province_shortname = 11;
+	string city_shortname = 12;
+	string district_shortname = 13;
+	string province_pinyin = 14;
+	string city_pinyin = 15;
+	string district_pinyin = 16;
+	string pinyin = 17;
+	string jianpin = 18;
+	string first_char = 19;
+	string city_code = 20;
+	string zip_code = 21;
+	string lng = 22;
+	string lat = 23;
+	string remark1 = 24;
+	string remark2 = 25;
+}

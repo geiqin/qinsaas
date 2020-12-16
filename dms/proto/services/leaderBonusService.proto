@@ -1,0 +1,84 @@
+syntax = "proto3";
+package services;
+option go_package = ".;services";
+import "common/base.proto";
+import "leaderService.proto";
+
+service LeaderBonusService {
+    // 查看结算详情
+    rpc Get (LeaderBonus) returns (LeaderBonusResponse) {}
+    // 分页查询结算列表
+    rpc Search (LeaderBonusWhere) returns (LeaderBonusResponse) {}
+    // 结算分红
+    rpc Settlement (LeaderBonusWhere) returns (LeaderBonusResponse) {}
+}
+
+message LeaderBonus {
+    int64 id = 1;
+    string bonus_sn = 2;
+    int64 order_id = 3;
+    string order_sn = 4;
+    string platform_source = 5;
+    float order_amount = 6;
+    int64 leader_id = 7;
+    float money = 8;
+    float income_rate = 9;
+    string memo = 10;
+    int64 operator_id = 11;
+    int32 status = 12;
+    string created_at = 13;
+    string updated_at = 14;
+    Leader leader  = 15;
+}
+
+message LeaderBonusWhere {
+    int32 paged = 1;
+    int32 page_size = 2;
+    int64 id = 3;
+    string mobile = 4;
+    int64 order_id = 5;
+    string order_sn = 6;
+    string keywords = 7;
+    int32 status = 8;
+    string start_date = 9;
+    string end_date = 10;
+    repeated int64 ids = 11;
+    int64 leader_id = 12;
+}
+
+message LeaderPerformance {
+    int64 id = 1;
+    int64 customer_id = 3;
+    string display_name = 5;
+    int32 rank_id = 6;
+    float bonus_withdrew = 14;
+    string mobile = 15;
+    string rank_name = 16;
+}
+
+message LeaderPerformanceWhere {
+    int32 paged = 1;
+    int32 page_size = 2;
+    string sorting = 3;
+    string mobile =4;
+    int32 rank_id = 5;
+    string keywords =6;
+    int64 id = 7;
+    repeated int64 ids = 8;
+}
+
+message LeaderBonusResponse {
+    LeaderBonus entity = 1;
+    common.Pager pager =2;
+    repeated LeaderBonus items = 3;
+    common.Error error = 4;
+    common.Info info =5;
+}
+
+message LeaderPerformanceResponse {
+    LeaderPerformance entity = 1;
+    common.Pager pager =2;
+    repeated LeaderPerformance items = 3;
+    common.Error error = 4;
+    common.Info info =5;
+}

@@ -1,0 +1,51 @@
+syntax = "proto3";
+package services;
+option go_package = ".;services";
+import "common/base.proto";
+import "addressTypeService.proto";
+import "areaInfoService.proto";
+
+service AddressService {
+    rpc Create (Address) returns (AddressResponse) {}
+    rpc Update (Address) returns (AddressResponse) {}
+    rpc Get (AddressWhere) returns (AddressResponse) {}
+    rpc Delete (AddressWhere) returns (AddressResponse) {}
+    rpc Search (AddressWhere) returns (AddressResponse) {}
+    rpc List (AddressWhere) returns (AddressResponse) {}
+    rpc GetDefault (AddressWhere) returns (AddressResponse) {}
+}
+
+message AddressWhere {
+    int32 paged = 1;
+    int32 page_size = 2;
+    string sorting = 3;
+    string keywords = 4;
+    int64 id = 5;
+    repeated int64 ids = 6;
+    int32 type = 7;
+    bool is_default = 8;
+}
+
+message Address {
+    int64 id = 1;
+    int64 area_id = 2;
+    string addr = 3;
+    string lng = 4;
+    string lat = 5;
+    string contact = 6;
+    string tel = 7;
+    string mobile = 8;
+    string created_at = 9;
+    string updated_at = 10;
+    AreaInfo area = 11;
+    repeated AddressType address_types = 12;
+}
+
+message AddressResponse {
+    Address entity = 1;
+    common.Pager pager =2;
+    repeated Address items = 3;
+    common.Error error = 4;
+    common.Info info =5;
+}
+

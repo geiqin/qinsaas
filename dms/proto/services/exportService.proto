@@ -1,0 +1,27 @@
+syntax = "proto3";
+package services;
+option go_package = ".;services";
+import "common/base.proto";
+import "withdrawService.proto";
+
+service ExportService {
+    // 导出分销员佣金提现
+    rpc CommissionWithdrawExport(WithdrawWhere) returns (ExportResponse) {}
+    // 导出团长分红提现
+    rpc BonusWithdrawExport(WithdrawWhere) returns (ExportResponse) {}
+    // 导出分销员业绩提现
+    rpc RewardWithdrawExport(WithdrawWhere) returns (ExportResponse) {}
+}
+
+message Export {
+    string download_url = 1;
+    int32 file_size = 2;
+}
+
+message ExportResponse {
+    Export entity = 1;
+    common.Pager pager =2;
+    repeated Export items = 3;
+    common.Error error = 4;
+    common.Info info =5;
+}

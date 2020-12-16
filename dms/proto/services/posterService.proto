@@ -1,0 +1,31 @@
+syntax = "proto3";
+package services;
+option go_package = ".;services";
+import "common/base.proto";
+import "posterGalleryService.proto";
+
+service PosterService {
+    rpc Get(Poster) returns(PosterResponse) {};
+    rpc Save(Poster) returns(PosterResponse) {};
+}
+
+service FrontPosterService {
+    rpc Get(Poster) returns(PosterResponse) {};
+}
+
+message Poster {
+    int64 global_cfg_id = 1;
+    bool is_open_poster = 2;
+    string poster_share_url = 3;
+    int32 poster_type = 4;
+    int64 poster_img_id = 5;
+    string poster_img_url = 6;
+    string poster_share_content = 7;
+    repeated PosterGallery poster_galleries = 24;
+}
+
+message PosterResponse {
+    Poster entity = 1;
+    common.Error error = 4;
+    common.Info info = 5;
+}

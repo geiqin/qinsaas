@@ -1,0 +1,60 @@
+syntax = "proto3";
+package services;
+option go_package = ".;services";
+import "common/base.proto";
+
+service TimesService {
+  rpc Create (Times) returns (TimesResponse) {}
+  rpc Update (Times) returns (TimesResponse) {}
+  rpc Delete (TimesWhere) returns (TimesResponse) {}
+  rpc List (TimesWhere) returns (TimesResponse) {}
+}
+
+message TimesWhere {
+  int32 paged = 1;
+  int32 page_size = 2;
+  int64 id = 3;
+  repeated int64 ids = 4;
+  int64 target_id = 5;
+  string type = 6;
+}
+
+message Times {
+  int64 id = 1;
+  int64 target_id = 2;
+  string type = 3;
+  string start_time = 4;
+  string end_time = 5;
+  string created_at = 6;
+  string updated_at = 7;
+}
+
+
+message TimesResponse {
+  Times entity = 1;
+  common.Pager pager = 2;
+  repeated Times items = 3;
+  common.Error error = 4;
+  common.Info info = 5;
+}
+
+message DateList {
+  string date = 1;
+  int32 type = 2;// 0今天,1明天
+  string name = 3;
+  repeated DateTimes times = 4;
+}
+
+message DateTimes {
+  string start_time = 1;
+  string end_time = 2;
+}
+
+message DateListResponse {
+  DateList entity = 1;
+  common.Pager pager = 2;
+  repeated DateList items = 3;
+  common.Error error = 4;
+  common.Info info = 5;
+}
+

@@ -1,0 +1,88 @@
+syntax = "proto3";
+package services;
+option go_package = ".;services";
+import "common/base.proto";
+import "shipperService.proto";
+import "goodsInfoService.proto";
+import "fetchService.proto";
+
+service ShipmentService {
+    // 主要用于执行之前发货单数据的迁移（接口不对外开放）
+    rpc Migrate(common.Empty) returns (ShipmentResponse) {}
+    rpc Create (Shipment) returns (ShipmentResponse) {}
+    rpc Update (Shipment) returns (ShipmentResponse) {}
+    rpc Get (ShipmentWhere) returns (ShipmentResponse) {}
+    rpc List (ShipmentWhere) returns (ShipmentResponse) {}
+}
+
+message ShipmentWhere {
+    int32 paged = 1;
+    int32 page_size = 2;
+    string sorting = 3;
+    string keywords = 4;
+    int64 id = 5;
+    repeated int64 ids = 6;
+    string type = 7;
+    string method = 8;
+    int64 order_id = 9;
+    int32 delivery_type = 10;
+}
+
+message Shipment {
+    int64 id = 1;
+    string delivery_sn = 2;
+    int64 order_id = 3;
+    string method = 4;
+    string type = 5;
+    float freight = 6;
+    bool protected = 7;
+    bool is_delivery = 8;
+    int32 shipper_id = 9;
+    string logistics_no = 10;
+    string fetch_code = 11;
+    int64 location_id = 12;
+    string fetch_at = 13;
+    string delivery_at = 14;
+    int32 delivery_type = 33;
+    int64 customer_id = 15;
+    string receiver_name = 16;
+    int64 receiver_area_id = 17;
+    string receiver_addr = 18;
+    string receiver_zip = 19;
+    string receiver_tel = 20;
+    string receiver_mobile = 21;
+    string receiver_email = 22;
+    int64 op_id = 23;
+    string status = 24;
+    string memo = 25;
+    string arrived_at = 26;
+    string created_at = 27;
+    string updated_at = 28;
+    repeated ShipmentDetail details = 29;
+    string start_time = 30;
+    string end_time = 31;
+    string shipped_at = 32;
+    Shipper shipper = 34;
+    Fetch location = 35;
+}
+
+message ShipmentDetail {
+    int64 id = 1;
+    int64 shipment_id = 2;
+    int64 order_detail_id = 3;
+    int64 item_id = 4;
+    int64 sku_id = 5;
+    int32 num = 6;
+    string created_at = 7;
+    string updated_at = 8;
+    GoodsInfo goods = 9;
+}
+
+message ShipmentResponse {
+    Shipment entity = 1;
+    common.Pager pager =2;
+    repeated Shipment items = 3;
+    common.Error error = 4;
+    common.Info info =5;
+}
+

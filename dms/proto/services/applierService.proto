@@ -1,0 +1,121 @@
+syntax = "proto3";
+package services;
+option go_package = ".;services";
+import "common/base.proto";
+import "distributorService.proto";
+import "rankService.proto";
+import "goodsConditionService.proto";
+
+
+service MyApplierService {
+    // 检查用户是否存在可申请的分销等级
+    rpc Check (common.Empty) returns (ApplierResponse) {}
+    // 发起申请销售员
+    rpc Apply (common.Empty) returns (ApplyInfoResponse) {}
+    // 提交销售员申请
+    rpc Submit (Applier) returns (ApplierResponse) {}
+    // 获取申请者信息
+    rpc Get (Applier) returns (ApplierResponse) {}
+    // 检查用户是否已经提交申请信息
+    rpc Exists (Applier) returns (ApplierResponse) {}
+}
+
+service ApplierService {
+    //审核申请者
+    rpc Check (Applier) returns (ApplierResponse) {}
+    //获取申请者信息
+    rpc Get (Applier) returns (ApplierResponse) {}
+    //分页查询申请者
+    rpc Search (ApplierWhere) returns (ApplierResponse) {}
+}
+
+message ApplierWhere {
+    int32 paged = 1;
+    int32 page_size = 2;
+    int32 top = 3;
+    int64 id = 4;
+    string mobile = 5;
+    string keywords = 6;
+    string status = 7;
+    repeated int64 ids = 8;
+    string rank_type = 9;
+}
+
+message Applier {
+    int64 id = 1;
+    int64 distributor_id = 2;
+    int32 rank_id = 3;
+    string display_name = 4;
+    bool autoed = 5;
+    int64 customer_id = 6;
+    string status = 7;
+    string reason = 8;
+    string remarks = 9;
+    string addons = 10;
+    string created_at = 11;
+    string updated_at = 12;
+    Distributor distributor = 13;
+    Rank rank = 14;
+    string invite_sn = 15;
+    ApplierCondition condition = 16;
+    ApplierMeetCondition meet_condition = 17;
+    string rank_type = 18;
+    string mobile = 19;
+    string invite_name = 20;
+    string rank_name = 21;
+}
+
+message ApplierResponse {
+    Applier entity = 1;
+    common.Pager pager =2;
+    repeated Applier items = 3;
+    common.Error error = 4;
+    common.Info info =5;
+}
+
+message ApplyInfo {
+    bool is_apply = 1;
+    Applier applier = 2;
+    repeated Rank ranks = 3;
+    repeated ApplierCondition condition = 4;
+    repeated ApplierMeetCondition meet_condition = 5;
+}
+
+message ApplyInfoResponse {
+    ApplyInfo entity = 1;
+    common.Error error = 2;
+    common.Info info = 3;
+}
+
+// 加入销售员的配置条件
+message ApplierCondition {
+    int32 rank_id = 1;
+    bool is_bought = 2;
+    float consumption_amount = 3;
+    int32 consumption_num = 4;
+    bool is_bind_idcard = 5;
+    bool is_bind_mobile = 6;
+    bool is_information = 7;
+    string information_fields = 8;
+    bool joined = 9;
+    float join_amount = 10;
+    float promotion_amount = 11;
+    int32 primary_num = 12;
+    int32 second_num = 13;
+    repeated GoodsCondition goods_condition = 14;
+}
+
+// 满足加入销售员配置条件项
+message ApplierMeetCondition {
+    int32 rank_id = 1;
+    bool has_bought = 2;// 指定购买商品是否达标
+    bool has_consumption_amount =3;// 自购金额是否达标
+    bool has_consumption_num = 4;// 最低消费笔数是否达标
+    bool has_bind_idcard = 5;// 是否已实名认证
+    bool has_bind_mobile = 6;// 是否已绑定手机号
+    bool has_information = 7;
+    bool has_joined = 8;
+    bool has_promotion_amount = 9;// 推广金是否达标
+    bool has_primary_num = 10;// 一级分销员人数是否达标
+    bool has_second_num = 11;// 二级分销员人数是否达标
+}

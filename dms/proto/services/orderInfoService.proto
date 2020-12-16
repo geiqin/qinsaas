@@ -1,0 +1,97 @@
+syntax = "proto3";
+package services;
+option go_package = ".;services";
+import "common/base.proto";
+
+// 我的推广订单
+service MyOrderService {
+    // 获取推广订单详情
+    rpc Get (OrderInfoWhere) returns (OrderInfoResponse) {}
+    // 查询推广订单列表
+    rpc Search (OrderInfoWhere) returns (OrderInfoResponse) {}
+}
+// 推广订单
+service OrderService {
+    // 获取推广订单详情
+    rpc Get (OrderInfoWhere) returns (OrderInfoResponse) {}
+    // 查询推广订单列表
+    rpc Search (OrderInfoWhere) returns (OrderInfoResponse) {}
+}
+
+//分红订单
+service BonusOrderService {
+    // 获取分红订单详情
+    rpc Get (OrderInfoWhere) returns (OrderInfoResponse) {}
+    // 查询分红订单列表
+    rpc Search (OrderInfoWhere) returns (OrderInfoResponse) {}
+}
+// 我的分红订单
+service MyBonusOrderService {
+    // 获取分红订单详情
+    rpc Get (OrderInfoWhere) returns (OrderInfoResponse) {}
+    // 查询分红订单列表
+    rpc Search (OrderInfoWhere) returns (OrderInfoResponse) {}
+}
+
+message OrderInfo {
+    int64 id = 1;
+    int64 order_id = 2;
+    string order_sn = 3;
+    string platform_source = 4;
+    float order_amount = 5;
+    float money = 7;
+    string income_type = 8;
+    float income_rate = 9;
+    int32 status = 10; // 结算状态
+    string buyer_name = 12; // 下单用户名称
+    string mobile = 13; // 下单用户手机号
+    string order_status = 14; // 订单状态
+    int32 total_num = 15; // 商品数量
+    bool can_delivery = 16; // 是否需要发货
+    bool can_logistics = 17; // 是否可查看物流
+    string order_created_at = 18; // 下单时间
+    repeated OrderDetailInfo order_details = 19;
+    int64 leader_id = 20;// 团长ID
+    string leader_name = 21; // 团长昵称
+    string leader_mobile = 22; // 团长手机号码
+}
+
+message OrderDetailInfo {
+    int64 id = 1;
+    int64 order_id = 2;
+    int64 item_id = 3;
+    string thumb_url = 5;
+    int64 sku_id = 6;
+    string item_sn = 7;
+    string sku_sn = 8;
+    string model_type = 9;
+    string name = 10;
+    int32 num = 12;
+    float price = 13;
+    float total_price = 14;
+}
+
+message OrderInfoWhere {
+    int32 paged = 1;
+    int32 page_size = 2;
+    int64 id = 3;
+    string mobile = 4;
+    int64 order_id = 5;
+    string order_sn = 6;
+    string keywords = 7;
+    string status = 8;
+    repeated int64 ids = 9;
+    int64 distributor_id = 10;
+    int64 customer_id = 11;
+    int64 leader_id = 12;
+}
+
+
+message OrderInfoResponse {
+    OrderInfo entity = 1;
+    common.Pager pager =2;
+    repeated OrderInfo items = 3;
+    common.Error error = 4;
+    common.Info info =5;
+}
+

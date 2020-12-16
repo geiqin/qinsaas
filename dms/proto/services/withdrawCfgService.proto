@@ -1,0 +1,29 @@
+syntax = "proto3";
+package services;
+option go_package = ".;services";
+import "common/base.proto";
+
+service WithdrawCfgService {
+    //获取提现配置信息
+    rpc Get (common.Empty) returns (WithdrawCfgResponse) {}
+    //设置提现配置信息
+    rpc Set (WithdrawCfg) returns (WithdrawCfgResponse) {}
+}
+
+message WithdrawCfg {
+    int64 id = 1;
+    float min_money = 2;//单笔最小提现金额
+    float max_money = 3;//单笔最大提现金额
+    float service_money_rate = 4;//提现手续费比例
+    float min_service_money = 5; //单笔最低收取的提现手续费
+    string created_at = 6;
+    string updated_at = 7;
+}
+
+message WithdrawCfgResponse {
+    WithdrawCfg entity = 1;
+    common.Pager pager =2;
+    repeated WithdrawCfg items = 3;
+    common.Error error = 4;
+    common.Info info =5;
+}

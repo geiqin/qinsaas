@@ -1,0 +1,40 @@
+syntax = "proto3";
+package services;
+option go_package = ".;services";
+import "statementService.proto";
+
+service MyLeaderStatementService {
+    //获取分红收支明细
+    rpc Get (Statement) returns (StatementResponse) {}
+    //查询分红收支明细
+    rpc Search (StatementWhere) returns (StatementResponse) {}
+}
+
+service LeaderStatementService {
+    //获取分红收支明细
+    rpc Get (Statement) returns (StatementResponse) {}
+    //查询分红收支明细
+    rpc Search (StatementWhere) returns (StatementResponse) {}
+}
+
+message LeaderStatement {
+    int64 id = 1;
+    int64 source_id = 2;
+    int64 leader_id = 3;
+    float money = 4;
+    string source = 5;
+    string type = 6;
+    string created_at = 7;
+    string updated_at = 8;
+}
+
+message LeaderStatementWhere {
+    int32 paged = 1;
+    int32 page_size = 2;
+    int32 top = 3;
+    //base params
+    int64 id = 4;
+    repeated int64 ids = 5;
+    string type = 6;
+    int64 leader_id = 7;
+}

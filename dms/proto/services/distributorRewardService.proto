@@ -1,0 +1,224 @@
+syntax = "proto3";
+package services;
+option go_package = ".;services";
+import "common/base.proto";
+import "distributorService.proto";
+import "withdrawService.proto";
+import "statementService.proto";
+import "orderInfoService.proto";
+
+// 分销员奖励配置
+service DistRewardCfgService {
+    rpc Get (common.Empty) returns (DistRewardCfgResponse) {}
+    rpc Update (DistRewardCfg) returns (DistRewardCfgResponse) {}
+}
+
+// 分销员奖项设置
+service DistRewardOptionService {
+    rpc Create (DistRewardOption) returns (DistRewardOptionResponse) {}
+    rpc Update (DistRewardOption) returns (DistRewardOptionResponse) {}
+    rpc Get (DistRewardWhere) returns (DistRewardOptionResponse) {}
+    rpc Delete (DistRewardWhere) returns (DistRewardOptionResponse) {}
+    rpc Search (DistRewardWhere) returns (DistRewardOptionResponse) {}
+    rpc List (DistRewardWhere) returns (DistRewardOptionResponse) {}
+}
+
+// 分销员奖励统计
+service DistRewardService {
+    rpc Get (DistRewardWhere) returns (DistRewardResponse) {}
+    rpc Search (DistRewardWhere) returns (DistRewardResponse) {}
+}
+service MyDistRewardService {
+    rpc Get (DistRewardWhere) returns (DistRewardResponse) {}
+}
+
+// 分销员奖励结算
+service DistRewardRecordService {
+    rpc Get (DistRewardRecord) returns (DistRewardRecordResponse) {}
+    rpc Search (DistRewardWhere) returns (DistRewardRecordResponse) {}
+    rpc Settlement (DistRewardWhere) returns (DistRewardRecordResponse) {}
+}
+
+// 分销员奖励结算详情
+service DistRewardRecordDetailService {
+
+}
+
+// 分销员奖励订单
+service DistRewardOrderService {
+    // 获取奖励订单详情
+    rpc Get (OrderInfoWhere) returns (OrderInfoResponse) {}
+    // 查询奖励订单列表
+    rpc Search (OrderInfoWhere) returns (OrderInfoResponse) {}
+}
+// 我的奖励订单
+service MyDistRewardOrderService {
+    // 获取奖励订单详情
+    rpc Get (OrderInfoWhere) returns (OrderInfoResponse) {}
+    // 查询奖励订单列表
+    rpc Search (OrderInfoWhere) returns (OrderInfoResponse) {}
+}
+
+// 分销员激励提现服务(客户专用)
+service MyDistRewardWithdrawService {
+    //申请奖金提现
+    rpc Apply (WithdrawApply) returns (WithdrawApplyResponse) {}
+    //提交奖金提现申请
+    rpc Submit (Withdraw) returns (WithdrawResponse) {}
+    //获取奖金提现信息
+    rpc Get (Withdraw) returns (WithdrawResponse) {}
+    //查询我的提现记录
+    rpc Search (WithdrawWhere) returns (WithdrawResponse) {}
+}
+
+// 分销员激励提现服务(后台专用)
+service DistRewardWithdrawService {
+    //审核佣金提现
+    rpc Check (WithdrawWhere) returns (WithdrawResponse) {}
+    //确认打款（自动打款）
+    rpc ConfirmAuto (WithdrawWhere) returns (WithdrawResponse) {}
+    //确认打款（手动打款）
+    rpc ConfirmManual (WithdrawWhere) returns (WithdrawResponse) {}
+    //获取佣金提现信息
+    rpc Get (Withdraw) returns (WithdrawResponse) {}
+    //分页查询佣金提现记录
+    rpc Search (WithdrawWhere) returns (WithdrawResponse) {}
+}
+
+service MyDistRewardStatementService {
+    //获取分销员奖励金收支明细
+    rpc Get (Statement) returns (StatementResponse) {}
+    //查询分销员奖励金收支明细
+    rpc Search (StatementWhere) returns (StatementResponse) {}
+}
+
+service DistRewardStatementService {
+    //获取分销员奖励金收支明细
+    rpc Get (Statement) returns (StatementResponse) {}
+    //查询分销员奖励金收支明细
+    rpc Search (StatementWhere) returns (StatementResponse) {}
+}
+
+message DistRewardWhere {
+    int32 paged = 1;
+    int32 page_size = 2;
+    int64 id = 3;
+    repeated int64 ids = 4;
+    int64 customer_id = 5;
+    int64 distributor_id = 6;
+    int64 order_id = 7;
+    string keywords = 8;
+    int32 status = 9;
+    string order_sn = 10;
+
+}
+
+message DistRewardCfg {
+     int64 id = 1;
+     bool is_open = 2;
+     string created_at = 3;
+     string updated_at = 4;
+}
+
+message DistRewardOption {
+    int64 id = 1;
+    string type = 2;
+    float discount = 3;
+    float money = 4;
+    float promotion_amount = 5;
+    string created_at = 6;
+    string updated_at = 7;
+}
+
+message DistReward {
+    int64 id = 1;
+    int64 customer_id = 2;
+    int64 distributor_id = 3;
+    float reward = 4;
+    float apply_reward = 5;
+    float wait_settle_reward = 6;
+    float wait_grant_reward = 7;
+    float reward_total = 8;
+    float reward_frozen = 9;
+    float reward_withdrew = 10;
+    float promotion_amount = 11;
+    int32 promotion_num = 12;
+    int32 withdrew_num = 13;
+    string created_at = 14;
+    string updated_at = 15;
+    Distributor distributor = 16;
+}
+
+message DistRewardRecord {
+    int64 id = 1;
+    string reward_sn = 2;
+    int64 order_id = 3;
+    string order_sn = 4;
+    string platform_source = 5;
+    float order_amount = 6;
+    int64 distributor_id = 7;
+    float money = 8;
+    float rate = 9;
+    string memo = 10;
+    int64 operator_id = 11;
+    int32 status = 12;
+    string created_at = 13;
+    string updated_at = 14;
+    Distributor distributor = 15;
+    DistRewardRecordDetail details = 16;
+}
+
+message DistRewardRecordDetail {
+    int64 id = 1;
+    int64 dist_reward_record_id = 2;
+    int64 order_detail_id = 3;
+    int64 item_id = 4;
+    int64 sku_id = 5;
+    string name = 6;
+    string thumb_url = 7;
+    int32 num = 8;
+    float price = 9;
+    bool is_dist_goods = 12;
+    string created_at = 13;
+    string updated_at = 14;
+}
+
+message DistRewardCfgResponse {
+    DistRewardCfg entity = 1;
+    common.Pager pager = 2;
+    repeated DistRewardCfg items = 3;
+    common.Error error = 4;
+    common.Info info = 5;
+}
+
+message DistRewardOptionResponse {
+    DistRewardOption entity = 1;
+    common.Pager pager = 2;
+    repeated DistRewardOption items = 3;
+    common.Error error = 4;
+    common.Info info = 5;
+}
+
+message DistRewardResponse {
+    DistReward entity = 1;
+    common.Pager pager = 2;
+    repeated DistReward items = 3;
+    common.Error error = 4;
+    common.Info info = 5;
+}
+
+message DistRewardRecordResponse {
+    DistRewardRecord entity = 1;
+    common.Pager pager = 2;
+    repeated DistRewardRecord items = 3;
+    common.Error error = 4;
+    common.Info info = 5;
+}
+
+message DistRewardRecordDetailResponse {
+    DistRewardRecordDetail entity = 1;
+    common.Pager pager = 2;
+    repeated DistRewardRecordDetail items = 3;
+    common.Error error = 4;
+    common.Info info = 5;
+}
