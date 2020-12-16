@@ -1,0 +1,42 @@
+syntax = "proto3";
+package services;
+option go_package =".;services";
+import "common/base.proto";
+
+service AdvertService {
+  rpc List (AdvertWhere) returns (AdvertResponse) {}
+}
+
+
+message Advert {
+  int32 id =1;
+  string title	 =2;
+  int32 advert_position_id	 =3;
+  int32 media_type = 4;
+  int64 media_id	 = 5;
+  string media_url	= 6;
+  int64 video_id	 = 7;
+  string video_url	= 8;
+  string type	= 9;
+  string url	= 10;
+  string tooltip	= 11;
+  string created_at = 12;
+  string updated_at = 13;
+}
+
+message AdvertWhere {
+  int32 paged =1;
+  int32 page_size =2;
+  string slug = 3;
+  int32 advert_position_id = 4;
+
+}
+
+//
+message AdvertResponse {
+  Advert entity = 1;
+  common.Pager pager =2;
+  repeated Advert items = 3;
+  common.Error error = 4;
+  common.Info info =5;
+}

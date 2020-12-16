@@ -1,0 +1,38 @@
+syntax = "proto3";
+package services;
+option go_package =".;services";
+import "common/base.proto";
+
+service TagService {
+    rpc Create (Tag) returns (TagResponse) {}
+    rpc Update (Tag) returns (TagResponse) {}
+    rpc Delete (Tag) returns (TagResponse) {}
+    rpc Get (Tag) returns (TagResponse) {}
+    rpc Search (common.BaseWhere) returns (TagResponse) {}
+    rpc List (common.BaseWhere) returns (TagResponse) {}
+}
+
+// 字典信息
+message Tag {
+    int32 id =1;
+    string name	 =2;
+    string slug	 =3;
+    int32 parent_id =4;
+    string memo =5;
+    int32 article_count =6;
+    string created_at =7;
+    string updated_at =8;
+    repeated Tag children = 9;
+    repeated int32 ids = 10;
+}
+
+
+
+//
+message TagResponse {
+    Tag entity = 1;
+    common.Pager pager =2;
+    repeated Tag items = 3;
+    common.Error error = 4;
+    common.Info info =5;
+}

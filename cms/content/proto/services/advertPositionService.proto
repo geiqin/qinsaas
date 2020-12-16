@@ -1,0 +1,48 @@
+syntax = "proto3";
+package services;
+option go_package =".;services";
+import "common/base.proto";
+import "advertService.proto";
+
+service AdvertPositionService {
+  rpc Create (AdvertPosition) returns (AdvertPositionResponse) {}
+  rpc Update (AdvertPosition) returns (AdvertPositionResponse) {}
+  rpc Delete (AdvertPosition) returns (AdvertPositionResponse) {}
+  rpc Get (AdvertPosition) returns (AdvertPositionResponse) {}
+  rpc Search (AdvertPositionWhere) returns (AdvertPositionResponse) {}
+  rpc SetAdvert (AdvertPosition) returns (AdvertPositionResponse) {}
+  rpc List (AdvertPositionWhere) returns (AdvertPositionResponse) {}
+}
+
+//文章信息
+message AdvertPosition {
+  int32 id =1;
+  string slug = 2;
+  string name	 =3;
+  int32 width	 =4;
+  int32 height	 =5;
+  int32 quantity	=6;
+  string memo	=7;
+  bool system	=8;
+  string created_at =9;
+  string updated_at =10;
+  repeated  Advert  adverts  =11;
+  repeated int32 ids = 12;
+}
+
+//
+message AdvertPositionWhere {
+  int32 paged =1;
+  int32 page_size =2;
+  string name = 3;
+  repeated string slugs = 4;
+}
+
+//
+message AdvertPositionResponse {
+  AdvertPosition entity = 1;
+  common.Pager pager =2;
+  repeated AdvertPosition items = 3;
+  common.Error error = 4;
+  common.Info info =5;
+}

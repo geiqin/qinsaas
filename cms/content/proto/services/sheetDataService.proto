@@ -1,0 +1,15 @@
+syntax = "proto3";
+package services;
+option go_package =".;services";
+import "common/base.proto";
+import "sheetAttrService.proto";
+
+message SheetData {
+    int64 id = 1;
+    int32 sheet_id = 2;
+    int64 sheet_writer_id = 3;
+    int32 sheet_attr_id = 4;
+    string sheet_attr_value = 5;
+    string sheet_attr_name = 6;
+    SheetAttr detail = 7;
+}

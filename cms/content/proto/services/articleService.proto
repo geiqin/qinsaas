@@ -1,0 +1,111 @@
+syntax = "proto3";
+package services;
+option go_package =".;services";
+import "common/base.proto";
+import "catService.proto";
+import "tagService.proto";
+import "articleMetaService.proto";
+import "articleGalleryService.proto";
+import "sheetWriterService.proto";
+
+service ArticleService {
+    rpc Create (Article) returns (ArticleResponse) {}
+    rpc Update (Article) returns (ArticleResponse) {}
+    rpc Delete (Article) returns (ArticleResponse) {}
+    rpc Get (ArticleWhere) returns (ArticleResponse) {}
+    rpc Search (ArticleWhere) returns (ArticleResponse) {}
+    rpc List (ArticleWhere) returns (ArticleResponse) {}
+    rpc GetPage (Article) returns (ArticleResponse) {}
+    rpc PageList (ArticleWhere) returns (ArticleResponse) {}
+}
+
+service FrontArticleService {
+    rpc Get (ArticleWhere) returns (ArticleResponse) {}
+    rpc Search (ArticleWhere) returns (ArticleResponse) {}
+    rpc List (ArticleWhere) returns (ArticleResponse) {}
+    rpc GetPage (Article) returns (ArticleResponse) {}
+    rpc PageList (ArticleWhere) returns (ArticleResponse) {}
+    rpc ListByCatSlugs (ArticleWhere) returns (CatSlugsResponse) {}
+}
+
+//文章信息
+message Article {
+    int64 id =1;
+    string title	 =2;
+    string name	 =3;
+    string content	 =4;
+    string excerpt	=5;
+    string type	=6;
+    string mime_type	=7;
+    string keywords	=8;
+    int64 thumb_id	=9;
+    string thumb_url	=10;
+    int64 parent_id	=11;
+    bool drafted	=12;
+    string status	=13;
+    bool comment_enabled =14;
+    int32 comment_count	=15;
+    int32 view_count	=16;
+    bool system	 =17;
+    int32 sorting	=18;
+    int64 user_id	=19;
+    //google.protobuf.Timestamp published_at =20;
+    string published_at =20;
+    string created_at =21;
+    string updated_at =22;
+    // gorm:"many2many:article_cats;"
+    repeated Cat cats = 23;
+    // gorm:"many2many:article_tags;"
+    repeated Tag tags = 24;
+    repeated int32 ids = 25;
+    int32 attribute_type_id = 26;
+    repeated ArticleMeta metas = 27;
+    repeated ArticleGallery galleries = 28;
+    Article pre_article = 29; // 上一篇文章
+    Article next_article = 30; // 下一篇文章
+    string s_title = 31;
+    string s_describe = 32;
+    string s_keywords = 33;
+}
+
+//文章查询参数
+message ArticleWhere {
+    int32 paged =1;
+    int32 page_size =2;
+    int32 top = 3;
+    string title = 4;
+    int32 cat_id = 5;
+    string cat_slug	 = 6;
+    string type	=7;
+    repeated string names = 8;
+    int64 id = 9;
+    bool is_include = 10;// 是否包含上一篇、下一篇文章
+    bool drafted = 11;// 是否草稿
+    string status = 12;
+    bool is_client = 13; // 是否客户端展示
+    repeated CatSlugs cat_slugs = 14;
+    repeated SheetAttrQueries attr_queries = 15;
+}
+
+message CatSlugs {
+    int32 cat_id = 1;
+    string cat_slug	 = 2;
+    int32 top = 3;
+    repeated Article items = 4;
+}
+
+message ArticleResponse {
+    Article entity = 1;
+    common.Pager pager =2;
+    repeated Article items = 3;
+    common.Error error = 4;
+    common.Info info =5;
+}
+
+message CatSlugsResponse {
+    CatSlugs entity = 1;
+    common.Pager pager =2;
+    repeated CatSlugs items = 3;
+    common.Error error = 4;
+    common.Info info =5;
+}

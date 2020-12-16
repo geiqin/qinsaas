@@ -1,0 +1,63 @@
+syntax = "proto3";
+package services;
+option go_package =".;services";
+import "common/base.proto";
+import "sheetDataService.proto";
+import "customerInfoService.proto";
+import "sheetService.proto";
+
+service SheetWriterService {
+    rpc Get (SheetWriter) returns (SheetWriterResponse) {}
+    rpc Search (SheetWriterWhere) returns (SheetWriterResponse) {}
+    rpc List (SheetWriterWhere) returns (SheetWriterResponse) {}
+    rpc Submit (SheetWriter) returns (SheetWriterResponse) {}
+    rpc Update (SheetWriter) returns (SheetWriterResponse) {}
+    rpc Delete (SheetWriterWhere) returns (SheetWriterResponse) {}
+}
+
+service MySheetWriterService {
+    rpc Submit (SheetWriter) returns (SheetWriterResponse) {}
+    rpc Update (SheetWriter) returns (SheetWriterResponse) {}
+    rpc Delete (SheetWriterWhere) returns (SheetWriterResponse) {}
+    rpc Get (SheetWriter) returns (SheetWriterResponse) {}
+    rpc Search (SheetWriterWhere) returns (SheetWriterResponse) {}
+    rpc List (SheetWriterWhere) returns (SheetWriterResponse) {}
+    rpc GetForm (SheetWhere) returns (SheetResponse) {}
+}
+
+message SheetAttrQueries {
+    int64 attr_id = 1; // 字段ID
+    string name = 2; // 字段名
+    string query_method = 3; // 查询方式
+    string value = 4; // 值1
+    string value2 = 5; // 值2【区间查询使用】
+}
+
+message SheetWriterWhere {
+    int32 paged = 1;
+    int32 page_size = 2;
+    int64 id = 3;
+    repeated int64 ids = 4;
+    int64 customer_id = 5;
+    int32 sheet_id = 6;
+    repeated SheetAttrQueries attr_queries = 7;
+}
+
+message SheetWriter {
+    int64 id = 1;
+    int32 sheet_id = 2;
+    int64 customer_id = 3;
+    string source = 4;
+    string created_at = 5;
+    string updated_at = 6;
+    repeated  SheetData sheet_data = 7;
+    Customer customer = 8;
+}
+
+message SheetWriterResponse {
+    common.Error error = 1;
+    common.Info info = 2;
+    common.Pager pager = 3;
+    SheetWriter entity = 4;
+    repeated SheetWriter items = 5;
+}

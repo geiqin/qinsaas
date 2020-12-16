@@ -1,0 +1,50 @@
+syntax = "proto3";
+package services;
+option go_package =".;services";
+import "common/base.proto";
+import "sheetAttrService.proto";
+
+service SheetService {
+    rpc Create (Sheet) returns (SheetResponse) {}
+    rpc Update (Sheet) returns (SheetResponse) {}
+    rpc Delete (SheetWhere) returns (SheetResponse) {}
+    rpc Get (SheetWhere) returns (SheetResponse) {}
+    rpc Search (SheetWhere) returns (SheetResponse) {}
+    rpc List (SheetWhere) returns (SheetResponse) {}
+}
+
+message SheetWhere {
+    int32 paged = 1;
+    int32 page_size = 2;
+    int32 id = 3;
+    repeated int32 ids = 4;
+    string title = 5;
+    string keywords = 6;
+    string slug = 7;
+}
+
+message Sheet {
+    int32 id = 1;
+    string slug = 2;
+    string title = 3;
+    string memo = 4;
+    string content = 5;
+    string keywords = 6;
+    string expiry_date = 7;
+    string picture = 8;
+    string succeed_tip = 9;
+    string failed_tip = 10;
+    string created_at = 11;
+    string updated_at = 12;
+    repeated SheetAttr sheet_attr = 13;
+    bool can_submit_user = 14;
+    bool can_submit_admin = 15;
+}
+
+message SheetResponse {
+    common.Error error = 1;
+    common.Info info = 2;
+    common.Pager pager = 3;
+    Sheet entity = 4;
+    repeated Sheet items = 5;
+}
