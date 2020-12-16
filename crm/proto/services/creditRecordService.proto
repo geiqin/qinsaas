@@ -1,0 +1,52 @@
+syntax = "proto3";
+package services;
+option go_package =".;services";
+import "common/base.proto";
+
+service CreditRecordService {
+  //增加信用额度（收入）
+  rpc Income (CreditRecord) returns (CreditRecordResponse) {}
+  //消费信用额度(支出)
+  rpc Expend (CreditRecord) returns (CreditRecordResponse) {}
+  //获取信用额度信息
+  rpc Get (CreditRecord) returns (CreditRecordResponse) {}
+  //查询信用额度记录
+  rpc Search (CreditRecordWhere) returns (CreditRecordResponse) {}
+}
+
+message CreditRecord {
+  int64 id =1;
+  int64 credit_id =2;
+  int64 customer_id =3;
+  string direction =4;
+  float amount =5;
+  int32 type =6;
+  int64 order_id =7;
+  string order_sn =8;
+  float balance =9;
+  string memo =10;
+  string created_at =11;
+  string updated_at =12;
+}
+
+
+//查询参数
+message CreditRecordWhere {
+  int32 paged = 1;
+  int32 page_size = 2;
+  //以下为自定义参数
+  int64 customer_id =3;
+  string customer_sn = 4;
+  string name =5;
+  string mobile =6;
+}
+
+
+//
+message CreditRecordResponse {
+  CreditRecord entity = 1;
+  common.Pager pager =2;
+  repeated CreditRecord items = 3;
+  common.Error error = 4;
+  common.Info info =5;
+}

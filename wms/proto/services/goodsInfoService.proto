@@ -1,0 +1,25 @@
+syntax = "proto3";
+package services;
+option go_package = ".;services";
+
+message GoodsInfo {
+	int64	item_id	=1;
+	string	item_sn	=2;
+	string	model_type	=3;
+	string	name	=4;
+	string	unit	=5;
+	int32	brand_id	=6;
+	int64	taxonomy_id	=7;
+	int32	quantity	=8  ;
+	int64	thumb_id	=9;
+	string	thumb_url	=10;
+	string	barcode	=11;
+	float	price	=12;
+	float	origin_price	=13;
+	float	cost_price	=14;
+	float	weight	=15;
+	int64 sku_id =16; // 规格商品时使用
+	string sku_sn =17;
+	string sku_name =18;
+	string spec_desc = 19;
+}

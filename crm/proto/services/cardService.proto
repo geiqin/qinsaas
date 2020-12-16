@@ -1,0 +1,70 @@
+syntax = "proto3";
+package services;
+option go_package =".;services";
+import "common/base.proto";
+import "cardBenefitService.proto";
+
+service CardService {
+    //创建卡
+    rpc Create (Card) returns (CardResponse) {}
+    //修改卡
+    rpc Update (Card) returns (CardResponse) {}
+    //删除卡
+    rpc Delete (Card) returns (CardResponse) {}
+    //禁用卡
+    rpc Disabled (Card) returns (CardResponse) {}
+    //启用卡
+    rpc Enabled (Card) returns (CardResponse) {}
+    //获得卡
+    rpc Get (Card) returns (CardResponse) {}
+    //查询卡列表(未删除的权益卡列表)
+    rpc List (CardWhere) returns (CardResponse) {}
+    //有效卡列表
+    rpc ValidList (Card) returns (CardResponse) {}
+    //查询卡列表
+    rpc Search (CardWhere) returns (CardResponse) {}
+}
+
+message Card {
+    int32 id =1;
+    string name =2;
+    string card_bg =3;
+    int32 term =4;
+    int32 term_days =5;
+    string term_start_date =6;
+    string term_end_date =7;
+    int32 method =8;
+    float fee =9;
+    int32 stock =10;
+    string code =11;
+    int32 total_payment =12;
+    float total_consume =13;
+    int32 total_integral =14;
+    string description =15;
+    string phone =16;
+    bool disabled =17;
+    string created_at =19;
+    string updated_at =20;
+    repeated CardBenefit card_benefits   =21;
+    repeated int32 ids = 22;
+    int32 status = 23;
+}
+
+//查询参数
+message CardWhere {
+    int32 paged = 1;
+    int32 page_size = 2;
+    //以下为自定义参数
+    string name = 3;
+    int32 status = 4; //状态 1使用中   2 已禁用  3已过期
+    int32 method =5;  //领取方式：1 直接领取   2 付费购买
+}
+
+//
+message CardResponse {
+    Card entity = 1;
+    common.Pager pager =2;
+    repeated Card items = 3;
+    common.Error error = 4;
+    common.Info info =5;
+}

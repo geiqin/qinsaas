@@ -1,0 +1,68 @@
+syntax = "proto3";
+package services;
+option go_package = ".;services";
+import "common/base.proto";
+import "stockDetailService.proto";
+
+service StockInService {
+    rpc Create (Stock) returns (StockResponse) {}
+    rpc Update (Stock) returns (StockResponse) {}
+    rpc Delete (StockWhere) returns (StockResponse) {}
+    rpc Confirm (StockWhere) returns (StockResponse) {}
+    rpc Approve (StockWhere) returns (StockResponse) {}
+    rpc Get (Stock) returns (StockResponse) {}
+    rpc Search (StockWhere) returns (StockResponse) {}
+    rpc Details (StockWhere) returns (StockDetailResponse) {}
+}
+
+service StockOutService {
+    rpc Create (Stock) returns (StockResponse) {}
+    rpc Update (Stock) returns (StockResponse) {}
+    rpc Delete (StockWhere) returns (StockResponse) {}
+    rpc Confirm (StockWhere) returns (StockResponse) {}
+    rpc Approve (StockWhere) returns (StockResponse) {}
+    rpc Get (Stock) returns (StockResponse) {}
+    rpc Search (StockWhere) returns (StockResponse) {}
+    rpc Details (StockWhere) returns (StockDetailResponse) {}
+}
+
+message StockWhere {
+    int32 paged = 1;
+    int32 page_size = 2;
+    int64 id = 3;
+    repeated int64 ids = 4;
+    string type = 5;
+    int32 sheet_type = 6;
+    int32 status = 7;
+    bool ok = 8;
+    string failure = 9;
+    int64 stock_id = 10;
+    repeated int64 stock_ids = 11;
+}
+
+message Stock {
+    int64 id = 1;
+    string stock_sn = 2;
+    string type = 3;
+    int32 sheet_type = 4;
+    string handled_at = 5;
+    string source_no = 6;
+    int64 user_id = 7;
+    bool autoed = 8;
+    string memo = 9;
+    int32 row_total = 10;
+    int32 quantity_total = 11;
+    int32 status = 12;
+    string failure = 13;
+    string created_at = 14;
+    string updated_at = 15;
+    repeated StockDetail details =16;
+}
+
+message StockResponse {
+    Stock entity = 1;
+    common.Pager pager =2;
+    repeated Stock items = 3;
+    common.Error error = 4;
+    common.Info info =5;
+}

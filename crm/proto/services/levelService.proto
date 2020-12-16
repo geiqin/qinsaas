@@ -1,0 +1,50 @@
+syntax = "proto3";
+package services;
+option go_package =".;services";
+import "common/base.proto";
+
+service LevelService {
+    rpc Create (Level) returns (LevelResponse) {}
+    rpc Update (Level) returns (LevelResponse) {}
+    rpc Delete (Level) returns (LevelResponse) {}
+    rpc Get (Level) returns (LevelResponse) {}
+    rpc Search (common.BaseWhere) returns (LevelResponse) {}
+    rpc List (common.BaseWhere) returns (LevelResponse) {}
+}
+
+message Level {
+    int32 id =1;
+    string name =2;
+    int32 type =3;
+    float discount =4;
+    bool postage_free =5;
+    float point_rate =6;
+    int32 uplevel_id =7;
+    int32 order_limit_type =8;
+    float order_limit_money =9;
+    int32 deposit_limit =10;
+    int32 growth_limit =11;
+    int32 point_expired_days =12;
+    int64 icon_id =13;
+    string icon_url =14;
+    string card_bg =15;
+    bool defaulted =16;
+    bool disabled =17;
+    bool locked =18;
+    string description =19;
+    string created_at =20;
+    string updated_at =21;
+    repeated int32 ids = 22;
+}
+
+
+
+//
+message LevelResponse {
+    Level entity = 1;
+    common.Pager pager =2;
+    repeated Level items = 3;
+    common.Error error = 4;
+    common.Info info =5;
+}
+

@@ -1,0 +1,43 @@
+syntax = "proto3";
+package services;
+option go_package =".;services";
+import "common/base.proto";
+
+service TagService {
+    rpc Create (Tag) returns (TagResponse) {}
+    rpc Update (Tag) returns (TagResponse) {}
+    rpc Delete (Tag) returns (TagResponse) {}
+    rpc Get (Tag) returns (TagResponse) {}
+    rpc List (TagWhere) returns (TagResponse) {}
+    rpc Search (TagWhere) returns (TagResponse) {}
+}
+
+message Tag {
+     int32 id =1;
+     string name =2;
+     int32 type =3;
+     int32 condition_type =4;
+     string created_at =5;
+     string updated_at =6;
+     int32 is_use = 7;
+}
+
+//标签查询参数
+message TagWhere {
+    int32 paged = 1;
+    int32 page_size = 2;
+    string sorting = 3;
+    //以下为自定义参数
+    string name = 4;
+    int64 customer_id = 5;
+
+}
+
+//
+message TagResponse {
+    Tag entity = 1;
+    common.Pager pager =2;
+    repeated Tag items = 3;
+    common.Error error = 4;
+    common.Info info =5;
+}

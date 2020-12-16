@@ -1,0 +1,35 @@
+syntax = "proto3";
+package services;
+option go_package = ".;services";
+import "common/base.proto";
+
+service SupplierContactService {
+    rpc Create (SupplierContact) returns (SupplierContactResponse) {}
+    rpc Update (SupplierContact) returns (SupplierContactResponse) {}
+    rpc Delete (SupplierContact) returns (SupplierContactResponse) {}
+    rpc Get (SupplierContact) returns (SupplierContactResponse) {}
+    rpc Search (common.BaseWhere) returns (SupplierContactResponse) {}
+}
+
+message SupplierContact {
+    int64 id = 1;
+    int64 supplier_id = 2;
+    string name = 3;
+    string mobile = 4;
+    string tel = 5;
+    string email = 6;
+    string weixin = 7;
+    string qq = 8;
+    string memo = 9;
+    bool disabled = 10;
+    string created_at = 11;
+    string updated_at = 12;
+}
+
+message SupplierContactResponse {
+    SupplierContact entity = 1;
+    common.Pager pager =2;
+    repeated SupplierContact items = 3;
+    common.Error error = 4;
+    common.Info info =5;
+}

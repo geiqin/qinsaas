@@ -1,0 +1,24 @@
+syntax = "proto3";
+package services;
+option go_package =".;services";
+import "common/base.proto";
+
+service IntegralService {
+    rpc Create (IntegralResponse) returns (IntegralResponse) {}
+    rpc Delete (IntegralResponse) returns (IntegralResponse) {}
+    rpc Get (IntegralResponse) returns (IntegralResponse) {}
+    rpc Search (common.BaseWhere) returns (IntegralResponse) {}
+}
+
+message Integral {
+    int32 id =1;
+}
+
+//
+message IntegralResponse {
+    Integral entity = 1;
+    common.Pager pager =2;
+    repeated Integral items = 3;
+    common.Error error = 4;
+    common.Info info =5;
+}
