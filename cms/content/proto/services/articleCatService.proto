@@ -1,0 +1,46 @@
+syntax = "proto3";
+package services;
+option go_package =".;services";
+import "common/base.proto";
+import "articleService.proto";
+
+service ArticleCatService {
+    rpc ArticleList (ArticleCatWhere) returns (ArticleCatResponse) {}
+}
+
+message ArticleCatWhere {
+    int32 paged =1;
+    int32 page_size =2;
+    int32 top = 3;
+    string slug = 4;
+    repeated string slugs = 5;
+    repeated int32 ids = 6;
+}
+
+// 字典信息
+message ArticleCat {
+    int32 id =1;
+    string name	 =2;
+    string slug	 =3;
+    int32 cat_id =4;
+    int64 thumb_id	 =5;
+    string thumb_url  =6;
+    string depth  =7;
+    string description =8;
+    bool system	 =17;
+    int32 sorting =9;
+    int32 article_count =10;
+    string created_at =11;
+    string updated_at =12;
+    repeated ArticleCat children = 13;
+    repeated Article articles = 15;
+}
+
+//
+message ArticleCatResponse {
+    ArticleCat entity = 1;
+    common.Pager pager =2;
+    repeated ArticleCat items = 3;
+    common.Error error = 4;
+    common.Info info =5;
+}

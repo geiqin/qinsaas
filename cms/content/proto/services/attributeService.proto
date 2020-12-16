@@ -1,0 +1,50 @@
+syntax = "proto3";
+package services;
+option go_package =".;services";
+import "common/base.proto";
+
+service AttributeService {
+    rpc Create (Attribute) returns (AttributeResponse) {}
+    rpc Update (Attribute) returns (AttributeResponse) {}
+    rpc Delete (AttributeWhere) returns (AttributeResponse) {}
+    rpc Get (Attribute) returns (AttributeResponse) {}
+    rpc Search (AttributeWhere) returns (AttributeResponse) {}
+    rpc List (AttributeWhere) returns (AttributeResponse) {}
+    rpc ChangeSort (Attribute) returns (AttributeResponse) {}
+}
+
+message AttributeWhere {
+    int32 paged = 1;
+    int32 page_size = 2;
+    int32 id = 3;
+    repeated int32 ids = 4;
+    string name = 5;
+    string keywords = 6;
+    int32 attribute_type_id = 7;
+}
+
+message Attribute {
+    int32 id = 1;
+    int32 attribute_type_id = 2;
+    string name = 3;
+    string display_name = 4;
+    string type = 5;
+    bool required = 6;
+    string rule = 7;
+    string tip = 8;
+    int32 sorting = 9;
+    string data = 10;
+    string created_at = 11;
+    string updated_at = 12;
+    bool is_display_list = 13;
+    bool is_query = 14;
+    string query_method = 15;
+}
+
+message AttributeResponse {
+    common.Error error = 1;
+    common.Info info = 2;
+    common.Pager pager = 3;
+    Attribute entity = 4;
+    repeated Attribute items = 5;
+}

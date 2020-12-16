@@ -1,0 +1,39 @@
+syntax = "proto3";
+package services;
+option go_package =".;services";
+import "common/base.proto";
+import "attributeService.proto";
+
+service AttributeTypeService {
+    rpc Create (AttributeType) returns (AttributeTypeResponse) {}
+    rpc Update (AttributeType) returns (AttributeTypeResponse) {}
+    rpc Delete (AttributeTypeWhere) returns (AttributeTypeResponse) {}
+    rpc Get (AttributeTypeWhere) returns (AttributeTypeResponse) {}
+    rpc Search (AttributeTypeWhere) returns (AttributeTypeResponse) {}
+    rpc List (AttributeTypeWhere) returns (AttributeTypeResponse) {}
+}
+
+message AttributeTypeWhere {
+    int32 paged = 1;
+    int32 page_size = 2;
+    int32 id = 3;
+    repeated int32 ids = 4;
+    string keywords = 5;
+}
+
+message AttributeType {
+    int32 id = 1;
+    string name = 2;
+    string memo = 3;
+    string created_at = 4;
+    string updated_at = 5;
+    repeated Attribute attr = 6;
+}
+
+message AttributeTypeResponse {
+    common.Error error = 1;
+    common.Info info = 2;
+    common.Pager pager = 3;
+    AttributeType entity = 4;
+    repeated AttributeType items = 5;
+}

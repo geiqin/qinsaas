@@ -1,0 +1,50 @@
+syntax = "proto3";
+package services;
+option go_package =".;services";
+import "common/base.proto";
+
+service SheetAttrService {
+    rpc Create (SheetAttr) returns (SheetAttrResponse) {}
+    rpc Update (SheetAttr) returns (SheetAttrResponse) {}
+    rpc Delete (SheetAttrWhere) returns (SheetAttrResponse) {}
+    rpc Get (SheetAttr) returns (SheetAttrResponse) {}
+    rpc Search (SheetAttrWhere) returns (SheetAttrResponse) {}
+    rpc List (SheetAttrWhere) returns (SheetAttrResponse) {}
+    rpc ChangeSort (SheetAttr) returns (SheetAttrResponse) {}
+}
+
+message SheetAttrWhere {
+    int32 paged = 1;
+    int32 page_size = 2;
+    int32 id = 3;
+    repeated int32 ids = 4;
+    string name = 5;
+    string keywords = 6;
+    int32 sheet_id = 7;
+}
+
+message SheetAttr {
+    int32 id = 1;
+    int32 sheet_id = 2;
+    string name = 3;
+    string display_name = 4;
+    string type = 5;
+    bool required = 6;
+    string rule = 7;
+    string tip = 8;
+    int32 sorting = 9;
+    string data = 10;
+    string created_at = 11;
+    string updated_at = 12;
+    bool is_display_list = 13;
+    bool is_query = 14;
+    string query_method = 15;
+}
+
+message SheetAttrResponse {
+    common.Error error = 1;
+    common.Info info = 2;
+    common.Pager pager = 3;
+    SheetAttr entity = 4;
+    repeated SheetAttr items = 5;
+}
