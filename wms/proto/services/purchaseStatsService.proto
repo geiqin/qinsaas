@@ -1,0 +1,25 @@
+syntax = "proto3";
+package services;
+option go_package = ".;services";
+import "statsService.proto";
+
+// 采购入库日统计
+service PurchaseInStatsDayService {
+    rpc Search (StatsWhere) returns (StatsDayResponse) {}
+    rpc List (StatsWhere) returns (StatsDayResponse) {}
+}
+// 采购入库月统计
+service PurchaseInStatsMonthService {
+    rpc Search (StatsWhere) returns (StatsMonthResponse) {}
+    rpc List (StatsWhere) returns (StatsMonthResponse) {}
+}
+// 采购出库日统计
+service PurchaseOutStatsDayService {
+    rpc Search (StatsWhere) returns (StatsDayResponse) {}
+    rpc List (StatsWhere) returns (StatsDayResponse) {}
+}
+// 采购出库月统计
+service PurchaseOutStatsMonthService {
+    rpc Search (StatsWhere) returns (StatsMonthResponse) {}
+    rpc List (StatsWhere) returns (StatsMonthResponse) {}
+}

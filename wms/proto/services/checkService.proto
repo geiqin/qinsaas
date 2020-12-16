@@ -1,0 +1,52 @@
+syntax = "proto3";
+package services;
+option go_package = ".;services";
+import "common/base.proto";
+import "checkDetailService.proto";
+
+service CheckService {
+    rpc Create (Check) returns (CheckResponse) {}
+    rpc Update (Check) returns (CheckResponse) {}
+    rpc Delete (CheckWhere) returns (CheckResponse) {}
+    rpc Confirm (CheckWhere) returns (CheckResponse) {}
+    rpc Approve (CheckWhere) returns (CheckResponse) {}
+    rpc Get (Check) returns (CheckResponse) {}
+    rpc Search (CheckWhere) returns (CheckResponse) {}
+    rpc Details (CheckWhere) returns (CheckDetailResponse) {}
+}
+
+message CheckWhere {
+    int32 paged = 1;
+    int32 page_size = 2;
+    int64 id = 3;
+    repeated int64 ids = 4;
+    string type = 5;
+    int32 sheet_type = 6;
+    int32 status = 7;
+    bool ok = 8;
+    string failure = 9;
+    int64 check_id = 10;
+    repeated int64 check_ids = 11;
+}
+
+message Check {
+    int64 id = 1;
+    string check_sn = 2;
+    int32 user_id = 3;
+    string memo = 4;
+    int32 row_total = 5;
+    int32 quantity_total = 6;
+    int32 status = 7;
+    string failure = 8;
+    string created_at = 9;
+    string updated_at = 10;
+    repeated CheckDetail details =11;
+}
+
+message CheckResponse {
+    Check entity = 1;
+    common.Pager pager =2;
+    repeated Check items = 3;
+    common.Error error = 4;
+    common.Info info =5;
+}

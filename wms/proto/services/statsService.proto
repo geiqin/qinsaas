@@ -1,0 +1,110 @@
+syntax = "proto3";
+package services;
+option go_package = ".;services";
+import "common/base.proto";
+import "goodsInfoService.proto";
+
+message StatsWhere {
+    int32 paged = 1;
+    int32 page_size = 2;
+    string start_time = 3;
+    string end_time = 4;
+    int32 month = 5;
+    string type = 6;
+    string stats_at = 7;
+    int64 item_id = 8;
+    int64 sku_id = 9;
+    string method = 10;
+}
+
+message StatsDay {
+    int64 id = 1;
+    string type = 2;
+    string method = 3;
+    int64 item_id = 4;
+    int64 sku_id = 5;
+    int32 num = 6;
+    float cost_price = 7;
+    float cost_total = 8;
+    string stats_at = 9;
+    string created_at = 10;
+    string updated_at = 11;
+    GoodsInfo goods = 12;
+}
+
+message StatsMonth {
+    int64 id = 1;
+    string type = 2;
+    string method = 3;
+    int64 item_id = 4;
+    int64 sku_id = 5;
+    int32 num = 6;
+    float cost_price = 7;
+    float cost_total = 8;
+    string stats_at = 9;
+    string created_at = 10;
+    string updated_at = 11;
+    GoodsInfo goods = 12;
+}
+
+message SumStatsDay {
+    int64 id = 1;
+    string type = 2;
+    string method = 3;
+    int64 item_id = 4;
+    int64 sku_id = 5;
+    int32 num = 6;
+    float cost_price = 7;
+    float cost_total = 8;
+    string stats_at = 9;
+    string created_at = 10;
+    string updated_at = 11;
+    GoodsInfo goods = 12;
+}
+
+message SumStatsMonth {
+    int64 id = 1;
+    string type = 2;
+    string method = 3;
+    int64 item_id = 4;
+    int64 sku_id = 5;
+    int32 num = 6;
+    float cost_price = 7;
+    float cost_total = 8;
+    string stats_at = 9;
+    string created_at = 10;
+    string updated_at = 11;
+    GoodsInfo goods = 12;
+}
+
+message StatsDayResponse {
+    StatsDay entity = 1;
+    common.Pager pager = 2;
+    repeated StatsDay items = 3;
+    common.Error error = 4;
+    common.Info info = 5;
+}
+
+message StatsMonthResponse {
+    StatsMonth entity = 1;
+    common.Pager pager = 2;
+    repeated StatsMonth items = 3;
+    common.Error error = 4;
+    common.Info info = 5;
+}
+
+message SumStatsDayResponse {
+    SumStatsDay entity = 1;
+    common.Pager pager = 2;
+    repeated SumStatsDay items = 3;
+    common.Error error = 4;
+    common.Info info = 5;
+}
+
+message SumStatsMonthResponse {
+    SumStatsMonth entity = 1;
+    common.Pager pager = 2;
+    repeated SumStatsMonth items = 3;
+    common.Error error = 4;
+    common.Info info = 5;
+}

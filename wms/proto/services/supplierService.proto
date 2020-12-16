@@ -1,0 +1,62 @@
+syntax = "proto3";
+package services;
+option go_package = ".;services";
+import "common/base.proto";
+import "supplierContactService.proto";
+
+service SupplierService {
+    rpc Create (Supplier) returns (SupplierResponse) {}
+    rpc Update (Supplier) returns (SupplierResponse) {}
+    rpc Delete (SupplierWhere) returns (SupplierResponse) {}
+    rpc Get (Supplier) returns (SupplierResponse) {}
+    rpc Search (SupplierWhere) returns (SupplierResponse) {}
+    // 供应商列表
+    rpc List (SupplierWhere) returns (SupplierResponse) {}
+    // 禁用供应商
+    rpc Disable  (SupplierWhere) returns (SupplierResponse) {}
+    // 启用供应商
+    rpc Enable  (SupplierWhere) returns (SupplierResponse) {}
+}
+
+message Supplier {
+    int64 id = 1;
+    string code = 2;
+    string name = 3;
+    string shortname = 4;
+    string registed_code = 5;
+    string supply_type = 6;
+    int32 logistics_type = 7;
+    string website = 8;
+    int64 area_id = 9;
+    string address = 10;
+    string memo = 11;
+    bool verified = 12;
+    int32 status = 13;
+    string created_at = 14;
+    string updated_at = 15;
+    repeated SupplierContact contacts =16;
+}
+
+
+message SupplierWhere {
+    int32 paged = 1;
+    int32 page_size = 2;
+    string sorting = 3;
+    string code = 4;
+    string name = 5;
+    string shortname = 6;
+    string registed_code = 7;
+    string supply_type = 8;
+    int64 id = 9;
+    repeated int64 ids = 10;
+    int32 status = 11;
+}
+
+
+message SupplierResponse {
+    Supplier entity = 1;
+    common.Pager pager =2;
+    repeated Supplier items = 3;
+    common.Error error = 4;
+    common.Info info =5;
+}

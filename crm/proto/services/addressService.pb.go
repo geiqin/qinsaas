@@ -2,12 +2,12 @@
 // versions:
 // 	protoc-gen-go v1.25.0
 // 	protoc        v3.14.0
-// source: addressService.proto
+// source: addressService.proto "github.com/geiqin/microkit/protobuf/common"
 
 package services
 
 import (
-	common "geiqin.saas.crm/app/proto/common"
+	common "github.com/geiqin/microkit/protobuf/common"
 	proto "github.com/golang/protobuf/proto"
 	protoreflect "google.golang.org/protobuf/reflect/protoreflect"
 	protoimpl "google.golang.org/protobuf/runtime/protoimpl"

@@ -1,0 +1,68 @@
+syntax = "proto3";
+package services;
+option go_package = ".;services";
+import "common/base.proto";
+import "purchaseDetailService.proto";
+
+//采购单
+service PurchaseInService {
+    rpc Create (Purchase) returns (PurchaseResponse) {}
+    rpc Update (Purchase) returns (PurchaseResponse) {}
+    rpc Delete (PurchaseWhere) returns (PurchaseResponse) {}
+    rpc Confirm (PurchaseWhere) returns (PurchaseResponse) {}
+    rpc Approve (PurchaseWhere) returns (PurchaseResponse) {}
+    rpc Get (Purchase) returns (PurchaseResponse) {}
+    rpc Search (PurchaseWhere) returns (PurchaseResponse) {}
+    rpc Details (PurchaseWhere) returns (PurchaseDetailResponse) {}
+}
+
+//采购退货单
+service PurchaseOutService {
+    rpc Create (Purchase) returns (PurchaseResponse) {}
+    rpc Update (Purchase) returns (PurchaseResponse) {}
+    rpc Delete (PurchaseWhere) returns (PurchaseResponse) {}
+    rpc Confirm (PurchaseWhere) returns (PurchaseResponse) {}
+    rpc Approve (PurchaseWhere) returns (PurchaseResponse) {}
+    rpc Get (Purchase) returns (PurchaseResponse) {}
+    rpc Search (PurchaseWhere) returns (PurchaseResponse) {}
+    rpc Details (PurchaseWhere) returns (PurchaseDetailResponse) {}
+}
+
+message PurchaseWhere {
+    int32 paged = 1;
+    int32 page_size = 2;
+    int64 id = 3;
+    repeated int64 ids = 4;
+    string type = 5;
+    int32 status = 6;
+    bool ok = 7;
+    string failure = 8;
+    int64 purchase_id = 9;
+    repeated int64 purchase_ids = 10;
+}
+
+message Purchase {
+    int64 id = 1;
+    string purchase_sn = 2;
+    string type = 3;
+    string source_no = 4;
+    int64 user_id = 5;
+    string memo = 6;
+    int32 row_total = 7;
+    int32 quantity_total = 8;
+    string handled_at = 9;
+    int32 status = 10;
+    string failure = 11;
+    string created_at = 12;
+    string updated_at = 13;
+    repeated PurchaseDetail details =14;
+    bool ok =15; //确定操作
+}
+
+message PurchaseResponse {
+    Purchase entity = 1;
+    common.Pager pager =2;
+    repeated Purchase items = 3;
+    common.Error error = 4;
+    common.Info info =5;
+}
