@@ -4,7 +4,7 @@
 package services
 
 import (
-	common "geiqin.saas.bas/app/proto/common"
+	common "github.com/geiqin/microkit/protobuf/common"
 	fmt "fmt"
 	proto "github.com/golang/protobuf/proto"
 	math "math"
