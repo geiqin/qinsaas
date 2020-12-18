@@ -1,0 +1,84 @@
+syntax = "proto3";
+package services;
+option go_package = ".;services";
+import "common/base.proto";
+import "kindTagService.proto";
+import "kindSellTimeService.proto";
+
+// 堂食
+service InKindService {
+    rpc Search (KindWhere) returns (KindResponse) {};
+    rpc List (KindWhere) returns (KindResponse) {};
+    rpc Get (Kind) returns (KindResponse) {};
+    rpc Create (Kind) returns (KindResponse) {};
+    rpc Update (Kind) returns (KindResponse) {};
+    rpc Delete (KindWhere) returns (KindResponse) {};
+    // 菜单拖动排序
+    rpc Resort (KindWhere) returns (KindResponse) {};
+}
+service MyInKindService {
+    rpc Search (KindWhere) returns (KindResponse) {};
+    rpc List (KindWhere) returns (KindResponse) {};
+    rpc Get (Kind) returns (KindResponse) {};
+}
+
+// 外卖
+service OutKindService {
+    rpc Search (KindWhere) returns (KindResponse) {};
+    rpc List (KindWhere) returns (KindResponse) {};
+    rpc Get (Kind) returns (KindResponse) {};
+    rpc Create (Kind) returns (KindResponse) {};
+    rpc Update (Kind) returns (KindResponse) {};
+    rpc Delete (KindWhere) returns (KindResponse) {};
+    // 拖动菜单排序
+    rpc Resort (KindWhere) returns (KindResponse) {};
+}
+service MyOutKindService {
+    rpc Search (KindWhere) returns (KindResponse) {};
+    rpc List (KindWhere) returns (KindResponse) {};
+    rpc Get (Kind) returns (KindResponse) {};
+}
+
+message KindWhere {
+    int32 paged = 1;
+    int32 page_size = 2;
+    int32 top = 3;
+    int64 id = 4;
+    repeated int64 ids = 5;
+    string type = 6;
+    int32 tag_id = 7;
+    repeated int32 tag_ids = 8;
+    int64 kind_id = 9; // 拖动的菜单ID(拖动菜单排序)
+    int64 dest_kind_id = 10; // 被占位的菜单ID(拖动菜单排序)
+    int64 min_sort = 11;
+    int64 max_sort = 12;
+    string keywords = 13;
+    bool is_client = 14; // 是否客户端展示
+    bool require_choose = 15;
+}
+
+message Kind {
+    int64 id = 1;
+    string name = 2;
+    string type = 3;
+    int32 tag_id = 4;
+    bool require_choose = 5;
+    int32 require_least_count = 6;
+    bool is_sell_time = 7;
+    string week_days = 8;
+    int64 sort = 9;
+    int32 item_count = 10; // 商品数量
+    int32 on_shelf_item_count = 11; // 在售商品数量
+    string created_at = 12;
+    string updated_at = 13;
+    KindTag tag = 14;
+    repeated  KindSellTime kind_sell_times = 15;
+}
+
+message KindResponse {
+    Kind entity = 1;
+    common.Pager pager = 2;
+    repeated Kind items = 3;
+    common.Error error = 4;
+    common.Info info = 5;
+}

@@ -53,8 +53,10 @@ type Store struct {
 	UpdatedAt     string       `protobuf:"bytes,21,opt,name=updated_at,json=updatedAt,proto3" json:"updated_at,omitempty"`
 	Application   *Application `protobuf:"bytes,22,opt,name=application,proto3" json:"application,omitempty"`
 	Ids           []int64      `protobuf:"varint,23,rep,packed,name=ids,proto3" json:"ids,omitempty"`
-	Menus         []*Menu      `protobuf:"bytes,24,rep,name=menus,proto3" json:"menus,omitempty"`
-	PayMethods    []*PayMethod `protobuf:"bytes,25,rep,name=pay_methods,json=payMethods,proto3" json:"pay_methods,omitempty"`
+	// @inject_tag: gorm:"many2many:store_menus;"
+	Menus []*Menu `protobuf:"bytes,24,rep,name=menus,proto3" json:"menus,omitempty" gorm:"many2many:store_menus;"`
+	// @inject_tag: gorm:"many2many:store_pay_methods;"
+	PayMethods []*PayMethod `protobuf:"bytes,25,rep,name=pay_methods,json=payMethods,proto3" json:"pay_methods,omitempty" gorm:"many2many:store_pay_methods;"`
 }
 
 func (x *Store) Reset() {

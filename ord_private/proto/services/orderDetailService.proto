@@ -1,0 +1,37 @@
+syntax = "proto3";
+package services;
+option go_package = ".;services";
+
+message OrderDetail {
+    int64 id = 1;
+    int64 order_id = 2;
+    int64 item_id = 3;
+    int64 thumb_id = 4;
+    string thumb_url = 5;
+    int64 sku_id = 6;
+    string item_sn = 7;
+    string sku_sn = 8;
+    string model_type = 9;
+    string name = 10;
+    float weight = 11;
+    int32 num = 12;
+    float price = 13;
+    float total_price = 14;
+    float origin_price = 15;
+    float cost_price = 16;
+    float before_price = 17;
+    bool modified = 18;
+    int32 shipped_num = 19;
+    int32 points = 20;
+    string sale_type = 21;
+    string additional = 22;
+    bool attached = 23;
+    string attach_type = 24;
+    string ship_status = 25;
+    string refund_status = 26;
+    int64  present_id = 27;
+    string sku_spec_desc = 28;
+    string created_at  = 29;
+    string updated_at  = 30;
+
+}

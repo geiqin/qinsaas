@@ -1,6 +1,6 @@
 syntax = "proto3";
 package services;
-option go_package =".;services";
+option go_package = ".;services";
 import "common/base.proto";
 import "applicationService.proto";
 import "menuService.proto";
@@ -60,7 +60,9 @@ message Store {
     string	updated_at	=21;
     Application application =22;
     repeated int64 ids = 23;
+    // @inject_tag: gorm:"many2many:store_menus;"
     repeated Menu menus = 24;
+    // @inject_tag: gorm:"many2many:store_pay_methods;"
     repeated PayMethod pay_methods = 25;
 }
 

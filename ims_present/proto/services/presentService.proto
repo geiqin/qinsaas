@@ -1,0 +1,40 @@
+syntax = "proto3";
+package services;
+option go_package = ".;services";
+import "common/base.proto";
+
+service PresentService {
+    rpc Create (Present) returns (PresentResponse) {}
+    rpc Update (Present) returns (PresentResponse) {}
+    rpc Delete (Present) returns (PresentResponse) {}
+    rpc Get (Present) returns (PresentResponse) {}
+    rpc List (Present) returns (PresentResponse) {}
+    rpc Search (common.BaseWhere) returns (PresentResponse) {}
+}
+
+message Present {
+    int64 id = 1;
+    string name = 2;
+    int64 item_id = 3;
+    int64 sku_id = 4;
+    int32 fetch_limit = 5;
+    bool long_effective = 6;
+    string start_at = 7;
+    string end_at = 8;
+    int32 issued_num = 9;
+    int32 exchanged_num = 10;
+    int32 status = 11;
+    string created_at = 12;
+    string updated_at = 13;
+    repeated int64 ids = 14;
+}
+
+
+//
+message PresentResponse {
+    Present entity = 1;
+    common.Pager pager =2;
+    repeated Present items = 3;
+    common.Error error = 4;
+    common.Info info =5;
+}

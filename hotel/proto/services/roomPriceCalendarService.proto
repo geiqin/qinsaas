@@ -1,0 +1,34 @@
+syntax = "proto3";
+package services;
+option go_package = ".;services";
+import "common/base.proto";
+
+service RoomPriceCalendarService {
+    rpc List(RoomPriceCalendarWhere) returns (RoomPriceCalendarResponse);
+}
+
+message RoomPriceCalendarWhere {
+    int32 paged = 1;
+    int32 page_size = 2;
+    int64 room_type_id = 3;
+    int64 room_price_plan_id = 4;
+    string date = 5;
+    string start_date = 6;
+    string end_date = 7;
+}
+
+message RoomPriceCalendar {
+    int32 can_sales_count = 1; // 剩余房量
+    float price = 2; // 标准价
+    float min_price = 3; // 最低价
+    float max_price = 4; // 最高价
+    string date = 5; // 日期
+}
+
+message RoomPriceCalendarResponse {
+    common.Error error = 1;
+    common.Info info = 2;
+    common.Pager pager = 3;
+    RoomPriceCalendar entity = 4;
+    repeated RoomPriceCalendar items = 5;
+}

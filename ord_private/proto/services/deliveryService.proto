@@ -1,0 +1,59 @@
+syntax = "proto3";
+package services;
+option go_package = ".;services";
+import "common/base.proto";
+import "goodsInfoService.proto";
+
+service DeliveryService {
+    // 获取订单发货列表
+    rpc List (Delivery) returns (DeliveryResponse) {}
+}
+
+message Delivery {
+    int64 id = 1;
+    string type = 2;
+    int64 order_id = 3;
+    string delivery_type = 4;
+    string delivery_sn = 5;
+    float freight = 6;
+    bool protected = 7;
+    int32 express_id = 8;
+    string express_name = 9;
+    string express_code = 10;
+    string express_no = 11;
+    int64 customer_id = 12;
+    string receiver_name = 13;
+    int64 receiver_area_id = 14;
+    string receiver_addr = 15;
+    string receiver_zip = 16;
+    string receiver_tel = 17;
+    string receiver_mobile = 18;
+    string receiver_email = 19;
+    int64 op_id = 20;
+    string status = 21;
+    string memo = 22;
+    string arrived_at = 23;
+    string created_at = 24;
+    string updated_at = 25;
+    repeated DeliveryDetail details = 26;
+    int64 safeguard_id = 27;
+}
+
+message DeliveryDetail {
+    int64 id = 1;
+    int64 delivery_id = 2;
+    int64 order_detail_id = 3;
+    int64 item_id = 4;
+    int64 sku_id = 5;
+    int32 num = 6;
+    GoodsInfo goods = 7;
+}
+
+
+message DeliveryResponse {
+    Delivery entity = 1;
+    common.Pager pager =2;
+    repeated Delivery items = 3;
+    common.Error error = 4;
+    common.Info info =5;
+}

@@ -1,0 +1,62 @@
+syntax = "proto3";
+package services;
+option go_package = ".;services";
+import "common/base.proto";
+
+service RoomPricePlanService {
+    rpc Create (RoomPricePlan) returns (RoomPricePlanResponse);
+    rpc Update (RoomPricePlan) returns (RoomPricePlanResponse);
+    rpc Delete (RoomPricePlanWhere) returns (RoomPricePlanResponse);
+    rpc Get (RoomPricePlan) returns (RoomPricePlanResponse);
+    rpc OpenOrClose (RoomPricePlanWhere) returns (RoomPricePlanResponse);
+    rpc SetGiftContent (RoomPricePlan) returns (RoomPricePlanResponse);
+    rpc ModifySort (RoomPricePlanWhere) returns (RoomPricePlanResponse);
+}
+
+message RoomPricePlan {
+    int64 id = 1;
+    // @inject_tag: validate:"required" label:"房型"
+    int64 room_type_id = 2;
+    // @inject_tag: validate:"required" label:"名称"
+    string plan_name = 3;
+    // @inject_tag: validate:"required" label:"标准价"
+    float price = 4;
+    float min_price = 5;
+    float max_price = 6;
+    // @inject_tag: validate:"required" label:"收款方式"
+    int32 pay_type = 7;
+    bool can_coupon_code = 8; // 是否可使用优惠券抵扣
+    bool can_cash_code = 9; // 是否可使用现金券抵扣
+    int32 price_type = 10;
+    int32 breakfast_count = 11;
+    // @inject_tag: validate:"required" label:"房量数量"
+    int32 can_sales_count = 12;
+    int32 sales_count = 13;
+    int32 sales_strategy_type = 14;
+    int32 sales_strategy_value = 15;
+    string gift_content = 16;
+    bool is_open = 17;
+    int32 sorting = 18;
+    string created_at = 19;
+    string updated_at = 20;
+}
+
+message RoomPricePlanWhere {
+    int32 paged = 1;
+    int32 page_size = 2;
+    int32 top = 3;
+    string keywords = 4;
+    int64 id = 5;
+    repeated int64 ids = 6;
+    int64 room_type_id = 7;
+    bool is_open = 8;
+    int32 sorting = 9;
+}
+
+message RoomPricePlanResponse {
+  common.Error error = 1;
+  common.Info info = 2;
+  common.Pager pager = 3;
+  RoomPricePlan entity = 4;
+  repeated RoomPricePlan items = 5;
+}

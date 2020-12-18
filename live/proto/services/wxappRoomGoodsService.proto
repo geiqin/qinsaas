@@ -1,0 +1,80 @@
+syntax = "proto3";
+package services;
+option go_package = ".;services";
+import "common/base.proto";
+
+service WxappRoomGoodsService {
+    rpc Create(WxappRoomGoods) returns(WxappRoomGoodsResponse) {}; // 添加商品并提审
+    rpc ResetAudit(WxappRoomGoodsWhere) returns(WxappRoomGoodsResponse) {}; // 撤回审核
+    rpc Audit(WxappRoomGoodsWhere) returns(WxappRoomGoodsResponse) {}; // 重新提交审核
+    rpc Delete(WxappRoomGoodsWhere) returns(WxappRoomGoodsResponse) {}; // 删除商品
+    rpc Update(WxappRoomGoods) returns(WxappRoomGoodsResponse) {}; // 修改商品
+    rpc GetGoodsWarehouse(WxappRoomGoodsWhere) returns(WxappRoomGoodsResponse) {}; // 获取商品状态
+    rpc Search(WxappRoomGoodsWhere) returns(WxappRoomGoodsResponse) {}; // 查询商品
+
+}
+
+message WxappRoomGoodsWhere {
+    int32 paged = 1;
+    int32 page_size = 2;
+    string sorting = 3;
+    string source = 4;
+    int64 goods_id = 5;
+    repeated int64 goods_ids = 6;
+    int64 audit_id = 7;
+    int32 status = 8;
+}
+
+message WxappRoomGoods {
+    int64 id = 1;
+    int64 item_id = 2;
+    int64 sku_id = 3;
+    int64 goods_id = 4;
+    string cover_img_url_id = 5;
+    string cover_img_url = 6;
+    string name = 7;
+    float price = 8;
+    float price2 = 9;
+    string url = 10;
+    int32 price_type = 11;
+    int32 third_party_tag = 12;
+    string third_party_app_id = 13;
+    int64 audit_id = 14;
+    int32 audit_status = 15;
+    string created_at = 16;
+    string updated_at = 17;
+}
+
+message WxappRoomGoodsCommon {
+    int64 goods_id = 4;
+    string cover_img_url_id = 5;
+    string cover_img_url = 6;
+    string name = 7;
+    float price = 8;
+    float price2 = 9;
+    string url = 10;
+    int32 price_type = 11;
+    int32 third_party_tag = 12;
+    string third_party_app_id = 13;
+    int64 audit_id = 14;
+    int32 audit_status = 15;
+}
+
+message WxappRoomGoodsCommon2 {
+    int64 goods_id = 1;
+    string cover_img_url = 2;
+    string name = 3;
+    float price = 4;
+    float price2 = 5;
+    string url = 6;
+    int32 price_type = 7;
+    string third_party_app_id = 8;
+}
+
+message WxappRoomGoodsResponse {
+    WxappRoomGoods entity = 1;
+    common.Pager pager = 2;
+    repeated WxappRoomGoods items = 3;
+    common.Error error = 4;
+    common.Info info = 5;
+}

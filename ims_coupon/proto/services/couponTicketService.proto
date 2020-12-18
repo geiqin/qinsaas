@@ -1,0 +1,80 @@
+syntax = "proto3";
+package services;
+option go_package = ".;services";
+import "common/base.proto";
+import "couponGoodsService.proto";
+
+service CouponTicketService {
+    //核销优惠劵凭证
+    rpc Use (CouponTicket) returns (CouponTicketResponse) {}
+    //获取优惠劵凭证信息
+    rpc Get (CouponTicketWhere) returns (CouponTicketResponse) {}
+    //查询优惠劵凭证
+    rpc Search (CouponTicketWhere) returns (CouponTicketResponse) {}
+    //获取优惠劵凭证列表
+    rpc List (CouponTicketWhere) returns (CouponTicketResponse) {}
+}
+
+service MyCouponTicketService {
+    //查询优惠劵凭证
+    rpc Search (CouponTicketWhere) returns (CouponTicketResponse) {}
+    //获取可使用的优惠劵凭证列表（如：下单选择优惠券）
+    rpc UsableList (CouponTicketWhere) returns (CouponTicketResponse) {}
+}
+
+message CouponTicketWhere {
+    int32 paged = 1;
+    int32 page_size = 2;
+    string keywords = 3;
+    int64 customer_id = 4;
+    int64 coupon_id = 5;
+    int64 id = 6;
+    repeated int64 ids = 7;
+    bool valid = 8;// 是否可使用
+    string status = 9;
+}
+
+// 优惠劵凭证
+message CouponTicket{
+    int64 id = 1;
+    string ticket_sn = 2;
+    string start_at = 3;
+    string end_at = 4;
+    int64 coupon_id = 5;
+    int64 customer_id = 6;
+    int64 order_id = 7;
+    bool is_used = 8;
+    string use_at = 9;
+    int32 status = 10;
+    string created_at = 11;
+    string updated_at = 12;
+    repeated int64 ids = 13;
+    CouponInfo coupon = 14;
+}
+
+// 优惠券
+message CouponInfo {
+    int64 id = 1;
+    string coupon_sn = 2;
+    string title = 3;
+    bool is_at_least = 4;
+    float at_least = 5;
+    int32 preferential_type = 6;
+    float preferential_money = 7;
+    float preferential_discount = 8;
+    int32 exchange_num = 9;
+    string range_type = 10;
+    string description = 11;
+    repeated CouponGoods goodses = 12;
+    repeated int64 ids = 13;
+}
+
+//
+message CouponTicketResponse {
+    CouponTicket entity = 1;
+    common.Pager pager = 2;
+    repeated CouponTicket items = 3;
+    common.Error error = 4;
+    common.Info info = 5;
+    repeated int64 ids = 6;
+}

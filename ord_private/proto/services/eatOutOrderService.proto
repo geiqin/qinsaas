@@ -1,0 +1,12 @@
+syntax = "proto3";
+package services;
+option go_package = ".;services";
+import "orderService.proto";
+import "buyingService.proto";
+
+service MyEatOutOrderService {
+    // 下单确认
+    rpc Confirm (BuyingRequest) returns (BuyingResponse) {}
+    // 提交订单
+    rpc Submit (BuyingRequest) returns (OrderResponse) {}
+}

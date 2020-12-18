@@ -1,0 +1,36 @@
+syntax = "proto3";
+package services;
+option go_package = ".;services";
+import "common/base.proto";
+
+service RoomStatusStatsService {
+    // 今日房态统计
+    rpc Today (RoomStatusStatsWhere) returns (RoomStatusStatsResponse);
+}
+
+message RoomStatusStatsWhere {
+    int32 paged = 1;
+    int32 page_size = 2;
+    int32 top = 3;
+    string date = 4;
+}
+
+message RoomStatusStats {
+    string date = 1; // 日期
+    int32 total_num = 2; // 房间总数
+    int32 vacant_num = 3; // 空房数量
+    int32 using_num = 4; // 在住数量
+    int32 book_num = 5; // 预定数量
+    int32 keep_num = 6; // 保留房数量
+    int32 clean_num = 7; // 净房数量
+    int32 dirty_num = 8; // 脏房数量
+    int32 repair_num = 9; // 维修房数量
+}
+
+message RoomStatusStatsResponse {
+    common.Error error = 1;
+    common.Info info = 2;
+    common.Pager pager = 3;
+    RoomStatusStats entity = 4;
+    repeated RoomStatusStats items = 5;
+}

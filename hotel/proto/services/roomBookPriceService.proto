@@ -1,0 +1,12 @@
+syntax = "proto3";
+package services;
+option go_package = ".;services";
+
+message RoomBookPrice {
+    int64 room_book_id = 1;
+    int64 room_book_detail_id = 2;
+    // @inject_tag: validate:"required" label:"日期"
+    string date = 3;
+    // @inject_tag: validate:"required" label:"价格"
+    float price = 4;
+}

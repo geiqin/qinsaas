@@ -1,0 +1,186 @@
+syntax = "proto3";
+package services;
+option go_package = ".;services";
+import "common/base.proto";
+import "buyingService.proto";
+import "orderDetailService.proto";
+import "orderAddressService.proto";
+import "shipmentService.proto";
+import "orderCouponService.proto";
+import "orderFoodService.proto";
+
+service MyOrderService {
+    //确认订单
+    rpc Confirm (BuyingRequest) returns (BuyingResponse) {}
+    //提交订单
+    rpc Submit (BuyingRequest) returns (OrderResponse) {}
+    //删除订单
+    rpc Delete (Order) returns (OrderResponse) {}
+    //撤销订单
+    rpc Cancel (Order) returns (OrderResponse) {}
+    //确认收货
+    rpc Receipt (Order) returns (OrderResponse) {}
+    //获取订单信息
+    rpc Get (Order) returns (OrderResponse) {}
+    //获取订单信息(详细信息)
+    rpc Display (Order) returns (OrderResponse) {}
+    //查询订单
+    rpc Search (OrderWhere) returns (OrderResponse) {}
+}
+
+service OrderService {
+    //创建订单（管理员后台下单）
+    rpc Create (BuyingRequest) returns (BuyingResponse) {}
+    //审核订单
+    rpc Check (Order) returns (OrderResponse) {}
+    //修改价格
+    rpc ModifyPrice (Order) returns (OrderResponse) {}
+    //修改地址
+    rpc ModifyAddress (Order) returns (OrderResponse) {}
+    //删除订单
+    rpc Delete (Order) returns (OrderResponse) {}
+    //获取订单信息
+    rpc Get (Order) returns (OrderResponse) {}
+    //获取订单信息(详细信息)
+    rpc Display (Order) returns (OrderResponse) {}
+    //查询订单
+    rpc Search (OrderWhere) returns (OrderResponse) {}
+    //按条件获取订单列表
+    rpc List (OrderWhere) returns (OrderResponse) {}
+    //订单备注
+    rpc Remarks (Order) returns (OrderResponse) {}
+    // 订单发货(快递发货)
+    rpc Ship (ShipmentRequest) returns (ShipmentResponse) {}
+    // 订单发货(同城配送)
+    rpc DeliveryShip (ShipmentRequest) returns (ShipmentResponse) {}
+    // 验证提货码(上门自提)
+    rpc CodeVerify (OrderWhere) returns (OrderResponse) {}
+    // 订单发货(上门自提)
+    rpc FetchShip (ShipmentRequest) returns (ShipmentResponse) {}
+    //订单补发货
+    rpc RepairShip (ShipmentRequest) returns (ShipmentResponse) {}
+    //订单换货发货
+    rpc ExchangeShip (ShipmentRequest) returns (ShipmentResponse) {}
+    // 获取订单赠送\使用的优惠券列表
+    rpc OrderCouponList (OrderCoupon) returns (OrderCouponResponse) {}
+    // 获取订单数量
+    rpc Count (OrderWhere) returns (OrderResponse) {}
+    // 接单|拒绝接单
+    rpc Confirm(Order) returns (OrderResponse) {}
+    // 结算订单(无法通过正常流程完成订单,需要商家主动完成订单)
+    // 适用订单: 堂食餐后付款订单、货到付款订单、外卖餐到付款订单
+    rpc Settlement (OrderWhere) returns (OrderResponse) {}
+}
+
+message Order {
+    int64  id =1;
+    string order_sn  =2;
+    string order_type   =3;
+    int64 customer_id  =4;
+    int32 total_num =6;
+    float total_weight =7;
+    string currency =8;
+    float amount =9;
+    float before_amount =10;
+    float actual_amount =11;
+    float amount_paid =12;
+    float amount_refunded =13;
+    float express_amount  =14;
+    float discount_amount =15;
+    bool paid =16;
+    bool refunded  =17;
+    bool can_delivery =18;
+    bool can_cod =19;
+    bool invoiced =20;
+    bool modified =21;
+    bool safeguarded =22;
+    bool returnable =23;
+    string subject =24;
+    string body =25;
+    string pay_type =26;
+    int64 branch_id =27;
+    string client_ip =28;
+    int32 flag =29;
+    string memo =30;
+    string buyer_memo =31;
+    int32 cancel_id =32;
+    string cancel_reason =33;
+    string status =34;
+    string pay_status =35;
+    string refund_status =36;
+    string expire_at =38;
+    string paid_at =39;
+    string shipped_at =40;
+    string signed_at =41;
+    string refunded_at =42;
+    string finished_at =43;
+    string created_at =44;
+    string updated_at =45;
+    string platform_source =46;
+    OrderAddress address =54;
+    repeated OrderDetail details = 55;
+    Customer customer = 56;
+    string shipment_method = 57;
+    float cash_exchange_money = 58;
+    int32 cash_exchange_points = 59;
+    bool is_distribution = 60;
+    bool is_confirmed = 61; // 商家是否已接单
+    OrderFood food = 62;
+}
+
+message Customer {
+    int64 id =1;
+    string customer_sn =2;
+    string name =3;
+    string display_name =4;
+    string realname =5;
+    string idcard =6;
+    int32 gender =7;
+    string mobile =8;
+    string email =9;
+    int64 avatar_id =10;
+    string avatar_url =11;
+}
+
+message OrderWhere {
+    int32 paged =1;
+    int32 page_size =2;
+    string	sorting	=3;
+    string	keywords =4;
+    string order_sn = 5;
+    string order_type = 6;
+    string pay_type = 7;
+    bool can_delivery = 8;
+    bool can_cod = 9;
+    int64 customer_id = 10;
+    float payment = 11;
+    bool is_free = 12;
+    string status = 13;
+    string pay_status = 14;
+    string refund_status = 15;
+    string deliver_status = 16;
+    int32 branch_id = 17;
+    int32 flag = 18;
+    bool safeguarded = 19;
+    string start_at = 20;
+    string end_at = 21;
+    bool paid = 22;
+    repeated int64 ids = 23;
+    string shipment_method = 24;
+    string code = 25;
+    string fetch_status = 26;// 自提状态: waiting待自提, finished已自提
+    bool is_distribution = 27;
+    int32 receive_status = 28; // 接单状态: 0-全部,1-已接单,2-未接单
+    int64 id = 29;
+    int64 table_id = 62; // 桌台ID
+    string table_name = 63; // 桌台名称
+    string mobile = 64; // 用户手机号
+}
+
+message OrderResponse {
+    Order entity = 1;
+    common.Pager pager =2;
+    repeated Order items = 3;
+    common.Error error = 4;
+    common.Info info =5;
+}

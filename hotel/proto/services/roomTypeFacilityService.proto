@@ -1,0 +1,43 @@
+syntax = "proto3";
+package services;
+option go_package = ".;services";
+import "common/base.proto";
+
+service RoomTypeFacilityService {
+    rpc Search (RoomTypeFacilityWhere) returns (RoomTypeFacilityResponse);
+    rpc List (RoomTypeFacilityWhere) returns (RoomTypeFacilityResponse);
+    rpc Get (RoomTypeFacilityWhere) returns (RoomTypeFacilityResponse);
+    rpc Create (RoomTypeFacility) returns (RoomTypeFacilityResponse);
+    rpc Update (RoomTypeFacility) returns (RoomTypeFacilityResponse);
+    rpc Delete (RoomTypeFacilityWhere) returns (RoomTypeFacilityResponse);
+}
+
+message RoomTypeFacility {
+    int32 id = 1;
+    // @inject_tag: validate:"required",label:"服务类型"
+    int32 room_type_facility_cat_id = 2;
+    // @inject_tag: validate:"required",label:"服务名称"
+    string name = 3;
+    // @inject_tag: validate:"required",label:"服务图标"
+    string icon = 4;
+    string created_at = 5;
+    string updated_at = 6;
+}
+
+message RoomTypeFacilityWhere {
+    int32 paged = 1;
+    int32 page_size = 2;
+    int32 top = 3;
+    string keywords = 4;
+    int32 id = 5;
+    repeated int32 ids = 6;
+    int32 room_type_facility_cat_id = 7;
+}
+
+message RoomTypeFacilityResponse {
+    common.Error error = 1;
+    common.Info info = 2;
+    common.Pager pager = 3;
+    RoomTypeFacility entity = 4;
+    repeated RoomTypeFacility items = 5;
+}

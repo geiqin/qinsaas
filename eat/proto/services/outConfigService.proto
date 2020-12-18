@@ -1,0 +1,42 @@
+syntax = "proto3";
+package services;
+option go_package = ".;services";
+import "common/base.proto";
+import "timeConfigService.proto";
+
+service OutConfigService {
+    rpc Get (OutConfig) returns (OutConfigResponse) {};
+    rpc Save (OutConfig) returns (OutConfigResponse) {};
+}
+
+message OutConfig {
+    int32 id = 1;
+    bool is_open = 2;
+    int32 hour_type = 3;
+    string whole_start_time = 4;
+    string whole_end_time = 5;
+    int32 self_take_hour_type = 6;
+    string self_take_whole_start_time = 7;
+    string self_take_whole_end_time = 8;
+    bool is_immediate_delivery = 9;
+    bool is_reserve_delivery = 10;
+    string reserve_deliver_time = 11;
+    int32 reserve_deliver_day = 12;
+    bool is_self_take = 13;
+    string self_take_time = 14;
+    int32 self_take_day = 15;
+    bool is_auto_taking_order = 16;
+    bool is_cash_out_pay = 17;
+    string created_at = 18;
+    string updated_at = 19;
+    repeated  TimeConfig open_times = 20;
+    repeated  TimeConfig self_take_times = 21;
+}
+
+message OutConfigResponse {
+    OutConfig entity = 1;
+    common.Pager pager = 2;
+    repeated OutConfig items = 3;
+    common.Error error = 4;
+    common.Info info = 5;
+}

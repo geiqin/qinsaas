@@ -1,0 +1,56 @@
+syntax = "proto3";
+package services;
+option go_package = ".;services";
+import "common/base.proto";
+
+service IntegralRecordService {
+    rpc Search(IntegralRecordWhere) returns (IntegralRecordResponse) {}
+}
+
+service MyIntegralRecordService {
+    rpc Search(IntegralRecordWhere) returns (IntegralRecordResponse) {}
+}
+
+message IntegralRecordWhere {
+    int32 paged = 1;
+    int32 page_size = 2;
+    string sorting = 3;
+    string keywords = 4;
+    int64 id = 5;
+    repeated int64 ids = 6;
+    int64 customer_id = 7;
+    int32 status = 8;
+    int32 points = 9;
+    repeated int64 customer_ids = 10;
+    string direction = 11;
+    int64 order_id = 12;
+    int32 type = 13;
+    repeated int32 types = 14;
+    repeated int32 statuses = 15;
+}
+
+message IntegralRecord {
+    int64 id = 1;
+    int64 customer_id = 2;
+    int64 integral_id = 3;
+    int32 type = 4;
+    string direction = 5;
+    int32 value = 6;
+    int32 balance = 7;
+    int32 used_value = 8;
+    string effective_at = 9;
+    string expiration_at = 10;
+    string memo = 11;
+    int32 status = 12;
+    string created_at = 13;
+    string updated_at = 14;
+    int64 order_id = 15;
+}
+
+message IntegralRecordResponse {
+    IntegralRecord entity = 1;
+    common.Pager pager = 2;
+    repeated IntegralRecord items = 3;
+    common.Error error = 4;
+    common.Info info = 5;
+}

@@ -1,0 +1,26 @@
+syntax = "proto3";
+package services;
+option go_package = ".;services";
+import "common/base.proto";
+
+service RefundingService {
+    // 计算退款时退回、扣除的积分及积分不足扣除时抵扣的金额
+    rpc Calculate (Refunding) returns (RefundingResponse) {}
+}
+
+message Refunding {
+    int64 order_id = 1;
+    repeated int64 order_detail_ids = 2;
+    int32 return_points = 3;
+    int32 deduct_points = 4;
+    float deduct_money = 5;
+    int32 points_rate = 6;
+}
+
+message RefundingResponse {
+    Refunding entity = 1;
+    common.Pager pager =2;
+    repeated Refunding items = 3;
+    common.Error error = 4;
+    common.Info info =5;
+}

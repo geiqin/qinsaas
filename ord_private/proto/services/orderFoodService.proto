@@ -1,0 +1,18 @@
+syntax = "proto3";
+package services;
+option go_package = ".;services";
+
+message OrderFood {
+    int64 id = 1;
+    string type = 2; // 订单类型:in-堂食订单,out-外卖订单
+    int64 order_id = 3;
+    int64 table_id = 4; // 桌台ID【堂食订单】
+    string table_name = 5; // 桌台名称【堂食订单】
+    int32 surcharge_type = 6; // 附加费类型【堂食订单】:1-按每位,2-按每单
+    float surcharge_fee = 7; // 附加费【堂食订单】:X元/每位|每单
+    string surcharge_fee_name = 8; // 附加费的自定义名称【堂食订单】
+    float total_surcharge_fee = 9; // 总的附加费
+    float box_fee = 10; // 餐盒费
+    int32 guest_num = 11; // 就餐人数
+    bool  is_settlement = 12;
+}

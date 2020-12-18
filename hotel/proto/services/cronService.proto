@@ -1,0 +1,15 @@
+syntax = "proto3";
+package services;
+option go_package = ".;services";
+import "common/base.proto";
+
+service CronService {
+    // 处理超时未入住订单
+    rpc BookOvertime(common.Empty) returns(CronServiceResponse) {}
+}
+
+message CronServiceResponse {
+  common.Pager pager = 1;
+  common.Error error = 2;
+  common.Info info = 3;
+}

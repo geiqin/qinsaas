@@ -1,0 +1,50 @@
+syntax = "proto3";
+package services;
+option go_package = ".;services";
+import "common/base.proto";
+
+// 管理直播间小助手
+service WxappRoomAssistantService {
+    rpc Create(WxappRoomAssistantWhere) returns(WxappRoomAssistantResponse) {} // 添加管理直播间小助手
+    rpc Update(WxappRoomAssistantWhere) returns(WxappRoomAssistantResponse) {} // 修改管理直播间小助手
+    rpc Delete(WxappRoomAssistantWhere) returns(WxappRoomAssistantResponse) {} // 删除管理直播间小助手
+    rpc List(WxappRoomAssistantWhere) returns(WxappRoomAssistantListResponse) {} // 获取管理直播间小助手列表
+}
+
+message WxappRoomAssistantWhere {
+    int32 paged = 1;
+    int32 page_size = 2;
+    string sorting = 3;
+    int64 room_id = 4;
+    string username = 5;
+    string nickname = 6;
+    repeated WxappRoomAssistant users = 7;
+}
+
+message WxappRoomAssistant {
+    string username = 1;
+    string nickname = 2;
+    string headimg = 3;
+    string openid = 4;
+    string updated_at = 5;
+}
+
+message WxappRoomAssistantList {
+    int32 count = 1;
+    int32 max_count = 2;
+    repeated WxappRoomAssistant list = 3;
+}
+
+message WxappRoomAssistantResponse {
+    WxappRoomAssistant entity = 1;
+    common.Pager pager = 2;
+    repeated WxappRoomAssistant items = 3;
+    common.Error error = 4;
+    common.Info info = 5;
+}
+
+message WxappRoomAssistantListResponse {
+    WxappRoomAssistantList entity = 1;
+    common.Error error = 2;
+    common.Info info = 3;
+}

@@ -1,0 +1,43 @@
+syntax = "proto3";
+package services;
+option go_package = ".;services";
+import "common/base.proto";
+import "navService.proto";
+
+service NavPositionService {
+    rpc List (NavPositionWhere) returns (NavPositionResponse) {}
+    rpc Get (NavPositionWhere) returns (NavPositionResponse) {}
+    rpc Save (NavPositionWhere) returns (NavPositionResponse) {}
+}
+
+message NavPositionWhere {
+    int32 paged = 1;
+    int32 page_size = 2;
+    int64 id = 3;
+    repeated int64 ids = 4;
+    string name = 5;
+    repeated string names = 6;
+    repeated NavPosition items = 7;
+}
+
+message NavPosition {
+    int32 id = 1;
+    // @inject_tag: json:"name"
+    string name = 2;
+    // @inject_tag: json:"title"
+    string title = 3;
+    // @inject_tag: json:"nav_id"
+    int64 nav_id = 4;
+    string created_at = 5;
+    string updated_at = 6;
+    Nav nav = 7;
+}
+
+message NavPositionResponse {
+    NavPosition entity = 1;
+    common.Pager pager = 2;
+    common.Error error = 3;
+    common.Info info = 4;
+    repeated NavPosition items = 5;
+}
+

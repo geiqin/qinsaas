@@ -1,0 +1,50 @@
+syntax = "proto3";
+package services;
+option go_package = ".;services";
+import "common/base.proto";
+
+service RoomService {
+    rpc Search (RoomWhere) returns (RoomResponse);
+    rpc List (RoomWhere) returns (RoomResponse);
+    rpc Delete (RoomWhere) returns (RoomResponse);
+    rpc Get (Room) returns (RoomResponse);
+    rpc Create (Room) returns (RoomResponse);
+    rpc Update (Room) returns (RoomResponse);
+    rpc SetStatus (RoomWhere) returns (RoomResponse);
+    rpc SetCleanStatus (RoomWhere) returns (RoomResponse);
+    rpc ModifySort (RoomWhere) returns (RoomResponse);
+}
+
+message Room {
+    int64 id = 1;
+    int64 room_type_id = 2;
+    string code	= 3;
+    int32 sorting = 4;
+    string memo = 5;
+    int32 clean_status = 6;
+    int32 status = 7;
+    string created_at = 8;
+    string updated_at = 9;
+    string room_type_name = 10;
+}
+
+message RoomWhere {
+    int32 paged = 1;
+    int32 page_size = 2;
+    int32 top = 3;
+    string keywords = 4;
+    int64 id = 5;
+    repeated int64 ids = 6;
+    int64 room_type_id = 7;
+    int32 clean_status = 8;
+    int32 status = 9;
+    int32 sorting = 10;
+}
+
+message RoomResponse {
+    common.Error error = 1;
+    common.Info info = 2;
+    common.Pager pager = 3;
+    Room entity = 4;
+    repeated Room items = 5;
+}

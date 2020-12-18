@@ -1,0 +1,44 @@
+syntax = "proto3";
+package services;
+option go_package = ".;services";
+import "common/base.proto";
+
+service RechargeService {
+    //创建充值单（管理员后台下单）
+    rpc Create (Recharge) returns (RechargeResponse) {}
+    //删除充值单
+    rpc Delete (Recharge) returns (RechargeResponse) {}
+    //获取充值单
+    rpc Get (Recharge) returns (RechargeResponse) {}
+    //查询充值单
+    rpc Search (common.BaseWhere) returns (RechargeResponse) {}
+}
+
+message Recharge {
+    int64 id = 1;
+    string recharge_sn = 2;
+    int64 branch_id = 3;
+    string type = 4;
+    string content = 5;
+    string currency = 6;
+    float amount = 7;
+    string back_type = 8;
+    string back_value = 9;
+    int64 customer_id = 10;
+    string meno = 11;
+    string metadata = 12;
+    string pay_status = 13;
+    string status = 14;
+    string paid_at = 15;
+    string created_at = 16;
+    string updated_at = 17;
+}
+
+
+message RechargeResponse {
+    Recharge entity = 1;
+    common.Pager pager =2;
+    repeated Recharge items = 3;
+    common.Error error = 4;
+    common.Info info =5;
+}

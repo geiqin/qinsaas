@@ -1,0 +1,11 @@
+syntax = "proto3";
+package services;
+option go_package = ".;services";
+
+message RoomPriceVipcard {
+    int64 id = 1;
+    int64 room_price_id = 2;
+    int32 vipcard_id = 3;
+    float price = 4;
+    string vipcard_name = 5;
+}

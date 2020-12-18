@@ -1,0 +1,40 @@
+syntax = "proto3";
+package services;
+option go_package = ".;services";
+import "common/base.proto";
+
+service RoomBookCfgService {
+    rpc Get (RoomBookCfg) returns (RoomBookCfgResponse);
+    rpc Save (RoomBookCfg) returns (RoomBookCfgResponse);
+}
+
+message RoomBookCfg {
+    int32 id = 1;
+    int32 last_book_day = 16;
+    // @inject_tag: validate:"required,len=5" label:"最晚可预定时间"
+    string last_book_time = 2;
+    int32 book_count = 3;
+    // @inject_tag: validate:"min=0,max=60" label:"订单最多可预订天数"
+    int32 book_day = 4;
+    // @inject_tag: validate:"required,min=1,max=365" label:"预定日期范围"
+    int32 ahead_day = 5;
+    bool is_need_confirm = 6;
+    int32 need_allocate_room = 7;
+    int32 need_time = 8;
+    int32 auto_type = 9;
+    // @inject_tag: validate:"required" label:"预定须知"
+    string book_content = 10;
+    bool is_book_content_confirm = 11;
+    bool is_book_room = 12;
+    string book_room_json = 13;
+    string created_at = 14;
+    string updated_at = 15;
+}
+
+message RoomBookCfgResponse {
+    common.Error error = 1;
+    common.Info info = 2;
+    common.Pager pager = 3;
+    RoomBookCfg entity = 4;
+    repeated RoomBookCfg items = 5;
+}

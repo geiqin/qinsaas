@@ -1,0 +1,40 @@
+syntax = "proto3";
+package services;
+option go_package = ".;services";
+import "common/base.proto";
+import "navItemService.proto";
+
+service NavService {
+    rpc Create (Nav) returns (NavResponse) {}
+    rpc Update (Nav) returns (NavResponse) {}
+    rpc Get (NavWhere) returns (NavResponse) {}
+    rpc Delete (NavWhere) returns (NavResponse) {}
+    rpc List (NavWhere) returns (NavResponse) {}
+    rpc Search (NavWhere) returns (NavResponse) {}
+}
+
+message NavWhere {
+    int32 paged = 1;
+    int32 page_size = 2;
+    int64 id = 3;
+    repeated int64 ids = 4;
+    string title = 5;
+}
+
+message Nav {
+    int64 id = 1;
+    string title = 2;
+    string name = 3;
+    string memo = 4;
+    string created_at = 5;
+    string updated_at = 6;
+    repeated NavItem items = 7;
+}
+
+message NavResponse {
+    Nav entity = 1;
+    common.Pager pager = 2;
+    common.Error error = 3;
+    common.Info info = 4;
+    repeated Nav items = 5;
+}

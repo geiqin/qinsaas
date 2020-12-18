@@ -1,0 +1,33 @@
+syntax = "proto3";
+package services;
+option go_package = ".;services";
+import "common/base.proto";
+
+// 直播间主播副号
+service WxappRoomSubAnchorService {
+    rpc Create(WxappRoomSubAnchorWhere) returns(WxappRoomSubAnchorResponse) {} // 添加主播副号
+    rpc Update(WxappRoomSubAnchorWhere) returns(WxappRoomSubAnchorResponse) {} // 修改主播副号
+    rpc Delete(WxappRoomSubAnchorWhere) returns(WxappRoomSubAnchorResponse) {} // 删除主播副号
+    rpc Get(WxappRoomSubAnchorWhere) returns(WxappRoomSubAnchorResponse) {} // 获取主播副号
+}
+
+message WxappRoomSubAnchorWhere {
+    int32 paged = 1;
+    int32 page_size = 2;
+    string sorting = 3;
+    int64 room_id = 4;
+    string username = 5;
+}
+
+message WxappRoomSubAnchor {
+    string username = 1;
+    string qrcode_url = 2; // 当微信号没有在 “小程序直播“ 小程序实名认证 返回该字段
+}
+
+message WxappRoomSubAnchorResponse {
+    WxappRoomSubAnchor entity = 1;
+    common.Pager pager = 2;
+    repeated WxappRoomSubAnchor items = 3;
+    common.Error error = 4;
+    common.Info info = 5;
+}

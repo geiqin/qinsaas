@@ -1,0 +1,26 @@
+syntax = "proto3";
+package services;
+option go_package = ".;services";
+import "common/base.proto";
+
+service AuthService {
+    //微信小程序登录
+    rpc WxMini (WxMiniLogin) returns (common.TokenResponse) {}
+    //支付宝登陆
+    rpc Alipay (AlipayLogin) returns (common.TokenResponse) {}
+    //需要其他登陆往一下继续实现
+}
+
+message WxMiniLogin {
+    string signature =1;
+    string code =2;
+    string rawData =3;
+    string encryptedData =4;
+    string iv =5;
+    string scene =6;
+}
+
+message AlipayLogin {
+    string signature =1;
+    string code =2;
+}

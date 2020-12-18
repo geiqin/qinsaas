@@ -1,0 +1,29 @@
+syntax = "proto3";
+package services;
+option go_package = ".;services";
+import "common/base.proto";
+
+service RewardGoodsService {
+    rpc Create (RewardGoods) returns (RewardGoodsResponse) {}
+    rpc Delete (RewardGoods) returns (RewardGoodsResponse) {}
+    rpc Get (RewardGoods) returns (RewardGoodsResponse) {}
+    rpc Search (common.BaseWhere) returns (RewardGoodsResponse) {}
+}
+
+message RewardGoods{
+    int64 id = 1;
+    int64 reward_id = 2;
+    int64 item_id = 3;
+    int64 sku_id = 4;
+    string created_at = 8;
+    string updated_at = 9;
+}
+
+//
+message RewardGoodsResponse {
+    RewardGoods entity = 1;
+    common.Pager pager =2;
+    repeated RewardGoods items = 3;
+    common.Error error = 4;
+    common.Info info =5;
+}

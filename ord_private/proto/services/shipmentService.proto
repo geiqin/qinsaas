@@ -1,0 +1,91 @@
+syntax = "proto3";
+package services;
+option go_package = ".;services";
+import "common/base.proto";
+import "areaInfoService.proto";
+
+// 下单的配送信息
+message OrderShipment {
+    string lng = 1; //定位的经度
+    string lat = 2; // 定位的纬度
+    bool is_fetch = 3; // 是否可上门自提
+    bool is_delivery = 4; // 是否可同城配送
+    bool is_express = 5;  // 是否可快递发货
+    string method = 6; // 下单选择的配送方式
+    int32 fetch_count = 7; // 自提点数量【上门自提】
+    int64 fetch_location_id = 8; // 下单选择的自提点ID【上门自提】
+    string fetch_at = 9; // 下单选择的自提时间【上门自提】
+    bool deliverable = 10; // 收货地址是否在配送区域
+    string delivery_at = 11; // 下单选择的配送时间【同城配送】
+    float express_fee = 12; // 快递发货运费
+    float delivery_fee = 13; // 同城配送配送费
+    float start_price = 19; // 起送价
+    DeliveryInfo delivery_info = 14; // 同城配送信息
+    FetchInfo fetch_info = 15; // 上门自提信息
+    ExpressInfo express_info = 16; // 快递发货信息
+    string start_time = 17; // 选择的配送或自提的开始时间
+    string end_time = 18; // 选择的配送或自提的结束时间
+}
+// 上门自提信息
+message FetchInfo {
+    int64 id = 1;
+    string name = 2;
+    int64 area_id = 3;
+    string addr = 4;
+    string lng = 5;
+    string lat = 6;
+    string tel = 7;
+    string mobile = 8;
+    bool is_fetch_time = 9;
+    float distance = 10;
+    repeated string galleries = 11;
+    AreaInfo area = 12;
+}
+// 同城配送信息
+message DeliveryInfo {
+    int64 location_id = 1;
+    int32 method = 2;
+    int32 template = 3;
+    string range_name = 4;
+    string range_content = 5;
+    string range_image_url = 6;
+    float range_start_price = 7;
+    float range_fee = 8;
+    bool is_delivery_time = 9;
+}
+
+message ExpressInfo {
+
+}
+
+// 订单发货的请求数据(快递发货)
+message ShipmentRequest {
+    string method = 1;
+    string type = 2;
+    int64 order_id = 3;
+    bool is_delivery = 4;
+    int32 shipper_id = 5;
+    string logistics_no = 6;
+    int64 location_id = 7;
+    string fetch_at = 8;
+    string delivery_at = 9;
+    string start_time = 10;
+    string end_time = 11;
+    // 订单发货的请求数据(同城配送)
+    int32 delivery_type = 12; // 配送方式【同城配送】: 1商家自配送, 2第三方同城配送
+    int64 deliveryer_id = 13; // 配送员ID
+    repeated ShipmentRequestDetail details = 14;
+    bool is_auto = 15;// 是否自动发货(自动填单并发货)
+}
+
+message ShipmentRequestDetail {
+    int64 order_detail_id = 1;
+    int64 item_id = 2;
+    int64 sku_id = 3;
+    int32 num = 4;
+}
+
+message ShipmentResponse {
+    common.Error error = 4;
+    common.Info info =5;
+}

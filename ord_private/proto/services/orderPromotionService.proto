@@ -1,0 +1,59 @@
+syntax = "proto3";
+package services;
+option go_package = ".;services";
+import "common/base.proto";
+
+service OrderPromotionService {
+    rpc Create (OrderPromotion) returns (OrderPromotionResponse) {}
+    rpc Update (OrderPromotion) returns (OrderPromotionResponse) {}
+    rpc Delete (OrderPromotion) returns (OrderPromotionResponse) {}
+    rpc Get (OrderPromotion) returns (OrderPromotionResponse) {}
+    rpc Search (OrderPromotionParams) returns (OrderPromotionResponse) {}
+    rpc List (OrderPromotionParams) returns (OrderPromotionResponse) {}
+}
+
+message OrderPromotionParams {
+    int64 id = 1;
+    int64 customer_id = 2;
+    int64 promotion_id = 3;
+    int64 order_id = 4;
+    string promotion_type = 5;
+    repeated int64 ids = 6;
+    string start_date = 7;
+    string end_date = 8;
+
+}
+
+message OrderPromotion {
+    int64 id = 1;
+    int64 customer_id = 2;
+    int64 order_id = 3;
+    int64 promotion_id = 4;
+    string promotion_type = 5;
+    float price = 6;
+    int32 point = 7;
+    string created_at = 8;
+    string updated_at = 9;
+    repeated OrderPromotionGoods goodses = 10;
+}
+
+message OrderPromotionGoods {
+    int64 id = 1;
+    int64 order_promotion_id = 2;
+    int64 item_id = 3;
+    int64 sku_id = 4;
+    int32 goods_num = 5;
+    float price = 6;
+    float before_price = 7;
+    string created_at = 8;
+    string updated_at = 9;
+}
+
+
+message OrderPromotionResponse {
+    OrderPromotion entity = 1;
+    common.Pager pager =2;
+    repeated OrderPromotion items = 3;
+    common.Error error = 4;
+    common.Info info =5;
+}

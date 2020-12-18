@@ -1,0 +1,114 @@
+syntax = "proto3";
+package services;
+option go_package = ".;services";
+import "common/base.proto";
+import "couponGoodsService.proto";
+import "couponTicketService.proto";
+
+//客户优惠劵服务（客户专用）
+service MyCouponService {
+    //获得优惠劵信息
+    rpc Get (Coupon) returns (CouponResponse) {}
+    //获得优惠劵详情
+    rpc Detail (Coupon) returns (CouponResponse) {}
+    //查询优惠券列表
+    rpc List (Coupon) returns (CouponResponse) {}
+    //未领取的优惠券列表
+    rpc UncollectedList (common.Empty) returns (CouponResponse) {}
+    //可使用的优惠券列表
+    rpc ValidList (Coupon) returns (CouponResponse) {}
+    //领取优惠劵
+    rpc Receive (CouponWhere) returns (CouponResponse) {}
+}
+
+//优惠劵服务
+service CouponService {
+    //创建优惠劵
+    rpc Create (Coupon) returns (CouponResponse) {}
+    //修改优惠劵
+    rpc Update (Coupon) returns (CouponResponse) {}
+    //删除优惠券
+    rpc Delete (CouponWhere) returns (CouponResponse) {}
+    //撤销优惠券
+    rpc Cancel (CouponWhere) returns (CouponResponse) {}
+    //获得优惠劵信息
+    rpc Get (Coupon) returns (CouponResponse) {}
+    //获取优惠券列表（下拉框选择专用）
+    rpc ValidList (common.Empty) returns (CouponResponse) {}
+    //查询优惠劵
+    rpc Search (CouponWhere) returns (CouponResponse) {}
+    //赠送优惠劵
+    rpc Give (CouponWhere) returns (CouponResponse) {}
+}
+
+message CouponWhere {
+    int32 paged = 1;
+    int32 page_size = 2;
+    int32 top = 3;
+    //base params
+    int64 id = 4;
+    repeated int64 ids = 5;
+    string keywords = 6;
+    int32 status = 7;
+    int32 preferential_type = 8;
+    int64 customer_id = 9;
+    int32 num = 10;
+}
+
+//优惠劵
+message Coupon{
+    int64 id = 1;
+    string coupon_sn = 3;
+    string title = 4;
+    int32 total = 5;
+    int32 stock = 6;
+    bool is_at_least = 7;
+    float at_least = 8;
+    int32 effective_type = 9;
+    int32 effective_fixed_term = 10;
+    string effective_start_at = 11;
+    string effective_end_at = 12;
+    bool expire_notice = 13;
+    bool is_expired = 14;
+    bool is_ongoing = 15;
+    bool is_forbid_preference = 16;
+    bool is_share = 17;
+    bool is_cancel = 18;
+    bool is_delete = 19;
+    bool is_sync_weixin = 20;
+    int32 need_user_level = 21;
+    int32 preferential_type = 22;
+    float preferential_money = 23;
+    float preferential_discount = 24;
+    int32 quota = 25;
+    int32 exchange_num = 26;
+    string range_type = 27;
+    string service_phone = 28;
+    int32 total_fans_taked = 29;
+    int32 total_fans_used = 30;
+    int32 total_taked = 31;
+    int32 total_used = 32;
+    string coupon_url = 33;
+    string description = 34;
+    int32 status = 35;
+    string weixin_title = 36;
+    string weixin_sub_title = 37;
+    string weixin_color = 38;
+    string receive_type = 39;
+    string created_at = 40;
+    string updated_at = 41;
+    repeated CouponTicket tickets = 42;
+    repeated CouponGoods goodses = 43;
+    repeated int64 ids = 44;
+    bool is_receive = 45;// 是否可领取
+}
+
+
+//
+message CouponResponse {
+    Coupon entity = 1;
+    common.Pager pager =2;
+    repeated Coupon items = 3;
+    common.Error error = 4;
+    common.Info info =5;
+}

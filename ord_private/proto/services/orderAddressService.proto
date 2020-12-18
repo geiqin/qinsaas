@@ -1,0 +1,42 @@
+syntax = "proto3";
+package services;
+option go_package = ".;services";
+import "common/base.proto";
+import "areaInfoService.proto";
+
+service OrderAddressService {
+    rpc Create (OrderAddress) returns (OrderAddressResponse) {}
+    rpc Update (OrderAddress) returns (OrderAddressResponse) {}
+    rpc Delete (OrderAddress) returns (OrderAddressResponse) {}
+    rpc Get (OrderAddress) returns (OrderAddressResponse) {}
+    rpc Search (common.BaseWhere) returns (OrderAddressResponse) {}
+}
+
+message OrderAddress {
+    int64 id = 1;
+    string name = 3;
+    int64 area_id = 4;
+    string addr = 5;
+    string zip = 6;
+    string phone = 7;
+    string mobile = 8;
+    string email = 9;
+    string delivery_time = 10;
+    bool confirmed = 11;
+    int64 order_id = 12;
+    int64 address_id = 13;
+    string created_at = 14;
+    string updated_at = 15;
+    AreaInfo area = 16;
+    string lng = 17;
+    string lat = 18;
+}
+
+
+message OrderAddressResponse {
+    OrderAddress entity = 1;
+    common.Pager pager =2;
+    repeated OrderAddress items = 3;
+    common.Error error = 4;
+    common.Info info =5;
+}

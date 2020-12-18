@@ -1,0 +1,17 @@
+syntax = "proto3";
+package services;
+option go_package = ".;services";
+import "common/base.proto";
+
+service CronService {
+    // 订单超时自动关闭（下单后超过1天未支付）
+    rpc OrderClose(common.Empty) returns(CronServiceResponse) {}
+    // 订单超时自动收货（发货后超过7天未收货）
+    rpc OrderReceipt(common.Empty) returns(CronServiceResponse) {}
+}
+
+message CronServiceResponse {
+  common.Pager pager = 1;
+  common.Error error = 2;
+  common.Info info = 3;
+}

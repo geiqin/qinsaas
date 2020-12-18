@@ -1,0 +1,42 @@
+syntax = "proto3";
+package services;
+option go_package = ".;services";
+
+message HotelBookReq {
+    int64 room_price_plan_id = 1;
+    string checkin_time = 2;
+    string checkout_time = 3;
+    int32 room_num = 4;
+    bool is_extra_bed = 5; // 是否加床
+    string book_room_json = 6; // 预留信息(json数据), 包括字段: name-字段名, value-值
+    repeated HotelBookCheckin book_checkins = 7;
+}
+
+// 入住人信息
+message HotelBookCheckin {
+    string guest_name = 1;
+    string guest_mobile = 2;
+    int32 guest_document_type = 3;
+    string guest_document_no = 4;
+    repeated HotelBookCheckin together_details = 5;
+}
+
+message HotelBook {
+    bool bookable = 1; // 当前是否可预定
+    int32 max_book_count = 2; // 订单最多可预订房间数(0-不限)
+    int32 min_book_count = 3; // 订单最低预订房间数
+    int32 book_day = 4; // 最多可预定天数(0-不限)
+    string ahead_date = 5; // 可预定最晚的离店日期
+    string book_room_json = 6; // 预留信息(json数据), 包括字段: name-字段名, tips_word-输入框内引导提示文案
+    bool is_book_content_confirm = 7; // 下单前是否需要进行预订须知确认
+    string book_content = 8; // 预定须知内容
+    string book_name = 9; // 房型名称
+    bool is_online_deposit = 10; // 是否线上支付押金
+    int32 guest_num = 11; // 最多可住人数
+    bool is_need_housemate = 12; // 是否填写同住人信息
+    bool is_extra_bed = 13; // 可否加床
+    string extra_bed_name = 14; // 加床自定义名称
+    float extra_bed_price = 15; // 加床费
+    int32 breakfast_count = 16; // 早餐份数
+    string gift_content = 17; // 礼包内容
+}

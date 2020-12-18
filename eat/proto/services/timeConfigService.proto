@@ -1,0 +1,19 @@
+syntax = "proto3";
+package services;
+option go_package = ".;services";
+import "timeRangeService.proto";
+
+message TimeConfigWhere {
+    string business_type = 1;
+    int32 time_type = 2;
+}
+
+message TimeConfig {
+    int64 id = 1;
+    string business_type = 2;
+    int32 time_type = 3;
+    string field_name = 4;
+    string created_at = 5;
+    string updated_at = 6;
+    repeated TimeRange time_ranges = 7;
+}

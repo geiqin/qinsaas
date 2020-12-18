@@ -1,0 +1,11 @@
+syntax = "proto3";
+package services;
+option go_package = ".;services";
+
+message TimeRange {
+    int64 id = 1;
+    int64 time_config_id = 2;
+    string start_time = 3;
+    string end_time = 4;
+    string weeks = 5;
+}

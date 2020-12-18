@@ -1,0 +1,65 @@
+syntax = "proto3";
+package services;
+option go_package = ".;services";
+import "common/base.proto";
+import "orderService.proto";
+import "buyingService.proto";
+import "orderFoodService.proto";
+import "couponTicketInfoService.proto";
+import "integralService.proto";
+
+service MyEatInOrderService {
+    // 下单确认
+    rpc Confirm (BuyingRequest) returns (BuyingResponse) {}
+    // 提交订单
+    rpc Submit (BuyingRequest) returns (OrderResponse) {}
+    // 获取点餐台订单列表
+    rpc ListByTable (OrderWhere) returns (OrderResponse) {}
+    // 加菜(订单未支付时将更新订单，已支付则创建新订单)
+    rpc AddDish (BuyingRequest) returns (OrderResponse) {}
+    // 订单结算确认
+    rpc SettlementConfirm (SettlementRequestByEatIn) returns (SettlementConfirmByEatInResponse) {}
+    // 订单结算
+    rpc Settlement (SettlementRequestByEatIn) returns (OrderResponse) {}
+}
+
+service EatInOrderService {
+    // 获取点餐台订单列表(用于商家接单、订单结算确认、订单结算)
+    rpc ListByTable (OrderWhere) returns (OrderResponse) {}
+    // 订单结算确认
+    rpc SettlementConfirm (SettlementRequestByEatIn) returns (SettlementConfirmByEatInResponse) {}
+    // 订单结算
+    rpc Settlement (SettlementRequestByEatIn) returns (OrderResponse) {}
+}
+
+message SettlementRequestByEatIn {
+    int64 order_id = 1;
+    int64 use_ticket_id = 2; // 使用的优惠劵凭证ID
+    bool is_use_jf = 3; // 是否使用积分抵扣
+}
+
+// 结算确认清单
+message SettlementConfirmByEatIn {
+    int32 count = 1;
+    float total = 2;
+    float discount = 3;
+    float amount = 4;
+    int64 use_ticket_id = 5; //正在使用的优惠劵ID
+    repeated int64 available_ticket_ids = 6; //可以使用的优惠劵
+    repeated BuyingItem items = 7;
+    CouponTicket use_ticket = 8;
+    float member_money = 10; // 会员优惠金额
+    float limit_discount_money = 11; // 限时活动优惠金额
+    float reward_money = 12; // 满减送活动优惠金额
+    float coupon_money = 13; // 优惠券优惠金额
+    Integral integral = 14; // 积分信息
+    OrderFood food = 15; // 餐饮商品信息
+}
+
+message SettlementConfirmByEatInResponse {
+    SettlementConfirmByEatIn entity = 1;
+    common.Pager pager =2;
+    repeated SettlementConfirmByEatIn items = 3;
+    common.Error error = 4;
+    common.Info info =5;
+}

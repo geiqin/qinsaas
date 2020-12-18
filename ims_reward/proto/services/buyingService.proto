@@ -1,0 +1,44 @@
+syntax = "proto3";
+package services;
+option go_package = ".;services";
+import "common/base.proto";
+import "rewardStepService.proto";
+
+service BuyingService {
+    //计算优惠
+    rpc Calculate (Buying) returns (BuyingResponse) {}
+}
+
+//购买清单
+message Buying {
+    string solution = 1;
+    int32 count = 2;
+    float total = 3;
+    float discount = 4;
+    float freight = 5;
+    float amount = 6;
+    int32 point = 7;
+    repeated BuyingItem items = 8;
+    repeated RewardCoupon coupons = 9; //赠送的优惠券
+    bool changed = 10;
+}
+
+//购买清单明细
+message BuyingItem {
+    int64 item_id = 1;
+    int64 sku_id = 2;
+    int32 num = 3;
+    float price = 4;
+    float origin_price = 5;
+    float sub_total = 6;
+    int64 promotion_id =7;
+    bool is_gift = 8;// 是否赠品
+}
+
+message BuyingResponse {
+    Buying entity = 1;
+    common.Pager pager = 2;
+    repeated Buying items = 3;
+    common.Error error = 4;
+    common.Info info = 5;
+}

@@ -1,0 +1,38 @@
+syntax = "proto3";
+package services;
+option go_package = ".;services";
+import "common/base.proto";
+
+service RoomBillDetailService{
+    // 查询账单明细
+    rpc Search(RoomBillDetailWhere) returns(RoomBillDetailResponse);
+}
+
+message RoomBillDetailWhere {
+    int32 paged = 1;
+    int32 page_size = 2;
+    int64 room_bill_id = 3;
+    int32 status = 4;
+    int64 room_book_id = 5;
+}
+
+message RoomBillDetail {
+    int64 id = 1;
+    int64 room_bill_id = 2;
+    string bill_item_code = 3;
+    float consume_amount = 4;
+    float pay_amount = 5;
+    string memo = 6;
+    int32 status = 7;
+    int64 opt_id = 8;
+    string created_at = 9;
+    string updated_at = 10;
+}
+
+message RoomBillDetailResponse {
+    common.Error error = 1;
+    common.Info info = 2;
+    common.Pager pager = 3;
+    RoomBillDetail entity = 4;
+    repeated RoomBillDetail items = 5;
+}

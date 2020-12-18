@@ -1,0 +1,44 @@
+syntax = "proto3";
+package services;
+option go_package = ".;services";
+import "common/base.proto";
+import "orderStatsService.proto";
+import "orderUnhandledStatsService.proto";
+
+service MyStatisticsService {
+    //获取用户未处理订单数量
+    rpc Unhandled (StatsRequest) returns (CustomerOrderHandledStatsResponse) {}
+}
+
+service StatisticsService {
+    //获取订单每日统计数据
+    rpc OrderDaily (StatsRequest) returns (OrderDayStatsResponse) {}
+    //获取订单统计数据
+    rpc OrderTotal (StatsRequest) returns (OrderStatsResponse) {}
+    //今日实时统计
+    rpc TodayTotal (StatsRequest) returns (OrderDayStatsResponse) {}
+    //获取订单近30日客单统计明细数据
+    rpc OrderDays (StatsRequest) returns (OrderDayStatsResponse) {}
+    //获取店铺未处理订单数量
+    rpc Unhandled (StatsRequest) returns (OrderHandledStatsResponse) {}
+    //查询用户购买的商品
+    rpc CustomerGoods (StatsRequest) returns (CustomerGoodsResponse) {}
+    //获取用户订单统计数据
+    rpc CustomerOrder (StatsRequest) returns (CustomerOrderStatsResponse) {}
+    //获取用户未处理订单数量
+    rpc CustomerUnhandled (StatsRequest) returns (CustomerOrderHandledStatsResponse) {}
+    //重置统计
+    rpc Reset (common.Empty) returns (OrderStatsResponse) {}
+}
+
+message StatsRequest {
+    string type = 1;
+    int32 days = 2;
+    int32 paged = 3;
+    int32 page_size = 4;
+    int64 customer_id = 5;
+    string start_at = 6;
+    string end_at = 7;
+    string statistic_at = 8;
+
+}

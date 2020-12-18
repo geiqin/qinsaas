@@ -1,0 +1,43 @@
+syntax = "proto3";
+package services;
+option go_package = ".;services";
+import "common/base.proto";
+
+service NavItemService {
+    rpc Tree(NavItemWhere) returns (NavItemResponse);
+}
+
+message NavItemWhere {
+    int32 paged = 1;
+    int32 page_size = 2;
+    int64 id = 3;
+    bool is_top = 4; // 是否往上查找父节点
+    string nav_position_name = 5;
+    string object_type = 6;
+    string object_value = 7;
+    int64 nav_id = 8;
+}
+
+message NavItem {
+    int64 id = 1;
+    int64 nav_id = 2;
+    string title = 3;
+    string name = 4;
+    int64 nav_item_id = 5;
+    string object_type = 6;
+    string object_value = 7;
+    int32 sorting = 8;
+    string extra = 9;
+    string created_at = 10;
+    string updated_at = 11;
+    repeated NavItem children = 12;
+    string alias = 13;
+}
+
+message NavItemResponse {
+    NavItem entity = 1;
+    common.Pager pager = 2;
+    common.Error error = 3;
+    common.Info info = 4;
+    repeated NavItem items = 5;
+}

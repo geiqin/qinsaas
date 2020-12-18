@@ -1,0 +1,39 @@
+syntax = "proto3";
+package services;
+option go_package = ".;services";
+import "common/base.proto";
+
+service BuyingService {
+    rpc Calculate (Buying) returns (BuyingResponse) {}
+}
+
+//购买清单
+message Buying {
+    float total = 1;
+    int32 count = 2;
+    float freight = 3; // 运费
+    float amount = 4; // 实际支付金额(包含运费)
+    int32 points = 5;// 用户可用的积分
+    float cash_exchange_money = 6; // 抵现金额
+    int32 cash_exchange_points = 7; // 抵现的积分
+    string integral_name = 8; // 积分显示的名称
+    repeated BuyingItem items = 9;
+}
+
+//购买清单明细
+message BuyingItem {
+    int64 item_id =1;
+    int64 sku_id =2;
+    int32 num =3;
+    float price =4;
+    float origin_price =5;
+    float sub_total =6;
+}
+
+message BuyingResponse {
+    Buying entity = 1;
+    common.Pager pager =2;
+    repeated Buying items = 3;
+    common.Error error = 4;
+    common.Info info =5;
+}

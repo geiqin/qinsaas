@@ -1,0 +1,51 @@
+syntax = "proto3";
+package services;
+option go_package = ".;services";
+import "common/base.proto";
+
+service IntegralService {
+    rpc Search(IntegralWhere) returns (IntegralResponse) {}
+    rpc Get(IntegralWhere) returns (IntegralResponse) {}
+    // 增加积分
+    rpc Inc(IntegralWhere) returns (IntegralResponse) {}
+    // 减少积分
+    rpc Dec(IntegralWhere) returns (IntegralResponse) {}
+}
+
+service MyIntegralService {
+    rpc Get(IntegralWhere) returns (IntegralResponse) {}
+}
+
+message IntegralWhere {
+    int32 paged = 1;
+    int32 page_size = 2;
+    string sorting = 3;
+    string keywords = 4;
+    int64 id = 5;
+    repeated int64 ids = 6;
+    int64 customer_id = 7;
+    repeated int64 customer_ids = 8;
+    int32 points = 9;
+    string memo = 10;
+}
+
+message Integral {
+    int64 id = 1;
+    int64 customer_id = 2;
+    int64 points = 3;
+    int64 total_points = 4;
+    int64 used_points = 5;
+    int64 expired_points = 6;
+    int64 frozen_points = 7;
+    int64 protect_points = 8;
+    string created_at = 9;
+    string updated_at = 10;
+}
+
+message IntegralResponse {
+    Integral entity = 1;
+    common.Pager pager = 2;
+    repeated Integral items = 3;
+    common.Error error = 4;
+    common.Info info = 5;
+}

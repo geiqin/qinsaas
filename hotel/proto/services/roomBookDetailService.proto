@@ -1,0 +1,82 @@
+syntax = "proto3";
+package services;
+option go_package = ".;services";
+import "common/base.proto";
+import "roomCheckinService.proto";
+import "roomBookPriceService.proto";
+
+service RoomBookDetailService{
+    rpc Search(RoomBookDetailWhere) returns(RoomBookDetailResponse);
+    // 预定详情列表(可获取待入住/可退房列表)
+    rpc List(RoomBookDetailWhere) returns(RoomBookDetailResponse);
+    // 取消预订
+    rpc Cancel(RoomBookDetailWhere) returns (RoomBookDetailResponse);
+    // 排房
+    rpc ArrangeRoom(RoomBookDetailWhere) returns (RoomBookDetailResponse);
+    // 取消排房
+    rpc CancelArrangeRoom(RoomBookDetailWhere) returns (RoomBookDetailResponse);
+    // 办理入住
+    rpc Checkin(RoomBookDetail) returns (RoomBookDetailResponse);
+    // 办理退房
+    rpc Checkout(RoomBookDetailWhere) returns (RoomBookDetailResponse);
+    // 办理换房
+    rpc Exchange(RoomBookDetailWhere) returns (RoomBookDetailResponse);
+}
+
+message RoomBookDetailWhere {
+    int32 paged = 1;
+    int32 page_size = 2;
+    int64 id = 3;
+    repeated int64 ids = 4;
+    int32 keywords_type = 5; // 查询关键字类型:1-客房姓名,2-证件号,3-手机号,4-房号
+    string keywords = 6;
+    int32 time_type = 7; // 查询时间段类型:1-下单时间,2-入住时间,3-离店时间
+    string start_date = 8;
+    string end_date = 9;
+    int32 status = 10; // 状态:1-待入住,2-入住中,3-已退房,4-超时未入住,5-已取消,6-已结算,100-待入住&入住中,101-超时未入住(定时任务处理)
+    int32 quick = 11; // 快捷筛选:1-今日预抵店,2-今日预离店,3-今日抵店,4-今日离店
+    int64 room_book_id = 12;
+    bool is_arrange_room = 13; // 是否已排房
+    string remark = 14;
+    int64 room_id = 15;
+    string room_name = 16;
+    string type = 17;
+    string date = 18;
+    bool is_settlement = 19;
+    repeated RoomBookDetail items = 20;
+}
+
+message RoomBookDetail {
+    int64 id = 1;
+    string type = 19;
+    string room_book_detail_sn = 2;
+    int64 room_book_id = 3;
+    // @inject_tag: validate:"required" label:"房型ID"
+    int64 room_type_id = 4;
+    // @inject_tag: validate:"required" label:"房型名称"
+    string room_type_name = 5;
+    int64 room_id = 6;
+    string room_name = 7;
+    int32 breakfast_num = 8;
+    float total_price = 9;
+    string checkin_time = 10;
+    string checkout_time = 11;
+    int32 day_num = 12;
+    int32 status = 13;
+    string book_name = 14;
+    string book_mobile = 15;
+    string created_at = 16;
+    string updated_at = 17;
+    RoomCheckin room_checkin_info = 18;
+    repeated RoomBookPrice price_list = 20;
+    repeated RoomBookDetail items = 21;
+    int32 customer_type = 22;
+}
+
+message RoomBookDetailResponse {
+    common.Error error = 1;
+    common.Info info = 2;
+    common.Pager pager = 3;
+    RoomBookDetail entity = 4;
+    repeated RoomBookDetail items = 5;
+}

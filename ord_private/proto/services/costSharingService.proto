@@ -1,0 +1,28 @@
+syntax = "proto3";
+package services;
+option go_package = ".;services";
+import "common/base.proto";
+import "orderService.proto";
+
+service CostSharingService {
+    // 计算订单明细分摊后的总金额
+    rpc Calculate (CostSharingWhere) returns (CostSharingResponse) {}
+}
+
+message CostSharingWhere {
+    Order order = 1;
+    int64 orderDetailId = 2;
+    repeated int64 orderDetailIds = 3;
+}
+
+message CostSharing {
+    float money = 1;
+}
+
+message CostSharingResponse {
+    CostSharing entity = 1;
+    common.Pager pager = 2;
+    repeated CostSharing items = 3;
+    common.Error error = 4;
+    common.Info info = 5;
+}

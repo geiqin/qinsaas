@@ -1,0 +1,45 @@
+syntax = "proto3";
+package services;
+option go_package = ".;services";
+import "common/base.proto";
+import "fanShareService.proto";
+import "fanTrackService.proto";
+
+service MyWechatService {
+    //记录推荐人
+    rpc Recommender (Wechat) returns (common.TokenResponse) {}
+    //记录分享痕迹
+    rpc WriteShare (Wechat) returns (common.TokenResponse) {}
+    //记录追踪痕迹
+    rpc WriteTrack (Wechat) returns (WechatResponse) {}
+    //拉取绑定手机号码
+    rpc PullMobile (Wechat) returns (WechatResponse) {}
+}
+
+service WechatService {
+    //生成二维码（公众号二维码和小程序码，支持批量生成）
+    rpc MakeCode (Wechat) returns (WechatResponse) {}
+    //二维码查询
+    rpc CodeSearch (Wechat) returns (WechatResponse) {}
+    //跟踪痕迹查询
+    rpc TrackSearch (FanTrack) returns (FanTrackResponse) {}
+    //分享痕迹查询
+    rpc ShareSearch (FanShare) returns (FanShareResponse) {}
+}
+
+message Wechat {
+    string signature =1;
+    string code =2;
+    string rawData =3;
+    string encryptedData =4;
+    string iv =5;
+    string scene =6;
+}
+
+message WechatResponse {
+    Wechat entity = 1;
+    common.Pager pager = 2;
+    repeated Wechat items = 3;
+    common.Error error = 4;
+    common.Info info = 5;
+}

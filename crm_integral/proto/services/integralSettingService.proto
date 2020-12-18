@@ -1,0 +1,47 @@
+syntax = "proto3";
+package services;
+option go_package = ".;services";
+import "common/base.proto";
+
+service IntegralSettingService {
+    // 获取积分通用配置
+    rpc Get (IntegralSetting) returns (IntegralSettingResponse) {}
+    // 设置积分通用有效期
+    rpc SetEffective (IntegralSetting) returns (IntegralSettingResponse) {}
+    // 设置积分获取上限
+    rpc SetLimit (IntegralSetting) returns (IntegralSettingResponse) {}
+    // 设置积分保护期
+    rpc SetProtect (IntegralSetting) returns (IntegralSettingResponse) {}
+    // 自定义积分名称
+    rpc SetName (IntegralSetting) returns (IntegralSettingResponse) {}
+    // 设置积分兑换比例
+    rpc SetRatio (IntegralSetting) returns (IntegralSettingResponse) {}
+    // 设置积分抵现
+    rpc SetCashExchange (IntegralSetting) returns (IntegralSettingResponse) {}
+}
+
+message IntegralSetting {
+    int64 id = 1;
+    int32 limit = 2;
+    int32 effective_type = 3;
+    int32 expire_year_num = 4;
+    string expire_at = 6;
+    int32 protect_days = 7;
+    string integral_name = 8;
+    int32 integral_ratio = 9;
+    bool is_cash_exchange = 10;
+    float cash_exchange_money = 11;
+    float cash_exchange_limit = 12;
+    string created_at = 13;
+    string updated_at = 14;
+    int32 cash_exchange_type = 15;
+    float cash_exchange_rate = 16;
+}
+
+message IntegralSettingResponse {
+    IntegralSetting entity = 1;
+    common.Pager pager = 2;
+    repeated IntegralSetting items = 3;
+    common.Error error = 4;
+    common.Info info = 5;
+}

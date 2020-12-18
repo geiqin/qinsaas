@@ -4,8 +4,8 @@
 package services
 
 import (
-	common "github.com/geiqin/microkit/protobuf/common"
 	fmt "fmt"
+	common "github.com/geiqin/microkit/protobuf/common"
 	proto "github.com/golang/protobuf/proto"
 	math "math"
 )

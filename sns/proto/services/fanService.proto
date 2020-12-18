@@ -1,0 +1,63 @@
+syntax = "proto3";
+package services;
+option go_package = ".;services";
+import "common/base.proto";
+
+service MyFanService {
+    rpc Info (common.Empty) returns (FanResponse) {}
+}
+
+service FanService {
+    rpc Update (Fan) returns (FanResponse) {}
+    rpc Delete (Fan) returns (FanResponse) {}
+    rpc Get (Fan) returns (FanResponse) {}
+    rpc Search (FanWhere) returns (FanResponse) {}
+}
+
+message Fan {
+    int64 id = 1;
+    string fan_sn = 2;
+    string source = 3;
+    string open_id = 4;
+    string union_id = 5;
+    string nick_name = 6;
+    string avatar_url = 7;
+    int32 gender = 8;
+    string province = 9;
+    string city = 10;
+    string country = 11;
+    bool followed = 12;
+    string followed_at = 13;
+    int64 customer_id = 14;
+    string remark = 15;
+    string mobile = 16;
+    string email = 17;
+    string created_at = 18;
+    string updated_at = 19;
+    repeated int64 ids = 20;
+}
+
+
+//粉丝查询参数
+message FanWhere {
+    int32 paged = 1;
+    int32 page_size = 2;
+    string sorting = 3;
+    //以下为自定义参数
+    string name = 4;
+    int32 gender =5;
+    string mobile =6;
+    string source =7;
+    string status =13;
+    string keywords =14;
+}
+
+
+//
+message FanResponse {
+    Fan entity = 1;
+    common.Pager pager =2;
+    repeated Fan items = 3;
+    common.Error error = 4;
+    common.Info info =5;
+}

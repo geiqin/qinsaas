@@ -1,0 +1,52 @@
+syntax = "proto3";
+package services;
+option go_package = ".;services";
+import "common/base.proto";
+import "rewardGoodsService.proto";
+import "rewardStepService.proto";
+
+service RewardService {
+    //创建满减送活动
+    rpc Create (Reward) returns (RewardResponse) {}
+    // 编辑满减送活动
+    rpc Update (Reward) returns (RewardResponse) {}
+    // 删除满减活动
+    rpc Delete (Reward) returns (RewardResponse) {}
+    //终止满减送活动
+    rpc Cancel (Reward) returns (RewardResponse) {}
+    // 获取活动详情
+    rpc Get (Reward) returns (RewardResponse) {}
+    //分页查询活动列表
+    rpc Search (common.BaseWhere) returns (RewardResponse) {}
+    //获取活动列表
+    rpc List (common.BaseWhere) returns (RewardResponse) {}
+}
+
+
+message Reward {
+    int64 id = 1;
+    string name = 2;
+    string start_at = 3;
+    string end_at = 4;
+    int32 range_type = 5;
+    int32 condition_type = 6;
+    int32 step_num = 7;
+    string description = 8;
+    string created_at = 9;
+    string updated_at = 10;
+    repeated RewardGoods goodses = 11;
+    repeated RewardStep steps = 12;
+    bool looped = 13; // 是否循环满减
+    int32 status = 14;
+    string status_name = 15;
+}
+
+
+//
+message RewardResponse {
+    Reward entity = 1;
+    common.Pager pager =2;
+    repeated Reward items = 3;
+    common.Error error = 4;
+    common.Info info =5;
+}

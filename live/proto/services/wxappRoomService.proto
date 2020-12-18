@@ -1,0 +1,100 @@
+syntax = "proto3";
+package services;
+option go_package = ".;services";
+import "common/base.proto";
+import "wxappRoomGoodsService.proto";
+
+service FrontWxappRoomService {
+    rpc Search(WxappRoomWhere) returns(WxappRoomResponse) {} // 查询直播间
+}
+
+service WxappRoomService {
+    rpc Create(WxappRoom) returns(WxappRoomCreateOrUpdateResponse) {} // 创建直播间
+    rpc Update(WxappRoom) returns(WxappRoomCreateOrUpdateResponse) {} // 编辑直播间
+    rpc Search(WxappRoomWhere) returns(WxappRoomResponse) {} // 查询直播间
+    rpc Delete(WxappRoomWhere) returns(WxappRoomResponse) {} // 删除直播间
+    rpc SearchLiveInfo(WxappRoomWhere) returns(WxappLiveReplayResponse) {} // 查询直播间回放源视频列表
+    rpc AddGoods(WxappRoomWhere) returns(WxappRoomResponse) {} // 直播间导入商品(支持批量导入)
+    rpc GetPushUrl(WxappRoomWhere) returns(WxappRoomResponse) {} // 获取直播推流地址
+    rpc GetSharedCode(WxappRoomWhere) returns(WxappRoomResponse) {} // 获取直播间分享二维码
+    rpc UpdateFeedPublic(WxappRoomWhere) returns(WxappRoomResponse) {} // 开启/关闭直播间官方收录
+    rpc UpdateReplay(WxappRoomWhere) returns(WxappRoomResponse) {} // 开启/关闭回放功能
+    rpc UpdateKf(WxappRoomWhere) returns(WxappRoomResponse) {} // 开启/关闭客服功能
+    rpc UpdateComment(WxappRoomWhere) returns(WxappRoomResponse) {} // 开启/关闭直播间全局禁言
+}
+
+message WxappRoomWhere {
+    int32 paged = 1;
+    int32 page_size = 2;
+    string sorting = 3;
+    int64 room_id = 4;
+    repeated int64 room_ids = 5;
+    int64 goods_id = 6;
+    repeated int64 goods_ids = 7;
+    string params = 8;
+    bool is_open = 9;
+}
+
+message WxappRoom {
+    int64 room_id = 1;
+    string name = 2; // 房间名字
+    string cover_img = 3;
+    string start_time = 4; // 开始时间
+    string end_time = 5; // 结束时间
+    string anchor_name = 6;  // 主播昵称
+    string anchor_wechat = 7; // 主播微信号
+    string sub_anchor_wechat = 8; // 主播副号微信号
+    string creater_wechat = 9; // 创建者微信号
+    string share_img = 10;
+    string feeds_img = 11;
+    int32 is_feeds_public = 12; // 是否开启官方收录，1 开启，0 关闭
+    int32 type = 13; // 直播类型，1 推流 0 手机直播
+    int32 screen_type = 14; // 1：横屏 0：竖屏
+    int32 close_like = 15; // 是否关闭点赞 1：关闭
+    int32 close_goods = 16; // 是否关闭商品货架，1：关闭
+    int32 close_comment = 17; // 是否开启评论，1：关闭
+    int32 close_replay = 18; // 是否关闭回放 1 关闭
+    int32 close_share = 19; //  是否关闭分享 1 关闭
+    int32 close_kf = 20; // 是否关闭客服，1 关闭
+    int32 live_status = 21;
+    string cover_img_id = 22; // 背景图ID 通过 uploadfile 上传，填写 mediaID
+    string share_img_id = 23; // 分享图ID 通过 uploadfile 上传，填写 mediaID
+    string feeds_img_id = 24; // 购物直播频道封面图ID 通过 uploadfile 上传，填写 mediaID
+    repeated WxappRoomGoodsCommon2 goods = 25;
+}
+
+message WxappRoomCreateOrUpdate {
+    int64 room_id = 1;
+    string qrcode_url = 2; // 当主播微信号没有在 “小程序直播“ 小程序实名认证 返回该字段
+    int32 err_code = 3;
+    string err_msg = 4;
+}
+
+// 直播间回放
+message WxappLiveReplay {
+    string expire_time = 1;
+    string create_time = 2;
+    string media_url = 3;
+}
+
+message WxappRoomResponse {
+    WxappRoom entity = 1;
+    common.Pager pager = 2;
+    repeated WxappRoom items = 3;
+    common.Error error = 4;
+    common.Info info = 5;
+}
+
+message WxappRoomCreateOrUpdateResponse {
+    WxappRoomCreateOrUpdate entity = 1;
+    common.Error error = 2;
+    common.Info info = 3;
+}
+
+message WxappLiveReplayResponse {
+    WxappLiveReplay entity = 1;
+    common.Pager pager = 2;
+    repeated WxappLiveReplay items = 3;
+    common.Error error = 4;
+    common.Info info = 5;
+}

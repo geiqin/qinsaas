@@ -1,9 +1,8 @@
 syntax = "proto3";
 package services;
-option go_package =".;services";
+option go_package = ".;services";
 import "common/base.proto";
 import "appToolService.proto";
-
 
 service AppToolDesktopService {
     rpc Create (AppToolDesktop) returns (AppToolDesktopResponse) {}

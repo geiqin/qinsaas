@@ -1,0 +1,82 @@
+syntax = "proto3";
+package services;
+option go_package = ".;services";
+import "common/base.proto";
+import "roomTypeGalleryService.proto";
+import "roomTypeFacilityService.proto";
+import "roomTypeTagService.proto";
+import "roomService.proto";
+import "roomPricePlanService.proto";
+
+service RoomTypeService {
+    rpc Search (RoomTypeWhere) returns (RoomTypeResponse);
+    rpc List (RoomTypeWhere) returns (RoomTypeResponse);
+    rpc Delete (RoomTypeWhere) returns (RoomTypeResponse);
+    rpc Get (RoomType) returns (RoomTypeResponse);
+    rpc Create (RoomType) returns (RoomTypeResponse);
+    rpc Update (RoomType) returns (RoomTypeResponse);
+    rpc ModifySort (RoomTypeWhere) returns (RoomTypeResponse);
+    rpc PricePlanList (RoomTypeWhere) returns (RoomTypeResponse);
+}
+
+service FrontRoomTypeService {
+    rpc Search (RoomTypeWhere) returns (RoomTypeResponse);
+    rpc List (RoomTypeWhere) returns (RoomTypeResponse);
+    rpc Get (RoomType) returns (RoomTypeResponse);
+}
+
+message RoomType {
+    int64 id = 1;
+    // @inject_tag: validate:"required" label:"房间名称"
+    string name	= 2;
+    // @inject_tag: validate:"required,numeric" label:"门市价"
+    float price = 3;
+    float deposit	= 4;
+    bool is_online_deposit = 5;
+    float area = 6;
+    // @inject_tag: validate:"required,numeric" label:"可住人数"
+    int32 guest_num	= 7;
+    bool is_need_housemate = 8;
+    int32 extra_bed_type = 9;
+    float extra_bed_price = 10;
+    string extra_bed_name = 11;
+    // @inject_tag: validate:"required" label:"房型介绍"
+    string detail	= 12;
+    int32 sorting = 13;
+    int32 sold_num = 14;
+    int32 room_num = 15;
+    int32 room_price_plan_num = 25;
+    int32 room_price_plan_open_num = 26;
+    string created_at = 16;
+    string updated_at = 17;
+    repeated RoomTypeGallery galleries = 18;
+    // @inject_tag: gorm:"many2many:room_type_facility_relations;"
+    repeated RoomTypeFacility facilities = 19;
+    // @inject_tag: gorm:"many2many:room_type_tag_relations;"
+    repeated RoomTypeTag tags = 20;
+    repeated Room rooms = 21;
+    repeated RoomPricePlan price_plans = 22;
+    repeated int32 room_type_facility_ids = 23;
+    repeated int32 room_type_tag_ids = 24;
+}
+
+message RoomTypeWhere {
+    int32 paged = 1;
+    int32 page_size = 2;
+    int32 top = 3;
+    string keywords = 4;
+    int64 id = 5;
+    repeated int64 ids = 6;
+    bool is_client = 7;
+    int32 sorting = 8;
+    string checkin_date = 9; // 入住日期
+    string checkout_date = 10; // 离店日期
+}
+
+message RoomTypeResponse {
+    common.Error error = 1;
+    common.Info info = 2;
+    common.Pager pager = 3;
+    RoomType entity = 4;
+    repeated RoomType items = 5;
+}

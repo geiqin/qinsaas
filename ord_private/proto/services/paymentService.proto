@@ -1,0 +1,47 @@
+syntax = "proto3";
+package services;
+option go_package = ".;services";
+import "common/base.proto";
+import "orderService.proto";
+
+//订单支付
+service PaymentService {
+  //选择支付方式
+  rpc Choose (PayRequest) returns (PayResponse) {}
+  //余额支付
+  rpc Balance (PayRequest) returns (PayResponse) {}
+  //信用支付
+  rpc Credit (PayRequest) returns (PayResponse) {}
+  //微信APP支付
+  rpc WxApp (PayRequest) returns (PayResponse) {}
+  //微信小程序支付
+  rpc WxMini (PayRequest) returns (PayResponse) {}
+  //支付宝手机网页支付
+  rpc AliWap (PayRequest) returns (PayResponse) {}
+  //支付宝APP支付
+  rpc AliApp (PayRequest) returns (PayResponse) {}
+}
+
+//支付请求参数
+message PayRequest {
+  int64 order_id = 1;
+}
+
+message PayMethod {
+  int32 id = 1;
+  string name =2;
+  string title =3;
+  string icon =4;
+  string tips =5;
+  bool enabled =6;
+  string route =7;
+}
+
+
+message PayResponse {
+  Order entity = 1;
+  map<string,string> params   =2;
+  repeated PayMethod methods =3;
+  common.Error error = 4;
+  common.Info info =5;
+}

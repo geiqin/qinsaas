@@ -1,0 +1,11 @@
+syntax = "proto3";
+package services;
+option go_package = ".;services";
+
+message Integral {
+    string integral_name = 1; // 积分显示的名称
+    int32 points = 2;// 用户可用的积分
+    float cash_exchange_money = 3; // 可抵现金额
+    int32 cash_exchange_points = 4; // 用于抵现的积分
+    bool is_use = 5; // 是否使用积分抵现
+}
