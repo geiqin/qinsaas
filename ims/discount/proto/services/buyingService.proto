@@ -19,7 +19,9 @@ message Buying {
     int64 address_id =7;
     int64 customer_id =8;
     int64 use_ticket_id =9; //正在使用的优惠劵ID
+    // @inject_tag: gorm:"-"
     repeated int64 available_ticket_ids =10; //可以使用的优惠劵
+    // @inject_tag: gorm:"-"
     repeated BuyingItem items = 11;
     bool changed = 12;
 }

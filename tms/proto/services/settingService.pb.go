@@ -31,14 +31,14 @@ type Setting struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	Id                    int32  `protobuf:"varint,1,opt,name=id,proto3" json:"id,omitempty"`
-	IsDelivery            bool   `protobuf:"varint,2,opt,name=is_delivery,json=isDelivery,proto3" json:"is_delivery,omitempty"`
-	IsFetch               bool   `protobuf:"varint,3,opt,name=is_fetch,json=isFetch,proto3" json:"is_fetch,omitempty"`
-	IsExpress             bool   `protobuf:"varint,4,opt,name=is_express,json=isExpress,proto3" json:"is_express,omitempty"`
-	ExpressChargingMethod int32  `protobuf:"varint,5,opt,name=express_charging_method,json=expressChargingMethod,proto3" json:"express_charging_method,omitempty"`
-	ShipperId             int32  `protobuf:"varint,6,opt,name=shipper_id,json=shipperId,proto3" json:"shipper_id,omitempty"`
-	CreatedAt             string `protobuf:"bytes,7,opt,name=created_at,json=createdAt,proto3" json:"created_at,omitempty"`
-	UpdatedAt             string `protobuf:"bytes,8,opt,name=updated_at,json=updatedAt,proto3" json:"updated_at,omitempty"`
+	Id                    int32  `protobuf:"varint,1,opt,name=id,proto3" json:"id"`
+	IsDelivery            bool   `protobuf:"varint,2,opt,name=is_delivery,json=isDelivery,proto3" json:"is_delivery"`
+	IsFetch               bool   `protobuf:"varint,3,opt,name=is_fetch,json=isFetch,proto3" json:"is_fetch"`
+	IsExpress             bool   `protobuf:"varint,4,opt,name=is_express,json=isExpress,proto3" json:"is_express"`
+	ExpressChargingMethod int32  `protobuf:"varint,5,opt,name=express_charging_method,json=expressChargingMethod,proto3" json:"express_charging_method"`
+	ShipperId             int32  `protobuf:"varint,6,opt,name=shipper_id,json=shipperId,proto3" json:"shipper_id"`
+	CreatedAt             string `protobuf:"bytes,7,opt,name=created_at,json=createdAt,proto3" json:"created_at"`
+	UpdatedAt             string `protobuf:"bytes,8,opt,name=updated_at,json=updatedAt,proto3" json:"updated_at"`
 }
 
 func (x *Setting) Reset() {
@@ -134,11 +134,11 @@ type SettingResponse struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	Entity *Setting      `protobuf:"bytes,1,opt,name=entity,proto3" json:"entity,omitempty"`
-	Pager  *common.Pager `protobuf:"bytes,2,opt,name=pager,proto3" json:"pager,omitempty"`
-	Items  []*Setting    `protobuf:"bytes,3,rep,name=items,proto3" json:"items,omitempty"`
-	Error  *common.Error `protobuf:"bytes,4,opt,name=error,proto3" json:"error,omitempty"`
-	Info   *common.Info  `protobuf:"bytes,5,opt,name=info,proto3" json:"info,omitempty"`
+	Entity *Setting      `protobuf:"bytes,1,opt,name=entity,proto3" json:"entity"`
+	Pager  *common.Pager `protobuf:"bytes,2,opt,name=pager,proto3" json:"pager"`
+	Items  []*Setting    `protobuf:"bytes,3,rep,name=items,proto3" json:"items"`
+	Error  *common.Error `protobuf:"bytes,4,opt,name=error,proto3" json:"error"`
+	Info   *common.Info  `protobuf:"bytes,5,opt,name=info,proto3" json:"info"`
 }
 
 func (x *SettingResponse) Reset() {

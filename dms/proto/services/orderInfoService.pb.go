@@ -31,26 +31,27 @@ type OrderInfo struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	Id             int64              `protobuf:"varint,1,opt,name=id,proto3" json:"id,omitempty"`
-	OrderId        int64              `protobuf:"varint,2,opt,name=order_id,json=orderId,proto3" json:"order_id,omitempty"`
-	OrderSn        string             `protobuf:"bytes,3,opt,name=order_sn,json=orderSn,proto3" json:"order_sn,omitempty"`
-	PlatformSource string             `protobuf:"bytes,4,opt,name=platform_source,json=platformSource,proto3" json:"platform_source,omitempty"`
-	OrderAmount    float32            `protobuf:"fixed32,5,opt,name=order_amount,json=orderAmount,proto3" json:"order_amount,omitempty"`
-	Money          float32            `protobuf:"fixed32,7,opt,name=money,proto3" json:"money,omitempty"`
-	IncomeType     string             `protobuf:"bytes,8,opt,name=income_type,json=incomeType,proto3" json:"income_type,omitempty"`
-	IncomeRate     float32            `protobuf:"fixed32,9,opt,name=income_rate,json=incomeRate,proto3" json:"income_rate,omitempty"`
-	Status         int32              `protobuf:"varint,10,opt,name=status,proto3" json:"status,omitempty"`                                        // 结算状态
-	BuyerName      string             `protobuf:"bytes,12,opt,name=buyer_name,json=buyerName,proto3" json:"buyer_name,omitempty"`                  // 下单用户名称
-	Mobile         string             `protobuf:"bytes,13,opt,name=mobile,proto3" json:"mobile,omitempty"`                                         // 下单用户手机号
-	OrderStatus    string             `protobuf:"bytes,14,opt,name=order_status,json=orderStatus,proto3" json:"order_status,omitempty"`            // 订单状态
-	TotalNum       int32              `protobuf:"varint,15,opt,name=total_num,json=totalNum,proto3" json:"total_num,omitempty"`                    // 商品数量
-	CanDelivery    bool               `protobuf:"varint,16,opt,name=can_delivery,json=canDelivery,proto3" json:"can_delivery,omitempty"`           // 是否需要发货
-	CanLogistics   bool               `protobuf:"varint,17,opt,name=can_logistics,json=canLogistics,proto3" json:"can_logistics,omitempty"`        // 是否可查看物流
-	OrderCreatedAt string             `protobuf:"bytes,18,opt,name=order_created_at,json=orderCreatedAt,proto3" json:"order_created_at,omitempty"` // 下单时间
-	OrderDetails   []*OrderDetailInfo `protobuf:"bytes,19,rep,name=order_details,json=orderDetails,proto3" json:"order_details,omitempty"`
-	LeaderId       int64              `protobuf:"varint,20,opt,name=leader_id,json=leaderId,proto3" json:"leader_id,omitempty"`            // 团长ID
-	LeaderName     string             `protobuf:"bytes,21,opt,name=leader_name,json=leaderName,proto3" json:"leader_name,omitempty"`       // 团长昵称
-	LeaderMobile   string             `protobuf:"bytes,22,opt,name=leader_mobile,json=leaderMobile,proto3" json:"leader_mobile,omitempty"` // 团长手机号码
+	Id             int64   `protobuf:"varint,1,opt,name=id,proto3" json:"id"`
+	OrderId        int64   `protobuf:"varint,2,opt,name=order_id,json=orderId,proto3" json:"order_id"`
+	OrderSn        string  `protobuf:"bytes,3,opt,name=order_sn,json=orderSn,proto3" json:"order_sn"`
+	PlatformSource string  `protobuf:"bytes,4,opt,name=platform_source,json=platformSource,proto3" json:"platform_source"`
+	OrderAmount    float32 `protobuf:"fixed32,5,opt,name=order_amount,json=orderAmount,proto3" json:"order_amount"`
+	Money          float32 `protobuf:"fixed32,7,opt,name=money,proto3" json:"money"`
+	IncomeType     string  `protobuf:"bytes,8,opt,name=income_type,json=incomeType,proto3" json:"income_type"`
+	IncomeRate     float32 `protobuf:"fixed32,9,opt,name=income_rate,json=incomeRate,proto3" json:"income_rate"`
+	Status         int32   `protobuf:"varint,10,opt,name=status,proto3" json:"status"`                                        // 结算状态
+	BuyerName      string  `protobuf:"bytes,12,opt,name=buyer_name,json=buyerName,proto3" json:"buyer_name"`                  // 下单用户名称
+	Mobile         string  `protobuf:"bytes,13,opt,name=mobile,proto3" json:"mobile"`                                         // 下单用户手机号
+	OrderStatus    string  `protobuf:"bytes,14,opt,name=order_status,json=orderStatus,proto3" json:"order_status"`            // 订单状态
+	TotalNum       int32   `protobuf:"varint,15,opt,name=total_num,json=totalNum,proto3" json:"total_num"`                    // 商品数量
+	CanDelivery    bool    `protobuf:"varint,16,opt,name=can_delivery,json=canDelivery,proto3" json:"can_delivery"`           // 是否需要发货
+	CanLogistics   bool    `protobuf:"varint,17,opt,name=can_logistics,json=canLogistics,proto3" json:"can_logistics"`        // 是否可查看物流
+	OrderCreatedAt string  `protobuf:"bytes,18,opt,name=order_created_at,json=orderCreatedAt,proto3" json:"order_created_at"` // 下单时间
+	// @inject_tag: gorm:"-"
+	OrderDetails []*OrderDetailInfo `protobuf:"bytes,19,rep,name=order_details,json=orderDetails,proto3" json:"order_details"`
+	LeaderId     int64              `protobuf:"varint,20,opt,name=leader_id,json=leaderId,proto3" json:"leader_id"`            // 团长ID
+	LeaderName   string             `protobuf:"bytes,21,opt,name=leader_name,json=leaderName,proto3" json:"leader_name"`       // 团长昵称
+	LeaderMobile string             `protobuf:"bytes,22,opt,name=leader_mobile,json=leaderMobile,proto3" json:"leader_mobile"` // 团长手机号码
 }
 
 func (x *OrderInfo) Reset() {
@@ -230,18 +231,18 @@ type OrderDetailInfo struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	Id         int64   `protobuf:"varint,1,opt,name=id,proto3" json:"id,omitempty"`
-	OrderId    int64   `protobuf:"varint,2,opt,name=order_id,json=orderId,proto3" json:"order_id,omitempty"`
-	ItemId     int64   `protobuf:"varint,3,opt,name=item_id,json=itemId,proto3" json:"item_id,omitempty"`
-	ThumbUrl   string  `protobuf:"bytes,5,opt,name=thumb_url,json=thumbUrl,proto3" json:"thumb_url,omitempty"`
-	SkuId      int64   `protobuf:"varint,6,opt,name=sku_id,json=skuId,proto3" json:"sku_id,omitempty"`
-	ItemSn     string  `protobuf:"bytes,7,opt,name=item_sn,json=itemSn,proto3" json:"item_sn,omitempty"`
-	SkuSn      string  `protobuf:"bytes,8,opt,name=sku_sn,json=skuSn,proto3" json:"sku_sn,omitempty"`
-	ModelType  string  `protobuf:"bytes,9,opt,name=model_type,json=modelType,proto3" json:"model_type,omitempty"`
-	Name       string  `protobuf:"bytes,10,opt,name=name,proto3" json:"name,omitempty"`
-	Num        int32   `protobuf:"varint,12,opt,name=num,proto3" json:"num,omitempty"`
-	Price      float32 `protobuf:"fixed32,13,opt,name=price,proto3" json:"price,omitempty"`
-	TotalPrice float32 `protobuf:"fixed32,14,opt,name=total_price,json=totalPrice,proto3" json:"total_price,omitempty"`
+	Id         int64   `protobuf:"varint,1,opt,name=id,proto3" json:"id"`
+	OrderId    int64   `protobuf:"varint,2,opt,name=order_id,json=orderId,proto3" json:"order_id"`
+	ItemId     int64   `protobuf:"varint,3,opt,name=item_id,json=itemId,proto3" json:"item_id"`
+	ThumbUrl   string  `protobuf:"bytes,5,opt,name=thumb_url,json=thumbUrl,proto3" json:"thumb_url"`
+	SkuId      int64   `protobuf:"varint,6,opt,name=sku_id,json=skuId,proto3" json:"sku_id"`
+	ItemSn     string  `protobuf:"bytes,7,opt,name=item_sn,json=itemSn,proto3" json:"item_sn"`
+	SkuSn      string  `protobuf:"bytes,8,opt,name=sku_sn,json=skuSn,proto3" json:"sku_sn"`
+	ModelType  string  `protobuf:"bytes,9,opt,name=model_type,json=modelType,proto3" json:"model_type"`
+	Name       string  `protobuf:"bytes,10,opt,name=name,proto3" json:"name"`
+	Num        int32   `protobuf:"varint,12,opt,name=num,proto3" json:"num"`
+	Price      float32 `protobuf:"fixed32,13,opt,name=price,proto3" json:"price"`
+	TotalPrice float32 `protobuf:"fixed32,14,opt,name=total_price,json=totalPrice,proto3" json:"total_price"`
 }
 
 func (x *OrderDetailInfo) Reset() {
@@ -365,18 +366,18 @@ type OrderInfoWhere struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	Paged         int32   `protobuf:"varint,1,opt,name=paged,proto3" json:"paged,omitempty"`
-	PageSize      int32   `protobuf:"varint,2,opt,name=page_size,json=pageSize,proto3" json:"page_size,omitempty"`
-	Id            int64   `protobuf:"varint,3,opt,name=id,proto3" json:"id,omitempty"`
-	Mobile        string  `protobuf:"bytes,4,opt,name=mobile,proto3" json:"mobile,omitempty"`
-	OrderId       int64   `protobuf:"varint,5,opt,name=order_id,json=orderId,proto3" json:"order_id,omitempty"`
-	OrderSn       string  `protobuf:"bytes,6,opt,name=order_sn,json=orderSn,proto3" json:"order_sn,omitempty"`
-	Keywords      string  `protobuf:"bytes,7,opt,name=keywords,proto3" json:"keywords,omitempty"`
-	Status        string  `protobuf:"bytes,8,opt,name=status,proto3" json:"status,omitempty"`
-	Ids           []int64 `protobuf:"varint,9,rep,packed,name=ids,proto3" json:"ids,omitempty"`
-	DistributorId int64   `protobuf:"varint,10,opt,name=distributor_id,json=distributorId,proto3" json:"distributor_id,omitempty"`
-	CustomerId    int64   `protobuf:"varint,11,opt,name=customer_id,json=customerId,proto3" json:"customer_id,omitempty"`
-	LeaderId      int64   `protobuf:"varint,12,opt,name=leader_id,json=leaderId,proto3" json:"leader_id,omitempty"`
+	Paged         int32   `protobuf:"varint,1,opt,name=paged,proto3" json:"paged"`
+	PageSize      int32   `protobuf:"varint,2,opt,name=page_size,json=pageSize,proto3" json:"page_size"`
+	Id            int64   `protobuf:"varint,3,opt,name=id,proto3" json:"id"`
+	Mobile        string  `protobuf:"bytes,4,opt,name=mobile,proto3" json:"mobile"`
+	OrderId       int64   `protobuf:"varint,5,opt,name=order_id,json=orderId,proto3" json:"order_id"`
+	OrderSn       string  `protobuf:"bytes,6,opt,name=order_sn,json=orderSn,proto3" json:"order_sn"`
+	Keywords      string  `protobuf:"bytes,7,opt,name=keywords,proto3" json:"keywords"`
+	Status        string  `protobuf:"bytes,8,opt,name=status,proto3" json:"status"`
+	Ids           []int64 `protobuf:"varint,9,rep,packed,name=ids,proto3" json:"ids"`
+	DistributorId int64   `protobuf:"varint,10,opt,name=distributor_id,json=distributorId,proto3" json:"distributor_id"`
+	CustomerId    int64   `protobuf:"varint,11,opt,name=customer_id,json=customerId,proto3" json:"customer_id"`
+	LeaderId      int64   `protobuf:"varint,12,opt,name=leader_id,json=leaderId,proto3" json:"leader_id"`
 }
 
 func (x *OrderInfoWhere) Reset() {
@@ -500,11 +501,11 @@ type OrderInfoResponse struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	Entity *OrderInfo    `protobuf:"bytes,1,opt,name=entity,proto3" json:"entity,omitempty"`
-	Pager  *common.Pager `protobuf:"bytes,2,opt,name=pager,proto3" json:"pager,omitempty"`
-	Items  []*OrderInfo  `protobuf:"bytes,3,rep,name=items,proto3" json:"items,omitempty"`
-	Error  *common.Error `protobuf:"bytes,4,opt,name=error,proto3" json:"error,omitempty"`
-	Info   *common.Info  `protobuf:"bytes,5,opt,name=info,proto3" json:"info,omitempty"`
+	Entity *OrderInfo    `protobuf:"bytes,1,opt,name=entity,proto3" json:"entity"`
+	Pager  *common.Pager `protobuf:"bytes,2,opt,name=pager,proto3" json:"pager"`
+	Items  []*OrderInfo  `protobuf:"bytes,3,rep,name=items,proto3" json:"items"`
+	Error  *common.Error `protobuf:"bytes,4,opt,name=error,proto3" json:"error"`
+	Info   *common.Info  `protobuf:"bytes,5,opt,name=info,proto3" json:"info"`
 }
 
 func (x *OrderInfoResponse) Reset() {

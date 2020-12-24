@@ -31,13 +31,13 @@ type RoomStatusMaintainCalendarWhere struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	Paged           int32  `protobuf:"varint,1,opt,name=paged,proto3" json:"paged,omitempty"`
-	PageSize        int32  `protobuf:"varint,2,opt,name=page_size,json=pageSize,proto3" json:"page_size,omitempty"`
-	RoomTypeId      int64  `protobuf:"varint,3,opt,name=room_type_id,json=roomTypeId,proto3" json:"room_type_id,omitempty"`
-	RoomPricePlanId int64  `protobuf:"varint,4,opt,name=room_price_plan_id,json=roomPricePlanId,proto3" json:"room_price_plan_id,omitempty"`
-	Date            string `protobuf:"bytes,5,opt,name=date,proto3" json:"date,omitempty"`
-	StartDate       string `protobuf:"bytes,6,opt,name=start_date,json=startDate,proto3" json:"start_date,omitempty"`
-	EndDate         string `protobuf:"bytes,7,opt,name=end_date,json=endDate,proto3" json:"end_date,omitempty"`
+	Paged           int32  `protobuf:"varint,1,opt,name=paged,proto3" json:"paged"`
+	PageSize        int32  `protobuf:"varint,2,opt,name=page_size,json=pageSize,proto3" json:"page_size"`
+	RoomTypeId      int64  `protobuf:"varint,3,opt,name=room_type_id,json=roomTypeId,proto3" json:"room_type_id"`
+	RoomPricePlanId int64  `protobuf:"varint,4,opt,name=room_price_plan_id,json=roomPricePlanId,proto3" json:"room_price_plan_id"`
+	Date            string `protobuf:"bytes,5,opt,name=date,proto3" json:"date"`
+	StartDate       string `protobuf:"bytes,6,opt,name=start_date,json=startDate,proto3" json:"start_date"`
+	EndDate         string `protobuf:"bytes,7,opt,name=end_date,json=endDate,proto3" json:"end_date"`
 }
 
 func (x *RoomStatusMaintainCalendarWhere) Reset() {
@@ -126,9 +126,10 @@ type RoomStatusMaintainCalendar struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	RoomTypeId        int64                          `protobuf:"varint,1,opt,name=room_type_id,json=roomTypeId,proto3" json:"room_type_id,omitempty"`
-	RoomTypeName      string                         `protobuf:"bytes,2,opt,name=room_type_name,json=roomTypeName,proto3" json:"room_type_name,omitempty"`
-	RoomPricePlanList []*RoomPricePlanByMaintainList `protobuf:"bytes,3,rep,name=room_price_plan_list,json=roomPricePlanList,proto3" json:"room_price_plan_list,omitempty"`
+	RoomTypeId   int64  `protobuf:"varint,1,opt,name=room_type_id,json=roomTypeId,proto3" json:"room_type_id"`
+	RoomTypeName string `protobuf:"bytes,2,opt,name=room_type_name,json=roomTypeName,proto3" json:"room_type_name"`
+	// @inject_tag: gorm:"-"
+	RoomPricePlanList []*RoomPricePlanByMaintainList `protobuf:"bytes,3,rep,name=room_price_plan_list,json=roomPricePlanList,proto3" json:"room_price_plan_list" gorm:"-"`
 }
 
 func (x *RoomStatusMaintainCalendar) Reset() {
@@ -189,9 +190,10 @@ type RoomPricePlanByMaintainList struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	RoomPricePlanId   int64                     `protobuf:"varint,1,opt,name=room_price_plan_id,json=roomPricePlanId,proto3" json:"room_price_plan_id,omitempty"`
-	RoomPricePlanName string                    `protobuf:"bytes,2,opt,name=room_price_plan_name,json=roomPricePlanName,proto3" json:"room_price_plan_name,omitempty"`
-	RoomStatusList    []*RoomStatusMaintainList `protobuf:"bytes,3,rep,name=room_status_list,json=roomStatusList,proto3" json:"room_status_list,omitempty"`
+	RoomPricePlanId   int64  `protobuf:"varint,1,opt,name=room_price_plan_id,json=roomPricePlanId,proto3" json:"room_price_plan_id"`
+	RoomPricePlanName string `protobuf:"bytes,2,opt,name=room_price_plan_name,json=roomPricePlanName,proto3" json:"room_price_plan_name"`
+	// @inject_tag: gorm:"-"
+	RoomStatusList []*RoomStatusMaintainList `protobuf:"bytes,3,rep,name=room_status_list,json=roomStatusList,proto3" json:"room_status_list" gorm:"-"`
 }
 
 func (x *RoomPricePlanByMaintainList) Reset() {
@@ -252,13 +254,13 @@ type RoomStatusMaintainList struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	CanSalesCount int32   `protobuf:"varint,1,opt,name=can_sales_count,json=canSalesCount,proto3" json:"can_sales_count,omitempty"` // 剩余房量
-	SalesCount    int32   `protobuf:"varint,2,opt,name=sales_count,json=salesCount,proto3" json:"sales_count,omitempty"`            // 已售房量
-	Price         float32 `protobuf:"fixed32,3,opt,name=price,proto3" json:"price,omitempty"`                                       // 价格
-	MinPrice      float32 `protobuf:"fixed32,4,opt,name=min_price,json=minPrice,proto3" json:"min_price,omitempty"`                 // 最低价
-	MaxPrice      float32 `protobuf:"fixed32,5,opt,name=max_price,json=maxPrice,proto3" json:"max_price,omitempty"`                 // 最高价
-	Status        int32   `protobuf:"varint,6,opt,name=status,proto3" json:"status,omitempty"`                                      // 状态: 1-开房,2-关房
-	Date          string  `protobuf:"bytes,7,opt,name=date,proto3" json:"date,omitempty"`                                           // 日期
+	CanSalesCount int32   `protobuf:"varint,1,opt,name=can_sales_count,json=canSalesCount,proto3" json:"can_sales_count"` // 剩余房量
+	SalesCount    int32   `protobuf:"varint,2,opt,name=sales_count,json=salesCount,proto3" json:"sales_count"`            // 已售房量
+	Price         float32 `protobuf:"fixed32,3,opt,name=price,proto3" json:"price"`                                       // 价格
+	MinPrice      float32 `protobuf:"fixed32,4,opt,name=min_price,json=minPrice,proto3" json:"min_price"`                 // 最低价
+	MaxPrice      float32 `protobuf:"fixed32,5,opt,name=max_price,json=maxPrice,proto3" json:"max_price"`                 // 最高价
+	Status        int32   `protobuf:"varint,6,opt,name=status,proto3" json:"status"`                                      // 状态: 1-开房,2-关房
+	Date          string  `protobuf:"bytes,7,opt,name=date,proto3" json:"date"`                                           // 日期
 }
 
 func (x *RoomStatusMaintainList) Reset() {
@@ -347,11 +349,11 @@ type RoomStatusMaintainCalendarResponse struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	Error  *common.Error                 `protobuf:"bytes,1,opt,name=error,proto3" json:"error,omitempty"`
-	Info   *common.Info                  `protobuf:"bytes,2,opt,name=info,proto3" json:"info,omitempty"`
-	Pager  *common.Pager                 `protobuf:"bytes,3,opt,name=pager,proto3" json:"pager,omitempty"`
-	Entity *RoomStatusMaintainCalendar   `protobuf:"bytes,4,opt,name=entity,proto3" json:"entity,omitempty"`
-	Items  []*RoomStatusMaintainCalendar `protobuf:"bytes,5,rep,name=items,proto3" json:"items,omitempty"`
+	Error  *common.Error                 `protobuf:"bytes,1,opt,name=error,proto3" json:"error"`
+	Info   *common.Info                  `protobuf:"bytes,2,opt,name=info,proto3" json:"info"`
+	Pager  *common.Pager                 `protobuf:"bytes,3,opt,name=pager,proto3" json:"pager"`
+	Entity *RoomStatusMaintainCalendar   `protobuf:"bytes,4,opt,name=entity,proto3" json:"entity"`
+	Items  []*RoomStatusMaintainCalendar `protobuf:"bytes,5,rep,name=items,proto3" json:"items"`
 }
 
 func (x *RoomStatusMaintainCalendarResponse) Reset() {

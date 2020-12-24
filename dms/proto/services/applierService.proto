@@ -6,7 +6,6 @@ import "distributorService.proto";
 import "rankService.proto";
 import "goodsConditionService.proto";
 
-
 service MyApplierService {
     // 检查用户是否存在可申请的分销等级
     rpc Check (common.Empty) returns (ApplierResponse) {}
@@ -37,6 +36,7 @@ message ApplierWhere {
     string mobile = 5;
     string keywords = 6;
     string status = 7;
+    // @inject_tag: gorm:"-"
     repeated int64 ids = 8;
     string rank_type = 9;
 }
@@ -54,10 +54,14 @@ message Applier {
     string addons = 10;
     string created_at = 11;
     string updated_at = 12;
+    // @inject_tag: gorm:"-"
     Distributor distributor = 13;
+    // @inject_tag: gorm:"-"
     Rank rank = 14;
     string invite_sn = 15;
+    // @inject_tag: gorm:"-"
     ApplierCondition condition = 16;
+    // @inject_tag: gorm:"-"
     ApplierMeetCondition meet_condition = 17;
     string rank_type = 18;
     string mobile = 19;
@@ -75,9 +79,13 @@ message ApplierResponse {
 
 message ApplyInfo {
     bool is_apply = 1;
+    // @inject_tag: gorm:"-"
     Applier applier = 2;
+    // @inject_tag: gorm:"-"
     repeated Rank ranks = 3;
+    // @inject_tag: gorm:"-"
     repeated ApplierCondition condition = 4;
+    // @inject_tag: gorm:"-"
     repeated ApplierMeetCondition meet_condition = 5;
 }
 
@@ -102,6 +110,7 @@ message ApplierCondition {
     float promotion_amount = 11;
     int32 primary_num = 12;
     int32 second_num = 13;
+    // @inject_tag: gorm:"-"
     repeated GoodsCondition goods_condition = 14;
 }
 

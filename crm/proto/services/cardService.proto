@@ -45,7 +45,9 @@ message Card {
     bool disabled =17;
     string created_at =19;
     string updated_at =20;
+    // &inject_tag: gorm:"foreignKey:CardId"
     repeated CardBenefit card_benefits   =21;
+    // @inject_tag: gorm:"-"
     repeated int32 ids = 22;
     int32 status = 23;
 }

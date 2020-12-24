@@ -24,6 +24,7 @@ message RankWhere {
     int32 page_size = 2;
     int32 top = 3;
     int64 id = 4;
+    // @inject_tag: gorm:"-"
     repeated int64 ids = 5;
     string type = 6;
 }
@@ -49,7 +50,9 @@ message Rank {
     bool is_bind_mobile =18;
     float join_fee =19;
     bool defaulted =20;
+    // @inject_tag: gorm:"foreignKey:RankId"
     repeated GoodsCondition goodses =21;
+    // @inject_tag: gorm:"-"
     repeated int32 ids =22;
     string type = 23;
     float team_rate = 24;

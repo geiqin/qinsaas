@@ -31,18 +31,18 @@ type SupplierContact struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	Id         int64  `protobuf:"varint,1,opt,name=id,proto3" json:"id,omitempty"`
-	SupplierId int64  `protobuf:"varint,2,opt,name=supplier_id,json=supplierId,proto3" json:"supplier_id,omitempty"`
-	Name       string `protobuf:"bytes,3,opt,name=name,proto3" json:"name,omitempty"`
-	Mobile     string `protobuf:"bytes,4,opt,name=mobile,proto3" json:"mobile,omitempty"`
-	Tel        string `protobuf:"bytes,5,opt,name=tel,proto3" json:"tel,omitempty"`
-	Email      string `protobuf:"bytes,6,opt,name=email,proto3" json:"email,omitempty"`
-	Weixin     string `protobuf:"bytes,7,opt,name=weixin,proto3" json:"weixin,omitempty"`
-	Qq         string `protobuf:"bytes,8,opt,name=qq,proto3" json:"qq,omitempty"`
-	Memo       string `protobuf:"bytes,9,opt,name=memo,proto3" json:"memo,omitempty"`
-	Disabled   bool   `protobuf:"varint,10,opt,name=disabled,proto3" json:"disabled,omitempty"`
-	CreatedAt  string `protobuf:"bytes,11,opt,name=created_at,json=createdAt,proto3" json:"created_at,omitempty"`
-	UpdatedAt  string `protobuf:"bytes,12,opt,name=updated_at,json=updatedAt,proto3" json:"updated_at,omitempty"`
+	Id         int64  `protobuf:"varint,1,opt,name=id,proto3" json:"id"`
+	SupplierId int64  `protobuf:"varint,2,opt,name=supplier_id,json=supplierId,proto3" json:"supplier_id"`
+	Name       string `protobuf:"bytes,3,opt,name=name,proto3" json:"name"`
+	Mobile     string `protobuf:"bytes,4,opt,name=mobile,proto3" json:"mobile"`
+	Tel        string `protobuf:"bytes,5,opt,name=tel,proto3" json:"tel"`
+	Email      string `protobuf:"bytes,6,opt,name=email,proto3" json:"email"`
+	Weixin     string `protobuf:"bytes,7,opt,name=weixin,proto3" json:"weixin"`
+	Qq         string `protobuf:"bytes,8,opt,name=qq,proto3" json:"qq"`
+	Memo       string `protobuf:"bytes,9,opt,name=memo,proto3" json:"memo"`
+	Disabled   bool   `protobuf:"varint,10,opt,name=disabled,proto3" json:"disabled"`
+	CreatedAt  string `protobuf:"bytes,11,opt,name=created_at,json=createdAt,proto3" json:"created_at"`
+	UpdatedAt  string `protobuf:"bytes,12,opt,name=updated_at,json=updatedAt,proto3" json:"updated_at"`
 }
 
 func (x *SupplierContact) Reset() {
@@ -166,11 +166,11 @@ type SupplierContactResponse struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	Entity *SupplierContact   `protobuf:"bytes,1,opt,name=entity,proto3" json:"entity,omitempty"`
-	Pager  *common.Pager      `protobuf:"bytes,2,opt,name=pager,proto3" json:"pager,omitempty"`
-	Items  []*SupplierContact `protobuf:"bytes,3,rep,name=items,proto3" json:"items,omitempty"`
-	Error  *common.Error      `protobuf:"bytes,4,opt,name=error,proto3" json:"error,omitempty"`
-	Info   *common.Info       `protobuf:"bytes,5,opt,name=info,proto3" json:"info,omitempty"`
+	Entity *SupplierContact   `protobuf:"bytes,1,opt,name=entity,proto3" json:"entity"`
+	Pager  *common.Pager      `protobuf:"bytes,2,opt,name=pager,proto3" json:"pager"`
+	Items  []*SupplierContact `protobuf:"bytes,3,rep,name=items,proto3" json:"items"`
+	Error  *common.Error      `protobuf:"bytes,4,opt,name=error,proto3" json:"error"`
+	Info   *common.Info       `protobuf:"bytes,5,opt,name=info,proto3" json:"info"`
 }
 
 func (x *SupplierContactResponse) Reset() {

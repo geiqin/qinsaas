@@ -31,12 +31,12 @@ type RoomBillWhere struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	Paged      int32  `protobuf:"varint,1,opt,name=paged,proto3" json:"paged,omitempty"`
-	PageSize   int32  `protobuf:"varint,2,opt,name=page_size,json=pageSize,proto3" json:"page_size,omitempty"`
-	RoomBillId int64  `protobuf:"varint,3,opt,name=room_bill_id,json=roomBillId,proto3" json:"room_bill_id,omitempty"`
-	Status     int32  `protobuf:"varint,4,opt,name=status,proto3" json:"status,omitempty"`
-	RoomBookId int64  `protobuf:"varint,5,opt,name=room_book_id,json=roomBookId,proto3" json:"room_book_id,omitempty"`
-	PayType    string `protobuf:"bytes,6,opt,name=pay_type,json=payType,proto3" json:"pay_type,omitempty"`
+	Paged      int32  `protobuf:"varint,1,opt,name=paged,proto3" json:"paged"`
+	PageSize   int32  `protobuf:"varint,2,opt,name=page_size,json=pageSize,proto3" json:"page_size"`
+	RoomBillId int64  `protobuf:"varint,3,opt,name=room_bill_id,json=roomBillId,proto3" json:"room_bill_id"`
+	Status     int32  `protobuf:"varint,4,opt,name=status,proto3" json:"status"`
+	RoomBookId int64  `protobuf:"varint,5,opt,name=room_book_id,json=roomBookId,proto3" json:"room_book_id"`
+	PayType    string `protobuf:"bytes,6,opt,name=pay_type,json=payType,proto3" json:"pay_type"`
 }
 
 func (x *RoomBillWhere) Reset() {
@@ -118,16 +118,17 @@ type RoomBill struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	Id            int64             `protobuf:"varint,1,opt,name=id,proto3" json:"id,omitempty"`
-	RoomBookId    int64             `protobuf:"varint,2,opt,name=room_book_id,json=roomBookId,proto3" json:"room_book_id,omitempty"`
-	ConsumeAmount float32           `protobuf:"fixed32,3,opt,name=consume_amount,json=consumeAmount,proto3" json:"consume_amount,omitempty"`
-	PayAmount     float32           `protobuf:"fixed32,4,opt,name=pay_amount,json=payAmount,proto3" json:"pay_amount,omitempty"`
-	DebtAmount    float32           `protobuf:"fixed32,5,opt,name=debt_amount,json=debtAmount,proto3" json:"debt_amount,omitempty"`
-	CheckinTime   string            `protobuf:"bytes,6,opt,name=checkin_time,json=checkinTime,proto3" json:"checkin_time,omitempty"`
-	CheckoutTime  string            `protobuf:"bytes,7,opt,name=checkout_time,json=checkoutTime,proto3" json:"checkout_time,omitempty"`
-	CreatedAt     string            `protobuf:"bytes,8,opt,name=created_at,json=createdAt,proto3" json:"created_at,omitempty"`
-	UpdatedAt     string            `protobuf:"bytes,9,opt,name=updated_at,json=updatedAt,proto3" json:"updated_at,omitempty"`
-	Details       []*RoomBillDetail `protobuf:"bytes,10,rep,name=details,proto3" json:"details,omitempty"`
+	Id            int64   `protobuf:"varint,1,opt,name=id,proto3" json:"id"`
+	RoomBookId    int64   `protobuf:"varint,2,opt,name=room_book_id,json=roomBookId,proto3" json:"room_book_id"`
+	ConsumeAmount float32 `protobuf:"fixed32,3,opt,name=consume_amount,json=consumeAmount,proto3" json:"consume_amount"`
+	PayAmount     float32 `protobuf:"fixed32,4,opt,name=pay_amount,json=payAmount,proto3" json:"pay_amount"`
+	DebtAmount    float32 `protobuf:"fixed32,5,opt,name=debt_amount,json=debtAmount,proto3" json:"debt_amount"`
+	CheckinTime   string  `protobuf:"bytes,6,opt,name=checkin_time,json=checkinTime,proto3" json:"checkin_time"`
+	CheckoutTime  string  `protobuf:"bytes,7,opt,name=checkout_time,json=checkoutTime,proto3" json:"checkout_time"`
+	CreatedAt     string  `protobuf:"bytes,8,opt,name=created_at,json=createdAt,proto3" json:"created_at"`
+	UpdatedAt     string  `protobuf:"bytes,9,opt,name=updated_at,json=updatedAt,proto3" json:"updated_at"`
+	// @inject_tag: gorm:"foreignKey:RoomBillId"
+	Details []*RoomBillDetail `protobuf:"bytes,10,rep,name=details,proto3" json:"details" gorm:"foreignKey:RoomBillId"`
 }
 
 func (x *RoomBill) Reset() {
@@ -237,11 +238,11 @@ type RoomBillResponse struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	Error  *common.Error `protobuf:"bytes,1,opt,name=error,proto3" json:"error,omitempty"`
-	Info   *common.Info  `protobuf:"bytes,2,opt,name=info,proto3" json:"info,omitempty"`
-	Pager  *common.Pager `protobuf:"bytes,3,opt,name=pager,proto3" json:"pager,omitempty"`
-	Entity *RoomBill     `protobuf:"bytes,4,opt,name=entity,proto3" json:"entity,omitempty"`
-	Items  []*RoomBill   `protobuf:"bytes,5,rep,name=items,proto3" json:"items,omitempty"`
+	Error  *common.Error `protobuf:"bytes,1,opt,name=error,proto3" json:"error"`
+	Info   *common.Info  `protobuf:"bytes,2,opt,name=info,proto3" json:"info"`
+	Pager  *common.Pager `protobuf:"bytes,3,opt,name=pager,proto3" json:"pager"`
+	Entity *RoomBill     `protobuf:"bytes,4,opt,name=entity,proto3" json:"entity"`
+	Items  []*RoomBill   `protobuf:"bytes,5,rep,name=items,proto3" json:"items"`
 }
 
 func (x *RoomBillResponse) Reset() {

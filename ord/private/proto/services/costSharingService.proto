@@ -12,6 +12,7 @@ service CostSharingService {
 message CostSharingWhere {
     Order order = 1;
     int64 orderDetailId = 2;
+    // @inject_tag: gorm:"-"
     repeated int64 orderDetailIds = 3;
 }
 

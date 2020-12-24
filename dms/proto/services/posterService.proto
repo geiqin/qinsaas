@@ -21,6 +21,7 @@ message Poster {
     int64 poster_img_id = 5;
     string poster_img_url = 6;
     string poster_share_content = 7;
+    // @inject_tag: gorm:"-"
     repeated PosterGallery poster_galleries = 24;
 }
 

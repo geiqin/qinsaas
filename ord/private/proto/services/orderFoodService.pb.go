@@ -30,18 +30,18 @@ type OrderFood struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	Id                int64   `protobuf:"varint,1,opt,name=id,proto3" json:"id,omitempty"`
-	Type              string  `protobuf:"bytes,2,opt,name=type,proto3" json:"type,omitempty"` // 订单类型:in-堂食订单,out-外卖订单
-	OrderId           int64   `protobuf:"varint,3,opt,name=order_id,json=orderId,proto3" json:"order_id,omitempty"`
-	TableId           int64   `protobuf:"varint,4,opt,name=table_id,json=tableId,proto3" json:"table_id,omitempty"`                                  // 桌台ID【堂食订单】
-	TableName         string  `protobuf:"bytes,5,opt,name=table_name,json=tableName,proto3" json:"table_name,omitempty"`                             // 桌台名称【堂食订单】
-	SurchargeType     int32   `protobuf:"varint,6,opt,name=surcharge_type,json=surchargeType,proto3" json:"surcharge_type,omitempty"`                // 附加费类型【堂食订单】:1-按每位,2-按每单
-	SurchargeFee      float32 `protobuf:"fixed32,7,opt,name=surcharge_fee,json=surchargeFee,proto3" json:"surcharge_fee,omitempty"`                  // 附加费【堂食订单】:X元/每位|每单
-	SurchargeFeeName  string  `protobuf:"bytes,8,opt,name=surcharge_fee_name,json=surchargeFeeName,proto3" json:"surcharge_fee_name,omitempty"`      // 附加费的自定义名称【堂食订单】
-	TotalSurchargeFee float32 `protobuf:"fixed32,9,opt,name=total_surcharge_fee,json=totalSurchargeFee,proto3" json:"total_surcharge_fee,omitempty"` // 总的附加费
-	BoxFee            float32 `protobuf:"fixed32,10,opt,name=box_fee,json=boxFee,proto3" json:"box_fee,omitempty"`                                   // 餐盒费
-	GuestNum          int32   `protobuf:"varint,11,opt,name=guest_num,json=guestNum,proto3" json:"guest_num,omitempty"`                              // 就餐人数
-	IsSettlement      bool    `protobuf:"varint,12,opt,name=is_settlement,json=isSettlement,proto3" json:"is_settlement,omitempty"`
+	Id                int64   `protobuf:"varint,1,opt,name=id,proto3" json:"id"`
+	Type              string  `protobuf:"bytes,2,opt,name=type,proto3" json:"type"` // 订单类型:in-堂食订单,out-外卖订单
+	OrderId           int64   `protobuf:"varint,3,opt,name=order_id,json=orderId,proto3" json:"order_id"`
+	TableId           int64   `protobuf:"varint,4,opt,name=table_id,json=tableId,proto3" json:"table_id"`                                  // 桌台ID【堂食订单】
+	TableName         string  `protobuf:"bytes,5,opt,name=table_name,json=tableName,proto3" json:"table_name"`                             // 桌台名称【堂食订单】
+	SurchargeType     int32   `protobuf:"varint,6,opt,name=surcharge_type,json=surchargeType,proto3" json:"surcharge_type"`                // 附加费类型【堂食订单】:1-按每位,2-按每单
+	SurchargeFee      float32 `protobuf:"fixed32,7,opt,name=surcharge_fee,json=surchargeFee,proto3" json:"surcharge_fee"`                  // 附加费【堂食订单】:X元/每位|每单
+	SurchargeFeeName  string  `protobuf:"bytes,8,opt,name=surcharge_fee_name,json=surchargeFeeName,proto3" json:"surcharge_fee_name"`      // 附加费的自定义名称【堂食订单】
+	TotalSurchargeFee float32 `protobuf:"fixed32,9,opt,name=total_surcharge_fee,json=totalSurchargeFee,proto3" json:"total_surcharge_fee"` // 总的附加费
+	BoxFee            float32 `protobuf:"fixed32,10,opt,name=box_fee,json=boxFee,proto3" json:"box_fee"`                                   // 餐盒费
+	GuestNum          int32   `protobuf:"varint,11,opt,name=guest_num,json=guestNum,proto3" json:"guest_num"`                              // 就餐人数
+	IsSettlement      bool    `protobuf:"varint,12,opt,name=is_settlement,json=isSettlement,proto3" json:"is_settlement"`
 }
 
 func (x *OrderFood) Reset() {

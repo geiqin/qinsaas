@@ -35,6 +35,7 @@ message FetchWhere {
   string sorting = 3;
   string keywords = 4;
   int64 id = 5;
+  // @inject_tag: gorm:"-"
   repeated int64 ids = 6;
   string lng = 7;
   string lat = 8;
@@ -52,10 +53,12 @@ message Fetch {
   string mobile = 8;
   string reception = 9;
   int32 reception_repeat_weeks = 10;
+  // @inject_tag: gorm:"-"
   repeated int32 reception_repeat_week_arr = 11;
   bool is_fetch_time = 12;
   string fetch = 13;
   int32 fetch_repeat_weeks = 14;
+  // @inject_tag: gorm:"-"
   repeated int32 fetch_repeat_week_arr = 15;
   string sub_fetch_time = 16;
   string appointment = 17;
@@ -64,9 +67,13 @@ message Fetch {
   string memo = 20;
   string created_at = 21;
   string updated_at = 22;
+  // @inject_tag: gorm:"-"
   repeated Times reception_times = 23;
+  // @inject_tag: gorm:"-"
   repeated Times fetch_times = 24;
+  // @inject_tag: gorm:"foreignKey:FetchId"
   repeated FetchGallery galleries = 25;
+  // @inject_tag: gorm:"-"
   AreaInfo area = 26;
   float distance = 27;
 }

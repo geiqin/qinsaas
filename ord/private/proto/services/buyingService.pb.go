@@ -32,33 +32,43 @@ type Buying struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	Solution           string            `protobuf:"bytes,1,opt,name=solution,proto3" json:"solution,omitempty"`
-	Changed            bool              `protobuf:"varint,2,opt,name=changed,proto3" json:"changed,omitempty"`
-	Count              int32             `protobuf:"varint,3,opt,name=count,proto3" json:"count,omitempty"`
-	Total              float32           `protobuf:"fixed32,4,opt,name=total,proto3" json:"total,omitempty"`
-	TotalWeight        float32           `protobuf:"fixed32,25,opt,name=total_weight,json=totalWeight,proto3" json:"total_weight,omitempty"`
-	Discount           float32           `protobuf:"fixed32,5,opt,name=discount,proto3" json:"discount,omitempty"`
-	Freight            float32           `protobuf:"fixed32,6,opt,name=freight,proto3" json:"freight,omitempty"`
-	Amount             float32           `protobuf:"fixed32,7,opt,name=amount,proto3" json:"amount,omitempty"`
-	AddressId          int64             `protobuf:"varint,8,opt,name=address_id,json=addressId,proto3" json:"address_id,omitempty"`
-	CustomerId         int64             `protobuf:"varint,9,opt,name=customer_id,json=customerId,proto3" json:"customer_id,omitempty"`
-	UseTicketId        int64             `protobuf:"varint,10,opt,name=use_ticket_id,json=useTicketId,proto3" json:"use_ticket_id,omitempty"`                             //正在使用的优惠劵ID
-	Message            string            `protobuf:"bytes,11,opt,name=message,proto3" json:"message,omitempty"`                                                           //买家留言(50字以内)
-	AvailableTicketIds []int64           `protobuf:"varint,12,rep,packed,name=available_ticket_ids,json=availableTicketIds,proto3" json:"available_ticket_ids,omitempty"` //可以使用的优惠劵
-	Items              []*BuyingItem     `protobuf:"bytes,13,rep,name=items,proto3" json:"items,omitempty"`
-	CartRowIds         []string          `protobuf:"bytes,14,rep,name=cart_row_ids,json=cartRowIds,proto3" json:"cart_row_ids,omitempty"`
-	Coupons            []*OrderCoupon    `protobuf:"bytes,15,rep,name=coupons,proto3" json:"coupons,omitempty"`
-	Promotions         []*OrderPromotion `protobuf:"bytes,16,rep,name=promotions,proto3" json:"promotions,omitempty"`
-	Address            *OrderAddress     `protobuf:"bytes,17,opt,name=address,proto3" json:"address,omitempty"`
-	UseTicket          *CouponTicket     `protobuf:"bytes,18,opt,name=use_ticket,json=useTicket,proto3" json:"use_ticket,omitempty"`
-	PlatformSource     string            `protobuf:"bytes,19,opt,name=platform_source,json=platformSource,proto3" json:"platform_source,omitempty"`                 //下单来源
-	MemberMoney        float32           `protobuf:"fixed32,20,opt,name=member_money,json=memberMoney,proto3" json:"member_money,omitempty"`                        // 会员优惠金额
-	LimitDiscountMoney float32           `protobuf:"fixed32,21,opt,name=limit_discount_money,json=limitDiscountMoney,proto3" json:"limit_discount_money,omitempty"` // 限时活动优惠金额
-	RewardMoney        float32           `protobuf:"fixed32,22,opt,name=reward_money,json=rewardMoney,proto3" json:"reward_money,omitempty"`                        // 满减送活动优惠金额
-	CouponMoney        float32           `protobuf:"fixed32,23,opt,name=coupon_money,json=couponMoney,proto3" json:"coupon_money,omitempty"`                        // 优惠券优惠金额
-	Shipment           *OrderShipment    `protobuf:"bytes,24,opt,name=shipment,proto3" json:"shipment,omitempty"`                                                   // 配送信息
-	Integral           *Integral         `protobuf:"bytes,26,opt,name=integral,proto3" json:"integral,omitempty"`                                                   // 积分信息
-	Food               *OrderFood        `protobuf:"bytes,27,opt,name=food,proto3" json:"food,omitempty"`                                                           // 餐饮商品信息
+	Solution    string  `protobuf:"bytes,1,opt,name=solution,proto3" json:"solution"`
+	Changed     bool    `protobuf:"varint,2,opt,name=changed,proto3" json:"changed"`
+	Count       int32   `protobuf:"varint,3,opt,name=count,proto3" json:"count"`
+	Total       float32 `protobuf:"fixed32,4,opt,name=total,proto3" json:"total"`
+	TotalWeight float32 `protobuf:"fixed32,25,opt,name=total_weight,json=totalWeight,proto3" json:"total_weight"`
+	Discount    float32 `protobuf:"fixed32,5,opt,name=discount,proto3" json:"discount"`
+	Freight     float32 `protobuf:"fixed32,6,opt,name=freight,proto3" json:"freight"`
+	Amount      float32 `protobuf:"fixed32,7,opt,name=amount,proto3" json:"amount"`
+	AddressId   int64   `protobuf:"varint,8,opt,name=address_id,json=addressId,proto3" json:"address_id"`
+	CustomerId  int64   `protobuf:"varint,9,opt,name=customer_id,json=customerId,proto3" json:"customer_id"`
+	UseTicketId int64   `protobuf:"varint,10,opt,name=use_ticket_id,json=useTicketId,proto3" json:"use_ticket_id"` //正在使用的优惠劵ID
+	Message     string  `protobuf:"bytes,11,opt,name=message,proto3" json:"message"`                               //买家留言(50字以内)
+	// @inject_tag: gorm:"-"
+	AvailableTicketIds []int64 `protobuf:"varint,12,rep,packed,name=available_ticket_ids,json=availableTicketIds,proto3" json:"available_ticket_ids" gorm:"-"` //可以使用的优惠劵
+	// @inject_tag: gorm:"-"
+	Items []*BuyingItem `protobuf:"bytes,13,rep,name=items,proto3" json:"items" gorm:"-"`
+	// @inject_tag: gorm:"-"
+	CartRowIds []string `protobuf:"bytes,14,rep,name=cart_row_ids,json=cartRowIds,proto3" json:"cart_row_ids" gorm:"-"`
+	// @inject_tag: gorm:"-"
+	Coupons []*OrderCoupon `protobuf:"bytes,15,rep,name=coupons,proto3" json:"coupons" gorm:"-"`
+	// @inject_tag: gorm:"-"
+	Promotions []*OrderPromotion `protobuf:"bytes,16,rep,name=promotions,proto3" json:"promotions" gorm:"-"`
+	// @inject_tag: gorm:"-"
+	Address *OrderAddress `protobuf:"bytes,17,opt,name=address,proto3" json:"address" gorm:"-"`
+	// @inject_tag: gorm:"-"
+	UseTicket          *CouponTicket `protobuf:"bytes,18,opt,name=use_ticket,json=useTicket,proto3" json:"use_ticket" gorm:"-"`
+	PlatformSource     string        `protobuf:"bytes,19,opt,name=platform_source,json=platformSource,proto3" json:"platform_source"`                 //下单来源
+	MemberMoney        float32       `protobuf:"fixed32,20,opt,name=member_money,json=memberMoney,proto3" json:"member_money"`                        // 会员优惠金额
+	LimitDiscountMoney float32       `protobuf:"fixed32,21,opt,name=limit_discount_money,json=limitDiscountMoney,proto3" json:"limit_discount_money"` // 限时活动优惠金额
+	RewardMoney        float32       `protobuf:"fixed32,22,opt,name=reward_money,json=rewardMoney,proto3" json:"reward_money"`                        // 满减送活动优惠金额
+	CouponMoney        float32       `protobuf:"fixed32,23,opt,name=coupon_money,json=couponMoney,proto3" json:"coupon_money"`                        // 优惠券优惠金额
+	// @inject_tag: gorm:"-"
+	Shipment *OrderShipment `protobuf:"bytes,24,opt,name=shipment,proto3" json:"shipment" gorm:"-"` // 配送信息
+	// @inject_tag: gorm:"-"
+	Integral *Integral `protobuf:"bytes,26,opt,name=integral,proto3" json:"integral" gorm:"-"` // 积分信息
+	// @inject_tag: gorm:"-"
+	Food *OrderFood `protobuf:"bytes,27,opt,name=food,proto3" json:"food" gorm:"-"` // 餐饮商品信息
 }
 
 func (x *Buying) Reset() {
@@ -288,20 +298,21 @@ type BuyingItem struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	ItemId             int64      `protobuf:"varint,1,opt,name=item_id,json=itemId,proto3" json:"item_id,omitempty"`
-	SkuId              int64      `protobuf:"varint,2,opt,name=sku_id,json=skuId,proto3" json:"sku_id,omitempty"`
-	Num                int32      `protobuf:"varint,3,opt,name=num,proto3" json:"num,omitempty"`
-	Price              float32    `protobuf:"fixed32,4,opt,name=price,proto3" json:"price,omitempty"`
-	OriginPrice        float32    `protobuf:"fixed32,5,opt,name=origin_price,json=originPrice,proto3" json:"origin_price,omitempty"`
-	SubTotal           float32    `protobuf:"fixed32,6,opt,name=sub_total,json=subTotal,proto3" json:"sub_total,omitempty"`
-	IsGift             bool       `protobuf:"varint,7,opt,name=is_gift,json=isGift,proto3" json:"is_gift,omitempty"`
-	PromotionId        int64      `protobuf:"varint,8,opt,name=promotion_id,json=promotionId,proto3" json:"promotion_id,omitempty"`
-	MemberPrice        float32    `protobuf:"fixed32,9,opt,name=member_price,json=memberPrice,proto3" json:"member_price,omitempty"`                         // 会员价
-	LimitDiscountPrice float32    `protobuf:"fixed32,10,opt,name=limit_discount_price,json=limitDiscountPrice,proto3" json:"limit_discount_price,omitempty"` // 限时折扣价
-	LimitDiscountNum   int32      `protobuf:"varint,11,opt,name=limit_discount_num,json=limitDiscountNum,proto3" json:"limit_discount_num,omitempty"`        // 享受限时折扣的商品数量
-	ExchangeNum        int32      `protobuf:"varint,12,opt,name=exchange_num,json=exchangeNum,proto3" json:"exchange_num,omitempty"`                         // 兑换券兑换商品的数量
-	Goods              *GoodsInfo `protobuf:"bytes,13,opt,name=goods,proto3" json:"goods,omitempty"`
-	CartRowId          string     `protobuf:"bytes,14,opt,name=cart_row_id,json=cartRowId,proto3" json:"cart_row_id,omitempty"`
+	ItemId             int64   `protobuf:"varint,1,opt,name=item_id,json=itemId,proto3" json:"item_id"`
+	SkuId              int64   `protobuf:"varint,2,opt,name=sku_id,json=skuId,proto3" json:"sku_id"`
+	Num                int32   `protobuf:"varint,3,opt,name=num,proto3" json:"num"`
+	Price              float32 `protobuf:"fixed32,4,opt,name=price,proto3" json:"price"`
+	OriginPrice        float32 `protobuf:"fixed32,5,opt,name=origin_price,json=originPrice,proto3" json:"origin_price"`
+	SubTotal           float32 `protobuf:"fixed32,6,opt,name=sub_total,json=subTotal,proto3" json:"sub_total"`
+	IsGift             bool    `protobuf:"varint,7,opt,name=is_gift,json=isGift,proto3" json:"is_gift"`
+	PromotionId        int64   `protobuf:"varint,8,opt,name=promotion_id,json=promotionId,proto3" json:"promotion_id"`
+	MemberPrice        float32 `protobuf:"fixed32,9,opt,name=member_price,json=memberPrice,proto3" json:"member_price"`                         // 会员价
+	LimitDiscountPrice float32 `protobuf:"fixed32,10,opt,name=limit_discount_price,json=limitDiscountPrice,proto3" json:"limit_discount_price"` // 限时折扣价
+	LimitDiscountNum   int32   `protobuf:"varint,11,opt,name=limit_discount_num,json=limitDiscountNum,proto3" json:"limit_discount_num"`        // 享受限时折扣的商品数量
+	ExchangeNum        int32   `protobuf:"varint,12,opt,name=exchange_num,json=exchangeNum,proto3" json:"exchange_num"`                         // 兑换券兑换商品的数量
+	// @inject_tag: gorm:"-"
+	Goods     *GoodsInfo `protobuf:"bytes,13,opt,name=goods,proto3" json:"goods" gorm:"-"`
+	CartRowId string     `protobuf:"bytes,14,opt,name=cart_row_id,json=cartRowId,proto3" json:"cart_row_id"`
 }
 
 func (x *BuyingItem) Reset() {
@@ -440,18 +451,22 @@ type BuyingRequest struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	CustomerId     int64          `protobuf:"varint,1,opt,name=customer_id,json=customerId,proto3" json:"customer_id,omitempty"`            //后台下单专用
-	Source         int32          `protobuf:"varint,2,opt,name=source,proto3" json:"source,omitempty"`                                      //请求来源 1是直接购买，2是 购物车下单，3，确认订单重复计算
-	AddressId      int64          `protobuf:"varint,3,opt,name=address_id,json=addressId,proto3" json:"address_id,omitempty"`               //收货地址
-	Message        string         `protobuf:"bytes,4,opt,name=message,proto3" json:"message,omitempty"`                                     //买家留言(50字以内)
-	VipcardId      int64          `protobuf:"varint,5,opt,name=vipcard_id,json=vipcardId,proto3" json:"vipcard_id,omitempty"`               //选中的会员卡
-	PayMethod      int32          `protobuf:"varint,6,opt,name=pay_method,json=payMethod,proto3" json:"pay_method,omitempty"`               //选中的支付方式
-	PlatformSource string         `protobuf:"bytes,8,opt,name=platform_source,json=platformSource,proto3" json:"platform_source,omitempty"` //下单来源
-	UseTicketId    int64          `protobuf:"varint,7,opt,name=use_ticket_id,json=useTicketId,proto3" json:"use_ticket_id,omitempty"`       //选中的优惠劵凭证ID
-	Items          []*BuyingItem  `protobuf:"bytes,9,rep,name=items,proto3" json:"items,omitempty"`
-	Shipment       *OrderShipment `protobuf:"bytes,10,opt,name=shipment,proto3" json:"shipment,omitempty"` // 配送信息
-	Integral       *Integral      `protobuf:"bytes,11,opt,name=integral,proto3" json:"integral,omitempty"` // 积分信息
-	Food           *OrderFood     `protobuf:"bytes,12,opt,name=food,proto3" json:"food,omitempty"`         // 餐饮商品信息
+	CustomerId     int64  `protobuf:"varint,1,opt,name=customer_id,json=customerId,proto3" json:"customer_id"`            //后台下单专用
+	Source         int32  `protobuf:"varint,2,opt,name=source,proto3" json:"source"`                                      //请求来源 1是直接购买，2是 购物车下单，3，确认订单重复计算
+	AddressId      int64  `protobuf:"varint,3,opt,name=address_id,json=addressId,proto3" json:"address_id"`               //收货地址
+	Message        string `protobuf:"bytes,4,opt,name=message,proto3" json:"message"`                                     //买家留言(50字以内)
+	VipcardId      int64  `protobuf:"varint,5,opt,name=vipcard_id,json=vipcardId,proto3" json:"vipcard_id"`               //选中的会员卡
+	PayMethod      int32  `protobuf:"varint,6,opt,name=pay_method,json=payMethod,proto3" json:"pay_method"`               //选中的支付方式
+	PlatformSource string `protobuf:"bytes,8,opt,name=platform_source,json=platformSource,proto3" json:"platform_source"` //下单来源
+	UseTicketId    int64  `protobuf:"varint,7,opt,name=use_ticket_id,json=useTicketId,proto3" json:"use_ticket_id"`       //选中的优惠劵凭证ID
+	// @inject_tag: gorm:"-"
+	Items []*BuyingItem `protobuf:"bytes,9,rep,name=items,proto3" json:"items" gorm:"-"`
+	// @inject_tag: gorm:"-"
+	Shipment *OrderShipment `protobuf:"bytes,10,opt,name=shipment,proto3" json:"shipment" gorm:"-"` // 配送信息
+	// @inject_tag: gorm:"-"
+	Integral *Integral `protobuf:"bytes,11,opt,name=integral,proto3" json:"integral" gorm:"-"` // 积分信息
+	// @inject_tag: gorm:"-"
+	Food *OrderFood `protobuf:"bytes,12,opt,name=food,proto3" json:"food" gorm:"-"` // 餐饮商品信息
 }
 
 func (x *BuyingRequest) Reset() {
@@ -575,11 +590,11 @@ type BuyingResponse struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	Entity *Buying       `protobuf:"bytes,1,opt,name=entity,proto3" json:"entity,omitempty"`
-	Pager  *common.Pager `protobuf:"bytes,2,opt,name=pager,proto3" json:"pager,omitempty"`
-	Items  []*Buying     `protobuf:"bytes,3,rep,name=items,proto3" json:"items,omitempty"`
-	Error  *common.Error `protobuf:"bytes,4,opt,name=error,proto3" json:"error,omitempty"`
-	Info   *common.Info  `protobuf:"bytes,5,opt,name=info,proto3" json:"info,omitempty"`
+	Entity *Buying       `protobuf:"bytes,1,opt,name=entity,proto3" json:"entity"`
+	Pager  *common.Pager `protobuf:"bytes,2,opt,name=pager,proto3" json:"pager"`
+	Items  []*Buying     `protobuf:"bytes,3,rep,name=items,proto3" json:"items"`
+	Error  *common.Error `protobuf:"bytes,4,opt,name=error,proto3" json:"error"`
+	Info   *common.Info  `protobuf:"bytes,5,opt,name=info,proto3" json:"info"`
 }
 
 func (x *BuyingResponse) Reset() {

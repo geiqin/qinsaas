@@ -31,10 +31,10 @@ type ItemRight struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	Id          int64  `protobuf:"varint,1,opt,name=id,proto3" json:"id,omitempty"`
-	Type        string `protobuf:"bytes,2,opt,name=type,proto3" json:"type,omitempty"`
-	TypeValueId int64  `protobuf:"varint,3,opt,name=type_value_id,json=typeValueId,proto3" json:"type_value_id,omitempty"`
-	ItemId      int64  `protobuf:"varint,4,opt,name=item_id,json=itemId,proto3" json:"item_id,omitempty"`
+	Id          int64  `protobuf:"varint,1,opt,name=id,proto3" json:"id"`
+	Type        string `protobuf:"bytes,2,opt,name=type,proto3" json:"type"`
+	TypeValueId int64  `protobuf:"varint,3,opt,name=type_value_id,json=typeValueId,proto3" json:"type_value_id"`
+	ItemId      int64  `protobuf:"varint,4,opt,name=item_id,json=itemId,proto3" json:"item_id"`
 }
 
 func (x *ItemRight) Reset() {
@@ -102,11 +102,11 @@ type ItemRightResponse struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	Entity *ItemRight    `protobuf:"bytes,1,opt,name=entity,proto3" json:"entity,omitempty"`
-	Pager  *common.Pager `protobuf:"bytes,2,opt,name=pager,proto3" json:"pager,omitempty"`
-	Items  []*ItemRight  `protobuf:"bytes,3,rep,name=items,proto3" json:"items,omitempty"`
-	Error  *common.Error `protobuf:"bytes,4,opt,name=error,proto3" json:"error,omitempty"`
-	Info   *common.Info  `protobuf:"bytes,5,opt,name=info,proto3" json:"info,omitempty"`
+	Entity *ItemRight    `protobuf:"bytes,1,opt,name=entity,proto3" json:"entity"`
+	Pager  *common.Pager `protobuf:"bytes,2,opt,name=pager,proto3" json:"pager"`
+	Items  []*ItemRight  `protobuf:"bytes,3,rep,name=items,proto3" json:"items"`
+	Error  *common.Error `protobuf:"bytes,4,opt,name=error,proto3" json:"error"`
+	Info   *common.Info  `protobuf:"bytes,5,opt,name=info,proto3" json:"info"`
 }
 
 func (x *ItemRightResponse) Reset() {

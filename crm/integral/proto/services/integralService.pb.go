@@ -31,16 +31,18 @@ type IntegralWhere struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	Paged       int32   `protobuf:"varint,1,opt,name=paged,proto3" json:"paged,omitempty"`
-	PageSize    int32   `protobuf:"varint,2,opt,name=page_size,json=pageSize,proto3" json:"page_size,omitempty"`
-	Sorting     string  `protobuf:"bytes,3,opt,name=sorting,proto3" json:"sorting,omitempty"`
-	Keywords    string  `protobuf:"bytes,4,opt,name=keywords,proto3" json:"keywords,omitempty"`
-	Id          int64   `protobuf:"varint,5,opt,name=id,proto3" json:"id,omitempty"`
-	Ids         []int64 `protobuf:"varint,6,rep,packed,name=ids,proto3" json:"ids,omitempty"`
-	CustomerId  int64   `protobuf:"varint,7,opt,name=customer_id,json=customerId,proto3" json:"customer_id,omitempty"`
-	CustomerIds []int64 `protobuf:"varint,8,rep,packed,name=customer_ids,json=customerIds,proto3" json:"customer_ids,omitempty"`
-	Points      int32   `protobuf:"varint,9,opt,name=points,proto3" json:"points,omitempty"`
-	Memo        string  `protobuf:"bytes,10,opt,name=memo,proto3" json:"memo,omitempty"`
+	Paged    int32  `protobuf:"varint,1,opt,name=paged,proto3" json:"paged"`
+	PageSize int32  `protobuf:"varint,2,opt,name=page_size,json=pageSize,proto3" json:"page_size"`
+	Sorting  string `protobuf:"bytes,3,opt,name=sorting,proto3" json:"sorting"`
+	Keywords string `protobuf:"bytes,4,opt,name=keywords,proto3" json:"keywords"`
+	Id       int64  `protobuf:"varint,5,opt,name=id,proto3" json:"id"`
+	// @inject_tag: gorm:"-"
+	Ids        []int64 `protobuf:"varint,6,rep,packed,name=ids,proto3" json:"ids" gorm:"-"`
+	CustomerId int64   `protobuf:"varint,7,opt,name=customer_id,json=customerId,proto3" json:"customer_id"`
+	// @inject_tag: gorm:"-"
+	CustomerIds []int64 `protobuf:"varint,8,rep,packed,name=customer_ids,json=customerIds,proto3" json:"customer_ids" gorm:"-"`
+	Points      int32   `protobuf:"varint,9,opt,name=points,proto3" json:"points"`
+	Memo        string  `protobuf:"bytes,10,opt,name=memo,proto3" json:"memo"`
 }
 
 func (x *IntegralWhere) Reset() {
@@ -150,16 +152,16 @@ type Integral struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	Id            int64  `protobuf:"varint,1,opt,name=id,proto3" json:"id,omitempty"`
-	CustomerId    int64  `protobuf:"varint,2,opt,name=customer_id,json=customerId,proto3" json:"customer_id,omitempty"`
-	Points        int64  `protobuf:"varint,3,opt,name=points,proto3" json:"points,omitempty"`
-	TotalPoints   int64  `protobuf:"varint,4,opt,name=total_points,json=totalPoints,proto3" json:"total_points,omitempty"`
-	UsedPoints    int64  `protobuf:"varint,5,opt,name=used_points,json=usedPoints,proto3" json:"used_points,omitempty"`
-	ExpiredPoints int64  `protobuf:"varint,6,opt,name=expired_points,json=expiredPoints,proto3" json:"expired_points,omitempty"`
-	FrozenPoints  int64  `protobuf:"varint,7,opt,name=frozen_points,json=frozenPoints,proto3" json:"frozen_points,omitempty"`
-	ProtectPoints int64  `protobuf:"varint,8,opt,name=protect_points,json=protectPoints,proto3" json:"protect_points,omitempty"`
-	CreatedAt     string `protobuf:"bytes,9,opt,name=created_at,json=createdAt,proto3" json:"created_at,omitempty"`
-	UpdatedAt     string `protobuf:"bytes,10,opt,name=updated_at,json=updatedAt,proto3" json:"updated_at,omitempty"`
+	Id            int64  `protobuf:"varint,1,opt,name=id,proto3" json:"id"`
+	CustomerId    int64  `protobuf:"varint,2,opt,name=customer_id,json=customerId,proto3" json:"customer_id"`
+	Points        int64  `protobuf:"varint,3,opt,name=points,proto3" json:"points"`
+	TotalPoints   int64  `protobuf:"varint,4,opt,name=total_points,json=totalPoints,proto3" json:"total_points"`
+	UsedPoints    int64  `protobuf:"varint,5,opt,name=used_points,json=usedPoints,proto3" json:"used_points"`
+	ExpiredPoints int64  `protobuf:"varint,6,opt,name=expired_points,json=expiredPoints,proto3" json:"expired_points"`
+	FrozenPoints  int64  `protobuf:"varint,7,opt,name=frozen_points,json=frozenPoints,proto3" json:"frozen_points"`
+	ProtectPoints int64  `protobuf:"varint,8,opt,name=protect_points,json=protectPoints,proto3" json:"protect_points"`
+	CreatedAt     string `protobuf:"bytes,9,opt,name=created_at,json=createdAt,proto3" json:"created_at"`
+	UpdatedAt     string `protobuf:"bytes,10,opt,name=updated_at,json=updatedAt,proto3" json:"updated_at"`
 }
 
 func (x *Integral) Reset() {
@@ -269,11 +271,11 @@ type IntegralResponse struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	Entity *Integral     `protobuf:"bytes,1,opt,name=entity,proto3" json:"entity,omitempty"`
-	Pager  *common.Pager `protobuf:"bytes,2,opt,name=pager,proto3" json:"pager,omitempty"`
-	Items  []*Integral   `protobuf:"bytes,3,rep,name=items,proto3" json:"items,omitempty"`
-	Error  *common.Error `protobuf:"bytes,4,opt,name=error,proto3" json:"error,omitempty"`
-	Info   *common.Info  `protobuf:"bytes,5,opt,name=info,proto3" json:"info,omitempty"`
+	Entity *Integral     `protobuf:"bytes,1,opt,name=entity,proto3" json:"entity"`
+	Pager  *common.Pager `protobuf:"bytes,2,opt,name=pager,proto3" json:"pager"`
+	Items  []*Integral   `protobuf:"bytes,3,rep,name=items,proto3" json:"items"`
+	Error  *common.Error `protobuf:"bytes,4,opt,name=error,proto3" json:"error"`
+	Info   *common.Info  `protobuf:"bytes,5,opt,name=info,proto3" json:"info"`
 }
 
 func (x *IntegralResponse) Reset() {

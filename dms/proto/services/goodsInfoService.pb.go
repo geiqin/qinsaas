@@ -31,42 +31,43 @@ type GoodsInfo struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	Id                      int64              `protobuf:"varint,1,opt,name=id,proto3" json:"id,omitempty"`
-	ItemSn                  string             `protobuf:"bytes,2,opt,name=item_sn,json=itemSn,proto3" json:"item_sn,omitempty"`
-	ModelType               string             `protobuf:"bytes,3,opt,name=model_type,json=modelType,proto3" json:"model_type,omitempty"`
-	Name                    string             `protobuf:"bytes,4,opt,name=name,proto3" json:"name,omitempty"`
-	Unit                    string             `protobuf:"bytes,5,opt,name=unit,proto3" json:"unit,omitempty"`
-	BrandId                 int32              `protobuf:"varint,6,opt,name=brand_id,json=brandId,proto3" json:"brand_id,omitempty"`
-	TaxonomyId              int64              `protobuf:"varint,7,opt,name=taxonomy_id,json=taxonomyId,proto3" json:"taxonomy_id,omitempty"`
-	Quantity                int32              `protobuf:"varint,8,opt,name=quantity,proto3" json:"quantity,omitempty"`
-	ThumbId                 int64              `protobuf:"varint,9,opt,name=thumb_id,json=thumbId,proto3" json:"thumb_id,omitempty"`
-	ThumbUrl                string             `protobuf:"bytes,10,opt,name=thumb_url,json=thumbUrl,proto3" json:"thumb_url,omitempty"`
-	Barcode                 string             `protobuf:"bytes,11,opt,name=barcode,proto3" json:"barcode,omitempty"`
-	Price                   float32            `protobuf:"fixed32,12,opt,name=price,proto3" json:"price,omitempty"`
-	OriginPrice             float32            `protobuf:"fixed32,13,opt,name=origin_price,json=originPrice,proto3" json:"origin_price,omitempty"`
-	CostPrice               float32            `protobuf:"fixed32,14,opt,name=cost_price,json=costPrice,proto3" json:"cost_price,omitempty"`
-	Weight                  float32            `protobuf:"fixed32,15,opt,name=weight,proto3" json:"weight,omitempty"`
-	SkuId                   int64              `protobuf:"varint,16,opt,name=sku_id,json=skuId,proto3" json:"sku_id,omitempty"` // 规格商品时使用
-	SkuSn                   string             `protobuf:"bytes,17,opt,name=sku_sn,json=skuSn,proto3" json:"sku_sn,omitempty"`
-	SkuName                 string             `protobuf:"bytes,18,opt,name=sku_name,json=skuName,proto3" json:"sku_name,omitempty"`
-	SoldNum                 int32              `protobuf:"varint,19,opt,name=sold_num,json=soldNum,proto3" json:"sold_num,omitempty"`
-	BuyCount                int32              `protobuf:"varint,20,opt,name=buy_count,json=buyCount,proto3" json:"buy_count,omitempty"`
-	MinPrice                float32            `protobuf:"fixed32,21,opt,name=min_price,json=minPrice,proto3" json:"min_price,omitempty"`
-	MaxPrice                float32            `protobuf:"fixed32,22,opt,name=max_price,json=maxPrice,proto3" json:"max_price,omitempty"`
-	Disabled                bool               `protobuf:"varint,23,opt,name=disabled,proto3" json:"disabled,omitempty"`
-	UpdatedAt               string             `protobuf:"bytes,24,opt,name=updated_at,json=updatedAt,proto3" json:"updated_at,omitempty"`
-	IsCommissionDisplay     bool               `protobuf:"varint,25,opt,name=is_commission_display,json=isCommissionDisplay,proto3" json:"is_commission_display,omitempty"`
-	IsCommissionRateDisplay bool               `protobuf:"varint,26,opt,name=is_commission_rate_display,json=isCommissionRateDisplay,proto3" json:"is_commission_rate_display,omitempty"`
-	MinPrimaryRate          float32            `protobuf:"fixed32,27,opt,name=min_primary_rate,json=minPrimaryRate,proto3" json:"min_primary_rate,omitempty"`
-	MaxPrimaryRate          float32            `protobuf:"fixed32,28,opt,name=max_primary_rate,json=maxPrimaryRate,proto3" json:"max_primary_rate,omitempty"`
-	MinSecondRate           float32            `protobuf:"fixed32,29,opt,name=min_second_rate,json=minSecondRate,proto3" json:"min_second_rate,omitempty"`
-	MaxSecondRate           float32            `protobuf:"fixed32,30,opt,name=max_second_rate,json=maxSecondRate,proto3" json:"max_second_rate,omitempty"`
-	MinPrimary              float32            `protobuf:"fixed32,31,opt,name=min_primary,json=minPrimary,proto3" json:"min_primary,omitempty"`
-	MaxPrimary              float32            `protobuf:"fixed32,32,opt,name=max_primary,json=maxPrimary,proto3" json:"max_primary,omitempty"`
-	MinSecond               float32            `protobuf:"fixed32,33,opt,name=min_second,json=minSecond,proto3" json:"min_second,omitempty"`
-	MaxSecond               float32            `protobuf:"fixed32,34,opt,name=max_second,json=maxSecond,proto3" json:"max_second,omitempty"`
-	GoodsCommission         []*GoodsCommission `protobuf:"bytes,35,rep,name=goods_commission,json=goodsCommission,proto3" json:"goods_commission,omitempty"`
-	Default                 bool               `protobuf:"varint,36,opt,name=default,proto3" json:"default,omitempty"`
+	Id                      int64   `protobuf:"varint,1,opt,name=id,proto3" json:"id"`
+	ItemSn                  string  `protobuf:"bytes,2,opt,name=item_sn,json=itemSn,proto3" json:"item_sn"`
+	ModelType               string  `protobuf:"bytes,3,opt,name=model_type,json=modelType,proto3" json:"model_type"`
+	Name                    string  `protobuf:"bytes,4,opt,name=name,proto3" json:"name"`
+	Unit                    string  `protobuf:"bytes,5,opt,name=unit,proto3" json:"unit"`
+	BrandId                 int32   `protobuf:"varint,6,opt,name=brand_id,json=brandId,proto3" json:"brand_id"`
+	TaxonomyId              int64   `protobuf:"varint,7,opt,name=taxonomy_id,json=taxonomyId,proto3" json:"taxonomy_id"`
+	Quantity                int32   `protobuf:"varint,8,opt,name=quantity,proto3" json:"quantity"`
+	ThumbId                 int64   `protobuf:"varint,9,opt,name=thumb_id,json=thumbId,proto3" json:"thumb_id"`
+	ThumbUrl                string  `protobuf:"bytes,10,opt,name=thumb_url,json=thumbUrl,proto3" json:"thumb_url"`
+	Barcode                 string  `protobuf:"bytes,11,opt,name=barcode,proto3" json:"barcode"`
+	Price                   float32 `protobuf:"fixed32,12,opt,name=price,proto3" json:"price"`
+	OriginPrice             float32 `protobuf:"fixed32,13,opt,name=origin_price,json=originPrice,proto3" json:"origin_price"`
+	CostPrice               float32 `protobuf:"fixed32,14,opt,name=cost_price,json=costPrice,proto3" json:"cost_price"`
+	Weight                  float32 `protobuf:"fixed32,15,opt,name=weight,proto3" json:"weight"`
+	SkuId                   int64   `protobuf:"varint,16,opt,name=sku_id,json=skuId,proto3" json:"sku_id"` // 规格商品时使用
+	SkuSn                   string  `protobuf:"bytes,17,opt,name=sku_sn,json=skuSn,proto3" json:"sku_sn"`
+	SkuName                 string  `protobuf:"bytes,18,opt,name=sku_name,json=skuName,proto3" json:"sku_name"`
+	SoldNum                 int32   `protobuf:"varint,19,opt,name=sold_num,json=soldNum,proto3" json:"sold_num"`
+	BuyCount                int32   `protobuf:"varint,20,opt,name=buy_count,json=buyCount,proto3" json:"buy_count"`
+	MinPrice                float32 `protobuf:"fixed32,21,opt,name=min_price,json=minPrice,proto3" json:"min_price"`
+	MaxPrice                float32 `protobuf:"fixed32,22,opt,name=max_price,json=maxPrice,proto3" json:"max_price"`
+	Disabled                bool    `protobuf:"varint,23,opt,name=disabled,proto3" json:"disabled"`
+	UpdatedAt               string  `protobuf:"bytes,24,opt,name=updated_at,json=updatedAt,proto3" json:"updated_at"`
+	IsCommissionDisplay     bool    `protobuf:"varint,25,opt,name=is_commission_display,json=isCommissionDisplay,proto3" json:"is_commission_display"`
+	IsCommissionRateDisplay bool    `protobuf:"varint,26,opt,name=is_commission_rate_display,json=isCommissionRateDisplay,proto3" json:"is_commission_rate_display"`
+	MinPrimaryRate          float32 `protobuf:"fixed32,27,opt,name=min_primary_rate,json=minPrimaryRate,proto3" json:"min_primary_rate"`
+	MaxPrimaryRate          float32 `protobuf:"fixed32,28,opt,name=max_primary_rate,json=maxPrimaryRate,proto3" json:"max_primary_rate"`
+	MinSecondRate           float32 `protobuf:"fixed32,29,opt,name=min_second_rate,json=minSecondRate,proto3" json:"min_second_rate"`
+	MaxSecondRate           float32 `protobuf:"fixed32,30,opt,name=max_second_rate,json=maxSecondRate,proto3" json:"max_second_rate"`
+	MinPrimary              float32 `protobuf:"fixed32,31,opt,name=min_primary,json=minPrimary,proto3" json:"min_primary"`
+	MaxPrimary              float32 `protobuf:"fixed32,32,opt,name=max_primary,json=maxPrimary,proto3" json:"max_primary"`
+	MinSecond               float32 `protobuf:"fixed32,33,opt,name=min_second,json=minSecond,proto3" json:"min_second"`
+	MaxSecond               float32 `protobuf:"fixed32,34,opt,name=max_second,json=maxSecond,proto3" json:"max_second"`
+	// @inject_tag: gorm:"-"
+	GoodsCommission []*GoodsCommission `protobuf:"bytes,35,rep,name=goods_commission,json=goodsCommission,proto3" json:"goods_commission" gorm:"-"`
+	Default         bool               `protobuf:"varint,36,opt,name=default,proto3" json:"default"`
 }
 
 func (x *GoodsInfo) Reset() {
@@ -358,11 +359,11 @@ type GoodsInfoResponse struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	Entity *GoodsInfo    `protobuf:"bytes,1,opt,name=entity,proto3" json:"entity,omitempty"`
-	Pager  *common.Pager `protobuf:"bytes,2,opt,name=pager,proto3" json:"pager,omitempty"`
-	Items  []*GoodsInfo  `protobuf:"bytes,3,rep,name=items,proto3" json:"items,omitempty"`
-	Error  *common.Error `protobuf:"bytes,4,opt,name=error,proto3" json:"error,omitempty"`
-	Info   *common.Info  `protobuf:"bytes,5,opt,name=info,proto3" json:"info,omitempty"`
+	Entity *GoodsInfo    `protobuf:"bytes,1,opt,name=entity,proto3" json:"entity"`
+	Pager  *common.Pager `protobuf:"bytes,2,opt,name=pager,proto3" json:"pager"`
+	Items  []*GoodsInfo  `protobuf:"bytes,3,rep,name=items,proto3" json:"items"`
+	Error  *common.Error `protobuf:"bytes,4,opt,name=error,proto3" json:"error"`
+	Info   *common.Info  `protobuf:"bytes,5,opt,name=info,proto3" json:"info"`
 }
 
 func (x *GoodsInfoResponse) Reset() {

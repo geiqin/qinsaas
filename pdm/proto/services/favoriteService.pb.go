@@ -31,12 +31,13 @@ type Favorite struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	Id         int64        `protobuf:"varint,1,opt,name=id,proto3" json:"id,omitempty"`
-	CustomerId int64        `protobuf:"varint,2,opt,name=customer_id,json=customerId,proto3" json:"customer_id,omitempty"`
-	ItemId     int64        `protobuf:"varint,3,opt,name=item_id,json=itemId,proto3" json:"item_id,omitempty"`
-	CreatedAt  string       `protobuf:"bytes,4,opt,name=created_at,json=createdAt,proto3" json:"created_at,omitempty"`
-	UpdatedAt  string       `protobuf:"bytes,5,opt,name=updated_at,json=updatedAt,proto3" json:"updated_at,omitempty"`
-	Item       *ItemDisplay `protobuf:"bytes,6,opt,name=item,proto3" json:"item,omitempty"`
+	Id         int64  `protobuf:"varint,1,opt,name=id,proto3" json:"id"`
+	CustomerId int64  `protobuf:"varint,2,opt,name=customer_id,json=customerId,proto3" json:"customer_id"`
+	ItemId     int64  `protobuf:"varint,3,opt,name=item_id,json=itemId,proto3" json:"item_id"`
+	CreatedAt  string `protobuf:"bytes,4,opt,name=created_at,json=createdAt,proto3" json:"created_at"`
+	UpdatedAt  string `protobuf:"bytes,5,opt,name=updated_at,json=updatedAt,proto3" json:"updated_at"`
+	// @inject_tag: gorm:"-"
+	Item *ItemDisplay `protobuf:"bytes,6,opt,name=item,proto3" json:"item" gorm:"-"`
 }
 
 func (x *Favorite) Reset() {
@@ -118,13 +119,14 @@ type FavoriteWhere struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	Paged      int32   `protobuf:"varint,1,opt,name=paged,proto3" json:"paged,omitempty"`
-	PageSize   int32   `protobuf:"varint,2,opt,name=page_size,json=pageSize,proto3" json:"page_size,omitempty"`
-	Top        int32   `protobuf:"varint,3,opt,name=top,proto3" json:"top,omitempty"`
-	Id         int64   `protobuf:"varint,4,opt,name=id,proto3" json:"id,omitempty"`
-	Ids        []int64 `protobuf:"varint,5,rep,packed,name=ids,proto3" json:"ids,omitempty"`
-	CustomerId int64   `protobuf:"varint,6,opt,name=customer_id,json=customerId,proto3" json:"customer_id,omitempty"`
-	ItemId     int64   `protobuf:"varint,7,opt,name=item_id,json=itemId,proto3" json:"item_id,omitempty"`
+	Paged    int32 `protobuf:"varint,1,opt,name=paged,proto3" json:"paged"`
+	PageSize int32 `protobuf:"varint,2,opt,name=page_size,json=pageSize,proto3" json:"page_size"`
+	Top      int32 `protobuf:"varint,3,opt,name=top,proto3" json:"top"`
+	Id       int64 `protobuf:"varint,4,opt,name=id,proto3" json:"id"`
+	// @inject_tag: gorm:"-"
+	Ids        []int64 `protobuf:"varint,5,rep,packed,name=ids,proto3" json:"ids" gorm:"-"`
+	CustomerId int64   `protobuf:"varint,6,opt,name=customer_id,json=customerId,proto3" json:"customer_id"`
+	ItemId     int64   `protobuf:"varint,7,opt,name=item_id,json=itemId,proto3" json:"item_id"`
 }
 
 func (x *FavoriteWhere) Reset() {
@@ -213,11 +215,11 @@ type FavoriteResponse struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	Entity *Favorite     `protobuf:"bytes,1,opt,name=entity,proto3" json:"entity,omitempty"`
-	Pager  *common.Pager `protobuf:"bytes,2,opt,name=pager,proto3" json:"pager,omitempty"`
-	Items  []*Favorite   `protobuf:"bytes,3,rep,name=items,proto3" json:"items,omitempty"`
-	Error  *common.Error `protobuf:"bytes,4,opt,name=error,proto3" json:"error,omitempty"`
-	Info   *common.Info  `protobuf:"bytes,5,opt,name=info,proto3" json:"info,omitempty"`
+	Entity *Favorite     `protobuf:"bytes,1,opt,name=entity,proto3" json:"entity"`
+	Pager  *common.Pager `protobuf:"bytes,2,opt,name=pager,proto3" json:"pager"`
+	Items  []*Favorite   `protobuf:"bytes,3,rep,name=items,proto3" json:"items"`
+	Error  *common.Error `protobuf:"bytes,4,opt,name=error,proto3" json:"error"`
+	Info   *common.Info  `protobuf:"bytes,5,opt,name=info,proto3" json:"info"`
 }
 
 func (x *FavoriteResponse) Reset() {

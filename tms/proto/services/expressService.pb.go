@@ -31,14 +31,16 @@ type ExpressWhere struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	Paged      int32   `protobuf:"varint,1,opt,name=paged,proto3" json:"paged,omitempty"`
-	PageSize   int32   `protobuf:"varint,2,opt,name=page_size,json=pageSize,proto3" json:"page_size,omitempty"`
-	Sorting    string  `protobuf:"bytes,3,opt,name=sorting,proto3" json:"sorting,omitempty"`
-	Keywords   string  `protobuf:"bytes,4,opt,name=keywords,proto3" json:"keywords,omitempty"`
-	Id         int64   `protobuf:"varint,5,opt,name=id,proto3" json:"id,omitempty"`
-	Ids        []int64 `protobuf:"varint,6,rep,packed,name=ids,proto3" json:"ids,omitempty"`
-	ExpressId  int64   `protobuf:"varint,7,opt,name=express_id,json=expressId,proto3" json:"express_id,omitempty"`
-	ExpressIds []int64 `protobuf:"varint,8,rep,packed,name=express_ids,json=expressIds,proto3" json:"express_ids,omitempty"`
+	Paged    int32  `protobuf:"varint,1,opt,name=paged,proto3" json:"paged"`
+	PageSize int32  `protobuf:"varint,2,opt,name=page_size,json=pageSize,proto3" json:"page_size"`
+	Sorting  string `protobuf:"bytes,3,opt,name=sorting,proto3" json:"sorting"`
+	Keywords string `protobuf:"bytes,4,opt,name=keywords,proto3" json:"keywords"`
+	Id       int64  `protobuf:"varint,5,opt,name=id,proto3" json:"id"`
+	// @inject_tag: gorm:"-"
+	Ids       []int64 `protobuf:"varint,6,rep,packed,name=ids,proto3" json:"ids" gorm:"-"`
+	ExpressId int64   `protobuf:"varint,7,opt,name=express_id,json=expressId,proto3" json:"express_id"`
+	// @inject_tag: gorm:"-"
+	ExpressIds []int64 `protobuf:"varint,8,rep,packed,name=express_ids,json=expressIds,proto3" json:"express_ids" gorm:"-"`
 }
 
 func (x *ExpressWhere) Reset() {
@@ -134,13 +136,14 @@ type Express struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	Id             int64            `protobuf:"varint,1,opt,name=id,proto3" json:"id,omitempty"`
-	Name           string           `protobuf:"bytes,2,opt,name=name,proto3" json:"name,omitempty"`
-	ChargingMethod int32            `protobuf:"varint,3,opt,name=charging_method,json=chargingMethod,proto3" json:"charging_method,omitempty"`
-	Defaulted      bool             `protobuf:"varint,4,opt,name=defaulted,proto3" json:"defaulted,omitempty"`
-	CreatedAt      string           `protobuf:"bytes,5,opt,name=created_at,json=createdAt,proto3" json:"created_at,omitempty"`
-	UpdatedAt      string           `protobuf:"bytes,6,opt,name=updated_at,json=updatedAt,proto3" json:"updated_at,omitempty"`
-	Details        []*ExpressDetail `protobuf:"bytes,7,rep,name=details,proto3" json:"details,omitempty"`
+	Id             int64  `protobuf:"varint,1,opt,name=id,proto3" json:"id"`
+	Name           string `protobuf:"bytes,2,opt,name=name,proto3" json:"name"`
+	ChargingMethod int32  `protobuf:"varint,3,opt,name=charging_method,json=chargingMethod,proto3" json:"charging_method"`
+	Defaulted      bool   `protobuf:"varint,4,opt,name=defaulted,proto3" json:"defaulted"`
+	CreatedAt      string `protobuf:"bytes,5,opt,name=created_at,json=createdAt,proto3" json:"created_at"`
+	UpdatedAt      string `protobuf:"bytes,6,opt,name=updated_at,json=updatedAt,proto3" json:"updated_at"`
+	// @inject_tag: gorm:"foreignKey:ExpressId"
+	Details []*ExpressDetail `protobuf:"bytes,7,rep,name=details,proto3" json:"details" gorm:"foreignKey:ExpressId"`
 }
 
 func (x *Express) Reset() {
@@ -229,18 +232,19 @@ type ExpressDetail struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	Id               int64          `protobuf:"varint,1,opt,name=id,proto3" json:"id,omitempty"`
-	ExpressId        int64          `protobuf:"varint,2,opt,name=express_id,json=expressId,proto3" json:"express_id,omitempty"`
-	FirstWeight      float32        `protobuf:"fixed32,3,opt,name=first_weight,json=firstWeight,proto3" json:"first_weight,omitempty"`
-	FirstNumber      int32          `protobuf:"varint,4,opt,name=first_number,json=firstNumber,proto3" json:"first_number,omitempty"`
-	ExpressFee       float32        `protobuf:"fixed32,5,opt,name=express_fee,json=expressFee,proto3" json:"express_fee,omitempty"`
-	AdditionalWeight float32        `protobuf:"fixed32,6,opt,name=additional_weight,json=additionalWeight,proto3" json:"additional_weight,omitempty"`
-	AdditionalNumber int32          `protobuf:"varint,7,opt,name=additional_number,json=additionalNumber,proto3" json:"additional_number,omitempty"`
-	AdditionalFee    float32        `protobuf:"fixed32,8,opt,name=additional_fee,json=additionalFee,proto3" json:"additional_fee,omitempty"`
-	CreatedAt        string         `protobuf:"bytes,9,opt,name=created_at,json=createdAt,proto3" json:"created_at,omitempty"`
-	UpdatedAt        string         `protobuf:"bytes,10,opt,name=updated_at,json=updatedAt,proto3" json:"updated_at,omitempty"`
-	AreaContent      string         `protobuf:"bytes,11,opt,name=area_content,json=areaContent,proto3" json:"area_content,omitempty"`
-	Areas            []*ExpressArea `protobuf:"bytes,12,rep,name=areas,proto3" json:"areas,omitempty"`
+	Id               int64   `protobuf:"varint,1,opt,name=id,proto3" json:"id"`
+	ExpressId        int64   `protobuf:"varint,2,opt,name=express_id,json=expressId,proto3" json:"express_id"`
+	FirstWeight      float32 `protobuf:"fixed32,3,opt,name=first_weight,json=firstWeight,proto3" json:"first_weight"`
+	FirstNumber      int32   `protobuf:"varint,4,opt,name=first_number,json=firstNumber,proto3" json:"first_number"`
+	ExpressFee       float32 `protobuf:"fixed32,5,opt,name=express_fee,json=expressFee,proto3" json:"express_fee"`
+	AdditionalWeight float32 `protobuf:"fixed32,6,opt,name=additional_weight,json=additionalWeight,proto3" json:"additional_weight"`
+	AdditionalNumber int32   `protobuf:"varint,7,opt,name=additional_number,json=additionalNumber,proto3" json:"additional_number"`
+	AdditionalFee    float32 `protobuf:"fixed32,8,opt,name=additional_fee,json=additionalFee,proto3" json:"additional_fee"`
+	CreatedAt        string  `protobuf:"bytes,9,opt,name=created_at,json=createdAt,proto3" json:"created_at"`
+	UpdatedAt        string  `protobuf:"bytes,10,opt,name=updated_at,json=updatedAt,proto3" json:"updated_at"`
+	AreaContent      string  `protobuf:"bytes,11,opt,name=area_content,json=areaContent,proto3" json:"area_content"`
+	// @inject_tag: gorm:"foreignKey:ExpressDetailId"
+	Areas []*ExpressArea `protobuf:"bytes,12,rep,name=areas,proto3" json:"areas" gorm:"foreignKey:ExpressDetailId"`
 }
 
 func (x *ExpressDetail) Reset() {
@@ -364,11 +368,11 @@ type ExpressArea struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	Id              int64  `protobuf:"varint,1,opt,name=id,proto3" json:"id,omitempty"`
-	ExpressDetailId int64  `protobuf:"varint,2,opt,name=express_detail_id,json=expressDetailId,proto3" json:"express_detail_id,omitempty"`
-	AreaId          int64  `protobuf:"varint,3,opt,name=area_id,json=areaId,proto3" json:"area_id,omitempty"`
-	CreatedAt       string `protobuf:"bytes,4,opt,name=created_at,json=createdAt,proto3" json:"created_at,omitempty"`
-	UpdatedAt       string `protobuf:"bytes,5,opt,name=updated_at,json=updatedAt,proto3" json:"updated_at,omitempty"`
+	Id              int64  `protobuf:"varint,1,opt,name=id,proto3" json:"id"`
+	ExpressDetailId int64  `protobuf:"varint,2,opt,name=express_detail_id,json=expressDetailId,proto3" json:"express_detail_id"`
+	AreaId          int64  `protobuf:"varint,3,opt,name=area_id,json=areaId,proto3" json:"area_id"`
+	CreatedAt       string `protobuf:"bytes,4,opt,name=created_at,json=createdAt,proto3" json:"created_at"`
+	UpdatedAt       string `protobuf:"bytes,5,opt,name=updated_at,json=updatedAt,proto3" json:"updated_at"`
 }
 
 func (x *ExpressArea) Reset() {
@@ -443,11 +447,11 @@ type ExpressResponse struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	Entity *Express      `protobuf:"bytes,1,opt,name=entity,proto3" json:"entity,omitempty"`
-	Pager  *common.Pager `protobuf:"bytes,2,opt,name=pager,proto3" json:"pager,omitempty"`
-	Items  []*Express    `protobuf:"bytes,3,rep,name=items,proto3" json:"items,omitempty"`
-	Error  *common.Error `protobuf:"bytes,4,opt,name=error,proto3" json:"error,omitempty"`
-	Info   *common.Info  `protobuf:"bytes,5,opt,name=info,proto3" json:"info,omitempty"`
+	Entity *Express      `protobuf:"bytes,1,opt,name=entity,proto3" json:"entity"`
+	Pager  *common.Pager `protobuf:"bytes,2,opt,name=pager,proto3" json:"pager"`
+	Items  []*Express    `protobuf:"bytes,3,rep,name=items,proto3" json:"items"`
+	Error  *common.Error `protobuf:"bytes,4,opt,name=error,proto3" json:"error"`
+	Info   *common.Info  `protobuf:"bytes,5,opt,name=info,proto3" json:"info"`
 }
 
 func (x *ExpressResponse) Reset() {

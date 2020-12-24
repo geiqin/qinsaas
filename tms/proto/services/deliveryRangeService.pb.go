@@ -30,17 +30,18 @@ type DeliveryRange struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	Id            int32          `protobuf:"varint,1,opt,name=id,proto3" json:"id,omitempty"`
-	DeliveryId    int64          `protobuf:"varint,2,opt,name=delivery_id,json=deliveryId,proto3" json:"delivery_id,omitempty"`
-	AreaName      string         `protobuf:"bytes,3,opt,name=area_name,json=areaName,proto3" json:"area_name,omitempty"`
-	StartPrice    float32        `protobuf:"fixed32,4,opt,name=start_price,json=startPrice,proto3" json:"start_price,omitempty"`
-	DeliveryPrice float32        `protobuf:"fixed32,5,opt,name=delivery_price,json=deliveryPrice,proto3" json:"delivery_price,omitempty"`
-	Method        int32          `protobuf:"varint,6,opt,name=method,proto3" json:"method,omitempty"`
-	RegionRadius  float32        `protobuf:"fixed32,7,opt,name=region_radius,json=regionRadius,proto3" json:"region_radius,omitempty"`
-	RegionData    string         `protobuf:"bytes,8,opt,name=region_data,json=regionData,proto3" json:"region_data,omitempty"`
-	CreatedAt     string         `protobuf:"bytes,9,opt,name=created_at,json=createdAt,proto3" json:"created_at,omitempty"`
-	UpdatedAt     string         `protobuf:"bytes,10,opt,name=updated_at,json=updatedAt,proto3" json:"updated_at,omitempty"`
-	Coordinate    []*DeliveryMap `protobuf:"bytes,11,rep,name=coordinate,proto3" json:"coordinate,omitempty"`
+	Id            int32   `protobuf:"varint,1,opt,name=id,proto3" json:"id"`
+	DeliveryId    int64   `protobuf:"varint,2,opt,name=delivery_id,json=deliveryId,proto3" json:"delivery_id"`
+	AreaName      string  `protobuf:"bytes,3,opt,name=area_name,json=areaName,proto3" json:"area_name"`
+	StartPrice    float32 `protobuf:"fixed32,4,opt,name=start_price,json=startPrice,proto3" json:"start_price"`
+	DeliveryPrice float32 `protobuf:"fixed32,5,opt,name=delivery_price,json=deliveryPrice,proto3" json:"delivery_price"`
+	Method        int32   `protobuf:"varint,6,opt,name=method,proto3" json:"method"`
+	RegionRadius  float32 `protobuf:"fixed32,7,opt,name=region_radius,json=regionRadius,proto3" json:"region_radius"`
+	RegionData    string  `protobuf:"bytes,8,opt,name=region_data,json=regionData,proto3" json:"region_data"`
+	CreatedAt     string  `protobuf:"bytes,9,opt,name=created_at,json=createdAt,proto3" json:"created_at"`
+	UpdatedAt     string  `protobuf:"bytes,10,opt,name=updated_at,json=updatedAt,proto3" json:"updated_at"`
+	// @inject_tag: gorm:"foreignKey:DeliveryRangeId"
+	Coordinate []*DeliveryMap `protobuf:"bytes,11,rep,name=coordinate,proto3" json:"coordinate" gorm:"foreignKey:DeliveryRangeId"`
 }
 
 func (x *DeliveryRange) Reset() {
@@ -157,12 +158,12 @@ type DeliveryMap struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	Id              int32  `protobuf:"varint,1,opt,name=id,proto3" json:"id,omitempty"`
-	DeliveryRangeId int32  `protobuf:"varint,2,opt,name=delivery_range_id,json=deliveryRangeId,proto3" json:"delivery_range_id,omitempty"`
-	Lng             string `protobuf:"bytes,3,opt,name=lng,proto3" json:"lng,omitempty"`
-	Lat             string `protobuf:"bytes,4,opt,name=lat,proto3" json:"lat,omitempty"`
-	CreatedAt       string `protobuf:"bytes,5,opt,name=created_at,json=createdAt,proto3" json:"created_at,omitempty"`
-	UpdatedAt       string `protobuf:"bytes,6,opt,name=updated_at,json=updatedAt,proto3" json:"updated_at,omitempty"`
+	Id              int32  `protobuf:"varint,1,opt,name=id,proto3" json:"id"`
+	DeliveryRangeId int32  `protobuf:"varint,2,opt,name=delivery_range_id,json=deliveryRangeId,proto3" json:"delivery_range_id"`
+	Lng             string `protobuf:"bytes,3,opt,name=lng,proto3" json:"lng"`
+	Lat             string `protobuf:"bytes,4,opt,name=lat,proto3" json:"lat"`
+	CreatedAt       string `protobuf:"bytes,5,opt,name=created_at,json=createdAt,proto3" json:"created_at"`
+	UpdatedAt       string `protobuf:"bytes,6,opt,name=updated_at,json=updatedAt,proto3" json:"updated_at"`
 }
 
 func (x *DeliveryMap) Reset() {

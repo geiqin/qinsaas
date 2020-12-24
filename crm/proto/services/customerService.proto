@@ -82,11 +82,15 @@ message Customer {
     string created_at =32;
     string updated_at =33;
     string deleted_at =34;
+    // @inject_tag: `gorm:"-"`
     Level level =35;
     // @inject_tag: gorm:"many2many:customer_tags;"
     repeated Tag tags = 36;
+    // @inject_tag: `gorm:"foreignKey:CustomerId"`
     repeated Vipcard vipcards =37;
+    // @inject_tag: `gorm:"foreignKey:CustomerId"`
     repeated Address addrs = 38;
+    // @inject_tag: gorm:"-"
     repeated int64 ids = 39;
 }
 

@@ -17,6 +17,7 @@ message KindTagWhere {
     int32 page_size = 2;
     int32 top = 3;
     int32 id = 4;
+    // @inject_tag: gorm:"-"
     repeated int32 ids = 5;
     bool is_system = 6;
 }

@@ -31,22 +31,23 @@ type InConfig struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	Id               int32         `protobuf:"varint,1,opt,name=id,proto3" json:"id,omitempty"`
-	IsOpen           bool          `protobuf:"varint,2,opt,name=is_open,json=isOpen,proto3" json:"is_open,omitempty"`
-	BusinessMode     int32         `protobuf:"varint,3,opt,name=business_mode,json=businessMode,proto3" json:"business_mode,omitempty"`
-	SelfTakeType     int32         `protobuf:"varint,4,opt,name=self_take_type,json=selfTakeType,proto3" json:"self_take_type,omitempty"`
-	SurchargeType    int32         `protobuf:"varint,5,opt,name=surcharge_type,json=surchargeType,proto3" json:"surcharge_type,omitempty"`
-	PlatformFee      float32       `protobuf:"fixed32,6,opt,name=platform_fee,json=platformFee,proto3" json:"platform_fee,omitempty"`
-	PlatformFeeName  string        `protobuf:"bytes,7,opt,name=platform_fee_name,json=platformFeeName,proto3" json:"platform_fee_name,omitempty"`
-	OpenTableFee     float32       `protobuf:"fixed32,8,opt,name=open_table_fee,json=openTableFee,proto3" json:"open_table_fee,omitempty"`
-	OpenTableFeeName string        `protobuf:"bytes,9,opt,name=open_table_fee_name,json=openTableFeeName,proto3" json:"open_table_fee_name,omitempty"`
-	PayConfigType    int32         `protobuf:"varint,10,opt,name=pay_config_type,json=payConfigType,proto3" json:"pay_config_type,omitempty"`
-	HourType         int32         `protobuf:"varint,11,opt,name=hour_type,json=hourType,proto3" json:"hour_type,omitempty"`
-	WholeStartTime   string        `protobuf:"bytes,12,opt,name=whole_start_time,json=wholeStartTime,proto3" json:"whole_start_time,omitempty"`
-	WholeEndTime     string        `protobuf:"bytes,13,opt,name=whole_end_time,json=wholeEndTime,proto3" json:"whole_end_time,omitempty"`
-	CreatedAt        string        `protobuf:"bytes,14,opt,name=created_at,json=createdAt,proto3" json:"created_at,omitempty"`
-	UpdatedAt        string        `protobuf:"bytes,15,opt,name=updated_at,json=updatedAt,proto3" json:"updated_at,omitempty"`
-	OpenTimes        []*TimeConfig `protobuf:"bytes,16,rep,name=open_times,json=openTimes,proto3" json:"open_times,omitempty"`
+	Id               int32   `protobuf:"varint,1,opt,name=id,proto3" json:"id"`
+	IsOpen           bool    `protobuf:"varint,2,opt,name=is_open,json=isOpen,proto3" json:"is_open"`
+	BusinessMode     int32   `protobuf:"varint,3,opt,name=business_mode,json=businessMode,proto3" json:"business_mode"`
+	SelfTakeType     int32   `protobuf:"varint,4,opt,name=self_take_type,json=selfTakeType,proto3" json:"self_take_type"`
+	SurchargeType    int32   `protobuf:"varint,5,opt,name=surcharge_type,json=surchargeType,proto3" json:"surcharge_type"`
+	PlatformFee      float32 `protobuf:"fixed32,6,opt,name=platform_fee,json=platformFee,proto3" json:"platform_fee"`
+	PlatformFeeName  string  `protobuf:"bytes,7,opt,name=platform_fee_name,json=platformFeeName,proto3" json:"platform_fee_name"`
+	OpenTableFee     float32 `protobuf:"fixed32,8,opt,name=open_table_fee,json=openTableFee,proto3" json:"open_table_fee"`
+	OpenTableFeeName string  `protobuf:"bytes,9,opt,name=open_table_fee_name,json=openTableFeeName,proto3" json:"open_table_fee_name"`
+	PayConfigType    int32   `protobuf:"varint,10,opt,name=pay_config_type,json=payConfigType,proto3" json:"pay_config_type"`
+	HourType         int32   `protobuf:"varint,11,opt,name=hour_type,json=hourType,proto3" json:"hour_type"`
+	WholeStartTime   string  `protobuf:"bytes,12,opt,name=whole_start_time,json=wholeStartTime,proto3" json:"whole_start_time"`
+	WholeEndTime     string  `protobuf:"bytes,13,opt,name=whole_end_time,json=wholeEndTime,proto3" json:"whole_end_time"`
+	CreatedAt        string  `protobuf:"bytes,14,opt,name=created_at,json=createdAt,proto3" json:"created_at"`
+	UpdatedAt        string  `protobuf:"bytes,15,opt,name=updated_at,json=updatedAt,proto3" json:"updated_at"`
+	// @inject_tag: gorm:"-"
+	OpenTimes []*TimeConfig `protobuf:"bytes,16,rep,name=open_times,json=openTimes,proto3" json:"open_times" gorm:"-"`
 }
 
 func (x *InConfig) Reset() {
@@ -198,11 +199,11 @@ type InConfigResponse struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	Entity *InConfig     `protobuf:"bytes,1,opt,name=entity,proto3" json:"entity,omitempty"`
-	Pager  *common.Pager `protobuf:"bytes,2,opt,name=pager,proto3" json:"pager,omitempty"`
-	Items  []*InConfig   `protobuf:"bytes,3,rep,name=items,proto3" json:"items,omitempty"`
-	Error  *common.Error `protobuf:"bytes,4,opt,name=error,proto3" json:"error,omitempty"`
-	Info   *common.Info  `protobuf:"bytes,5,opt,name=info,proto3" json:"info,omitempty"`
+	Entity *InConfig     `protobuf:"bytes,1,opt,name=entity,proto3" json:"entity"`
+	Pager  *common.Pager `protobuf:"bytes,2,opt,name=pager,proto3" json:"pager"`
+	Items  []*InConfig   `protobuf:"bytes,3,rep,name=items,proto3" json:"items"`
+	Error  *common.Error `protobuf:"bytes,4,opt,name=error,proto3" json:"error"`
+	Info   *common.Info  `protobuf:"bytes,5,opt,name=info,proto3" json:"info"`
 }
 
 func (x *InConfigResponse) Reset() {

@@ -32,7 +32,7 @@ type PayRequest struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	OrderId int64 `protobuf:"varint,1,opt,name=order_id,json=orderId,proto3" json:"order_id,omitempty"`
+	OrderId int64 `protobuf:"varint,1,opt,name=order_id,json=orderId,proto3" json:"order_id"`
 }
 
 func (x *PayRequest) Reset() {
@@ -79,13 +79,13 @@ type PayMethod struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	Id      int32  `protobuf:"varint,1,opt,name=id,proto3" json:"id,omitempty"`
-	Name    string `protobuf:"bytes,2,opt,name=name,proto3" json:"name,omitempty"`
-	Title   string `protobuf:"bytes,3,opt,name=title,proto3" json:"title,omitempty"`
-	Icon    string `protobuf:"bytes,4,opt,name=icon,proto3" json:"icon,omitempty"`
-	Tips    string `protobuf:"bytes,5,opt,name=tips,proto3" json:"tips,omitempty"`
-	Enabled bool   `protobuf:"varint,6,opt,name=enabled,proto3" json:"enabled,omitempty"`
-	Route   string `protobuf:"bytes,7,opt,name=route,proto3" json:"route,omitempty"`
+	Id      int32  `protobuf:"varint,1,opt,name=id,proto3" json:"id"`
+	Name    string `protobuf:"bytes,2,opt,name=name,proto3" json:"name"`
+	Title   string `protobuf:"bytes,3,opt,name=title,proto3" json:"title"`
+	Icon    string `protobuf:"bytes,4,opt,name=icon,proto3" json:"icon"`
+	Tips    string `protobuf:"bytes,5,opt,name=tips,proto3" json:"tips"`
+	Enabled bool   `protobuf:"varint,6,opt,name=enabled,proto3" json:"enabled"`
+	Route   string `protobuf:"bytes,7,opt,name=route,proto3" json:"route"`
 }
 
 func (x *PayMethod) Reset() {
@@ -174,11 +174,11 @@ type PayResponse struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	Entity  *Order            `protobuf:"bytes,1,opt,name=entity,proto3" json:"entity,omitempty"`
-	Params  map[string]string `protobuf:"bytes,2,rep,name=params,proto3" json:"params,omitempty" protobuf_key:"bytes,1,opt,name=key,proto3" protobuf_val:"bytes,2,opt,name=value,proto3"`
-	Methods []*PayMethod      `protobuf:"bytes,3,rep,name=methods,proto3" json:"methods,omitempty"`
-	Error   *common.Error     `protobuf:"bytes,4,opt,name=error,proto3" json:"error,omitempty"`
-	Info    *common.Info      `protobuf:"bytes,5,opt,name=info,proto3" json:"info,omitempty"`
+	Entity  *Order            `protobuf:"bytes,1,opt,name=entity,proto3" json:"entity"`
+	Params  map[string]string `protobuf:"bytes,2,rep,name=params,proto3" json:"params" protobuf_key:"bytes,1,opt,name=key,proto3" protobuf_val:"bytes,2,opt,name=value,proto3"`
+	Methods []*PayMethod      `protobuf:"bytes,3,rep,name=methods,proto3" json:"methods"`
+	Error   *common.Error     `protobuf:"bytes,4,opt,name=error,proto3" json:"error"`
+	Info    *common.Info      `protobuf:"bytes,5,opt,name=info,proto3" json:"info"`
 }
 
 func (x *PayResponse) Reset() {

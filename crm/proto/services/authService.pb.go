@@ -31,14 +31,14 @@ type AuthRequest struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	CustomerId int64  `protobuf:"varint,1,opt,name=customer_id,json=customerId,proto3" json:"customer_id,omitempty"`
-	Name       string `protobuf:"bytes,2,opt,name=name,proto3" json:"name,omitempty"`
-	Mobile     string `protobuf:"bytes,3,opt,name=mobile,proto3" json:"mobile,omitempty"`
-	Email      string `protobuf:"bytes,4,opt,name=email,proto3" json:"email,omitempty"`
-	Password   string `protobuf:"bytes,5,opt,name=password,proto3" json:"password,omitempty"`
-	OldPwd     string `protobuf:"bytes,6,opt,name=old_pwd,json=oldPwd,proto3" json:"old_pwd,omitempty"`
-	NewPwd     string `protobuf:"bytes,7,opt,name=new_pwd,json=newPwd,proto3" json:"new_pwd,omitempty"`
-	ConfirmPwd string `protobuf:"bytes,8,opt,name=confirm_pwd,json=confirmPwd,proto3" json:"confirm_pwd,omitempty"`
+	CustomerId int64  `protobuf:"varint,1,opt,name=customer_id,json=customerId,proto3" json:"customer_id"`
+	Name       string `protobuf:"bytes,2,opt,name=name,proto3" json:"name"`
+	Mobile     string `protobuf:"bytes,3,opt,name=mobile,proto3" json:"mobile"`
+	Email      string `protobuf:"bytes,4,opt,name=email,proto3" json:"email"`
+	Password   string `protobuf:"bytes,5,opt,name=password,proto3" json:"password"`
+	OldPwd     string `protobuf:"bytes,6,opt,name=old_pwd,json=oldPwd,proto3" json:"old_pwd"`
+	NewPwd     string `protobuf:"bytes,7,opt,name=new_pwd,json=newPwd,proto3" json:"new_pwd"`
+	ConfirmPwd string `protobuf:"bytes,8,opt,name=confirm_pwd,json=confirmPwd,proto3" json:"confirm_pwd"`
 }
 
 func (x *AuthRequest) Reset() {
@@ -135,10 +135,10 @@ type AuthResponse struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	Entity *common.Token `protobuf:"bytes,1,opt,name=entity,proto3" json:"entity,omitempty"`
-	Pager  *common.Pager `protobuf:"bytes,2,opt,name=pager,proto3" json:"pager,omitempty"`
-	Error  *common.Error `protobuf:"bytes,4,opt,name=error,proto3" json:"error,omitempty"`
-	Info   *common.Info  `protobuf:"bytes,5,opt,name=info,proto3" json:"info,omitempty"`
+	Entity *common.Token `protobuf:"bytes,1,opt,name=entity,proto3" json:"entity"`
+	Pager  *common.Pager `protobuf:"bytes,2,opt,name=pager,proto3" json:"pager"`
+	Error  *common.Error `protobuf:"bytes,4,opt,name=error,proto3" json:"error"`
+	Info   *common.Info  `protobuf:"bytes,5,opt,name=info,proto3" json:"info"`
 }
 
 func (x *AuthResponse) Reset() {

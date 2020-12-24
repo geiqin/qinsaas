@@ -39,6 +39,7 @@ message GoodsInfo {
 	float max_primary = 32;
 	float min_second = 33;
 	float max_second = 34;
+	// @inject_tag: gorm:"-"
 	repeated GoodsCommission goods_commission = 35;
 	bool default = 36;
 }

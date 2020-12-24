@@ -18,6 +18,7 @@ message IntegralRuleWhere {
     string sorting = 3;
     string keywords = 4;
     int64 id = 5;
+    // @inject_tag: gorm:"-"
     repeated int64 ids = 6;
 }
 
@@ -30,6 +31,7 @@ message IntegralRule {
     int32 goods_type = 6;
     string created_at = 7;
     string updated_at = 8;
+    // @inject_tag: gorm:"foreignKey:IntegralRuleId"
     repeated IntegralGoods goods = 9;
 }
 
@@ -42,6 +44,7 @@ message IntegralGoods {
     int64 integral_rule_id = 6;
     string created_at = 7;
     string updated_at = 8;
+    // @inject_tag: gorm:"-"
     GoodsInfo goods = 9;
 }
 

@@ -31,12 +31,13 @@ type TimesWhere struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	Paged    int32   `protobuf:"varint,1,opt,name=paged,proto3" json:"paged,omitempty"`
-	PageSize int32   `protobuf:"varint,2,opt,name=page_size,json=pageSize,proto3" json:"page_size,omitempty"`
-	Id       int64   `protobuf:"varint,3,opt,name=id,proto3" json:"id,omitempty"`
-	Ids      []int64 `protobuf:"varint,4,rep,packed,name=ids,proto3" json:"ids,omitempty"`
-	TargetId int64   `protobuf:"varint,5,opt,name=target_id,json=targetId,proto3" json:"target_id,omitempty"`
-	Type     string  `protobuf:"bytes,6,opt,name=type,proto3" json:"type,omitempty"`
+	Paged    int32 `protobuf:"varint,1,opt,name=paged,proto3" json:"paged"`
+	PageSize int32 `protobuf:"varint,2,opt,name=page_size,json=pageSize,proto3" json:"page_size"`
+	Id       int64 `protobuf:"varint,3,opt,name=id,proto3" json:"id"`
+	// @inject_tag: gorm:"-"
+	Ids      []int64 `protobuf:"varint,4,rep,packed,name=ids,proto3" json:"ids" gorm:"-"`
+	TargetId int64   `protobuf:"varint,5,opt,name=target_id,json=targetId,proto3" json:"target_id"`
+	Type     string  `protobuf:"bytes,6,opt,name=type,proto3" json:"type"`
 }
 
 func (x *TimesWhere) Reset() {
@@ -118,13 +119,13 @@ type Times struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	Id        int64  `protobuf:"varint,1,opt,name=id,proto3" json:"id,omitempty"`
-	TargetId  int64  `protobuf:"varint,2,opt,name=target_id,json=targetId,proto3" json:"target_id,omitempty"`
-	Type      string `protobuf:"bytes,3,opt,name=type,proto3" json:"type,omitempty"`
-	StartTime string `protobuf:"bytes,4,opt,name=start_time,json=startTime,proto3" json:"start_time,omitempty"`
-	EndTime   string `protobuf:"bytes,5,opt,name=end_time,json=endTime,proto3" json:"end_time,omitempty"`
-	CreatedAt string `protobuf:"bytes,6,opt,name=created_at,json=createdAt,proto3" json:"created_at,omitempty"`
-	UpdatedAt string `protobuf:"bytes,7,opt,name=updated_at,json=updatedAt,proto3" json:"updated_at,omitempty"`
+	Id        int64  `protobuf:"varint,1,opt,name=id,proto3" json:"id"`
+	TargetId  int64  `protobuf:"varint,2,opt,name=target_id,json=targetId,proto3" json:"target_id"`
+	Type      string `protobuf:"bytes,3,opt,name=type,proto3" json:"type"`
+	StartTime string `protobuf:"bytes,4,opt,name=start_time,json=startTime,proto3" json:"start_time"`
+	EndTime   string `protobuf:"bytes,5,opt,name=end_time,json=endTime,proto3" json:"end_time"`
+	CreatedAt string `protobuf:"bytes,6,opt,name=created_at,json=createdAt,proto3" json:"created_at"`
+	UpdatedAt string `protobuf:"bytes,7,opt,name=updated_at,json=updatedAt,proto3" json:"updated_at"`
 }
 
 func (x *Times) Reset() {
@@ -213,11 +214,11 @@ type TimesResponse struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	Entity *Times        `protobuf:"bytes,1,opt,name=entity,proto3" json:"entity,omitempty"`
-	Pager  *common.Pager `protobuf:"bytes,2,opt,name=pager,proto3" json:"pager,omitempty"`
-	Items  []*Times      `protobuf:"bytes,3,rep,name=items,proto3" json:"items,omitempty"`
-	Error  *common.Error `protobuf:"bytes,4,opt,name=error,proto3" json:"error,omitempty"`
-	Info   *common.Info  `protobuf:"bytes,5,opt,name=info,proto3" json:"info,omitempty"`
+	Entity *Times        `protobuf:"bytes,1,opt,name=entity,proto3" json:"entity"`
+	Pager  *common.Pager `protobuf:"bytes,2,opt,name=pager,proto3" json:"pager"`
+	Items  []*Times      `protobuf:"bytes,3,rep,name=items,proto3" json:"items"`
+	Error  *common.Error `protobuf:"bytes,4,opt,name=error,proto3" json:"error"`
+	Info   *common.Info  `protobuf:"bytes,5,opt,name=info,proto3" json:"info"`
 }
 
 func (x *TimesResponse) Reset() {
@@ -292,10 +293,10 @@ type DateList struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	Date  string       `protobuf:"bytes,1,opt,name=date,proto3" json:"date,omitempty"`
-	Type  int32        `protobuf:"varint,2,opt,name=type,proto3" json:"type,omitempty"` // 0今天,1明天
-	Name  string       `protobuf:"bytes,3,opt,name=name,proto3" json:"name,omitempty"`
-	Times []*DateTimes `protobuf:"bytes,4,rep,name=times,proto3" json:"times,omitempty"`
+	Date  string       `protobuf:"bytes,1,opt,name=date,proto3" json:"date"`
+	Type  int32        `protobuf:"varint,2,opt,name=type,proto3" json:"type"` // 0今天,1明天
+	Name  string       `protobuf:"bytes,3,opt,name=name,proto3" json:"name"`
+	Times []*DateTimes `protobuf:"bytes,4,rep,name=times,proto3" json:"times"`
 }
 
 func (x *DateList) Reset() {
@@ -363,8 +364,8 @@ type DateTimes struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	StartTime string `protobuf:"bytes,1,opt,name=start_time,json=startTime,proto3" json:"start_time,omitempty"`
-	EndTime   string `protobuf:"bytes,2,opt,name=end_time,json=endTime,proto3" json:"end_time,omitempty"`
+	StartTime string `protobuf:"bytes,1,opt,name=start_time,json=startTime,proto3" json:"start_time"`
+	EndTime   string `protobuf:"bytes,2,opt,name=end_time,json=endTime,proto3" json:"end_time"`
 }
 
 func (x *DateTimes) Reset() {
@@ -418,11 +419,11 @@ type DateListResponse struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	Entity *DateList     `protobuf:"bytes,1,opt,name=entity,proto3" json:"entity,omitempty"`
-	Pager  *common.Pager `protobuf:"bytes,2,opt,name=pager,proto3" json:"pager,omitempty"`
-	Items  []*DateList   `protobuf:"bytes,3,rep,name=items,proto3" json:"items,omitempty"`
-	Error  *common.Error `protobuf:"bytes,4,opt,name=error,proto3" json:"error,omitempty"`
-	Info   *common.Info  `protobuf:"bytes,5,opt,name=info,proto3" json:"info,omitempty"`
+	Entity *DateList     `protobuf:"bytes,1,opt,name=entity,proto3" json:"entity"`
+	Pager  *common.Pager `protobuf:"bytes,2,opt,name=pager,proto3" json:"pager"`
+	Items  []*DateList   `protobuf:"bytes,3,rep,name=items,proto3" json:"items"`
+	Error  *common.Error `protobuf:"bytes,4,opt,name=error,proto3" json:"error"`
+	Info   *common.Info  `protobuf:"bytes,5,opt,name=info,proto3" json:"info"`
 }
 
 func (x *DateListResponse) Reset() {

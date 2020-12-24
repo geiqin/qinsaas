@@ -31,14 +31,15 @@ type Goods struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	Id              int64              `protobuf:"varint,1,opt,name=id,proto3" json:"id,omitempty"`
-	ItemId          int64              `protobuf:"varint,2,opt,name=item_id,json=itemId,proto3" json:"item_id,omitempty"`
-	SkuId           int64              `protobuf:"varint,3,opt,name=sku_id,json=skuId,proto3" json:"sku_id,omitempty"`
-	Disabled        bool               `protobuf:"varint,6,opt,name=disabled,proto3" json:"disabled,omitempty"`
-	Default         bool               `protobuf:"varint,7,opt,name=default,proto3" json:"default,omitempty"`
-	CreatedAt       string             `protobuf:"bytes,8,opt,name=created_at,json=createdAt,proto3" json:"created_at,omitempty"`
-	UpdatedAt       string             `protobuf:"bytes,9,opt,name=updated_at,json=updatedAt,proto3" json:"updated_at,omitempty"`
-	GoodsCommission []*GoodsCommission `protobuf:"bytes,10,rep,name=goods_commission,json=goodsCommission,proto3" json:"goods_commission,omitempty"`
+	Id        int64  `protobuf:"varint,1,opt,name=id,proto3" json:"id"`
+	ItemId    int64  `protobuf:"varint,2,opt,name=item_id,json=itemId,proto3" json:"item_id"`
+	SkuId     int64  `protobuf:"varint,3,opt,name=sku_id,json=skuId,proto3" json:"sku_id"`
+	Disabled  bool   `protobuf:"varint,6,opt,name=disabled,proto3" json:"disabled"`
+	Default   bool   `protobuf:"varint,7,opt,name=default,proto3" json:"default"`
+	CreatedAt string `protobuf:"bytes,8,opt,name=created_at,json=createdAt,proto3" json:"created_at"`
+	UpdatedAt string `protobuf:"bytes,9,opt,name=updated_at,json=updatedAt,proto3" json:"updated_at"`
+	// @inject_tag: gorm:"foreignKey:GoodsId"
+	GoodsCommission []*GoodsCommission `protobuf:"bytes,10,rep,name=goods_commission,json=goodsCommission,proto3" json:"goods_commission"`
 }
 
 func (x *Goods) Reset() {
@@ -134,23 +135,25 @@ type GoodsWhere struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	Paged      int32   `protobuf:"varint,1,opt,name=paged,proto3" json:"paged,omitempty"`
-	PageSize   int32   `protobuf:"varint,2,opt,name=page_size,json=pageSize,proto3" json:"page_size,omitempty"`
-	Top        int32   `protobuf:"varint,3,opt,name=top,proto3" json:"top,omitempty"`
-	Id         int64   `protobuf:"varint,4,opt,name=id,proto3" json:"id,omitempty"`
-	Ids        []int64 `protobuf:"varint,5,rep,packed,name=ids,proto3" json:"ids,omitempty"`
-	Keywords   string  `protobuf:"bytes,6,opt,name=keywords,proto3" json:"keywords,omitempty"`
-	CatId      int32   `protobuf:"varint,7,opt,name=cat_id,json=catId,proto3" json:"cat_id,omitempty"`
-	Type       string  `protobuf:"bytes,8,opt,name=type,proto3" json:"type,omitempty"`
-	Sorting    string  `protobuf:"bytes,9,opt,name=sorting,proto3" json:"sorting,omitempty"`
-	ItemId     int64   `protobuf:"varint,10,opt,name=item_id,json=itemId,proto3" json:"item_id,omitempty"`
-	SkuId      int64   `protobuf:"varint,11,opt,name=sku_id,json=skuId,proto3" json:"sku_id,omitempty"`
-	ItemName   string  `protobuf:"bytes,12,opt,name=item_name,json=itemName,proto3" json:"item_name,omitempty"`
-	ItemPrice  string  `protobuf:"bytes,13,opt,name=item_price,json=itemPrice,proto3" json:"item_price,omitempty"`
-	ItemIds    []int64 `protobuf:"varint,14,rep,packed,name=item_ids,json=itemIds,proto3" json:"item_ids,omitempty"`
-	CustomerId int64   `protobuf:"varint,15,opt,name=customer_id,json=customerId,proto3" json:"customer_id,omitempty"`
-	Client     bool    `protobuf:"varint,16,opt,name=client,proto3" json:"client,omitempty"`
-	Disabled   bool    `protobuf:"varint,17,opt,name=disabled,proto3" json:"disabled,omitempty"`
+	Paged    int32 `protobuf:"varint,1,opt,name=paged,proto3" json:"paged"`
+	PageSize int32 `protobuf:"varint,2,opt,name=page_size,json=pageSize,proto3" json:"page_size"`
+	Top      int32 `protobuf:"varint,3,opt,name=top,proto3" json:"top"`
+	Id       int64 `protobuf:"varint,4,opt,name=id,proto3" json:"id"`
+	// @inject_tag: gorm:"-"
+	Ids       []int64 `protobuf:"varint,5,rep,packed,name=ids,proto3" json:"ids"`
+	Keywords  string  `protobuf:"bytes,6,opt,name=keywords,proto3" json:"keywords"`
+	CatId     int32   `protobuf:"varint,7,opt,name=cat_id,json=catId,proto3" json:"cat_id"`
+	Type      string  `protobuf:"bytes,8,opt,name=type,proto3" json:"type"`
+	Sorting   string  `protobuf:"bytes,9,opt,name=sorting,proto3" json:"sorting"`
+	ItemId    int64   `protobuf:"varint,10,opt,name=item_id,json=itemId,proto3" json:"item_id"`
+	SkuId     int64   `protobuf:"varint,11,opt,name=sku_id,json=skuId,proto3" json:"sku_id"`
+	ItemName  string  `protobuf:"bytes,12,opt,name=item_name,json=itemName,proto3" json:"item_name"`
+	ItemPrice string  `protobuf:"bytes,13,opt,name=item_price,json=itemPrice,proto3" json:"item_price"`
+	// @inject_tag: gorm:"-"
+	ItemIds    []int64 `protobuf:"varint,14,rep,packed,name=item_ids,json=itemIds,proto3" json:"item_ids"`
+	CustomerId int64   `protobuf:"varint,15,opt,name=customer_id,json=customerId,proto3" json:"customer_id"`
+	Client     bool    `protobuf:"varint,16,opt,name=client,proto3" json:"client"`
+	Disabled   bool    `protobuf:"varint,17,opt,name=disabled,proto3" json:"disabled"`
 }
 
 func (x *GoodsWhere) Reset() {
@@ -309,11 +312,11 @@ type GoodsResponse struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	Entity *Goods        `protobuf:"bytes,1,opt,name=entity,proto3" json:"entity,omitempty"`
-	Pager  *common.Pager `protobuf:"bytes,2,opt,name=pager,proto3" json:"pager,omitempty"`
-	Items  []*Goods      `protobuf:"bytes,3,rep,name=items,proto3" json:"items,omitempty"`
-	Error  *common.Error `protobuf:"bytes,4,opt,name=error,proto3" json:"error,omitempty"`
-	Info   *common.Info  `protobuf:"bytes,5,opt,name=info,proto3" json:"info,omitempty"`
+	Entity *Goods        `protobuf:"bytes,1,opt,name=entity,proto3" json:"entity"`
+	Pager  *common.Pager `protobuf:"bytes,2,opt,name=pager,proto3" json:"pager"`
+	Items  []*Goods      `protobuf:"bytes,3,rep,name=items,proto3" json:"items"`
+	Error  *common.Error `protobuf:"bytes,4,opt,name=error,proto3" json:"error"`
+	Info   *common.Info  `protobuf:"bytes,5,opt,name=info,proto3" json:"info"`
 }
 
 func (x *GoodsResponse) Reset() {

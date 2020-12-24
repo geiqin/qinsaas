@@ -27,6 +27,7 @@ message OrderAddress {
     int64 address_id = 13;
     string created_at = 14;
     string updated_at = 15;
+    // @inject_tag: gorm:"-"
     AreaInfo area = 16;
     string lng = 17;
     string lat = 18;

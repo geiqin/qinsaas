@@ -31,10 +31,10 @@ type CustomerSecret struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	Id         int64  `protobuf:"varint,1,opt,name=id,proto3" json:"id,omitempty"`
-	CustomerId int64  `protobuf:"varint,2,opt,name=customer_id,json=customerId,proto3" json:"customer_id,omitempty"`
-	Password   string `protobuf:"bytes,3,opt,name=password,proto3" json:"password,omitempty"`
-	Locked     bool   `protobuf:"varint,4,opt,name=locked,proto3" json:"locked,omitempty"`
+	Id         int64  `protobuf:"varint,1,opt,name=id,proto3" json:"id"`
+	CustomerId int64  `protobuf:"varint,2,opt,name=customer_id,json=customerId,proto3" json:"customer_id"`
+	Password   string `protobuf:"bytes,3,opt,name=password,proto3" json:"password"`
+	Locked     bool   `protobuf:"varint,4,opt,name=locked,proto3" json:"locked"`
 }
 
 func (x *CustomerSecret) Reset() {
@@ -103,11 +103,11 @@ type CustomerSecretResponse struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	Entity *CustomerSecret   `protobuf:"bytes,1,opt,name=entity,proto3" json:"entity,omitempty"`
-	Pager  *common.Pager     `protobuf:"bytes,2,opt,name=pager,proto3" json:"pager,omitempty"`
-	Items  []*CustomerSecret `protobuf:"bytes,3,rep,name=items,proto3" json:"items,omitempty"`
-	Error  *common.Error     `protobuf:"bytes,4,opt,name=error,proto3" json:"error,omitempty"`
-	Info   *common.Info      `protobuf:"bytes,5,opt,name=info,proto3" json:"info,omitempty"`
+	Entity *CustomerSecret   `protobuf:"bytes,1,opt,name=entity,proto3" json:"entity"`
+	Pager  *common.Pager     `protobuf:"bytes,2,opt,name=pager,proto3" json:"pager"`
+	Items  []*CustomerSecret `protobuf:"bytes,3,rep,name=items,proto3" json:"items"`
+	Error  *common.Error     `protobuf:"bytes,4,opt,name=error,proto3" json:"error"`
+	Info   *common.Info      `protobuf:"bytes,5,opt,name=info,proto3" json:"info"`
 }
 
 func (x *CustomerSecretResponse) Reset() {

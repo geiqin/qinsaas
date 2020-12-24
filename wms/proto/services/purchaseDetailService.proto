@@ -15,6 +15,7 @@ message PurchaseDetail {
     string memo = 8;
     string created_at = 9;
     string updated_at = 10;
+    // @inject_tag: gorm:"-"
     GoodsInfo goods =11;
 }
 

@@ -31,16 +31,17 @@ type DistRewardWhere struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	Paged         int32   `protobuf:"varint,1,opt,name=paged,proto3" json:"paged,omitempty"`
-	PageSize      int32   `protobuf:"varint,2,opt,name=page_size,json=pageSize,proto3" json:"page_size,omitempty"`
-	Id            int64   `protobuf:"varint,3,opt,name=id,proto3" json:"id,omitempty"`
-	Ids           []int64 `protobuf:"varint,4,rep,packed,name=ids,proto3" json:"ids,omitempty"`
-	CustomerId    int64   `protobuf:"varint,5,opt,name=customer_id,json=customerId,proto3" json:"customer_id,omitempty"`
-	DistributorId int64   `protobuf:"varint,6,opt,name=distributor_id,json=distributorId,proto3" json:"distributor_id,omitempty"`
-	OrderId       int64   `protobuf:"varint,7,opt,name=order_id,json=orderId,proto3" json:"order_id,omitempty"`
-	Keywords      string  `protobuf:"bytes,8,opt,name=keywords,proto3" json:"keywords,omitempty"`
-	Status        int32   `protobuf:"varint,9,opt,name=status,proto3" json:"status,omitempty"`
-	OrderSn       string  `protobuf:"bytes,10,opt,name=order_sn,json=orderSn,proto3" json:"order_sn,omitempty"`
+	Paged    int32 `protobuf:"varint,1,opt,name=paged,proto3" json:"paged"`
+	PageSize int32 `protobuf:"varint,2,opt,name=page_size,json=pageSize,proto3" json:"page_size"`
+	Id       int64 `protobuf:"varint,3,opt,name=id,proto3" json:"id"`
+	// @inject_tag: gorm:"-"
+	Ids           []int64 `protobuf:"varint,4,rep,packed,name=ids,proto3" json:"ids" gorm:"-"`
+	CustomerId    int64   `protobuf:"varint,5,opt,name=customer_id,json=customerId,proto3" json:"customer_id"`
+	DistributorId int64   `protobuf:"varint,6,opt,name=distributor_id,json=distributorId,proto3" json:"distributor_id"`
+	OrderId       int64   `protobuf:"varint,7,opt,name=order_id,json=orderId,proto3" json:"order_id"`
+	Keywords      string  `protobuf:"bytes,8,opt,name=keywords,proto3" json:"keywords"`
+	Status        int32   `protobuf:"varint,9,opt,name=status,proto3" json:"status"`
+	OrderSn       string  `protobuf:"bytes,10,opt,name=order_sn,json=orderSn,proto3" json:"order_sn"`
 }
 
 func (x *DistRewardWhere) Reset() {
@@ -150,10 +151,10 @@ type DistRewardCfg struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	Id        int64  `protobuf:"varint,1,opt,name=id,proto3" json:"id,omitempty"`
-	IsOpen    bool   `protobuf:"varint,2,opt,name=is_open,json=isOpen,proto3" json:"is_open,omitempty"`
-	CreatedAt string `protobuf:"bytes,3,opt,name=created_at,json=createdAt,proto3" json:"created_at,omitempty"`
-	UpdatedAt string `protobuf:"bytes,4,opt,name=updated_at,json=updatedAt,proto3" json:"updated_at,omitempty"`
+	Id        int64  `protobuf:"varint,1,opt,name=id,proto3" json:"id"`
+	IsOpen    bool   `protobuf:"varint,2,opt,name=is_open,json=isOpen,proto3" json:"is_open"`
+	CreatedAt string `protobuf:"bytes,3,opt,name=created_at,json=createdAt,proto3" json:"created_at"`
+	UpdatedAt string `protobuf:"bytes,4,opt,name=updated_at,json=updatedAt,proto3" json:"updated_at"`
 }
 
 func (x *DistRewardCfg) Reset() {
@@ -221,13 +222,13 @@ type DistRewardOption struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	Id              int64   `protobuf:"varint,1,opt,name=id,proto3" json:"id,omitempty"`
-	Type            string  `protobuf:"bytes,2,opt,name=type,proto3" json:"type,omitempty"`
-	Discount        float32 `protobuf:"fixed32,3,opt,name=discount,proto3" json:"discount,omitempty"`
-	Money           float32 `protobuf:"fixed32,4,opt,name=money,proto3" json:"money,omitempty"`
-	PromotionAmount float32 `protobuf:"fixed32,5,opt,name=promotion_amount,json=promotionAmount,proto3" json:"promotion_amount,omitempty"`
-	CreatedAt       string  `protobuf:"bytes,6,opt,name=created_at,json=createdAt,proto3" json:"created_at,omitempty"`
-	UpdatedAt       string  `protobuf:"bytes,7,opt,name=updated_at,json=updatedAt,proto3" json:"updated_at,omitempty"`
+	Id              int64   `protobuf:"varint,1,opt,name=id,proto3" json:"id"`
+	Type            string  `protobuf:"bytes,2,opt,name=type,proto3" json:"type"`
+	Discount        float32 `protobuf:"fixed32,3,opt,name=discount,proto3" json:"discount"`
+	Money           float32 `protobuf:"fixed32,4,opt,name=money,proto3" json:"money"`
+	PromotionAmount float32 `protobuf:"fixed32,5,opt,name=promotion_amount,json=promotionAmount,proto3" json:"promotion_amount"`
+	CreatedAt       string  `protobuf:"bytes,6,opt,name=created_at,json=createdAt,proto3" json:"created_at"`
+	UpdatedAt       string  `protobuf:"bytes,7,opt,name=updated_at,json=updatedAt,proto3" json:"updated_at"`
 }
 
 func (x *DistRewardOption) Reset() {
@@ -316,22 +317,23 @@ type DistReward struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	Id               int64        `protobuf:"varint,1,opt,name=id,proto3" json:"id,omitempty"`
-	CustomerId       int64        `protobuf:"varint,2,opt,name=customer_id,json=customerId,proto3" json:"customer_id,omitempty"`
-	DistributorId    int64        `protobuf:"varint,3,opt,name=distributor_id,json=distributorId,proto3" json:"distributor_id,omitempty"`
-	Reward           float32      `protobuf:"fixed32,4,opt,name=reward,proto3" json:"reward,omitempty"`
-	ApplyReward      float32      `protobuf:"fixed32,5,opt,name=apply_reward,json=applyReward,proto3" json:"apply_reward,omitempty"`
-	WaitSettleReward float32      `protobuf:"fixed32,6,opt,name=wait_settle_reward,json=waitSettleReward,proto3" json:"wait_settle_reward,omitempty"`
-	WaitGrantReward  float32      `protobuf:"fixed32,7,opt,name=wait_grant_reward,json=waitGrantReward,proto3" json:"wait_grant_reward,omitempty"`
-	RewardTotal      float32      `protobuf:"fixed32,8,opt,name=reward_total,json=rewardTotal,proto3" json:"reward_total,omitempty"`
-	RewardFrozen     float32      `protobuf:"fixed32,9,opt,name=reward_frozen,json=rewardFrozen,proto3" json:"reward_frozen,omitempty"`
-	RewardWithdrew   float32      `protobuf:"fixed32,10,opt,name=reward_withdrew,json=rewardWithdrew,proto3" json:"reward_withdrew,omitempty"`
-	PromotionAmount  float32      `protobuf:"fixed32,11,opt,name=promotion_amount,json=promotionAmount,proto3" json:"promotion_amount,omitempty"`
-	PromotionNum     int32        `protobuf:"varint,12,opt,name=promotion_num,json=promotionNum,proto3" json:"promotion_num,omitempty"`
-	WithdrewNum      int32        `protobuf:"varint,13,opt,name=withdrew_num,json=withdrewNum,proto3" json:"withdrew_num,omitempty"`
-	CreatedAt        string       `protobuf:"bytes,14,opt,name=created_at,json=createdAt,proto3" json:"created_at,omitempty"`
-	UpdatedAt        string       `protobuf:"bytes,15,opt,name=updated_at,json=updatedAt,proto3" json:"updated_at,omitempty"`
-	Distributor      *Distributor `protobuf:"bytes,16,opt,name=distributor,proto3" json:"distributor,omitempty"`
+	Id               int64   `protobuf:"varint,1,opt,name=id,proto3" json:"id"`
+	CustomerId       int64   `protobuf:"varint,2,opt,name=customer_id,json=customerId,proto3" json:"customer_id"`
+	DistributorId    int64   `protobuf:"varint,3,opt,name=distributor_id,json=distributorId,proto3" json:"distributor_id"`
+	Reward           float32 `protobuf:"fixed32,4,opt,name=reward,proto3" json:"reward"`
+	ApplyReward      float32 `protobuf:"fixed32,5,opt,name=apply_reward,json=applyReward,proto3" json:"apply_reward"`
+	WaitSettleReward float32 `protobuf:"fixed32,6,opt,name=wait_settle_reward,json=waitSettleReward,proto3" json:"wait_settle_reward"`
+	WaitGrantReward  float32 `protobuf:"fixed32,7,opt,name=wait_grant_reward,json=waitGrantReward,proto3" json:"wait_grant_reward"`
+	RewardTotal      float32 `protobuf:"fixed32,8,opt,name=reward_total,json=rewardTotal,proto3" json:"reward_total"`
+	RewardFrozen     float32 `protobuf:"fixed32,9,opt,name=reward_frozen,json=rewardFrozen,proto3" json:"reward_frozen"`
+	RewardWithdrew   float32 `protobuf:"fixed32,10,opt,name=reward_withdrew,json=rewardWithdrew,proto3" json:"reward_withdrew"`
+	PromotionAmount  float32 `protobuf:"fixed32,11,opt,name=promotion_amount,json=promotionAmount,proto3" json:"promotion_amount"`
+	PromotionNum     int32   `protobuf:"varint,12,opt,name=promotion_num,json=promotionNum,proto3" json:"promotion_num"`
+	WithdrewNum      int32   `protobuf:"varint,13,opt,name=withdrew_num,json=withdrewNum,proto3" json:"withdrew_num"`
+	CreatedAt        string  `protobuf:"bytes,14,opt,name=created_at,json=createdAt,proto3" json:"created_at"`
+	UpdatedAt        string  `protobuf:"bytes,15,opt,name=updated_at,json=updatedAt,proto3" json:"updated_at"`
+	// @inject_tag: gorm:"-"
+	Distributor *Distributor `protobuf:"bytes,16,opt,name=distributor,proto3" json:"distributor" gorm:"-"`
 }
 
 func (x *DistReward) Reset() {
@@ -483,22 +485,24 @@ type DistRewardRecord struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	Id             int64                   `protobuf:"varint,1,opt,name=id,proto3" json:"id,omitempty"`
-	RewardSn       string                  `protobuf:"bytes,2,opt,name=reward_sn,json=rewardSn,proto3" json:"reward_sn,omitempty"`
-	OrderId        int64                   `protobuf:"varint,3,opt,name=order_id,json=orderId,proto3" json:"order_id,omitempty"`
-	OrderSn        string                  `protobuf:"bytes,4,opt,name=order_sn,json=orderSn,proto3" json:"order_sn,omitempty"`
-	PlatformSource string                  `protobuf:"bytes,5,opt,name=platform_source,json=platformSource,proto3" json:"platform_source,omitempty"`
-	OrderAmount    float32                 `protobuf:"fixed32,6,opt,name=order_amount,json=orderAmount,proto3" json:"order_amount,omitempty"`
-	DistributorId  int64                   `protobuf:"varint,7,opt,name=distributor_id,json=distributorId,proto3" json:"distributor_id,omitempty"`
-	Money          float32                 `protobuf:"fixed32,8,opt,name=money,proto3" json:"money,omitempty"`
-	Rate           float32                 `protobuf:"fixed32,9,opt,name=rate,proto3" json:"rate,omitempty"`
-	Memo           string                  `protobuf:"bytes,10,opt,name=memo,proto3" json:"memo,omitempty"`
-	OperatorId     int64                   `protobuf:"varint,11,opt,name=operator_id,json=operatorId,proto3" json:"operator_id,omitempty"`
-	Status         int32                   `protobuf:"varint,12,opt,name=status,proto3" json:"status,omitempty"`
-	CreatedAt      string                  `protobuf:"bytes,13,opt,name=created_at,json=createdAt,proto3" json:"created_at,omitempty"`
-	UpdatedAt      string                  `protobuf:"bytes,14,opt,name=updated_at,json=updatedAt,proto3" json:"updated_at,omitempty"`
-	Distributor    *Distributor            `protobuf:"bytes,15,opt,name=distributor,proto3" json:"distributor,omitempty"`
-	Details        *DistRewardRecordDetail `protobuf:"bytes,16,opt,name=details,proto3" json:"details,omitempty"`
+	Id             int64   `protobuf:"varint,1,opt,name=id,proto3" json:"id"`
+	RewardSn       string  `protobuf:"bytes,2,opt,name=reward_sn,json=rewardSn,proto3" json:"reward_sn"`
+	OrderId        int64   `protobuf:"varint,3,opt,name=order_id,json=orderId,proto3" json:"order_id"`
+	OrderSn        string  `protobuf:"bytes,4,opt,name=order_sn,json=orderSn,proto3" json:"order_sn"`
+	PlatformSource string  `protobuf:"bytes,5,opt,name=platform_source,json=platformSource,proto3" json:"platform_source"`
+	OrderAmount    float32 `protobuf:"fixed32,6,opt,name=order_amount,json=orderAmount,proto3" json:"order_amount"`
+	DistributorId  int64   `protobuf:"varint,7,opt,name=distributor_id,json=distributorId,proto3" json:"distributor_id"`
+	Money          float32 `protobuf:"fixed32,8,opt,name=money,proto3" json:"money"`
+	Rate           float32 `protobuf:"fixed32,9,opt,name=rate,proto3" json:"rate"`
+	Memo           string  `protobuf:"bytes,10,opt,name=memo,proto3" json:"memo"`
+	OperatorId     int64   `protobuf:"varint,11,opt,name=operator_id,json=operatorId,proto3" json:"operator_id"`
+	Status         int32   `protobuf:"varint,12,opt,name=status,proto3" json:"status"`
+	CreatedAt      string  `protobuf:"bytes,13,opt,name=created_at,json=createdAt,proto3" json:"created_at"`
+	UpdatedAt      string  `protobuf:"bytes,14,opt,name=updated_at,json=updatedAt,proto3" json:"updated_at"`
+	// @inject_tag: gorm:"-"
+	Distributor *Distributor `protobuf:"bytes,15,opt,name=distributor,proto3" json:"distributor" gorm:"-"`
+	// @inject_tag: gorm:"foreignKey:DistRewardRecordId"
+	Details *DistRewardRecordDetail `protobuf:"bytes,16,opt,name=details,proto3" json:"details" gorm:"foreignKey:DistRewardRecordId"`
 }
 
 func (x *DistRewardRecord) Reset() {
@@ -650,18 +654,18 @@ type DistRewardRecordDetail struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	Id                 int64   `protobuf:"varint,1,opt,name=id,proto3" json:"id,omitempty"`
-	DistRewardRecordId int64   `protobuf:"varint,2,opt,name=dist_reward_record_id,json=distRewardRecordId,proto3" json:"dist_reward_record_id,omitempty"`
-	OrderDetailId      int64   `protobuf:"varint,3,opt,name=order_detail_id,json=orderDetailId,proto3" json:"order_detail_id,omitempty"`
-	ItemId             int64   `protobuf:"varint,4,opt,name=item_id,json=itemId,proto3" json:"item_id,omitempty"`
-	SkuId              int64   `protobuf:"varint,5,opt,name=sku_id,json=skuId,proto3" json:"sku_id,omitempty"`
-	Name               string  `protobuf:"bytes,6,opt,name=name,proto3" json:"name,omitempty"`
-	ThumbUrl           string  `protobuf:"bytes,7,opt,name=thumb_url,json=thumbUrl,proto3" json:"thumb_url,omitempty"`
-	Num                int32   `protobuf:"varint,8,opt,name=num,proto3" json:"num,omitempty"`
-	Price              float32 `protobuf:"fixed32,9,opt,name=price,proto3" json:"price,omitempty"`
-	IsDistGoods        bool    `protobuf:"varint,12,opt,name=is_dist_goods,json=isDistGoods,proto3" json:"is_dist_goods,omitempty"`
-	CreatedAt          string  `protobuf:"bytes,13,opt,name=created_at,json=createdAt,proto3" json:"created_at,omitempty"`
-	UpdatedAt          string  `protobuf:"bytes,14,opt,name=updated_at,json=updatedAt,proto3" json:"updated_at,omitempty"`
+	Id                 int64   `protobuf:"varint,1,opt,name=id,proto3" json:"id"`
+	DistRewardRecordId int64   `protobuf:"varint,2,opt,name=dist_reward_record_id,json=distRewardRecordId,proto3" json:"dist_reward_record_id"`
+	OrderDetailId      int64   `protobuf:"varint,3,opt,name=order_detail_id,json=orderDetailId,proto3" json:"order_detail_id"`
+	ItemId             int64   `protobuf:"varint,4,opt,name=item_id,json=itemId,proto3" json:"item_id"`
+	SkuId              int64   `protobuf:"varint,5,opt,name=sku_id,json=skuId,proto3" json:"sku_id"`
+	Name               string  `protobuf:"bytes,6,opt,name=name,proto3" json:"name"`
+	ThumbUrl           string  `protobuf:"bytes,7,opt,name=thumb_url,json=thumbUrl,proto3" json:"thumb_url"`
+	Num                int32   `protobuf:"varint,8,opt,name=num,proto3" json:"num"`
+	Price              float32 `protobuf:"fixed32,9,opt,name=price,proto3" json:"price"`
+	IsDistGoods        bool    `protobuf:"varint,12,opt,name=is_dist_goods,json=isDistGoods,proto3" json:"is_dist_goods"`
+	CreatedAt          string  `protobuf:"bytes,13,opt,name=created_at,json=createdAt,proto3" json:"created_at"`
+	UpdatedAt          string  `protobuf:"bytes,14,opt,name=updated_at,json=updatedAt,proto3" json:"updated_at"`
 }
 
 func (x *DistRewardRecordDetail) Reset() {
@@ -785,11 +789,11 @@ type DistRewardCfgResponse struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	Entity *DistRewardCfg   `protobuf:"bytes,1,opt,name=entity,proto3" json:"entity,omitempty"`
-	Pager  *common.Pager    `protobuf:"bytes,2,opt,name=pager,proto3" json:"pager,omitempty"`
-	Items  []*DistRewardCfg `protobuf:"bytes,3,rep,name=items,proto3" json:"items,omitempty"`
-	Error  *common.Error    `protobuf:"bytes,4,opt,name=error,proto3" json:"error,omitempty"`
-	Info   *common.Info     `protobuf:"bytes,5,opt,name=info,proto3" json:"info,omitempty"`
+	Entity *DistRewardCfg   `protobuf:"bytes,1,opt,name=entity,proto3" json:"entity"`
+	Pager  *common.Pager    `protobuf:"bytes,2,opt,name=pager,proto3" json:"pager"`
+	Items  []*DistRewardCfg `protobuf:"bytes,3,rep,name=items,proto3" json:"items"`
+	Error  *common.Error    `protobuf:"bytes,4,opt,name=error,proto3" json:"error"`
+	Info   *common.Info     `protobuf:"bytes,5,opt,name=info,proto3" json:"info"`
 }
 
 func (x *DistRewardCfgResponse) Reset() {
@@ -864,11 +868,11 @@ type DistRewardOptionResponse struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	Entity *DistRewardOption   `protobuf:"bytes,1,opt,name=entity,proto3" json:"entity,omitempty"`
-	Pager  *common.Pager       `protobuf:"bytes,2,opt,name=pager,proto3" json:"pager,omitempty"`
-	Items  []*DistRewardOption `protobuf:"bytes,3,rep,name=items,proto3" json:"items,omitempty"`
-	Error  *common.Error       `protobuf:"bytes,4,opt,name=error,proto3" json:"error,omitempty"`
-	Info   *common.Info        `protobuf:"bytes,5,opt,name=info,proto3" json:"info,omitempty"`
+	Entity *DistRewardOption   `protobuf:"bytes,1,opt,name=entity,proto3" json:"entity"`
+	Pager  *common.Pager       `protobuf:"bytes,2,opt,name=pager,proto3" json:"pager"`
+	Items  []*DistRewardOption `protobuf:"bytes,3,rep,name=items,proto3" json:"items"`
+	Error  *common.Error       `protobuf:"bytes,4,opt,name=error,proto3" json:"error"`
+	Info   *common.Info        `protobuf:"bytes,5,opt,name=info,proto3" json:"info"`
 }
 
 func (x *DistRewardOptionResponse) Reset() {
@@ -943,11 +947,11 @@ type DistRewardResponse struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	Entity *DistReward   `protobuf:"bytes,1,opt,name=entity,proto3" json:"entity,omitempty"`
-	Pager  *common.Pager `protobuf:"bytes,2,opt,name=pager,proto3" json:"pager,omitempty"`
-	Items  []*DistReward `protobuf:"bytes,3,rep,name=items,proto3" json:"items,omitempty"`
-	Error  *common.Error `protobuf:"bytes,4,opt,name=error,proto3" json:"error,omitempty"`
-	Info   *common.Info  `protobuf:"bytes,5,opt,name=info,proto3" json:"info,omitempty"`
+	Entity *DistReward   `protobuf:"bytes,1,opt,name=entity,proto3" json:"entity"`
+	Pager  *common.Pager `protobuf:"bytes,2,opt,name=pager,proto3" json:"pager"`
+	Items  []*DistReward `protobuf:"bytes,3,rep,name=items,proto3" json:"items"`
+	Error  *common.Error `protobuf:"bytes,4,opt,name=error,proto3" json:"error"`
+	Info   *common.Info  `protobuf:"bytes,5,opt,name=info,proto3" json:"info"`
 }
 
 func (x *DistRewardResponse) Reset() {
@@ -1022,11 +1026,11 @@ type DistRewardRecordResponse struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	Entity *DistRewardRecord   `protobuf:"bytes,1,opt,name=entity,proto3" json:"entity,omitempty"`
-	Pager  *common.Pager       `protobuf:"bytes,2,opt,name=pager,proto3" json:"pager,omitempty"`
-	Items  []*DistRewardRecord `protobuf:"bytes,3,rep,name=items,proto3" json:"items,omitempty"`
-	Error  *common.Error       `protobuf:"bytes,4,opt,name=error,proto3" json:"error,omitempty"`
-	Info   *common.Info        `protobuf:"bytes,5,opt,name=info,proto3" json:"info,omitempty"`
+	Entity *DistRewardRecord   `protobuf:"bytes,1,opt,name=entity,proto3" json:"entity"`
+	Pager  *common.Pager       `protobuf:"bytes,2,opt,name=pager,proto3" json:"pager"`
+	Items  []*DistRewardRecord `protobuf:"bytes,3,rep,name=items,proto3" json:"items"`
+	Error  *common.Error       `protobuf:"bytes,4,opt,name=error,proto3" json:"error"`
+	Info   *common.Info        `protobuf:"bytes,5,opt,name=info,proto3" json:"info"`
 }
 
 func (x *DistRewardRecordResponse) Reset() {
@@ -1101,11 +1105,11 @@ type DistRewardRecordDetailResponse struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	Entity *DistRewardRecordDetail   `protobuf:"bytes,1,opt,name=entity,proto3" json:"entity,omitempty"`
-	Pager  *common.Pager             `protobuf:"bytes,2,opt,name=pager,proto3" json:"pager,omitempty"`
-	Items  []*DistRewardRecordDetail `protobuf:"bytes,3,rep,name=items,proto3" json:"items,omitempty"`
-	Error  *common.Error             `protobuf:"bytes,4,opt,name=error,proto3" json:"error,omitempty"`
-	Info   *common.Info              `protobuf:"bytes,5,opt,name=info,proto3" json:"info,omitempty"`
+	Entity *DistRewardRecordDetail   `protobuf:"bytes,1,opt,name=entity,proto3" json:"entity"`
+	Pager  *common.Pager             `protobuf:"bytes,2,opt,name=pager,proto3" json:"pager"`
+	Items  []*DistRewardRecordDetail `protobuf:"bytes,3,rep,name=items,proto3" json:"items"`
+	Error  *common.Error             `protobuf:"bytes,4,opt,name=error,proto3" json:"error"`
+	Info   *common.Info              `protobuf:"bytes,5,opt,name=info,proto3" json:"info"`
 }
 
 func (x *DistRewardRecordDetailResponse) Reset() {

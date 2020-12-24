@@ -31,12 +31,12 @@ type WxMiniLogin struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	Signature     string `protobuf:"bytes,1,opt,name=signature,proto3" json:"signature,omitempty"`
-	Code          string `protobuf:"bytes,2,opt,name=code,proto3" json:"code,omitempty"`
-	RawData       string `protobuf:"bytes,3,opt,name=rawData,proto3" json:"rawData,omitempty"`
-	EncryptedData string `protobuf:"bytes,4,opt,name=encryptedData,proto3" json:"encryptedData,omitempty"`
-	Iv            string `protobuf:"bytes,5,opt,name=iv,proto3" json:"iv,omitempty"`
-	Scene         string `protobuf:"bytes,6,opt,name=scene,proto3" json:"scene,omitempty"`
+	Signature     string `protobuf:"bytes,1,opt,name=signature,proto3" json:"signature"`
+	Code          string `protobuf:"bytes,2,opt,name=code,proto3" json:"code"`
+	RawData       string `protobuf:"bytes,3,opt,name=rawData,proto3" json:"rawData"`
+	EncryptedData string `protobuf:"bytes,4,opt,name=encryptedData,proto3" json:"encryptedData"`
+	Iv            string `protobuf:"bytes,5,opt,name=iv,proto3" json:"iv"`
+	Scene         string `protobuf:"bytes,6,opt,name=scene,proto3" json:"scene"`
 }
 
 func (x *WxMiniLogin) Reset() {
@@ -118,8 +118,8 @@ type AlipayLogin struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	Signature string `protobuf:"bytes,1,opt,name=signature,proto3" json:"signature,omitempty"`
-	Code      string `protobuf:"bytes,2,opt,name=code,proto3" json:"code,omitempty"`
+	Signature string `protobuf:"bytes,1,opt,name=signature,proto3" json:"signature"`
+	Code      string `protobuf:"bytes,2,opt,name=code,proto3" json:"code"`
 }
 
 func (x *AlipayLogin) Reset() {

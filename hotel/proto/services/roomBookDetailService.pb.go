@@ -31,26 +31,28 @@ type RoomBookDetailWhere struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	Paged         int32             `protobuf:"varint,1,opt,name=paged,proto3" json:"paged,omitempty"`
-	PageSize      int32             `protobuf:"varint,2,opt,name=page_size,json=pageSize,proto3" json:"page_size,omitempty"`
-	Id            int64             `protobuf:"varint,3,opt,name=id,proto3" json:"id,omitempty"`
-	Ids           []int64           `protobuf:"varint,4,rep,packed,name=ids,proto3" json:"ids,omitempty"`
-	KeywordsType  int32             `protobuf:"varint,5,opt,name=keywords_type,json=keywordsType,proto3" json:"keywords_type,omitempty"` // 查询关键字类型:1-客房姓名,2-证件号,3-手机号,4-房号
-	Keywords      string            `protobuf:"bytes,6,opt,name=keywords,proto3" json:"keywords,omitempty"`
-	TimeType      int32             `protobuf:"varint,7,opt,name=time_type,json=timeType,proto3" json:"time_type,omitempty"` // 查询时间段类型:1-下单时间,2-入住时间,3-离店时间
-	StartDate     string            `protobuf:"bytes,8,opt,name=start_date,json=startDate,proto3" json:"start_date,omitempty"`
-	EndDate       string            `protobuf:"bytes,9,opt,name=end_date,json=endDate,proto3" json:"end_date,omitempty"`
-	Status        int32             `protobuf:"varint,10,opt,name=status,proto3" json:"status,omitempty"` // 状态:1-待入住,2-入住中,3-已退房,4-超时未入住,5-已取消,6-已结算,100-待入住&入住中,101-超时未入住(定时任务处理)
-	Quick         int32             `protobuf:"varint,11,opt,name=quick,proto3" json:"quick,omitempty"`   // 快捷筛选:1-今日预抵店,2-今日预离店,3-今日抵店,4-今日离店
-	RoomBookId    int64             `protobuf:"varint,12,opt,name=room_book_id,json=roomBookId,proto3" json:"room_book_id,omitempty"`
-	IsArrangeRoom bool              `protobuf:"varint,13,opt,name=is_arrange_room,json=isArrangeRoom,proto3" json:"is_arrange_room,omitempty"` // 是否已排房
-	Remark        string            `protobuf:"bytes,14,opt,name=remark,proto3" json:"remark,omitempty"`
-	RoomId        int64             `protobuf:"varint,15,opt,name=room_id,json=roomId,proto3" json:"room_id,omitempty"`
-	RoomName      string            `protobuf:"bytes,16,opt,name=room_name,json=roomName,proto3" json:"room_name,omitempty"`
-	Type          string            `protobuf:"bytes,17,opt,name=type,proto3" json:"type,omitempty"`
-	Date          string            `protobuf:"bytes,18,opt,name=date,proto3" json:"date,omitempty"`
-	IsSettlement  bool              `protobuf:"varint,19,opt,name=is_settlement,json=isSettlement,proto3" json:"is_settlement,omitempty"`
-	Items         []*RoomBookDetail `protobuf:"bytes,20,rep,name=items,proto3" json:"items,omitempty"`
+	Paged    int32 `protobuf:"varint,1,opt,name=paged,proto3" json:"paged"`
+	PageSize int32 `protobuf:"varint,2,opt,name=page_size,json=pageSize,proto3" json:"page_size"`
+	Id       int64 `protobuf:"varint,3,opt,name=id,proto3" json:"id"`
+	// @inject_tag: gorm:"-"
+	Ids           []int64 `protobuf:"varint,4,rep,packed,name=ids,proto3" json:"ids" gorm:"-"`
+	KeywordsType  int32   `protobuf:"varint,5,opt,name=keywords_type,json=keywordsType,proto3" json:"keywords_type"` // 查询关键字类型:1-客房姓名,2-证件号,3-手机号,4-房号
+	Keywords      string  `protobuf:"bytes,6,opt,name=keywords,proto3" json:"keywords"`
+	TimeType      int32   `protobuf:"varint,7,opt,name=time_type,json=timeType,proto3" json:"time_type"` // 查询时间段类型:1-下单时间,2-入住时间,3-离店时间
+	StartDate     string  `protobuf:"bytes,8,opt,name=start_date,json=startDate,proto3" json:"start_date"`
+	EndDate       string  `protobuf:"bytes,9,opt,name=end_date,json=endDate,proto3" json:"end_date"`
+	Status        int32   `protobuf:"varint,10,opt,name=status,proto3" json:"status"` // 状态:1-待入住,2-入住中,3-已退房,4-超时未入住,5-已取消,6-已结算,100-待入住&入住中,101-超时未入住(定时任务处理)
+	Quick         int32   `protobuf:"varint,11,opt,name=quick,proto3" json:"quick"`   // 快捷筛选:1-今日预抵店,2-今日预离店,3-今日抵店,4-今日离店
+	RoomBookId    int64   `protobuf:"varint,12,opt,name=room_book_id,json=roomBookId,proto3" json:"room_book_id"`
+	IsArrangeRoom bool    `protobuf:"varint,13,opt,name=is_arrange_room,json=isArrangeRoom,proto3" json:"is_arrange_room"` // 是否已排房
+	Remark        string  `protobuf:"bytes,14,opt,name=remark,proto3" json:"remark"`
+	RoomId        int64   `protobuf:"varint,15,opt,name=room_id,json=roomId,proto3" json:"room_id"`
+	RoomName      string  `protobuf:"bytes,16,opt,name=room_name,json=roomName,proto3" json:"room_name"`
+	Type          string  `protobuf:"bytes,17,opt,name=type,proto3" json:"type"`
+	Date          string  `protobuf:"bytes,18,opt,name=date,proto3" json:"date"`
+	IsSettlement  bool    `protobuf:"varint,19,opt,name=is_settlement,json=isSettlement,proto3" json:"is_settlement"`
+	// @inject_tag: gorm:"-"
+	Items []*RoomBookDetail `protobuf:"bytes,20,rep,name=items,proto3" json:"items" gorm:"-"`
 }
 
 func (x *RoomBookDetailWhere) Reset() {
@@ -230,30 +232,33 @@ type RoomBookDetail struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	Id               int64  `protobuf:"varint,1,opt,name=id,proto3" json:"id,omitempty"`
-	Type             string `protobuf:"bytes,19,opt,name=type,proto3" json:"type,omitempty"`
-	RoomBookDetailSn string `protobuf:"bytes,2,opt,name=room_book_detail_sn,json=roomBookDetailSn,proto3" json:"room_book_detail_sn,omitempty"`
-	RoomBookId       int64  `protobuf:"varint,3,opt,name=room_book_id,json=roomBookId,proto3" json:"room_book_id,omitempty"`
+	Id               int64  `protobuf:"varint,1,opt,name=id,proto3" json:"id"`
+	Type             string `protobuf:"bytes,19,opt,name=type,proto3" json:"type"`
+	RoomBookDetailSn string `protobuf:"bytes,2,opt,name=room_book_detail_sn,json=roomBookDetailSn,proto3" json:"room_book_detail_sn"`
+	RoomBookId       int64  `protobuf:"varint,3,opt,name=room_book_id,json=roomBookId,proto3" json:"room_book_id"`
 	// @inject_tag: validate:"required" label:"房型ID"
-	RoomTypeId int64 `protobuf:"varint,4,opt,name=room_type_id,json=roomTypeId,proto3" json:"room_type_id,omitempty" validate:"required" label:"房型ID"`
+	RoomTypeId int64 `protobuf:"varint,4,opt,name=room_type_id,json=roomTypeId,proto3" json:"room_type_id" validate:"required" label:"房型ID"`
 	// @inject_tag: validate:"required" label:"房型名称"
-	RoomTypeName    string            `protobuf:"bytes,5,opt,name=room_type_name,json=roomTypeName,proto3" json:"room_type_name,omitempty" validate:"required" label:"房型名称"`
-	RoomId          int64             `protobuf:"varint,6,opt,name=room_id,json=roomId,proto3" json:"room_id,omitempty"`
-	RoomName        string            `protobuf:"bytes,7,opt,name=room_name,json=roomName,proto3" json:"room_name,omitempty"`
-	BreakfastNum    int32             `protobuf:"varint,8,opt,name=breakfast_num,json=breakfastNum,proto3" json:"breakfast_num,omitempty"`
-	TotalPrice      float32           `protobuf:"fixed32,9,opt,name=total_price,json=totalPrice,proto3" json:"total_price,omitempty"`
-	CheckinTime     string            `protobuf:"bytes,10,opt,name=checkin_time,json=checkinTime,proto3" json:"checkin_time,omitempty"`
-	CheckoutTime    string            `protobuf:"bytes,11,opt,name=checkout_time,json=checkoutTime,proto3" json:"checkout_time,omitempty"`
-	DayNum          int32             `protobuf:"varint,12,opt,name=day_num,json=dayNum,proto3" json:"day_num,omitempty"`
-	Status          int32             `protobuf:"varint,13,opt,name=status,proto3" json:"status,omitempty"`
-	BookName        string            `protobuf:"bytes,14,opt,name=book_name,json=bookName,proto3" json:"book_name,omitempty"`
-	BookMobile      string            `protobuf:"bytes,15,opt,name=book_mobile,json=bookMobile,proto3" json:"book_mobile,omitempty"`
-	CreatedAt       string            `protobuf:"bytes,16,opt,name=created_at,json=createdAt,proto3" json:"created_at,omitempty"`
-	UpdatedAt       string            `protobuf:"bytes,17,opt,name=updated_at,json=updatedAt,proto3" json:"updated_at,omitempty"`
-	RoomCheckinInfo *RoomCheckin      `protobuf:"bytes,18,opt,name=room_checkin_info,json=roomCheckinInfo,proto3" json:"room_checkin_info,omitempty"`
-	PriceList       []*RoomBookPrice  `protobuf:"bytes,20,rep,name=price_list,json=priceList,proto3" json:"price_list,omitempty"`
-	Items           []*RoomBookDetail `protobuf:"bytes,21,rep,name=items,proto3" json:"items,omitempty"`
-	CustomerType    int32             `protobuf:"varint,22,opt,name=customer_type,json=customerType,proto3" json:"customer_type,omitempty"`
+	RoomTypeName string  `protobuf:"bytes,5,opt,name=room_type_name,json=roomTypeName,proto3" json:"room_type_name" validate:"required" label:"房型名称"`
+	RoomId       int64   `protobuf:"varint,6,opt,name=room_id,json=roomId,proto3" json:"room_id"`
+	RoomName     string  `protobuf:"bytes,7,opt,name=room_name,json=roomName,proto3" json:"room_name"`
+	BreakfastNum int32   `protobuf:"varint,8,opt,name=breakfast_num,json=breakfastNum,proto3" json:"breakfast_num"`
+	TotalPrice   float32 `protobuf:"fixed32,9,opt,name=total_price,json=totalPrice,proto3" json:"total_price"`
+	CheckinTime  string  `protobuf:"bytes,10,opt,name=checkin_time,json=checkinTime,proto3" json:"checkin_time"`
+	CheckoutTime string  `protobuf:"bytes,11,opt,name=checkout_time,json=checkoutTime,proto3" json:"checkout_time"`
+	DayNum       int32   `protobuf:"varint,12,opt,name=day_num,json=dayNum,proto3" json:"day_num"`
+	Status       int32   `protobuf:"varint,13,opt,name=status,proto3" json:"status"`
+	BookName     string  `protobuf:"bytes,14,opt,name=book_name,json=bookName,proto3" json:"book_name"`
+	BookMobile   string  `protobuf:"bytes,15,opt,name=book_mobile,json=bookMobile,proto3" json:"book_mobile"`
+	CreatedAt    string  `protobuf:"bytes,16,opt,name=created_at,json=createdAt,proto3" json:"created_at"`
+	UpdatedAt    string  `protobuf:"bytes,17,opt,name=updated_at,json=updatedAt,proto3" json:"updated_at"`
+	// @inject_tag: gorm:"foreignKey:RoomBookDetailId;"
+	RoomCheckinInfo *RoomCheckin `protobuf:"bytes,18,opt,name=room_checkin_info,json=roomCheckinInfo,proto3" json:"room_checkin_info" gorm:"foreignKey:RoomBookDetailId;"`
+	// @inject_tag: gorm:"foreignKey:RoomBookDetailId;association_autocreate:false;association_autoupdate:false"
+	PriceList []*RoomBookPrice `protobuf:"bytes,20,rep,name=price_list,json=priceList,proto3" json:"price_list" gorm:"foreignKey:RoomBookDetailId;association_autocreate:false;association_autoupdate:false"`
+	// @inject_tag: gorm:"-"
+	Items        []*RoomBookDetail `protobuf:"bytes,21,rep,name=items,proto3" json:"items" gorm:"-"`
+	CustomerType int32             `protobuf:"varint,22,opt,name=customer_type,json=customerType,proto3" json:"customer_type"`
 }
 
 func (x *RoomBookDetail) Reset() {
@@ -447,11 +452,11 @@ type RoomBookDetailResponse struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	Error  *common.Error     `protobuf:"bytes,1,opt,name=error,proto3" json:"error,omitempty"`
-	Info   *common.Info      `protobuf:"bytes,2,opt,name=info,proto3" json:"info,omitempty"`
-	Pager  *common.Pager     `protobuf:"bytes,3,opt,name=pager,proto3" json:"pager,omitempty"`
-	Entity *RoomBookDetail   `protobuf:"bytes,4,opt,name=entity,proto3" json:"entity,omitempty"`
-	Items  []*RoomBookDetail `protobuf:"bytes,5,rep,name=items,proto3" json:"items,omitempty"`
+	Error  *common.Error     `protobuf:"bytes,1,opt,name=error,proto3" json:"error"`
+	Info   *common.Info      `protobuf:"bytes,2,opt,name=info,proto3" json:"info"`
+	Pager  *common.Pager     `protobuf:"bytes,3,opt,name=pager,proto3" json:"pager"`
+	Entity *RoomBookDetail   `protobuf:"bytes,4,opt,name=entity,proto3" json:"entity"`
+	Items  []*RoomBookDetail `protobuf:"bytes,5,rep,name=items,proto3" json:"items"`
 }
 
 func (x *RoomBookDetailResponse) Reset() {

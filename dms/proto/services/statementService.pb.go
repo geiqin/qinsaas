@@ -31,17 +31,17 @@ type Statement struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	Id            int64   `protobuf:"varint,1,opt,name=id,proto3" json:"id,omitempty"`
-	TargetId      int64   `protobuf:"varint,2,opt,name=target_id,json=targetId,proto3" json:"target_id,omitempty"`
-	SourceId      int64   `protobuf:"varint,3,opt,name=source_id,json=sourceId,proto3" json:"source_id,omitempty"`
-	SourceType    string  `protobuf:"bytes,4,opt,name=source_type,json=sourceType,proto3" json:"source_type,omitempty"`
-	SourceMethod  int32   `protobuf:"varint,5,opt,name=source_method,json=sourceMethod,proto3" json:"source_method,omitempty"`
-	Money         float32 `protobuf:"fixed32,6,opt,name=money,proto3" json:"money,omitempty"`
-	Type          string  `protobuf:"bytes,7,opt,name=type,proto3" json:"type,omitempty"`
-	Balance       float32 `protobuf:"fixed32,8,opt,name=balance,proto3" json:"balance,omitempty"`
-	CreatedAt     string  `protobuf:"bytes,9,opt,name=created_at,json=createdAt,proto3" json:"created_at,omitempty"`
-	UpdatedAt     string  `protobuf:"bytes,10,opt,name=updated_at,json=updatedAt,proto3" json:"updated_at,omitempty"`
-	DistributorId int64   `protobuf:"varint,11,opt,name=distributor_id,json=distributorId,proto3" json:"distributor_id,omitempty"`
+	Id            int64   `protobuf:"varint,1,opt,name=id,proto3" json:"id"`
+	TargetId      int64   `protobuf:"varint,2,opt,name=target_id,json=targetId,proto3" json:"target_id"`
+	SourceId      int64   `protobuf:"varint,3,opt,name=source_id,json=sourceId,proto3" json:"source_id"`
+	SourceType    string  `protobuf:"bytes,4,opt,name=source_type,json=sourceType,proto3" json:"source_type"`
+	SourceMethod  int32   `protobuf:"varint,5,opt,name=source_method,json=sourceMethod,proto3" json:"source_method"`
+	Money         float32 `protobuf:"fixed32,6,opt,name=money,proto3" json:"money"`
+	Type          string  `protobuf:"bytes,7,opt,name=type,proto3" json:"type"`
+	Balance       float32 `protobuf:"fixed32,8,opt,name=balance,proto3" json:"balance"`
+	CreatedAt     string  `protobuf:"bytes,9,opt,name=created_at,json=createdAt,proto3" json:"created_at"`
+	UpdatedAt     string  `protobuf:"bytes,10,opt,name=updated_at,json=updatedAt,proto3" json:"updated_at"`
+	DistributorId int64   `protobuf:"varint,11,opt,name=distributor_id,json=distributorId,proto3" json:"distributor_id"`
 }
 
 func (x *Statement) Reset() {
@@ -158,16 +158,17 @@ type StatementWhere struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	Paged    int32 `protobuf:"varint,1,opt,name=paged,proto3" json:"paged,omitempty"`
-	PageSize int32 `protobuf:"varint,2,opt,name=page_size,json=pageSize,proto3" json:"page_size,omitempty"`
-	Top      int32 `protobuf:"varint,3,opt,name=top,proto3" json:"top,omitempty"`
+	Paged    int32 `protobuf:"varint,1,opt,name=paged,proto3" json:"paged"`
+	PageSize int32 `protobuf:"varint,2,opt,name=page_size,json=pageSize,proto3" json:"page_size"`
+	Top      int32 `protobuf:"varint,3,opt,name=top,proto3" json:"top"`
 	//base params
-	Id           int64   `protobuf:"varint,4,opt,name=id,proto3" json:"id,omitempty"`
-	Ids          []int64 `protobuf:"varint,5,rep,packed,name=ids,proto3" json:"ids,omitempty"`
-	Type         string  `protobuf:"bytes,6,opt,name=type,proto3" json:"type,omitempty"`
-	TargetId     int64   `protobuf:"varint,7,opt,name=target_id,json=targetId,proto3" json:"target_id,omitempty"`
-	SourceType   string  `protobuf:"bytes,8,opt,name=source_type,json=sourceType,proto3" json:"source_type,omitempty"`
-	SourceMethod int32   `protobuf:"varint,9,opt,name=source_method,json=sourceMethod,proto3" json:"source_method,omitempty"`
+	Id int64 `protobuf:"varint,4,opt,name=id,proto3" json:"id"`
+	// @inject_tag: gorm:"-"
+	Ids          []int64 `protobuf:"varint,5,rep,packed,name=ids,proto3" json:"ids"`
+	Type         string  `protobuf:"bytes,6,opt,name=type,proto3" json:"type"`
+	TargetId     int64   `protobuf:"varint,7,opt,name=target_id,json=targetId,proto3" json:"target_id"`
+	SourceType   string  `protobuf:"bytes,8,opt,name=source_type,json=sourceType,proto3" json:"source_type"`
+	SourceMethod int32   `protobuf:"varint,9,opt,name=source_method,json=sourceMethod,proto3" json:"source_method"`
 }
 
 func (x *StatementWhere) Reset() {
@@ -270,11 +271,11 @@ type StatementResponse struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	Entity *Statement    `protobuf:"bytes,1,opt,name=entity,proto3" json:"entity,omitempty"`
-	Pager  *common.Pager `protobuf:"bytes,2,opt,name=pager,proto3" json:"pager,omitempty"`
-	Items  []*Statement  `protobuf:"bytes,3,rep,name=items,proto3" json:"items,omitempty"`
-	Error  *common.Error `protobuf:"bytes,4,opt,name=error,proto3" json:"error,omitempty"`
-	Info   *common.Info  `protobuf:"bytes,5,opt,name=info,proto3" json:"info,omitempty"`
+	Entity *Statement    `protobuf:"bytes,1,opt,name=entity,proto3" json:"entity"`
+	Pager  *common.Pager `protobuf:"bytes,2,opt,name=pager,proto3" json:"pager"`
+	Items  []*Statement  `protobuf:"bytes,3,rep,name=items,proto3" json:"items"`
+	Error  *common.Error `protobuf:"bytes,4,opt,name=error,proto3" json:"error"`
+	Info   *common.Info  `protobuf:"bytes,5,opt,name=info,proto3" json:"info"`
 }
 
 func (x *StatementResponse) Reset() {

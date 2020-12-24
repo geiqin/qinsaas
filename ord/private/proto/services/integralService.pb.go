@@ -30,11 +30,11 @@ type Integral struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	IntegralName       string  `protobuf:"bytes,1,opt,name=integral_name,json=integralName,proto3" json:"integral_name,omitempty"`                      // 积分显示的名称
-	Points             int32   `protobuf:"varint,2,opt,name=points,proto3" json:"points,omitempty"`                                                     // 用户可用的积分
-	CashExchangeMoney  float32 `protobuf:"fixed32,3,opt,name=cash_exchange_money,json=cashExchangeMoney,proto3" json:"cash_exchange_money,omitempty"`   // 可抵现金额
-	CashExchangePoints int32   `protobuf:"varint,4,opt,name=cash_exchange_points,json=cashExchangePoints,proto3" json:"cash_exchange_points,omitempty"` // 用于抵现的积分
-	IsUse              bool    `protobuf:"varint,5,opt,name=is_use,json=isUse,proto3" json:"is_use,omitempty"`                                          // 是否使用积分抵现
+	IntegralName       string  `protobuf:"bytes,1,opt,name=integral_name,json=integralName,proto3" json:"integral_name"`                      // 积分显示的名称
+	Points             int32   `protobuf:"varint,2,opt,name=points,proto3" json:"points"`                                                     // 用户可用的积分
+	CashExchangeMoney  float32 `protobuf:"fixed32,3,opt,name=cash_exchange_money,json=cashExchangeMoney,proto3" json:"cash_exchange_money"`   // 可抵现金额
+	CashExchangePoints int32   `protobuf:"varint,4,opt,name=cash_exchange_points,json=cashExchangePoints,proto3" json:"cash_exchange_points"` // 用于抵现的积分
+	IsUse              bool    `protobuf:"varint,5,opt,name=is_use,json=isUse,proto3" json:"is_use"`                                          // 是否使用积分抵现
 }
 
 func (x *Integral) Reset() {

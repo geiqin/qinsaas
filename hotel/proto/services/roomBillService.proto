@@ -4,7 +4,7 @@ option go_package = ".;services";
 import "common/base.proto";
 import "roomBillDetailService.proto";
 
-service RoomBillService{
+service RoomBillService {
     // 获取账单信息
     rpc Get(RoomBillWhere) returns(RoomBillResponse);
     // 结算账单
@@ -30,6 +30,7 @@ message RoomBill {
     string checkout_time = 7;
     string created_at = 8;
     string updated_at = 9;
+    // @inject_tag: gorm:"foreignKey:RoomBillId"
     repeated RoomBillDetail details = 10;
 }
 

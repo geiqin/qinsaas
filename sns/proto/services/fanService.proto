@@ -34,6 +34,7 @@ message Fan {
     string email = 17;
     string created_at = 18;
     string updated_at = 19;
+    // @inject_tag: gorm:"-"
     repeated int64 ids = 20;
 }
 

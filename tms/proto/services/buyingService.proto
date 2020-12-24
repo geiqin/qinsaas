@@ -18,7 +18,9 @@ message Buying {
     float total_weight = 3;
     float freight = 4;
     int64 address_id = 5;
+    // @inject_tag: gorm:"-"
     repeated BuyingItem items = 6;
+    // @inject_tag: gorm:"-"
     DeliveryMethod shipment = 7; // 配送信息
 }
 
@@ -48,8 +50,11 @@ message DeliveryMethod {
     float express_fee = 12; // 快递发货运费
     float delivery_fee = 13; // 同城配送配送费
     float start_price = 19; // 起送价
+    // @inject_tag: gorm:"-"
     Delivery deliver_info = 14; // 同城配送信息
+    // @inject_tag: gorm:"-"
     Fetch fetch_info = 15; // 上门自提信息
+    // @inject_tag: gorm:"-"
     Express express_info = 16; // 快递发货信息
     string start_time = 17; // 选择的配送或自提的开始时间
     string end_time = 18; // 选择的配送或自提的结束时间

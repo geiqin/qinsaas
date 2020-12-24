@@ -31,21 +31,23 @@ type Reward struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	Id            int64          `protobuf:"varint,1,opt,name=id,proto3" json:"id,omitempty"`
-	Name          string         `protobuf:"bytes,2,opt,name=name,proto3" json:"name,omitempty"`
-	StartAt       string         `protobuf:"bytes,3,opt,name=start_at,json=startAt,proto3" json:"start_at,omitempty"`
-	EndAt         string         `protobuf:"bytes,4,opt,name=end_at,json=endAt,proto3" json:"end_at,omitempty"`
-	RangeType     int32          `protobuf:"varint,5,opt,name=range_type,json=rangeType,proto3" json:"range_type,omitempty"`
-	ConditionType int32          `protobuf:"varint,6,opt,name=condition_type,json=conditionType,proto3" json:"condition_type,omitempty"`
-	StepNum       int32          `protobuf:"varint,7,opt,name=step_num,json=stepNum,proto3" json:"step_num,omitempty"`
-	Description   string         `protobuf:"bytes,8,opt,name=description,proto3" json:"description,omitempty"`
-	CreatedAt     string         `protobuf:"bytes,9,opt,name=created_at,json=createdAt,proto3" json:"created_at,omitempty"`
-	UpdatedAt     string         `protobuf:"bytes,10,opt,name=updated_at,json=updatedAt,proto3" json:"updated_at,omitempty"`
-	Goodses       []*RewardGoods `protobuf:"bytes,11,rep,name=goodses,proto3" json:"goodses,omitempty"`
-	Steps         []*RewardStep  `protobuf:"bytes,12,rep,name=steps,proto3" json:"steps,omitempty"`
-	Looped        bool           `protobuf:"varint,13,opt,name=looped,proto3" json:"looped,omitempty"` // 是否循环满减
-	Status        int32          `protobuf:"varint,14,opt,name=status,proto3" json:"status,omitempty"`
-	StatusName    string         `protobuf:"bytes,15,opt,name=status_name,json=statusName,proto3" json:"status_name,omitempty"`
+	Id            int64  `protobuf:"varint,1,opt,name=id,proto3" json:"id"`
+	Name          string `protobuf:"bytes,2,opt,name=name,proto3" json:"name"`
+	StartAt       string `protobuf:"bytes,3,opt,name=start_at,json=startAt,proto3" json:"start_at"`
+	EndAt         string `protobuf:"bytes,4,opt,name=end_at,json=endAt,proto3" json:"end_at"`
+	RangeType     int32  `protobuf:"varint,5,opt,name=range_type,json=rangeType,proto3" json:"range_type"`
+	ConditionType int32  `protobuf:"varint,6,opt,name=condition_type,json=conditionType,proto3" json:"condition_type"`
+	StepNum       int32  `protobuf:"varint,7,opt,name=step_num,json=stepNum,proto3" json:"step_num"`
+	Description   string `protobuf:"bytes,8,opt,name=description,proto3" json:"description"`
+	CreatedAt     string `protobuf:"bytes,9,opt,name=created_at,json=createdAt,proto3" json:"created_at"`
+	UpdatedAt     string `protobuf:"bytes,10,opt,name=updated_at,json=updatedAt,proto3" json:"updated_at"`
+	// @inject_tag: gorm:"foreignKey:RewardId"
+	Goodses []*RewardGoods `protobuf:"bytes,11,rep,name=goodses,proto3" json:"goodses" gorm:"foreignKey:RewardId"`
+	// @inject_tag: gorm:"foreignKey:RewardId"
+	Steps      []*RewardStep `protobuf:"bytes,12,rep,name=steps,proto3" json:"steps" gorm:"foreignKey:RewardId"`
+	Looped     bool          `protobuf:"varint,13,opt,name=looped,proto3" json:"looped"` // 是否循环满减
+	Status     int32         `protobuf:"varint,14,opt,name=status,proto3" json:"status"`
+	StatusName string        `protobuf:"bytes,15,opt,name=status_name,json=statusName,proto3" json:"status_name"`
 }
 
 func (x *Reward) Reset() {
@@ -191,11 +193,11 @@ type RewardResponse struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	Entity *Reward       `protobuf:"bytes,1,opt,name=entity,proto3" json:"entity,omitempty"`
-	Pager  *common.Pager `protobuf:"bytes,2,opt,name=pager,proto3" json:"pager,omitempty"`
-	Items  []*Reward     `protobuf:"bytes,3,rep,name=items,proto3" json:"items,omitempty"`
-	Error  *common.Error `protobuf:"bytes,4,opt,name=error,proto3" json:"error,omitempty"`
-	Info   *common.Info  `protobuf:"bytes,5,opt,name=info,proto3" json:"info,omitempty"`
+	Entity *Reward       `protobuf:"bytes,1,opt,name=entity,proto3" json:"entity"`
+	Pager  *common.Pager `protobuf:"bytes,2,opt,name=pager,proto3" json:"pager"`
+	Items  []*Reward     `protobuf:"bytes,3,rep,name=items,proto3" json:"items"`
+	Error  *common.Error `protobuf:"bytes,4,opt,name=error,proto3" json:"error"`
+	Info   *common.Info  `protobuf:"bytes,5,opt,name=info,proto3" json:"info"`
 }
 
 func (x *RewardResponse) Reset() {

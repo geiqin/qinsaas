@@ -30,14 +30,14 @@ type RoomTypeGallery struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	Id         int64  `protobuf:"varint,1,opt,name=id,proto3" json:"id,omitempty"`
-	RoomTypeId int64  `protobuf:"varint,2,opt,name=room_type_id,json=roomTypeId,proto3" json:"room_type_id,omitempty"`
-	MediaId    int64  `protobuf:"varint,3,opt,name=media_id,json=mediaId,proto3" json:"media_id,omitempty"`
-	MediaUrl   string `protobuf:"bytes,4,opt,name=media_url,json=mediaUrl,proto3" json:"media_url,omitempty"`
-	Sorting    int32  `protobuf:"varint,5,opt,name=sorting,proto3" json:"sorting,omitempty"`
-	Defaulted  bool   `protobuf:"varint,6,opt,name=defaulted,proto3" json:"defaulted,omitempty"`
-	CreatedAt  string `protobuf:"bytes,7,opt,name=created_at,json=createdAt,proto3" json:"created_at,omitempty"`
-	UpdatedAt  string `protobuf:"bytes,8,opt,name=updated_at,json=updatedAt,proto3" json:"updated_at,omitempty"`
+	Id         int64  `protobuf:"varint,1,opt,name=id,proto3" json:"id"`
+	RoomTypeId int64  `protobuf:"varint,2,opt,name=room_type_id,json=roomTypeId,proto3" json:"room_type_id"`
+	MediaId    int64  `protobuf:"varint,3,opt,name=media_id,json=mediaId,proto3" json:"media_id"`
+	MediaUrl   string `protobuf:"bytes,4,opt,name=media_url,json=mediaUrl,proto3" json:"media_url"`
+	Sorting    int32  `protobuf:"varint,5,opt,name=sorting,proto3" json:"sorting"`
+	Defaulted  bool   `protobuf:"varint,6,opt,name=defaulted,proto3" json:"defaulted"`
+	CreatedAt  string `protobuf:"bytes,7,opt,name=created_at,json=createdAt,proto3" json:"created_at"`
+	UpdatedAt  string `protobuf:"bytes,8,opt,name=updated_at,json=updatedAt,proto3" json:"updated_at"`
 }
 
 func (x *RoomTypeGallery) Reset() {

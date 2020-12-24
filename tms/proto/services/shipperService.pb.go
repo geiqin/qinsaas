@@ -31,15 +31,15 @@ type Shipper struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	Id       int32  `protobuf:"varint,1,opt,name=id,proto3" json:"id,omitempty"`
-	Code     string `protobuf:"bytes,2,opt,name=code,proto3" json:"code,omitempty"`
-	Name     string `protobuf:"bytes,3,opt,name=name,proto3" json:"name,omitempty"`
-	LogoId   string `protobuf:"bytes,4,opt,name=logo_id,json=logoId,proto3" json:"logo_id,omitempty"`
-	LogoUrl  string `protobuf:"bytes,5,opt,name=logo_url,json=logoUrl,proto3" json:"logo_url,omitempty"`
-	Tel      string `protobuf:"bytes,6,opt,name=tel,proto3" json:"tel,omitempty"`
-	Memo     string `protobuf:"bytes,7,opt,name=memo,proto3" json:"memo,omitempty"`
-	Foreign  bool   `protobuf:"varint,8,opt,name=foreign,proto3" json:"foreign,omitempty"`
-	IsAccess bool   `protobuf:"varint,9,opt,name=is_access,json=isAccess,proto3" json:"is_access,omitempty"`
+	Id       int32  `protobuf:"varint,1,opt,name=id,proto3" json:"id"`
+	Code     string `protobuf:"bytes,2,opt,name=code,proto3" json:"code"`
+	Name     string `protobuf:"bytes,3,opt,name=name,proto3" json:"name"`
+	LogoId   string `protobuf:"bytes,4,opt,name=logo_id,json=logoId,proto3" json:"logo_id"`
+	LogoUrl  string `protobuf:"bytes,5,opt,name=logo_url,json=logoUrl,proto3" json:"logo_url"`
+	Tel      string `protobuf:"bytes,6,opt,name=tel,proto3" json:"tel"`
+	Memo     string `protobuf:"bytes,7,opt,name=memo,proto3" json:"memo"`
+	Foreign  bool   `protobuf:"varint,8,opt,name=foreign,proto3" json:"foreign"`
+	IsAccess bool   `protobuf:"varint,9,opt,name=is_access,json=isAccess,proto3" json:"is_access"`
 }
 
 func (x *Shipper) Reset() {
@@ -142,11 +142,11 @@ type ShipperResponse struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	Entity *Shipper      `protobuf:"bytes,1,opt,name=entity,proto3" json:"entity,omitempty"`
-	Pager  *common.Pager `protobuf:"bytes,2,opt,name=pager,proto3" json:"pager,omitempty"`
-	Items  []*Shipper    `protobuf:"bytes,3,rep,name=items,proto3" json:"items,omitempty"`
-	Error  *common.Error `protobuf:"bytes,4,opt,name=error,proto3" json:"error,omitempty"`
-	Info   *common.Info  `protobuf:"bytes,5,opt,name=info,proto3" json:"info,omitempty"`
+	Entity *Shipper      `protobuf:"bytes,1,opt,name=entity,proto3" json:"entity"`
+	Pager  *common.Pager `protobuf:"bytes,2,opt,name=pager,proto3" json:"pager"`
+	Items  []*Shipper    `protobuf:"bytes,3,rep,name=items,proto3" json:"items"`
+	Error  *common.Error `protobuf:"bytes,4,opt,name=error,proto3" json:"error"`
+	Info   *common.Info  `protobuf:"bytes,5,opt,name=info,proto3" json:"info"`
 }
 
 func (x *ShipperResponse) Reset() {

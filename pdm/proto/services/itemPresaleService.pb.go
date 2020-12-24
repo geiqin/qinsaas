@@ -31,21 +31,21 @@ type ItemPresale struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	Id                      int64   `protobuf:"varint,1,opt,name=id,proto3" json:"id,omitempty"`
-	ItemId                  int64   `protobuf:"varint,2,opt,name=item_id,json=itemId,proto3" json:"item_id,omitempty"`
-	PresaleType             int32   `protobuf:"varint,3,opt,name=presale_type,json=presaleType,proto3" json:"presale_type,omitempty"`
-	PayedDate               string  `protobuf:"bytes,4,opt,name=payed_date,json=payedDate,proto3" json:"payed_date,omitempty"`
-	DepositPaymentStartDate string  `protobuf:"bytes,5,opt,name=deposit_payment_start_date,json=depositPaymentStartDate,proto3" json:"deposit_payment_start_date,omitempty"`
-	DepositPaymentEndDate   string  `protobuf:"bytes,6,opt,name=deposit_payment_end_date,json=depositPaymentEndDate,proto3" json:"deposit_payment_end_date,omitempty"`
-	PaymentStartDate        string  `protobuf:"bytes,7,opt,name=payment_start_date,json=paymentStartDate,proto3" json:"payment_start_date,omitempty"`
-	PaymentEndDate          string  `protobuf:"bytes,8,opt,name=payment_end_date,json=paymentEndDate,proto3" json:"payment_end_date,omitempty"`
-	DepositType             int32   `protobuf:"varint,9,opt,name=deposit_type,json=depositType,proto3" json:"deposit_type,omitempty"`
-	DepositRatio            int32   `protobuf:"varint,10,opt,name=deposit_ratio,json=depositRatio,proto3" json:"deposit_ratio,omitempty"`
-	DepositAmount           float32 `protobuf:"fixed32,11,opt,name=deposit_amount,json=depositAmount,proto3" json:"deposit_amount,omitempty"`
-	RestPayment             float32 `protobuf:"fixed32,12,opt,name=rest_payment,json=restPayment,proto3" json:"rest_payment,omitempty"`
-	DeliveryType            int32   `protobuf:"varint,13,opt,name=delivery_type,json=deliveryType,proto3" json:"delivery_type,omitempty"`
-	DeliveryDate            string  `protobuf:"bytes,14,opt,name=delivery_date,json=deliveryDate,proto3" json:"delivery_date,omitempty"`
-	DeliveryDays            int32   `protobuf:"varint,15,opt,name=delivery_days,json=deliveryDays,proto3" json:"delivery_days,omitempty"`
+	Id                      int64   `protobuf:"varint,1,opt,name=id,proto3" json:"id"`
+	ItemId                  int64   `protobuf:"varint,2,opt,name=item_id,json=itemId,proto3" json:"item_id"`
+	PresaleType             int32   `protobuf:"varint,3,opt,name=presale_type,json=presaleType,proto3" json:"presale_type"`
+	PayedDate               string  `protobuf:"bytes,4,opt,name=payed_date,json=payedDate,proto3" json:"payed_date"`
+	DepositPaymentStartDate string  `protobuf:"bytes,5,opt,name=deposit_payment_start_date,json=depositPaymentStartDate,proto3" json:"deposit_payment_start_date"`
+	DepositPaymentEndDate   string  `protobuf:"bytes,6,opt,name=deposit_payment_end_date,json=depositPaymentEndDate,proto3" json:"deposit_payment_end_date"`
+	PaymentStartDate        string  `protobuf:"bytes,7,opt,name=payment_start_date,json=paymentStartDate,proto3" json:"payment_start_date"`
+	PaymentEndDate          string  `protobuf:"bytes,8,opt,name=payment_end_date,json=paymentEndDate,proto3" json:"payment_end_date"`
+	DepositType             int32   `protobuf:"varint,9,opt,name=deposit_type,json=depositType,proto3" json:"deposit_type"`
+	DepositRatio            int32   `protobuf:"varint,10,opt,name=deposit_ratio,json=depositRatio,proto3" json:"deposit_ratio"`
+	DepositAmount           float32 `protobuf:"fixed32,11,opt,name=deposit_amount,json=depositAmount,proto3" json:"deposit_amount"`
+	RestPayment             float32 `protobuf:"fixed32,12,opt,name=rest_payment,json=restPayment,proto3" json:"rest_payment"`
+	DeliveryType            int32   `protobuf:"varint,13,opt,name=delivery_type,json=deliveryType,proto3" json:"delivery_type"`
+	DeliveryDate            string  `protobuf:"bytes,14,opt,name=delivery_date,json=deliveryDate,proto3" json:"delivery_date"`
+	DeliveryDays            int32   `protobuf:"varint,15,opt,name=delivery_days,json=deliveryDays,proto3" json:"delivery_days"`
 }
 
 func (x *ItemPresale) Reset() {
@@ -190,10 +190,10 @@ type ItemPresaleResponse struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	Entity *ItemPresale  `protobuf:"bytes,1,opt,name=entity,proto3" json:"entity,omitempty"`
-	Pager  *common.Pager `protobuf:"bytes,2,opt,name=pager,proto3" json:"pager,omitempty"`
-	Error  *common.Error `protobuf:"bytes,3,opt,name=error,proto3" json:"error,omitempty"`
-	Info   *common.Info  `protobuf:"bytes,4,opt,name=info,proto3" json:"info,omitempty"`
+	Entity *ItemPresale  `protobuf:"bytes,1,opt,name=entity,proto3" json:"entity"`
+	Pager  *common.Pager `protobuf:"bytes,2,opt,name=pager,proto3" json:"pager"`
+	Error  *common.Error `protobuf:"bytes,3,opt,name=error,proto3" json:"error"`
+	Info   *common.Info  `protobuf:"bytes,4,opt,name=info,proto3" json:"info"`
 }
 
 func (x *ItemPresaleResponse) Reset() {

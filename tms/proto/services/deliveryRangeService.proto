@@ -13,6 +13,7 @@ message DeliveryRange {
     string region_data = 8;
     string created_at = 9;
     string updated_at = 10;
+    // @inject_tag: gorm:"foreignKey:DeliveryRangeId"
     repeated DeliveryMap coordinate = 11;
 }
 

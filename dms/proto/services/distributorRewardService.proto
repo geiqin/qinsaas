@@ -103,6 +103,7 @@ message DistRewardWhere {
     int32 paged = 1;
     int32 page_size = 2;
     int64 id = 3;
+    // @inject_tag: gorm:"-"
     repeated int64 ids = 4;
     int64 customer_id = 5;
     int64 distributor_id = 6;
@@ -146,6 +147,7 @@ message DistReward {
     int32 withdrew_num = 13;
     string created_at = 14;
     string updated_at = 15;
+    // @inject_tag: gorm:"-"
     Distributor distributor = 16;
 }
 
@@ -164,7 +166,9 @@ message DistRewardRecord {
     int32 status = 12;
     string created_at = 13;
     string updated_at = 14;
+    // @inject_tag: gorm:"-"
     Distributor distributor = 15;
+    // @inject_tag: gorm:"foreignKey:DistRewardRecordId"
     DistRewardRecordDetail details = 16;
 }
 

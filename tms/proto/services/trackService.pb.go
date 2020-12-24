@@ -31,17 +31,18 @@ type Track struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	Id           int64          `protobuf:"varint,1,opt,name=id,proto3" json:"id,omitempty"`
-	ShipperCode  string         `protobuf:"bytes,2,opt,name=shipper_code,json=shipperCode,proto3" json:"shipper_code,omitempty"`
-	OrderCode    string         `protobuf:"bytes,3,opt,name=order_code,json=orderCode,proto3" json:"order_code,omitempty"`
-	LogisticCode string         `protobuf:"bytes,4,opt,name=logistic_code,json=logisticCode,proto3" json:"logistic_code,omitempty"`
-	Success      bool           `protobuf:"varint,5,opt,name=success,proto3" json:"success,omitempty"`
-	Reason       string         `protobuf:"bytes,6,opt,name=reason,proto3" json:"reason,omitempty"`
-	State        string         `protobuf:"bytes,7,opt,name=state,proto3" json:"state,omitempty"`
-	StateEx      string         `protobuf:"bytes,8,opt,name=stateEx,proto3" json:"stateEx,omitempty"`
-	Location     string         `protobuf:"bytes,9,opt,name=location,proto3" json:"location,omitempty"`
-	Details      []*TrackDetail `protobuf:"bytes,10,rep,name=details,proto3" json:"details,omitempty"`
-	CustomerName string         `protobuf:"bytes,11,opt,name=customer_name,json=customerName,proto3" json:"customer_name,omitempty"`
+	Id           int64  `protobuf:"varint,1,opt,name=id,proto3" json:"id"`
+	ShipperCode  string `protobuf:"bytes,2,opt,name=shipper_code,json=shipperCode,proto3" json:"shipper_code"`
+	OrderCode    string `protobuf:"bytes,3,opt,name=order_code,json=orderCode,proto3" json:"order_code"`
+	LogisticCode string `protobuf:"bytes,4,opt,name=logistic_code,json=logisticCode,proto3" json:"logistic_code"`
+	Success      bool   `protobuf:"varint,5,opt,name=success,proto3" json:"success"`
+	Reason       string `protobuf:"bytes,6,opt,name=reason,proto3" json:"reason"`
+	State        string `protobuf:"bytes,7,opt,name=state,proto3" json:"state"`
+	StateEx      string `protobuf:"bytes,8,opt,name=stateEx,proto3" json:"stateEx"`
+	Location     string `protobuf:"bytes,9,opt,name=location,proto3" json:"location"`
+	// @inject_tag: gorm:"foreignKey:TrackId"
+	Details      []*TrackDetail `protobuf:"bytes,10,rep,name=details,proto3" json:"details" gorm:"foreignKey:TrackId"`
+	CustomerName string         `protobuf:"bytes,11,opt,name=customer_name,json=customerName,proto3" json:"customer_name"`
 }
 
 func (x *Track) Reset() {
@@ -158,13 +159,13 @@ type TrackDetail struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	Id            int64  `protobuf:"varint,1,opt,name=id,proto3" json:"id,omitempty"`
-	TrackId       int32  `protobuf:"varint,2,opt,name=track_id,json=trackId,proto3" json:"track_id,omitempty"`
-	AcceptTime    string `protobuf:"bytes,3,opt,name=accept_time,json=acceptTime,proto3" json:"accept_time,omitempty"`
-	AcceptStation string `protobuf:"bytes,4,opt,name=accept_station,json=acceptStation,proto3" json:"accept_station,omitempty"`
-	Location      string `protobuf:"bytes,5,opt,name=location,proto3" json:"location,omitempty"`
-	Action        string `protobuf:"bytes,6,opt,name=action,proto3" json:"action,omitempty"`
-	Remark        string `protobuf:"bytes,7,opt,name=remark,proto3" json:"remark,omitempty"`
+	Id            int64  `protobuf:"varint,1,opt,name=id,proto3" json:"id"`
+	TrackId       int32  `protobuf:"varint,2,opt,name=track_id,json=trackId,proto3" json:"track_id"`
+	AcceptTime    string `protobuf:"bytes,3,opt,name=accept_time,json=acceptTime,proto3" json:"accept_time"`
+	AcceptStation string `protobuf:"bytes,4,opt,name=accept_station,json=acceptStation,proto3" json:"accept_station"`
+	Location      string `protobuf:"bytes,5,opt,name=location,proto3" json:"location"`
+	Action        string `protobuf:"bytes,6,opt,name=action,proto3" json:"action"`
+	Remark        string `protobuf:"bytes,7,opt,name=remark,proto3" json:"remark"`
 }
 
 func (x *TrackDetail) Reset() {
@@ -253,11 +254,11 @@ type TrackResponse struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	Entity *Track        `protobuf:"bytes,1,opt,name=entity,proto3" json:"entity,omitempty"`
-	Pager  *common.Pager `protobuf:"bytes,2,opt,name=pager,proto3" json:"pager,omitempty"`
-	Items  []*Track      `protobuf:"bytes,3,rep,name=items,proto3" json:"items,omitempty"`
-	Error  *common.Error `protobuf:"bytes,4,opt,name=error,proto3" json:"error,omitempty"`
-	Info   *common.Info  `protobuf:"bytes,5,opt,name=info,proto3" json:"info,omitempty"`
+	Entity *Track        `protobuf:"bytes,1,opt,name=entity,proto3" json:"entity"`
+	Pager  *common.Pager `protobuf:"bytes,2,opt,name=pager,proto3" json:"pager"`
+	Items  []*Track      `protobuf:"bytes,3,rep,name=items,proto3" json:"items"`
+	Error  *common.Error `protobuf:"bytes,4,opt,name=error,proto3" json:"error"`
+	Info   *common.Info  `protobuf:"bytes,5,opt,name=info,proto3" json:"info"`
 }
 
 func (x *TrackResponse) Reset() {

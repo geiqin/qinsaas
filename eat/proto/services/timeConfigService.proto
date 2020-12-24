@@ -15,5 +15,6 @@ message TimeConfig {
     string field_name = 4;
     string created_at = 5;
     string updated_at = 6;
+    // @inject_tag: gorm:"foreignKey:TimeConfigId"
     repeated TimeRange time_ranges = 7;
 }

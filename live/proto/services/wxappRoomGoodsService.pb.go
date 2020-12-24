@@ -31,14 +31,15 @@ type WxappRoomGoodsWhere struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	Paged    int32   `protobuf:"varint,1,opt,name=paged,proto3" json:"paged,omitempty"`
-	PageSize int32   `protobuf:"varint,2,opt,name=page_size,json=pageSize,proto3" json:"page_size,omitempty"`
-	Sorting  string  `protobuf:"bytes,3,opt,name=sorting,proto3" json:"sorting,omitempty"`
-	Source   string  `protobuf:"bytes,4,opt,name=source,proto3" json:"source,omitempty"`
-	GoodsId  int64   `protobuf:"varint,5,opt,name=goods_id,json=goodsId,proto3" json:"goods_id,omitempty"`
-	GoodsIds []int64 `protobuf:"varint,6,rep,packed,name=goods_ids,json=goodsIds,proto3" json:"goods_ids,omitempty"`
-	AuditId  int64   `protobuf:"varint,7,opt,name=audit_id,json=auditId,proto3" json:"audit_id,omitempty"`
-	Status   int32   `protobuf:"varint,8,opt,name=status,proto3" json:"status,omitempty"`
+	Paged    int32  `protobuf:"varint,1,opt,name=paged,proto3" json:"paged"`
+	PageSize int32  `protobuf:"varint,2,opt,name=page_size,json=pageSize,proto3" json:"page_size"`
+	Sorting  string `protobuf:"bytes,3,opt,name=sorting,proto3" json:"sorting"`
+	Source   string `protobuf:"bytes,4,opt,name=source,proto3" json:"source"`
+	GoodsId  int64  `protobuf:"varint,5,opt,name=goods_id,json=goodsId,proto3" json:"goods_id"`
+	// @inject_tag: gorm:"-"
+	GoodsIds []int64 `protobuf:"varint,6,rep,packed,name=goods_ids,json=goodsIds,proto3" json:"goods_ids" gorm:"-"`
+	AuditId  int64   `protobuf:"varint,7,opt,name=audit_id,json=auditId,proto3" json:"audit_id"`
+	Status   int32   `protobuf:"varint,8,opt,name=status,proto3" json:"status"`
 }
 
 func (x *WxappRoomGoodsWhere) Reset() {
@@ -134,23 +135,23 @@ type WxappRoomGoods struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	Id              int64   `protobuf:"varint,1,opt,name=id,proto3" json:"id,omitempty"`
-	ItemId          int64   `protobuf:"varint,2,opt,name=item_id,json=itemId,proto3" json:"item_id,omitempty"`
-	SkuId           int64   `protobuf:"varint,3,opt,name=sku_id,json=skuId,proto3" json:"sku_id,omitempty"`
-	GoodsId         int64   `protobuf:"varint,4,opt,name=goods_id,json=goodsId,proto3" json:"goods_id,omitempty"`
-	CoverImgUrlId   string  `protobuf:"bytes,5,opt,name=cover_img_url_id,json=coverImgUrlId,proto3" json:"cover_img_url_id,omitempty"`
-	CoverImgUrl     string  `protobuf:"bytes,6,opt,name=cover_img_url,json=coverImgUrl,proto3" json:"cover_img_url,omitempty"`
-	Name            string  `protobuf:"bytes,7,opt,name=name,proto3" json:"name,omitempty"`
-	Price           float32 `protobuf:"fixed32,8,opt,name=price,proto3" json:"price,omitempty"`
-	Price2          float32 `protobuf:"fixed32,9,opt,name=price2,proto3" json:"price2,omitempty"`
-	Url             string  `protobuf:"bytes,10,opt,name=url,proto3" json:"url,omitempty"`
-	PriceType       int32   `protobuf:"varint,11,opt,name=price_type,json=priceType,proto3" json:"price_type,omitempty"`
-	ThirdPartyTag   int32   `protobuf:"varint,12,opt,name=third_party_tag,json=thirdPartyTag,proto3" json:"third_party_tag,omitempty"`
-	ThirdPartyAppId string  `protobuf:"bytes,13,opt,name=third_party_app_id,json=thirdPartyAppId,proto3" json:"third_party_app_id,omitempty"`
-	AuditId         int64   `protobuf:"varint,14,opt,name=audit_id,json=auditId,proto3" json:"audit_id,omitempty"`
-	AuditStatus     int32   `protobuf:"varint,15,opt,name=audit_status,json=auditStatus,proto3" json:"audit_status,omitempty"`
-	CreatedAt       string  `protobuf:"bytes,16,opt,name=created_at,json=createdAt,proto3" json:"created_at,omitempty"`
-	UpdatedAt       string  `protobuf:"bytes,17,opt,name=updated_at,json=updatedAt,proto3" json:"updated_at,omitempty"`
+	Id              int64   `protobuf:"varint,1,opt,name=id,proto3" json:"id"`
+	ItemId          int64   `protobuf:"varint,2,opt,name=item_id,json=itemId,proto3" json:"item_id"`
+	SkuId           int64   `protobuf:"varint,3,opt,name=sku_id,json=skuId,proto3" json:"sku_id"`
+	GoodsId         int64   `protobuf:"varint,4,opt,name=goods_id,json=goodsId,proto3" json:"goods_id"`
+	CoverImgUrlId   string  `protobuf:"bytes,5,opt,name=cover_img_url_id,json=coverImgUrlId,proto3" json:"cover_img_url_id"`
+	CoverImgUrl     string  `protobuf:"bytes,6,opt,name=cover_img_url,json=coverImgUrl,proto3" json:"cover_img_url"`
+	Name            string  `protobuf:"bytes,7,opt,name=name,proto3" json:"name"`
+	Price           float32 `protobuf:"fixed32,8,opt,name=price,proto3" json:"price"`
+	Price2          float32 `protobuf:"fixed32,9,opt,name=price2,proto3" json:"price2"`
+	Url             string  `protobuf:"bytes,10,opt,name=url,proto3" json:"url"`
+	PriceType       int32   `protobuf:"varint,11,opt,name=price_type,json=priceType,proto3" json:"price_type"`
+	ThirdPartyTag   int32   `protobuf:"varint,12,opt,name=third_party_tag,json=thirdPartyTag,proto3" json:"third_party_tag"`
+	ThirdPartyAppId string  `protobuf:"bytes,13,opt,name=third_party_app_id,json=thirdPartyAppId,proto3" json:"third_party_app_id"`
+	AuditId         int64   `protobuf:"varint,14,opt,name=audit_id,json=auditId,proto3" json:"audit_id"`
+	AuditStatus     int32   `protobuf:"varint,15,opt,name=audit_status,json=auditStatus,proto3" json:"audit_status"`
+	CreatedAt       string  `protobuf:"bytes,16,opt,name=created_at,json=createdAt,proto3" json:"created_at"`
+	UpdatedAt       string  `protobuf:"bytes,17,opt,name=updated_at,json=updatedAt,proto3" json:"updated_at"`
 }
 
 func (x *WxappRoomGoods) Reset() {
@@ -309,18 +310,18 @@ type WxappRoomGoodsCommon struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	GoodsId         int64   `protobuf:"varint,4,opt,name=goods_id,json=goodsId,proto3" json:"goods_id,omitempty"`
-	CoverImgUrlId   string  `protobuf:"bytes,5,opt,name=cover_img_url_id,json=coverImgUrlId,proto3" json:"cover_img_url_id,omitempty"`
-	CoverImgUrl     string  `protobuf:"bytes,6,opt,name=cover_img_url,json=coverImgUrl,proto3" json:"cover_img_url,omitempty"`
-	Name            string  `protobuf:"bytes,7,opt,name=name,proto3" json:"name,omitempty"`
-	Price           float32 `protobuf:"fixed32,8,opt,name=price,proto3" json:"price,omitempty"`
-	Price2          float32 `protobuf:"fixed32,9,opt,name=price2,proto3" json:"price2,omitempty"`
-	Url             string  `protobuf:"bytes,10,opt,name=url,proto3" json:"url,omitempty"`
-	PriceType       int32   `protobuf:"varint,11,opt,name=price_type,json=priceType,proto3" json:"price_type,omitempty"`
-	ThirdPartyTag   int32   `protobuf:"varint,12,opt,name=third_party_tag,json=thirdPartyTag,proto3" json:"third_party_tag,omitempty"`
-	ThirdPartyAppId string  `protobuf:"bytes,13,opt,name=third_party_app_id,json=thirdPartyAppId,proto3" json:"third_party_app_id,omitempty"`
-	AuditId         int64   `protobuf:"varint,14,opt,name=audit_id,json=auditId,proto3" json:"audit_id,omitempty"`
-	AuditStatus     int32   `protobuf:"varint,15,opt,name=audit_status,json=auditStatus,proto3" json:"audit_status,omitempty"`
+	GoodsId         int64   `protobuf:"varint,4,opt,name=goods_id,json=goodsId,proto3" json:"goods_id"`
+	CoverImgUrlId   string  `protobuf:"bytes,5,opt,name=cover_img_url_id,json=coverImgUrlId,proto3" json:"cover_img_url_id"`
+	CoverImgUrl     string  `protobuf:"bytes,6,opt,name=cover_img_url,json=coverImgUrl,proto3" json:"cover_img_url"`
+	Name            string  `protobuf:"bytes,7,opt,name=name,proto3" json:"name"`
+	Price           float32 `protobuf:"fixed32,8,opt,name=price,proto3" json:"price"`
+	Price2          float32 `protobuf:"fixed32,9,opt,name=price2,proto3" json:"price2"`
+	Url             string  `protobuf:"bytes,10,opt,name=url,proto3" json:"url"`
+	PriceType       int32   `protobuf:"varint,11,opt,name=price_type,json=priceType,proto3" json:"price_type"`
+	ThirdPartyTag   int32   `protobuf:"varint,12,opt,name=third_party_tag,json=thirdPartyTag,proto3" json:"third_party_tag"`
+	ThirdPartyAppId string  `protobuf:"bytes,13,opt,name=third_party_app_id,json=thirdPartyAppId,proto3" json:"third_party_app_id"`
+	AuditId         int64   `protobuf:"varint,14,opt,name=audit_id,json=auditId,proto3" json:"audit_id"`
+	AuditStatus     int32   `protobuf:"varint,15,opt,name=audit_status,json=auditStatus,proto3" json:"audit_status"`
 }
 
 func (x *WxappRoomGoodsCommon) Reset() {
@@ -444,14 +445,14 @@ type WxappRoomGoodsCommon2 struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	GoodsId         int64   `protobuf:"varint,1,opt,name=goods_id,json=goodsId,proto3" json:"goods_id,omitempty"`
-	CoverImgUrl     string  `protobuf:"bytes,2,opt,name=cover_img_url,json=coverImgUrl,proto3" json:"cover_img_url,omitempty"`
-	Name            string  `protobuf:"bytes,3,opt,name=name,proto3" json:"name,omitempty"`
-	Price           float32 `protobuf:"fixed32,4,opt,name=price,proto3" json:"price,omitempty"`
-	Price2          float32 `protobuf:"fixed32,5,opt,name=price2,proto3" json:"price2,omitempty"`
-	Url             string  `protobuf:"bytes,6,opt,name=url,proto3" json:"url,omitempty"`
-	PriceType       int32   `protobuf:"varint,7,opt,name=price_type,json=priceType,proto3" json:"price_type,omitempty"`
-	ThirdPartyAppId string  `protobuf:"bytes,8,opt,name=third_party_app_id,json=thirdPartyAppId,proto3" json:"third_party_app_id,omitempty"`
+	GoodsId         int64   `protobuf:"varint,1,opt,name=goods_id,json=goodsId,proto3" json:"goods_id"`
+	CoverImgUrl     string  `protobuf:"bytes,2,opt,name=cover_img_url,json=coverImgUrl,proto3" json:"cover_img_url"`
+	Name            string  `protobuf:"bytes,3,opt,name=name,proto3" json:"name"`
+	Price           float32 `protobuf:"fixed32,4,opt,name=price,proto3" json:"price"`
+	Price2          float32 `protobuf:"fixed32,5,opt,name=price2,proto3" json:"price2"`
+	Url             string  `protobuf:"bytes,6,opt,name=url,proto3" json:"url"`
+	PriceType       int32   `protobuf:"varint,7,opt,name=price_type,json=priceType,proto3" json:"price_type"`
+	ThirdPartyAppId string  `protobuf:"bytes,8,opt,name=third_party_app_id,json=thirdPartyAppId,proto3" json:"third_party_app_id"`
 }
 
 func (x *WxappRoomGoodsCommon2) Reset() {
@@ -547,11 +548,11 @@ type WxappRoomGoodsResponse struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	Entity *WxappRoomGoods   `protobuf:"bytes,1,opt,name=entity,proto3" json:"entity,omitempty"`
-	Pager  *common.Pager     `protobuf:"bytes,2,opt,name=pager,proto3" json:"pager,omitempty"`
-	Items  []*WxappRoomGoods `protobuf:"bytes,3,rep,name=items,proto3" json:"items,omitempty"`
-	Error  *common.Error     `protobuf:"bytes,4,opt,name=error,proto3" json:"error,omitempty"`
-	Info   *common.Info      `protobuf:"bytes,5,opt,name=info,proto3" json:"info,omitempty"`
+	Entity *WxappRoomGoods   `protobuf:"bytes,1,opt,name=entity,proto3" json:"entity"`
+	Pager  *common.Pager     `protobuf:"bytes,2,opt,name=pager,proto3" json:"pager"`
+	Items  []*WxappRoomGoods `protobuf:"bytes,3,rep,name=items,proto3" json:"items"`
+	Error  *common.Error     `protobuf:"bytes,4,opt,name=error,proto3" json:"error"`
+	Info   *common.Info      `protobuf:"bytes,5,opt,name=info,proto3" json:"info"`
 }
 
 func (x *WxappRoomGoodsResponse) Reset() {

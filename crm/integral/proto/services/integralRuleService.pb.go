@@ -31,12 +31,13 @@ type IntegralRuleWhere struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	Paged    int32   `protobuf:"varint,1,opt,name=paged,proto3" json:"paged,omitempty"`
-	PageSize int32   `protobuf:"varint,2,opt,name=page_size,json=pageSize,proto3" json:"page_size,omitempty"`
-	Sorting  string  `protobuf:"bytes,3,opt,name=sorting,proto3" json:"sorting,omitempty"`
-	Keywords string  `protobuf:"bytes,4,opt,name=keywords,proto3" json:"keywords,omitempty"`
-	Id       int64   `protobuf:"varint,5,opt,name=id,proto3" json:"id,omitempty"`
-	Ids      []int64 `protobuf:"varint,6,rep,packed,name=ids,proto3" json:"ids,omitempty"`
+	Paged    int32  `protobuf:"varint,1,opt,name=paged,proto3" json:"paged"`
+	PageSize int32  `protobuf:"varint,2,opt,name=page_size,json=pageSize,proto3" json:"page_size"`
+	Sorting  string `protobuf:"bytes,3,opt,name=sorting,proto3" json:"sorting"`
+	Keywords string `protobuf:"bytes,4,opt,name=keywords,proto3" json:"keywords"`
+	Id       int64  `protobuf:"varint,5,opt,name=id,proto3" json:"id"`
+	// @inject_tag: gorm:"-"
+	Ids []int64 `protobuf:"varint,6,rep,packed,name=ids,proto3" json:"ids" gorm:"-"`
 }
 
 func (x *IntegralRuleWhere) Reset() {
@@ -118,15 +119,16 @@ type IntegralRule struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	Id          int64            `protobuf:"varint,1,opt,name=id,proto3" json:"id,omitempty"`
-	Points      int32            `protobuf:"varint,2,opt,name=points,proto3" json:"points,omitempty"`
-	ReceiveType int32            `protobuf:"varint,3,opt,name=receive_type,json=receiveType,proto3" json:"receive_type,omitempty"`
-	DealCount   int32            `protobuf:"varint,4,opt,name=deal_count,json=dealCount,proto3" json:"deal_count,omitempty"`
-	DealAmount  float32          `protobuf:"fixed32,5,opt,name=deal_amount,json=dealAmount,proto3" json:"deal_amount,omitempty"`
-	GoodsType   int32            `protobuf:"varint,6,opt,name=goods_type,json=goodsType,proto3" json:"goods_type,omitempty"`
-	CreatedAt   string           `protobuf:"bytes,7,opt,name=created_at,json=createdAt,proto3" json:"created_at,omitempty"`
-	UpdatedAt   string           `protobuf:"bytes,8,opt,name=updated_at,json=updatedAt,proto3" json:"updated_at,omitempty"`
-	Goods       []*IntegralGoods `protobuf:"bytes,9,rep,name=goods,proto3" json:"goods,omitempty"`
+	Id          int64   `protobuf:"varint,1,opt,name=id,proto3" json:"id"`
+	Points      int32   `protobuf:"varint,2,opt,name=points,proto3" json:"points"`
+	ReceiveType int32   `protobuf:"varint,3,opt,name=receive_type,json=receiveType,proto3" json:"receive_type"`
+	DealCount   int32   `protobuf:"varint,4,opt,name=deal_count,json=dealCount,proto3" json:"deal_count"`
+	DealAmount  float32 `protobuf:"fixed32,5,opt,name=deal_amount,json=dealAmount,proto3" json:"deal_amount"`
+	GoodsType   int32   `protobuf:"varint,6,opt,name=goods_type,json=goodsType,proto3" json:"goods_type"`
+	CreatedAt   string  `protobuf:"bytes,7,opt,name=created_at,json=createdAt,proto3" json:"created_at"`
+	UpdatedAt   string  `protobuf:"bytes,8,opt,name=updated_at,json=updatedAt,proto3" json:"updated_at"`
+	// @inject_tag: gorm:"foreignKey:IntegralRuleId"
+	Goods []*IntegralGoods `protobuf:"bytes,9,rep,name=goods,proto3" json:"goods" gorm:"foreignKey:IntegralRuleId"`
 }
 
 func (x *IntegralRule) Reset() {
@@ -229,15 +231,16 @@ type IntegralGoods struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	Id             int64      `protobuf:"varint,1,opt,name=id,proto3" json:"id,omitempty"`
-	ItemId         int64      `protobuf:"varint,2,opt,name=item_id,json=itemId,proto3" json:"item_id,omitempty"`
-	SkuId          int64      `protobuf:"varint,3,opt,name=sku_id,json=skuId,proto3" json:"sku_id,omitempty"`
-	Value          int32      `protobuf:"varint,4,opt,name=value,proto3" json:"value,omitempty"`
-	Ratio          int32      `protobuf:"varint,5,opt,name=ratio,proto3" json:"ratio,omitempty"`
-	IntegralRuleId int64      `protobuf:"varint,6,opt,name=integral_rule_id,json=integralRuleId,proto3" json:"integral_rule_id,omitempty"`
-	CreatedAt      string     `protobuf:"bytes,7,opt,name=created_at,json=createdAt,proto3" json:"created_at,omitempty"`
-	UpdatedAt      string     `protobuf:"bytes,8,opt,name=updated_at,json=updatedAt,proto3" json:"updated_at,omitempty"`
-	Goods          *GoodsInfo `protobuf:"bytes,9,opt,name=goods,proto3" json:"goods,omitempty"`
+	Id             int64  `protobuf:"varint,1,opt,name=id,proto3" json:"id"`
+	ItemId         int64  `protobuf:"varint,2,opt,name=item_id,json=itemId,proto3" json:"item_id"`
+	SkuId          int64  `protobuf:"varint,3,opt,name=sku_id,json=skuId,proto3" json:"sku_id"`
+	Value          int32  `protobuf:"varint,4,opt,name=value,proto3" json:"value"`
+	Ratio          int32  `protobuf:"varint,5,opt,name=ratio,proto3" json:"ratio"`
+	IntegralRuleId int64  `protobuf:"varint,6,opt,name=integral_rule_id,json=integralRuleId,proto3" json:"integral_rule_id"`
+	CreatedAt      string `protobuf:"bytes,7,opt,name=created_at,json=createdAt,proto3" json:"created_at"`
+	UpdatedAt      string `protobuf:"bytes,8,opt,name=updated_at,json=updatedAt,proto3" json:"updated_at"`
+	// @inject_tag: gorm:"-"
+	Goods *GoodsInfo `protobuf:"bytes,9,opt,name=goods,proto3" json:"goods" gorm:"-"`
 }
 
 func (x *IntegralGoods) Reset() {
@@ -340,11 +343,11 @@ type IntegralRuleResponse struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	Entity *IntegralRule   `protobuf:"bytes,1,opt,name=entity,proto3" json:"entity,omitempty"`
-	Pager  *common.Pager   `protobuf:"bytes,2,opt,name=pager,proto3" json:"pager,omitempty"`
-	Items  []*IntegralRule `protobuf:"bytes,3,rep,name=items,proto3" json:"items,omitempty"`
-	Error  *common.Error   `protobuf:"bytes,4,opt,name=error,proto3" json:"error,omitempty"`
-	Info   *common.Info    `protobuf:"bytes,5,opt,name=info,proto3" json:"info,omitempty"`
+	Entity *IntegralRule   `protobuf:"bytes,1,opt,name=entity,proto3" json:"entity"`
+	Pager  *common.Pager   `protobuf:"bytes,2,opt,name=pager,proto3" json:"pager"`
+	Items  []*IntegralRule `protobuf:"bytes,3,rep,name=items,proto3" json:"items"`
+	Error  *common.Error   `protobuf:"bytes,4,opt,name=error,proto3" json:"error"`
+	Info   *common.Info    `protobuf:"bytes,5,opt,name=info,proto3" json:"info"`
 }
 
 func (x *IntegralRuleResponse) Reset() {

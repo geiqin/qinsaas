@@ -31,26 +31,26 @@ type OrderStats struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	Id                int32   `protobuf:"varint,1,opt,name=id,proto3" json:"id,omitempty"`
-	PayAmount         float32 `protobuf:"fixed32,2,opt,name=pay_amount,json=payAmount,proto3" json:"pay_amount,omitempty"`
-	CouponAmount      float32 `protobuf:"fixed32,3,opt,name=coupon_amount,json=couponAmount,proto3" json:"coupon_amount,omitempty"`
-	ExpressAmount     float32 `protobuf:"fixed32,4,opt,name=express_amount,json=expressAmount,proto3" json:"express_amount,omitempty"`
-	RefundAmount      float32 `protobuf:"fixed32,5,opt,name=refund_amount,json=refundAmount,proto3" json:"refund_amount,omitempty"`
-	OrderNum          int32   `protobuf:"varint,16,opt,name=order_num,json=orderNum,proto3" json:"order_num,omitempty"`
-	PayNum            int32   `protobuf:"varint,6,opt,name=pay_num,json=payNum,proto3" json:"pay_num,omitempty"`
-	BuyerNum          int32   `protobuf:"varint,7,opt,name=buyer_num,json=buyerNum,proto3" json:"buyer_num,omitempty"`
-	GoodsNum          int32   `protobuf:"varint,8,opt,name=goods_num,json=goodsNum,proto3" json:"goods_num,omitempty"`
-	RefundNum         int32   `protobuf:"varint,9,opt,name=refund_num,json=refundNum,proto3" json:"refund_num,omitempty"`
-	NewCustomerNum    int32   `protobuf:"varint,10,opt,name=new_customer_num,json=newCustomerNum,proto3" json:"new_customer_num,omitempty"`
-	OldCustomerNum    int32   `protobuf:"varint,11,opt,name=old_customer_num,json=oldCustomerNum,proto3" json:"old_customer_num,omitempty"`
-	CustomerUnitPrice float32 `protobuf:"fixed32,12,opt,name=customer_unit_price,json=customerUnitPrice,proto3" json:"customer_unit_price,omitempty"`
-	IncomeAmount      float32 `protobuf:"fixed32,13,opt,name=income_amount,json=incomeAmount,proto3" json:"income_amount,omitempty"`
-	CostAmount        float32 `protobuf:"fixed32,14,opt,name=cost_amount,json=costAmount,proto3" json:"cost_amount,omitempty"`
-	Profit            float32 `protobuf:"fixed32,15,opt,name=profit,proto3" json:"profit,omitempty"`
-	ProfitRate        float32 `protobuf:"fixed32,17,opt,name=profit_rate,json=profitRate,proto3" json:"profit_rate,omitempty"`
-	LastStatsAt       string  `protobuf:"bytes,18,opt,name=last_stats_at,json=lastStatsAt,proto3" json:"last_stats_at,omitempty"`
-	CreatedAt         string  `protobuf:"bytes,19,opt,name=created_at,json=createdAt,proto3" json:"created_at,omitempty"`
-	UpdatedAt         string  `protobuf:"bytes,20,opt,name=updated_at,json=updatedAt,proto3" json:"updated_at,omitempty"`
+	Id                int32   `protobuf:"varint,1,opt,name=id,proto3" json:"id"`
+	PayAmount         float32 `protobuf:"fixed32,2,opt,name=pay_amount,json=payAmount,proto3" json:"pay_amount"`
+	CouponAmount      float32 `protobuf:"fixed32,3,opt,name=coupon_amount,json=couponAmount,proto3" json:"coupon_amount"`
+	ExpressAmount     float32 `protobuf:"fixed32,4,opt,name=express_amount,json=expressAmount,proto3" json:"express_amount"`
+	RefundAmount      float32 `protobuf:"fixed32,5,opt,name=refund_amount,json=refundAmount,proto3" json:"refund_amount"`
+	OrderNum          int32   `protobuf:"varint,16,opt,name=order_num,json=orderNum,proto3" json:"order_num"`
+	PayNum            int32   `protobuf:"varint,6,opt,name=pay_num,json=payNum,proto3" json:"pay_num"`
+	BuyerNum          int32   `protobuf:"varint,7,opt,name=buyer_num,json=buyerNum,proto3" json:"buyer_num"`
+	GoodsNum          int32   `protobuf:"varint,8,opt,name=goods_num,json=goodsNum,proto3" json:"goods_num"`
+	RefundNum         int32   `protobuf:"varint,9,opt,name=refund_num,json=refundNum,proto3" json:"refund_num"`
+	NewCustomerNum    int32   `protobuf:"varint,10,opt,name=new_customer_num,json=newCustomerNum,proto3" json:"new_customer_num"`
+	OldCustomerNum    int32   `protobuf:"varint,11,opt,name=old_customer_num,json=oldCustomerNum,proto3" json:"old_customer_num"`
+	CustomerUnitPrice float32 `protobuf:"fixed32,12,opt,name=customer_unit_price,json=customerUnitPrice,proto3" json:"customer_unit_price"`
+	IncomeAmount      float32 `protobuf:"fixed32,13,opt,name=income_amount,json=incomeAmount,proto3" json:"income_amount"`
+	CostAmount        float32 `protobuf:"fixed32,14,opt,name=cost_amount,json=costAmount,proto3" json:"cost_amount"`
+	Profit            float32 `protobuf:"fixed32,15,opt,name=profit,proto3" json:"profit"`
+	ProfitRate        float32 `protobuf:"fixed32,17,opt,name=profit_rate,json=profitRate,proto3" json:"profit_rate"`
+	LastStatsAt       string  `protobuf:"bytes,18,opt,name=last_stats_at,json=lastStatsAt,proto3" json:"last_stats_at"`
+	CreatedAt         string  `protobuf:"bytes,19,opt,name=created_at,json=createdAt,proto3" json:"created_at"`
+	UpdatedAt         string  `protobuf:"bytes,20,opt,name=updated_at,json=updatedAt,proto3" json:"updated_at"`
 }
 
 func (x *OrderStats) Reset() {
@@ -230,26 +230,26 @@ type OrderDayStats struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	Id                int32   `protobuf:"varint,1,opt,name=id,proto3" json:"id,omitempty"`
-	PayAmount         float32 `protobuf:"fixed32,2,opt,name=pay_amount,json=payAmount,proto3" json:"pay_amount,omitempty"`
-	CouponAmount      float32 `protobuf:"fixed32,3,opt,name=coupon_amount,json=couponAmount,proto3" json:"coupon_amount,omitempty"`
-	ExpressAmount     float32 `protobuf:"fixed32,4,opt,name=express_amount,json=expressAmount,proto3" json:"express_amount,omitempty"`
-	RefundAmount      float32 `protobuf:"fixed32,5,opt,name=refund_amount,json=refundAmount,proto3" json:"refund_amount,omitempty"`
-	OrderNum          int32   `protobuf:"varint,16,opt,name=order_num,json=orderNum,proto3" json:"order_num,omitempty"`
-	PayNum            int32   `protobuf:"varint,6,opt,name=pay_num,json=payNum,proto3" json:"pay_num,omitempty"`
-	BuyerNum          int32   `protobuf:"varint,7,opt,name=buyer_num,json=buyerNum,proto3" json:"buyer_num,omitempty"`
-	GoodsNum          int32   `protobuf:"varint,8,opt,name=goods_num,json=goodsNum,proto3" json:"goods_num,omitempty"`
-	RefundNum         int32   `protobuf:"varint,9,opt,name=refund_num,json=refundNum,proto3" json:"refund_num,omitempty"`
-	NewCustomerNum    int32   `protobuf:"varint,10,opt,name=new_customer_num,json=newCustomerNum,proto3" json:"new_customer_num,omitempty"`
-	OldCustomerNum    int32   `protobuf:"varint,11,opt,name=old_customer_num,json=oldCustomerNum,proto3" json:"old_customer_num,omitempty"`
-	CustomerUnitPrice float32 `protobuf:"fixed32,12,opt,name=customer_unit_price,json=customerUnitPrice,proto3" json:"customer_unit_price,omitempty"`
-	IncomeAmount      float32 `protobuf:"fixed32,13,opt,name=income_amount,json=incomeAmount,proto3" json:"income_amount,omitempty"`
-	CostAmount        float32 `protobuf:"fixed32,14,opt,name=cost_amount,json=costAmount,proto3" json:"cost_amount,omitempty"`
-	Profit            float32 `protobuf:"fixed32,15,opt,name=profit,proto3" json:"profit,omitempty"`
-	ProfitRate        float32 `protobuf:"fixed32,17,opt,name=profit_rate,json=profitRate,proto3" json:"profit_rate,omitempty"`
-	StatisticAt       string  `protobuf:"bytes,18,opt,name=statistic_at,json=statisticAt,proto3" json:"statistic_at,omitempty"`
-	CreatedAt         string  `protobuf:"bytes,19,opt,name=created_at,json=createdAt,proto3" json:"created_at,omitempty"`
-	UpdatedAt         string  `protobuf:"bytes,20,opt,name=updated_at,json=updatedAt,proto3" json:"updated_at,omitempty"`
+	Id                int32   `protobuf:"varint,1,opt,name=id,proto3" json:"id"`
+	PayAmount         float32 `protobuf:"fixed32,2,opt,name=pay_amount,json=payAmount,proto3" json:"pay_amount"`
+	CouponAmount      float32 `protobuf:"fixed32,3,opt,name=coupon_amount,json=couponAmount,proto3" json:"coupon_amount"`
+	ExpressAmount     float32 `protobuf:"fixed32,4,opt,name=express_amount,json=expressAmount,proto3" json:"express_amount"`
+	RefundAmount      float32 `protobuf:"fixed32,5,opt,name=refund_amount,json=refundAmount,proto3" json:"refund_amount"`
+	OrderNum          int32   `protobuf:"varint,16,opt,name=order_num,json=orderNum,proto3" json:"order_num"`
+	PayNum            int32   `protobuf:"varint,6,opt,name=pay_num,json=payNum,proto3" json:"pay_num"`
+	BuyerNum          int32   `protobuf:"varint,7,opt,name=buyer_num,json=buyerNum,proto3" json:"buyer_num"`
+	GoodsNum          int32   `protobuf:"varint,8,opt,name=goods_num,json=goodsNum,proto3" json:"goods_num"`
+	RefundNum         int32   `protobuf:"varint,9,opt,name=refund_num,json=refundNum,proto3" json:"refund_num"`
+	NewCustomerNum    int32   `protobuf:"varint,10,opt,name=new_customer_num,json=newCustomerNum,proto3" json:"new_customer_num"`
+	OldCustomerNum    int32   `protobuf:"varint,11,opt,name=old_customer_num,json=oldCustomerNum,proto3" json:"old_customer_num"`
+	CustomerUnitPrice float32 `protobuf:"fixed32,12,opt,name=customer_unit_price,json=customerUnitPrice,proto3" json:"customer_unit_price"`
+	IncomeAmount      float32 `protobuf:"fixed32,13,opt,name=income_amount,json=incomeAmount,proto3" json:"income_amount"`
+	CostAmount        float32 `protobuf:"fixed32,14,opt,name=cost_amount,json=costAmount,proto3" json:"cost_amount"`
+	Profit            float32 `protobuf:"fixed32,15,opt,name=profit,proto3" json:"profit"`
+	ProfitRate        float32 `protobuf:"fixed32,17,opt,name=profit_rate,json=profitRate,proto3" json:"profit_rate"`
+	StatisticAt       string  `protobuf:"bytes,18,opt,name=statistic_at,json=statisticAt,proto3" json:"statistic_at"`
+	CreatedAt         string  `protobuf:"bytes,19,opt,name=created_at,json=createdAt,proto3" json:"created_at"`
+	UpdatedAt         string  `protobuf:"bytes,20,opt,name=updated_at,json=updatedAt,proto3" json:"updated_at"`
 }
 
 func (x *OrderDayStats) Reset() {
@@ -429,18 +429,18 @@ type CustomerOrderStats struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	Id           int32   `protobuf:"varint,1,opt,name=id,proto3" json:"id,omitempty"`
-	CustomerId   int64   `protobuf:"varint,2,opt,name=customer_id,json=customerId,proto3" json:"customer_id,omitempty"`
-	OrderNum     int32   `protobuf:"varint,12,opt,name=order_num,json=orderNum,proto3" json:"order_num,omitempty"`
-	PayAmount    float32 `protobuf:"fixed32,3,opt,name=pay_amount,json=payAmount,proto3" json:"pay_amount,omitempty"`
-	CouponAmount float32 `protobuf:"fixed32,4,opt,name=coupon_amount,json=couponAmount,proto3" json:"coupon_amount,omitempty"`
-	RefundAmount float32 `protobuf:"fixed32,5,opt,name=refund_amount,json=refundAmount,proto3" json:"refund_amount,omitempty"`
-	PayNum       int32   `protobuf:"varint,6,opt,name=pay_num,json=payNum,proto3" json:"pay_num,omitempty"`
-	GoodsNum     int32   `protobuf:"varint,7,opt,name=goods_num,json=goodsNum,proto3" json:"goods_num,omitempty"`
-	RefundNum    int32   `protobuf:"varint,8,opt,name=refund_num,json=refundNum,proto3" json:"refund_num,omitempty"`
-	LastStatsAt  string  `protobuf:"bytes,9,opt,name=last_stats_at,json=lastStatsAt,proto3" json:"last_stats_at,omitempty"`
-	CreatedAt    string  `protobuf:"bytes,10,opt,name=created_at,json=createdAt,proto3" json:"created_at,omitempty"`
-	UpdatedAt    string  `protobuf:"bytes,11,opt,name=updated_at,json=updatedAt,proto3" json:"updated_at,omitempty"`
+	Id           int32   `protobuf:"varint,1,opt,name=id,proto3" json:"id"`
+	CustomerId   int64   `protobuf:"varint,2,opt,name=customer_id,json=customerId,proto3" json:"customer_id"`
+	OrderNum     int32   `protobuf:"varint,12,opt,name=order_num,json=orderNum,proto3" json:"order_num"`
+	PayAmount    float32 `protobuf:"fixed32,3,opt,name=pay_amount,json=payAmount,proto3" json:"pay_amount"`
+	CouponAmount float32 `protobuf:"fixed32,4,opt,name=coupon_amount,json=couponAmount,proto3" json:"coupon_amount"`
+	RefundAmount float32 `protobuf:"fixed32,5,opt,name=refund_amount,json=refundAmount,proto3" json:"refund_amount"`
+	PayNum       int32   `protobuf:"varint,6,opt,name=pay_num,json=payNum,proto3" json:"pay_num"`
+	GoodsNum     int32   `protobuf:"varint,7,opt,name=goods_num,json=goodsNum,proto3" json:"goods_num"`
+	RefundNum    int32   `protobuf:"varint,8,opt,name=refund_num,json=refundNum,proto3" json:"refund_num"`
+	LastStatsAt  string  `protobuf:"bytes,9,opt,name=last_stats_at,json=lastStatsAt,proto3" json:"last_stats_at"`
+	CreatedAt    string  `protobuf:"bytes,10,opt,name=created_at,json=createdAt,proto3" json:"created_at"`
+	UpdatedAt    string  `protobuf:"bytes,11,opt,name=updated_at,json=updatedAt,proto3" json:"updated_at"`
 }
 
 func (x *CustomerOrderStats) Reset() {
@@ -564,18 +564,18 @@ type CustomerOrderDayStats struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	Id           int32   `protobuf:"varint,1,opt,name=id,proto3" json:"id,omitempty"`
-	CustomerId   int64   `protobuf:"varint,2,opt,name=customer_id,json=customerId,proto3" json:"customer_id,omitempty"`
-	PayAmount    float32 `protobuf:"fixed32,3,opt,name=pay_amount,json=payAmount,proto3" json:"pay_amount,omitempty"`
-	CouponAmount float32 `protobuf:"fixed32,4,opt,name=coupon_amount,json=couponAmount,proto3" json:"coupon_amount,omitempty"`
-	RefundAmount float32 `protobuf:"fixed32,5,opt,name=refund_amount,json=refundAmount,proto3" json:"refund_amount,omitempty"`
-	OrderNum     int32   `protobuf:"varint,12,opt,name=order_num,json=orderNum,proto3" json:"order_num,omitempty"`
-	PayNum       int32   `protobuf:"varint,6,opt,name=pay_num,json=payNum,proto3" json:"pay_num,omitempty"`
-	GoodsNum     int32   `protobuf:"varint,7,opt,name=goods_num,json=goodsNum,proto3" json:"goods_num,omitempty"`
-	RefundNum    int32   `protobuf:"varint,8,opt,name=refund_num,json=refundNum,proto3" json:"refund_num,omitempty"`
-	StatisticAt  string  `protobuf:"bytes,9,opt,name=statistic_at,json=statisticAt,proto3" json:"statistic_at,omitempty"`
-	CreatedAt    string  `protobuf:"bytes,10,opt,name=created_at,json=createdAt,proto3" json:"created_at,omitempty"`
-	UpdatedAt    string  `protobuf:"bytes,11,opt,name=updated_at,json=updatedAt,proto3" json:"updated_at,omitempty"`
+	Id           int32   `protobuf:"varint,1,opt,name=id,proto3" json:"id"`
+	CustomerId   int64   `protobuf:"varint,2,opt,name=customer_id,json=customerId,proto3" json:"customer_id"`
+	PayAmount    float32 `protobuf:"fixed32,3,opt,name=pay_amount,json=payAmount,proto3" json:"pay_amount"`
+	CouponAmount float32 `protobuf:"fixed32,4,opt,name=coupon_amount,json=couponAmount,proto3" json:"coupon_amount"`
+	RefundAmount float32 `protobuf:"fixed32,5,opt,name=refund_amount,json=refundAmount,proto3" json:"refund_amount"`
+	OrderNum     int32   `protobuf:"varint,12,opt,name=order_num,json=orderNum,proto3" json:"order_num"`
+	PayNum       int32   `protobuf:"varint,6,opt,name=pay_num,json=payNum,proto3" json:"pay_num"`
+	GoodsNum     int32   `protobuf:"varint,7,opt,name=goods_num,json=goodsNum,proto3" json:"goods_num"`
+	RefundNum    int32   `protobuf:"varint,8,opt,name=refund_num,json=refundNum,proto3" json:"refund_num"`
+	StatisticAt  string  `protobuf:"bytes,9,opt,name=statistic_at,json=statisticAt,proto3" json:"statistic_at"`
+	CreatedAt    string  `protobuf:"bytes,10,opt,name=created_at,json=createdAt,proto3" json:"created_at"`
+	UpdatedAt    string  `protobuf:"bytes,11,opt,name=updated_at,json=updatedAt,proto3" json:"updated_at"`
 }
 
 func (x *CustomerOrderDayStats) Reset() {
@@ -699,17 +699,17 @@ type CustomerGoods struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	ItemId      int64   `protobuf:"varint,1,opt,name=item_id,json=itemId,proto3" json:"item_id,omitempty"`
-	ThumbUrl    string  `protobuf:"bytes,2,opt,name=thumb_url,json=thumbUrl,proto3" json:"thumb_url,omitempty"`
-	SkuId       int64   `protobuf:"varint,3,opt,name=sku_id,json=skuId,proto3" json:"sku_id,omitempty"`
-	ItemSn      string  `protobuf:"bytes,4,opt,name=item_sn,json=itemSn,proto3" json:"item_sn,omitempty"`
-	SkuSn       string  `protobuf:"bytes,5,opt,name=sku_sn,json=skuSn,proto3" json:"sku_sn,omitempty"`
-	ModelType   string  `protobuf:"bytes,6,opt,name=model_type,json=modelType,proto3" json:"model_type,omitempty"`
-	Name        string  `protobuf:"bytes,7,opt,name=name,proto3" json:"name,omitempty"`
-	Num         int32   `protobuf:"varint,8,opt,name=num,proto3" json:"num,omitempty"`
-	Price       float32 `protobuf:"fixed32,9,opt,name=price,proto3" json:"price,omitempty"`
-	TotalPrice  float32 `protobuf:"fixed32,10,opt,name=total_price,json=totalPrice,proto3" json:"total_price,omitempty"`
-	OriginPrice float32 `protobuf:"fixed32,11,opt,name=origin_price,json=originPrice,proto3" json:"origin_price,omitempty"`
+	ItemId      int64   `protobuf:"varint,1,opt,name=item_id,json=itemId,proto3" json:"item_id"`
+	ThumbUrl    string  `protobuf:"bytes,2,opt,name=thumb_url,json=thumbUrl,proto3" json:"thumb_url"`
+	SkuId       int64   `protobuf:"varint,3,opt,name=sku_id,json=skuId,proto3" json:"sku_id"`
+	ItemSn      string  `protobuf:"bytes,4,opt,name=item_sn,json=itemSn,proto3" json:"item_sn"`
+	SkuSn       string  `protobuf:"bytes,5,opt,name=sku_sn,json=skuSn,proto3" json:"sku_sn"`
+	ModelType   string  `protobuf:"bytes,6,opt,name=model_type,json=modelType,proto3" json:"model_type"`
+	Name        string  `protobuf:"bytes,7,opt,name=name,proto3" json:"name"`
+	Num         int32   `protobuf:"varint,8,opt,name=num,proto3" json:"num"`
+	Price       float32 `protobuf:"fixed32,9,opt,name=price,proto3" json:"price"`
+	TotalPrice  float32 `protobuf:"fixed32,10,opt,name=total_price,json=totalPrice,proto3" json:"total_price"`
+	OriginPrice float32 `protobuf:"fixed32,11,opt,name=origin_price,json=originPrice,proto3" json:"origin_price"`
 }
 
 func (x *CustomerGoods) Reset() {
@@ -826,11 +826,11 @@ type OrderStatsResponse struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	Entity *OrderStats   `protobuf:"bytes,1,opt,name=entity,proto3" json:"entity,omitempty"`
-	Pager  *common.Pager `protobuf:"bytes,2,opt,name=pager,proto3" json:"pager,omitempty"`
-	Items  []*OrderStats `protobuf:"bytes,3,rep,name=items,proto3" json:"items,omitempty"`
-	Error  *common.Error `protobuf:"bytes,4,opt,name=error,proto3" json:"error,omitempty"`
-	Info   *common.Info  `protobuf:"bytes,5,opt,name=info,proto3" json:"info,omitempty"`
+	Entity *OrderStats   `protobuf:"bytes,1,opt,name=entity,proto3" json:"entity"`
+	Pager  *common.Pager `protobuf:"bytes,2,opt,name=pager,proto3" json:"pager"`
+	Items  []*OrderStats `protobuf:"bytes,3,rep,name=items,proto3" json:"items"`
+	Error  *common.Error `protobuf:"bytes,4,opt,name=error,proto3" json:"error"`
+	Info   *common.Info  `protobuf:"bytes,5,opt,name=info,proto3" json:"info"`
 }
 
 func (x *OrderStatsResponse) Reset() {
@@ -905,11 +905,11 @@ type OrderDayStatsResponse struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	Entity *OrderDayStats   `protobuf:"bytes,1,opt,name=entity,proto3" json:"entity,omitempty"`
-	Pager  *common.Pager    `protobuf:"bytes,2,opt,name=pager,proto3" json:"pager,omitempty"`
-	Items  []*OrderDayStats `protobuf:"bytes,3,rep,name=items,proto3" json:"items,omitempty"`
-	Error  *common.Error    `protobuf:"bytes,4,opt,name=error,proto3" json:"error,omitempty"`
-	Info   *common.Info     `protobuf:"bytes,5,opt,name=info,proto3" json:"info,omitempty"`
+	Entity *OrderDayStats   `protobuf:"bytes,1,opt,name=entity,proto3" json:"entity"`
+	Pager  *common.Pager    `protobuf:"bytes,2,opt,name=pager,proto3" json:"pager"`
+	Items  []*OrderDayStats `protobuf:"bytes,3,rep,name=items,proto3" json:"items"`
+	Error  *common.Error    `protobuf:"bytes,4,opt,name=error,proto3" json:"error"`
+	Info   *common.Info     `protobuf:"bytes,5,opt,name=info,proto3" json:"info"`
 }
 
 func (x *OrderDayStatsResponse) Reset() {
@@ -984,11 +984,11 @@ type CustomerOrderStatsResponse struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	Entity *CustomerOrderStats   `protobuf:"bytes,1,opt,name=entity,proto3" json:"entity,omitempty"`
-	Pager  *common.Pager         `protobuf:"bytes,2,opt,name=pager,proto3" json:"pager,omitempty"`
-	Items  []*CustomerOrderStats `protobuf:"bytes,3,rep,name=items,proto3" json:"items,omitempty"`
-	Error  *common.Error         `protobuf:"bytes,4,opt,name=error,proto3" json:"error,omitempty"`
-	Info   *common.Info          `protobuf:"bytes,5,opt,name=info,proto3" json:"info,omitempty"`
+	Entity *CustomerOrderStats   `protobuf:"bytes,1,opt,name=entity,proto3" json:"entity"`
+	Pager  *common.Pager         `protobuf:"bytes,2,opt,name=pager,proto3" json:"pager"`
+	Items  []*CustomerOrderStats `protobuf:"bytes,3,rep,name=items,proto3" json:"items"`
+	Error  *common.Error         `protobuf:"bytes,4,opt,name=error,proto3" json:"error"`
+	Info   *common.Info          `protobuf:"bytes,5,opt,name=info,proto3" json:"info"`
 }
 
 func (x *CustomerOrderStatsResponse) Reset() {
@@ -1063,11 +1063,11 @@ type CustomerOrderDayStatsResponse struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	Entity *CustomerOrderDayStats   `protobuf:"bytes,1,opt,name=entity,proto3" json:"entity,omitempty"`
-	Pager  *common.Pager            `protobuf:"bytes,2,opt,name=pager,proto3" json:"pager,omitempty"`
-	Items  []*CustomerOrderDayStats `protobuf:"bytes,3,rep,name=items,proto3" json:"items,omitempty"`
-	Error  *common.Error            `protobuf:"bytes,4,opt,name=error,proto3" json:"error,omitempty"`
-	Info   *common.Info             `protobuf:"bytes,5,opt,name=info,proto3" json:"info,omitempty"`
+	Entity *CustomerOrderDayStats   `protobuf:"bytes,1,opt,name=entity,proto3" json:"entity"`
+	Pager  *common.Pager            `protobuf:"bytes,2,opt,name=pager,proto3" json:"pager"`
+	Items  []*CustomerOrderDayStats `protobuf:"bytes,3,rep,name=items,proto3" json:"items"`
+	Error  *common.Error            `protobuf:"bytes,4,opt,name=error,proto3" json:"error"`
+	Info   *common.Info             `protobuf:"bytes,5,opt,name=info,proto3" json:"info"`
 }
 
 func (x *CustomerOrderDayStatsResponse) Reset() {
@@ -1142,11 +1142,11 @@ type CustomerGoodsResponse struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	Entity *CustomerGoods   `protobuf:"bytes,1,opt,name=entity,proto3" json:"entity,omitempty"`
-	Pager  *common.Pager    `protobuf:"bytes,2,opt,name=pager,proto3" json:"pager,omitempty"`
-	Items  []*CustomerGoods `protobuf:"bytes,3,rep,name=items,proto3" json:"items,omitempty"`
-	Error  *common.Error    `protobuf:"bytes,4,opt,name=error,proto3" json:"error,omitempty"`
-	Info   *common.Info     `protobuf:"bytes,5,opt,name=info,proto3" json:"info,omitempty"`
+	Entity *CustomerGoods   `protobuf:"bytes,1,opt,name=entity,proto3" json:"entity"`
+	Pager  *common.Pager    `protobuf:"bytes,2,opt,name=pager,proto3" json:"pager"`
+	Items  []*CustomerGoods `protobuf:"bytes,3,rep,name=items,proto3" json:"items"`
+	Error  *common.Error    `protobuf:"bytes,4,opt,name=error,proto3" json:"error"`
+	Info   *common.Info     `protobuf:"bytes,5,opt,name=info,proto3" json:"info"`
 }
 
 func (x *CustomerGoodsResponse) Reset() {

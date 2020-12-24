@@ -31,15 +31,15 @@ type OrderCoupon struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	Id          int64   `protobuf:"varint,1,opt,name=id,proto3" json:"id,omitempty"`
-	OrderId     int64   `protobuf:"varint,2,opt,name=order_id,json=orderId,proto3" json:"order_id,omitempty"`
-	CustomerId  int64   `protobuf:"varint,3,opt,name=customer_id,json=customerId,proto3" json:"customer_id,omitempty"`
-	CouponId    int64   `protobuf:"varint,4,opt,name=coupon_id,json=couponId,proto3" json:"coupon_id,omitempty"`
-	CouponNum   int32   `protobuf:"varint,5,opt,name=coupon_num,json=couponNum,proto3" json:"coupon_num,omitempty"`
-	Method      string  `protobuf:"bytes,6,opt,name=Method,proto3" json:"Method,omitempty"`
-	CouponPrice float32 `protobuf:"fixed32,7,opt,name=coupon_price,json=couponPrice,proto3" json:"coupon_price,omitempty"`
-	CreatedAt   string  `protobuf:"bytes,8,opt,name=created_at,json=createdAt,proto3" json:"created_at,omitempty"`
-	UpdatedAt   string  `protobuf:"bytes,9,opt,name=updated_at,json=updatedAt,proto3" json:"updated_at,omitempty"`
+	Id          int64   `protobuf:"varint,1,opt,name=id,proto3" json:"id"`
+	OrderId     int64   `protobuf:"varint,2,opt,name=order_id,json=orderId,proto3" json:"order_id"`
+	CustomerId  int64   `protobuf:"varint,3,opt,name=customer_id,json=customerId,proto3" json:"customer_id"`
+	CouponId    int64   `protobuf:"varint,4,opt,name=coupon_id,json=couponId,proto3" json:"coupon_id"`
+	CouponNum   int32   `protobuf:"varint,5,opt,name=coupon_num,json=couponNum,proto3" json:"coupon_num"`
+	Method      string  `protobuf:"bytes,6,opt,name=Method,proto3" json:"Method"`
+	CouponPrice float32 `protobuf:"fixed32,7,opt,name=coupon_price,json=couponPrice,proto3" json:"coupon_price"`
+	CreatedAt   string  `protobuf:"bytes,8,opt,name=created_at,json=createdAt,proto3" json:"created_at"`
+	UpdatedAt   string  `protobuf:"bytes,9,opt,name=updated_at,json=updatedAt,proto3" json:"updated_at"`
 }
 
 func (x *OrderCoupon) Reset() {
@@ -142,11 +142,11 @@ type OrderCouponResponse struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	Entity *OrderCoupon   `protobuf:"bytes,1,opt,name=entity,proto3" json:"entity,omitempty"`
-	Pager  *common.Pager  `protobuf:"bytes,2,opt,name=pager,proto3" json:"pager,omitempty"`
-	Items  []*OrderCoupon `protobuf:"bytes,3,rep,name=items,proto3" json:"items,omitempty"`
-	Error  *common.Error  `protobuf:"bytes,4,opt,name=error,proto3" json:"error,omitempty"`
-	Info   *common.Info   `protobuf:"bytes,5,opt,name=info,proto3" json:"info,omitempty"`
+	Entity *OrderCoupon   `protobuf:"bytes,1,opt,name=entity,proto3" json:"entity"`
+	Pager  *common.Pager  `protobuf:"bytes,2,opt,name=pager,proto3" json:"pager"`
+	Items  []*OrderCoupon `protobuf:"bytes,3,rep,name=items,proto3" json:"items"`
+	Error  *common.Error  `protobuf:"bytes,4,opt,name=error,proto3" json:"error"`
+	Info   *common.Info   `protobuf:"bytes,5,opt,name=info,proto3" json:"info"`
 }
 
 func (x *OrderCouponResponse) Reset() {

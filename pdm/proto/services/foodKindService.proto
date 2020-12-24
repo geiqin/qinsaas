@@ -21,7 +21,9 @@ message FoodKind {
     int32 require_least_count = 4;
     int32 item_count = 5; // 商品数量
     int32 on_shelf_item_count = 6; // 在售商品数量
+    // @inject_tag: gorm:"-"
     FoodKindTag tag = 7;
+    // @inject_tag: gorm:"-"
     repeated ItemDisplay goods = 8;
 }
 

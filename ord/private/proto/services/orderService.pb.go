@@ -31,59 +31,63 @@ type Order struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	Id                 int64          `protobuf:"varint,1,opt,name=id,proto3" json:"id,omitempty"`
-	OrderSn            string         `protobuf:"bytes,2,opt,name=order_sn,json=orderSn,proto3" json:"order_sn,omitempty"`
-	OrderType          string         `protobuf:"bytes,3,opt,name=order_type,json=orderType,proto3" json:"order_type,omitempty"`
-	CustomerId         int64          `protobuf:"varint,4,opt,name=customer_id,json=customerId,proto3" json:"customer_id,omitempty"`
-	TotalNum           int32          `protobuf:"varint,6,opt,name=total_num,json=totalNum,proto3" json:"total_num,omitempty"`
-	TotalWeight        float32        `protobuf:"fixed32,7,opt,name=total_weight,json=totalWeight,proto3" json:"total_weight,omitempty"`
-	Currency           string         `protobuf:"bytes,8,opt,name=currency,proto3" json:"currency,omitempty"`
-	Amount             float32        `protobuf:"fixed32,9,opt,name=amount,proto3" json:"amount,omitempty"`
-	BeforeAmount       float32        `protobuf:"fixed32,10,opt,name=before_amount,json=beforeAmount,proto3" json:"before_amount,omitempty"`
-	ActualAmount       float32        `protobuf:"fixed32,11,opt,name=actual_amount,json=actualAmount,proto3" json:"actual_amount,omitempty"`
-	AmountPaid         float32        `protobuf:"fixed32,12,opt,name=amount_paid,json=amountPaid,proto3" json:"amount_paid,omitempty"`
-	AmountRefunded     float32        `protobuf:"fixed32,13,opt,name=amount_refunded,json=amountRefunded,proto3" json:"amount_refunded,omitempty"`
-	ExpressAmount      float32        `protobuf:"fixed32,14,opt,name=express_amount,json=expressAmount,proto3" json:"express_amount,omitempty"`
-	DiscountAmount     float32        `protobuf:"fixed32,15,opt,name=discount_amount,json=discountAmount,proto3" json:"discount_amount,omitempty"`
-	Paid               bool           `protobuf:"varint,16,opt,name=paid,proto3" json:"paid,omitempty"`
-	Refunded           bool           `protobuf:"varint,17,opt,name=refunded,proto3" json:"refunded,omitempty"`
-	CanDelivery        bool           `protobuf:"varint,18,opt,name=can_delivery,json=canDelivery,proto3" json:"can_delivery,omitempty"`
-	CanCod             bool           `protobuf:"varint,19,opt,name=can_cod,json=canCod,proto3" json:"can_cod,omitempty"`
-	Invoiced           bool           `protobuf:"varint,20,opt,name=invoiced,proto3" json:"invoiced,omitempty"`
-	Modified           bool           `protobuf:"varint,21,opt,name=modified,proto3" json:"modified,omitempty"`
-	Safeguarded        bool           `protobuf:"varint,22,opt,name=safeguarded,proto3" json:"safeguarded,omitempty"`
-	Returnable         bool           `protobuf:"varint,23,opt,name=returnable,proto3" json:"returnable,omitempty"`
-	Subject            string         `protobuf:"bytes,24,opt,name=subject,proto3" json:"subject,omitempty"`
-	Body               string         `protobuf:"bytes,25,opt,name=body,proto3" json:"body,omitempty"`
-	PayType            string         `protobuf:"bytes,26,opt,name=pay_type,json=payType,proto3" json:"pay_type,omitempty"`
-	BranchId           int64          `protobuf:"varint,27,opt,name=branch_id,json=branchId,proto3" json:"branch_id,omitempty"`
-	ClientIp           string         `protobuf:"bytes,28,opt,name=client_ip,json=clientIp,proto3" json:"client_ip,omitempty"`
-	Flag               int32          `protobuf:"varint,29,opt,name=flag,proto3" json:"flag,omitempty"`
-	Memo               string         `protobuf:"bytes,30,opt,name=memo,proto3" json:"memo,omitempty"`
-	BuyerMemo          string         `protobuf:"bytes,31,opt,name=buyer_memo,json=buyerMemo,proto3" json:"buyer_memo,omitempty"`
-	CancelId           int32          `protobuf:"varint,32,opt,name=cancel_id,json=cancelId,proto3" json:"cancel_id,omitempty"`
-	CancelReason       string         `protobuf:"bytes,33,opt,name=cancel_reason,json=cancelReason,proto3" json:"cancel_reason,omitempty"`
-	Status             string         `protobuf:"bytes,34,opt,name=status,proto3" json:"status,omitempty"`
-	PayStatus          string         `protobuf:"bytes,35,opt,name=pay_status,json=payStatus,proto3" json:"pay_status,omitempty"`
-	RefundStatus       string         `protobuf:"bytes,36,opt,name=refund_status,json=refundStatus,proto3" json:"refund_status,omitempty"`
-	ExpireAt           string         `protobuf:"bytes,38,opt,name=expire_at,json=expireAt,proto3" json:"expire_at,omitempty"`
-	PaidAt             string         `protobuf:"bytes,39,opt,name=paid_at,json=paidAt,proto3" json:"paid_at,omitempty"`
-	ShippedAt          string         `protobuf:"bytes,40,opt,name=shipped_at,json=shippedAt,proto3" json:"shipped_at,omitempty"`
-	SignedAt           string         `protobuf:"bytes,41,opt,name=signed_at,json=signedAt,proto3" json:"signed_at,omitempty"`
-	RefundedAt         string         `protobuf:"bytes,42,opt,name=refunded_at,json=refundedAt,proto3" json:"refunded_at,omitempty"`
-	FinishedAt         string         `protobuf:"bytes,43,opt,name=finished_at,json=finishedAt,proto3" json:"finished_at,omitempty"`
-	CreatedAt          string         `protobuf:"bytes,44,opt,name=created_at,json=createdAt,proto3" json:"created_at,omitempty"`
-	UpdatedAt          string         `protobuf:"bytes,45,opt,name=updated_at,json=updatedAt,proto3" json:"updated_at,omitempty"`
-	PlatformSource     string         `protobuf:"bytes,46,opt,name=platform_source,json=platformSource,proto3" json:"platform_source,omitempty"`
-	Address            *OrderAddress  `protobuf:"bytes,54,opt,name=address,proto3" json:"address,omitempty"`
-	Details            []*OrderDetail `protobuf:"bytes,55,rep,name=details,proto3" json:"details,omitempty"`
-	Customer           *Customer      `protobuf:"bytes,56,opt,name=customer,proto3" json:"customer,omitempty"`
-	ShipmentMethod     string         `protobuf:"bytes,57,opt,name=shipment_method,json=shipmentMethod,proto3" json:"shipment_method,omitempty"`
-	CashExchangeMoney  float32        `protobuf:"fixed32,58,opt,name=cash_exchange_money,json=cashExchangeMoney,proto3" json:"cash_exchange_money,omitempty"`
-	CashExchangePoints int32          `protobuf:"varint,59,opt,name=cash_exchange_points,json=cashExchangePoints,proto3" json:"cash_exchange_points,omitempty"`
-	IsDistribution     bool           `protobuf:"varint,60,opt,name=is_distribution,json=isDistribution,proto3" json:"is_distribution,omitempty"`
-	IsConfirmed        bool           `protobuf:"varint,61,opt,name=is_confirmed,json=isConfirmed,proto3" json:"is_confirmed,omitempty"` // 商家是否已接单
-	Food               *OrderFood     `protobuf:"bytes,62,opt,name=food,proto3" json:"food,omitempty"`
+	Id             int64   `protobuf:"varint,1,opt,name=id,proto3" json:"id"`
+	OrderSn        string  `protobuf:"bytes,2,opt,name=order_sn,json=orderSn,proto3" json:"order_sn"`
+	OrderType      string  `protobuf:"bytes,3,opt,name=order_type,json=orderType,proto3" json:"order_type"`
+	CustomerId     int64   `protobuf:"varint,4,opt,name=customer_id,json=customerId,proto3" json:"customer_id"`
+	TotalNum       int32   `protobuf:"varint,6,opt,name=total_num,json=totalNum,proto3" json:"total_num"`
+	TotalWeight    float32 `protobuf:"fixed32,7,opt,name=total_weight,json=totalWeight,proto3" json:"total_weight"`
+	Currency       string  `protobuf:"bytes,8,opt,name=currency,proto3" json:"currency"`
+	Amount         float32 `protobuf:"fixed32,9,opt,name=amount,proto3" json:"amount"`
+	BeforeAmount   float32 `protobuf:"fixed32,10,opt,name=before_amount,json=beforeAmount,proto3" json:"before_amount"`
+	ActualAmount   float32 `protobuf:"fixed32,11,opt,name=actual_amount,json=actualAmount,proto3" json:"actual_amount"`
+	AmountPaid     float32 `protobuf:"fixed32,12,opt,name=amount_paid,json=amountPaid,proto3" json:"amount_paid"`
+	AmountRefunded float32 `protobuf:"fixed32,13,opt,name=amount_refunded,json=amountRefunded,proto3" json:"amount_refunded"`
+	ExpressAmount  float32 `protobuf:"fixed32,14,opt,name=express_amount,json=expressAmount,proto3" json:"express_amount"`
+	DiscountAmount float32 `protobuf:"fixed32,15,opt,name=discount_amount,json=discountAmount,proto3" json:"discount_amount"`
+	Paid           bool    `protobuf:"varint,16,opt,name=paid,proto3" json:"paid"`
+	Refunded       bool    `protobuf:"varint,17,opt,name=refunded,proto3" json:"refunded"`
+	CanDelivery    bool    `protobuf:"varint,18,opt,name=can_delivery,json=canDelivery,proto3" json:"can_delivery"`
+	CanCod         bool    `protobuf:"varint,19,opt,name=can_cod,json=canCod,proto3" json:"can_cod"`
+	Invoiced       bool    `protobuf:"varint,20,opt,name=invoiced,proto3" json:"invoiced"`
+	Modified       bool    `protobuf:"varint,21,opt,name=modified,proto3" json:"modified"`
+	Safeguarded    bool    `protobuf:"varint,22,opt,name=safeguarded,proto3" json:"safeguarded"`
+	Returnable     bool    `protobuf:"varint,23,opt,name=returnable,proto3" json:"returnable"`
+	Subject        string  `protobuf:"bytes,24,opt,name=subject,proto3" json:"subject"`
+	Body           string  `protobuf:"bytes,25,opt,name=body,proto3" json:"body"`
+	PayType        string  `protobuf:"bytes,26,opt,name=pay_type,json=payType,proto3" json:"pay_type"`
+	BranchId       int64   `protobuf:"varint,27,opt,name=branch_id,json=branchId,proto3" json:"branch_id"`
+	ClientIp       string  `protobuf:"bytes,28,opt,name=client_ip,json=clientIp,proto3" json:"client_ip"`
+	Flag           int32   `protobuf:"varint,29,opt,name=flag,proto3" json:"flag"`
+	Memo           string  `protobuf:"bytes,30,opt,name=memo,proto3" json:"memo"`
+	BuyerMemo      string  `protobuf:"bytes,31,opt,name=buyer_memo,json=buyerMemo,proto3" json:"buyer_memo"`
+	CancelId       int32   `protobuf:"varint,32,opt,name=cancel_id,json=cancelId,proto3" json:"cancel_id"`
+	CancelReason   string  `protobuf:"bytes,33,opt,name=cancel_reason,json=cancelReason,proto3" json:"cancel_reason"`
+	Status         string  `protobuf:"bytes,34,opt,name=status,proto3" json:"status"`
+	PayStatus      string  `protobuf:"bytes,35,opt,name=pay_status,json=payStatus,proto3" json:"pay_status"`
+	RefundStatus   string  `protobuf:"bytes,36,opt,name=refund_status,json=refundStatus,proto3" json:"refund_status"`
+	ExpireAt       string  `protobuf:"bytes,38,opt,name=expire_at,json=expireAt,proto3" json:"expire_at"`
+	PaidAt         string  `protobuf:"bytes,39,opt,name=paid_at,json=paidAt,proto3" json:"paid_at"`
+	ShippedAt      string  `protobuf:"bytes,40,opt,name=shipped_at,json=shippedAt,proto3" json:"shipped_at"`
+	SignedAt       string  `protobuf:"bytes,41,opt,name=signed_at,json=signedAt,proto3" json:"signed_at"`
+	RefundedAt     string  `protobuf:"bytes,42,opt,name=refunded_at,json=refundedAt,proto3" json:"refunded_at"`
+	FinishedAt     string  `protobuf:"bytes,43,opt,name=finished_at,json=finishedAt,proto3" json:"finished_at"`
+	CreatedAt      string  `protobuf:"bytes,44,opt,name=created_at,json=createdAt,proto3" json:"created_at"`
+	UpdatedAt      string  `protobuf:"bytes,45,opt,name=updated_at,json=updatedAt,proto3" json:"updated_at"`
+	PlatformSource string  `protobuf:"bytes,46,opt,name=platform_source,json=platformSource,proto3" json:"platform_source"`
+	// @inject_tag: gorm:"foreignKey:OrderId"
+	Address *OrderAddress `protobuf:"bytes,54,opt,name=address,proto3" json:"address" gorm:"foreignKey:OrderId"`
+	// @inject_tag: gorm:"foreignKey:OrderId"
+	Details []*OrderDetail `protobuf:"bytes,55,rep,name=details,proto3" json:"details" gorm:"foreignKey:OrderId"`
+	// @inject_tag: gorm:"-"
+	Customer           *Customer `protobuf:"bytes,56,opt,name=customer,proto3" json:"customer" gorm:"-"`
+	ShipmentMethod     string    `protobuf:"bytes,57,opt,name=shipment_method,json=shipmentMethod,proto3" json:"shipment_method"`
+	CashExchangeMoney  float32   `protobuf:"fixed32,58,opt,name=cash_exchange_money,json=cashExchangeMoney,proto3" json:"cash_exchange_money"`
+	CashExchangePoints int32     `protobuf:"varint,59,opt,name=cash_exchange_points,json=cashExchangePoints,proto3" json:"cash_exchange_points"`
+	IsDistribution     bool      `protobuf:"varint,60,opt,name=is_distribution,json=isDistribution,proto3" json:"is_distribution"`
+	IsConfirmed        bool      `protobuf:"varint,61,opt,name=is_confirmed,json=isConfirmed,proto3" json:"is_confirmed"` // 商家是否已接单
+	// @inject_tag: gorm:"-"
+	Food *OrderFood `protobuf:"bytes,62,opt,name=food,proto3" json:"food" gorm:"-"`
 }
 
 func (x *Order) Reset() {
@@ -494,17 +498,17 @@ type Customer struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	Id          int64  `protobuf:"varint,1,opt,name=id,proto3" json:"id,omitempty"`
-	CustomerSn  string `protobuf:"bytes,2,opt,name=customer_sn,json=customerSn,proto3" json:"customer_sn,omitempty"`
-	Name        string `protobuf:"bytes,3,opt,name=name,proto3" json:"name,omitempty"`
-	DisplayName string `protobuf:"bytes,4,opt,name=display_name,json=displayName,proto3" json:"display_name,omitempty"`
-	Realname    string `protobuf:"bytes,5,opt,name=realname,proto3" json:"realname,omitempty"`
-	Idcard      string `protobuf:"bytes,6,opt,name=idcard,proto3" json:"idcard,omitempty"`
-	Gender      int32  `protobuf:"varint,7,opt,name=gender,proto3" json:"gender,omitempty"`
-	Mobile      string `protobuf:"bytes,8,opt,name=mobile,proto3" json:"mobile,omitempty"`
-	Email       string `protobuf:"bytes,9,opt,name=email,proto3" json:"email,omitempty"`
-	AvatarId    int64  `protobuf:"varint,10,opt,name=avatar_id,json=avatarId,proto3" json:"avatar_id,omitempty"`
-	AvatarUrl   string `protobuf:"bytes,11,opt,name=avatar_url,json=avatarUrl,proto3" json:"avatar_url,omitempty"`
+	Id          int64  `protobuf:"varint,1,opt,name=id,proto3" json:"id"`
+	CustomerSn  string `protobuf:"bytes,2,opt,name=customer_sn,json=customerSn,proto3" json:"customer_sn"`
+	Name        string `protobuf:"bytes,3,opt,name=name,proto3" json:"name"`
+	DisplayName string `protobuf:"bytes,4,opt,name=display_name,json=displayName,proto3" json:"display_name"`
+	Realname    string `protobuf:"bytes,5,opt,name=realname,proto3" json:"realname"`
+	Idcard      string `protobuf:"bytes,6,opt,name=idcard,proto3" json:"idcard"`
+	Gender      int32  `protobuf:"varint,7,opt,name=gender,proto3" json:"gender"`
+	Mobile      string `protobuf:"bytes,8,opt,name=mobile,proto3" json:"mobile"`
+	Email       string `protobuf:"bytes,9,opt,name=email,proto3" json:"email"`
+	AvatarId    int64  `protobuf:"varint,10,opt,name=avatar_id,json=avatarId,proto3" json:"avatar_id"`
+	AvatarUrl   string `protobuf:"bytes,11,opt,name=avatar_url,json=avatarUrl,proto3" json:"avatar_url"`
 }
 
 func (x *Customer) Reset() {
@@ -621,38 +625,39 @@ type OrderWhere struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	Paged          int32   `protobuf:"varint,1,opt,name=paged,proto3" json:"paged,omitempty"`
-	PageSize       int32   `protobuf:"varint,2,opt,name=page_size,json=pageSize,proto3" json:"page_size,omitempty"`
-	Sorting        string  `protobuf:"bytes,3,opt,name=sorting,proto3" json:"sorting,omitempty"`
-	Keywords       string  `protobuf:"bytes,4,opt,name=keywords,proto3" json:"keywords,omitempty"`
-	OrderSn        string  `protobuf:"bytes,5,opt,name=order_sn,json=orderSn,proto3" json:"order_sn,omitempty"`
-	OrderType      string  `protobuf:"bytes,6,opt,name=order_type,json=orderType,proto3" json:"order_type,omitempty"`
-	PayType        string  `protobuf:"bytes,7,opt,name=pay_type,json=payType,proto3" json:"pay_type,omitempty"`
-	CanDelivery    bool    `protobuf:"varint,8,opt,name=can_delivery,json=canDelivery,proto3" json:"can_delivery,omitempty"`
-	CanCod         bool    `protobuf:"varint,9,opt,name=can_cod,json=canCod,proto3" json:"can_cod,omitempty"`
-	CustomerId     int64   `protobuf:"varint,10,opt,name=customer_id,json=customerId,proto3" json:"customer_id,omitempty"`
-	Payment        float32 `protobuf:"fixed32,11,opt,name=payment,proto3" json:"payment,omitempty"`
-	IsFree         bool    `protobuf:"varint,12,opt,name=is_free,json=isFree,proto3" json:"is_free,omitempty"`
-	Status         string  `protobuf:"bytes,13,opt,name=status,proto3" json:"status,omitempty"`
-	PayStatus      string  `protobuf:"bytes,14,opt,name=pay_status,json=payStatus,proto3" json:"pay_status,omitempty"`
-	RefundStatus   string  `protobuf:"bytes,15,opt,name=refund_status,json=refundStatus,proto3" json:"refund_status,omitempty"`
-	DeliverStatus  string  `protobuf:"bytes,16,opt,name=deliver_status,json=deliverStatus,proto3" json:"deliver_status,omitempty"`
-	BranchId       int32   `protobuf:"varint,17,opt,name=branch_id,json=branchId,proto3" json:"branch_id,omitempty"`
-	Flag           int32   `protobuf:"varint,18,opt,name=flag,proto3" json:"flag,omitempty"`
-	Safeguarded    bool    `protobuf:"varint,19,opt,name=safeguarded,proto3" json:"safeguarded,omitempty"`
-	StartAt        string  `protobuf:"bytes,20,opt,name=start_at,json=startAt,proto3" json:"start_at,omitempty"`
-	EndAt          string  `protobuf:"bytes,21,opt,name=end_at,json=endAt,proto3" json:"end_at,omitempty"`
-	Paid           bool    `protobuf:"varint,22,opt,name=paid,proto3" json:"paid,omitempty"`
-	Ids            []int64 `protobuf:"varint,23,rep,packed,name=ids,proto3" json:"ids,omitempty"`
-	ShipmentMethod string  `protobuf:"bytes,24,opt,name=shipment_method,json=shipmentMethod,proto3" json:"shipment_method,omitempty"`
-	Code           string  `protobuf:"bytes,25,opt,name=code,proto3" json:"code,omitempty"`
-	FetchStatus    string  `protobuf:"bytes,26,opt,name=fetch_status,json=fetchStatus,proto3" json:"fetch_status,omitempty"` // 自提状态: waiting待自提, finished已自提
-	IsDistribution bool    `protobuf:"varint,27,opt,name=is_distribution,json=isDistribution,proto3" json:"is_distribution,omitempty"`
-	ReceiveStatus  int32   `protobuf:"varint,28,opt,name=receive_status,json=receiveStatus,proto3" json:"receive_status,omitempty"` // 接单状态: 0-全部,1-已接单,2-未接单
-	Id             int64   `protobuf:"varint,29,opt,name=id,proto3" json:"id,omitempty"`
-	TableId        int64   `protobuf:"varint,62,opt,name=table_id,json=tableId,proto3" json:"table_id,omitempty"`      // 桌台ID
-	TableName      string  `protobuf:"bytes,63,opt,name=table_name,json=tableName,proto3" json:"table_name,omitempty"` // 桌台名称
-	Mobile         string  `protobuf:"bytes,64,opt,name=mobile,proto3" json:"mobile,omitempty"`                        // 用户手机号
+	Paged         int32   `protobuf:"varint,1,opt,name=paged,proto3" json:"paged"`
+	PageSize      int32   `protobuf:"varint,2,opt,name=page_size,json=pageSize,proto3" json:"page_size"`
+	Sorting       string  `protobuf:"bytes,3,opt,name=sorting,proto3" json:"sorting"`
+	Keywords      string  `protobuf:"bytes,4,opt,name=keywords,proto3" json:"keywords"`
+	OrderSn       string  `protobuf:"bytes,5,opt,name=order_sn,json=orderSn,proto3" json:"order_sn"`
+	OrderType     string  `protobuf:"bytes,6,opt,name=order_type,json=orderType,proto3" json:"order_type"`
+	PayType       string  `protobuf:"bytes,7,opt,name=pay_type,json=payType,proto3" json:"pay_type"`
+	CanDelivery   bool    `protobuf:"varint,8,opt,name=can_delivery,json=canDelivery,proto3" json:"can_delivery"`
+	CanCod        bool    `protobuf:"varint,9,opt,name=can_cod,json=canCod,proto3" json:"can_cod"`
+	CustomerId    int64   `protobuf:"varint,10,opt,name=customer_id,json=customerId,proto3" json:"customer_id"`
+	Payment       float32 `protobuf:"fixed32,11,opt,name=payment,proto3" json:"payment"`
+	IsFree        bool    `protobuf:"varint,12,opt,name=is_free,json=isFree,proto3" json:"is_free"`
+	Status        string  `protobuf:"bytes,13,opt,name=status,proto3" json:"status"`
+	PayStatus     string  `protobuf:"bytes,14,opt,name=pay_status,json=payStatus,proto3" json:"pay_status"`
+	RefundStatus  string  `protobuf:"bytes,15,opt,name=refund_status,json=refundStatus,proto3" json:"refund_status"`
+	DeliverStatus string  `protobuf:"bytes,16,opt,name=deliver_status,json=deliverStatus,proto3" json:"deliver_status"`
+	BranchId      int32   `protobuf:"varint,17,opt,name=branch_id,json=branchId,proto3" json:"branch_id"`
+	Flag          int32   `protobuf:"varint,18,opt,name=flag,proto3" json:"flag"`
+	Safeguarded   bool    `protobuf:"varint,19,opt,name=safeguarded,proto3" json:"safeguarded"`
+	StartAt       string  `protobuf:"bytes,20,opt,name=start_at,json=startAt,proto3" json:"start_at"`
+	EndAt         string  `protobuf:"bytes,21,opt,name=end_at,json=endAt,proto3" json:"end_at"`
+	Paid          bool    `protobuf:"varint,22,opt,name=paid,proto3" json:"paid"`
+	// @inject_tag: gorm:"-"
+	Ids            []int64 `protobuf:"varint,23,rep,packed,name=ids,proto3" json:"ids" gorm:"-"`
+	ShipmentMethod string  `protobuf:"bytes,24,opt,name=shipment_method,json=shipmentMethod,proto3" json:"shipment_method"`
+	Code           string  `protobuf:"bytes,25,opt,name=code,proto3" json:"code"`
+	FetchStatus    string  `protobuf:"bytes,26,opt,name=fetch_status,json=fetchStatus,proto3" json:"fetch_status"` // 自提状态: waiting待自提, finished已自提
+	IsDistribution bool    `protobuf:"varint,27,opt,name=is_distribution,json=isDistribution,proto3" json:"is_distribution"`
+	ReceiveStatus  int32   `protobuf:"varint,28,opt,name=receive_status,json=receiveStatus,proto3" json:"receive_status"` // 接单状态: 0-全部,1-已接单,2-未接单
+	Id             int64   `protobuf:"varint,29,opt,name=id,proto3" json:"id"`
+	TableId        int64   `protobuf:"varint,62,opt,name=table_id,json=tableId,proto3" json:"table_id"`      // 桌台ID
+	TableName      string  `protobuf:"bytes,63,opt,name=table_name,json=tableName,proto3" json:"table_name"` // 桌台名称
+	Mobile         string  `protobuf:"bytes,64,opt,name=mobile,proto3" json:"mobile"`                        // 用户手机号
 }
 
 func (x *OrderWhere) Reset() {
@@ -916,11 +921,11 @@ type OrderResponse struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	Entity *Order        `protobuf:"bytes,1,opt,name=entity,proto3" json:"entity,omitempty"`
-	Pager  *common.Pager `protobuf:"bytes,2,opt,name=pager,proto3" json:"pager,omitempty"`
-	Items  []*Order      `protobuf:"bytes,3,rep,name=items,proto3" json:"items,omitempty"`
-	Error  *common.Error `protobuf:"bytes,4,opt,name=error,proto3" json:"error,omitempty"`
-	Info   *common.Info  `protobuf:"bytes,5,opt,name=info,proto3" json:"info,omitempty"`
+	Entity *Order        `protobuf:"bytes,1,opt,name=entity,proto3" json:"entity"`
+	Pager  *common.Pager `protobuf:"bytes,2,opt,name=pager,proto3" json:"pager"`
+	Items  []*Order      `protobuf:"bytes,3,rep,name=items,proto3" json:"items"`
+	Error  *common.Error `protobuf:"bytes,4,opt,name=error,proto3" json:"error"`
+	Info   *common.Info  `protobuf:"bytes,5,opt,name=info,proto3" json:"info"`
 }
 
 func (x *OrderResponse) Reset() {

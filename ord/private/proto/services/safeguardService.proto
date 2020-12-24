@@ -74,10 +74,15 @@ message Safeguard {
     string checked_at = 24;
     string created_at = 25;
     string updated_at = 26;
+    // @inject_tag: gorm:"foreignKey:SafeguardId"
     repeated SafeguardDetail details = 27;
+    // @inject_tag: gorm:"foreignKey:SafeguardId"
     repeated SafeguardImage images = 28;
+    // @inject_tag: gorm:"-"
     SafeguardAddress address = 29;// 维权收货人地址
+    // @inject_tag: gorm:"-"
     SafeguardReturnExpress return_express = 30;// 买家退货填写的退货物流信息
+    // @inject_tag: gorm:"-"
     Order order = 31;
     int32 return_points = 32;
     int32 deduct_points = 33;
@@ -92,6 +97,7 @@ message SafeguardDetail {
     int64 item_id = 4;
     int64 sku_id = 5;
     int32 num = 6;
+    // @inject_tag: gorm:"-"
     OrderDetail detail = 7;
 }
 
@@ -108,6 +114,7 @@ message SafeguardAddress {
     int64 area_id = 2;
     string addr = 3;
     string mobile = 4;
+    // @inject_tag: gorm:"-"
     AreaInfo area = 5;
 }
 
@@ -117,11 +124,14 @@ message SafeguardReturnExpress {
     string express_no = 2;
     string express_code = 3;
     string mobile = 4;
+    // @inject_tag: gorm:"-"
     repeated SafeguardImage images = 5;
 }
 
 message SafeguardMetadata {
+    // @inject_tag: gorm:"-"
     SafeguardAddress address = 1;
+    // @inject_tag: gorm:"-"
     SafeguardReturnExpress return_express = 2;
 }
 
@@ -130,6 +140,7 @@ message SafeguardWhere {
     int32 page_size =2;
     string	sorting	=3;
     int64 id = 4;
+    // @inject_tag: gorm:"-"
     repeated int64 ids = 5;
     int64 order_id = 6;
     int64 customer_id = 7;
@@ -137,6 +148,7 @@ message SafeguardWhere {
     string keywords_type = 9;
     string keywords = 10;
     int64 order_detail_id = 11;
+    // @inject_tag: gorm:"-"
     repeated int64 order_detail_ids = 12;
     string status = 13;
     string safeguard_sn = 14;
@@ -150,7 +162,9 @@ message SafeguardType {
     bool is_repair = 5;// 是否可补发货
     float max_refund_price = 6;// 最大退款金额
     float express_fee = 7;// 运费
+    // @inject_tag: gorm:"-"
     SafeguardAddress address = 8;// 维权收货人地址
+    // @inject_tag: gorm:"-"
     repeated OrderDetail details = 9;
 }
 

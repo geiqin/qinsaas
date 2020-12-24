@@ -36,6 +36,7 @@ message Consumer {
     string dis_display_name = 15;
     string created_at = 16;
     string updated_at = 17;
+    // @inject_tag: gorm:"-"
     Distributor distributor = 18;
 
 }

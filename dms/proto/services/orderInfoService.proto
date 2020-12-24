@@ -50,6 +50,7 @@ message OrderInfo {
     bool can_delivery = 16; // 是否需要发货
     bool can_logistics = 17; // 是否可查看物流
     string order_created_at = 18; // 下单时间
+    // @inject_tag: gorm:"-"
     repeated OrderDetailInfo order_details = 19;
     int64 leader_id = 20;// 团长ID
     string leader_name = 21; // 团长昵称

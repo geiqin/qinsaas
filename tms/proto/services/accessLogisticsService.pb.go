@@ -31,7 +31,7 @@ type AccessLogistics struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	LogisticsNo string `protobuf:"bytes,1,opt,name=logistics_no,json=logisticsNo,proto3" json:"logistics_no,omitempty"`
+	LogisticsNo string `protobuf:"bytes,1,opt,name=logistics_no,json=logisticsNo,proto3" json:"logistics_no"`
 }
 
 func (x *AccessLogistics) Reset() {
@@ -78,10 +78,11 @@ type AccessLogisticsReq struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	ShipperId  int32                       `protobuf:"varint,1,opt,name=shipper_id,json=shipperId,proto3" json:"shipper_id,omitempty"`
-	OrderId    int64                       `protobuf:"varint,2,opt,name=order_id,json=orderId,proto3" json:"order_id,omitempty"`
-	DeliverySn string                      `protobuf:"bytes,3,opt,name=delivery_sn,json=deliverySn,proto3" json:"delivery_sn,omitempty"`
-	Details    []*AccessLogisticsDetailReq `protobuf:"bytes,4,rep,name=details,proto3" json:"details,omitempty"`
+	ShipperId  int32  `protobuf:"varint,1,opt,name=shipper_id,json=shipperId,proto3" json:"shipper_id"`
+	OrderId    int64  `protobuf:"varint,2,opt,name=order_id,json=orderId,proto3" json:"order_id"`
+	DeliverySn string `protobuf:"bytes,3,opt,name=delivery_sn,json=deliverySn,proto3" json:"delivery_sn"`
+	// @inject_tag: gorm:"-"
+	Details []*AccessLogisticsDetailReq `protobuf:"bytes,4,rep,name=details,proto3" json:"details" gorm:"-"`
 }
 
 func (x *AccessLogisticsReq) Reset() {
@@ -149,10 +150,10 @@ type AccessLogisticsDetailReq struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	OrderDetailId int64 `protobuf:"varint,1,opt,name=order_detail_id,json=orderDetailId,proto3" json:"order_detail_id,omitempty"`
-	ItemId        int64 `protobuf:"varint,2,opt,name=item_id,json=itemId,proto3" json:"item_id,omitempty"`
-	SkuId         int64 `protobuf:"varint,3,opt,name=sku_id,json=skuId,proto3" json:"sku_id,omitempty"`
-	Num           int32 `protobuf:"varint,4,opt,name=num,proto3" json:"num,omitempty"`
+	OrderDetailId int64 `protobuf:"varint,1,opt,name=order_detail_id,json=orderDetailId,proto3" json:"order_detail_id"`
+	ItemId        int64 `protobuf:"varint,2,opt,name=item_id,json=itemId,proto3" json:"item_id"`
+	SkuId         int64 `protobuf:"varint,3,opt,name=sku_id,json=skuId,proto3" json:"sku_id"`
+	Num           int32 `protobuf:"varint,4,opt,name=num,proto3" json:"num"`
 }
 
 func (x *AccessLogisticsDetailReq) Reset() {
@@ -220,11 +221,11 @@ type AccessLogisticsResponse struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	Entity *AccessLogistics   `protobuf:"bytes,1,opt,name=entity,proto3" json:"entity,omitempty"`
-	Pager  *common.Pager      `protobuf:"bytes,2,opt,name=pager,proto3" json:"pager,omitempty"`
-	Items  []*AccessLogistics `protobuf:"bytes,3,rep,name=items,proto3" json:"items,omitempty"`
-	Error  *common.Error      `protobuf:"bytes,4,opt,name=error,proto3" json:"error,omitempty"`
-	Info   *common.Info       `protobuf:"bytes,5,opt,name=info,proto3" json:"info,omitempty"`
+	Entity *AccessLogistics   `protobuf:"bytes,1,opt,name=entity,proto3" json:"entity"`
+	Pager  *common.Pager      `protobuf:"bytes,2,opt,name=pager,proto3" json:"pager"`
+	Items  []*AccessLogistics `protobuf:"bytes,3,rep,name=items,proto3" json:"items"`
+	Error  *common.Error      `protobuf:"bytes,4,opt,name=error,proto3" json:"error"`
+	Info   *common.Info       `protobuf:"bytes,5,opt,name=info,proto3" json:"info"`
 }
 
 func (x *AccessLogisticsResponse) Reset() {

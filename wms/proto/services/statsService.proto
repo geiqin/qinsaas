@@ -29,6 +29,7 @@ message StatsDay {
     string stats_at = 9;
     string created_at = 10;
     string updated_at = 11;
+    // @inject_tag: gorm:"-"
     GoodsInfo goods = 12;
 }
 
@@ -44,6 +45,7 @@ message StatsMonth {
     string stats_at = 9;
     string created_at = 10;
     string updated_at = 11;
+    // @inject_tag: gorm:"-"
     GoodsInfo goods = 12;
 }
 
@@ -59,6 +61,7 @@ message SumStatsDay {
     string stats_at = 9;
     string created_at = 10;
     string updated_at = 11;
+    // @inject_tag: gorm:"-"
     GoodsInfo goods = 12;
 }
 
@@ -74,6 +77,7 @@ message SumStatsMonth {
     string stats_at = 9;
     string created_at = 10;
     string updated_at = 11;
+    // @inject_tag: gorm:"-"
     GoodsInfo goods = 12;
 }
 

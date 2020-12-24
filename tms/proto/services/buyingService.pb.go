@@ -32,13 +32,15 @@ type Buying struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	Total       float32         `protobuf:"fixed32,1,opt,name=total,proto3" json:"total,omitempty"`
-	Count       int32           `protobuf:"varint,2,opt,name=count,proto3" json:"count,omitempty"`
-	TotalWeight float32         `protobuf:"fixed32,3,opt,name=total_weight,json=totalWeight,proto3" json:"total_weight,omitempty"`
-	Freight     float32         `protobuf:"fixed32,4,opt,name=freight,proto3" json:"freight,omitempty"`
-	AddressId   int64           `protobuf:"varint,5,opt,name=address_id,json=addressId,proto3" json:"address_id,omitempty"`
-	Items       []*BuyingItem   `protobuf:"bytes,6,rep,name=items,proto3" json:"items,omitempty"`
-	Shipment    *DeliveryMethod `protobuf:"bytes,7,opt,name=shipment,proto3" json:"shipment,omitempty"` // 配送信息
+	Total       float32 `protobuf:"fixed32,1,opt,name=total,proto3" json:"total"`
+	Count       int32   `protobuf:"varint,2,opt,name=count,proto3" json:"count"`
+	TotalWeight float32 `protobuf:"fixed32,3,opt,name=total_weight,json=totalWeight,proto3" json:"total_weight"`
+	Freight     float32 `protobuf:"fixed32,4,opt,name=freight,proto3" json:"freight"`
+	AddressId   int64   `protobuf:"varint,5,opt,name=address_id,json=addressId,proto3" json:"address_id"`
+	// @inject_tag: gorm:"-"
+	Items []*BuyingItem `protobuf:"bytes,6,rep,name=items,proto3" json:"items" gorm:"-"`
+	// @inject_tag: gorm:"-"
+	Shipment *DeliveryMethod `protobuf:"bytes,7,opt,name=shipment,proto3" json:"shipment" gorm:"-"` // 配送信息
 }
 
 func (x *Buying) Reset() {
@@ -128,12 +130,12 @@ type BuyingItem struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	ItemId      int64   `protobuf:"varint,1,opt,name=item_id,json=itemId,proto3" json:"item_id,omitempty"`
-	SkuId       int64   `protobuf:"varint,2,opt,name=sku_id,json=skuId,proto3" json:"sku_id,omitempty"`
-	Num         int32   `protobuf:"varint,3,opt,name=num,proto3" json:"num,omitempty"`
-	Price       float32 `protobuf:"fixed32,4,opt,name=price,proto3" json:"price,omitempty"`
-	OriginPrice float32 `protobuf:"fixed32,5,opt,name=origin_price,json=originPrice,proto3" json:"origin_price,omitempty"`
-	SubTotal    float32 `protobuf:"fixed32,6,opt,name=sub_total,json=subTotal,proto3" json:"sub_total,omitempty"`
+	ItemId      int64   `protobuf:"varint,1,opt,name=item_id,json=itemId,proto3" json:"item_id"`
+	SkuId       int64   `protobuf:"varint,2,opt,name=sku_id,json=skuId,proto3" json:"sku_id"`
+	Num         int32   `protobuf:"varint,3,opt,name=num,proto3" json:"num"`
+	Price       float32 `protobuf:"fixed32,4,opt,name=price,proto3" json:"price"`
+	OriginPrice float32 `protobuf:"fixed32,5,opt,name=origin_price,json=originPrice,proto3" json:"origin_price"`
+	SubTotal    float32 `protobuf:"fixed32,6,opt,name=sub_total,json=subTotal,proto3" json:"sub_total"`
 }
 
 func (x *BuyingItem) Reset() {
@@ -216,25 +218,28 @@ type DeliveryMethod struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	Lng             string    `protobuf:"bytes,1,opt,name=lng,proto3" json:"lng,omitempty"`                                                   //定位的经度
-	Lat             string    `protobuf:"bytes,2,opt,name=lat,proto3" json:"lat,omitempty"`                                                   // 定位的纬度
-	IsFetch         bool      `protobuf:"varint,3,opt,name=is_fetch,json=isFetch,proto3" json:"is_fetch,omitempty"`                           // 是否可上门自提
-	IsDelivery      bool      `protobuf:"varint,4,opt,name=is_delivery,json=isDelivery,proto3" json:"is_delivery,omitempty"`                  // 是否可同城配送
-	IsExpress       bool      `protobuf:"varint,5,opt,name=is_express,json=isExpress,proto3" json:"is_express,omitempty"`                     // 是否可快递发货
-	Method          string    `protobuf:"bytes,6,opt,name=method,proto3" json:"method,omitempty"`                                             // 下单选择的配送方式
-	FetchCount      int32     `protobuf:"varint,7,opt,name=fetch_count,json=fetchCount,proto3" json:"fetch_count,omitempty"`                  // 自提点数量
-	FetchLocationId int64     `protobuf:"varint,8,opt,name=fetch_location_id,json=fetchLocationId,proto3" json:"fetch_location_id,omitempty"` // 下单选择的自提点ID【上门自提】
-	FetchAt         string    `protobuf:"bytes,9,opt,name=fetch_at,json=fetchAt,proto3" json:"fetch_at,omitempty"`                            // 下单选择的自提时间【上门自提】
-	Deliverable     bool      `protobuf:"varint,10,opt,name=deliverable,proto3" json:"deliverable,omitempty"`                                 // 收货地址是否在配送区域
-	DeliveryAt      string    `protobuf:"bytes,11,opt,name=delivery_at,json=deliveryAt,proto3" json:"delivery_at,omitempty"`                  // 下单选择的配送时间【同城配送】
-	ExpressFee      float32   `protobuf:"fixed32,12,opt,name=express_fee,json=expressFee,proto3" json:"express_fee,omitempty"`                // 快递发货运费
-	DeliveryFee     float32   `protobuf:"fixed32,13,opt,name=delivery_fee,json=deliveryFee,proto3" json:"delivery_fee,omitempty"`             // 同城配送配送费
-	StartPrice      float32   `protobuf:"fixed32,19,opt,name=start_price,json=startPrice,proto3" json:"start_price,omitempty"`                // 起送价
-	DeliverInfo     *Delivery `protobuf:"bytes,14,opt,name=deliver_info,json=deliverInfo,proto3" json:"deliver_info,omitempty"`               // 同城配送信息
-	FetchInfo       *Fetch    `protobuf:"bytes,15,opt,name=fetch_info,json=fetchInfo,proto3" json:"fetch_info,omitempty"`                     // 上门自提信息
-	ExpressInfo     *Express  `protobuf:"bytes,16,opt,name=express_info,json=expressInfo,proto3" json:"express_info,omitempty"`               // 快递发货信息
-	StartTime       string    `protobuf:"bytes,17,opt,name=start_time,json=startTime,proto3" json:"start_time,omitempty"`                     // 选择的配送或自提的开始时间
-	EndTime         string    `protobuf:"bytes,18,opt,name=end_time,json=endTime,proto3" json:"end_time,omitempty"`                           // 选择的配送或自提的结束时间
+	Lng             string  `protobuf:"bytes,1,opt,name=lng,proto3" json:"lng"`                                                   //定位的经度
+	Lat             string  `protobuf:"bytes,2,opt,name=lat,proto3" json:"lat"`                                                   // 定位的纬度
+	IsFetch         bool    `protobuf:"varint,3,opt,name=is_fetch,json=isFetch,proto3" json:"is_fetch"`                           // 是否可上门自提
+	IsDelivery      bool    `protobuf:"varint,4,opt,name=is_delivery,json=isDelivery,proto3" json:"is_delivery"`                  // 是否可同城配送
+	IsExpress       bool    `protobuf:"varint,5,opt,name=is_express,json=isExpress,proto3" json:"is_express"`                     // 是否可快递发货
+	Method          string  `protobuf:"bytes,6,opt,name=method,proto3" json:"method"`                                             // 下单选择的配送方式
+	FetchCount      int32   `protobuf:"varint,7,opt,name=fetch_count,json=fetchCount,proto3" json:"fetch_count"`                  // 自提点数量
+	FetchLocationId int64   `protobuf:"varint,8,opt,name=fetch_location_id,json=fetchLocationId,proto3" json:"fetch_location_id"` // 下单选择的自提点ID【上门自提】
+	FetchAt         string  `protobuf:"bytes,9,opt,name=fetch_at,json=fetchAt,proto3" json:"fetch_at"`                            // 下单选择的自提时间【上门自提】
+	Deliverable     bool    `protobuf:"varint,10,opt,name=deliverable,proto3" json:"deliverable"`                                 // 收货地址是否在配送区域
+	DeliveryAt      string  `protobuf:"bytes,11,opt,name=delivery_at,json=deliveryAt,proto3" json:"delivery_at"`                  // 下单选择的配送时间【同城配送】
+	ExpressFee      float32 `protobuf:"fixed32,12,opt,name=express_fee,json=expressFee,proto3" json:"express_fee"`                // 快递发货运费
+	DeliveryFee     float32 `protobuf:"fixed32,13,opt,name=delivery_fee,json=deliveryFee,proto3" json:"delivery_fee"`             // 同城配送配送费
+	StartPrice      float32 `protobuf:"fixed32,19,opt,name=start_price,json=startPrice,proto3" json:"start_price"`                // 起送价
+	// @inject_tag: gorm:"-"
+	DeliverInfo *Delivery `protobuf:"bytes,14,opt,name=deliver_info,json=deliverInfo,proto3" json:"deliver_info" gorm:"-"` // 同城配送信息
+	// @inject_tag: gorm:"-"
+	FetchInfo *Fetch `protobuf:"bytes,15,opt,name=fetch_info,json=fetchInfo,proto3" json:"fetch_info" gorm:"-"` // 上门自提信息
+	// @inject_tag: gorm:"-"
+	ExpressInfo *Express `protobuf:"bytes,16,opt,name=express_info,json=expressInfo,proto3" json:"express_info" gorm:"-"` // 快递发货信息
+	StartTime   string   `protobuf:"bytes,17,opt,name=start_time,json=startTime,proto3" json:"start_time"`                // 选择的配送或自提的开始时间
+	EndTime     string   `protobuf:"bytes,18,opt,name=end_time,json=endTime,proto3" json:"end_time"`                      // 选择的配送或自提的结束时间
 }
 
 func (x *DeliveryMethod) Reset() {
@@ -407,11 +412,11 @@ type BuyingResponse struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	Entity *Buying       `protobuf:"bytes,1,opt,name=entity,proto3" json:"entity,omitempty"`
-	Pager  *common.Pager `protobuf:"bytes,2,opt,name=pager,proto3" json:"pager,omitempty"`
-	Items  []*Buying     `protobuf:"bytes,3,rep,name=items,proto3" json:"items,omitempty"`
-	Error  *common.Error `protobuf:"bytes,4,opt,name=error,proto3" json:"error,omitempty"`
-	Info   *common.Info  `protobuf:"bytes,5,opt,name=info,proto3" json:"info,omitempty"`
+	Entity *Buying       `protobuf:"bytes,1,opt,name=entity,proto3" json:"entity"`
+	Pager  *common.Pager `protobuf:"bytes,2,opt,name=pager,proto3" json:"pager"`
+	Items  []*Buying     `protobuf:"bytes,3,rep,name=items,proto3" json:"items"`
+	Error  *common.Error `protobuf:"bytes,4,opt,name=error,proto3" json:"error"`
+	Info   *common.Info  `protobuf:"bytes,5,opt,name=info,proto3" json:"info"`
 }
 
 func (x *BuyingResponse) Reset() {

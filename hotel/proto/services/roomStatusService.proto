@@ -15,6 +15,7 @@ message RoomStatusWhere {
     string date = 5;
     string start_date = 6;
     string end_date = 7;
+    // @inject_tag: gorm:"-"
     repeated int64 room_price_plan_ids = 8;
 }
 
@@ -30,12 +31,14 @@ message RoomStatus {
     int32 can_sales_count = 9;
     string created_at = 10;
     string updated_at = 11;
+    // @inject_tag: gorm:"-"
     repeated RoomTypeChoose items = 12;
     string date = 13;
 }
 
 message RoomTypeChoose {
     int64 room_type_id = 1;
+    // @inject_tag: gorm:"-"
     repeated int64 room_price_plan_ids = 2;
 }
 

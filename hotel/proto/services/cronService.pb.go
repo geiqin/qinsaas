@@ -31,9 +31,9 @@ type CronServiceResponse struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	Pager *common.Pager `protobuf:"bytes,1,opt,name=pager,proto3" json:"pager,omitempty"`
-	Error *common.Error `protobuf:"bytes,2,opt,name=error,proto3" json:"error,omitempty"`
-	Info  *common.Info  `protobuf:"bytes,3,opt,name=info,proto3" json:"info,omitempty"`
+	Pager *common.Pager `protobuf:"bytes,1,opt,name=pager,proto3" json:"pager"`
+	Error *common.Error `protobuf:"bytes,2,opt,name=error,proto3" json:"error"`
+	Info  *common.Info  `protobuf:"bytes,3,opt,name=info,proto3" json:"info"`
 }
 
 func (x *CronServiceResponse) Reset() {

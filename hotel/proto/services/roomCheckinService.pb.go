@@ -31,15 +31,16 @@ type RoomCheckin struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	Id                int64          `protobuf:"varint,1,opt,name=id,proto3" json:"id,omitempty"`
-	RoomBookId        int64          `protobuf:"varint,2,opt,name=room_book_id,json=roomBookId,proto3" json:"room_book_id,omitempty"`
-	RoomBookDetailId  int64          `protobuf:"varint,3,opt,name=room_book_detail_id,json=roomBookDetailId,proto3" json:"room_book_detail_id,omitempty"`
-	GuestMobile       string         `protobuf:"bytes,4,opt,name=guest_mobile,json=guestMobile,proto3" json:"guest_mobile,omitempty"`
-	GuestName         string         `protobuf:"bytes,5,opt,name=guest_name,json=guestName,proto3" json:"guest_name,omitempty"`
-	GuestDocumentType int32          `protobuf:"varint,6,opt,name=guest_document_type,json=guestDocumentType,proto3" json:"guest_document_type,omitempty"`
-	GuestDocumentNo   string         `protobuf:"bytes,7,opt,name=guest_document_no,json=guestDocumentNo,proto3" json:"guest_document_no,omitempty"`
-	RoomCheckinId     int64          `protobuf:"varint,8,opt,name=room_checkin_id,json=roomCheckinId,proto3" json:"room_checkin_id,omitempty"`
-	TogetherDetails   []*RoomCheckin `protobuf:"bytes,9,rep,name=together_details,json=togetherDetails,proto3" json:"together_details,omitempty"`
+	Id                int64  `protobuf:"varint,1,opt,name=id,proto3" json:"id"`
+	RoomBookId        int64  `protobuf:"varint,2,opt,name=room_book_id,json=roomBookId,proto3" json:"room_book_id"`
+	RoomBookDetailId  int64  `protobuf:"varint,3,opt,name=room_book_detail_id,json=roomBookDetailId,proto3" json:"room_book_detail_id"`
+	GuestMobile       string `protobuf:"bytes,4,opt,name=guest_mobile,json=guestMobile,proto3" json:"guest_mobile"`
+	GuestName         string `protobuf:"bytes,5,opt,name=guest_name,json=guestName,proto3" json:"guest_name"`
+	GuestDocumentType int32  `protobuf:"varint,6,opt,name=guest_document_type,json=guestDocumentType,proto3" json:"guest_document_type"`
+	GuestDocumentNo   string `protobuf:"bytes,7,opt,name=guest_document_no,json=guestDocumentNo,proto3" json:"guest_document_no"`
+	RoomCheckinId     int64  `protobuf:"varint,8,opt,name=room_checkin_id,json=roomCheckinId,proto3" json:"room_checkin_id"`
+	// @inject_tag: gorm:"foreignKey:RoomCheckinId"
+	TogetherDetails []*RoomCheckin `protobuf:"bytes,9,rep,name=together_details,json=togetherDetails,proto3" json:"together_details" gorm:"foreignKey:RoomCheckinId"`
 }
 
 func (x *RoomCheckin) Reset() {
@@ -142,11 +143,11 @@ type RoomCheckinResponse struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	Error  *common.Error  `protobuf:"bytes,1,opt,name=error,proto3" json:"error,omitempty"`
-	Info   *common.Info   `protobuf:"bytes,2,opt,name=info,proto3" json:"info,omitempty"`
-	Pager  *common.Pager  `protobuf:"bytes,3,opt,name=pager,proto3" json:"pager,omitempty"`
-	Entity *RoomCheckin   `protobuf:"bytes,4,opt,name=entity,proto3" json:"entity,omitempty"`
-	Items  []*RoomCheckin `protobuf:"bytes,5,rep,name=items,proto3" json:"items,omitempty"`
+	Error  *common.Error  `protobuf:"bytes,1,opt,name=error,proto3" json:"error"`
+	Info   *common.Info   `protobuf:"bytes,2,opt,name=info,proto3" json:"info"`
+	Pager  *common.Pager  `protobuf:"bytes,3,opt,name=pager,proto3" json:"pager"`
+	Entity *RoomCheckin   `protobuf:"bytes,4,opt,name=entity,proto3" json:"entity"`
+	Items  []*RoomCheckin `protobuf:"bytes,5,rep,name=items,proto3" json:"items"`
 }
 
 func (x *RoomCheckinResponse) Reset() {

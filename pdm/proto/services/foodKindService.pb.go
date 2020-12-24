@@ -31,14 +31,16 @@ type FoodKind struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	Id                int64          `protobuf:"varint,1,opt,name=id,proto3" json:"id,omitempty"`
-	Name              string         `protobuf:"bytes,2,opt,name=name,proto3" json:"name,omitempty"`
-	RequireChoose     bool           `protobuf:"varint,3,opt,name=require_choose,json=requireChoose,proto3" json:"require_choose,omitempty"`
-	RequireLeastCount int32          `protobuf:"varint,4,opt,name=require_least_count,json=requireLeastCount,proto3" json:"require_least_count,omitempty"`
-	ItemCount         int32          `protobuf:"varint,5,opt,name=item_count,json=itemCount,proto3" json:"item_count,omitempty"`                          // 商品数量
-	OnShelfItemCount  int32          `protobuf:"varint,6,opt,name=on_shelf_item_count,json=onShelfItemCount,proto3" json:"on_shelf_item_count,omitempty"` // 在售商品数量
-	Tag               *FoodKindTag   `protobuf:"bytes,7,opt,name=tag,proto3" json:"tag,omitempty"`
-	Goods             []*ItemDisplay `protobuf:"bytes,8,rep,name=goods,proto3" json:"goods,omitempty"`
+	Id                int64  `protobuf:"varint,1,opt,name=id,proto3" json:"id"`
+	Name              string `protobuf:"bytes,2,opt,name=name,proto3" json:"name"`
+	RequireChoose     bool   `protobuf:"varint,3,opt,name=require_choose,json=requireChoose,proto3" json:"require_choose"`
+	RequireLeastCount int32  `protobuf:"varint,4,opt,name=require_least_count,json=requireLeastCount,proto3" json:"require_least_count"`
+	ItemCount         int32  `protobuf:"varint,5,opt,name=item_count,json=itemCount,proto3" json:"item_count"`                          // 商品数量
+	OnShelfItemCount  int32  `protobuf:"varint,6,opt,name=on_shelf_item_count,json=onShelfItemCount,proto3" json:"on_shelf_item_count"` // 在售商品数量
+	// @inject_tag: gorm:"-"
+	Tag *FoodKindTag `protobuf:"bytes,7,opt,name=tag,proto3" json:"tag" gorm:"-"`
+	// @inject_tag: gorm:"-"
+	Goods []*ItemDisplay `protobuf:"bytes,8,rep,name=goods,proto3" json:"goods" gorm:"-"`
 }
 
 func (x *FoodKind) Reset() {
@@ -134,8 +136,8 @@ type FoodKindTag struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	Name string `protobuf:"bytes,1,opt,name=name,proto3" json:"name,omitempty"`
-	Icon string `protobuf:"bytes,2,opt,name=icon,proto3" json:"icon,omitempty"`
+	Name string `protobuf:"bytes,1,opt,name=name,proto3" json:"name"`
+	Icon string `protobuf:"bytes,2,opt,name=icon,proto3" json:"icon"`
 }
 
 func (x *FoodKindTag) Reset() {
@@ -189,11 +191,11 @@ type FoodKindResponse struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	Entity *FoodKind     `protobuf:"bytes,1,opt,name=entity,proto3" json:"entity,omitempty"`
-	Pager  *common.Pager `protobuf:"bytes,2,opt,name=pager,proto3" json:"pager,omitempty"`
-	Items  []*FoodKind   `protobuf:"bytes,3,rep,name=items,proto3" json:"items,omitempty"`
-	Error  *common.Error `protobuf:"bytes,4,opt,name=error,proto3" json:"error,omitempty"`
-	Info   *common.Info  `protobuf:"bytes,5,opt,name=info,proto3" json:"info,omitempty"`
+	Entity *FoodKind     `protobuf:"bytes,1,opt,name=entity,proto3" json:"entity"`
+	Pager  *common.Pager `protobuf:"bytes,2,opt,name=pager,proto3" json:"pager"`
+	Items  []*FoodKind   `protobuf:"bytes,3,rep,name=items,proto3" json:"items"`
+	Error  *common.Error `protobuf:"bytes,4,opt,name=error,proto3" json:"error"`
+	Info   *common.Info  `protobuf:"bytes,5,opt,name=info,proto3" json:"info"`
 }
 
 func (x *FoodKindResponse) Reset() {

@@ -28,8 +28,10 @@ message WxappRoomWhere {
     int32 page_size = 2;
     string sorting = 3;
     int64 room_id = 4;
+    // @inject_tag: gorm:"-"
     repeated int64 room_ids = 5;
     int64 goods_id = 6;
+    // @inject_tag: gorm:"-"
     repeated int64 goods_ids = 7;
     string params = 8;
     bool is_open = 9;
@@ -60,6 +62,7 @@ message WxappRoom {
     string cover_img_id = 22; // 背景图ID 通过 uploadfile 上传，填写 mediaID
     string share_img_id = 23; // 分享图ID 通过 uploadfile 上传，填写 mediaID
     string feeds_img_id = 24; // 购物直播频道封面图ID 通过 uploadfile 上传，填写 mediaID
+    // @inject_tag: gorm:"-"
     repeated WxappRoomGoodsCommon2 goods = 25;
 }
 

@@ -31,13 +31,13 @@ type OrderUnhandledStats struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	Id           int32  `protobuf:"varint,1,opt,name=id,proto3" json:"id,omitempty"`
-	UnpayNum     int32  `protobuf:"varint,2,opt,name=unpay_num,json=unpayNum,proto3" json:"unpay_num,omitempty"`
-	UnshippedNum int32  `protobuf:"varint,3,opt,name=unshipped_num,json=unshippedNum,proto3" json:"unshipped_num,omitempty"`
-	ShippedNum   int32  `protobuf:"varint,4,opt,name=shipped_num,json=shippedNum,proto3" json:"shipped_num,omitempty"`
-	RefundNum    int32  `protobuf:"varint,5,opt,name=refund_num,json=refundNum,proto3" json:"refund_num,omitempty"`
-	CreatedAt    string `protobuf:"bytes,6,opt,name=created_at,json=createdAt,proto3" json:"created_at,omitempty"`
-	UpdatedAt    string `protobuf:"bytes,7,opt,name=updated_at,json=updatedAt,proto3" json:"updated_at,omitempty"`
+	Id           int32  `protobuf:"varint,1,opt,name=id,proto3" json:"id"`
+	UnpayNum     int32  `protobuf:"varint,2,opt,name=unpay_num,json=unpayNum,proto3" json:"unpay_num"`
+	UnshippedNum int32  `protobuf:"varint,3,opt,name=unshipped_num,json=unshippedNum,proto3" json:"unshipped_num"`
+	ShippedNum   int32  `protobuf:"varint,4,opt,name=shipped_num,json=shippedNum,proto3" json:"shipped_num"`
+	RefundNum    int32  `protobuf:"varint,5,opt,name=refund_num,json=refundNum,proto3" json:"refund_num"`
+	CreatedAt    string `protobuf:"bytes,6,opt,name=created_at,json=createdAt,proto3" json:"created_at"`
+	UpdatedAt    string `protobuf:"bytes,7,opt,name=updated_at,json=updatedAt,proto3" json:"updated_at"`
 }
 
 func (x *OrderUnhandledStats) Reset() {
@@ -126,14 +126,14 @@ type CustomerOrderUnhandledStats struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	Id           int32  `protobuf:"varint,1,opt,name=id,proto3" json:"id,omitempty"`
-	CustomerId   int64  `protobuf:"varint,2,opt,name=customer_id,json=customerId,proto3" json:"customer_id,omitempty"`
-	UnpayNum     int32  `protobuf:"varint,3,opt,name=unpay_num,json=unpayNum,proto3" json:"unpay_num,omitempty"`
-	UnshippedNum int32  `protobuf:"varint,4,opt,name=unshipped_num,json=unshippedNum,proto3" json:"unshipped_num,omitempty"`
-	ShippedNum   int32  `protobuf:"varint,5,opt,name=shipped_num,json=shippedNum,proto3" json:"shipped_num,omitempty"`
-	RefundNum    int32  `protobuf:"varint,6,opt,name=refund_num,json=refundNum,proto3" json:"refund_num,omitempty"`
-	CreatedAt    string `protobuf:"bytes,7,opt,name=created_at,json=createdAt,proto3" json:"created_at,omitempty"`
-	UpdatedAt    string `protobuf:"bytes,8,opt,name=updated_at,json=updatedAt,proto3" json:"updated_at,omitempty"`
+	Id           int32  `protobuf:"varint,1,opt,name=id,proto3" json:"id"`
+	CustomerId   int64  `protobuf:"varint,2,opt,name=customer_id,json=customerId,proto3" json:"customer_id"`
+	UnpayNum     int32  `protobuf:"varint,3,opt,name=unpay_num,json=unpayNum,proto3" json:"unpay_num"`
+	UnshippedNum int32  `protobuf:"varint,4,opt,name=unshipped_num,json=unshippedNum,proto3" json:"unshipped_num"`
+	ShippedNum   int32  `protobuf:"varint,5,opt,name=shipped_num,json=shippedNum,proto3" json:"shipped_num"`
+	RefundNum    int32  `protobuf:"varint,6,opt,name=refund_num,json=refundNum,proto3" json:"refund_num"`
+	CreatedAt    string `protobuf:"bytes,7,opt,name=created_at,json=createdAt,proto3" json:"created_at"`
+	UpdatedAt    string `protobuf:"bytes,8,opt,name=updated_at,json=updatedAt,proto3" json:"updated_at"`
 }
 
 func (x *CustomerOrderUnhandledStats) Reset() {
@@ -229,11 +229,11 @@ type OrderHandledStatsResponse struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	Entity *OrderUnhandledStats   `protobuf:"bytes,1,opt,name=entity,proto3" json:"entity,omitempty"`
-	Pager  *common.Pager          `protobuf:"bytes,2,opt,name=pager,proto3" json:"pager,omitempty"`
-	Items  []*OrderUnhandledStats `protobuf:"bytes,3,rep,name=items,proto3" json:"items,omitempty"`
-	Error  *common.Error          `protobuf:"bytes,4,opt,name=error,proto3" json:"error,omitempty"`
-	Info   *common.Info           `protobuf:"bytes,5,opt,name=info,proto3" json:"info,omitempty"`
+	Entity *OrderUnhandledStats   `protobuf:"bytes,1,opt,name=entity,proto3" json:"entity"`
+	Pager  *common.Pager          `protobuf:"bytes,2,opt,name=pager,proto3" json:"pager"`
+	Items  []*OrderUnhandledStats `protobuf:"bytes,3,rep,name=items,proto3" json:"items"`
+	Error  *common.Error          `protobuf:"bytes,4,opt,name=error,proto3" json:"error"`
+	Info   *common.Info           `protobuf:"bytes,5,opt,name=info,proto3" json:"info"`
 }
 
 func (x *OrderHandledStatsResponse) Reset() {
@@ -308,11 +308,11 @@ type CustomerOrderHandledStatsResponse struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	Entity *CustomerOrderUnhandledStats   `protobuf:"bytes,1,opt,name=entity,proto3" json:"entity,omitempty"`
-	Pager  *common.Pager                  `protobuf:"bytes,2,opt,name=pager,proto3" json:"pager,omitempty"`
-	Items  []*CustomerOrderUnhandledStats `protobuf:"bytes,3,rep,name=items,proto3" json:"items,omitempty"`
-	Error  *common.Error                  `protobuf:"bytes,4,opt,name=error,proto3" json:"error,omitempty"`
-	Info   *common.Info                   `protobuf:"bytes,5,opt,name=info,proto3" json:"info,omitempty"`
+	Entity *CustomerOrderUnhandledStats   `protobuf:"bytes,1,opt,name=entity,proto3" json:"entity"`
+	Pager  *common.Pager                  `protobuf:"bytes,2,opt,name=pager,proto3" json:"pager"`
+	Items  []*CustomerOrderUnhandledStats `protobuf:"bytes,3,rep,name=items,proto3" json:"items"`
+	Error  *common.Error                  `protobuf:"bytes,4,opt,name=error,proto3" json:"error"`
+	Info   *common.Info                   `protobuf:"bytes,5,opt,name=info,proto3" json:"info"`
 }
 
 func (x *CustomerOrderHandledStatsResponse) Reset() {

@@ -31,11 +31,11 @@ type RoomBillDetailWhere struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	Paged      int32 `protobuf:"varint,1,opt,name=paged,proto3" json:"paged,omitempty"`
-	PageSize   int32 `protobuf:"varint,2,opt,name=page_size,json=pageSize,proto3" json:"page_size,omitempty"`
-	RoomBillId int64 `protobuf:"varint,3,opt,name=room_bill_id,json=roomBillId,proto3" json:"room_bill_id,omitempty"`
-	Status     int32 `protobuf:"varint,4,opt,name=status,proto3" json:"status,omitempty"`
-	RoomBookId int64 `protobuf:"varint,5,opt,name=room_book_id,json=roomBookId,proto3" json:"room_book_id,omitempty"`
+	Paged      int32 `protobuf:"varint,1,opt,name=paged,proto3" json:"paged"`
+	PageSize   int32 `protobuf:"varint,2,opt,name=page_size,json=pageSize,proto3" json:"page_size"`
+	RoomBillId int64 `protobuf:"varint,3,opt,name=room_bill_id,json=roomBillId,proto3" json:"room_bill_id"`
+	Status     int32 `protobuf:"varint,4,opt,name=status,proto3" json:"status"`
+	RoomBookId int64 `protobuf:"varint,5,opt,name=room_book_id,json=roomBookId,proto3" json:"room_book_id"`
 }
 
 func (x *RoomBillDetailWhere) Reset() {
@@ -110,16 +110,16 @@ type RoomBillDetail struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	Id            int64   `protobuf:"varint,1,opt,name=id,proto3" json:"id,omitempty"`
-	RoomBillId    int64   `protobuf:"varint,2,opt,name=room_bill_id,json=roomBillId,proto3" json:"room_bill_id,omitempty"`
-	BillItemCode  string  `protobuf:"bytes,3,opt,name=bill_item_code,json=billItemCode,proto3" json:"bill_item_code,omitempty"`
-	ConsumeAmount float32 `protobuf:"fixed32,4,opt,name=consume_amount,json=consumeAmount,proto3" json:"consume_amount,omitempty"`
-	PayAmount     float32 `protobuf:"fixed32,5,opt,name=pay_amount,json=payAmount,proto3" json:"pay_amount,omitempty"`
-	Memo          string  `protobuf:"bytes,6,opt,name=memo,proto3" json:"memo,omitempty"`
-	Status        int32   `protobuf:"varint,7,opt,name=status,proto3" json:"status,omitempty"`
-	OptId         int64   `protobuf:"varint,8,opt,name=opt_id,json=optId,proto3" json:"opt_id,omitempty"`
-	CreatedAt     string  `protobuf:"bytes,9,opt,name=created_at,json=createdAt,proto3" json:"created_at,omitempty"`
-	UpdatedAt     string  `protobuf:"bytes,10,opt,name=updated_at,json=updatedAt,proto3" json:"updated_at,omitempty"`
+	Id            int64   `protobuf:"varint,1,opt,name=id,proto3" json:"id"`
+	RoomBillId    int64   `protobuf:"varint,2,opt,name=room_bill_id,json=roomBillId,proto3" json:"room_bill_id"`
+	BillItemCode  string  `protobuf:"bytes,3,opt,name=bill_item_code,json=billItemCode,proto3" json:"bill_item_code"`
+	ConsumeAmount float32 `protobuf:"fixed32,4,opt,name=consume_amount,json=consumeAmount,proto3" json:"consume_amount"`
+	PayAmount     float32 `protobuf:"fixed32,5,opt,name=pay_amount,json=payAmount,proto3" json:"pay_amount"`
+	Memo          string  `protobuf:"bytes,6,opt,name=memo,proto3" json:"memo"`
+	Status        int32   `protobuf:"varint,7,opt,name=status,proto3" json:"status"`
+	OptId         int64   `protobuf:"varint,8,opt,name=opt_id,json=optId,proto3" json:"opt_id"`
+	CreatedAt     string  `protobuf:"bytes,9,opt,name=created_at,json=createdAt,proto3" json:"created_at"`
+	UpdatedAt     string  `protobuf:"bytes,10,opt,name=updated_at,json=updatedAt,proto3" json:"updated_at"`
 }
 
 func (x *RoomBillDetail) Reset() {
@@ -229,11 +229,11 @@ type RoomBillDetailResponse struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	Error  *common.Error     `protobuf:"bytes,1,opt,name=error,proto3" json:"error,omitempty"`
-	Info   *common.Info      `protobuf:"bytes,2,opt,name=info,proto3" json:"info,omitempty"`
-	Pager  *common.Pager     `protobuf:"bytes,3,opt,name=pager,proto3" json:"pager,omitempty"`
-	Entity *RoomBillDetail   `protobuf:"bytes,4,opt,name=entity,proto3" json:"entity,omitempty"`
-	Items  []*RoomBillDetail `protobuf:"bytes,5,rep,name=items,proto3" json:"items,omitempty"`
+	Error  *common.Error     `protobuf:"bytes,1,opt,name=error,proto3" json:"error"`
+	Info   *common.Info      `protobuf:"bytes,2,opt,name=info,proto3" json:"info"`
+	Pager  *common.Pager     `protobuf:"bytes,3,opt,name=pager,proto3" json:"pager"`
+	Entity *RoomBillDetail   `protobuf:"bytes,4,opt,name=entity,proto3" json:"entity"`
+	Items  []*RoomBillDetail `protobuf:"bytes,5,rep,name=items,proto3" json:"items"`
 }
 
 func (x *RoomBillDetailResponse) Reset() {

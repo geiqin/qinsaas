@@ -17,6 +17,7 @@ message Buying {
     float cash_exchange_money = 6; // 抵现金额
     int32 cash_exchange_points = 7; // 抵现的积分
     string integral_name = 8; // 积分显示的名称
+    // @inject_tag: gorm:"-"
     repeated BuyingItem items = 9;
 }
 

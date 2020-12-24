@@ -30,12 +30,12 @@ type RoomBookPrice struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	RoomBookId       int64 `protobuf:"varint,1,opt,name=room_book_id,json=roomBookId,proto3" json:"room_book_id,omitempty"`
-	RoomBookDetailId int64 `protobuf:"varint,2,opt,name=room_book_detail_id,json=roomBookDetailId,proto3" json:"room_book_detail_id,omitempty"`
+	RoomBookId       int64 `protobuf:"varint,1,opt,name=room_book_id,json=roomBookId,proto3" json:"room_book_id"`
+	RoomBookDetailId int64 `protobuf:"varint,2,opt,name=room_book_detail_id,json=roomBookDetailId,proto3" json:"room_book_detail_id"`
 	// @inject_tag: validate:"required" label:"日期"
-	Date string `protobuf:"bytes,3,opt,name=date,proto3" json:"date,omitempty" validate:"required" label:"日期"`
+	Date string `protobuf:"bytes,3,opt,name=date,proto3" json:"date" validate:"required" label:"日期"`
 	// @inject_tag: validate:"required" label:"价格"
-	Price float32 `protobuf:"fixed32,4,opt,name=price,proto3" json:"price,omitempty" validate:"required" label:"价格"`
+	Price float32 `protobuf:"fixed32,4,opt,name=price,proto3" json:"price" validate:"required" label:"价格"`
 }
 
 func (x *RoomBookPrice) Reset() {

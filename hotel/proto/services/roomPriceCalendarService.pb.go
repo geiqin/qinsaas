@@ -31,13 +31,13 @@ type RoomPriceCalendarWhere struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	Paged           int32  `protobuf:"varint,1,opt,name=paged,proto3" json:"paged,omitempty"`
-	PageSize        int32  `protobuf:"varint,2,opt,name=page_size,json=pageSize,proto3" json:"page_size,omitempty"`
-	RoomTypeId      int64  `protobuf:"varint,3,opt,name=room_type_id,json=roomTypeId,proto3" json:"room_type_id,omitempty"`
-	RoomPricePlanId int64  `protobuf:"varint,4,opt,name=room_price_plan_id,json=roomPricePlanId,proto3" json:"room_price_plan_id,omitempty"`
-	Date            string `protobuf:"bytes,5,opt,name=date,proto3" json:"date,omitempty"`
-	StartDate       string `protobuf:"bytes,6,opt,name=start_date,json=startDate,proto3" json:"start_date,omitempty"`
-	EndDate         string `protobuf:"bytes,7,opt,name=end_date,json=endDate,proto3" json:"end_date,omitempty"`
+	Paged           int32  `protobuf:"varint,1,opt,name=paged,proto3" json:"paged"`
+	PageSize        int32  `protobuf:"varint,2,opt,name=page_size,json=pageSize,proto3" json:"page_size"`
+	RoomTypeId      int64  `protobuf:"varint,3,opt,name=room_type_id,json=roomTypeId,proto3" json:"room_type_id"`
+	RoomPricePlanId int64  `protobuf:"varint,4,opt,name=room_price_plan_id,json=roomPricePlanId,proto3" json:"room_price_plan_id"`
+	Date            string `protobuf:"bytes,5,opt,name=date,proto3" json:"date"`
+	StartDate       string `protobuf:"bytes,6,opt,name=start_date,json=startDate,proto3" json:"start_date"`
+	EndDate         string `protobuf:"bytes,7,opt,name=end_date,json=endDate,proto3" json:"end_date"`
 }
 
 func (x *RoomPriceCalendarWhere) Reset() {
@@ -126,11 +126,11 @@ type RoomPriceCalendar struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	CanSalesCount int32   `protobuf:"varint,1,opt,name=can_sales_count,json=canSalesCount,proto3" json:"can_sales_count,omitempty"` // 剩余房量
-	Price         float32 `protobuf:"fixed32,2,opt,name=price,proto3" json:"price,omitempty"`                                       // 标准价
-	MinPrice      float32 `protobuf:"fixed32,3,opt,name=min_price,json=minPrice,proto3" json:"min_price,omitempty"`                 // 最低价
-	MaxPrice      float32 `protobuf:"fixed32,4,opt,name=max_price,json=maxPrice,proto3" json:"max_price,omitempty"`                 // 最高价
-	Date          string  `protobuf:"bytes,5,opt,name=date,proto3" json:"date,omitempty"`                                           // 日期
+	CanSalesCount int32   `protobuf:"varint,1,opt,name=can_sales_count,json=canSalesCount,proto3" json:"can_sales_count"` // 剩余房量
+	Price         float32 `protobuf:"fixed32,2,opt,name=price,proto3" json:"price"`                                       // 标准价
+	MinPrice      float32 `protobuf:"fixed32,3,opt,name=min_price,json=minPrice,proto3" json:"min_price"`                 // 最低价
+	MaxPrice      float32 `protobuf:"fixed32,4,opt,name=max_price,json=maxPrice,proto3" json:"max_price"`                 // 最高价
+	Date          string  `protobuf:"bytes,5,opt,name=date,proto3" json:"date"`                                           // 日期
 }
 
 func (x *RoomPriceCalendar) Reset() {
@@ -205,11 +205,11 @@ type RoomPriceCalendarResponse struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	Error  *common.Error        `protobuf:"bytes,1,opt,name=error,proto3" json:"error,omitempty"`
-	Info   *common.Info         `protobuf:"bytes,2,opt,name=info,proto3" json:"info,omitempty"`
-	Pager  *common.Pager        `protobuf:"bytes,3,opt,name=pager,proto3" json:"pager,omitempty"`
-	Entity *RoomPriceCalendar   `protobuf:"bytes,4,opt,name=entity,proto3" json:"entity,omitempty"`
-	Items  []*RoomPriceCalendar `protobuf:"bytes,5,rep,name=items,proto3" json:"items,omitempty"`
+	Error  *common.Error        `protobuf:"bytes,1,opt,name=error,proto3" json:"error"`
+	Info   *common.Info         `protobuf:"bytes,2,opt,name=info,proto3" json:"info"`
+	Pager  *common.Pager        `protobuf:"bytes,3,opt,name=pager,proto3" json:"pager"`
+	Entity *RoomPriceCalendar   `protobuf:"bytes,4,opt,name=entity,proto3" json:"entity"`
+	Items  []*RoomPriceCalendar `protobuf:"bytes,5,rep,name=items,proto3" json:"items"`
 }
 
 func (x *RoomPriceCalendarResponse) Reset() {

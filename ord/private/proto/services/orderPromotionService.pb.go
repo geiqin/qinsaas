@@ -31,14 +31,15 @@ type OrderPromotionParams struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	Id            int64   `protobuf:"varint,1,opt,name=id,proto3" json:"id,omitempty"`
-	CustomerId    int64   `protobuf:"varint,2,opt,name=customer_id,json=customerId,proto3" json:"customer_id,omitempty"`
-	PromotionId   int64   `protobuf:"varint,3,opt,name=promotion_id,json=promotionId,proto3" json:"promotion_id,omitempty"`
-	OrderId       int64   `protobuf:"varint,4,opt,name=order_id,json=orderId,proto3" json:"order_id,omitempty"`
-	PromotionType string  `protobuf:"bytes,5,opt,name=promotion_type,json=promotionType,proto3" json:"promotion_type,omitempty"`
-	Ids           []int64 `protobuf:"varint,6,rep,packed,name=ids,proto3" json:"ids,omitempty"`
-	StartDate     string  `protobuf:"bytes,7,opt,name=start_date,json=startDate,proto3" json:"start_date,omitempty"`
-	EndDate       string  `protobuf:"bytes,8,opt,name=end_date,json=endDate,proto3" json:"end_date,omitempty"`
+	Id            int64  `protobuf:"varint,1,opt,name=id,proto3" json:"id"`
+	CustomerId    int64  `protobuf:"varint,2,opt,name=customer_id,json=customerId,proto3" json:"customer_id"`
+	PromotionId   int64  `protobuf:"varint,3,opt,name=promotion_id,json=promotionId,proto3" json:"promotion_id"`
+	OrderId       int64  `protobuf:"varint,4,opt,name=order_id,json=orderId,proto3" json:"order_id"`
+	PromotionType string `protobuf:"bytes,5,opt,name=promotion_type,json=promotionType,proto3" json:"promotion_type"`
+	// @inject_tag: gorm:"-"
+	Ids       []int64 `protobuf:"varint,6,rep,packed,name=ids,proto3" json:"ids" gorm:"-"`
+	StartDate string  `protobuf:"bytes,7,opt,name=start_date,json=startDate,proto3" json:"start_date"`
+	EndDate   string  `protobuf:"bytes,8,opt,name=end_date,json=endDate,proto3" json:"end_date"`
 }
 
 func (x *OrderPromotionParams) Reset() {
@@ -134,16 +135,17 @@ type OrderPromotion struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	Id            int64                  `protobuf:"varint,1,opt,name=id,proto3" json:"id,omitempty"`
-	CustomerId    int64                  `protobuf:"varint,2,opt,name=customer_id,json=customerId,proto3" json:"customer_id,omitempty"`
-	OrderId       int64                  `protobuf:"varint,3,opt,name=order_id,json=orderId,proto3" json:"order_id,omitempty"`
-	PromotionId   int64                  `protobuf:"varint,4,opt,name=promotion_id,json=promotionId,proto3" json:"promotion_id,omitempty"`
-	PromotionType string                 `protobuf:"bytes,5,opt,name=promotion_type,json=promotionType,proto3" json:"promotion_type,omitempty"`
-	Price         float32                `protobuf:"fixed32,6,opt,name=price,proto3" json:"price,omitempty"`
-	Point         int32                  `protobuf:"varint,7,opt,name=point,proto3" json:"point,omitempty"`
-	CreatedAt     string                 `protobuf:"bytes,8,opt,name=created_at,json=createdAt,proto3" json:"created_at,omitempty"`
-	UpdatedAt     string                 `protobuf:"bytes,9,opt,name=updated_at,json=updatedAt,proto3" json:"updated_at,omitempty"`
-	Goodses       []*OrderPromotionGoods `protobuf:"bytes,10,rep,name=goodses,proto3" json:"goodses,omitempty"`
+	Id            int64   `protobuf:"varint,1,opt,name=id,proto3" json:"id"`
+	CustomerId    int64   `protobuf:"varint,2,opt,name=customer_id,json=customerId,proto3" json:"customer_id"`
+	OrderId       int64   `protobuf:"varint,3,opt,name=order_id,json=orderId,proto3" json:"order_id"`
+	PromotionId   int64   `protobuf:"varint,4,opt,name=promotion_id,json=promotionId,proto3" json:"promotion_id"`
+	PromotionType string  `protobuf:"bytes,5,opt,name=promotion_type,json=promotionType,proto3" json:"promotion_type"`
+	Price         float32 `protobuf:"fixed32,6,opt,name=price,proto3" json:"price"`
+	Point         int32   `protobuf:"varint,7,opt,name=point,proto3" json:"point"`
+	CreatedAt     string  `protobuf:"bytes,8,opt,name=created_at,json=createdAt,proto3" json:"created_at"`
+	UpdatedAt     string  `protobuf:"bytes,9,opt,name=updated_at,json=updatedAt,proto3" json:"updated_at"`
+	// @inject_tag: gorm:"foreignKey:OrderPromotionId"
+	Goodses []*OrderPromotionGoods `protobuf:"bytes,10,rep,name=goodses,proto3" json:"goodses" gorm:"foreignKey:OrderPromotionId"`
 }
 
 func (x *OrderPromotion) Reset() {
@@ -253,15 +255,15 @@ type OrderPromotionGoods struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	Id               int64   `protobuf:"varint,1,opt,name=id,proto3" json:"id,omitempty"`
-	OrderPromotionId int64   `protobuf:"varint,2,opt,name=order_promotion_id,json=orderPromotionId,proto3" json:"order_promotion_id,omitempty"`
-	ItemId           int64   `protobuf:"varint,3,opt,name=item_id,json=itemId,proto3" json:"item_id,omitempty"`
-	SkuId            int64   `protobuf:"varint,4,opt,name=sku_id,json=skuId,proto3" json:"sku_id,omitempty"`
-	GoodsNum         int32   `protobuf:"varint,5,opt,name=goods_num,json=goodsNum,proto3" json:"goods_num,omitempty"`
-	Price            float32 `protobuf:"fixed32,6,opt,name=price,proto3" json:"price,omitempty"`
-	BeforePrice      float32 `protobuf:"fixed32,7,opt,name=before_price,json=beforePrice,proto3" json:"before_price,omitempty"`
-	CreatedAt        string  `protobuf:"bytes,8,opt,name=created_at,json=createdAt,proto3" json:"created_at,omitempty"`
-	UpdatedAt        string  `protobuf:"bytes,9,opt,name=updated_at,json=updatedAt,proto3" json:"updated_at,omitempty"`
+	Id               int64   `protobuf:"varint,1,opt,name=id,proto3" json:"id"`
+	OrderPromotionId int64   `protobuf:"varint,2,opt,name=order_promotion_id,json=orderPromotionId,proto3" json:"order_promotion_id"`
+	ItemId           int64   `protobuf:"varint,3,opt,name=item_id,json=itemId,proto3" json:"item_id"`
+	SkuId            int64   `protobuf:"varint,4,opt,name=sku_id,json=skuId,proto3" json:"sku_id"`
+	GoodsNum         int32   `protobuf:"varint,5,opt,name=goods_num,json=goodsNum,proto3" json:"goods_num"`
+	Price            float32 `protobuf:"fixed32,6,opt,name=price,proto3" json:"price"`
+	BeforePrice      float32 `protobuf:"fixed32,7,opt,name=before_price,json=beforePrice,proto3" json:"before_price"`
+	CreatedAt        string  `protobuf:"bytes,8,opt,name=created_at,json=createdAt,proto3" json:"created_at"`
+	UpdatedAt        string  `protobuf:"bytes,9,opt,name=updated_at,json=updatedAt,proto3" json:"updated_at"`
 }
 
 func (x *OrderPromotionGoods) Reset() {
@@ -364,11 +366,11 @@ type OrderPromotionResponse struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	Entity *OrderPromotion   `protobuf:"bytes,1,opt,name=entity,proto3" json:"entity,omitempty"`
-	Pager  *common.Pager     `protobuf:"bytes,2,opt,name=pager,proto3" json:"pager,omitempty"`
-	Items  []*OrderPromotion `protobuf:"bytes,3,rep,name=items,proto3" json:"items,omitempty"`
-	Error  *common.Error     `protobuf:"bytes,4,opt,name=error,proto3" json:"error,omitempty"`
-	Info   *common.Info      `protobuf:"bytes,5,opt,name=info,proto3" json:"info,omitempty"`
+	Entity *OrderPromotion   `protobuf:"bytes,1,opt,name=entity,proto3" json:"entity"`
+	Pager  *common.Pager     `protobuf:"bytes,2,opt,name=pager,proto3" json:"pager"`
+	Items  []*OrderPromotion `protobuf:"bytes,3,rep,name=items,proto3" json:"items"`
+	Error  *common.Error     `protobuf:"bytes,4,opt,name=error,proto3" json:"error"`
+	Info   *common.Info      `protobuf:"bytes,5,opt,name=info,proto3" json:"info"`
 }
 
 func (x *OrderPromotionResponse) Reset() {

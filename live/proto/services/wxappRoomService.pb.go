@@ -31,15 +31,17 @@ type WxappRoomWhere struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	Paged    int32   `protobuf:"varint,1,opt,name=paged,proto3" json:"paged,omitempty"`
-	PageSize int32   `protobuf:"varint,2,opt,name=page_size,json=pageSize,proto3" json:"page_size,omitempty"`
-	Sorting  string  `protobuf:"bytes,3,opt,name=sorting,proto3" json:"sorting,omitempty"`
-	RoomId   int64   `protobuf:"varint,4,opt,name=room_id,json=roomId,proto3" json:"room_id,omitempty"`
-	RoomIds  []int64 `protobuf:"varint,5,rep,packed,name=room_ids,json=roomIds,proto3" json:"room_ids,omitempty"`
-	GoodsId  int64   `protobuf:"varint,6,opt,name=goods_id,json=goodsId,proto3" json:"goods_id,omitempty"`
-	GoodsIds []int64 `protobuf:"varint,7,rep,packed,name=goods_ids,json=goodsIds,proto3" json:"goods_ids,omitempty"`
-	Params   string  `protobuf:"bytes,8,opt,name=params,proto3" json:"params,omitempty"`
-	IsOpen   bool    `protobuf:"varint,9,opt,name=is_open,json=isOpen,proto3" json:"is_open,omitempty"`
+	Paged    int32  `protobuf:"varint,1,opt,name=paged,proto3" json:"paged"`
+	PageSize int32  `protobuf:"varint,2,opt,name=page_size,json=pageSize,proto3" json:"page_size"`
+	Sorting  string `protobuf:"bytes,3,opt,name=sorting,proto3" json:"sorting"`
+	RoomId   int64  `protobuf:"varint,4,opt,name=room_id,json=roomId,proto3" json:"room_id"`
+	// @inject_tag: gorm:"-"
+	RoomIds []int64 `protobuf:"varint,5,rep,packed,name=room_ids,json=roomIds,proto3" json:"room_ids" gorm:"-"`
+	GoodsId int64   `protobuf:"varint,6,opt,name=goods_id,json=goodsId,proto3" json:"goods_id"`
+	// @inject_tag: gorm:"-"
+	GoodsIds []int64 `protobuf:"varint,7,rep,packed,name=goods_ids,json=goodsIds,proto3" json:"goods_ids" gorm:"-"`
+	Params   string  `protobuf:"bytes,8,opt,name=params,proto3" json:"params"`
+	IsOpen   bool    `protobuf:"varint,9,opt,name=is_open,json=isOpen,proto3" json:"is_open"`
 }
 
 func (x *WxappRoomWhere) Reset() {
@@ -142,31 +144,32 @@ type WxappRoom struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	RoomId          int64                    `protobuf:"varint,1,opt,name=room_id,json=roomId,proto3" json:"room_id,omitempty"`
-	Name            string                   `protobuf:"bytes,2,opt,name=name,proto3" json:"name,omitempty"` // 房间名字
-	CoverImg        string                   `protobuf:"bytes,3,opt,name=cover_img,json=coverImg,proto3" json:"cover_img,omitempty"`
-	StartTime       string                   `protobuf:"bytes,4,opt,name=start_time,json=startTime,proto3" json:"start_time,omitempty"`                     // 开始时间
-	EndTime         string                   `protobuf:"bytes,5,opt,name=end_time,json=endTime,proto3" json:"end_time,omitempty"`                           // 结束时间
-	AnchorName      string                   `protobuf:"bytes,6,opt,name=anchor_name,json=anchorName,proto3" json:"anchor_name,omitempty"`                  // 主播昵称
-	AnchorWechat    string                   `protobuf:"bytes,7,opt,name=anchor_wechat,json=anchorWechat,proto3" json:"anchor_wechat,omitempty"`            // 主播微信号
-	SubAnchorWechat string                   `protobuf:"bytes,8,opt,name=sub_anchor_wechat,json=subAnchorWechat,proto3" json:"sub_anchor_wechat,omitempty"` // 主播副号微信号
-	CreaterWechat   string                   `protobuf:"bytes,9,opt,name=creater_wechat,json=createrWechat,proto3" json:"creater_wechat,omitempty"`         // 创建者微信号
-	ShareImg        string                   `protobuf:"bytes,10,opt,name=share_img,json=shareImg,proto3" json:"share_img,omitempty"`
-	FeedsImg        string                   `protobuf:"bytes,11,opt,name=feeds_img,json=feedsImg,proto3" json:"feeds_img,omitempty"`
-	IsFeedsPublic   int32                    `protobuf:"varint,12,opt,name=is_feeds_public,json=isFeedsPublic,proto3" json:"is_feeds_public,omitempty"` // 是否开启官方收录，1 开启，0 关闭
-	Type            int32                    `protobuf:"varint,13,opt,name=type,proto3" json:"type,omitempty"`                                          // 直播类型，1 推流 0 手机直播
-	ScreenType      int32                    `protobuf:"varint,14,opt,name=screen_type,json=screenType,proto3" json:"screen_type,omitempty"`            // 1：横屏 0：竖屏
-	CloseLike       int32                    `protobuf:"varint,15,opt,name=close_like,json=closeLike,proto3" json:"close_like,omitempty"`               // 是否关闭点赞 1：关闭
-	CloseGoods      int32                    `protobuf:"varint,16,opt,name=close_goods,json=closeGoods,proto3" json:"close_goods,omitempty"`            // 是否关闭商品货架，1：关闭
-	CloseComment    int32                    `protobuf:"varint,17,opt,name=close_comment,json=closeComment,proto3" json:"close_comment,omitempty"`      // 是否开启评论，1：关闭
-	CloseReplay     int32                    `protobuf:"varint,18,opt,name=close_replay,json=closeReplay,proto3" json:"close_replay,omitempty"`         // 是否关闭回放 1 关闭
-	CloseShare      int32                    `protobuf:"varint,19,opt,name=close_share,json=closeShare,proto3" json:"close_share,omitempty"`            //  是否关闭分享 1 关闭
-	CloseKf         int32                    `protobuf:"varint,20,opt,name=close_kf,json=closeKf,proto3" json:"close_kf,omitempty"`                     // 是否关闭客服，1 关闭
-	LiveStatus      int32                    `protobuf:"varint,21,opt,name=live_status,json=liveStatus,proto3" json:"live_status,omitempty"`
-	CoverImgId      string                   `protobuf:"bytes,22,opt,name=cover_img_id,json=coverImgId,proto3" json:"cover_img_id,omitempty"` // 背景图ID 通过 uploadfile 上传，填写 mediaID
-	ShareImgId      string                   `protobuf:"bytes,23,opt,name=share_img_id,json=shareImgId,proto3" json:"share_img_id,omitempty"` // 分享图ID 通过 uploadfile 上传，填写 mediaID
-	FeedsImgId      string                   `protobuf:"bytes,24,opt,name=feeds_img_id,json=feedsImgId,proto3" json:"feeds_img_id,omitempty"` // 购物直播频道封面图ID 通过 uploadfile 上传，填写 mediaID
-	Goods           []*WxappRoomGoodsCommon2 `protobuf:"bytes,25,rep,name=goods,proto3" json:"goods,omitempty"`
+	RoomId          int64  `protobuf:"varint,1,opt,name=room_id,json=roomId,proto3" json:"room_id"`
+	Name            string `protobuf:"bytes,2,opt,name=name,proto3" json:"name"` // 房间名字
+	CoverImg        string `protobuf:"bytes,3,opt,name=cover_img,json=coverImg,proto3" json:"cover_img"`
+	StartTime       string `protobuf:"bytes,4,opt,name=start_time,json=startTime,proto3" json:"start_time"`                     // 开始时间
+	EndTime         string `protobuf:"bytes,5,opt,name=end_time,json=endTime,proto3" json:"end_time"`                           // 结束时间
+	AnchorName      string `protobuf:"bytes,6,opt,name=anchor_name,json=anchorName,proto3" json:"anchor_name"`                  // 主播昵称
+	AnchorWechat    string `protobuf:"bytes,7,opt,name=anchor_wechat,json=anchorWechat,proto3" json:"anchor_wechat"`            // 主播微信号
+	SubAnchorWechat string `protobuf:"bytes,8,opt,name=sub_anchor_wechat,json=subAnchorWechat,proto3" json:"sub_anchor_wechat"` // 主播副号微信号
+	CreaterWechat   string `protobuf:"bytes,9,opt,name=creater_wechat,json=createrWechat,proto3" json:"creater_wechat"`         // 创建者微信号
+	ShareImg        string `protobuf:"bytes,10,opt,name=share_img,json=shareImg,proto3" json:"share_img"`
+	FeedsImg        string `protobuf:"bytes,11,opt,name=feeds_img,json=feedsImg,proto3" json:"feeds_img"`
+	IsFeedsPublic   int32  `protobuf:"varint,12,opt,name=is_feeds_public,json=isFeedsPublic,proto3" json:"is_feeds_public"` // 是否开启官方收录，1 开启，0 关闭
+	Type            int32  `protobuf:"varint,13,opt,name=type,proto3" json:"type"`                                          // 直播类型，1 推流 0 手机直播
+	ScreenType      int32  `protobuf:"varint,14,opt,name=screen_type,json=screenType,proto3" json:"screen_type"`            // 1：横屏 0：竖屏
+	CloseLike       int32  `protobuf:"varint,15,opt,name=close_like,json=closeLike,proto3" json:"close_like"`               // 是否关闭点赞 1：关闭
+	CloseGoods      int32  `protobuf:"varint,16,opt,name=close_goods,json=closeGoods,proto3" json:"close_goods"`            // 是否关闭商品货架，1：关闭
+	CloseComment    int32  `protobuf:"varint,17,opt,name=close_comment,json=closeComment,proto3" json:"close_comment"`      // 是否开启评论，1：关闭
+	CloseReplay     int32  `protobuf:"varint,18,opt,name=close_replay,json=closeReplay,proto3" json:"close_replay"`         // 是否关闭回放 1 关闭
+	CloseShare      int32  `protobuf:"varint,19,opt,name=close_share,json=closeShare,proto3" json:"close_share"`            //  是否关闭分享 1 关闭
+	CloseKf         int32  `protobuf:"varint,20,opt,name=close_kf,json=closeKf,proto3" json:"close_kf"`                     // 是否关闭客服，1 关闭
+	LiveStatus      int32  `protobuf:"varint,21,opt,name=live_status,json=liveStatus,proto3" json:"live_status"`
+	CoverImgId      string `protobuf:"bytes,22,opt,name=cover_img_id,json=coverImgId,proto3" json:"cover_img_id"` // 背景图ID 通过 uploadfile 上传，填写 mediaID
+	ShareImgId      string `protobuf:"bytes,23,opt,name=share_img_id,json=shareImgId,proto3" json:"share_img_id"` // 分享图ID 通过 uploadfile 上传，填写 mediaID
+	FeedsImgId      string `protobuf:"bytes,24,opt,name=feeds_img_id,json=feedsImgId,proto3" json:"feeds_img_id"` // 购物直播频道封面图ID 通过 uploadfile 上传，填写 mediaID
+	// @inject_tag: gorm:"-"
+	Goods []*WxappRoomGoodsCommon2 `protobuf:"bytes,25,rep,name=goods,proto3" json:"goods" gorm:"-"`
 }
 
 func (x *WxappRoom) Reset() {
@@ -381,10 +384,10 @@ type WxappRoomCreateOrUpdate struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	RoomId    int64  `protobuf:"varint,1,opt,name=room_id,json=roomId,proto3" json:"room_id,omitempty"`
-	QrcodeUrl string `protobuf:"bytes,2,opt,name=qrcode_url,json=qrcodeUrl,proto3" json:"qrcode_url,omitempty"` // 当主播微信号没有在 “小程序直播“ 小程序实名认证 返回该字段
-	ErrCode   int32  `protobuf:"varint,3,opt,name=err_code,json=errCode,proto3" json:"err_code,omitempty"`
-	ErrMsg    string `protobuf:"bytes,4,opt,name=err_msg,json=errMsg,proto3" json:"err_msg,omitempty"`
+	RoomId    int64  `protobuf:"varint,1,opt,name=room_id,json=roomId,proto3" json:"room_id"`
+	QrcodeUrl string `protobuf:"bytes,2,opt,name=qrcode_url,json=qrcodeUrl,proto3" json:"qrcode_url"` // 当主播微信号没有在 “小程序直播“ 小程序实名认证 返回该字段
+	ErrCode   int32  `protobuf:"varint,3,opt,name=err_code,json=errCode,proto3" json:"err_code"`
+	ErrMsg    string `protobuf:"bytes,4,opt,name=err_msg,json=errMsg,proto3" json:"err_msg"`
 }
 
 func (x *WxappRoomCreateOrUpdate) Reset() {
@@ -453,9 +456,9 @@ type WxappLiveReplay struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	ExpireTime string `protobuf:"bytes,1,opt,name=expire_time,json=expireTime,proto3" json:"expire_time,omitempty"`
-	CreateTime string `protobuf:"bytes,2,opt,name=create_time,json=createTime,proto3" json:"create_time,omitempty"`
-	MediaUrl   string `protobuf:"bytes,3,opt,name=media_url,json=mediaUrl,proto3" json:"media_url,omitempty"`
+	ExpireTime string `protobuf:"bytes,1,opt,name=expire_time,json=expireTime,proto3" json:"expire_time"`
+	CreateTime string `protobuf:"bytes,2,opt,name=create_time,json=createTime,proto3" json:"create_time"`
+	MediaUrl   string `protobuf:"bytes,3,opt,name=media_url,json=mediaUrl,proto3" json:"media_url"`
 }
 
 func (x *WxappLiveReplay) Reset() {
@@ -516,11 +519,11 @@ type WxappRoomResponse struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	Entity *WxappRoom    `protobuf:"bytes,1,opt,name=entity,proto3" json:"entity,omitempty"`
-	Pager  *common.Pager `protobuf:"bytes,2,opt,name=pager,proto3" json:"pager,omitempty"`
-	Items  []*WxappRoom  `protobuf:"bytes,3,rep,name=items,proto3" json:"items,omitempty"`
-	Error  *common.Error `protobuf:"bytes,4,opt,name=error,proto3" json:"error,omitempty"`
-	Info   *common.Info  `protobuf:"bytes,5,opt,name=info,proto3" json:"info,omitempty"`
+	Entity *WxappRoom    `protobuf:"bytes,1,opt,name=entity,proto3" json:"entity"`
+	Pager  *common.Pager `protobuf:"bytes,2,opt,name=pager,proto3" json:"pager"`
+	Items  []*WxappRoom  `protobuf:"bytes,3,rep,name=items,proto3" json:"items"`
+	Error  *common.Error `protobuf:"bytes,4,opt,name=error,proto3" json:"error"`
+	Info   *common.Info  `protobuf:"bytes,5,opt,name=info,proto3" json:"info"`
 }
 
 func (x *WxappRoomResponse) Reset() {
@@ -595,9 +598,9 @@ type WxappRoomCreateOrUpdateResponse struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	Entity *WxappRoomCreateOrUpdate `protobuf:"bytes,1,opt,name=entity,proto3" json:"entity,omitempty"`
-	Error  *common.Error            `protobuf:"bytes,2,opt,name=error,proto3" json:"error,omitempty"`
-	Info   *common.Info             `protobuf:"bytes,3,opt,name=info,proto3" json:"info,omitempty"`
+	Entity *WxappRoomCreateOrUpdate `protobuf:"bytes,1,opt,name=entity,proto3" json:"entity"`
+	Error  *common.Error            `protobuf:"bytes,2,opt,name=error,proto3" json:"error"`
+	Info   *common.Info             `protobuf:"bytes,3,opt,name=info,proto3" json:"info"`
 }
 
 func (x *WxappRoomCreateOrUpdateResponse) Reset() {
@@ -658,11 +661,11 @@ type WxappLiveReplayResponse struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	Entity *WxappLiveReplay   `protobuf:"bytes,1,opt,name=entity,proto3" json:"entity,omitempty"`
-	Pager  *common.Pager      `protobuf:"bytes,2,opt,name=pager,proto3" json:"pager,omitempty"`
-	Items  []*WxappLiveReplay `protobuf:"bytes,3,rep,name=items,proto3" json:"items,omitempty"`
-	Error  *common.Error      `protobuf:"bytes,4,opt,name=error,proto3" json:"error,omitempty"`
-	Info   *common.Info       `protobuf:"bytes,5,opt,name=info,proto3" json:"info,omitempty"`
+	Entity *WxappLiveReplay   `protobuf:"bytes,1,opt,name=entity,proto3" json:"entity"`
+	Pager  *common.Pager      `protobuf:"bytes,2,opt,name=pager,proto3" json:"pager"`
+	Items  []*WxappLiveReplay `protobuf:"bytes,3,rep,name=items,proto3" json:"items"`
+	Error  *common.Error      `protobuf:"bytes,4,opt,name=error,proto3" json:"error"`
+	Info   *common.Info       `protobuf:"bytes,5,opt,name=info,proto3" json:"info"`
 }
 
 func (x *WxappLiveReplayResponse) Reset() {

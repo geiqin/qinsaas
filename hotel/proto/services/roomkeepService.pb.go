@@ -31,14 +31,15 @@ type RoomKeepWhere struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	Paged       int32   `protobuf:"varint,1,opt,name=paged,proto3" json:"paged,omitempty"`
-	PageSize    int32   `protobuf:"varint,2,opt,name=page_size,json=pageSize,proto3" json:"page_size,omitempty"`
-	RoomTypeId  int64   `protobuf:"varint,3,opt,name=room_type_id,json=roomTypeId,proto3" json:"room_type_id,omitempty"`
-	RoomId      int64   `protobuf:"varint,4,opt,name=room_id,json=roomId,proto3" json:"room_id,omitempty"`
-	Date        string  `protobuf:"bytes,5,opt,name=date,proto3" json:"date,omitempty"`
-	StartDate   string  `protobuf:"bytes,6,opt,name=start_date,json=startDate,proto3" json:"start_date,omitempty"`
-	EndDate     string  `protobuf:"bytes,7,opt,name=end_date,json=endDate,proto3" json:"end_date,omitempty"`
-	RoomTypeIds []int64 `protobuf:"varint,8,rep,packed,name=room_type_ids,json=roomTypeIds,proto3" json:"room_type_ids,omitempty"`
+	Paged      int32  `protobuf:"varint,1,opt,name=paged,proto3" json:"paged"`
+	PageSize   int32  `protobuf:"varint,2,opt,name=page_size,json=pageSize,proto3" json:"page_size"`
+	RoomTypeId int64  `protobuf:"varint,3,opt,name=room_type_id,json=roomTypeId,proto3" json:"room_type_id"`
+	RoomId     int64  `protobuf:"varint,4,opt,name=room_id,json=roomId,proto3" json:"room_id"`
+	Date       string `protobuf:"bytes,5,opt,name=date,proto3" json:"date"`
+	StartDate  string `protobuf:"bytes,6,opt,name=start_date,json=startDate,proto3" json:"start_date"`
+	EndDate    string `protobuf:"bytes,7,opt,name=end_date,json=endDate,proto3" json:"end_date"`
+	// @inject_tag: gorm:"-"
+	RoomTypeIds []int64 `protobuf:"varint,8,rep,packed,name=room_type_ids,json=roomTypeIds,proto3" json:"room_type_ids" gorm:"-"`
 }
 
 func (x *RoomKeepWhere) Reset() {
@@ -134,19 +135,20 @@ type RoomKeep struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	Id          int64   `protobuf:"varint,1,opt,name=id,proto3" json:"id,omitempty"`
-	RoomTypeId  int64   `protobuf:"varint,2,opt,name=room_type_id,json=roomTypeId,proto3" json:"room_type_id,omitempty"`
-	RoomId      int64   `protobuf:"varint,3,opt,name=room_id,json=roomId,proto3" json:"room_id,omitempty"`
-	Date        string  `protobuf:"bytes,4,opt,name=date,proto3" json:"date,omitempty"`
-	StartDate   string  `protobuf:"bytes,5,opt,name=start_date,json=startDate,proto3" json:"start_date,omitempty"`
-	EndDate     string  `protobuf:"bytes,6,opt,name=end_date,json=endDate,proto3" json:"end_date,omitempty"`
-	RepeatType  int32   `protobuf:"varint,7,opt,name=repeat_type,json=repeatType,proto3" json:"repeat_type,omitempty"`   // 重复类型: 1-按天, 2-按周
-	RepeatWeeks string  `protobuf:"bytes,8,opt,name=repeat_weeks,json=repeatWeeks,proto3" json:"repeat_weeks,omitempty"` // 重复的星期, 用逗号隔开, 如: 0(周天),1,2,3,4,5,6
-	Status      int32   `protobuf:"varint,9,opt,name=status,proto3" json:"status,omitempty"`
-	Memo        string  `protobuf:"bytes,10,opt,name=memo,proto3" json:"memo,omitempty"`
-	CreatedAt   string  `protobuf:"bytes,11,opt,name=created_at,json=createdAt,proto3" json:"created_at,omitempty"`
-	UpdatedAt   string  `protobuf:"bytes,12,opt,name=updated_at,json=updatedAt,proto3" json:"updated_at,omitempty"`
-	RoomTypeIds []int64 `protobuf:"varint,13,rep,packed,name=room_type_ids,json=roomTypeIds,proto3" json:"room_type_ids,omitempty"`
+	Id          int64  `protobuf:"varint,1,opt,name=id,proto3" json:"id"`
+	RoomTypeId  int64  `protobuf:"varint,2,opt,name=room_type_id,json=roomTypeId,proto3" json:"room_type_id"`
+	RoomId      int64  `protobuf:"varint,3,opt,name=room_id,json=roomId,proto3" json:"room_id"`
+	Date        string `protobuf:"bytes,4,opt,name=date,proto3" json:"date"`
+	StartDate   string `protobuf:"bytes,5,opt,name=start_date,json=startDate,proto3" json:"start_date"`
+	EndDate     string `protobuf:"bytes,6,opt,name=end_date,json=endDate,proto3" json:"end_date"`
+	RepeatType  int32  `protobuf:"varint,7,opt,name=repeat_type,json=repeatType,proto3" json:"repeat_type"`   // 重复类型: 1-按天, 2-按周
+	RepeatWeeks string `protobuf:"bytes,8,opt,name=repeat_weeks,json=repeatWeeks,proto3" json:"repeat_weeks"` // 重复的星期, 用逗号隔开, 如: 0(周天),1,2,3,4,5,6
+	Status      int32  `protobuf:"varint,9,opt,name=status,proto3" json:"status"`
+	Memo        string `protobuf:"bytes,10,opt,name=memo,proto3" json:"memo"`
+	CreatedAt   string `protobuf:"bytes,11,opt,name=created_at,json=createdAt,proto3" json:"created_at"`
+	UpdatedAt   string `protobuf:"bytes,12,opt,name=updated_at,json=updatedAt,proto3" json:"updated_at"`
+	// @inject_tag: gorm:"-"
+	RoomTypeIds []int64 `protobuf:"varint,13,rep,packed,name=room_type_ids,json=roomTypeIds,proto3" json:"room_type_ids" gorm:"-"`
 }
 
 func (x *RoomKeep) Reset() {
@@ -277,11 +279,11 @@ type RoomKeepResponse struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	Error  *common.Error `protobuf:"bytes,1,opt,name=error,proto3" json:"error,omitempty"`
-	Info   *common.Info  `protobuf:"bytes,2,opt,name=info,proto3" json:"info,omitempty"`
-	Pager  *common.Pager `protobuf:"bytes,3,opt,name=pager,proto3" json:"pager,omitempty"`
-	Entity *RoomKeep     `protobuf:"bytes,4,opt,name=entity,proto3" json:"entity,omitempty"`
-	Items  []*RoomKeep   `protobuf:"bytes,5,rep,name=items,proto3" json:"items,omitempty"`
+	Error  *common.Error `protobuf:"bytes,1,opt,name=error,proto3" json:"error"`
+	Info   *common.Info  `protobuf:"bytes,2,opt,name=info,proto3" json:"info"`
+	Pager  *common.Pager `protobuf:"bytes,3,opt,name=pager,proto3" json:"pager"`
+	Entity *RoomKeep     `protobuf:"bytes,4,opt,name=entity,proto3" json:"entity"`
+	Items  []*RoomKeep   `protobuf:"bytes,5,rep,name=items,proto3" json:"items"`
 }
 
 func (x *RoomKeepResponse) Reset() {

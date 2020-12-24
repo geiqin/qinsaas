@@ -31,17 +31,19 @@ type CheckWhere struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	Paged     int32   `protobuf:"varint,1,opt,name=paged,proto3" json:"paged,omitempty"`
-	PageSize  int32   `protobuf:"varint,2,opt,name=page_size,json=pageSize,proto3" json:"page_size,omitempty"`
-	Id        int64   `protobuf:"varint,3,opt,name=id,proto3" json:"id,omitempty"`
-	Ids       []int64 `protobuf:"varint,4,rep,packed,name=ids,proto3" json:"ids,omitempty"`
-	Type      string  `protobuf:"bytes,5,opt,name=type,proto3" json:"type,omitempty"`
-	SheetType int32   `protobuf:"varint,6,opt,name=sheet_type,json=sheetType,proto3" json:"sheet_type,omitempty"`
-	Status    int32   `protobuf:"varint,7,opt,name=status,proto3" json:"status,omitempty"`
-	Ok        bool    `protobuf:"varint,8,opt,name=ok,proto3" json:"ok,omitempty"`
-	Failure   string  `protobuf:"bytes,9,opt,name=failure,proto3" json:"failure,omitempty"`
-	CheckId   int64   `protobuf:"varint,10,opt,name=check_id,json=checkId,proto3" json:"check_id,omitempty"`
-	CheckIds  []int64 `protobuf:"varint,11,rep,packed,name=check_ids,json=checkIds,proto3" json:"check_ids,omitempty"`
+	Paged    int32 `protobuf:"varint,1,opt,name=paged,proto3" json:"paged"`
+	PageSize int32 `protobuf:"varint,2,opt,name=page_size,json=pageSize,proto3" json:"page_size"`
+	Id       int64 `protobuf:"varint,3,opt,name=id,proto3" json:"id"`
+	// @inject_tag: gorm:"-"
+	Ids       []int64 `protobuf:"varint,4,rep,packed,name=ids,proto3" json:"ids" gorm:"-"`
+	Type      string  `protobuf:"bytes,5,opt,name=type,proto3" json:"type"`
+	SheetType int32   `protobuf:"varint,6,opt,name=sheet_type,json=sheetType,proto3" json:"sheet_type"`
+	Status    int32   `protobuf:"varint,7,opt,name=status,proto3" json:"status"`
+	Ok        bool    `protobuf:"varint,8,opt,name=ok,proto3" json:"ok"`
+	Failure   string  `protobuf:"bytes,9,opt,name=failure,proto3" json:"failure"`
+	CheckId   int64   `protobuf:"varint,10,opt,name=check_id,json=checkId,proto3" json:"check_id"`
+	// @inject_tag: gorm:"-"
+	CheckIds []int64 `protobuf:"varint,11,rep,packed,name=check_ids,json=checkIds,proto3" json:"check_ids" gorm:"-"`
 }
 
 func (x *CheckWhere) Reset() {
@@ -158,17 +160,18 @@ type Check struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	Id            int64          `protobuf:"varint,1,opt,name=id,proto3" json:"id,omitempty"`
-	CheckSn       string         `protobuf:"bytes,2,opt,name=check_sn,json=checkSn,proto3" json:"check_sn,omitempty"`
-	UserId        int32          `protobuf:"varint,3,opt,name=user_id,json=userId,proto3" json:"user_id,omitempty"`
-	Memo          string         `protobuf:"bytes,4,opt,name=memo,proto3" json:"memo,omitempty"`
-	RowTotal      int32          `protobuf:"varint,5,opt,name=row_total,json=rowTotal,proto3" json:"row_total,omitempty"`
-	QuantityTotal int32          `protobuf:"varint,6,opt,name=quantity_total,json=quantityTotal,proto3" json:"quantity_total,omitempty"`
-	Status        int32          `protobuf:"varint,7,opt,name=status,proto3" json:"status,omitempty"`
-	Failure       string         `protobuf:"bytes,8,opt,name=failure,proto3" json:"failure,omitempty"`
-	CreatedAt     string         `protobuf:"bytes,9,opt,name=created_at,json=createdAt,proto3" json:"created_at,omitempty"`
-	UpdatedAt     string         `protobuf:"bytes,10,opt,name=updated_at,json=updatedAt,proto3" json:"updated_at,omitempty"`
-	Details       []*CheckDetail `protobuf:"bytes,11,rep,name=details,proto3" json:"details,omitempty"`
+	Id            int64  `protobuf:"varint,1,opt,name=id,proto3" json:"id"`
+	CheckSn       string `protobuf:"bytes,2,opt,name=check_sn,json=checkSn,proto3" json:"check_sn"`
+	UserId        int32  `protobuf:"varint,3,opt,name=user_id,json=userId,proto3" json:"user_id"`
+	Memo          string `protobuf:"bytes,4,opt,name=memo,proto3" json:"memo"`
+	RowTotal      int32  `protobuf:"varint,5,opt,name=row_total,json=rowTotal,proto3" json:"row_total"`
+	QuantityTotal int32  `protobuf:"varint,6,opt,name=quantity_total,json=quantityTotal,proto3" json:"quantity_total"`
+	Status        int32  `protobuf:"varint,7,opt,name=status,proto3" json:"status"`
+	Failure       string `protobuf:"bytes,8,opt,name=failure,proto3" json:"failure"`
+	CreatedAt     string `protobuf:"bytes,9,opt,name=created_at,json=createdAt,proto3" json:"created_at"`
+	UpdatedAt     string `protobuf:"bytes,10,opt,name=updated_at,json=updatedAt,proto3" json:"updated_at"`
+	// @inject_tag: gorm:"foreignKey:CheckId"
+	Details []*CheckDetail `protobuf:"bytes,11,rep,name=details,proto3" json:"details" gorm:"foreignKey:CheckId"`
 }
 
 func (x *Check) Reset() {
@@ -285,11 +288,11 @@ type CheckResponse struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	Entity *Check        `protobuf:"bytes,1,opt,name=entity,proto3" json:"entity,omitempty"`
-	Pager  *common.Pager `protobuf:"bytes,2,opt,name=pager,proto3" json:"pager,omitempty"`
-	Items  []*Check      `protobuf:"bytes,3,rep,name=items,proto3" json:"items,omitempty"`
-	Error  *common.Error `protobuf:"bytes,4,opt,name=error,proto3" json:"error,omitempty"`
-	Info   *common.Info  `protobuf:"bytes,5,opt,name=info,proto3" json:"info,omitempty"`
+	Entity *Check        `protobuf:"bytes,1,opt,name=entity,proto3" json:"entity"`
+	Pager  *common.Pager `protobuf:"bytes,2,opt,name=pager,proto3" json:"pager"`
+	Items  []*Check      `protobuf:"bytes,3,rep,name=items,proto3" json:"items"`
+	Error  *common.Error `protobuf:"bytes,4,opt,name=error,proto3" json:"error"`
+	Info   *common.Info  `protobuf:"bytes,5,opt,name=info,proto3" json:"info"`
 }
 
 func (x *CheckResponse) Reset() {

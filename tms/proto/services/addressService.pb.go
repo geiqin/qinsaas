@@ -31,14 +31,15 @@ type AddressWhere struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	Paged     int32   `protobuf:"varint,1,opt,name=paged,proto3" json:"paged,omitempty"`
-	PageSize  int32   `protobuf:"varint,2,opt,name=page_size,json=pageSize,proto3" json:"page_size,omitempty"`
-	Sorting   string  `protobuf:"bytes,3,opt,name=sorting,proto3" json:"sorting,omitempty"`
-	Keywords  string  `protobuf:"bytes,4,opt,name=keywords,proto3" json:"keywords,omitempty"`
-	Id        int64   `protobuf:"varint,5,opt,name=id,proto3" json:"id,omitempty"`
-	Ids       []int64 `protobuf:"varint,6,rep,packed,name=ids,proto3" json:"ids,omitempty"`
-	Type      int32   `protobuf:"varint,7,opt,name=type,proto3" json:"type,omitempty"`
-	IsDefault bool    `protobuf:"varint,8,opt,name=is_default,json=isDefault,proto3" json:"is_default,omitempty"`
+	Paged    int32  `protobuf:"varint,1,opt,name=paged,proto3" json:"paged"`
+	PageSize int32  `protobuf:"varint,2,opt,name=page_size,json=pageSize,proto3" json:"page_size"`
+	Sorting  string `protobuf:"bytes,3,opt,name=sorting,proto3" json:"sorting"`
+	Keywords string `protobuf:"bytes,4,opt,name=keywords,proto3" json:"keywords"`
+	Id       int64  `protobuf:"varint,5,opt,name=id,proto3" json:"id"`
+	// @inject_tag: gorm:"-"
+	Ids       []int64 `protobuf:"varint,6,rep,packed,name=ids,proto3" json:"ids" gorm:"-"`
+	Type      int32   `protobuf:"varint,7,opt,name=type,proto3" json:"type"`
+	IsDefault bool    `protobuf:"varint,8,opt,name=is_default,json=isDefault,proto3" json:"is_default"`
 }
 
 func (x *AddressWhere) Reset() {
@@ -134,18 +135,20 @@ type Address struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	Id           int64          `protobuf:"varint,1,opt,name=id,proto3" json:"id,omitempty"`
-	AreaId       int64          `protobuf:"varint,2,opt,name=area_id,json=areaId,proto3" json:"area_id,omitempty"`
-	Addr         string         `protobuf:"bytes,3,opt,name=addr,proto3" json:"addr,omitempty"`
-	Lng          string         `protobuf:"bytes,4,opt,name=lng,proto3" json:"lng,omitempty"`
-	Lat          string         `protobuf:"bytes,5,opt,name=lat,proto3" json:"lat,omitempty"`
-	Contact      string         `protobuf:"bytes,6,opt,name=contact,proto3" json:"contact,omitempty"`
-	Tel          string         `protobuf:"bytes,7,opt,name=tel,proto3" json:"tel,omitempty"`
-	Mobile       string         `protobuf:"bytes,8,opt,name=mobile,proto3" json:"mobile,omitempty"`
-	CreatedAt    string         `protobuf:"bytes,9,opt,name=created_at,json=createdAt,proto3" json:"created_at,omitempty"`
-	UpdatedAt    string         `protobuf:"bytes,10,opt,name=updated_at,json=updatedAt,proto3" json:"updated_at,omitempty"`
-	Area         *AreaInfo      `protobuf:"bytes,11,opt,name=area,proto3" json:"area,omitempty"`
-	AddressTypes []*AddressType `protobuf:"bytes,12,rep,name=address_types,json=addressTypes,proto3" json:"address_types,omitempty"`
+	Id        int64  `protobuf:"varint,1,opt,name=id,proto3" json:"id"`
+	AreaId    int64  `protobuf:"varint,2,opt,name=area_id,json=areaId,proto3" json:"area_id"`
+	Addr      string `protobuf:"bytes,3,opt,name=addr,proto3" json:"addr"`
+	Lng       string `protobuf:"bytes,4,opt,name=lng,proto3" json:"lng"`
+	Lat       string `protobuf:"bytes,5,opt,name=lat,proto3" json:"lat"`
+	Contact   string `protobuf:"bytes,6,opt,name=contact,proto3" json:"contact"`
+	Tel       string `protobuf:"bytes,7,opt,name=tel,proto3" json:"tel"`
+	Mobile    string `protobuf:"bytes,8,opt,name=mobile,proto3" json:"mobile"`
+	CreatedAt string `protobuf:"bytes,9,opt,name=created_at,json=createdAt,proto3" json:"created_at"`
+	UpdatedAt string `protobuf:"bytes,10,opt,name=updated_at,json=updatedAt,proto3" json:"updated_at"`
+	// @inject_tag: gorm:"-"
+	Area *AreaInfo `protobuf:"bytes,11,opt,name=area,proto3" json:"area" gorm:"-"`
+	// @inject_tag: gorm:"foreignKey:AddressId"
+	AddressTypes []*AddressType `protobuf:"bytes,12,rep,name=address_types,json=addressTypes,proto3" json:"address_types" gorm:"foreignKey:AddressId"`
 }
 
 func (x *Address) Reset() {
@@ -269,11 +272,11 @@ type AddressResponse struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	Entity *Address      `protobuf:"bytes,1,opt,name=entity,proto3" json:"entity,omitempty"`
-	Pager  *common.Pager `protobuf:"bytes,2,opt,name=pager,proto3" json:"pager,omitempty"`
-	Items  []*Address    `protobuf:"bytes,3,rep,name=items,proto3" json:"items,omitempty"`
-	Error  *common.Error `protobuf:"bytes,4,opt,name=error,proto3" json:"error,omitempty"`
-	Info   *common.Info  `protobuf:"bytes,5,opt,name=info,proto3" json:"info,omitempty"`
+	Entity *Address      `protobuf:"bytes,1,opt,name=entity,proto3" json:"entity"`
+	Pager  *common.Pager `protobuf:"bytes,2,opt,name=pager,proto3" json:"pager"`
+	Items  []*Address    `protobuf:"bytes,3,rep,name=items,proto3" json:"items"`
+	Error  *common.Error `protobuf:"bytes,4,opt,name=error,proto3" json:"error"`
+	Info   *common.Info  `protobuf:"bytes,5,opt,name=info,proto3" json:"info"`
 }
 
 func (x *AddressResponse) Reset() {

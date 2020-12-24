@@ -30,10 +30,10 @@ type AddressType struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	Id        int64 `protobuf:"varint,1,opt,name=id,proto3" json:"id,omitempty"`
-	AddressId int64 `protobuf:"varint,2,opt,name=address_id,json=addressId,proto3" json:"address_id,omitempty"`
-	Type      int32 `protobuf:"varint,3,opt,name=type,proto3" json:"type,omitempty"`
-	IsDefault bool  `protobuf:"varint,4,opt,name=is_default,json=isDefault,proto3" json:"is_default,omitempty"`
+	Id        int64 `protobuf:"varint,1,opt,name=id,proto3" json:"id"`
+	AddressId int64 `protobuf:"varint,2,opt,name=address_id,json=addressId,proto3" json:"address_id"`
+	Type      int32 `protobuf:"varint,3,opt,name=type,proto3" json:"type"`
+	IsDefault bool  `protobuf:"varint,4,opt,name=is_default,json=isDefault,proto3" json:"is_default"`
 }
 
 func (x *AddressType) Reset() {

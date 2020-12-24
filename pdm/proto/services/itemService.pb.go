@@ -31,67 +31,77 @@ type Item struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	Id                int64   `protobuf:"varint,1,opt,name=id,proto3" json:"id,omitempty"`
-	Name              string  `protobuf:"bytes,2,opt,name=name,proto3" json:"name,omitempty"`
-	Unit              string  `protobuf:"bytes,3,opt,name=unit,proto3" json:"unit,omitempty"`
-	ItemSn            string  `protobuf:"bytes,4,opt,name=item_sn,json=itemSn,proto3" json:"item_sn,omitempty"`
-	BrandId           int32   `protobuf:"varint,5,opt,name=brand_id,json=brandId,proto3" json:"brand_id,omitempty"`
-	TaxonomyId        int64   `protobuf:"varint,6,opt,name=taxonomy_id,json=taxonomyId,proto3" json:"taxonomy_id,omitempty"`
-	BuyQuota          int32   `protobuf:"varint,7,opt,name=buy_quota,json=buyQuota,proto3" json:"buy_quota,omitempty"`
-	Quantity          int32   `protobuf:"varint,8,opt,name=quantity,proto3" json:"quantity,omitempty"`
-	SoldNum           int32   `protobuf:"varint,9,opt,name=sold_num,json=soldNum,proto3" json:"sold_num,omitempty"`
-	InitSoldNum       int32   `protobuf:"varint,10,opt,name=init_sold_num,json=initSoldNum,proto3" json:"init_sold_num,omitempty"`
-	ModelType         string  `protobuf:"bytes,11,opt,name=model_type,json=modelType,proto3" json:"model_type,omitempty"`
-	Listed            bool    `protobuf:"varint,12,opt,name=listed,proto3" json:"listed,omitempty"`
-	Locked            bool    `protobuf:"varint,13,opt,name=locked,proto3" json:"locked,omitempty"`
-	HideStock         bool    `protobuf:"varint,14,opt,name=hide_stock,json=hideStock,proto3" json:"hide_stock,omitempty"`
-	JoinLevelDiscount bool    `protobuf:"varint,15,opt,name=join_level_discount,json=joinLevelDiscount,proto3" json:"join_level_discount,omitempty"`
-	PurchaseRight     bool    `protobuf:"varint,16,opt,name=purchase_right,json=purchaseRight,proto3" json:"purchase_right,omitempty"`
-	AutoListingTime   string  `protobuf:"bytes,17,opt,name=auto_listing_time,json=autoListingTime,proto3" json:"auto_listing_time,omitempty"`
-	OutItemNo         string  `protobuf:"bytes,18,opt,name=out_item_no,json=outItemNo,proto3" json:"out_item_no,omitempty"`
-	Content           string  `protobuf:"bytes,19,opt,name=content,proto3" json:"content,omitempty"`
-	Summary           string  `protobuf:"bytes,20,opt,name=summary,proto3" json:"summary,omitempty"`
-	SellingPoint      string  `protobuf:"bytes,21,opt,name=selling_point,json=sellingPoint,proto3" json:"selling_point,omitempty"`
-	MinBuy            int32   `protobuf:"varint,22,opt,name=min_buy,json=minBuy,proto3" json:"min_buy,omitempty"`
-	NostoreSell       bool    `protobuf:"varint,23,opt,name=nostore_sell,json=nostoreSell,proto3" json:"nostore_sell,omitempty"`
-	ThumbId           int64   `protobuf:"varint,24,opt,name=thumb_id,json=thumbId,proto3" json:"thumb_id,omitempty"`
-	ThumbUrl          string  `protobuf:"bytes,25,opt,name=thumb_url,json=thumbUrl,proto3" json:"thumb_url,omitempty"`
-	TemplateId        int32   `protobuf:"varint,26,opt,name=template_id,json=templateId,proto3" json:"template_id,omitempty"`
-	Barcode           string  `protobuf:"bytes,27,opt,name=barcode,proto3" json:"barcode,omitempty"`
-	Price             float32 `protobuf:"fixed32,28,opt,name=price,proto3" json:"price,omitempty"`
-	OriginPrice       float32 `protobuf:"fixed32,29,opt,name=origin_price,json=originPrice,proto3" json:"origin_price,omitempty"`
-	CostPrice         float32 `protobuf:"fixed32,30,opt,name=cost_price,json=costPrice,proto3" json:"cost_price,omitempty"`
-	MinPrice          float32 `protobuf:"fixed32,31,opt,name=min_price,json=minPrice,proto3" json:"min_price,omitempty"`
-	MaxPrice          float32 `protobuf:"fixed32,32,opt,name=max_price,json=maxPrice,proto3" json:"max_price,omitempty"`
-	Weight            float32 `protobuf:"fixed32,33,opt,name=weight,proto3" json:"weight,omitempty"`
-	ReviewNum         int32   `protobuf:"varint,34,opt,name=review_num,json=reviewNum,proto3" json:"review_num,omitempty"`
-	ViewCount         int32   `protobuf:"varint,35,opt,name=view_count,json=viewCount,proto3" json:"view_count,omitempty"`
-	BuyCount          int32   `protobuf:"varint,36,opt,name=buy_count,json=buyCount,proto3" json:"buy_count,omitempty"`
-	Sorting           int32   `protobuf:"varint,37,opt,name=sorting,proto3" json:"sorting,omitempty"`
-	ListedAt          string  `protobuf:"bytes,38,opt,name=listed_at,json=listedAt,proto3" json:"listed_at,omitempty"`
-	CreatedAt         string  `protobuf:"bytes,39,opt,name=created_at,json=createdAt,proto3" json:"created_at,omitempty"`
-	UpdatedAt         string  `protobuf:"bytes,40,opt,name=updated_at,json=updatedAt,proto3" json:"updated_at,omitempty"`
-	Brand             *Brand  `protobuf:"bytes,41,opt,name=brand,proto3" json:"brand,omitempty"`
+	Id                int64   `protobuf:"varint,1,opt,name=id,proto3" json:"id"`
+	Name              string  `protobuf:"bytes,2,opt,name=name,proto3" json:"name"`
+	Unit              string  `protobuf:"bytes,3,opt,name=unit,proto3" json:"unit"`
+	ItemSn            string  `protobuf:"bytes,4,opt,name=item_sn,json=itemSn,proto3" json:"item_sn"`
+	BrandId           int32   `protobuf:"varint,5,opt,name=brand_id,json=brandId,proto3" json:"brand_id"`
+	TaxonomyId        int64   `protobuf:"varint,6,opt,name=taxonomy_id,json=taxonomyId,proto3" json:"taxonomy_id"`
+	BuyQuota          int32   `protobuf:"varint,7,opt,name=buy_quota,json=buyQuota,proto3" json:"buy_quota"`
+	Quantity          int32   `protobuf:"varint,8,opt,name=quantity,proto3" json:"quantity"`
+	SoldNum           int32   `protobuf:"varint,9,opt,name=sold_num,json=soldNum,proto3" json:"sold_num"`
+	InitSoldNum       int32   `protobuf:"varint,10,opt,name=init_sold_num,json=initSoldNum,proto3" json:"init_sold_num"`
+	ModelType         string  `protobuf:"bytes,11,opt,name=model_type,json=modelType,proto3" json:"model_type"`
+	Listed            bool    `protobuf:"varint,12,opt,name=listed,proto3" json:"listed"`
+	Locked            bool    `protobuf:"varint,13,opt,name=locked,proto3" json:"locked"`
+	HideStock         bool    `protobuf:"varint,14,opt,name=hide_stock,json=hideStock,proto3" json:"hide_stock"`
+	JoinLevelDiscount bool    `protobuf:"varint,15,opt,name=join_level_discount,json=joinLevelDiscount,proto3" json:"join_level_discount"`
+	PurchaseRight     bool    `protobuf:"varint,16,opt,name=purchase_right,json=purchaseRight,proto3" json:"purchase_right"`
+	AutoListingTime   string  `protobuf:"bytes,17,opt,name=auto_listing_time,json=autoListingTime,proto3" json:"auto_listing_time"`
+	OutItemNo         string  `protobuf:"bytes,18,opt,name=out_item_no,json=outItemNo,proto3" json:"out_item_no"`
+	Content           string  `protobuf:"bytes,19,opt,name=content,proto3" json:"content"`
+	Summary           string  `protobuf:"bytes,20,opt,name=summary,proto3" json:"summary"`
+	SellingPoint      string  `protobuf:"bytes,21,opt,name=selling_point,json=sellingPoint,proto3" json:"selling_point"`
+	MinBuy            int32   `protobuf:"varint,22,opt,name=min_buy,json=minBuy,proto3" json:"min_buy"`
+	NostoreSell       bool    `protobuf:"varint,23,opt,name=nostore_sell,json=nostoreSell,proto3" json:"nostore_sell"`
+	ThumbId           int64   `protobuf:"varint,24,opt,name=thumb_id,json=thumbId,proto3" json:"thumb_id"`
+	ThumbUrl          string  `protobuf:"bytes,25,opt,name=thumb_url,json=thumbUrl,proto3" json:"thumb_url"`
+	TemplateId        int32   `protobuf:"varint,26,opt,name=template_id,json=templateId,proto3" json:"template_id"`
+	Barcode           string  `protobuf:"bytes,27,opt,name=barcode,proto3" json:"barcode"`
+	Price             float32 `protobuf:"fixed32,28,opt,name=price,proto3" json:"price"`
+	OriginPrice       float32 `protobuf:"fixed32,29,opt,name=origin_price,json=originPrice,proto3" json:"origin_price"`
+	CostPrice         float32 `protobuf:"fixed32,30,opt,name=cost_price,json=costPrice,proto3" json:"cost_price"`
+	MinPrice          float32 `protobuf:"fixed32,31,opt,name=min_price,json=minPrice,proto3" json:"min_price"`
+	MaxPrice          float32 `protobuf:"fixed32,32,opt,name=max_price,json=maxPrice,proto3" json:"max_price"`
+	Weight            float32 `protobuf:"fixed32,33,opt,name=weight,proto3" json:"weight"`
+	ReviewNum         int32   `protobuf:"varint,34,opt,name=review_num,json=reviewNum,proto3" json:"review_num"`
+	ViewCount         int32   `protobuf:"varint,35,opt,name=view_count,json=viewCount,proto3" json:"view_count"`
+	BuyCount          int32   `protobuf:"varint,36,opt,name=buy_count,json=buyCount,proto3" json:"buy_count"`
+	Sorting           int32   `protobuf:"varint,37,opt,name=sorting,proto3" json:"sorting"`
+	ListedAt          string  `protobuf:"bytes,38,opt,name=listed_at,json=listedAt,proto3" json:"listed_at"`
+	CreatedAt         string  `protobuf:"bytes,39,opt,name=created_at,json=createdAt,proto3" json:"created_at"`
+	UpdatedAt         string  `protobuf:"bytes,40,opt,name=updated_at,json=updatedAt,proto3" json:"updated_at"`
+	// @inject_tag: gorm:"-"
+	Brand *Brand `protobuf:"bytes,41,opt,name=brand,proto3" json:"brand" gorm:"-"`
 	// @inject_tag: gorm:"many2many:item_cats;"
-	Cats []*Cat `protobuf:"bytes,42,rep,name=cats,proto3" json:"cats,omitempty" gorm:"many2many:item_cats;"`
+	Cats []*Cat `protobuf:"bytes,42,rep,name=cats,proto3" json:"cats" gorm:"many2many:item_cats;"`
 	// @inject_tag: gorm:"many2many:item_tags;"
-	Tags        []*Tag           `protobuf:"bytes,43,rep,name=tags,proto3" json:"tags,omitempty" gorm:"many2many:item_tags;"`
-	Skus        []*Sku           `protobuf:"bytes,44,rep,name=skus,proto3" json:"skus,omitempty"`
-	Galleries   []*ItemGallery   `protobuf:"bytes,45,rep,name=galleries,proto3" json:"galleries,omitempty"`
-	Prices      []*ItemPrice     `protobuf:"bytes,46,rep,name=prices,proto3" json:"prices,omitempty"`
-	Rights      []*ItemRight     `protobuf:"bytes,47,rep,name=rights,proto3" json:"rights,omitempty"`
-	SpecIndexes []*SpecItemIndex `protobuf:"bytes,48,rep,name=spec_indexes,json=specIndexes,proto3" json:"spec_indexes,omitempty"` //规格更新专用
-	Ids         []int64          `protobuf:"varint,49,rep,packed,name=ids,proto3" json:"ids,omitempty"`
+	Tags []*Tag `protobuf:"bytes,43,rep,name=tags,proto3" json:"tags" gorm:"many2many:item_tags;"`
+	// @inject_tag: gorm:"foreignKey:ItemId"
+	Skus []*Sku `protobuf:"bytes,44,rep,name=skus,proto3" json:"skus" gorm:"foreignKey:ItemId"`
+	// @inject_tag: gorm:"foreignKey:ItemId"
+	Galleries []*ItemGallery `protobuf:"bytes,45,rep,name=galleries,proto3" json:"galleries" gorm:"foreignKey:ItemId"`
+	// @inject_tag: gorm:"foreignKey:ItemId"
+	Prices []*ItemPrice `protobuf:"bytes,46,rep,name=prices,proto3" json:"prices" gorm:"foreignKey:ItemId"`
+	// @inject_tag: gorm:"foreignKey:ItemId"
+	Rights []*ItemRight `protobuf:"bytes,47,rep,name=rights,proto3" json:"rights" gorm:"foreignKey:ItemId"`
+	// @inject_tag: gorm:"foreignKey:ItemId"
+	SpecIndexes []*SpecItemIndex `protobuf:"bytes,48,rep,name=spec_indexes,json=specIndexes,proto3" json:"spec_indexes" gorm:"foreignKey:ItemId"` //规格更新专用
+	// @inject_tag: gorm:"-"
+	Ids []int64 `protobuf:"varint,49,rep,packed,name=ids,proto3" json:"ids" gorm:"-"`
 	// @inject_tag: gorm:"many2many:spec_item_indices;"
-	Specs       []*Spec      `protobuf:"bytes,50,rep,name=specs,proto3" json:"specs,omitempty" gorm:"many2many:spec_item_indices;"` //(详情显示专用)
-	Skuitem     *Sku         `protobuf:"bytes,51,opt,name=skuitem,proto3" json:"skuitem,omitempty"`                                 //单一规格商品（在购物车，营销活动等场景用到）
-	SkuId       int64        `protobuf:"varint,52,opt,name=sku_id,json=skuId,proto3" json:"sku_id,omitempty"`                       //单一规格商品输入参数（在获取规格商品时使用）
-	IsPresale   bool         `protobuf:"varint,53,opt,name=is_presale,json=isPresale,proto3" json:"is_presale,omitempty"`
-	ItemPresale *ItemPresale `protobuf:"bytes,54,opt,name=item_presale,json=itemPresale,proto3" json:"item_presale,omitempty"`
-	IsSku       bool         `protobuf:"varint,55,opt,name=is_sku,json=isSku,proto3" json:"is_sku,omitempty"` // 是否多规格商品
-	Food        *Food        `protobuf:"bytes,56,opt,name=food,proto3" json:"food,omitempty"`                 // 餐饮商品附加信息
-	VideoId     int64        `protobuf:"varint,57,opt,name=video_id,json=videoId,proto3" json:"video_id,omitempty"`
-	VideoUrl    string       `protobuf:"bytes,58,opt,name=video_url,json=videoUrl,proto3" json:"video_url,omitempty"`
+	Specs []*Spec `protobuf:"bytes,50,rep,name=specs,proto3" json:"specs" gorm:"many2many:spec_item_indices;"` //(详情显示专用)
+	// @inject_tag: gorm:"-"
+	Skuitem   *Sku  `protobuf:"bytes,51,opt,name=skuitem,proto3" json:"skuitem" gorm:"-"`  //单一规格商品（在购物车，营销活动等场景用到）
+	SkuId     int64 `protobuf:"varint,52,opt,name=sku_id,json=skuId,proto3" json:"sku_id"` //单一规格商品输入参数（在获取规格商品时使用）
+	IsPresale bool  `protobuf:"varint,53,opt,name=is_presale,json=isPresale,proto3" json:"is_presale"`
+	// @inject_tag: gorm:"foreignKey:ItemId"
+	ItemPresale *ItemPresale `protobuf:"bytes,54,opt,name=item_presale,json=itemPresale,proto3" json:"item_presale" gorm:"foreignKey:ItemId"`
+	IsSku       bool         `protobuf:"varint,55,opt,name=is_sku,json=isSku,proto3" json:"is_sku"` // 是否多规格商品
+	// @inject_tag: gorm:"-"
+	Food     *Food  `protobuf:"bytes,56,opt,name=food,proto3" json:"food" gorm:"-"` // 餐饮商品附加信息
+	VideoId  int64  `protobuf:"varint,57,opt,name=video_id,json=videoId,proto3" json:"video_id"`
+	VideoUrl string `protobuf:"bytes,58,opt,name=video_url,json=videoUrl,proto3" json:"video_url"`
 }
 
 func (x *Item) Reset() {
@@ -537,8 +547,10 @@ type GoodsWhere struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	ItemIds []int64 `protobuf:"varint,1,rep,packed,name=item_ids,json=itemIds,proto3" json:"item_ids,omitempty"`
-	SkuIds  []int64 `protobuf:"varint,2,rep,packed,name=sku_ids,json=skuIds,proto3" json:"sku_ids,omitempty"`
+	// @inject_tag: gorm:"-"
+	ItemIds []int64 `protobuf:"varint,1,rep,packed,name=item_ids,json=itemIds,proto3" json:"item_ids" gorm:"-"`
+	// @inject_tag: gorm:"-"
+	SkuIds []int64 `protobuf:"varint,2,rep,packed,name=sku_ids,json=skuIds,proto3" json:"sku_ids" gorm:"-"`
 }
 
 func (x *GoodsWhere) Reset() {
@@ -592,32 +604,34 @@ type ItemWhere struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	Paged      int32   `protobuf:"varint,1,opt,name=paged,proto3" json:"paged,omitempty"`
-	PageSize   int32   `protobuf:"varint,2,opt,name=page_size,json=pageSize,proto3" json:"page_size,omitempty"`
-	Sorting    string  `protobuf:"bytes,3,opt,name=sorting,proto3" json:"sorting,omitempty"`
-	Keywords   string  `protobuf:"bytes,4,opt,name=keywords,proto3" json:"keywords,omitempty"`
-	Name       string  `protobuf:"bytes,5,opt,name=name,proto3" json:"name,omitempty"`
-	ItemSn     string  `protobuf:"bytes,6,opt,name=item_sn,json=itemSn,proto3" json:"item_sn,omitempty"`
-	BrandId    int32   `protobuf:"varint,7,opt,name=brand_id,json=brandId,proto3" json:"brand_id,omitempty"`
-	TagId      int32   `protobuf:"varint,8,opt,name=tag_id,json=tagId,proto3" json:"tag_id,omitempty"`
-	CatId      int32   `protobuf:"varint,9,opt,name=cat_id,json=catId,proto3" json:"cat_id,omitempty"`
-	TaxonomyId int64   `protobuf:"varint,10,opt,name=taxonomy_id,json=taxonomyId,proto3" json:"taxonomy_id,omitempty"`
-	MinPrice   float32 `protobuf:"fixed32,11,opt,name=min_price,json=minPrice,proto3" json:"min_price,omitempty"`
-	MaxPrice   float32 `protobuf:"fixed32,12,opt,name=max_price,json=maxPrice,proto3" json:"max_price,omitempty"`
-	ModelType  string  `protobuf:"bytes,13,opt,name=model_type,json=modelType,proto3" json:"model_type,omitempty"`
-	Status     string  `protobuf:"bytes,14,opt,name=status,proto3" json:"status,omitempty"`
-	CouponId   int64   `protobuf:"varint,15,opt,name=coupon_id,json=couponId,proto3" json:"coupon_id,omitempty"`
-	Valid      bool    `protobuf:"varint,16,opt,name=valid,proto3" json:"valid,omitempty"`  // 是否有效商品
-	Invite     string  `protobuf:"bytes,17,opt,name=invite,proto3" json:"invite,omitempty"` // 加密后的邀请码
-	Id         int64   `protobuf:"varint,18,opt,name=id,proto3" json:"id,omitempty"`
-	Ids        []int64 `protobuf:"varint,19,rep,packed,name=ids,proto3" json:"ids,omitempty"`
-	SkuId      int64   `protobuf:"varint,20,opt,name=sku_id,json=skuId,proto3" json:"sku_id,omitempty"` //单一规格商品输入参数（在获取规格商品时使用）
-	CatSlug    string  `protobuf:"bytes,21,opt,name=cat_slug,json=catSlug,proto3" json:"cat_slug,omitempty"`
-	IsSku      bool    `protobuf:"varint,22,opt,name=is_sku,json=isSku,proto3" json:"is_sku,omitempty"`
-	KindType   string  `protobuf:"bytes,23,opt,name=kind_type,json=kindType,proto3" json:"kind_type,omitempty"`      // 菜品类型【餐饮商品】: in-堂食菜品,out-外卖菜品
-	KindId     int64   `protobuf:"varint,24,opt,name=kind_id,json=kindId,proto3" json:"kind_id,omitempty"`           // 菜单ID【餐饮商品】
-	KindIds    []int64 `protobuf:"varint,25,rep,packed,name=kind_ids,json=kindIds,proto3" json:"kind_ids,omitempty"` // 菜单ID集合【餐饮商品】
-	Sort       int32   `protobuf:"varint,26,opt,name=sort,proto3" json:"sort,omitempty"`
+	Paged      int32   `protobuf:"varint,1,opt,name=paged,proto3" json:"paged"`
+	PageSize   int32   `protobuf:"varint,2,opt,name=page_size,json=pageSize,proto3" json:"page_size"`
+	Sorting    string  `protobuf:"bytes,3,opt,name=sorting,proto3" json:"sorting"`
+	Keywords   string  `protobuf:"bytes,4,opt,name=keywords,proto3" json:"keywords"`
+	Name       string  `protobuf:"bytes,5,opt,name=name,proto3" json:"name"`
+	ItemSn     string  `protobuf:"bytes,6,opt,name=item_sn,json=itemSn,proto3" json:"item_sn"`
+	BrandId    int32   `protobuf:"varint,7,opt,name=brand_id,json=brandId,proto3" json:"brand_id"`
+	TagId      int32   `protobuf:"varint,8,opt,name=tag_id,json=tagId,proto3" json:"tag_id"`
+	CatId      int32   `protobuf:"varint,9,opt,name=cat_id,json=catId,proto3" json:"cat_id"`
+	TaxonomyId int64   `protobuf:"varint,10,opt,name=taxonomy_id,json=taxonomyId,proto3" json:"taxonomy_id"`
+	MinPrice   float32 `protobuf:"fixed32,11,opt,name=min_price,json=minPrice,proto3" json:"min_price"`
+	MaxPrice   float32 `protobuf:"fixed32,12,opt,name=max_price,json=maxPrice,proto3" json:"max_price"`
+	ModelType  string  `protobuf:"bytes,13,opt,name=model_type,json=modelType,proto3" json:"model_type"`
+	Status     string  `protobuf:"bytes,14,opt,name=status,proto3" json:"status"`
+	CouponId   int64   `protobuf:"varint,15,opt,name=coupon_id,json=couponId,proto3" json:"coupon_id"`
+	Valid      bool    `protobuf:"varint,16,opt,name=valid,proto3" json:"valid"`  // 是否有效商品
+	Invite     string  `protobuf:"bytes,17,opt,name=invite,proto3" json:"invite"` // 加密后的邀请码
+	Id         int64   `protobuf:"varint,18,opt,name=id,proto3" json:"id"`
+	// @inject_tag: gorm:"-"
+	Ids      []int64 `protobuf:"varint,19,rep,packed,name=ids,proto3" json:"ids" gorm:"-"`
+	SkuId    int64   `protobuf:"varint,20,opt,name=sku_id,json=skuId,proto3" json:"sku_id"` //单一规格商品输入参数（在获取规格商品时使用）
+	CatSlug  string  `protobuf:"bytes,21,opt,name=cat_slug,json=catSlug,proto3" json:"cat_slug"`
+	IsSku    bool    `protobuf:"varint,22,opt,name=is_sku,json=isSku,proto3" json:"is_sku"`
+	KindType string  `protobuf:"bytes,23,opt,name=kind_type,json=kindType,proto3" json:"kind_type"` // 菜品类型【餐饮商品】: in-堂食菜品,out-外卖菜品
+	KindId   int64   `protobuf:"varint,24,opt,name=kind_id,json=kindId,proto3" json:"kind_id"`      // 菜单ID【餐饮商品】
+	// @inject_tag: gorm:"-"
+	KindIds []int64 `protobuf:"varint,25,rep,packed,name=kind_ids,json=kindIds,proto3" json:"kind_ids" gorm:"-"` // 菜单ID集合【餐饮商品】
+	Sort    int32   `protobuf:"varint,26,opt,name=sort,proto3" json:"sort"`
 }
 
 func (x *ItemWhere) Reset() {
@@ -839,11 +853,11 @@ type MemberGoods struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	ItemId         int64   `protobuf:"varint,1,opt,name=item_id,json=itemId,proto3" json:"item_id,omitempty"`
-	SkuId          int64   `protobuf:"varint,2,opt,name=sku_id,json=skuId,proto3" json:"sku_id,omitempty"`
-	MinMemberPrice float32 `protobuf:"fixed32,3,opt,name=min_member_price,json=minMemberPrice,proto3" json:"min_member_price,omitempty"`
-	MaxMemberPrice float32 `protobuf:"fixed32,4,opt,name=max_member_price,json=maxMemberPrice,proto3" json:"max_member_price,omitempty"`
-	Discount       float32 `protobuf:"fixed32,5,opt,name=discount,proto3" json:"discount,omitempty"`
+	ItemId         int64   `protobuf:"varint,1,opt,name=item_id,json=itemId,proto3" json:"item_id"`
+	SkuId          int64   `protobuf:"varint,2,opt,name=sku_id,json=skuId,proto3" json:"sku_id"`
+	MinMemberPrice float32 `protobuf:"fixed32,3,opt,name=min_member_price,json=minMemberPrice,proto3" json:"min_member_price"`
+	MaxMemberPrice float32 `protobuf:"fixed32,4,opt,name=max_member_price,json=maxMemberPrice,proto3" json:"max_member_price"`
+	Discount       float32 `protobuf:"fixed32,5,opt,name=discount,proto3" json:"discount"`
 }
 
 func (x *MemberGoods) Reset() {
@@ -918,11 +932,11 @@ type ItemResponse struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	Entity *Item         `protobuf:"bytes,1,opt,name=entity,proto3" json:"entity,omitempty"`
-	Pager  *common.Pager `protobuf:"bytes,2,opt,name=pager,proto3" json:"pager,omitempty"`
-	Items  []*Item       `protobuf:"bytes,3,rep,name=items,proto3" json:"items,omitempty"`
-	Error  *common.Error `protobuf:"bytes,4,opt,name=error,proto3" json:"error,omitempty"`
-	Info   *common.Info  `protobuf:"bytes,5,opt,name=info,proto3" json:"info,omitempty"`
+	Entity *Item         `protobuf:"bytes,1,opt,name=entity,proto3" json:"entity"`
+	Pager  *common.Pager `protobuf:"bytes,2,opt,name=pager,proto3" json:"pager"`
+	Items  []*Item       `protobuf:"bytes,3,rep,name=items,proto3" json:"items"`
+	Error  *common.Error `protobuf:"bytes,4,opt,name=error,proto3" json:"error"`
+	Info   *common.Info  `protobuf:"bytes,5,opt,name=info,proto3" json:"info"`
 }
 
 func (x *ItemResponse) Reset() {
@@ -997,48 +1011,55 @@ type ItemDisplay struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	Id                    int64          `protobuf:"varint,1,opt,name=id,proto3" json:"id,omitempty"`
-	Name                  string         `protobuf:"bytes,2,opt,name=name,proto3" json:"name,omitempty"`
-	Unit                  string         `protobuf:"bytes,3,opt,name=unit,proto3" json:"unit,omitempty"`
-	ItemSn                string         `protobuf:"bytes,4,opt,name=item_sn,json=itemSn,proto3" json:"item_sn,omitempty"`
-	TaxonomyId            int64          `protobuf:"varint,5,opt,name=taxonomy_id,json=taxonomyId,proto3" json:"taxonomy_id,omitempty"`
-	Quantity              int32          `protobuf:"varint,6,opt,name=quantity,proto3" json:"quantity,omitempty"`
-	SoldNum               int32          `protobuf:"varint,7,opt,name=sold_num,json=soldNum,proto3" json:"sold_num,omitempty"`
-	ModelType             string         `protobuf:"bytes,8,opt,name=model_type,json=modelType,proto3" json:"model_type,omitempty"`
-	HideStock             bool           `protobuf:"varint,9,opt,name=hide_stock,json=hideStock,proto3" json:"hide_stock,omitempty"`
-	Content               string         `protobuf:"bytes,10,opt,name=content,proto3" json:"content,omitempty"`
-	Summary               string         `protobuf:"bytes,11,opt,name=summary,proto3" json:"summary,omitempty"`
-	SellingPoint          string         `protobuf:"bytes,12,opt,name=selling_point,json=sellingPoint,proto3" json:"selling_point,omitempty"`
-	MinBuy                int32          `protobuf:"varint,13,opt,name=min_buy,json=minBuy,proto3" json:"min_buy,omitempty"`
-	NostoreSell           bool           `protobuf:"varint,14,opt,name=nostore_sell,json=nostoreSell,proto3" json:"nostore_sell,omitempty"`
-	ThumbUrl              string         `protobuf:"bytes,15,opt,name=thumb_url,json=thumbUrl,proto3" json:"thumb_url,omitempty"`
-	TemplateId            int32          `protobuf:"varint,16,opt,name=template_id,json=templateId,proto3" json:"template_id,omitempty"`
-	Barcode               string         `protobuf:"bytes,17,opt,name=barcode,proto3" json:"barcode,omitempty"`
-	Price                 float32        `protobuf:"fixed32,18,opt,name=price,proto3" json:"price,omitempty"`
-	OriginPrice           float32        `protobuf:"fixed32,19,opt,name=origin_price,json=originPrice,proto3" json:"origin_price,omitempty"`
-	MinPrice              float32        `protobuf:"fixed32,20,opt,name=min_price,json=minPrice,proto3" json:"min_price,omitempty"`
-	MaxPrice              float32        `protobuf:"fixed32,21,opt,name=max_price,json=maxPrice,proto3" json:"max_price,omitempty"`
-	Weight                float32        `protobuf:"fixed32,22,opt,name=weight,proto3" json:"weight,omitempty"`
-	ReviewNum             int32          `protobuf:"varint,23,opt,name=review_num,json=reviewNum,proto3" json:"review_num,omitempty"`
-	ViewCount             int32          `protobuf:"varint,24,opt,name=view_count,json=viewCount,proto3" json:"view_count,omitempty"`
-	Brand                 *Brand         `protobuf:"bytes,25,opt,name=brand,proto3" json:"brand,omitempty"`
-	Cats                  []*Cat         `protobuf:"bytes,26,rep,name=cats,proto3" json:"cats,omitempty"`
-	Tags                  []*Tag         `protobuf:"bytes,27,rep,name=tags,proto3" json:"tags,omitempty"`
-	Skus                  []*Sku         `protobuf:"bytes,28,rep,name=skus,proto3" json:"skus,omitempty"`
-	Galleries             []*ItemGallery `protobuf:"bytes,29,rep,name=galleries,proto3" json:"galleries,omitempty"`
-	Specs                 []*Spec        `protobuf:"bytes,30,rep,name=specs,proto3" json:"specs,omitempty"`                                                                //(详情显示专用)
-	IsMemberGoods         bool           `protobuf:"varint,31,opt,name=is_member_goods,json=isMemberGoods,proto3" json:"is_member_goods,omitempty"`                        // 是否会员专享
-	IsBuy                 bool           `protobuf:"varint,32,opt,name=is_buy,json=isBuy,proto3" json:"is_buy,omitempty"`                                                  // 商品是否可购买
-	IsMember              bool           `protobuf:"varint,33,opt,name=is_member,json=isMember,proto3" json:"is_member,omitempty"`                                         // 登录用户是否会员
-	MemberPrice           float32        `protobuf:"fixed32,34,opt,name=member_price,json=memberPrice,proto3" json:"member_price,omitempty"`                               // 会员价
-	IsDistribution        bool           `protobuf:"varint,35,opt,name=is_distribution,json=isDistribution,proto3" json:"is_distribution,omitempty"`                       // 是否参与分销
-	DistributionShareIcon string         `protobuf:"bytes,36,opt,name=distribution_share_icon,json=distributionShareIcon,proto3" json:"distribution_share_icon,omitempty"` // 分销图标
-	Listed                bool           `protobuf:"varint,37,opt,name=listed,proto3" json:"listed,omitempty"`
-	IsSku                 bool           `protobuf:"varint,38,opt,name=is_sku,json=isSku,proto3" json:"is_sku,omitempty"` // 是否多规格商品
-	Food                  *Food          `protobuf:"bytes,39,opt,name=food,proto3" json:"food,omitempty"`                 // 餐饮商品附加信息
-	BuyQuota              int32          `protobuf:"varint,40,opt,name=buy_quota,json=buyQuota,proto3" json:"buy_quota,omitempty"`
-	VideoId               int64          `protobuf:"varint,41,opt,name=video_id,json=videoId,proto3" json:"video_id,omitempty"`
-	VideoUrl              string         `protobuf:"bytes,42,opt,name=video_url,json=videoUrl,proto3" json:"video_url,omitempty"`
+	Id           int64   `protobuf:"varint,1,opt,name=id,proto3" json:"id"`
+	Name         string  `protobuf:"bytes,2,opt,name=name,proto3" json:"name"`
+	Unit         string  `protobuf:"bytes,3,opt,name=unit,proto3" json:"unit"`
+	ItemSn       string  `protobuf:"bytes,4,opt,name=item_sn,json=itemSn,proto3" json:"item_sn"`
+	TaxonomyId   int64   `protobuf:"varint,5,opt,name=taxonomy_id,json=taxonomyId,proto3" json:"taxonomy_id"`
+	Quantity     int32   `protobuf:"varint,6,opt,name=quantity,proto3" json:"quantity"`
+	SoldNum      int32   `protobuf:"varint,7,opt,name=sold_num,json=soldNum,proto3" json:"sold_num"`
+	ModelType    string  `protobuf:"bytes,8,opt,name=model_type,json=modelType,proto3" json:"model_type"`
+	HideStock    bool    `protobuf:"varint,9,opt,name=hide_stock,json=hideStock,proto3" json:"hide_stock"`
+	Content      string  `protobuf:"bytes,10,opt,name=content,proto3" json:"content"`
+	Summary      string  `protobuf:"bytes,11,opt,name=summary,proto3" json:"summary"`
+	SellingPoint string  `protobuf:"bytes,12,opt,name=selling_point,json=sellingPoint,proto3" json:"selling_point"`
+	MinBuy       int32   `protobuf:"varint,13,opt,name=min_buy,json=minBuy,proto3" json:"min_buy"`
+	NostoreSell  bool    `protobuf:"varint,14,opt,name=nostore_sell,json=nostoreSell,proto3" json:"nostore_sell"`
+	ThumbUrl     string  `protobuf:"bytes,15,opt,name=thumb_url,json=thumbUrl,proto3" json:"thumb_url"`
+	TemplateId   int32   `protobuf:"varint,16,opt,name=template_id,json=templateId,proto3" json:"template_id"`
+	Barcode      string  `protobuf:"bytes,17,opt,name=barcode,proto3" json:"barcode"`
+	Price        float32 `protobuf:"fixed32,18,opt,name=price,proto3" json:"price"`
+	OriginPrice  float32 `protobuf:"fixed32,19,opt,name=origin_price,json=originPrice,proto3" json:"origin_price"`
+	MinPrice     float32 `protobuf:"fixed32,20,opt,name=min_price,json=minPrice,proto3" json:"min_price"`
+	MaxPrice     float32 `protobuf:"fixed32,21,opt,name=max_price,json=maxPrice,proto3" json:"max_price"`
+	Weight       float32 `protobuf:"fixed32,22,opt,name=weight,proto3" json:"weight"`
+	ReviewNum    int32   `protobuf:"varint,23,opt,name=review_num,json=reviewNum,proto3" json:"review_num"`
+	ViewCount    int32   `protobuf:"varint,24,opt,name=view_count,json=viewCount,proto3" json:"view_count"`
+	// @inject_tag: gorm:"-"
+	Brand *Brand `protobuf:"bytes,25,opt,name=brand,proto3" json:"brand" gorm:"-"`
+	// @inject_tag: gorm:"many2many:item_cats;"
+	Cats []*Cat `protobuf:"bytes,26,rep,name=cats,proto3" json:"cats" gorm:"many2many:item_cats;"`
+	// @inject_tag: gorm:"many2many:item_tags;"
+	Tags []*Tag `protobuf:"bytes,27,rep,name=tags,proto3" json:"tags" gorm:"many2many:item_tags;"`
+	// @inject_tag: gorm:"foreignKey:ItemId"
+	Skus []*Sku `protobuf:"bytes,28,rep,name=skus,proto3" json:"skus" gorm:"foreignKey:ItemId"`
+	// @inject_tag: gorm:"foreignKey:ItemId"
+	Galleries []*ItemGallery `protobuf:"bytes,29,rep,name=galleries,proto3" json:"galleries" gorm:"foreignKey:ItemId"`
+	// @inject_tag: gorm:"many2many:spec_item_indices;"
+	Specs                 []*Spec `protobuf:"bytes,30,rep,name=specs,proto3" json:"specs" gorm:"many2many:spec_item_indices;"`                            //(详情显示专用)
+	IsMemberGoods         bool    `protobuf:"varint,31,opt,name=is_member_goods,json=isMemberGoods,proto3" json:"is_member_goods"`                        // 是否会员专享
+	IsBuy                 bool    `protobuf:"varint,32,opt,name=is_buy,json=isBuy,proto3" json:"is_buy"`                                                  // 商品是否可购买
+	IsMember              bool    `protobuf:"varint,33,opt,name=is_member,json=isMember,proto3" json:"is_member"`                                         // 登录用户是否会员
+	MemberPrice           float32 `protobuf:"fixed32,34,opt,name=member_price,json=memberPrice,proto3" json:"member_price"`                               // 会员价
+	IsDistribution        bool    `protobuf:"varint,35,opt,name=is_distribution,json=isDistribution,proto3" json:"is_distribution"`                       // 是否参与分销
+	DistributionShareIcon string  `protobuf:"bytes,36,opt,name=distribution_share_icon,json=distributionShareIcon,proto3" json:"distribution_share_icon"` // 分销图标
+	Listed                bool    `protobuf:"varint,37,opt,name=listed,proto3" json:"listed"`
+	IsSku                 bool    `protobuf:"varint,38,opt,name=is_sku,json=isSku,proto3" json:"is_sku"` // 是否多规格商品
+	// @inject_tag: gorm:"-"
+	Food     *Food  `protobuf:"bytes,39,opt,name=food,proto3" json:"food" gorm:"-"` // 餐饮商品附加信息
+	BuyQuota int32  `protobuf:"varint,40,opt,name=buy_quota,json=buyQuota,proto3" json:"buy_quota"`
+	VideoId  int64  `protobuf:"varint,41,opt,name=video_id,json=videoId,proto3" json:"video_id"`
+	VideoUrl string `protobuf:"bytes,42,opt,name=video_url,json=videoUrl,proto3" json:"video_url"`
 }
 
 func (x *ItemDisplay) Reset() {
@@ -1372,10 +1393,11 @@ type ItemDisplayWhere struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	Id      int64   `protobuf:"varint,1,opt,name=id,proto3" json:"id,omitempty"`
-	Ids     []int64 `protobuf:"varint,2,rep,packed,name=ids,proto3" json:"ids,omitempty"`
-	SoldNum int32   `protobuf:"varint,3,opt,name=sold_num,json=soldNum,proto3" json:"sold_num,omitempty"`
-	SkuId   int64   `protobuf:"varint,4,opt,name=sku_id,json=skuId,proto3" json:"sku_id,omitempty"`
+	Id int64 `protobuf:"varint,1,opt,name=id,proto3" json:"id"`
+	// @inject_tag: gorm:"-"
+	Ids     []int64 `protobuf:"varint,2,rep,packed,name=ids,proto3" json:"ids" gorm:"-"`
+	SoldNum int32   `protobuf:"varint,3,opt,name=sold_num,json=soldNum,proto3" json:"sold_num"`
+	SkuId   int64   `protobuf:"varint,4,opt,name=sku_id,json=skuId,proto3" json:"sku_id"`
 }
 
 func (x *ItemDisplayWhere) Reset() {
@@ -1443,11 +1465,11 @@ type ItemDisplayResponse struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	Entity *ItemDisplay   `protobuf:"bytes,1,opt,name=entity,proto3" json:"entity,omitempty"`
-	Pager  *common.Pager  `protobuf:"bytes,2,opt,name=pager,proto3" json:"pager,omitempty"`
-	Items  []*ItemDisplay `protobuf:"bytes,3,rep,name=items,proto3" json:"items,omitempty"`
-	Error  *common.Error  `protobuf:"bytes,4,opt,name=error,proto3" json:"error,omitempty"`
-	Info   *common.Info   `protobuf:"bytes,5,opt,name=info,proto3" json:"info,omitempty"`
+	Entity *ItemDisplay   `protobuf:"bytes,1,opt,name=entity,proto3" json:"entity"`
+	Pager  *common.Pager  `protobuf:"bytes,2,opt,name=pager,proto3" json:"pager"`
+	Items  []*ItemDisplay `protobuf:"bytes,3,rep,name=items,proto3" json:"items"`
+	Error  *common.Error  `protobuf:"bytes,4,opt,name=error,proto3" json:"error"`
+	Info   *common.Info   `protobuf:"bytes,5,opt,name=info,proto3" json:"info"`
 }
 
 func (x *ItemDisplayResponse) Reset() {

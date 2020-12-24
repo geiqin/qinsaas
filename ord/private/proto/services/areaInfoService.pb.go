@@ -30,30 +30,30 @@ type AreaInfo struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	Id                int64  `protobuf:"varint,1,opt,name=id,proto3" json:"id,omitempty"`
-	AreaId            int64  `protobuf:"varint,2,opt,name=area_id,json=areaId,proto3" json:"area_id,omitempty"`
-	LevelType         string `protobuf:"bytes,3,opt,name=level_type,json=levelType,proto3" json:"level_type,omitempty"`
-	Name              string `protobuf:"bytes,4,opt,name=name,proto3" json:"name,omitempty"`
-	Shortname         string `protobuf:"bytes,5,opt,name=shortname,proto3" json:"shortname,omitempty"`
-	ParentPath        string `protobuf:"bytes,6,opt,name=parent_path,json=parentPath,proto3" json:"parent_path,omitempty"`
-	Province          string `protobuf:"bytes,7,opt,name=province,proto3" json:"province,omitempty"`
-	City              string `protobuf:"bytes,8,opt,name=city,proto3" json:"city,omitempty"`
-	District          string `protobuf:"bytes,9,opt,name=district,proto3" json:"district,omitempty"`
-	ProvinceShortname string `protobuf:"bytes,11,opt,name=province_shortname,json=provinceShortname,proto3" json:"province_shortname,omitempty"`
-	CityShortname     string `protobuf:"bytes,12,opt,name=city_shortname,json=cityShortname,proto3" json:"city_shortname,omitempty"`
-	DistrictShortname string `protobuf:"bytes,13,opt,name=district_shortname,json=districtShortname,proto3" json:"district_shortname,omitempty"`
-	ProvincePinyin    string `protobuf:"bytes,14,opt,name=province_pinyin,json=provincePinyin,proto3" json:"province_pinyin,omitempty"`
-	CityPinyin        string `protobuf:"bytes,15,opt,name=city_pinyin,json=cityPinyin,proto3" json:"city_pinyin,omitempty"`
-	DistrictPinyin    string `protobuf:"bytes,16,opt,name=district_pinyin,json=districtPinyin,proto3" json:"district_pinyin,omitempty"`
-	Pinyin            string `protobuf:"bytes,17,opt,name=pinyin,proto3" json:"pinyin,omitempty"`
-	Jianpin           string `protobuf:"bytes,18,opt,name=jianpin,proto3" json:"jianpin,omitempty"`
-	FirstChar         string `protobuf:"bytes,19,opt,name=first_char,json=firstChar,proto3" json:"first_char,omitempty"`
-	CityCode          string `protobuf:"bytes,20,opt,name=city_code,json=cityCode,proto3" json:"city_code,omitempty"`
-	ZipCode           string `protobuf:"bytes,21,opt,name=zip_code,json=zipCode,proto3" json:"zip_code,omitempty"`
-	Lng               string `protobuf:"bytes,22,opt,name=lng,proto3" json:"lng,omitempty"`
-	Lat               string `protobuf:"bytes,23,opt,name=lat,proto3" json:"lat,omitempty"`
-	Remark1           string `protobuf:"bytes,24,opt,name=remark1,proto3" json:"remark1,omitempty"`
-	Remark2           string `protobuf:"bytes,25,opt,name=remark2,proto3" json:"remark2,omitempty"`
+	Id                int64  `protobuf:"varint,1,opt,name=id,proto3" json:"id"`
+	AreaId            int64  `protobuf:"varint,2,opt,name=area_id,json=areaId,proto3" json:"area_id"`
+	LevelType         string `protobuf:"bytes,3,opt,name=level_type,json=levelType,proto3" json:"level_type"`
+	Name              string `protobuf:"bytes,4,opt,name=name,proto3" json:"name"`
+	Shortname         string `protobuf:"bytes,5,opt,name=shortname,proto3" json:"shortname"`
+	ParentPath        string `protobuf:"bytes,6,opt,name=parent_path,json=parentPath,proto3" json:"parent_path"`
+	Province          string `protobuf:"bytes,7,opt,name=province,proto3" json:"province"`
+	City              string `protobuf:"bytes,8,opt,name=city,proto3" json:"city"`
+	District          string `protobuf:"bytes,9,opt,name=district,proto3" json:"district"`
+	ProvinceShortname string `protobuf:"bytes,11,opt,name=province_shortname,json=provinceShortname,proto3" json:"province_shortname"`
+	CityShortname     string `protobuf:"bytes,12,opt,name=city_shortname,json=cityShortname,proto3" json:"city_shortname"`
+	DistrictShortname string `protobuf:"bytes,13,opt,name=district_shortname,json=districtShortname,proto3" json:"district_shortname"`
+	ProvincePinyin    string `protobuf:"bytes,14,opt,name=province_pinyin,json=provincePinyin,proto3" json:"province_pinyin"`
+	CityPinyin        string `protobuf:"bytes,15,opt,name=city_pinyin,json=cityPinyin,proto3" json:"city_pinyin"`
+	DistrictPinyin    string `protobuf:"bytes,16,opt,name=district_pinyin,json=districtPinyin,proto3" json:"district_pinyin"`
+	Pinyin            string `protobuf:"bytes,17,opt,name=pinyin,proto3" json:"pinyin"`
+	Jianpin           string `protobuf:"bytes,18,opt,name=jianpin,proto3" json:"jianpin"`
+	FirstChar         string `protobuf:"bytes,19,opt,name=first_char,json=firstChar,proto3" json:"first_char"`
+	CityCode          string `protobuf:"bytes,20,opt,name=city_code,json=cityCode,proto3" json:"city_code"`
+	ZipCode           string `protobuf:"bytes,21,opt,name=zip_code,json=zipCode,proto3" json:"zip_code"`
+	Lng               string `protobuf:"bytes,22,opt,name=lng,proto3" json:"lng"`
+	Lat               string `protobuf:"bytes,23,opt,name=lat,proto3" json:"lat"`
+	Remark1           string `protobuf:"bytes,24,opt,name=remark1,proto3" json:"remark1"`
+	Remark2           string `protobuf:"bytes,25,opt,name=remark2,proto3" json:"remark2"`
 }
 
 func (x *AreaInfo) Reset() {

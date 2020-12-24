@@ -31,19 +31,20 @@ type Benefit struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	Id        int32   `protobuf:"varint,1,opt,name=id,proto3" json:"id,omitempty"`
-	Slug      string  `protobuf:"bytes,2,opt,name=slug,proto3" json:"slug,omitempty"`
-	Name      string  `protobuf:"bytes,3,opt,name=name,proto3" json:"name,omitempty"`
-	IconId    int64   `protobuf:"varint,4,opt,name=icon_id,json=iconId,proto3" json:"icon_id,omitempty"`
-	IconUrl   string  `protobuf:"bytes,5,opt,name=icon_url,json=iconUrl,proto3" json:"icon_url,omitempty"`
-	Type      string  `protobuf:"bytes,6,opt,name=type,proto3" json:"type,omitempty"`
-	Selected  bool    `protobuf:"varint,7,opt,name=selected,proto3" json:"selected,omitempty"`
-	Package   bool    `protobuf:"varint,8,opt,name=package,proto3" json:"package,omitempty"`
-	Params    string  `protobuf:"bytes,9,opt,name=params,proto3" json:"params,omitempty"`
-	Memo      string  `protobuf:"bytes,10,opt,name=memo,proto3" json:"memo,omitempty"`
-	CreatedAt string  `protobuf:"bytes,11,opt,name=created_at,json=createdAt,proto3" json:"created_at,omitempty"`
-	UpdatedAt string  `protobuf:"bytes,12,opt,name=updated_at,json=updatedAt,proto3" json:"updated_at,omitempty"`
-	Ids       []int32 `protobuf:"varint,13,rep,packed,name=ids,proto3" json:"ids,omitempty"`
+	Id        int32  `protobuf:"varint,1,opt,name=id,proto3" json:"id"`
+	Slug      string `protobuf:"bytes,2,opt,name=slug,proto3" json:"slug"`
+	Name      string `protobuf:"bytes,3,opt,name=name,proto3" json:"name"`
+	IconId    int64  `protobuf:"varint,4,opt,name=icon_id,json=iconId,proto3" json:"icon_id"`
+	IconUrl   string `protobuf:"bytes,5,opt,name=icon_url,json=iconUrl,proto3" json:"icon_url"`
+	Type      string `protobuf:"bytes,6,opt,name=type,proto3" json:"type"`
+	Selected  bool   `protobuf:"varint,7,opt,name=selected,proto3" json:"selected"`
+	Package   bool   `protobuf:"varint,8,opt,name=package,proto3" json:"package"`
+	Params    string `protobuf:"bytes,9,opt,name=params,proto3" json:"params"`
+	Memo      string `protobuf:"bytes,10,opt,name=memo,proto3" json:"memo"`
+	CreatedAt string `protobuf:"bytes,11,opt,name=created_at,json=createdAt,proto3" json:"created_at"`
+	UpdatedAt string `protobuf:"bytes,12,opt,name=updated_at,json=updatedAt,proto3" json:"updated_at"`
+	// @inject_tag: gorm:"-"
+	Ids []int32 `protobuf:"varint,13,rep,packed,name=ids,proto3" json:"ids" gorm:"-"`
 }
 
 func (x *Benefit) Reset() {
@@ -175,12 +176,12 @@ type BenefitWhere struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	Paged    int32 `protobuf:"varint,1,opt,name=paged,proto3" json:"paged,omitempty"`
-	PageSize int32 `protobuf:"varint,2,opt,name=page_size,json=pageSize,proto3" json:"page_size,omitempty"`
+	Paged    int32 `protobuf:"varint,1,opt,name=paged,proto3" json:"paged"`
+	PageSize int32 `protobuf:"varint,2,opt,name=page_size,json=pageSize,proto3" json:"page_size"`
 	//以下为自定义参数
-	Name     string `protobuf:"bytes,3,opt,name=name,proto3" json:"name,omitempty"`
-	Type     string `protobuf:"bytes,4,opt,name=type,proto3" json:"type,omitempty"`
-	Selected bool   `protobuf:"varint,5,opt,name=selected,proto3" json:"selected,omitempty"`
+	Name     string `protobuf:"bytes,3,opt,name=name,proto3" json:"name"`
+	Type     string `protobuf:"bytes,4,opt,name=type,proto3" json:"type"`
+	Selected bool   `protobuf:"varint,5,opt,name=selected,proto3" json:"selected"`
 }
 
 func (x *BenefitWhere) Reset() {
@@ -256,11 +257,11 @@ type BenefitResponse struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	Entity *Benefit      `protobuf:"bytes,1,opt,name=entity,proto3" json:"entity,omitempty"`
-	Pager  *common.Pager `protobuf:"bytes,2,opt,name=pager,proto3" json:"pager,omitempty"`
-	Items  []*Benefit    `protobuf:"bytes,3,rep,name=items,proto3" json:"items,omitempty"`
-	Error  *common.Error `protobuf:"bytes,4,opt,name=error,proto3" json:"error,omitempty"`
-	Info   *common.Info  `protobuf:"bytes,5,opt,name=info,proto3" json:"info,omitempty"`
+	Entity *Benefit      `protobuf:"bytes,1,opt,name=entity,proto3" json:"entity"`
+	Pager  *common.Pager `protobuf:"bytes,2,opt,name=pager,proto3" json:"pager"`
+	Items  []*Benefit    `protobuf:"bytes,3,rep,name=items,proto3" json:"items"`
+	Error  *common.Error `protobuf:"bytes,4,opt,name=error,proto3" json:"error"`
+	Info   *common.Info  `protobuf:"bytes,5,opt,name=info,proto3" json:"info"`
 }
 
 func (x *BenefitResponse) Reset() {

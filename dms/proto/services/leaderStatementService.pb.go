@@ -30,14 +30,14 @@ type LeaderStatement struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	Id        int64   `protobuf:"varint,1,opt,name=id,proto3" json:"id,omitempty"`
-	SourceId  int64   `protobuf:"varint,2,opt,name=source_id,json=sourceId,proto3" json:"source_id,omitempty"`
-	LeaderId  int64   `protobuf:"varint,3,opt,name=leader_id,json=leaderId,proto3" json:"leader_id,omitempty"`
-	Money     float32 `protobuf:"fixed32,4,opt,name=money,proto3" json:"money,omitempty"`
-	Source    string  `protobuf:"bytes,5,opt,name=source,proto3" json:"source,omitempty"`
-	Type      string  `protobuf:"bytes,6,opt,name=type,proto3" json:"type,omitempty"`
-	CreatedAt string  `protobuf:"bytes,7,opt,name=created_at,json=createdAt,proto3" json:"created_at,omitempty"`
-	UpdatedAt string  `protobuf:"bytes,8,opt,name=updated_at,json=updatedAt,proto3" json:"updated_at,omitempty"`
+	Id        int64   `protobuf:"varint,1,opt,name=id,proto3" json:"id"`
+	SourceId  int64   `protobuf:"varint,2,opt,name=source_id,json=sourceId,proto3" json:"source_id"`
+	LeaderId  int64   `protobuf:"varint,3,opt,name=leader_id,json=leaderId,proto3" json:"leader_id"`
+	Money     float32 `protobuf:"fixed32,4,opt,name=money,proto3" json:"money"`
+	Source    string  `protobuf:"bytes,5,opt,name=source,proto3" json:"source"`
+	Type      string  `protobuf:"bytes,6,opt,name=type,proto3" json:"type"`
+	CreatedAt string  `protobuf:"bytes,7,opt,name=created_at,json=createdAt,proto3" json:"created_at"`
+	UpdatedAt string  `protobuf:"bytes,8,opt,name=updated_at,json=updatedAt,proto3" json:"updated_at"`
 }
 
 func (x *LeaderStatement) Reset() {
@@ -133,14 +133,14 @@ type LeaderStatementWhere struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	Paged    int32 `protobuf:"varint,1,opt,name=paged,proto3" json:"paged,omitempty"`
-	PageSize int32 `protobuf:"varint,2,opt,name=page_size,json=pageSize,proto3" json:"page_size,omitempty"`
-	Top      int32 `protobuf:"varint,3,opt,name=top,proto3" json:"top,omitempty"`
-	//base params
-	Id       int64   `protobuf:"varint,4,opt,name=id,proto3" json:"id,omitempty"`
-	Ids      []int64 `protobuf:"varint,5,rep,packed,name=ids,proto3" json:"ids,omitempty"`
-	Type     string  `protobuf:"bytes,6,opt,name=type,proto3" json:"type,omitempty"`
-	LeaderId int64   `protobuf:"varint,7,opt,name=leader_id,json=leaderId,proto3" json:"leader_id,omitempty"`
+	Paged    int32 `protobuf:"varint,1,opt,name=paged,proto3" json:"paged"`
+	PageSize int32 `protobuf:"varint,2,opt,name=page_size,json=pageSize,proto3" json:"page_size"`
+	Top      int32 `protobuf:"varint,3,opt,name=top,proto3" json:"top"`
+	Id       int64 `protobuf:"varint,4,opt,name=id,proto3" json:"id"`
+	// @inject_tag: gorm:"-"
+	Ids      []int64 `protobuf:"varint,5,rep,packed,name=ids,proto3" json:"ids"`
+	Type     string  `protobuf:"bytes,6,opt,name=type,proto3" json:"type"`
+	LeaderId int64   `protobuf:"varint,7,opt,name=leader_id,json=leaderId,proto3" json:"leader_id"`
 }
 
 func (x *LeaderStatementWhere) Reset() {

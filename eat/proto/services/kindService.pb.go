@@ -31,21 +31,23 @@ type KindWhere struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	Paged         int32   `protobuf:"varint,1,opt,name=paged,proto3" json:"paged,omitempty"`
-	PageSize      int32   `protobuf:"varint,2,opt,name=page_size,json=pageSize,proto3" json:"page_size,omitempty"`
-	Top           int32   `protobuf:"varint,3,opt,name=top,proto3" json:"top,omitempty"`
-	Id            int64   `protobuf:"varint,4,opt,name=id,proto3" json:"id,omitempty"`
-	Ids           []int64 `protobuf:"varint,5,rep,packed,name=ids,proto3" json:"ids,omitempty"`
-	Type          string  `protobuf:"bytes,6,opt,name=type,proto3" json:"type,omitempty"`
-	TagId         int32   `protobuf:"varint,7,opt,name=tag_id,json=tagId,proto3" json:"tag_id,omitempty"`
-	TagIds        []int32 `protobuf:"varint,8,rep,packed,name=tag_ids,json=tagIds,proto3" json:"tag_ids,omitempty"`
-	KindId        int64   `protobuf:"varint,9,opt,name=kind_id,json=kindId,proto3" json:"kind_id,omitempty"`                // 拖动的菜单ID(拖动菜单排序)
-	DestKindId    int64   `protobuf:"varint,10,opt,name=dest_kind_id,json=destKindId,proto3" json:"dest_kind_id,omitempty"` // 被占位的菜单ID(拖动菜单排序)
-	MinSort       int64   `protobuf:"varint,11,opt,name=min_sort,json=minSort,proto3" json:"min_sort,omitempty"`
-	MaxSort       int64   `protobuf:"varint,12,opt,name=max_sort,json=maxSort,proto3" json:"max_sort,omitempty"`
-	Keywords      string  `protobuf:"bytes,13,opt,name=keywords,proto3" json:"keywords,omitempty"`
-	IsClient      bool    `protobuf:"varint,14,opt,name=is_client,json=isClient,proto3" json:"is_client,omitempty"` // 是否客户端展示
-	RequireChoose bool    `protobuf:"varint,15,opt,name=require_choose,json=requireChoose,proto3" json:"require_choose,omitempty"`
+	Paged    int32 `protobuf:"varint,1,opt,name=paged,proto3" json:"paged"`
+	PageSize int32 `protobuf:"varint,2,opt,name=page_size,json=pageSize,proto3" json:"page_size"`
+	Top      int32 `protobuf:"varint,3,opt,name=top,proto3" json:"top"`
+	Id       int64 `protobuf:"varint,4,opt,name=id,proto3" json:"id"`
+	// @inject_tag: gorm:"-"
+	Ids   []int64 `protobuf:"varint,5,rep,packed,name=ids,proto3" json:"ids"`
+	Type  string  `protobuf:"bytes,6,opt,name=type,proto3" json:"type"`
+	TagId int32   `protobuf:"varint,7,opt,name=tag_id,json=tagId,proto3" json:"tag_id"`
+	// @inject_tag: gorm:"-"
+	TagIds        []int32 `protobuf:"varint,8,rep,packed,name=tag_ids,json=tagIds,proto3" json:"tag_ids"`
+	KindId        int64   `protobuf:"varint,9,opt,name=kind_id,json=kindId,proto3" json:"kind_id"`                // 拖动的菜单ID(拖动菜单排序)
+	DestKindId    int64   `protobuf:"varint,10,opt,name=dest_kind_id,json=destKindId,proto3" json:"dest_kind_id"` // 被占位的菜单ID(拖动菜单排序)
+	MinSort       int64   `protobuf:"varint,11,opt,name=min_sort,json=minSort,proto3" json:"min_sort"`
+	MaxSort       int64   `protobuf:"varint,12,opt,name=max_sort,json=maxSort,proto3" json:"max_sort"`
+	Keywords      string  `protobuf:"bytes,13,opt,name=keywords,proto3" json:"keywords"`
+	IsClient      bool    `protobuf:"varint,14,opt,name=is_client,json=isClient,proto3" json:"is_client"` // 是否客户端展示
+	RequireChoose bool    `protobuf:"varint,15,opt,name=require_choose,json=requireChoose,proto3" json:"require_choose"`
 }
 
 func (x *KindWhere) Reset() {
@@ -190,21 +192,23 @@ type Kind struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	Id                int64           `protobuf:"varint,1,opt,name=id,proto3" json:"id,omitempty"`
-	Name              string          `protobuf:"bytes,2,opt,name=name,proto3" json:"name,omitempty"`
-	Type              string          `protobuf:"bytes,3,opt,name=type,proto3" json:"type,omitempty"`
-	TagId             int32           `protobuf:"varint,4,opt,name=tag_id,json=tagId,proto3" json:"tag_id,omitempty"`
-	RequireChoose     bool            `protobuf:"varint,5,opt,name=require_choose,json=requireChoose,proto3" json:"require_choose,omitempty"`
-	RequireLeastCount int32           `protobuf:"varint,6,opt,name=require_least_count,json=requireLeastCount,proto3" json:"require_least_count,omitempty"`
-	IsSellTime        bool            `protobuf:"varint,7,opt,name=is_sell_time,json=isSellTime,proto3" json:"is_sell_time,omitempty"`
-	WeekDays          string          `protobuf:"bytes,8,opt,name=week_days,json=weekDays,proto3" json:"week_days,omitempty"`
-	Sort              int64           `protobuf:"varint,9,opt,name=sort,proto3" json:"sort,omitempty"`
-	ItemCount         int32           `protobuf:"varint,10,opt,name=item_count,json=itemCount,proto3" json:"item_count,omitempty"`                          // 商品数量
-	OnShelfItemCount  int32           `protobuf:"varint,11,opt,name=on_shelf_item_count,json=onShelfItemCount,proto3" json:"on_shelf_item_count,omitempty"` // 在售商品数量
-	CreatedAt         string          `protobuf:"bytes,12,opt,name=created_at,json=createdAt,proto3" json:"created_at,omitempty"`
-	UpdatedAt         string          `protobuf:"bytes,13,opt,name=updated_at,json=updatedAt,proto3" json:"updated_at,omitempty"`
-	Tag               *KindTag        `protobuf:"bytes,14,opt,name=tag,proto3" json:"tag,omitempty"`
-	KindSellTimes     []*KindSellTime `protobuf:"bytes,15,rep,name=kind_sell_times,json=kindSellTimes,proto3" json:"kind_sell_times,omitempty"`
+	Id                int64  `protobuf:"varint,1,opt,name=id,proto3" json:"id"`
+	Name              string `protobuf:"bytes,2,opt,name=name,proto3" json:"name"`
+	Type              string `protobuf:"bytes,3,opt,name=type,proto3" json:"type"`
+	TagId             int32  `protobuf:"varint,4,opt,name=tag_id,json=tagId,proto3" json:"tag_id"`
+	RequireChoose     bool   `protobuf:"varint,5,opt,name=require_choose,json=requireChoose,proto3" json:"require_choose"`
+	RequireLeastCount int32  `protobuf:"varint,6,opt,name=require_least_count,json=requireLeastCount,proto3" json:"require_least_count"`
+	IsSellTime        bool   `protobuf:"varint,7,opt,name=is_sell_time,json=isSellTime,proto3" json:"is_sell_time"`
+	WeekDays          string `protobuf:"bytes,8,opt,name=week_days,json=weekDays,proto3" json:"week_days"`
+	Sort              int64  `protobuf:"varint,9,opt,name=sort,proto3" json:"sort"`
+	ItemCount         int32  `protobuf:"varint,10,opt,name=item_count,json=itemCount,proto3" json:"item_count"`                          // 商品数量
+	OnShelfItemCount  int32  `protobuf:"varint,11,opt,name=on_shelf_item_count,json=onShelfItemCount,proto3" json:"on_shelf_item_count"` // 在售商品数量
+	CreatedAt         string `protobuf:"bytes,12,opt,name=created_at,json=createdAt,proto3" json:"created_at"`
+	UpdatedAt         string `protobuf:"bytes,13,opt,name=updated_at,json=updatedAt,proto3" json:"updated_at"`
+	// @inject_tag: gorm:"-"
+	Tag *KindTag `protobuf:"bytes,14,opt,name=tag,proto3" json:"tag"`
+	// @inject_tag: gorm:"foreignKey:KindId"
+	KindSellTimes []*KindSellTime `protobuf:"bytes,15,rep,name=kind_sell_times,json=kindSellTimes,proto3" json:"kind_sell_times"`
 }
 
 func (x *Kind) Reset() {
@@ -349,11 +353,11 @@ type KindResponse struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	Entity *Kind         `protobuf:"bytes,1,opt,name=entity,proto3" json:"entity,omitempty"`
-	Pager  *common.Pager `protobuf:"bytes,2,opt,name=pager,proto3" json:"pager,omitempty"`
-	Items  []*Kind       `protobuf:"bytes,3,rep,name=items,proto3" json:"items,omitempty"`
-	Error  *common.Error `protobuf:"bytes,4,opt,name=error,proto3" json:"error,omitempty"`
-	Info   *common.Info  `protobuf:"bytes,5,opt,name=info,proto3" json:"info,omitempty"`
+	Entity *Kind         `protobuf:"bytes,1,opt,name=entity,proto3" json:"entity"`
+	Pager  *common.Pager `protobuf:"bytes,2,opt,name=pager,proto3" json:"pager"`
+	Items  []*Kind       `protobuf:"bytes,3,rep,name=items,proto3" json:"items"`
+	Error  *common.Error `protobuf:"bytes,4,opt,name=error,proto3" json:"error"`
+	Info   *common.Info  `protobuf:"bytes,5,opt,name=info,proto3" json:"info"`
 }
 
 func (x *KindResponse) Reset() {

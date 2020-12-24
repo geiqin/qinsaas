@@ -11,6 +11,7 @@ service FypCallService {
 message FypCall {
     int64 order_id = 1;
     string logistics_no = 2;
+    // @inject_tag: gorm:"-"
     Shipper shipper = 3;
 }
 

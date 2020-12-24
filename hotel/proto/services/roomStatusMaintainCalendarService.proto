@@ -20,12 +20,14 @@ message RoomStatusMaintainCalendarWhere {
 message RoomStatusMaintainCalendar {
     int64 room_type_id = 1;
     string room_type_name = 2;
+    // @inject_tag: gorm:"-"
     repeated RoomPricePlanByMaintainList room_price_plan_list = 3;
 }
 
 message RoomPricePlanByMaintainList {
     int64 room_price_plan_id = 1;
     string room_price_plan_name = 2;
+    // @inject_tag: gorm:"-"
     repeated RoomStatusMaintainList room_status_list = 3;
 }
 

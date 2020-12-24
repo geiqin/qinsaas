@@ -31,13 +31,14 @@ type WxappRoomAssistantWhere struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	Paged    int32                 `protobuf:"varint,1,opt,name=paged,proto3" json:"paged,omitempty"`
-	PageSize int32                 `protobuf:"varint,2,opt,name=page_size,json=pageSize,proto3" json:"page_size,omitempty"`
-	Sorting  string                `protobuf:"bytes,3,opt,name=sorting,proto3" json:"sorting,omitempty"`
-	RoomId   int64                 `protobuf:"varint,4,opt,name=room_id,json=roomId,proto3" json:"room_id,omitempty"`
-	Username string                `protobuf:"bytes,5,opt,name=username,proto3" json:"username,omitempty"`
-	Nickname string                `protobuf:"bytes,6,opt,name=nickname,proto3" json:"nickname,omitempty"`
-	Users    []*WxappRoomAssistant `protobuf:"bytes,7,rep,name=users,proto3" json:"users,omitempty"`
+	Paged    int32  `protobuf:"varint,1,opt,name=paged,proto3" json:"paged"`
+	PageSize int32  `protobuf:"varint,2,opt,name=page_size,json=pageSize,proto3" json:"page_size"`
+	Sorting  string `protobuf:"bytes,3,opt,name=sorting,proto3" json:"sorting"`
+	RoomId   int64  `protobuf:"varint,4,opt,name=room_id,json=roomId,proto3" json:"room_id"`
+	Username string `protobuf:"bytes,5,opt,name=username,proto3" json:"username"`
+	Nickname string `protobuf:"bytes,6,opt,name=nickname,proto3" json:"nickname"`
+	// @inject_tag: gorm:"-"
+	Users []*WxappRoomAssistant `protobuf:"bytes,7,rep,name=users,proto3" json:"users" gorm:"-"`
 }
 
 func (x *WxappRoomAssistantWhere) Reset() {
@@ -126,11 +127,11 @@ type WxappRoomAssistant struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	Username  string `protobuf:"bytes,1,opt,name=username,proto3" json:"username,omitempty"`
-	Nickname  string `protobuf:"bytes,2,opt,name=nickname,proto3" json:"nickname,omitempty"`
-	Headimg   string `protobuf:"bytes,3,opt,name=headimg,proto3" json:"headimg,omitempty"`
-	Openid    string `protobuf:"bytes,4,opt,name=openid,proto3" json:"openid,omitempty"`
-	UpdatedAt string `protobuf:"bytes,5,opt,name=updated_at,json=updatedAt,proto3" json:"updated_at,omitempty"`
+	Username  string `protobuf:"bytes,1,opt,name=username,proto3" json:"username"`
+	Nickname  string `protobuf:"bytes,2,opt,name=nickname,proto3" json:"nickname"`
+	Headimg   string `protobuf:"bytes,3,opt,name=headimg,proto3" json:"headimg"`
+	Openid    string `protobuf:"bytes,4,opt,name=openid,proto3" json:"openid"`
+	UpdatedAt string `protobuf:"bytes,5,opt,name=updated_at,json=updatedAt,proto3" json:"updated_at"`
 }
 
 func (x *WxappRoomAssistant) Reset() {
@@ -205,9 +206,10 @@ type WxappRoomAssistantList struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	Count    int32                 `protobuf:"varint,1,opt,name=count,proto3" json:"count,omitempty"`
-	MaxCount int32                 `protobuf:"varint,2,opt,name=max_count,json=maxCount,proto3" json:"max_count,omitempty"`
-	List     []*WxappRoomAssistant `protobuf:"bytes,3,rep,name=list,proto3" json:"list,omitempty"`
+	Count    int32 `protobuf:"varint,1,opt,name=count,proto3" json:"count"`
+	MaxCount int32 `protobuf:"varint,2,opt,name=max_count,json=maxCount,proto3" json:"max_count"`
+	// @inject_tag: gorm:"-"
+	List []*WxappRoomAssistant `protobuf:"bytes,3,rep,name=list,proto3" json:"list" gorm:"-"`
 }
 
 func (x *WxappRoomAssistantList) Reset() {
@@ -268,11 +270,11 @@ type WxappRoomAssistantResponse struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	Entity *WxappRoomAssistant   `protobuf:"bytes,1,opt,name=entity,proto3" json:"entity,omitempty"`
-	Pager  *common.Pager         `protobuf:"bytes,2,opt,name=pager,proto3" json:"pager,omitempty"`
-	Items  []*WxappRoomAssistant `protobuf:"bytes,3,rep,name=items,proto3" json:"items,omitempty"`
-	Error  *common.Error         `protobuf:"bytes,4,opt,name=error,proto3" json:"error,omitempty"`
-	Info   *common.Info          `protobuf:"bytes,5,opt,name=info,proto3" json:"info,omitempty"`
+	Entity *WxappRoomAssistant   `protobuf:"bytes,1,opt,name=entity,proto3" json:"entity"`
+	Pager  *common.Pager         `protobuf:"bytes,2,opt,name=pager,proto3" json:"pager"`
+	Items  []*WxappRoomAssistant `protobuf:"bytes,3,rep,name=items,proto3" json:"items"`
+	Error  *common.Error         `protobuf:"bytes,4,opt,name=error,proto3" json:"error"`
+	Info   *common.Info          `protobuf:"bytes,5,opt,name=info,proto3" json:"info"`
 }
 
 func (x *WxappRoomAssistantResponse) Reset() {
@@ -347,9 +349,9 @@ type WxappRoomAssistantListResponse struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	Entity *WxappRoomAssistantList `protobuf:"bytes,1,opt,name=entity,proto3" json:"entity,omitempty"`
-	Error  *common.Error           `protobuf:"bytes,2,opt,name=error,proto3" json:"error,omitempty"`
-	Info   *common.Info            `protobuf:"bytes,3,opt,name=info,proto3" json:"info,omitempty"`
+	Entity *WxappRoomAssistantList `protobuf:"bytes,1,opt,name=entity,proto3" json:"entity"`
+	Error  *common.Error           `protobuf:"bytes,2,opt,name=error,proto3" json:"error"`
+	Info   *common.Info            `protobuf:"bytes,3,opt,name=info,proto3" json:"info"`
 }
 
 func (x *WxappRoomAssistantListResponse) Reset() {

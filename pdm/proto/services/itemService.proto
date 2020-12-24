@@ -95,31 +95,43 @@ message Item {
     string listed_at =38;
     string	created_at	=39;
     string	updated_at	=40;
+    // @inject_tag: gorm:"-"
     Brand brand =41;
     // @inject_tag: gorm:"many2many:item_cats;"
     repeated Cat cats =42;
     // @inject_tag: gorm:"many2many:item_tags;"
     repeated Tag tags =43;
+    // @inject_tag: gorm:"foreignKey:ItemId"
     repeated  Sku skus  =44;
+    // @inject_tag: gorm:"foreignKey:ItemId"
     repeated  ItemGallery galleries  =45;
+    // @inject_tag: gorm:"foreignKey:ItemId"
     repeated  ItemPrice prices  =46;
+    // @inject_tag: gorm:"foreignKey:ItemId"
     repeated  ItemRight rights  =47;
+    // @inject_tag: gorm:"foreignKey:ItemId"
     repeated  SpecItemIndex spec_indexes  =48; //规格更新专用
+    // @inject_tag: gorm:"-"
     repeated  int64 ids  =49;
     // @inject_tag: gorm:"many2many:spec_item_indices;"
     repeated  Spec specs  =50; //(详情显示专用)
+    // @inject_tag: gorm:"-"
     Sku skuitem =51; //单一规格商品（在购物车，营销活动等场景用到）
     int64 sku_id =52; //单一规格商品输入参数（在获取规格商品时使用）
     bool is_presale = 53;
+    // @inject_tag: gorm:"foreignKey:ItemId"
     ItemPresale item_presale = 54;
     bool is_sku = 55; // 是否多规格商品
+    // @inject_tag: gorm:"-"
     Food food = 56; // 餐饮商品附加信息
     int64	video_id	=57;
     string	video_url	=58;
 }
 
 message GoodsWhere {
+    // @inject_tag: gorm:"-"
     repeated int64 item_ids = 1;
+    // @inject_tag: gorm:"-"
     repeated int64 sku_ids = 2;
 }
 
@@ -142,12 +154,14 @@ message ItemWhere {
     bool valid = 16;// 是否有效商品
     string invite = 17;// 加密后的邀请码
     int64	id	= 18;
+    // @inject_tag: gorm:"-"
     repeated int64 ids = 19;
     int64 sku_id = 20; //单一规格商品输入参数（在获取规格商品时使用）
     string cat_slug = 21;
     bool is_sku = 22;
     string kind_type = 23; // 菜品类型【餐饮商品】: in-堂食菜品,out-外卖菜品
     int64 kind_id = 24; // 菜单ID【餐饮商品】
+    // @inject_tag: gorm:"-"
     repeated int64 kind_ids = 25; // 菜单ID集合【餐饮商品】
     int32 sort = 26;
 }
@@ -202,11 +216,17 @@ message ItemDisplay {
     float	weight	=22;
     int32	review_num	=23;
     int32	view_count	=24;
+    // @inject_tag: gorm:"-"
     Brand brand =25;
+    // @inject_tag: gorm:"many2many:item_cats;"
     repeated Cat cats =26;
+    // @inject_tag: gorm:"many2many:item_tags;"
     repeated Tag tags =27;
+    // @inject_tag: gorm:"foreignKey:ItemId"
     repeated  Sku skus  =28;
+    // @inject_tag: gorm:"foreignKey:ItemId"
     repeated  ItemGallery galleries  =29;
+    // @inject_tag: gorm:"many2many:spec_item_indices;"
     repeated  Spec specs  =30; //(详情显示专用)
     bool is_member_goods = 31; // 是否会员专享
     bool is_buy = 32; // 商品是否可购买
@@ -216,6 +236,7 @@ message ItemDisplay {
     string distribution_share_icon = 36; // 分销图标
     bool listed = 37;
     bool is_sku = 38; // 是否多规格商品
+    // @inject_tag: gorm:"-"
     Food food = 39; // 餐饮商品附加信息
     int32	buy_quota	= 40;
     int64	video_id	=41;
@@ -224,6 +245,7 @@ message ItemDisplay {
 
 message ItemDisplayWhere {
     int64 id = 1;
+    // @inject_tag: gorm:"-"
     repeated int64 ids = 2;
     int32 sold_num = 3;
     int64 sku_id = 4;

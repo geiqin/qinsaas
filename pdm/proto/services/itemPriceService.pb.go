@@ -31,15 +31,16 @@ type ItemPrice struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	Id          int64   `protobuf:"varint,1,opt,name=id,proto3" json:"id,omitempty"`
-	Type        string  `protobuf:"bytes,2,opt,name=type,proto3" json:"type,omitempty"`
-	TypeValueId int64   `protobuf:"varint,3,opt,name=type_value_id,json=typeValueId,proto3" json:"type_value_id,omitempty"`
-	ItemId      int64   `protobuf:"varint,4,opt,name=item_id,json=itemId,proto3" json:"item_id,omitempty"`
-	SkuId       int64   `protobuf:"varint,5,opt,name=sku_id,json=skuId,proto3" json:"sku_id,omitempty"`
-	Method      string  `protobuf:"bytes,6,opt,name=method,proto3" json:"method,omitempty"`
-	Price       float32 `protobuf:"fixed32,7,opt,name=price,proto3" json:"price,omitempty"`
-	Discount    float32 `protobuf:"fixed32,8,opt,name=discount,proto3" json:"discount,omitempty"`
-	Sku         *Sku    `protobuf:"bytes,9,opt,name=sku,proto3" json:"sku,omitempty"`
+	Id          int64   `protobuf:"varint,1,opt,name=id,proto3" json:"id"`
+	Type        string  `protobuf:"bytes,2,opt,name=type,proto3" json:"type"`
+	TypeValueId int64   `protobuf:"varint,3,opt,name=type_value_id,json=typeValueId,proto3" json:"type_value_id"`
+	ItemId      int64   `protobuf:"varint,4,opt,name=item_id,json=itemId,proto3" json:"item_id"`
+	SkuId       int64   `protobuf:"varint,5,opt,name=sku_id,json=skuId,proto3" json:"sku_id"`
+	Method      string  `protobuf:"bytes,6,opt,name=method,proto3" json:"method"`
+	Price       float32 `protobuf:"fixed32,7,opt,name=price,proto3" json:"price"`
+	Discount    float32 `protobuf:"fixed32,8,opt,name=discount,proto3" json:"discount"`
+	// @inject_tag: gorm:"-"
+	Sku *Sku `protobuf:"bytes,9,opt,name=sku,proto3" json:"sku" gorm:"-"`
 }
 
 func (x *ItemPrice) Reset() {
@@ -142,11 +143,11 @@ type ItemPriceResponse struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	Entity *ItemPrice    `protobuf:"bytes,1,opt,name=entity,proto3" json:"entity,omitempty"`
-	Pager  *common.Pager `protobuf:"bytes,2,opt,name=pager,proto3" json:"pager,omitempty"`
-	Items  []*ItemPrice  `protobuf:"bytes,3,rep,name=items,proto3" json:"items,omitempty"`
-	Error  *common.Error `protobuf:"bytes,4,opt,name=error,proto3" json:"error,omitempty"`
-	Info   *common.Info  `protobuf:"bytes,5,opt,name=info,proto3" json:"info,omitempty"`
+	Entity *ItemPrice    `protobuf:"bytes,1,opt,name=entity,proto3" json:"entity"`
+	Pager  *common.Pager `protobuf:"bytes,2,opt,name=pager,proto3" json:"pager"`
+	Items  []*ItemPrice  `protobuf:"bytes,3,rep,name=items,proto3" json:"items"`
+	Error  *common.Error `protobuf:"bytes,4,opt,name=error,proto3" json:"error"`
+	Info   *common.Info  `protobuf:"bytes,5,opt,name=info,proto3" json:"info"`
 }
 
 func (x *ItemPriceResponse) Reset() {
@@ -222,17 +223,17 @@ type PriceScheme struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	ItemId          int64        `protobuf:"varint,1,opt,name=item_id,json=itemId,proto3" json:"item_id,omitempty"`
-	ItemSn          string       `protobuf:"bytes,2,opt,name=item_sn,json=itemSn,proto3" json:"item_sn,omitempty"`
-	ItemName        string       `protobuf:"bytes,3,opt,name=item_name,json=itemName,proto3" json:"item_name,omitempty"`
-	ItemPrice       float32      `protobuf:"fixed32,4,opt,name=item_price,json=itemPrice,proto3" json:"item_price,omitempty"`
-	ItemOriginPrice float32      `protobuf:"fixed32,5,opt,name=item_origin_price,json=itemOriginPrice,proto3" json:"item_origin_price,omitempty"`
-	ModelType       string       `protobuf:"bytes,7,opt,name=model_type,json=modelType,proto3" json:"model_type,omitempty"`
-	Type            string       `protobuf:"bytes,8,opt,name=type,proto3" json:"type,omitempty"`
-	Method          string       `protobuf:"bytes,9,opt,name=method,proto3" json:"method,omitempty"`
-	Details         []*ItemPrice `protobuf:"bytes,10,rep,name=details,proto3" json:"details,omitempty"`
-	Skus            []*Sku       `protobuf:"bytes,11,rep,name=skus,proto3" json:"skus,omitempty"`
-	Specs           []*Spec      `protobuf:"bytes,12,rep,name=specs,proto3" json:"specs,omitempty"`
+	ItemId          int64        `protobuf:"varint,1,opt,name=item_id,json=itemId,proto3" json:"item_id"`
+	ItemSn          string       `protobuf:"bytes,2,opt,name=item_sn,json=itemSn,proto3" json:"item_sn"`
+	ItemName        string       `protobuf:"bytes,3,opt,name=item_name,json=itemName,proto3" json:"item_name"`
+	ItemPrice       float32      `protobuf:"fixed32,4,opt,name=item_price,json=itemPrice,proto3" json:"item_price"`
+	ItemOriginPrice float32      `protobuf:"fixed32,5,opt,name=item_origin_price,json=itemOriginPrice,proto3" json:"item_origin_price"`
+	ModelType       string       `protobuf:"bytes,7,opt,name=model_type,json=modelType,proto3" json:"model_type"`
+	Type            string       `protobuf:"bytes,8,opt,name=type,proto3" json:"type"`
+	Method          string       `protobuf:"bytes,9,opt,name=method,proto3" json:"method"`
+	Details         []*ItemPrice `protobuf:"bytes,10,rep,name=details,proto3" json:"details"`
+	Skus            []*Sku       `protobuf:"bytes,11,rep,name=skus,proto3" json:"skus"`
+	Specs           []*Spec      `protobuf:"bytes,12,rep,name=specs,proto3" json:"specs"`
 }
 
 func (x *PriceScheme) Reset() {
@@ -349,11 +350,11 @@ type PriceSchemeResponse struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	Entity *PriceScheme   `protobuf:"bytes,1,opt,name=entity,proto3" json:"entity,omitempty"`
-	Pager  *common.Pager  `protobuf:"bytes,2,opt,name=pager,proto3" json:"pager,omitempty"`
-	Items  []*PriceScheme `protobuf:"bytes,3,rep,name=items,proto3" json:"items,omitempty"`
-	Error  *common.Error  `protobuf:"bytes,4,opt,name=error,proto3" json:"error,omitempty"`
-	Info   *common.Info   `protobuf:"bytes,5,opt,name=info,proto3" json:"info,omitempty"`
+	Entity *PriceScheme   `protobuf:"bytes,1,opt,name=entity,proto3" json:"entity"`
+	Pager  *common.Pager  `protobuf:"bytes,2,opt,name=pager,proto3" json:"pager"`
+	Items  []*PriceScheme `protobuf:"bytes,3,rep,name=items,proto3" json:"items"`
+	Error  *common.Error  `protobuf:"bytes,4,opt,name=error,proto3" json:"error"`
+	Info   *common.Info   `protobuf:"bytes,5,opt,name=info,proto3" json:"info"`
 }
 
 func (x *PriceSchemeResponse) Reset() {

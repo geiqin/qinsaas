@@ -31,17 +31,19 @@ type TeamWhere struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	Paged          int32   `protobuf:"varint,1,opt,name=paged,proto3" json:"paged,omitempty"`
-	PageSize       int32   `protobuf:"varint,2,opt,name=page_size,json=pageSize,proto3" json:"page_size,omitempty"`
-	Top            int32   `protobuf:"varint,3,opt,name=top,proto3" json:"top,omitempty"`
-	Id             int64   `protobuf:"varint,4,opt,name=id,proto3" json:"id,omitempty"`
-	Mobile         string  `protobuf:"bytes,5,opt,name=mobile,proto3" json:"mobile,omitempty"`
-	Keywords       string  `protobuf:"bytes,6,opt,name=keywords,proto3" json:"keywords,omitempty"`
-	Ids            []int64 `protobuf:"varint,7,rep,packed,name=ids,proto3" json:"ids,omitempty"`
-	DistributorId  int64   `protobuf:"varint,8,opt,name=distributor_id,json=distributorId,proto3" json:"distributor_id,omitempty"`
-	DistributorIds []int64 `protobuf:"varint,9,rep,packed,name=distributor_ids,json=distributorIds,proto3" json:"distributor_ids,omitempty"`
-	LeaderId       int64   `protobuf:"varint,10,opt,name=leader_id,json=leaderId,proto3" json:"leader_id,omitempty"`
-	LeaderIds      []int64 `protobuf:"varint,11,rep,packed,name=leader_ids,json=leaderIds,proto3" json:"leader_ids,omitempty"`
+	Paged         int32   `protobuf:"varint,1,opt,name=paged,proto3" json:"paged"`
+	PageSize      int32   `protobuf:"varint,2,opt,name=page_size,json=pageSize,proto3" json:"page_size"`
+	Top           int32   `protobuf:"varint,3,opt,name=top,proto3" json:"top"`
+	Id            int64   `protobuf:"varint,4,opt,name=id,proto3" json:"id"`
+	Mobile        string  `protobuf:"bytes,5,opt,name=mobile,proto3" json:"mobile"`
+	Keywords      string  `protobuf:"bytes,6,opt,name=keywords,proto3" json:"keywords"`
+	Ids           []int64 `protobuf:"varint,7,rep,packed,name=ids,proto3" json:"ids"`
+	DistributorId int64   `protobuf:"varint,8,opt,name=distributor_id,json=distributorId,proto3" json:"distributor_id"`
+	// @inject_tag: gorm:"-"
+	DistributorIds []int64 `protobuf:"varint,9,rep,packed,name=distributor_ids,json=distributorIds,proto3" json:"distributor_ids"`
+	LeaderId       int64   `protobuf:"varint,10,opt,name=leader_id,json=leaderId,proto3" json:"leader_id"`
+	// @inject_tag: gorm:"-"
+	LeaderIds []int64 `protobuf:"varint,11,rep,packed,name=leader_ids,json=leaderIds,proto3" json:"leader_ids"`
 }
 
 func (x *TeamWhere) Reset() {
@@ -158,12 +160,13 @@ type TeamBasic struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	Id            int64        `protobuf:"varint,1,opt,name=id,proto3" json:"id,omitempty"`
-	DistributorId int64        `protobuf:"varint,2,opt,name=distributor_id,json=distributorId,proto3" json:"distributor_id,omitempty"`
-	LeaderId      int64        `protobuf:"varint,3,opt,name=leader_id,json=leaderId,proto3" json:"leader_id,omitempty"`
-	Distributor   *Distributor `protobuf:"bytes,4,opt,name=distributor,proto3" json:"distributor,omitempty"`
-	CreatedAt     string       `protobuf:"bytes,5,opt,name=created_at,json=createdAt,proto3" json:"created_at,omitempty"`
-	UpdatedAt     string       `protobuf:"bytes,6,opt,name=updated_at,json=updatedAt,proto3" json:"updated_at,omitempty"`
+	Id            int64 `protobuf:"varint,1,opt,name=id,proto3" json:"id"`
+	DistributorId int64 `protobuf:"varint,2,opt,name=distributor_id,json=distributorId,proto3" json:"distributor_id"`
+	LeaderId      int64 `protobuf:"varint,3,opt,name=leader_id,json=leaderId,proto3" json:"leader_id"`
+	// @inject_tag: gorm:"-"
+	Distributor *Distributor `protobuf:"bytes,4,opt,name=distributor,proto3" json:"distributor"`
+	CreatedAt   string       `protobuf:"bytes,5,opt,name=created_at,json=createdAt,proto3" json:"created_at"`
+	UpdatedAt   string       `protobuf:"bytes,6,opt,name=updated_at,json=updatedAt,proto3" json:"updated_at"`
 }
 
 func (x *TeamBasic) Reset() {
@@ -245,17 +248,17 @@ type MyTeam struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	Id              int64   `protobuf:"varint,1,opt,name=id,proto3" json:"id,omitempty"`
-	DistributorId   int64   `protobuf:"varint,2,opt,name=distributor_id,json=distributorId,proto3" json:"distributor_id,omitempty"`
-	DistributorName string  `protobuf:"bytes,3,opt,name=distributor_name,json=distributorName,proto3" json:"distributor_name,omitempty"` // 分销员昵称
-	Mobile          string  `protobuf:"bytes,4,opt,name=mobile,proto3" json:"mobile,omitempty"`                                          // 手机号
-	AvatarUrl       string  `protobuf:"bytes,5,opt,name=avatar_url,json=avatarUrl,proto3" json:"avatar_url,omitempty"`                   // 用户头像
-	RecommendNum    int32   `protobuf:"varint,6,opt,name=recommend_num,json=recommendNum,proto3" json:"recommend_num,omitempty"`         // 邀请团员数
-	OrderMoney      float32 `protobuf:"fixed32,8,opt,name=order_money,json=orderMoney,proto3" json:"order_money,omitempty"`              // 成交金额
-	CustomerNum     int32   `protobuf:"varint,7,opt,name=customer_num,json=customerNum,proto3" json:"customer_num,omitempty"`            // 绑定客户数
-	OrderNum        int32   `protobuf:"varint,9,opt,name=order_num,json=orderNum,proto3" json:"order_num,omitempty"`                     // 成交笔数
-	CreatedAt       string  `protobuf:"bytes,10,opt,name=created_at,json=createdAt,proto3" json:"created_at,omitempty"`
-	UpdatedAt       string  `protobuf:"bytes,11,opt,name=updated_at,json=updatedAt,proto3" json:"updated_at,omitempty"`
+	Id              int64   `protobuf:"varint,1,opt,name=id,proto3" json:"id"`
+	DistributorId   int64   `protobuf:"varint,2,opt,name=distributor_id,json=distributorId,proto3" json:"distributor_id"`
+	DistributorName string  `protobuf:"bytes,3,opt,name=distributor_name,json=distributorName,proto3" json:"distributor_name"` // 分销员昵称
+	Mobile          string  `protobuf:"bytes,4,opt,name=mobile,proto3" json:"mobile"`                                          // 手机号
+	AvatarUrl       string  `protobuf:"bytes,5,opt,name=avatar_url,json=avatarUrl,proto3" json:"avatar_url"`                   // 用户头像
+	RecommendNum    int32   `protobuf:"varint,6,opt,name=recommend_num,json=recommendNum,proto3" json:"recommend_num"`         // 邀请团员数
+	OrderMoney      float32 `protobuf:"fixed32,8,opt,name=order_money,json=orderMoney,proto3" json:"order_money"`              // 成交金额
+	CustomerNum     int32   `protobuf:"varint,7,opt,name=customer_num,json=customerNum,proto3" json:"customer_num"`            // 绑定客户数
+	OrderNum        int32   `protobuf:"varint,9,opt,name=order_num,json=orderNum,proto3" json:"order_num"`                     // 成交笔数
+	CreatedAt       string  `protobuf:"bytes,10,opt,name=created_at,json=createdAt,proto3" json:"created_at"`
+	UpdatedAt       string  `protobuf:"bytes,11,opt,name=updated_at,json=updatedAt,proto3" json:"updated_at"`
 }
 
 func (x *MyTeam) Reset() {
@@ -372,18 +375,18 @@ type Team struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	Id          int64   `protobuf:"varint,1,opt,name=id,proto3" json:"id,omitempty"`
-	Name        string  `protobuf:"bytes,2,opt,name=name,proto3" json:"name,omitempty"`                                   // 团队名称
-	LeaderId    int64   `protobuf:"varint,3,opt,name=leader_id,json=leaderId,proto3" json:"leader_id,omitempty"`          // 团长ID
-	LeaderName  string  `protobuf:"bytes,4,opt,name=leader_name,json=leaderName,proto3" json:"leader_name,omitempty"`     // 团长昵称
-	Mobile      string  `protobuf:"bytes,5,opt,name=mobile,proto3" json:"mobile,omitempty"`                               // 手机号
-	AvatarUrl   string  `protobuf:"bytes,6,opt,name=avatar_url,json=avatarUrl,proto3" json:"avatar_url,omitempty"`        // 用户头像
-	TeamNum     int32   `protobuf:"varint,7,opt,name=team_num,json=teamNum,proto3" json:"team_num,omitempty"`             // 团员数
-	CustomerNum int32   `protobuf:"varint,8,opt,name=customer_num,json=customerNum,proto3" json:"customer_num,omitempty"` // 团队客户数
-	OrderMoney  float32 `protobuf:"fixed32,9,opt,name=order_money,json=orderMoney,proto3" json:"order_money,omitempty"`   // 团队成交金额
-	OrderNum    int32   `protobuf:"varint,10,opt,name=order_num,json=orderNum,proto3" json:"order_num,omitempty"`         // 团队成交笔数
-	CreatedAt   string  `protobuf:"bytes,11,opt,name=created_at,json=createdAt,proto3" json:"created_at,omitempty"`
-	UpdatedAt   string  `protobuf:"bytes,12,opt,name=updated_at,json=updatedAt,proto3" json:"updated_at,omitempty"`
+	Id          int64   `protobuf:"varint,1,opt,name=id,proto3" json:"id"`
+	Name        string  `protobuf:"bytes,2,opt,name=name,proto3" json:"name"`                                   // 团队名称
+	LeaderId    int64   `protobuf:"varint,3,opt,name=leader_id,json=leaderId,proto3" json:"leader_id"`          // 团长ID
+	LeaderName  string  `protobuf:"bytes,4,opt,name=leader_name,json=leaderName,proto3" json:"leader_name"`     // 团长昵称
+	Mobile      string  `protobuf:"bytes,5,opt,name=mobile,proto3" json:"mobile"`                               // 手机号
+	AvatarUrl   string  `protobuf:"bytes,6,opt,name=avatar_url,json=avatarUrl,proto3" json:"avatar_url"`        // 用户头像
+	TeamNum     int32   `protobuf:"varint,7,opt,name=team_num,json=teamNum,proto3" json:"team_num"`             // 团员数
+	CustomerNum int32   `protobuf:"varint,8,opt,name=customer_num,json=customerNum,proto3" json:"customer_num"` // 团队客户数
+	OrderMoney  float32 `protobuf:"fixed32,9,opt,name=order_money,json=orderMoney,proto3" json:"order_money"`   // 团队成交金额
+	OrderNum    int32   `protobuf:"varint,10,opt,name=order_num,json=orderNum,proto3" json:"order_num"`         // 团队成交笔数
+	CreatedAt   string  `protobuf:"bytes,11,opt,name=created_at,json=createdAt,proto3" json:"created_at"`
+	UpdatedAt   string  `protobuf:"bytes,12,opt,name=updated_at,json=updatedAt,proto3" json:"updated_at"`
 }
 
 func (x *Team) Reset() {
@@ -507,11 +510,11 @@ type TeamResponse struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	Entity *Team         `protobuf:"bytes,1,opt,name=entity,proto3" json:"entity,omitempty"`
-	Pager  *common.Pager `protobuf:"bytes,2,opt,name=pager,proto3" json:"pager,omitempty"`
-	Items  []*Team       `protobuf:"bytes,3,rep,name=items,proto3" json:"items,omitempty"`
-	Error  *common.Error `protobuf:"bytes,4,opt,name=error,proto3" json:"error,omitempty"`
-	Info   *common.Info  `protobuf:"bytes,5,opt,name=info,proto3" json:"info,omitempty"`
+	Entity *Team         `protobuf:"bytes,1,opt,name=entity,proto3" json:"entity"`
+	Pager  *common.Pager `protobuf:"bytes,2,opt,name=pager,proto3" json:"pager"`
+	Items  []*Team       `protobuf:"bytes,3,rep,name=items,proto3" json:"items"`
+	Error  *common.Error `protobuf:"bytes,4,opt,name=error,proto3" json:"error"`
+	Info   *common.Info  `protobuf:"bytes,5,opt,name=info,proto3" json:"info"`
 }
 
 func (x *TeamResponse) Reset() {
@@ -586,11 +589,11 @@ type MyTeamResponse struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	Entity *MyTeam       `protobuf:"bytes,1,opt,name=entity,proto3" json:"entity,omitempty"`
-	Pager  *common.Pager `protobuf:"bytes,2,opt,name=pager,proto3" json:"pager,omitempty"`
-	Items  []*MyTeam     `protobuf:"bytes,3,rep,name=items,proto3" json:"items,omitempty"`
-	Error  *common.Error `protobuf:"bytes,4,opt,name=error,proto3" json:"error,omitempty"`
-	Info   *common.Info  `protobuf:"bytes,5,opt,name=info,proto3" json:"info,omitempty"`
+	Entity *MyTeam       `protobuf:"bytes,1,opt,name=entity,proto3" json:"entity"`
+	Pager  *common.Pager `protobuf:"bytes,2,opt,name=pager,proto3" json:"pager"`
+	Items  []*MyTeam     `protobuf:"bytes,3,rep,name=items,proto3" json:"items"`
+	Error  *common.Error `protobuf:"bytes,4,opt,name=error,proto3" json:"error"`
+	Info   *common.Info  `protobuf:"bytes,5,opt,name=info,proto3" json:"info"`
 }
 
 func (x *MyTeamResponse) Reset() {

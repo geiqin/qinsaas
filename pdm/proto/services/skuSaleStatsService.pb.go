@@ -31,18 +31,18 @@ type SkuSaleStats struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	Id          int64   `protobuf:"varint,1,opt,name=id,proto3" json:"id,omitempty"`
-	ItemId      int64   `protobuf:"varint,2,opt,name=item_id,json=itemId,proto3" json:"item_id,omitempty"`
-	SkuId       int64   `protobuf:"varint,3,opt,name=sku_id,json=skuId,proto3" json:"sku_id,omitempty"`
-	SaleNum     int32   `protobuf:"varint,4,opt,name=sale_num,json=saleNum,proto3" json:"sale_num,omitempty"`
-	UnitPrice   float32 `protobuf:"fixed32,5,opt,name=unit_price,json=unitPrice,proto3" json:"unit_price,omitempty"`
-	SaleAmount  float32 `protobuf:"fixed32,6,opt,name=sale_amount,json=saleAmount,proto3" json:"sale_amount,omitempty"`
-	CostAmount  float32 `protobuf:"fixed32,7,opt,name=cost_amount,json=costAmount,proto3" json:"cost_amount,omitempty"`
-	Profit      float32 `protobuf:"fixed32,8,opt,name=profit,proto3" json:"profit,omitempty"`
-	ProfitRate  float32 `protobuf:"fixed32,9,opt,name=profit_rate,json=profitRate,proto3" json:"profit_rate,omitempty"`
-	LastStatsAt string  `protobuf:"bytes,10,opt,name=last_stats_at,json=lastStatsAt,proto3" json:"last_stats_at,omitempty"`
-	CreatedAt   string  `protobuf:"bytes,11,opt,name=created_at,json=createdAt,proto3" json:"created_at,omitempty"`
-	UpdatedAt   string  `protobuf:"bytes,12,opt,name=updated_at,json=updatedAt,proto3" json:"updated_at,omitempty"`
+	Id          int64   `protobuf:"varint,1,opt,name=id,proto3" json:"id"`
+	ItemId      int64   `protobuf:"varint,2,opt,name=item_id,json=itemId,proto3" json:"item_id"`
+	SkuId       int64   `protobuf:"varint,3,opt,name=sku_id,json=skuId,proto3" json:"sku_id"`
+	SaleNum     int32   `protobuf:"varint,4,opt,name=sale_num,json=saleNum,proto3" json:"sale_num"`
+	UnitPrice   float32 `protobuf:"fixed32,5,opt,name=unit_price,json=unitPrice,proto3" json:"unit_price"`
+	SaleAmount  float32 `protobuf:"fixed32,6,opt,name=sale_amount,json=saleAmount,proto3" json:"sale_amount"`
+	CostAmount  float32 `protobuf:"fixed32,7,opt,name=cost_amount,json=costAmount,proto3" json:"cost_amount"`
+	Profit      float32 `protobuf:"fixed32,8,opt,name=profit,proto3" json:"profit"`
+	ProfitRate  float32 `protobuf:"fixed32,9,opt,name=profit_rate,json=profitRate,proto3" json:"profit_rate"`
+	LastStatsAt string  `protobuf:"bytes,10,opt,name=last_stats_at,json=lastStatsAt,proto3" json:"last_stats_at"`
+	CreatedAt   string  `protobuf:"bytes,11,opt,name=created_at,json=createdAt,proto3" json:"created_at"`
+	UpdatedAt   string  `protobuf:"bytes,12,opt,name=updated_at,json=updatedAt,proto3" json:"updated_at"`
 }
 
 func (x *SkuSaleStats) Reset() {
@@ -166,11 +166,11 @@ type SkuSaleStatsResponse struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	Entity *SkuSaleStats   `protobuf:"bytes,1,opt,name=entity,proto3" json:"entity,omitempty"`
-	Pager  *common.Pager   `protobuf:"bytes,2,opt,name=pager,proto3" json:"pager,omitempty"`
-	Items  []*SkuSaleStats `protobuf:"bytes,3,rep,name=items,proto3" json:"items,omitempty"`
-	Error  *common.Error   `protobuf:"bytes,4,opt,name=error,proto3" json:"error,omitempty"`
-	Info   *common.Info    `protobuf:"bytes,5,opt,name=info,proto3" json:"info,omitempty"`
+	Entity *SkuSaleStats   `protobuf:"bytes,1,opt,name=entity,proto3" json:"entity"`
+	Pager  *common.Pager   `protobuf:"bytes,2,opt,name=pager,proto3" json:"pager"`
+	Items  []*SkuSaleStats `protobuf:"bytes,3,rep,name=items,proto3" json:"items"`
+	Error  *common.Error   `protobuf:"bytes,4,opt,name=error,proto3" json:"error"`
+	Info   *common.Info    `protobuf:"bytes,5,opt,name=info,proto3" json:"info"`
 }
 
 func (x *SkuSaleStatsResponse) Reset() {
@@ -245,18 +245,18 @@ type SkuSaleDayStats struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	Id            int64   `protobuf:"varint,1,opt,name=id,proto3" json:"id,omitempty"`
-	ItemId        int64   `protobuf:"varint,2,opt,name=item_id,json=itemId,proto3" json:"item_id,omitempty"`
-	SkuId         int64   `protobuf:"varint,3,opt,name=sku_id,json=skuId,proto3" json:"sku_id,omitempty"`
-	SaleNum       int32   `protobuf:"varint,4,opt,name=sale_num,json=saleNum,proto3" json:"sale_num,omitempty"`
-	UnitPrice     float32 `protobuf:"fixed32,5,opt,name=unit_price,json=unitPrice,proto3" json:"unit_price,omitempty"`
-	SaleAmount    float32 `protobuf:"fixed32,6,opt,name=sale_amount,json=saleAmount,proto3" json:"sale_amount,omitempty"`
-	CostAmount    float32 `protobuf:"fixed32,7,opt,name=cost_amount,json=costAmount,proto3" json:"cost_amount,omitempty"`
-	Profit        float32 `protobuf:"fixed32,8,opt,name=profit,proto3" json:"profit,omitempty"`
-	ProfitRate    float32 `protobuf:"fixed32,9,opt,name=profit_rate,json=profitRate,proto3" json:"profit_rate,omitempty"`
-	StatisticDate string  `protobuf:"bytes,10,opt,name=statistic_date,json=statisticDate,proto3" json:"statistic_date,omitempty"`
-	CreatedAt     string  `protobuf:"bytes,11,opt,name=created_at,json=createdAt,proto3" json:"created_at,omitempty"`
-	UpdatedAt     string  `protobuf:"bytes,12,opt,name=updated_at,json=updatedAt,proto3" json:"updated_at,omitempty"`
+	Id            int64   `protobuf:"varint,1,opt,name=id,proto3" json:"id"`
+	ItemId        int64   `protobuf:"varint,2,opt,name=item_id,json=itemId,proto3" json:"item_id"`
+	SkuId         int64   `protobuf:"varint,3,opt,name=sku_id,json=skuId,proto3" json:"sku_id"`
+	SaleNum       int32   `protobuf:"varint,4,opt,name=sale_num,json=saleNum,proto3" json:"sale_num"`
+	UnitPrice     float32 `protobuf:"fixed32,5,opt,name=unit_price,json=unitPrice,proto3" json:"unit_price"`
+	SaleAmount    float32 `protobuf:"fixed32,6,opt,name=sale_amount,json=saleAmount,proto3" json:"sale_amount"`
+	CostAmount    float32 `protobuf:"fixed32,7,opt,name=cost_amount,json=costAmount,proto3" json:"cost_amount"`
+	Profit        float32 `protobuf:"fixed32,8,opt,name=profit,proto3" json:"profit"`
+	ProfitRate    float32 `protobuf:"fixed32,9,opt,name=profit_rate,json=profitRate,proto3" json:"profit_rate"`
+	StatisticDate string  `protobuf:"bytes,10,opt,name=statistic_date,json=statisticDate,proto3" json:"statistic_date"`
+	CreatedAt     string  `protobuf:"bytes,11,opt,name=created_at,json=createdAt,proto3" json:"created_at"`
+	UpdatedAt     string  `protobuf:"bytes,12,opt,name=updated_at,json=updatedAt,proto3" json:"updated_at"`
 }
 
 func (x *SkuSaleDayStats) Reset() {
@@ -380,11 +380,11 @@ type SkuSaleDayStatsResponse struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	Entity *SkuSaleDayStats   `protobuf:"bytes,1,opt,name=entity,proto3" json:"entity,omitempty"`
-	Pager  *common.Pager      `protobuf:"bytes,2,opt,name=pager,proto3" json:"pager,omitempty"`
-	Items  []*SkuSaleDayStats `protobuf:"bytes,3,rep,name=items,proto3" json:"items,omitempty"`
-	Error  *common.Error      `protobuf:"bytes,4,opt,name=error,proto3" json:"error,omitempty"`
-	Info   *common.Info       `protobuf:"bytes,5,opt,name=info,proto3" json:"info,omitempty"`
+	Entity *SkuSaleDayStats   `protobuf:"bytes,1,opt,name=entity,proto3" json:"entity"`
+	Pager  *common.Pager      `protobuf:"bytes,2,opt,name=pager,proto3" json:"pager"`
+	Items  []*SkuSaleDayStats `protobuf:"bytes,3,rep,name=items,proto3" json:"items"`
+	Error  *common.Error      `protobuf:"bytes,4,opt,name=error,proto3" json:"error"`
+	Info   *common.Info       `protobuf:"bytes,5,opt,name=info,proto3" json:"info"`
 }
 
 func (x *SkuSaleDayStatsResponse) Reset() {

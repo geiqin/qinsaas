@@ -31,26 +31,26 @@ type RoomBookCfg struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	Id          int32 `protobuf:"varint,1,opt,name=id,proto3" json:"id,omitempty"`
-	LastBookDay int32 `protobuf:"varint,16,opt,name=last_book_day,json=lastBookDay,proto3" json:"last_book_day,omitempty"`
+	Id          int32 `protobuf:"varint,1,opt,name=id,proto3" json:"id"`
+	LastBookDay int32 `protobuf:"varint,16,opt,name=last_book_day,json=lastBookDay,proto3" json:"last_book_day"`
 	// @inject_tag: validate:"required,len=5" label:"最晚可预定时间"
-	LastBookTime string `protobuf:"bytes,2,opt,name=last_book_time,json=lastBookTime,proto3" json:"last_book_time,omitempty" validate:"required,len=5" label:"最晚可预定时间"`
-	BookCount    int32  `protobuf:"varint,3,opt,name=book_count,json=bookCount,proto3" json:"book_count,omitempty"`
+	LastBookTime string `protobuf:"bytes,2,opt,name=last_book_time,json=lastBookTime,proto3" json:"last_book_time" validate:"required,len=5" label:"最晚可预定时间"`
+	BookCount    int32  `protobuf:"varint,3,opt,name=book_count,json=bookCount,proto3" json:"book_count"`
 	// @inject_tag: validate:"min=0,max=60" label:"订单最多可预订天数"
-	BookDay int32 `protobuf:"varint,4,opt,name=book_day,json=bookDay,proto3" json:"book_day,omitempty" validate:"min=0,max=60" label:"订单最多可预订天数"`
+	BookDay int32 `protobuf:"varint,4,opt,name=book_day,json=bookDay,proto3" json:"book_day" validate:"min=0,max=60" label:"订单最多可预订天数"`
 	// @inject_tag: validate:"required,min=1,max=365" label:"预定日期范围"
-	AheadDay         int32 `protobuf:"varint,5,opt,name=ahead_day,json=aheadDay,proto3" json:"ahead_day,omitempty" validate:"required,min=1,max=365" label:"预定日期范围"`
-	IsNeedConfirm    bool  `protobuf:"varint,6,opt,name=is_need_confirm,json=isNeedConfirm,proto3" json:"is_need_confirm,omitempty"`
-	NeedAllocateRoom int32 `protobuf:"varint,7,opt,name=need_allocate_room,json=needAllocateRoom,proto3" json:"need_allocate_room,omitempty"`
-	NeedTime         int32 `protobuf:"varint,8,opt,name=need_time,json=needTime,proto3" json:"need_time,omitempty"`
-	AutoType         int32 `protobuf:"varint,9,opt,name=auto_type,json=autoType,proto3" json:"auto_type,omitempty"`
+	AheadDay         int32 `protobuf:"varint,5,opt,name=ahead_day,json=aheadDay,proto3" json:"ahead_day" validate:"required,min=1,max=365" label:"预定日期范围"`
+	IsNeedConfirm    bool  `protobuf:"varint,6,opt,name=is_need_confirm,json=isNeedConfirm,proto3" json:"is_need_confirm"`
+	NeedAllocateRoom int32 `protobuf:"varint,7,opt,name=need_allocate_room,json=needAllocateRoom,proto3" json:"need_allocate_room"`
+	NeedTime         int32 `protobuf:"varint,8,opt,name=need_time,json=needTime,proto3" json:"need_time"`
+	AutoType         int32 `protobuf:"varint,9,opt,name=auto_type,json=autoType,proto3" json:"auto_type"`
 	// @inject_tag: validate:"required" label:"预定须知"
-	BookContent          string `protobuf:"bytes,10,opt,name=book_content,json=bookContent,proto3" json:"book_content,omitempty" validate:"required" label:"预定须知"`
-	IsBookContentConfirm bool   `protobuf:"varint,11,opt,name=is_book_content_confirm,json=isBookContentConfirm,proto3" json:"is_book_content_confirm,omitempty"`
-	IsBookRoom           bool   `protobuf:"varint,12,opt,name=is_book_room,json=isBookRoom,proto3" json:"is_book_room,omitempty"`
-	BookRoomJson         string `protobuf:"bytes,13,opt,name=book_room_json,json=bookRoomJson,proto3" json:"book_room_json,omitempty"`
-	CreatedAt            string `protobuf:"bytes,14,opt,name=created_at,json=createdAt,proto3" json:"created_at,omitempty"`
-	UpdatedAt            string `protobuf:"bytes,15,opt,name=updated_at,json=updatedAt,proto3" json:"updated_at,omitempty"`
+	BookContent          string `protobuf:"bytes,10,opt,name=book_content,json=bookContent,proto3" json:"book_content" validate:"required" label:"预定须知"`
+	IsBookContentConfirm bool   `protobuf:"varint,11,opt,name=is_book_content_confirm,json=isBookContentConfirm,proto3" json:"is_book_content_confirm"`
+	IsBookRoom           bool   `protobuf:"varint,12,opt,name=is_book_room,json=isBookRoom,proto3" json:"is_book_room"`
+	BookRoomJson         string `protobuf:"bytes,13,opt,name=book_room_json,json=bookRoomJson,proto3" json:"book_room_json"`
+	CreatedAt            string `protobuf:"bytes,14,opt,name=created_at,json=createdAt,proto3" json:"created_at"`
+	UpdatedAt            string `protobuf:"bytes,15,opt,name=updated_at,json=updatedAt,proto3" json:"updated_at"`
 }
 
 func (x *RoomBookCfg) Reset() {
@@ -202,11 +202,11 @@ type RoomBookCfgResponse struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	Error  *common.Error  `protobuf:"bytes,1,opt,name=error,proto3" json:"error,omitempty"`
-	Info   *common.Info   `protobuf:"bytes,2,opt,name=info,proto3" json:"info,omitempty"`
-	Pager  *common.Pager  `protobuf:"bytes,3,opt,name=pager,proto3" json:"pager,omitempty"`
-	Entity *RoomBookCfg   `protobuf:"bytes,4,opt,name=entity,proto3" json:"entity,omitempty"`
-	Items  []*RoomBookCfg `protobuf:"bytes,5,rep,name=items,proto3" json:"items,omitempty"`
+	Error  *common.Error  `protobuf:"bytes,1,opt,name=error,proto3" json:"error"`
+	Info   *common.Info   `protobuf:"bytes,2,opt,name=info,proto3" json:"info"`
+	Pager  *common.Pager  `protobuf:"bytes,3,opt,name=pager,proto3" json:"pager"`
+	Entity *RoomBookCfg   `protobuf:"bytes,4,opt,name=entity,proto3" json:"entity"`
+	Items  []*RoomBookCfg `protobuf:"bytes,5,rep,name=items,proto3" json:"items"`
 }
 
 func (x *RoomBookCfgResponse) Reset() {

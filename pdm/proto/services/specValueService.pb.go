@@ -31,13 +31,13 @@ type SpecValue struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	Id         int32  `protobuf:"varint,1,opt,name=id,proto3" json:"id,omitempty"`
-	SpecId     int32  `protobuf:"varint,2,opt,name=spec_id,json=specId,proto3" json:"spec_id,omitempty"`
-	Alias      string `protobuf:"bytes,3,opt,name=alias,proto3" json:"alias,omitempty"`
-	SpecValue  string `protobuf:"bytes,4,opt,name=spec_value,json=specValue,proto3" json:"spec_value,omitempty"`
-	SpecImgId  int64  `protobuf:"varint,5,opt,name=spec_img_id,json=specImgId,proto3" json:"spec_img_id,omitempty"`
-	SpecImgUrl string `protobuf:"bytes,6,opt,name=spec_img_url,json=specImgUrl,proto3" json:"spec_img_url,omitempty"`
-	Sorting    int32  `protobuf:"varint,7,opt,name=sorting,proto3" json:"sorting,omitempty"`
+	Id         int32  `protobuf:"varint,1,opt,name=id,proto3" json:"id"`
+	SpecId     int32  `protobuf:"varint,2,opt,name=spec_id,json=specId,proto3" json:"spec_id"`
+	Alias      string `protobuf:"bytes,3,opt,name=alias,proto3" json:"alias"`
+	SpecValue  string `protobuf:"bytes,4,opt,name=spec_value,json=specValue,proto3" json:"spec_value"`
+	SpecImgId  int64  `protobuf:"varint,5,opt,name=spec_img_id,json=specImgId,proto3" json:"spec_img_id"`
+	SpecImgUrl string `protobuf:"bytes,6,opt,name=spec_img_url,json=specImgUrl,proto3" json:"spec_img_url"`
+	Sorting    int32  `protobuf:"varint,7,opt,name=sorting,proto3" json:"sorting"`
 }
 
 func (x *SpecValue) Reset() {
@@ -126,11 +126,11 @@ type SpecValueResponse struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	Entity *SpecValue    `protobuf:"bytes,1,opt,name=entity,proto3" json:"entity,omitempty"`
-	Pager  *common.Pager `protobuf:"bytes,2,opt,name=pager,proto3" json:"pager,omitempty"`
-	Items  []*SpecValue  `protobuf:"bytes,3,rep,name=items,proto3" json:"items,omitempty"`
-	Error  *common.Error `protobuf:"bytes,4,opt,name=error,proto3" json:"error,omitempty"`
-	Info   *common.Info  `protobuf:"bytes,5,opt,name=info,proto3" json:"info,omitempty"`
+	Entity *SpecValue    `protobuf:"bytes,1,opt,name=entity,proto3" json:"entity"`
+	Pager  *common.Pager `protobuf:"bytes,2,opt,name=pager,proto3" json:"pager"`
+	Items  []*SpecValue  `protobuf:"bytes,3,rep,name=items,proto3" json:"items"`
+	Error  *common.Error `protobuf:"bytes,4,opt,name=error,proto3" json:"error"`
+	Info   *common.Info  `protobuf:"bytes,5,opt,name=info,proto3" json:"info"`
 }
 
 func (x *SpecValueResponse) Reset() {

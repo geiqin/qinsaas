@@ -31,21 +31,25 @@ type IntegralRecordWhere struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	Paged       int32   `protobuf:"varint,1,opt,name=paged,proto3" json:"paged,omitempty"`
-	PageSize    int32   `protobuf:"varint,2,opt,name=page_size,json=pageSize,proto3" json:"page_size,omitempty"`
-	Sorting     string  `protobuf:"bytes,3,opt,name=sorting,proto3" json:"sorting,omitempty"`
-	Keywords    string  `protobuf:"bytes,4,opt,name=keywords,proto3" json:"keywords,omitempty"`
-	Id          int64   `protobuf:"varint,5,opt,name=id,proto3" json:"id,omitempty"`
-	Ids         []int64 `protobuf:"varint,6,rep,packed,name=ids,proto3" json:"ids,omitempty"`
-	CustomerId  int64   `protobuf:"varint,7,opt,name=customer_id,json=customerId,proto3" json:"customer_id,omitempty"`
-	Status      int32   `protobuf:"varint,8,opt,name=status,proto3" json:"status,omitempty"`
-	Points      int32   `protobuf:"varint,9,opt,name=points,proto3" json:"points,omitempty"`
-	CustomerIds []int64 `protobuf:"varint,10,rep,packed,name=customer_ids,json=customerIds,proto3" json:"customer_ids,omitempty"`
-	Direction   string  `protobuf:"bytes,11,opt,name=direction,proto3" json:"direction,omitempty"`
-	OrderId     int64   `protobuf:"varint,12,opt,name=order_id,json=orderId,proto3" json:"order_id,omitempty"`
-	Type        int32   `protobuf:"varint,13,opt,name=type,proto3" json:"type,omitempty"`
-	Types       []int32 `protobuf:"varint,14,rep,packed,name=types,proto3" json:"types,omitempty"`
-	Statuses    []int32 `protobuf:"varint,15,rep,packed,name=statuses,proto3" json:"statuses,omitempty"`
+	Paged    int32  `protobuf:"varint,1,opt,name=paged,proto3" json:"paged"`
+	PageSize int32  `protobuf:"varint,2,opt,name=page_size,json=pageSize,proto3" json:"page_size"`
+	Sorting  string `protobuf:"bytes,3,opt,name=sorting,proto3" json:"sorting"`
+	Keywords string `protobuf:"bytes,4,opt,name=keywords,proto3" json:"keywords"`
+	Id       int64  `protobuf:"varint,5,opt,name=id,proto3" json:"id"`
+	// @inject_tag: gorm:"-"
+	Ids        []int64 `protobuf:"varint,6,rep,packed,name=ids,proto3" json:"ids" gorm:"-"`
+	CustomerId int64   `protobuf:"varint,7,opt,name=customer_id,json=customerId,proto3" json:"customer_id"`
+	Status     int32   `protobuf:"varint,8,opt,name=status,proto3" json:"status"`
+	Points     int32   `protobuf:"varint,9,opt,name=points,proto3" json:"points"`
+	// @inject_tag: gorm:"-"
+	CustomerIds []int64 `protobuf:"varint,10,rep,packed,name=customer_ids,json=customerIds,proto3" json:"customer_ids" gorm:"-"`
+	Direction   string  `protobuf:"bytes,11,opt,name=direction,proto3" json:"direction"`
+	OrderId     int64   `protobuf:"varint,12,opt,name=order_id,json=orderId,proto3" json:"order_id"`
+	Type        int32   `protobuf:"varint,13,opt,name=type,proto3" json:"type"`
+	// @inject_tag: gorm:"-"
+	Types []int32 `protobuf:"varint,14,rep,packed,name=types,proto3" json:"types" gorm:"-"`
+	// @inject_tag: gorm:"-"
+	Statuses []int32 `protobuf:"varint,15,rep,packed,name=statuses,proto3" json:"statuses" gorm:"-"`
 }
 
 func (x *IntegralRecordWhere) Reset() {
@@ -190,21 +194,21 @@ type IntegralRecord struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	Id           int64  `protobuf:"varint,1,opt,name=id,proto3" json:"id,omitempty"`
-	CustomerId   int64  `protobuf:"varint,2,opt,name=customer_id,json=customerId,proto3" json:"customer_id,omitempty"`
-	IntegralId   int64  `protobuf:"varint,3,opt,name=integral_id,json=integralId,proto3" json:"integral_id,omitempty"`
-	Type         int32  `protobuf:"varint,4,opt,name=type,proto3" json:"type,omitempty"`
-	Direction    string `protobuf:"bytes,5,opt,name=direction,proto3" json:"direction,omitempty"`
-	Value        int32  `protobuf:"varint,6,opt,name=value,proto3" json:"value,omitempty"`
-	Balance      int32  `protobuf:"varint,7,opt,name=balance,proto3" json:"balance,omitempty"`
-	UsedValue    int32  `protobuf:"varint,8,opt,name=used_value,json=usedValue,proto3" json:"used_value,omitempty"`
-	EffectiveAt  string `protobuf:"bytes,9,opt,name=effective_at,json=effectiveAt,proto3" json:"effective_at,omitempty"`
-	ExpirationAt string `protobuf:"bytes,10,opt,name=expiration_at,json=expirationAt,proto3" json:"expiration_at,omitempty"`
-	Memo         string `protobuf:"bytes,11,opt,name=memo,proto3" json:"memo,omitempty"`
-	Status       int32  `protobuf:"varint,12,opt,name=status,proto3" json:"status,omitempty"`
-	CreatedAt    string `protobuf:"bytes,13,opt,name=created_at,json=createdAt,proto3" json:"created_at,omitempty"`
-	UpdatedAt    string `protobuf:"bytes,14,opt,name=updated_at,json=updatedAt,proto3" json:"updated_at,omitempty"`
-	OrderId      int64  `protobuf:"varint,15,opt,name=order_id,json=orderId,proto3" json:"order_id,omitempty"`
+	Id           int64  `protobuf:"varint,1,opt,name=id,proto3" json:"id"`
+	CustomerId   int64  `protobuf:"varint,2,opt,name=customer_id,json=customerId,proto3" json:"customer_id"`
+	IntegralId   int64  `protobuf:"varint,3,opt,name=integral_id,json=integralId,proto3" json:"integral_id"`
+	Type         int32  `protobuf:"varint,4,opt,name=type,proto3" json:"type"`
+	Direction    string `protobuf:"bytes,5,opt,name=direction,proto3" json:"direction"`
+	Value        int32  `protobuf:"varint,6,opt,name=value,proto3" json:"value"`
+	Balance      int32  `protobuf:"varint,7,opt,name=balance,proto3" json:"balance"`
+	UsedValue    int32  `protobuf:"varint,8,opt,name=used_value,json=usedValue,proto3" json:"used_value"`
+	EffectiveAt  string `protobuf:"bytes,9,opt,name=effective_at,json=effectiveAt,proto3" json:"effective_at"`
+	ExpirationAt string `protobuf:"bytes,10,opt,name=expiration_at,json=expirationAt,proto3" json:"expiration_at"`
+	Memo         string `protobuf:"bytes,11,opt,name=memo,proto3" json:"memo"`
+	Status       int32  `protobuf:"varint,12,opt,name=status,proto3" json:"status"`
+	CreatedAt    string `protobuf:"bytes,13,opt,name=created_at,json=createdAt,proto3" json:"created_at"`
+	UpdatedAt    string `protobuf:"bytes,14,opt,name=updated_at,json=updatedAt,proto3" json:"updated_at"`
+	OrderId      int64  `protobuf:"varint,15,opt,name=order_id,json=orderId,proto3" json:"order_id"`
 }
 
 func (x *IntegralRecord) Reset() {
@@ -349,11 +353,11 @@ type IntegralRecordResponse struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	Entity *IntegralRecord   `protobuf:"bytes,1,opt,name=entity,proto3" json:"entity,omitempty"`
-	Pager  *common.Pager     `protobuf:"bytes,2,opt,name=pager,proto3" json:"pager,omitempty"`
-	Items  []*IntegralRecord `protobuf:"bytes,3,rep,name=items,proto3" json:"items,omitempty"`
-	Error  *common.Error     `protobuf:"bytes,4,opt,name=error,proto3" json:"error,omitempty"`
-	Info   *common.Info      `protobuf:"bytes,5,opt,name=info,proto3" json:"info,omitempty"`
+	Entity *IntegralRecord   `protobuf:"bytes,1,opt,name=entity,proto3" json:"entity"`
+	Pager  *common.Pager     `protobuf:"bytes,2,opt,name=pager,proto3" json:"pager"`
+	Items  []*IntegralRecord `protobuf:"bytes,3,rep,name=items,proto3" json:"items"`
+	Error  *common.Error     `protobuf:"bytes,4,opt,name=error,proto3" json:"error"`
+	Info   *common.Info      `protobuf:"bytes,5,opt,name=info,proto3" json:"info"`
 }
 
 func (x *IntegralRecordResponse) Reset() {

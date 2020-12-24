@@ -40,6 +40,7 @@ message Address {
     bool defaulted =16;
     string created_at =17;
     string updated_at =18;
+    // @inject_tag: gorm:"-"
     Area area = 19;
 }
 

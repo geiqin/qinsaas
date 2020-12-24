@@ -31,21 +31,21 @@ type IntegralSetting struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	Id                int64   `protobuf:"varint,1,opt,name=id,proto3" json:"id,omitempty"`
-	Limit             int32   `protobuf:"varint,2,opt,name=limit,proto3" json:"limit,omitempty"`
-	EffectiveType     int32   `protobuf:"varint,3,opt,name=effective_type,json=effectiveType,proto3" json:"effective_type,omitempty"`
-	ExpireYearNum     int32   `protobuf:"varint,4,opt,name=expire_year_num,json=expireYearNum,proto3" json:"expire_year_num,omitempty"`
-	ExpireAt          string  `protobuf:"bytes,6,opt,name=expire_at,json=expireAt,proto3" json:"expire_at,omitempty"`
-	ProtectDays       int32   `protobuf:"varint,7,opt,name=protect_days,json=protectDays,proto3" json:"protect_days,omitempty"`
-	IntegralName      string  `protobuf:"bytes,8,opt,name=integral_name,json=integralName,proto3" json:"integral_name,omitempty"`
-	IntegralRatio     int32   `protobuf:"varint,9,opt,name=integral_ratio,json=integralRatio,proto3" json:"integral_ratio,omitempty"`
-	IsCashExchange    bool    `protobuf:"varint,10,opt,name=is_cash_exchange,json=isCashExchange,proto3" json:"is_cash_exchange,omitempty"`
-	CashExchangeMoney float32 `protobuf:"fixed32,11,opt,name=cash_exchange_money,json=cashExchangeMoney,proto3" json:"cash_exchange_money,omitempty"`
-	CashExchangeLimit float32 `protobuf:"fixed32,12,opt,name=cash_exchange_limit,json=cashExchangeLimit,proto3" json:"cash_exchange_limit,omitempty"`
-	CreatedAt         string  `protobuf:"bytes,13,opt,name=created_at,json=createdAt,proto3" json:"created_at,omitempty"`
-	UpdatedAt         string  `protobuf:"bytes,14,opt,name=updated_at,json=updatedAt,proto3" json:"updated_at,omitempty"`
-	CashExchangeType  int32   `protobuf:"varint,15,opt,name=cash_exchange_type,json=cashExchangeType,proto3" json:"cash_exchange_type,omitempty"`
-	CashExchangeRate  float32 `protobuf:"fixed32,16,opt,name=cash_exchange_rate,json=cashExchangeRate,proto3" json:"cash_exchange_rate,omitempty"`
+	Id                int64   `protobuf:"varint,1,opt,name=id,proto3" json:"id"`
+	Limit             int32   `protobuf:"varint,2,opt,name=limit,proto3" json:"limit"`
+	EffectiveType     int32   `protobuf:"varint,3,opt,name=effective_type,json=effectiveType,proto3" json:"effective_type"`
+	ExpireYearNum     int32   `protobuf:"varint,4,opt,name=expire_year_num,json=expireYearNum,proto3" json:"expire_year_num"`
+	ExpireAt          string  `protobuf:"bytes,6,opt,name=expire_at,json=expireAt,proto3" json:"expire_at"`
+	ProtectDays       int32   `protobuf:"varint,7,opt,name=protect_days,json=protectDays,proto3" json:"protect_days"`
+	IntegralName      string  `protobuf:"bytes,8,opt,name=integral_name,json=integralName,proto3" json:"integral_name"`
+	IntegralRatio     int32   `protobuf:"varint,9,opt,name=integral_ratio,json=integralRatio,proto3" json:"integral_ratio"`
+	IsCashExchange    bool    `protobuf:"varint,10,opt,name=is_cash_exchange,json=isCashExchange,proto3" json:"is_cash_exchange"`
+	CashExchangeMoney float32 `protobuf:"fixed32,11,opt,name=cash_exchange_money,json=cashExchangeMoney,proto3" json:"cash_exchange_money"`
+	CashExchangeLimit float32 `protobuf:"fixed32,12,opt,name=cash_exchange_limit,json=cashExchangeLimit,proto3" json:"cash_exchange_limit"`
+	CreatedAt         string  `protobuf:"bytes,13,opt,name=created_at,json=createdAt,proto3" json:"created_at"`
+	UpdatedAt         string  `protobuf:"bytes,14,opt,name=updated_at,json=updatedAt,proto3" json:"updated_at"`
+	CashExchangeType  int32   `protobuf:"varint,15,opt,name=cash_exchange_type,json=cashExchangeType,proto3" json:"cash_exchange_type"`
+	CashExchangeRate  float32 `protobuf:"fixed32,16,opt,name=cash_exchange_rate,json=cashExchangeRate,proto3" json:"cash_exchange_rate"`
 }
 
 func (x *IntegralSetting) Reset() {
@@ -190,11 +190,11 @@ type IntegralSettingResponse struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	Entity *IntegralSetting   `protobuf:"bytes,1,opt,name=entity,proto3" json:"entity,omitempty"`
-	Pager  *common.Pager      `protobuf:"bytes,2,opt,name=pager,proto3" json:"pager,omitempty"`
-	Items  []*IntegralSetting `protobuf:"bytes,3,rep,name=items,proto3" json:"items,omitempty"`
-	Error  *common.Error      `protobuf:"bytes,4,opt,name=error,proto3" json:"error,omitempty"`
-	Info   *common.Info       `protobuf:"bytes,5,opt,name=info,proto3" json:"info,omitempty"`
+	Entity *IntegralSetting   `protobuf:"bytes,1,opt,name=entity,proto3" json:"entity"`
+	Pager  *common.Pager      `protobuf:"bytes,2,opt,name=pager,proto3" json:"pager"`
+	Items  []*IntegralSetting `protobuf:"bytes,3,rep,name=items,proto3" json:"items"`
+	Error  *common.Error      `protobuf:"bytes,4,opt,name=error,proto3" json:"error"`
+	Info   *common.Info       `protobuf:"bytes,5,opt,name=info,proto3" json:"info"`
 }
 
 func (x *IntegralSettingResponse) Reset() {

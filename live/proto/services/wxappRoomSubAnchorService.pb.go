@@ -31,11 +31,11 @@ type WxappRoomSubAnchorWhere struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	Paged    int32  `protobuf:"varint,1,opt,name=paged,proto3" json:"paged,omitempty"`
-	PageSize int32  `protobuf:"varint,2,opt,name=page_size,json=pageSize,proto3" json:"page_size,omitempty"`
-	Sorting  string `protobuf:"bytes,3,opt,name=sorting,proto3" json:"sorting,omitempty"`
-	RoomId   int64  `protobuf:"varint,4,opt,name=room_id,json=roomId,proto3" json:"room_id,omitempty"`
-	Username string `protobuf:"bytes,5,opt,name=username,proto3" json:"username,omitempty"`
+	Paged    int32  `protobuf:"varint,1,opt,name=paged,proto3" json:"paged"`
+	PageSize int32  `protobuf:"varint,2,opt,name=page_size,json=pageSize,proto3" json:"page_size"`
+	Sorting  string `protobuf:"bytes,3,opt,name=sorting,proto3" json:"sorting"`
+	RoomId   int64  `protobuf:"varint,4,opt,name=room_id,json=roomId,proto3" json:"room_id"`
+	Username string `protobuf:"bytes,5,opt,name=username,proto3" json:"username"`
 }
 
 func (x *WxappRoomSubAnchorWhere) Reset() {
@@ -110,8 +110,8 @@ type WxappRoomSubAnchor struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	Username  string `protobuf:"bytes,1,opt,name=username,proto3" json:"username,omitempty"`
-	QrcodeUrl string `protobuf:"bytes,2,opt,name=qrcode_url,json=qrcodeUrl,proto3" json:"qrcode_url,omitempty"` // 当微信号没有在 “小程序直播“ 小程序实名认证 返回该字段
+	Username  string `protobuf:"bytes,1,opt,name=username,proto3" json:"username"`
+	QrcodeUrl string `protobuf:"bytes,2,opt,name=qrcode_url,json=qrcodeUrl,proto3" json:"qrcode_url"` // 当微信号没有在 “小程序直播“ 小程序实名认证 返回该字段
 }
 
 func (x *WxappRoomSubAnchor) Reset() {
@@ -165,11 +165,11 @@ type WxappRoomSubAnchorResponse struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	Entity *WxappRoomSubAnchor   `protobuf:"bytes,1,opt,name=entity,proto3" json:"entity,omitempty"`
-	Pager  *common.Pager         `protobuf:"bytes,2,opt,name=pager,proto3" json:"pager,omitempty"`
-	Items  []*WxappRoomSubAnchor `protobuf:"bytes,3,rep,name=items,proto3" json:"items,omitempty"`
-	Error  *common.Error         `protobuf:"bytes,4,opt,name=error,proto3" json:"error,omitempty"`
-	Info   *common.Info          `protobuf:"bytes,5,opt,name=info,proto3" json:"info,omitempty"`
+	Entity *WxappRoomSubAnchor   `protobuf:"bytes,1,opt,name=entity,proto3" json:"entity"`
+	Pager  *common.Pager         `protobuf:"bytes,2,opt,name=pager,proto3" json:"pager"`
+	Items  []*WxappRoomSubAnchor `protobuf:"bytes,3,rep,name=items,proto3" json:"items"`
+	Error  *common.Error         `protobuf:"bytes,4,opt,name=error,proto3" json:"error"`
+	Info   *common.Info          `protobuf:"bytes,5,opt,name=info,proto3" json:"info"`
 }
 
 func (x *WxappRoomSubAnchorResponse) Reset() {

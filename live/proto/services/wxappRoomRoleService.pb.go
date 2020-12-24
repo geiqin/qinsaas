@@ -31,13 +31,14 @@ type WxappRoomRoleWhere struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	Paged    int32   `protobuf:"varint,1,opt,name=paged,proto3" json:"paged,omitempty"`
-	PageSize int32   `protobuf:"varint,2,opt,name=page_size,json=pageSize,proto3" json:"page_size,omitempty"`
-	Sorting  string  `protobuf:"bytes,3,opt,name=sorting,proto3" json:"sorting,omitempty"`
-	Username string  `protobuf:"bytes,4,opt,name=username,proto3" json:"username,omitempty"`
-	Role     int32   `protobuf:"varint,5,opt,name=role,proto3" json:"role,omitempty"`
-	Roles    []int32 `protobuf:"varint,6,rep,packed,name=roles,proto3" json:"roles,omitempty"`
-	Keyword  string  `protobuf:"bytes,7,opt,name=keyword,proto3" json:"keyword,omitempty"`
+	Paged    int32  `protobuf:"varint,1,opt,name=paged,proto3" json:"paged"`
+	PageSize int32  `protobuf:"varint,2,opt,name=page_size,json=pageSize,proto3" json:"page_size"`
+	Sorting  string `protobuf:"bytes,3,opt,name=sorting,proto3" json:"sorting"`
+	Username string `protobuf:"bytes,4,opt,name=username,proto3" json:"username"`
+	Role     int32  `protobuf:"varint,5,opt,name=role,proto3" json:"role"`
+	// @inject_tag: gorm:"-"
+	Roles   []int32 `protobuf:"varint,6,rep,packed,name=roles,proto3" json:"roles" gorm:"-"`
+	Keyword string  `protobuf:"bytes,7,opt,name=keyword,proto3" json:"keyword"`
 }
 
 func (x *WxappRoomRoleWhere) Reset() {
@@ -126,12 +127,13 @@ type WxappRoomRole struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	Headingimg string  `protobuf:"bytes,1,opt,name=headingimg,proto3" json:"headingimg,omitempty"`
-	Nickname   string  `protobuf:"bytes,2,opt,name=nickname,proto3" json:"nickname,omitempty"`
-	Openid     string  `protobuf:"bytes,3,opt,name=openid,proto3" json:"openid,omitempty"`
-	Username   string  `protobuf:"bytes,4,opt,name=username,proto3" json:"username,omitempty"`
-	RoleList   []int32 `protobuf:"varint,5,rep,packed,name=role_list,json=roleList,proto3" json:"role_list,omitempty"`
-	UpdatedAt  string  `protobuf:"bytes,6,opt,name=updated_at,json=updatedAt,proto3" json:"updated_at,omitempty"`
+	Headingimg string `protobuf:"bytes,1,opt,name=headingimg,proto3" json:"headingimg"`
+	Nickname   string `protobuf:"bytes,2,opt,name=nickname,proto3" json:"nickname"`
+	Openid     string `protobuf:"bytes,3,opt,name=openid,proto3" json:"openid"`
+	Username   string `protobuf:"bytes,4,opt,name=username,proto3" json:"username"`
+	// @inject_tag: gorm:"-"
+	RoleList  []int32 `protobuf:"varint,5,rep,packed,name=role_list,json=roleList,proto3" json:"role_list" gorm:"-"`
+	UpdatedAt string  `protobuf:"bytes,6,opt,name=updated_at,json=updatedAt,proto3" json:"updated_at"`
 }
 
 func (x *WxappRoomRole) Reset() {
@@ -213,7 +215,7 @@ type WxappRoomRoleCreateOrUpdate struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	QrcodeUrl string `protobuf:"bytes,1,opt,name=qrcode_url,json=qrcodeUrl,proto3" json:"qrcode_url,omitempty"` // 当主播微信号没有在 “小程序直播“ 小程序实名认证 返回该字段
+	QrcodeUrl string `protobuf:"bytes,1,opt,name=qrcode_url,json=qrcodeUrl,proto3" json:"qrcode_url"` // 当主播微信号没有在 “小程序直播“ 小程序实名认证 返回该字段
 }
 
 func (x *WxappRoomRoleCreateOrUpdate) Reset() {
@@ -260,11 +262,11 @@ type WxappRoomRoleResponse struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	Entity *WxappRoomRole   `protobuf:"bytes,1,opt,name=entity,proto3" json:"entity,omitempty"`
-	Pager  *common.Pager    `protobuf:"bytes,2,opt,name=pager,proto3" json:"pager,omitempty"`
-	Items  []*WxappRoomRole `protobuf:"bytes,3,rep,name=items,proto3" json:"items,omitempty"`
-	Error  *common.Error    `protobuf:"bytes,4,opt,name=error,proto3" json:"error,omitempty"`
-	Info   *common.Info     `protobuf:"bytes,5,opt,name=info,proto3" json:"info,omitempty"`
+	Entity *WxappRoomRole   `protobuf:"bytes,1,opt,name=entity,proto3" json:"entity"`
+	Pager  *common.Pager    `protobuf:"bytes,2,opt,name=pager,proto3" json:"pager"`
+	Items  []*WxappRoomRole `protobuf:"bytes,3,rep,name=items,proto3" json:"items"`
+	Error  *common.Error    `protobuf:"bytes,4,opt,name=error,proto3" json:"error"`
+	Info   *common.Info     `protobuf:"bytes,5,opt,name=info,proto3" json:"info"`
 }
 
 func (x *WxappRoomRoleResponse) Reset() {
@@ -339,9 +341,9 @@ type WxappRoomRoleCreateOrUpdateResponse struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	Entity *WxappRoomRoleCreateOrUpdate `protobuf:"bytes,1,opt,name=entity,proto3" json:"entity,omitempty"`
-	Error  *common.Error                `protobuf:"bytes,2,opt,name=error,proto3" json:"error,omitempty"`
-	Info   *common.Info                 `protobuf:"bytes,3,opt,name=info,proto3" json:"info,omitempty"`
+	Entity *WxappRoomRoleCreateOrUpdate `protobuf:"bytes,1,opt,name=entity,proto3" json:"entity"`
+	Error  *common.Error                `protobuf:"bytes,2,opt,name=error,proto3" json:"error"`
+	Info   *common.Info                 `protobuf:"bytes,3,opt,name=info,proto3" json:"info"`
 }
 
 func (x *WxappRoomRoleCreateOrUpdateResponse) Reset() {

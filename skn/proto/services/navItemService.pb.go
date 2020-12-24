@@ -31,14 +31,14 @@ type NavItemWhere struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	Paged           int32  `protobuf:"varint,1,opt,name=paged,proto3" json:"paged,omitempty"`
-	PageSize        int32  `protobuf:"varint,2,opt,name=page_size,json=pageSize,proto3" json:"page_size,omitempty"`
-	Id              int64  `protobuf:"varint,3,opt,name=id,proto3" json:"id,omitempty"`
-	IsTop           bool   `protobuf:"varint,4,opt,name=is_top,json=isTop,proto3" json:"is_top,omitempty"` // 是否往上查找父节点
-	NavPositionName string `protobuf:"bytes,5,opt,name=nav_position_name,json=navPositionName,proto3" json:"nav_position_name,omitempty"`
-	ObjectType      string `protobuf:"bytes,6,opt,name=object_type,json=objectType,proto3" json:"object_type,omitempty"`
-	ObjectValue     string `protobuf:"bytes,7,opt,name=object_value,json=objectValue,proto3" json:"object_value,omitempty"`
-	NavId           int64  `protobuf:"varint,8,opt,name=nav_id,json=navId,proto3" json:"nav_id,omitempty"`
+	Paged           int32  `protobuf:"varint,1,opt,name=paged,proto3" json:"paged"`
+	PageSize        int32  `protobuf:"varint,2,opt,name=page_size,json=pageSize,proto3" json:"page_size"`
+	Id              int64  `protobuf:"varint,3,opt,name=id,proto3" json:"id"`
+	IsTop           bool   `protobuf:"varint,4,opt,name=is_top,json=isTop,proto3" json:"is_top"` // 是否往上查找父节点
+	NavPositionName string `protobuf:"bytes,5,opt,name=nav_position_name,json=navPositionName,proto3" json:"nav_position_name"`
+	ObjectType      string `protobuf:"bytes,6,opt,name=object_type,json=objectType,proto3" json:"object_type"`
+	ObjectValue     string `protobuf:"bytes,7,opt,name=object_value,json=objectValue,proto3" json:"object_value"`
+	NavId           int64  `protobuf:"varint,8,opt,name=nav_id,json=navId,proto3" json:"nav_id"`
 }
 
 func (x *NavItemWhere) Reset() {
@@ -134,19 +134,20 @@ type NavItem struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	Id          int64      `protobuf:"varint,1,opt,name=id,proto3" json:"id,omitempty"`
-	NavId       int64      `protobuf:"varint,2,opt,name=nav_id,json=navId,proto3" json:"nav_id,omitempty"`
-	Title       string     `protobuf:"bytes,3,opt,name=title,proto3" json:"title,omitempty"`
-	Name        string     `protobuf:"bytes,4,opt,name=name,proto3" json:"name,omitempty"`
-	NavItemId   int64      `protobuf:"varint,5,opt,name=nav_item_id,json=navItemId,proto3" json:"nav_item_id,omitempty"`
-	ObjectType  string     `protobuf:"bytes,6,opt,name=object_type,json=objectType,proto3" json:"object_type,omitempty"`
-	ObjectValue string     `protobuf:"bytes,7,opt,name=object_value,json=objectValue,proto3" json:"object_value,omitempty"`
-	Sorting     int32      `protobuf:"varint,8,opt,name=sorting,proto3" json:"sorting,omitempty"`
-	Extra       string     `protobuf:"bytes,9,opt,name=extra,proto3" json:"extra,omitempty"`
-	CreatedAt   string     `protobuf:"bytes,10,opt,name=created_at,json=createdAt,proto3" json:"created_at,omitempty"`
-	UpdatedAt   string     `protobuf:"bytes,11,opt,name=updated_at,json=updatedAt,proto3" json:"updated_at,omitempty"`
-	Children    []*NavItem `protobuf:"bytes,12,rep,name=children,proto3" json:"children,omitempty"`
-	Alias       string     `protobuf:"bytes,13,opt,name=alias,proto3" json:"alias,omitempty"`
+	Id          int64  `protobuf:"varint,1,opt,name=id,proto3" json:"id"`
+	NavId       int64  `protobuf:"varint,2,opt,name=nav_id,json=navId,proto3" json:"nav_id"`
+	Title       string `protobuf:"bytes,3,opt,name=title,proto3" json:"title"`
+	Name        string `protobuf:"bytes,4,opt,name=name,proto3" json:"name"`
+	NavItemId   int64  `protobuf:"varint,5,opt,name=nav_item_id,json=navItemId,proto3" json:"nav_item_id"`
+	ObjectType  string `protobuf:"bytes,6,opt,name=object_type,json=objectType,proto3" json:"object_type"`
+	ObjectValue string `protobuf:"bytes,7,opt,name=object_value,json=objectValue,proto3" json:"object_value"`
+	Sorting     int32  `protobuf:"varint,8,opt,name=sorting,proto3" json:"sorting"`
+	Extra       string `protobuf:"bytes,9,opt,name=extra,proto3" json:"extra"`
+	CreatedAt   string `protobuf:"bytes,10,opt,name=created_at,json=createdAt,proto3" json:"created_at"`
+	UpdatedAt   string `protobuf:"bytes,11,opt,name=updated_at,json=updatedAt,proto3" json:"updated_at"`
+	// @inject_tag: gorm:"foreignKey:NavItemId"
+	Children []*NavItem `protobuf:"bytes,12,rep,name=children,proto3" json:"children" gorm:"foreignKey:NavItemId"`
+	Alias    string     `protobuf:"bytes,13,opt,name=alias,proto3" json:"alias"`
 }
 
 func (x *NavItem) Reset() {
@@ -277,11 +278,11 @@ type NavItemResponse struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	Entity *NavItem      `protobuf:"bytes,1,opt,name=entity,proto3" json:"entity,omitempty"`
-	Pager  *common.Pager `protobuf:"bytes,2,opt,name=pager,proto3" json:"pager,omitempty"`
-	Error  *common.Error `protobuf:"bytes,3,opt,name=error,proto3" json:"error,omitempty"`
-	Info   *common.Info  `protobuf:"bytes,4,opt,name=info,proto3" json:"info,omitempty"`
-	Items  []*NavItem    `protobuf:"bytes,5,rep,name=items,proto3" json:"items,omitempty"`
+	Entity *NavItem      `protobuf:"bytes,1,opt,name=entity,proto3" json:"entity"`
+	Pager  *common.Pager `protobuf:"bytes,2,opt,name=pager,proto3" json:"pager"`
+	Error  *common.Error `protobuf:"bytes,3,opt,name=error,proto3" json:"error"`
+	Info   *common.Info  `protobuf:"bytes,4,opt,name=info,proto3" json:"info"`
+	Items  []*NavItem    `protobuf:"bytes,5,rep,name=items,proto3" json:"items"`
 }
 
 func (x *NavItemResponse) Reset() {

@@ -22,8 +22,10 @@ message IntegralWhere {
     string sorting = 3;
     string keywords = 4;
     int64 id = 5;
+    // @inject_tag: gorm:"-"
     repeated int64 ids = 6;
     int64 customer_id = 7;
+    // @inject_tag: gorm:"-"
     repeated int64 customer_ids = 8;
     int32 points = 9;
     string memo = 10;

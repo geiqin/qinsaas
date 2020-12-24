@@ -31,10 +31,10 @@ type RoomStatusStatsWhere struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	Paged    int32  `protobuf:"varint,1,opt,name=paged,proto3" json:"paged,omitempty"`
-	PageSize int32  `protobuf:"varint,2,opt,name=page_size,json=pageSize,proto3" json:"page_size,omitempty"`
-	Top      int32  `protobuf:"varint,3,opt,name=top,proto3" json:"top,omitempty"`
-	Date     string `protobuf:"bytes,4,opt,name=date,proto3" json:"date,omitempty"`
+	Paged    int32  `protobuf:"varint,1,opt,name=paged,proto3" json:"paged"`
+	PageSize int32  `protobuf:"varint,2,opt,name=page_size,json=pageSize,proto3" json:"page_size"`
+	Top      int32  `protobuf:"varint,3,opt,name=top,proto3" json:"top"`
+	Date     string `protobuf:"bytes,4,opt,name=date,proto3" json:"date"`
 }
 
 func (x *RoomStatusStatsWhere) Reset() {
@@ -102,15 +102,15 @@ type RoomStatusStats struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	Date      string `protobuf:"bytes,1,opt,name=date,proto3" json:"date,omitempty"`                             // 日期
-	TotalNum  int32  `protobuf:"varint,2,opt,name=total_num,json=totalNum,proto3" json:"total_num,omitempty"`    // 房间总数
-	VacantNum int32  `protobuf:"varint,3,opt,name=vacant_num,json=vacantNum,proto3" json:"vacant_num,omitempty"` // 空房数量
-	UsingNum  int32  `protobuf:"varint,4,opt,name=using_num,json=usingNum,proto3" json:"using_num,omitempty"`    // 在住数量
-	BookNum   int32  `protobuf:"varint,5,opt,name=book_num,json=bookNum,proto3" json:"book_num,omitempty"`       // 预定数量
-	KeepNum   int32  `protobuf:"varint,6,opt,name=keep_num,json=keepNum,proto3" json:"keep_num,omitempty"`       // 保留房数量
-	CleanNum  int32  `protobuf:"varint,7,opt,name=clean_num,json=cleanNum,proto3" json:"clean_num,omitempty"`    // 净房数量
-	DirtyNum  int32  `protobuf:"varint,8,opt,name=dirty_num,json=dirtyNum,proto3" json:"dirty_num,omitempty"`    // 脏房数量
-	RepairNum int32  `protobuf:"varint,9,opt,name=repair_num,json=repairNum,proto3" json:"repair_num,omitempty"` // 维修房数量
+	Date      string `protobuf:"bytes,1,opt,name=date,proto3" json:"date"`                             // 日期
+	TotalNum  int32  `protobuf:"varint,2,opt,name=total_num,json=totalNum,proto3" json:"total_num"`    // 房间总数
+	VacantNum int32  `protobuf:"varint,3,opt,name=vacant_num,json=vacantNum,proto3" json:"vacant_num"` // 空房数量
+	UsingNum  int32  `protobuf:"varint,4,opt,name=using_num,json=usingNum,proto3" json:"using_num"`    // 在住数量
+	BookNum   int32  `protobuf:"varint,5,opt,name=book_num,json=bookNum,proto3" json:"book_num"`       // 预定数量
+	KeepNum   int32  `protobuf:"varint,6,opt,name=keep_num,json=keepNum,proto3" json:"keep_num"`       // 保留房数量
+	CleanNum  int32  `protobuf:"varint,7,opt,name=clean_num,json=cleanNum,proto3" json:"clean_num"`    // 净房数量
+	DirtyNum  int32  `protobuf:"varint,8,opt,name=dirty_num,json=dirtyNum,proto3" json:"dirty_num"`    // 脏房数量
+	RepairNum int32  `protobuf:"varint,9,opt,name=repair_num,json=repairNum,proto3" json:"repair_num"` // 维修房数量
 }
 
 func (x *RoomStatusStats) Reset() {
@@ -213,11 +213,11 @@ type RoomStatusStatsResponse struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	Error  *common.Error      `protobuf:"bytes,1,opt,name=error,proto3" json:"error,omitempty"`
-	Info   *common.Info       `protobuf:"bytes,2,opt,name=info,proto3" json:"info,omitempty"`
-	Pager  *common.Pager      `protobuf:"bytes,3,opt,name=pager,proto3" json:"pager,omitempty"`
-	Entity *RoomStatusStats   `protobuf:"bytes,4,opt,name=entity,proto3" json:"entity,omitempty"`
-	Items  []*RoomStatusStats `protobuf:"bytes,5,rep,name=items,proto3" json:"items,omitempty"`
+	Error  *common.Error      `protobuf:"bytes,1,opt,name=error,proto3" json:"error"`
+	Info   *common.Info       `protobuf:"bytes,2,opt,name=info,proto3" json:"info"`
+	Pager  *common.Pager      `protobuf:"bytes,3,opt,name=pager,proto3" json:"pager"`
+	Entity *RoomStatusStats   `protobuf:"bytes,4,opt,name=entity,proto3" json:"entity"`
+	Items  []*RoomStatusStats `protobuf:"bytes,5,rep,name=items,proto3" json:"items"`
 }
 
 func (x *RoomStatusStatsResponse) Reset() {

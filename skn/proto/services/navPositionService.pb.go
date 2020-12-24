@@ -31,13 +31,16 @@ type NavPositionWhere struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	Paged    int32          `protobuf:"varint,1,opt,name=paged,proto3" json:"paged,omitempty"`
-	PageSize int32          `protobuf:"varint,2,opt,name=page_size,json=pageSize,proto3" json:"page_size,omitempty"`
-	Id       int64          `protobuf:"varint,3,opt,name=id,proto3" json:"id,omitempty"`
-	Ids      []int64        `protobuf:"varint,4,rep,packed,name=ids,proto3" json:"ids,omitempty"`
-	Name     string         `protobuf:"bytes,5,opt,name=name,proto3" json:"name,omitempty"`
-	Names    []string       `protobuf:"bytes,6,rep,name=names,proto3" json:"names,omitempty"`
-	Items    []*NavPosition `protobuf:"bytes,7,rep,name=items,proto3" json:"items,omitempty"`
+	Paged    int32 `protobuf:"varint,1,opt,name=paged,proto3" json:"paged"`
+	PageSize int32 `protobuf:"varint,2,opt,name=page_size,json=pageSize,proto3" json:"page_size"`
+	Id       int64 `protobuf:"varint,3,opt,name=id,proto3" json:"id"`
+	// @inject_tag: gorm:"-"
+	Ids  []int64 `protobuf:"varint,4,rep,packed,name=ids,proto3" json:"ids" gorm:"-"`
+	Name string  `protobuf:"bytes,5,opt,name=name,proto3" json:"name"`
+	// @inject_tag: gorm:"-"
+	Names []string `protobuf:"bytes,6,rep,name=names,proto3" json:"names" gorm:"-"`
+	// @inject_tag: gorm:"-"
+	Items []*NavPosition `protobuf:"bytes,7,rep,name=items,proto3" json:"items" gorm:"-"`
 }
 
 func (x *NavPositionWhere) Reset() {
@@ -126,16 +129,14 @@ type NavPosition struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	Id int32 `protobuf:"varint,1,opt,name=id,proto3" json:"id,omitempty"`
-	// @inject_tag: json:"name"
-	Name string `protobuf:"bytes,2,opt,name=name,proto3" json:"name,omitempty"`
-	// @inject_tag: json:"title"
-	Title string `protobuf:"bytes,3,opt,name=title,proto3" json:"title,omitempty"`
-	// @inject_tag: json:"nav_id"
-	NavId     int64  `protobuf:"varint,4,opt,name=nav_id,json=navId,proto3" json:"nav_id,omitempty"`
-	CreatedAt string `protobuf:"bytes,5,opt,name=created_at,json=createdAt,proto3" json:"created_at,omitempty"`
-	UpdatedAt string `protobuf:"bytes,6,opt,name=updated_at,json=updatedAt,proto3" json:"updated_at,omitempty"`
-	Nav       *Nav   `protobuf:"bytes,7,opt,name=nav,proto3" json:"nav,omitempty"`
+	Id        int32  `protobuf:"varint,1,opt,name=id,proto3" json:"id"`
+	Name      string `protobuf:"bytes,2,opt,name=name,proto3" json:"name"`
+	Title     string `protobuf:"bytes,3,opt,name=title,proto3" json:"title"`
+	NavId     int64  `protobuf:"varint,4,opt,name=nav_id,json=navId,proto3" json:"nav_id"`
+	CreatedAt string `protobuf:"bytes,5,opt,name=created_at,json=createdAt,proto3" json:"created_at"`
+	UpdatedAt string `protobuf:"bytes,6,opt,name=updated_at,json=updatedAt,proto3" json:"updated_at"`
+	// @inject_tag: gorm:"-"
+	Nav *Nav `protobuf:"bytes,7,opt,name=nav,proto3" json:"nav" gorm:"-"`
 }
 
 func (x *NavPosition) Reset() {
@@ -224,11 +225,11 @@ type NavPositionResponse struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	Entity *NavPosition   `protobuf:"bytes,1,opt,name=entity,proto3" json:"entity,omitempty"`
-	Pager  *common.Pager  `protobuf:"bytes,2,opt,name=pager,proto3" json:"pager,omitempty"`
-	Error  *common.Error  `protobuf:"bytes,3,opt,name=error,proto3" json:"error,omitempty"`
-	Info   *common.Info   `protobuf:"bytes,4,opt,name=info,proto3" json:"info,omitempty"`
-	Items  []*NavPosition `protobuf:"bytes,5,rep,name=items,proto3" json:"items,omitempty"`
+	Entity *NavPosition   `protobuf:"bytes,1,opt,name=entity,proto3" json:"entity"`
+	Pager  *common.Pager  `protobuf:"bytes,2,opt,name=pager,proto3" json:"pager"`
+	Error  *common.Error  `protobuf:"bytes,3,opt,name=error,proto3" json:"error"`
+	Info   *common.Info   `protobuf:"bytes,4,opt,name=info,proto3" json:"info"`
+	Items  []*NavPosition `protobuf:"bytes,5,rep,name=items,proto3" json:"items"`
 }
 
 func (x *NavPositionResponse) Reset() {

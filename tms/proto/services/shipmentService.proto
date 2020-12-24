@@ -21,6 +21,7 @@ message ShipmentWhere {
     string sorting = 3;
     string keywords = 4;
     int64 id = 5;
+    // @inject_tag: gorm:"-"
     repeated int64 ids = 6;
     string type = 7;
     string method = 8;
@@ -58,11 +59,14 @@ message Shipment {
     string arrived_at = 26;
     string created_at = 27;
     string updated_at = 28;
+    // @inject_tag: gorm:"foreignKey:ShipmentId"
     repeated ShipmentDetail details = 29;
     string start_time = 30;
     string end_time = 31;
     string shipped_at = 32;
+    // @inject_tag: gorm:"-"
     Shipper shipper = 34;
+    // @inject_tag: gorm:"-"
     Fetch location = 35;
 }
 
@@ -75,6 +79,7 @@ message ShipmentDetail {
     int32 num = 6;
     string created_at = 7;
     string updated_at = 8;
+    // @inject_tag: gorm:"-"
     GoodsInfo goods = 9;
 }
 

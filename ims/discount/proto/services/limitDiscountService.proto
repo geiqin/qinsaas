@@ -42,7 +42,9 @@ message LimitDiscount {
     string status_name = 14;
     string created_at = 15;
     string updated_at = 16;
+    // @inject_tag: gorm:"foreignKey:LimitDiscountId"
     repeated LimitDiscountGoods goodses = 17;
+    // @inject_tag: gorm:"-"
     repeated int64 ids = 18;
 }
 

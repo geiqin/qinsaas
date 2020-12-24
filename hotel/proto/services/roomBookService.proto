@@ -20,6 +20,7 @@ message RoomBookWhere {
     int32 paged = 1;
     int32 page_size = 2;
     int64 id = 3;
+    // @inject_tag: gorm:"-"
     repeated int64 ids = 4;
     string keywords = 5;
     string start_date = 6;
@@ -29,6 +30,7 @@ message RoomBookWhere {
     int64 room_id = 10;
     string type = 11;
     int64 room_book_detail_id = 12;
+    // @inject_tag: gorm:"-"
     repeated int64 room_book_detail_ids = 13;
 }
 
@@ -56,8 +58,17 @@ message RoomBook {
     int32 status = 15;
     string created_at = 16;
     string updated_at = 17;
+    // @inject_tag: gorm:"foreignKey:RoomBookId"
     repeated RoomBookDetail details = 18;
+    // @inject_tag: gorm:"-"
     repeated AllRoomTypeAndAvailableRoom detail_req = 19;
+    int64 order_id = 21;
+    float extra_bed_price = 22;
+    float deposit = 23;
+    bool is_pay_deposit = 24;
+    string book_room_json = 25;
+    string gift_content = 26;
+
 }
 
 message RoomBookResponse {

@@ -34,6 +34,7 @@ message Level {
     string description =19;
     string created_at =20;
     string updated_at =21;
+    // @inject_tag: gorm:"-"
     repeated int32 ids = 22;
 }
 

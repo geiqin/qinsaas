@@ -25,6 +25,7 @@ message InConfig {
     string whole_end_time = 13;
     string created_at = 14;
     string updated_at = 15;
+    // @inject_tag: gorm:"-"
     repeated  TimeConfig open_times = 16;
 }
 

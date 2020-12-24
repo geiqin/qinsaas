@@ -31,12 +31,13 @@ type DeliveryWhere struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	Paged    int32   `protobuf:"varint,1,opt,name=paged,proto3" json:"paged,omitempty"`
-	PageSize int32   `protobuf:"varint,2,opt,name=page_size,json=pageSize,proto3" json:"page_size,omitempty"`
-	Sorting  string  `protobuf:"bytes,3,opt,name=sorting,proto3" json:"sorting,omitempty"`
-	Keywords string  `protobuf:"bytes,4,opt,name=keywords,proto3" json:"keywords,omitempty"`
-	Id       int64   `protobuf:"varint,5,opt,name=id,proto3" json:"id,omitempty"`
-	Ids      []int64 `protobuf:"varint,6,rep,packed,name=ids,proto3" json:"ids,omitempty"`
+	Paged    int32  `protobuf:"varint,1,opt,name=paged,proto3" json:"paged"`
+	PageSize int32  `protobuf:"varint,2,opt,name=page_size,json=pageSize,proto3" json:"page_size"`
+	Sorting  string `protobuf:"bytes,3,opt,name=sorting,proto3" json:"sorting"`
+	Keywords string `protobuf:"bytes,4,opt,name=keywords,proto3" json:"keywords"`
+	Id       int64  `protobuf:"varint,5,opt,name=id,proto3" json:"id"`
+	// @inject_tag: gorm:"-"
+	Ids []int64 `protobuf:"varint,6,rep,packed,name=ids,proto3" json:"ids" gorm:"-"`
 }
 
 func (x *DeliveryWhere) Reset() {
@@ -118,36 +119,40 @@ type Delivery struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	Id                    int64            `protobuf:"varint,1,opt,name=id,proto3" json:"id,omitempty"`
-	LocationId            int64            `protobuf:"varint,3,opt,name=location_id,json=locationId,proto3" json:"location_id,omitempty"`
-	Method                int32            `protobuf:"varint,4,opt,name=method,proto3" json:"method,omitempty"`
-	MethodArr             []int32          `protobuf:"varint,31,rep,packed,name=method_arr,json=methodArr,proto3" json:"method_arr,omitempty"`
-	Template              int32            `protobuf:"varint,5,opt,name=template,proto3" json:"template,omitempty"`
-	RangeName             string           `protobuf:"bytes,6,opt,name=range_name,json=rangeName,proto3" json:"range_name,omitempty"`
-	RangeContent          string           `protobuf:"bytes,7,opt,name=range_content,json=rangeContent,proto3" json:"range_content,omitempty"`
-	RangeImageUrl         string           `protobuf:"bytes,8,opt,name=range_image_url,json=rangeImageUrl,proto3" json:"range_image_url,omitempty"`
-	RangeStartPrice       float32          `protobuf:"fixed32,9,opt,name=range_start_price,json=rangeStartPrice,proto3" json:"range_start_price,omitempty"`
-	RangeFee              float32          `protobuf:"fixed32,10,opt,name=range_fee,json=rangeFee,proto3" json:"range_fee,omitempty"`
-	Standard              int32            `protobuf:"varint,11,opt,name=standard,proto3" json:"standard,omitempty"`
-	FirstKm               float32          `protobuf:"fixed32,12,opt,name=first_km,json=firstKm,proto3" json:"first_km,omitempty"`
-	FirstKmFee            float32          `protobuf:"fixed32,13,opt,name=first_km_fee,json=firstKmFee,proto3" json:"first_km_fee,omitempty"`
-	AdditionalKm          float32          `protobuf:"fixed32,14,opt,name=additional_km,json=additionalKm,proto3" json:"additional_km,omitempty"`
-	AdditionalKmFee       float32          `protobuf:"fixed32,15,opt,name=additional_km_fee,json=additionalKmFee,proto3" json:"additional_km_fee,omitempty"`
-	FirstWeight           float32          `protobuf:"fixed32,16,opt,name=first_weight,json=firstWeight,proto3" json:"first_weight,omitempty"`
-	AdditionalWeight      float32          `protobuf:"fixed32,17,opt,name=additional_weight,json=additionalWeight,proto3" json:"additional_weight,omitempty"`
-	AdditionalWeightFee   float32          `protobuf:"fixed32,18,opt,name=additional_weight_fee,json=additionalWeightFee,proto3" json:"additional_weight_fee,omitempty"`
-	IsTimedArrival        bool             `protobuf:"varint,19,opt,name=is_timed_arrival,json=isTimedArrival,proto3" json:"is_timed_arrival,omitempty"`
-	Delivery              string           `protobuf:"bytes,20,opt,name=delivery,proto3" json:"delivery,omitempty"`
-	DeliveryRepeatWeeks   int32            `protobuf:"varint,21,opt,name=delivery_repeat_weeks,json=deliveryRepeatWeeks,proto3" json:"delivery_repeat_weeks,omitempty"`
-	DeliveryRepeatWeekArr []int32          `protobuf:"varint,22,rep,packed,name=delivery_repeat_week_arr,json=deliveryRepeatWeekArr,proto3" json:"delivery_repeat_week_arr,omitempty"`
-	SubDeliveryTime       string           `protobuf:"bytes,23,opt,name=sub_delivery_time,json=subDeliveryTime,proto3" json:"sub_delivery_time,omitempty"`
-	Appointment           string           `protobuf:"bytes,24,opt,name=appointment,proto3" json:"appointment,omitempty"`
-	AppointmentNum        int32            `protobuf:"varint,25,opt,name=appointment_num,json=appointmentNum,proto3" json:"appointment_num,omitempty"`
-	MaxAppointmentNum     int32            `protobuf:"varint,26,opt,name=max_appointment_num,json=maxAppointmentNum,proto3" json:"max_appointment_num,omitempty"`
-	CreatedAt             string           `protobuf:"bytes,27,opt,name=created_at,json=createdAt,proto3" json:"created_at,omitempty"`
-	UpdatedAt             string           `protobuf:"bytes,28,opt,name=updated_at,json=updatedAt,proto3" json:"updated_at,omitempty"`
-	DeliveryTimes         []*Times         `protobuf:"bytes,29,rep,name=delivery_times,json=deliveryTimes,proto3" json:"delivery_times,omitempty"`
-	Ranges                []*DeliveryRange `protobuf:"bytes,30,rep,name=ranges,proto3" json:"ranges,omitempty"`
+	Id         int64 `protobuf:"varint,1,opt,name=id,proto3" json:"id"`
+	LocationId int64 `protobuf:"varint,3,opt,name=location_id,json=locationId,proto3" json:"location_id"`
+	Method     int32 `protobuf:"varint,4,opt,name=method,proto3" json:"method"`
+	// @inject_tag: gorm:"-"
+	MethodArr           []int32 `protobuf:"varint,31,rep,packed,name=method_arr,json=methodArr,proto3" json:"method_arr" gorm:"-"`
+	Template            int32   `protobuf:"varint,5,opt,name=template,proto3" json:"template"`
+	RangeName           string  `protobuf:"bytes,6,opt,name=range_name,json=rangeName,proto3" json:"range_name"`
+	RangeContent        string  `protobuf:"bytes,7,opt,name=range_content,json=rangeContent,proto3" json:"range_content"`
+	RangeImageUrl       string  `protobuf:"bytes,8,opt,name=range_image_url,json=rangeImageUrl,proto3" json:"range_image_url"`
+	RangeStartPrice     float32 `protobuf:"fixed32,9,opt,name=range_start_price,json=rangeStartPrice,proto3" json:"range_start_price"`
+	RangeFee            float32 `protobuf:"fixed32,10,opt,name=range_fee,json=rangeFee,proto3" json:"range_fee"`
+	Standard            int32   `protobuf:"varint,11,opt,name=standard,proto3" json:"standard"`
+	FirstKm             float32 `protobuf:"fixed32,12,opt,name=first_km,json=firstKm,proto3" json:"first_km"`
+	FirstKmFee          float32 `protobuf:"fixed32,13,opt,name=first_km_fee,json=firstKmFee,proto3" json:"first_km_fee"`
+	AdditionalKm        float32 `protobuf:"fixed32,14,opt,name=additional_km,json=additionalKm,proto3" json:"additional_km"`
+	AdditionalKmFee     float32 `protobuf:"fixed32,15,opt,name=additional_km_fee,json=additionalKmFee,proto3" json:"additional_km_fee"`
+	FirstWeight         float32 `protobuf:"fixed32,16,opt,name=first_weight,json=firstWeight,proto3" json:"first_weight"`
+	AdditionalWeight    float32 `protobuf:"fixed32,17,opt,name=additional_weight,json=additionalWeight,proto3" json:"additional_weight"`
+	AdditionalWeightFee float32 `protobuf:"fixed32,18,opt,name=additional_weight_fee,json=additionalWeightFee,proto3" json:"additional_weight_fee"`
+	IsTimedArrival      bool    `protobuf:"varint,19,opt,name=is_timed_arrival,json=isTimedArrival,proto3" json:"is_timed_arrival"`
+	Delivery            string  `protobuf:"bytes,20,opt,name=delivery,proto3" json:"delivery"`
+	DeliveryRepeatWeeks int32   `protobuf:"varint,21,opt,name=delivery_repeat_weeks,json=deliveryRepeatWeeks,proto3" json:"delivery_repeat_weeks"`
+	// @inject_tag: gorm:"-"
+	DeliveryRepeatWeekArr []int32 `protobuf:"varint,22,rep,packed,name=delivery_repeat_week_arr,json=deliveryRepeatWeekArr,proto3" json:"delivery_repeat_week_arr" gorm:"-"`
+	SubDeliveryTime       string  `protobuf:"bytes,23,opt,name=sub_delivery_time,json=subDeliveryTime,proto3" json:"sub_delivery_time"`
+	Appointment           string  `protobuf:"bytes,24,opt,name=appointment,proto3" json:"appointment"`
+	AppointmentNum        int32   `protobuf:"varint,25,opt,name=appointment_num,json=appointmentNum,proto3" json:"appointment_num"`
+	MaxAppointmentNum     int32   `protobuf:"varint,26,opt,name=max_appointment_num,json=maxAppointmentNum,proto3" json:"max_appointment_num"`
+	CreatedAt             string  `protobuf:"bytes,27,opt,name=created_at,json=createdAt,proto3" json:"created_at"`
+	UpdatedAt             string  `protobuf:"bytes,28,opt,name=updated_at,json=updatedAt,proto3" json:"updated_at"`
+	// @inject_tag: gorm:"-"
+	DeliveryTimes []*Times `protobuf:"bytes,29,rep,name=delivery_times,json=deliveryTimes,proto3" json:"delivery_times" gorm:"-"`
+	// @inject_tag: gorm:"foreignKey:DeliveryId"
+	Ranges []*DeliveryRange `protobuf:"bytes,30,rep,name=ranges,proto3" json:"ranges" gorm:"foreignKey:DeliveryId"`
 }
 
 func (x *Delivery) Reset() {
@@ -397,11 +402,11 @@ type DeliveryResponse struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	Entity *Delivery     `protobuf:"bytes,1,opt,name=entity,proto3" json:"entity,omitempty"`
-	Pager  *common.Pager `protobuf:"bytes,2,opt,name=pager,proto3" json:"pager,omitempty"`
-	Items  []*Delivery   `protobuf:"bytes,3,rep,name=items,proto3" json:"items,omitempty"`
-	Error  *common.Error `protobuf:"bytes,4,opt,name=error,proto3" json:"error,omitempty"`
-	Info   *common.Info  `protobuf:"bytes,5,opt,name=info,proto3" json:"info,omitempty"`
+	Entity *Delivery     `protobuf:"bytes,1,opt,name=entity,proto3" json:"entity"`
+	Pager  *common.Pager `protobuf:"bytes,2,opt,name=pager,proto3" json:"pager"`
+	Items  []*Delivery   `protobuf:"bytes,3,rep,name=items,proto3" json:"items"`
+	Error  *common.Error `protobuf:"bytes,4,opt,name=error,proto3" json:"error"`
+	Info   *common.Info  `protobuf:"bytes,5,opt,name=info,proto3" json:"info"`
 }
 
 func (x *DeliveryResponse) Reset() {

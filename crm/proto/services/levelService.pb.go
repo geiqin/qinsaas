@@ -31,28 +31,29 @@ type Level struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	Id               int32   `protobuf:"varint,1,opt,name=id,proto3" json:"id,omitempty"`
-	Name             string  `protobuf:"bytes,2,opt,name=name,proto3" json:"name,omitempty"`
-	Type             int32   `protobuf:"varint,3,opt,name=type,proto3" json:"type,omitempty"`
-	Discount         float32 `protobuf:"fixed32,4,opt,name=discount,proto3" json:"discount,omitempty"`
-	PostageFree      bool    `protobuf:"varint,5,opt,name=postage_free,json=postageFree,proto3" json:"postage_free,omitempty"`
-	PointRate        float32 `protobuf:"fixed32,6,opt,name=point_rate,json=pointRate,proto3" json:"point_rate,omitempty"`
-	UplevelId        int32   `protobuf:"varint,7,opt,name=uplevel_id,json=uplevelId,proto3" json:"uplevel_id,omitempty"`
-	OrderLimitType   int32   `protobuf:"varint,8,opt,name=order_limit_type,json=orderLimitType,proto3" json:"order_limit_type,omitempty"`
-	OrderLimitMoney  float32 `protobuf:"fixed32,9,opt,name=order_limit_money,json=orderLimitMoney,proto3" json:"order_limit_money,omitempty"`
-	DepositLimit     int32   `protobuf:"varint,10,opt,name=deposit_limit,json=depositLimit,proto3" json:"deposit_limit,omitempty"`
-	GrowthLimit      int32   `protobuf:"varint,11,opt,name=growth_limit,json=growthLimit,proto3" json:"growth_limit,omitempty"`
-	PointExpiredDays int32   `protobuf:"varint,12,opt,name=point_expired_days,json=pointExpiredDays,proto3" json:"point_expired_days,omitempty"`
-	IconId           int64   `protobuf:"varint,13,opt,name=icon_id,json=iconId,proto3" json:"icon_id,omitempty"`
-	IconUrl          string  `protobuf:"bytes,14,opt,name=icon_url,json=iconUrl,proto3" json:"icon_url,omitempty"`
-	CardBg           string  `protobuf:"bytes,15,opt,name=card_bg,json=cardBg,proto3" json:"card_bg,omitempty"`
-	Defaulted        bool    `protobuf:"varint,16,opt,name=defaulted,proto3" json:"defaulted,omitempty"`
-	Disabled         bool    `protobuf:"varint,17,opt,name=disabled,proto3" json:"disabled,omitempty"`
-	Locked           bool    `protobuf:"varint,18,opt,name=locked,proto3" json:"locked,omitempty"`
-	Description      string  `protobuf:"bytes,19,opt,name=description,proto3" json:"description,omitempty"`
-	CreatedAt        string  `protobuf:"bytes,20,opt,name=created_at,json=createdAt,proto3" json:"created_at,omitempty"`
-	UpdatedAt        string  `protobuf:"bytes,21,opt,name=updated_at,json=updatedAt,proto3" json:"updated_at,omitempty"`
-	Ids              []int32 `protobuf:"varint,22,rep,packed,name=ids,proto3" json:"ids,omitempty"`
+	Id               int32   `protobuf:"varint,1,opt,name=id,proto3" json:"id"`
+	Name             string  `protobuf:"bytes,2,opt,name=name,proto3" json:"name"`
+	Type             int32   `protobuf:"varint,3,opt,name=type,proto3" json:"type"`
+	Discount         float32 `protobuf:"fixed32,4,opt,name=discount,proto3" json:"discount"`
+	PostageFree      bool    `protobuf:"varint,5,opt,name=postage_free,json=postageFree,proto3" json:"postage_free"`
+	PointRate        float32 `protobuf:"fixed32,6,opt,name=point_rate,json=pointRate,proto3" json:"point_rate"`
+	UplevelId        int32   `protobuf:"varint,7,opt,name=uplevel_id,json=uplevelId,proto3" json:"uplevel_id"`
+	OrderLimitType   int32   `protobuf:"varint,8,opt,name=order_limit_type,json=orderLimitType,proto3" json:"order_limit_type"`
+	OrderLimitMoney  float32 `protobuf:"fixed32,9,opt,name=order_limit_money,json=orderLimitMoney,proto3" json:"order_limit_money"`
+	DepositLimit     int32   `protobuf:"varint,10,opt,name=deposit_limit,json=depositLimit,proto3" json:"deposit_limit"`
+	GrowthLimit      int32   `protobuf:"varint,11,opt,name=growth_limit,json=growthLimit,proto3" json:"growth_limit"`
+	PointExpiredDays int32   `protobuf:"varint,12,opt,name=point_expired_days,json=pointExpiredDays,proto3" json:"point_expired_days"`
+	IconId           int64   `protobuf:"varint,13,opt,name=icon_id,json=iconId,proto3" json:"icon_id"`
+	IconUrl          string  `protobuf:"bytes,14,opt,name=icon_url,json=iconUrl,proto3" json:"icon_url"`
+	CardBg           string  `protobuf:"bytes,15,opt,name=card_bg,json=cardBg,proto3" json:"card_bg"`
+	Defaulted        bool    `protobuf:"varint,16,opt,name=defaulted,proto3" json:"defaulted"`
+	Disabled         bool    `protobuf:"varint,17,opt,name=disabled,proto3" json:"disabled"`
+	Locked           bool    `protobuf:"varint,18,opt,name=locked,proto3" json:"locked"`
+	Description      string  `protobuf:"bytes,19,opt,name=description,proto3" json:"description"`
+	CreatedAt        string  `protobuf:"bytes,20,opt,name=created_at,json=createdAt,proto3" json:"created_at"`
+	UpdatedAt        string  `protobuf:"bytes,21,opt,name=updated_at,json=updatedAt,proto3" json:"updated_at"`
+	// @inject_tag: gorm:"-"
+	Ids []int32 `protobuf:"varint,22,rep,packed,name=ids,proto3" json:"ids" gorm:"-"`
 }
 
 func (x *Level) Reset() {
@@ -247,11 +248,11 @@ type LevelResponse struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	Entity *Level        `protobuf:"bytes,1,opt,name=entity,proto3" json:"entity,omitempty"`
-	Pager  *common.Pager `protobuf:"bytes,2,opt,name=pager,proto3" json:"pager,omitempty"`
-	Items  []*Level      `protobuf:"bytes,3,rep,name=items,proto3" json:"items,omitempty"`
-	Error  *common.Error `protobuf:"bytes,4,opt,name=error,proto3" json:"error,omitempty"`
-	Info   *common.Info  `protobuf:"bytes,5,opt,name=info,proto3" json:"info,omitempty"`
+	Entity *Level        `protobuf:"bytes,1,opt,name=entity,proto3" json:"entity"`
+	Pager  *common.Pager `protobuf:"bytes,2,opt,name=pager,proto3" json:"pager"`
+	Items  []*Level      `protobuf:"bytes,3,rep,name=items,proto3" json:"items"`
+	Error  *common.Error `protobuf:"bytes,4,opt,name=error,proto3" json:"error"`
+	Info   *common.Info  `protobuf:"bytes,5,opt,name=info,proto3" json:"info"`
 }
 
 func (x *LevelResponse) Reset() {

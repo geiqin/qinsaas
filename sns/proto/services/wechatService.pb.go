@@ -31,12 +31,12 @@ type Wechat struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	Signature     string `protobuf:"bytes,1,opt,name=signature,proto3" json:"signature,omitempty"`
-	Code          string `protobuf:"bytes,2,opt,name=code,proto3" json:"code,omitempty"`
-	RawData       string `protobuf:"bytes,3,opt,name=rawData,proto3" json:"rawData,omitempty"`
-	EncryptedData string `protobuf:"bytes,4,opt,name=encryptedData,proto3" json:"encryptedData,omitempty"`
-	Iv            string `protobuf:"bytes,5,opt,name=iv,proto3" json:"iv,omitempty"`
-	Scene         string `protobuf:"bytes,6,opt,name=scene,proto3" json:"scene,omitempty"`
+	Signature     string `protobuf:"bytes,1,opt,name=signature,proto3" json:"signature"`
+	Code          string `protobuf:"bytes,2,opt,name=code,proto3" json:"code"`
+	RawData       string `protobuf:"bytes,3,opt,name=rawData,proto3" json:"rawData"`
+	EncryptedData string `protobuf:"bytes,4,opt,name=encryptedData,proto3" json:"encryptedData"`
+	Iv            string `protobuf:"bytes,5,opt,name=iv,proto3" json:"iv"`
+	Scene         string `protobuf:"bytes,6,opt,name=scene,proto3" json:"scene"`
 }
 
 func (x *Wechat) Reset() {
@@ -118,11 +118,11 @@ type WechatResponse struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	Entity *Wechat       `protobuf:"bytes,1,opt,name=entity,proto3" json:"entity,omitempty"`
-	Pager  *common.Pager `protobuf:"bytes,2,opt,name=pager,proto3" json:"pager,omitempty"`
-	Items  []*Wechat     `protobuf:"bytes,3,rep,name=items,proto3" json:"items,omitempty"`
-	Error  *common.Error `protobuf:"bytes,4,opt,name=error,proto3" json:"error,omitempty"`
-	Info   *common.Info  `protobuf:"bytes,5,opt,name=info,proto3" json:"info,omitempty"`
+	Entity *Wechat       `protobuf:"bytes,1,opt,name=entity,proto3" json:"entity"`
+	Pager  *common.Pager `protobuf:"bytes,2,opt,name=pager,proto3" json:"pager"`
+	Items  []*Wechat     `protobuf:"bytes,3,rep,name=items,proto3" json:"items"`
+	Error  *common.Error `protobuf:"bytes,4,opt,name=error,proto3" json:"error"`
+	Info   *common.Info  `protobuf:"bytes,5,opt,name=info,proto3" json:"info"`
 }
 
 func (x *WechatResponse) Reset() {

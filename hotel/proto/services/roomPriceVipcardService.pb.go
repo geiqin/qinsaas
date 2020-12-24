@@ -30,11 +30,11 @@ type RoomPriceVipcard struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	Id          int64   `protobuf:"varint,1,opt,name=id,proto3" json:"id,omitempty"`
-	RoomPriceId int64   `protobuf:"varint,2,opt,name=room_price_id,json=roomPriceId,proto3" json:"room_price_id,omitempty"`
-	VipcardId   int32   `protobuf:"varint,3,opt,name=vipcard_id,json=vipcardId,proto3" json:"vipcard_id,omitempty"`
-	Price       float32 `protobuf:"fixed32,4,opt,name=price,proto3" json:"price,omitempty"`
-	VipcardName string  `protobuf:"bytes,5,opt,name=vipcard_name,json=vipcardName,proto3" json:"vipcard_name,omitempty"`
+	Id          int64   `protobuf:"varint,1,opt,name=id,proto3" json:"id"`
+	RoomPriceId int64   `protobuf:"varint,2,opt,name=room_price_id,json=roomPriceId,proto3" json:"room_price_id"`
+	VipcardId   int32   `protobuf:"varint,3,opt,name=vipcard_id,json=vipcardId,proto3" json:"vipcard_id"`
+	Price       float32 `protobuf:"fixed32,4,opt,name=price,proto3" json:"price"`
+	VipcardName string  `protobuf:"bytes,5,opt,name=vipcard_name,json=vipcardName,proto3" json:"vipcard_name"`
 }
 
 func (x *RoomPriceVipcard) Reset() {

@@ -31,14 +31,15 @@ type TableWhere struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	Paged    int32   `protobuf:"varint,1,opt,name=paged,proto3" json:"paged,omitempty"`
-	PageSize int32   `protobuf:"varint,2,opt,name=page_size,json=pageSize,proto3" json:"page_size,omitempty"`
-	Top      int32   `protobuf:"varint,3,opt,name=top,proto3" json:"top,omitempty"`
-	Id       int64   `protobuf:"varint,4,opt,name=id,proto3" json:"id,omitempty"`
-	Ids      []int64 `protobuf:"varint,5,rep,packed,name=ids,proto3" json:"ids,omitempty"`
-	Status   int32   `protobuf:"varint,6,opt,name=status,proto3" json:"status,omitempty"`
-	Keywords string  `protobuf:"bytes,7,opt,name=keywords,proto3" json:"keywords,omitempty"`
-	Names    string  `protobuf:"bytes,8,opt,name=names,proto3" json:"names,omitempty"`
+	Paged    int32 `protobuf:"varint,1,opt,name=paged,proto3" json:"paged"`
+	PageSize int32 `protobuf:"varint,2,opt,name=page_size,json=pageSize,proto3" json:"page_size"`
+	Top      int32 `protobuf:"varint,3,opt,name=top,proto3" json:"top"`
+	Id       int64 `protobuf:"varint,4,opt,name=id,proto3" json:"id"`
+	// @inject_tag: gorm:"-"
+	Ids      []int64 `protobuf:"varint,5,rep,packed,name=ids,proto3" json:"ids" gorm:"-"`
+	Status   int32   `protobuf:"varint,6,opt,name=status,proto3" json:"status"`
+	Keywords string  `protobuf:"bytes,7,opt,name=keywords,proto3" json:"keywords"`
+	Names    string  `protobuf:"bytes,8,opt,name=names,proto3" json:"names"`
 }
 
 func (x *TableWhere) Reset() {
@@ -134,12 +135,12 @@ type Table struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	Id        int64  `protobuf:"varint,1,opt,name=id,proto3" json:"id,omitempty"`
-	Name      string `protobuf:"bytes,2,opt,name=name,proto3" json:"name,omitempty"`
-	Qrcode    string `protobuf:"bytes,3,opt,name=qrcode,proto3" json:"qrcode,omitempty"`
-	Status    int32  `protobuf:"varint,4,opt,name=status,proto3" json:"status,omitempty"`
-	CreatedAt string `protobuf:"bytes,5,opt,name=created_at,json=createdAt,proto3" json:"created_at,omitempty"`
-	UpdatedAt string `protobuf:"bytes,6,opt,name=updated_at,json=updatedAt,proto3" json:"updated_at,omitempty"`
+	Id        int64  `protobuf:"varint,1,opt,name=id,proto3" json:"id"`
+	Name      string `protobuf:"bytes,2,opt,name=name,proto3" json:"name"`
+	Qrcode    string `protobuf:"bytes,3,opt,name=qrcode,proto3" json:"qrcode"`
+	Status    int32  `protobuf:"varint,4,opt,name=status,proto3" json:"status"`
+	CreatedAt string `protobuf:"bytes,5,opt,name=created_at,json=createdAt,proto3" json:"created_at"`
+	UpdatedAt string `protobuf:"bytes,6,opt,name=updated_at,json=updatedAt,proto3" json:"updated_at"`
 }
 
 func (x *Table) Reset() {
@@ -221,11 +222,11 @@ type TableResponse struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	Entity *Table        `protobuf:"bytes,1,opt,name=entity,proto3" json:"entity,omitempty"`
-	Pager  *common.Pager `protobuf:"bytes,2,opt,name=pager,proto3" json:"pager,omitempty"`
-	Items  []*Table      `protobuf:"bytes,3,rep,name=items,proto3" json:"items,omitempty"`
-	Error  *common.Error `protobuf:"bytes,4,opt,name=error,proto3" json:"error,omitempty"`
-	Info   *common.Info  `protobuf:"bytes,5,opt,name=info,proto3" json:"info,omitempty"`
+	Entity *Table        `protobuf:"bytes,1,opt,name=entity,proto3" json:"entity"`
+	Pager  *common.Pager `protobuf:"bytes,2,opt,name=pager,proto3" json:"pager"`
+	Items  []*Table      `protobuf:"bytes,3,rep,name=items,proto3" json:"items"`
+	Error  *common.Error `protobuf:"bytes,4,opt,name=error,proto3" json:"error"`
+	Info   *common.Info  `protobuf:"bytes,5,opt,name=info,proto3" json:"info"`
 }
 
 func (x *TableResponse) Reset() {

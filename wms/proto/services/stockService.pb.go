@@ -31,17 +31,19 @@ type StockWhere struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	Paged     int32   `protobuf:"varint,1,opt,name=paged,proto3" json:"paged,omitempty"`
-	PageSize  int32   `protobuf:"varint,2,opt,name=page_size,json=pageSize,proto3" json:"page_size,omitempty"`
-	Id        int64   `protobuf:"varint,3,opt,name=id,proto3" json:"id,omitempty"`
-	Ids       []int64 `protobuf:"varint,4,rep,packed,name=ids,proto3" json:"ids,omitempty"`
-	Type      string  `protobuf:"bytes,5,opt,name=type,proto3" json:"type,omitempty"`
-	SheetType int32   `protobuf:"varint,6,opt,name=sheet_type,json=sheetType,proto3" json:"sheet_type,omitempty"`
-	Status    int32   `protobuf:"varint,7,opt,name=status,proto3" json:"status,omitempty"`
-	Ok        bool    `protobuf:"varint,8,opt,name=ok,proto3" json:"ok,omitempty"`
-	Failure   string  `protobuf:"bytes,9,opt,name=failure,proto3" json:"failure,omitempty"`
-	StockId   int64   `protobuf:"varint,10,opt,name=stock_id,json=stockId,proto3" json:"stock_id,omitempty"`
-	StockIds  []int64 `protobuf:"varint,11,rep,packed,name=stock_ids,json=stockIds,proto3" json:"stock_ids,omitempty"`
+	Paged    int32 `protobuf:"varint,1,opt,name=paged,proto3" json:"paged"`
+	PageSize int32 `protobuf:"varint,2,opt,name=page_size,json=pageSize,proto3" json:"page_size"`
+	Id       int64 `protobuf:"varint,3,opt,name=id,proto3" json:"id"`
+	// @inject_tag: gorm:"-"
+	Ids       []int64 `protobuf:"varint,4,rep,packed,name=ids,proto3" json:"ids" gorm:"-"`
+	Type      string  `protobuf:"bytes,5,opt,name=type,proto3" json:"type"`
+	SheetType int32   `protobuf:"varint,6,opt,name=sheet_type,json=sheetType,proto3" json:"sheet_type"`
+	Status    int32   `protobuf:"varint,7,opt,name=status,proto3" json:"status"`
+	Ok        bool    `protobuf:"varint,8,opt,name=ok,proto3" json:"ok"`
+	Failure   string  `protobuf:"bytes,9,opt,name=failure,proto3" json:"failure"`
+	StockId   int64   `protobuf:"varint,10,opt,name=stock_id,json=stockId,proto3" json:"stock_id"`
+	// @inject_tag: gorm:"-"
+	StockIds []int64 `protobuf:"varint,11,rep,packed,name=stock_ids,json=stockIds,proto3" json:"stock_ids" gorm:"-"`
 }
 
 func (x *StockWhere) Reset() {
@@ -158,22 +160,23 @@ type Stock struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	Id            int64          `protobuf:"varint,1,opt,name=id,proto3" json:"id,omitempty"`
-	StockSn       string         `protobuf:"bytes,2,opt,name=stock_sn,json=stockSn,proto3" json:"stock_sn,omitempty"`
-	Type          string         `protobuf:"bytes,3,opt,name=type,proto3" json:"type,omitempty"`
-	SheetType     int32          `protobuf:"varint,4,opt,name=sheet_type,json=sheetType,proto3" json:"sheet_type,omitempty"`
-	HandledAt     string         `protobuf:"bytes,5,opt,name=handled_at,json=handledAt,proto3" json:"handled_at,omitempty"`
-	SourceNo      string         `protobuf:"bytes,6,opt,name=source_no,json=sourceNo,proto3" json:"source_no,omitempty"`
-	UserId        int64          `protobuf:"varint,7,opt,name=user_id,json=userId,proto3" json:"user_id,omitempty"`
-	Autoed        bool           `protobuf:"varint,8,opt,name=autoed,proto3" json:"autoed,omitempty"`
-	Memo          string         `protobuf:"bytes,9,opt,name=memo,proto3" json:"memo,omitempty"`
-	RowTotal      int32          `protobuf:"varint,10,opt,name=row_total,json=rowTotal,proto3" json:"row_total,omitempty"`
-	QuantityTotal int32          `protobuf:"varint,11,opt,name=quantity_total,json=quantityTotal,proto3" json:"quantity_total,omitempty"`
-	Status        int32          `protobuf:"varint,12,opt,name=status,proto3" json:"status,omitempty"`
-	Failure       string         `protobuf:"bytes,13,opt,name=failure,proto3" json:"failure,omitempty"`
-	CreatedAt     string         `protobuf:"bytes,14,opt,name=created_at,json=createdAt,proto3" json:"created_at,omitempty"`
-	UpdatedAt     string         `protobuf:"bytes,15,opt,name=updated_at,json=updatedAt,proto3" json:"updated_at,omitempty"`
-	Details       []*StockDetail `protobuf:"bytes,16,rep,name=details,proto3" json:"details,omitempty"`
+	Id            int64  `protobuf:"varint,1,opt,name=id,proto3" json:"id"`
+	StockSn       string `protobuf:"bytes,2,opt,name=stock_sn,json=stockSn,proto3" json:"stock_sn"`
+	Type          string `protobuf:"bytes,3,opt,name=type,proto3" json:"type"`
+	SheetType     int32  `protobuf:"varint,4,opt,name=sheet_type,json=sheetType,proto3" json:"sheet_type"`
+	HandledAt     string `protobuf:"bytes,5,opt,name=handled_at,json=handledAt,proto3" json:"handled_at"`
+	SourceNo      string `protobuf:"bytes,6,opt,name=source_no,json=sourceNo,proto3" json:"source_no"`
+	UserId        int64  `protobuf:"varint,7,opt,name=user_id,json=userId,proto3" json:"user_id"`
+	Autoed        bool   `protobuf:"varint,8,opt,name=autoed,proto3" json:"autoed"`
+	Memo          string `protobuf:"bytes,9,opt,name=memo,proto3" json:"memo"`
+	RowTotal      int32  `protobuf:"varint,10,opt,name=row_total,json=rowTotal,proto3" json:"row_total"`
+	QuantityTotal int32  `protobuf:"varint,11,opt,name=quantity_total,json=quantityTotal,proto3" json:"quantity_total"`
+	Status        int32  `protobuf:"varint,12,opt,name=status,proto3" json:"status"`
+	Failure       string `protobuf:"bytes,13,opt,name=failure,proto3" json:"failure"`
+	CreatedAt     string `protobuf:"bytes,14,opt,name=created_at,json=createdAt,proto3" json:"created_at"`
+	UpdatedAt     string `protobuf:"bytes,15,opt,name=updated_at,json=updatedAt,proto3" json:"updated_at"`
+	// @inject_tag: gorm:"foreignKey:StockId"
+	Details []*StockDetail `protobuf:"bytes,16,rep,name=details,proto3" json:"details" gorm:"foreignKey:StockId"`
 }
 
 func (x *Stock) Reset() {
@@ -325,11 +328,11 @@ type StockResponse struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	Entity *Stock        `protobuf:"bytes,1,opt,name=entity,proto3" json:"entity,omitempty"`
-	Pager  *common.Pager `protobuf:"bytes,2,opt,name=pager,proto3" json:"pager,omitempty"`
-	Items  []*Stock      `protobuf:"bytes,3,rep,name=items,proto3" json:"items,omitempty"`
-	Error  *common.Error `protobuf:"bytes,4,opt,name=error,proto3" json:"error,omitempty"`
-	Info   *common.Info  `protobuf:"bytes,5,opt,name=info,proto3" json:"info,omitempty"`
+	Entity *Stock        `protobuf:"bytes,1,opt,name=entity,proto3" json:"entity"`
+	Pager  *common.Pager `protobuf:"bytes,2,opt,name=pager,proto3" json:"pager"`
+	Items  []*Stock      `protobuf:"bytes,3,rep,name=items,proto3" json:"items"`
+	Error  *common.Error `protobuf:"bytes,4,opt,name=error,proto3" json:"error"`
+	Info   *common.Info  `protobuf:"bytes,5,opt,name=info,proto3" json:"info"`
 }
 
 func (x *StockResponse) Reset() {

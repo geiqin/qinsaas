@@ -16,6 +16,7 @@ message AccessLogisticsReq {
     int32 shipper_id = 1;
     int64 order_id = 2;
     string delivery_sn = 3;
+    // @inject_tag: gorm:"-"
     repeated AccessLogisticsDetailReq details = 4;
 }
 

@@ -6,7 +6,7 @@ import "itemStatsService.proto";
 import "itemSaleStatsService.proto";
 import "skuSaleStatsService.proto";
 
-service Statistics {
+service StatisticsService {
     //商品汇总统计
     rpc ItemAmount (StatsRequest) returns (ItemStatsResponse) {}
     //商品销量统计
@@ -27,5 +27,6 @@ message StatsRequest {
     int64 item_id = 6;
     string start_at = 7;
     string end_at = 8;
+    // @inject_tag: gorm:"-"
     repeated int64 item_ids = 9;
 }

@@ -17,6 +17,7 @@ message NavWhere {
     int32 paged = 1;
     int32 page_size = 2;
     int64 id = 3;
+    // @inject_tag: gorm:"-"
     repeated int64 ids = 4;
     string title = 5;
 }
@@ -28,6 +29,7 @@ message Nav {
     string memo = 4;
     string created_at = 5;
     string updated_at = 6;
+    // @inject_tag: gorm:"foreignKey:NavId"
     repeated NavItem items = 7;
 }
 

@@ -31,34 +31,37 @@ type Withdraw struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	Id               int64         `protobuf:"varint,1,opt,name=id,proto3" json:"id,omitempty"`
-	WithdrawSn       string        `protobuf:"bytes,2,opt,name=withdraw_sn,json=withdrawSn,proto3" json:"withdraw_sn,omitempty"`
-	Type             string        `protobuf:"bytes,3,opt,name=type,proto3" json:"type,omitempty"`
-	CustomerId       int64         `protobuf:"varint,4,opt,name=customer_id,json=customerId,proto3" json:"customer_id,omitempty"`
-	TargetId         int64         `protobuf:"varint,5,opt,name=target_id,json=targetId,proto3" json:"target_id,omitempty"`
-	Money            float32       `protobuf:"fixed32,6,opt,name=money,proto3" json:"money,omitempty"`
-	ServiceMoney     float32       `protobuf:"fixed32,7,opt,name=service_money,json=serviceMoney,proto3" json:"service_money,omitempty"`
-	ServiceMoneyRate float32       `protobuf:"fixed32,8,opt,name=service_money_rate,json=serviceMoneyRate,proto3" json:"service_money_rate,omitempty"`
-	ActualMoney      float32       `protobuf:"fixed32,9,opt,name=actual_money,json=actualMoney,proto3" json:"actual_money,omitempty"`
-	TransferId       int64         `protobuf:"varint,10,opt,name=transfer_id,json=transferId,proto3" json:"transfer_id,omitempty"`
-	TransactionIdId  string        `protobuf:"bytes,11,opt,name=transactionId_id,json=transactionIdId,proto3" json:"transactionId_id,omitempty"`
-	Method           string        `protobuf:"bytes,12,opt,name=method,proto3" json:"method,omitempty"`
-	CashAccountId    int32         `protobuf:"varint,13,opt,name=cash_account_id,json=cashAccountId,proto3" json:"cash_account_id,omitempty"`
-	PayeeName        string        `protobuf:"bytes,14,opt,name=payee_name,json=payeeName,proto3" json:"payee_name,omitempty"`
-	PayeeAccount     string        `protobuf:"bytes,15,opt,name=payee_account,json=payeeAccount,proto3" json:"payee_account,omitempty"`
-	PayeeBank        string        `protobuf:"bytes,16,opt,name=payee_bank,json=payeeBank,proto3" json:"payee_bank,omitempty"`
-	PlatformAccount  string        `protobuf:"bytes,17,opt,name=platform_account,json=platformAccount,proto3" json:"platform_account,omitempty"`
-	Payment          string        `protobuf:"bytes,18,opt,name=payment,proto3" json:"payment,omitempty"`
-	Memo             string        `protobuf:"bytes,19,opt,name=memo,proto3" json:"memo,omitempty"`
-	Status           int32         `protobuf:"varint,20,opt,name=status,proto3" json:"status,omitempty"`
-	Failure          string        `protobuf:"bytes,21,opt,name=failure,proto3" json:"failure,omitempty"`
-	AuditAt          string        `protobuf:"bytes,22,opt,name=audit_at,json=auditAt,proto3" json:"audit_at,omitempty"`
-	PaymentAt        string        `protobuf:"bytes,23,opt,name=payment_at,json=paymentAt,proto3" json:"payment_at,omitempty"`
-	CreatedAt        string        `protobuf:"bytes,24,opt,name=created_at,json=createdAt,proto3" json:"created_at,omitempty"`
-	UpdatedAt        string        `protobuf:"bytes,25,opt,name=updated_at,json=updatedAt,proto3" json:"updated_at,omitempty"`
-	Distributor      *Distributor  `protobuf:"bytes,26,opt,name=distributor,proto3" json:"distributor,omitempty"`
-	Leader           *Leader       `protobuf:"bytes,27,opt,name=leader,proto3" json:"leader,omitempty"`
-	Customer         *CustomerInfo `protobuf:"bytes,28,opt,name=customer,proto3" json:"customer,omitempty"`
+	Id               int64   `protobuf:"varint,1,opt,name=id,proto3" json:"id"`
+	WithdrawSn       string  `protobuf:"bytes,2,opt,name=withdraw_sn,json=withdrawSn,proto3" json:"withdraw_sn"`
+	Type             string  `protobuf:"bytes,3,opt,name=type,proto3" json:"type"`
+	CustomerId       int64   `protobuf:"varint,4,opt,name=customer_id,json=customerId,proto3" json:"customer_id"`
+	TargetId         int64   `protobuf:"varint,5,opt,name=target_id,json=targetId,proto3" json:"target_id"`
+	Money            float32 `protobuf:"fixed32,6,opt,name=money,proto3" json:"money"`
+	ServiceMoney     float32 `protobuf:"fixed32,7,opt,name=service_money,json=serviceMoney,proto3" json:"service_money"`
+	ServiceMoneyRate float32 `protobuf:"fixed32,8,opt,name=service_money_rate,json=serviceMoneyRate,proto3" json:"service_money_rate"`
+	ActualMoney      float32 `protobuf:"fixed32,9,opt,name=actual_money,json=actualMoney,proto3" json:"actual_money"`
+	TransferId       int64   `protobuf:"varint,10,opt,name=transfer_id,json=transferId,proto3" json:"transfer_id"`
+	TransactionIdId  string  `protobuf:"bytes,11,opt,name=transactionId_id,json=transactionIdId,proto3" json:"transactionId_id"`
+	Method           string  `protobuf:"bytes,12,opt,name=method,proto3" json:"method"`
+	CashAccountId    int32   `protobuf:"varint,13,opt,name=cash_account_id,json=cashAccountId,proto3" json:"cash_account_id"`
+	PayeeName        string  `protobuf:"bytes,14,opt,name=payee_name,json=payeeName,proto3" json:"payee_name"`
+	PayeeAccount     string  `protobuf:"bytes,15,opt,name=payee_account,json=payeeAccount,proto3" json:"payee_account"`
+	PayeeBank        string  `protobuf:"bytes,16,opt,name=payee_bank,json=payeeBank,proto3" json:"payee_bank"`
+	PlatformAccount  string  `protobuf:"bytes,17,opt,name=platform_account,json=platformAccount,proto3" json:"platform_account"`
+	Payment          string  `protobuf:"bytes,18,opt,name=payment,proto3" json:"payment"`
+	Memo             string  `protobuf:"bytes,19,opt,name=memo,proto3" json:"memo"`
+	Status           int32   `protobuf:"varint,20,opt,name=status,proto3" json:"status"`
+	Failure          string  `protobuf:"bytes,21,opt,name=failure,proto3" json:"failure"`
+	AuditAt          string  `protobuf:"bytes,22,opt,name=audit_at,json=auditAt,proto3" json:"audit_at"`
+	PaymentAt        string  `protobuf:"bytes,23,opt,name=payment_at,json=paymentAt,proto3" json:"payment_at"`
+	CreatedAt        string  `protobuf:"bytes,24,opt,name=created_at,json=createdAt,proto3" json:"created_at"`
+	UpdatedAt        string  `protobuf:"bytes,25,opt,name=updated_at,json=updatedAt,proto3" json:"updated_at"`
+	// @inject_tag: gorm:"-"
+	Distributor *Distributor `protobuf:"bytes,26,opt,name=distributor,proto3" json:"distributor"`
+	// @inject_tag: gorm:"-"
+	Leader *Leader `protobuf:"bytes,27,opt,name=leader,proto3" json:"leader"`
+	// @inject_tag: gorm:"-"
+	Customer *CustomerInfo `protobuf:"bytes,28,opt,name=customer,proto3" json:"customer"`
 }
 
 func (x *Withdraw) Reset() {
@@ -294,23 +297,24 @@ type WithdrawWhere struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	Paged    int32 `protobuf:"varint,1,opt,name=paged,proto3" json:"paged,omitempty"`
-	PageSize int32 `protobuf:"varint,2,opt,name=page_size,json=pageSize,proto3" json:"page_size,omitempty"`
-	Top      int32 `protobuf:"varint,3,opt,name=top,proto3" json:"top,omitempty"`
+	Paged    int32 `protobuf:"varint,1,opt,name=paged,proto3" json:"paged"`
+	PageSize int32 `protobuf:"varint,2,opt,name=page_size,json=pageSize,proto3" json:"page_size"`
+	Top      int32 `protobuf:"varint,3,opt,name=top,proto3" json:"top"`
 	//base params
-	Id         int64   `protobuf:"varint,4,opt,name=id,proto3" json:"id,omitempty"`
-	Ids        []int64 `protobuf:"varint,5,rep,packed,name=ids,proto3" json:"ids,omitempty"`
-	Status     int32   `protobuf:"varint,6,opt,name=status,proto3" json:"status,omitempty"`
-	CustomerId int64   `protobuf:"varint,7,opt,name=customer_id,json=customerId,proto3" json:"customer_id,omitempty"`
-	StartAt    string  `protobuf:"bytes,8,opt,name=start_at,json=startAt,proto3" json:"start_at,omitempty"`
-	EndAt      string  `protobuf:"bytes,9,opt,name=end_at,json=endAt,proto3" json:"end_at,omitempty"`
-	Type       string  `protobuf:"bytes,10,opt,name=type,proto3" json:"type,omitempty"`
-	TargetId   int64   `protobuf:"varint,11,opt,name=target_id,json=targetId,proto3" json:"target_id,omitempty"`
-	Method     string  `protobuf:"bytes,12,opt,name=method,proto3" json:"method,omitempty"`
-	Payment    string  `protobuf:"bytes,13,opt,name=payment,proto3" json:"payment,omitempty"`
-	Ok         bool    `protobuf:"varint,14,opt,name=ok,proto3" json:"ok,omitempty"`
-	Failure    string  `protobuf:"bytes,15,opt,name=failure,proto3" json:"failure,omitempty"`
-	Mobile     string  `protobuf:"bytes,16,opt,name=mobile,proto3" json:"mobile,omitempty"`
+	Id int64 `protobuf:"varint,4,opt,name=id,proto3" json:"id"`
+	// @inject_tag: gorm:"-"
+	Ids        []int64 `protobuf:"varint,5,rep,packed,name=ids,proto3" json:"ids"`
+	Status     int32   `protobuf:"varint,6,opt,name=status,proto3" json:"status"`
+	CustomerId int64   `protobuf:"varint,7,opt,name=customer_id,json=customerId,proto3" json:"customer_id"`
+	StartAt    string  `protobuf:"bytes,8,opt,name=start_at,json=startAt,proto3" json:"start_at"`
+	EndAt      string  `protobuf:"bytes,9,opt,name=end_at,json=endAt,proto3" json:"end_at"`
+	Type       string  `protobuf:"bytes,10,opt,name=type,proto3" json:"type"`
+	TargetId   int64   `protobuf:"varint,11,opt,name=target_id,json=targetId,proto3" json:"target_id"`
+	Method     string  `protobuf:"bytes,12,opt,name=method,proto3" json:"method"`
+	Payment    string  `protobuf:"bytes,13,opt,name=payment,proto3" json:"payment"`
+	Ok         bool    `protobuf:"varint,14,opt,name=ok,proto3" json:"ok"`
+	Failure    string  `protobuf:"bytes,15,opt,name=failure,proto3" json:"failure"`
+	Mobile     string  `protobuf:"bytes,16,opt,name=mobile,proto3" json:"mobile"`
 }
 
 func (x *WithdrawWhere) Reset() {
@@ -462,12 +466,12 @@ type WithdrawApply struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	Disabled         bool    `protobuf:"varint,1,opt,name=disabled,proto3" json:"disabled,omitempty"`                                            // 是否可提现
-	MinMoney         float32 `protobuf:"fixed32,2,opt,name=min_money,json=minMoney,proto3" json:"min_money,omitempty"`                           // 最小提现佣金
-	MaxMoney         float32 `protobuf:"fixed32,3,opt,name=max_money,json=maxMoney,proto3" json:"max_money,omitempty"`                           // 最大提现佣金
-	ServiceMoneyRate float32 `protobuf:"fixed32,4,opt,name=service_money_rate,json=serviceMoneyRate,proto3" json:"service_money_rate,omitempty"` // 手续费比例
-	MinServiceMoney  float32 `protobuf:"fixed32,5,opt,name=min_service_money,json=minServiceMoney,proto3" json:"min_service_money,omitempty"`    // 最小手续费
-	Balance          float32 `protobuf:"fixed32,6,opt,name=balance,proto3" json:"balance,omitempty"`                                             // 剩余提现余额
+	Disabled         bool    `protobuf:"varint,1,opt,name=disabled,proto3" json:"disabled"`                                            // 是否可提现
+	MinMoney         float32 `protobuf:"fixed32,2,opt,name=min_money,json=minMoney,proto3" json:"min_money"`                           // 最小提现佣金
+	MaxMoney         float32 `protobuf:"fixed32,3,opt,name=max_money,json=maxMoney,proto3" json:"max_money"`                           // 最大提现佣金
+	ServiceMoneyRate float32 `protobuf:"fixed32,4,opt,name=service_money_rate,json=serviceMoneyRate,proto3" json:"service_money_rate"` // 手续费比例
+	MinServiceMoney  float32 `protobuf:"fixed32,5,opt,name=min_service_money,json=minServiceMoney,proto3" json:"min_service_money"`    // 最小手续费
+	Balance          float32 `protobuf:"fixed32,6,opt,name=balance,proto3" json:"balance"`                                             // 剩余提现余额
 }
 
 func (x *WithdrawApply) Reset() {
@@ -549,11 +553,11 @@ type WithdrawResponse struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	Entity *Withdraw     `protobuf:"bytes,1,opt,name=entity,proto3" json:"entity,omitempty"`
-	Pager  *common.Pager `protobuf:"bytes,2,opt,name=pager,proto3" json:"pager,omitempty"`
-	Items  []*Withdraw   `protobuf:"bytes,3,rep,name=items,proto3" json:"items,omitempty"`
-	Error  *common.Error `protobuf:"bytes,4,opt,name=error,proto3" json:"error,omitempty"`
-	Info   *common.Info  `protobuf:"bytes,5,opt,name=info,proto3" json:"info,omitempty"`
+	Entity *Withdraw     `protobuf:"bytes,1,opt,name=entity,proto3" json:"entity"`
+	Pager  *common.Pager `protobuf:"bytes,2,opt,name=pager,proto3" json:"pager"`
+	Items  []*Withdraw   `protobuf:"bytes,3,rep,name=items,proto3" json:"items"`
+	Error  *common.Error `protobuf:"bytes,4,opt,name=error,proto3" json:"error"`
+	Info   *common.Info  `protobuf:"bytes,5,opt,name=info,proto3" json:"info"`
 }
 
 func (x *WithdrawResponse) Reset() {
@@ -628,11 +632,11 @@ type WithdrawApplyResponse struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	Entity *WithdrawApply   `protobuf:"bytes,1,opt,name=entity,proto3" json:"entity,omitempty"`
-	Pager  *common.Pager    `protobuf:"bytes,2,opt,name=pager,proto3" json:"pager,omitempty"`
-	Items  []*WithdrawApply `protobuf:"bytes,3,rep,name=items,proto3" json:"items,omitempty"`
-	Error  *common.Error    `protobuf:"bytes,4,opt,name=error,proto3" json:"error,omitempty"`
-	Info   *common.Info     `protobuf:"bytes,5,opt,name=info,proto3" json:"info,omitempty"`
+	Entity *WithdrawApply   `protobuf:"bytes,1,opt,name=entity,proto3" json:"entity"`
+	Pager  *common.Pager    `protobuf:"bytes,2,opt,name=pager,proto3" json:"pager"`
+	Items  []*WithdrawApply `protobuf:"bytes,3,rep,name=items,proto3" json:"items"`
+	Error  *common.Error    `protobuf:"bytes,4,opt,name=error,proto3" json:"error"`
+	Info   *common.Info     `protobuf:"bytes,5,opt,name=info,proto3" json:"info"`
 }
 
 func (x *WithdrawApplyResponse) Reset() {

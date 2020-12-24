@@ -31,15 +31,15 @@ type Tag struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	Id        int32  `protobuf:"varint,1,opt,name=id,proto3" json:"id,omitempty"`
-	Slug      string `protobuf:"bytes,2,opt,name=slug,proto3" json:"slug,omitempty"`
-	Name      string `protobuf:"bytes,3,opt,name=name,proto3" json:"name,omitempty"`
-	Type      string `protobuf:"bytes,4,opt,name=type,proto3" json:"type,omitempty"`
-	ItemNum   int32  `protobuf:"varint,5,opt,name=item_num,json=itemNum,proto3" json:"item_num,omitempty"`
-	Memo      string `protobuf:"bytes,6,opt,name=memo,proto3" json:"memo,omitempty"`
-	Weight    int32  `protobuf:"varint,7,opt,name=weight,proto3" json:"weight,omitempty"`
-	CreatedAt string `protobuf:"bytes,8,opt,name=created_at,json=createdAt,proto3" json:"created_at,omitempty"`
-	UpdatedAt string `protobuf:"bytes,9,opt,name=updated_at,json=updatedAt,proto3" json:"updated_at,omitempty"`
+	Id        int32  `protobuf:"varint,1,opt,name=id,proto3" json:"id"`
+	Slug      string `protobuf:"bytes,2,opt,name=slug,proto3" json:"slug"`
+	Name      string `protobuf:"bytes,3,opt,name=name,proto3" json:"name"`
+	Type      string `protobuf:"bytes,4,opt,name=type,proto3" json:"type"`
+	ItemNum   int32  `protobuf:"varint,5,opt,name=item_num,json=itemNum,proto3" json:"item_num"`
+	Memo      string `protobuf:"bytes,6,opt,name=memo,proto3" json:"memo"`
+	Weight    int32  `protobuf:"varint,7,opt,name=weight,proto3" json:"weight"`
+	CreatedAt string `protobuf:"bytes,8,opt,name=created_at,json=createdAt,proto3" json:"created_at"`
+	UpdatedAt string `protobuf:"bytes,9,opt,name=updated_at,json=updatedAt,proto3" json:"updated_at"`
 }
 
 func (x *Tag) Reset() {
@@ -142,11 +142,11 @@ type TagResponse struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	Entity *Tag          `protobuf:"bytes,1,opt,name=entity,proto3" json:"entity,omitempty"`
-	Pager  *common.Pager `protobuf:"bytes,2,opt,name=pager,proto3" json:"pager,omitempty"`
-	Items  []*Tag        `protobuf:"bytes,3,rep,name=items,proto3" json:"items,omitempty"`
-	Error  *common.Error `protobuf:"bytes,4,opt,name=error,proto3" json:"error,omitempty"`
-	Info   *common.Info  `protobuf:"bytes,5,opt,name=info,proto3" json:"info,omitempty"`
+	Entity *Tag          `protobuf:"bytes,1,opt,name=entity,proto3" json:"entity"`
+	Pager  *common.Pager `protobuf:"bytes,2,opt,name=pager,proto3" json:"pager"`
+	Items  []*Tag        `protobuf:"bytes,3,rep,name=items,proto3" json:"items"`
+	Error  *common.Error `protobuf:"bytes,4,opt,name=error,proto3" json:"error"`
+	Info   *common.Info  `protobuf:"bytes,5,opt,name=info,proto3" json:"info"`
 }
 
 func (x *TagResponse) Reset() {

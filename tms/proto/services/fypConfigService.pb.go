@@ -31,17 +31,17 @@ type FypConfig struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	Id          int32  `protobuf:"varint,1,opt,name=id,proto3" json:"id,omitempty"`
-	AppCode     string `protobuf:"bytes,2,opt,name=app_code,json=appCode,proto3" json:"app_code,omitempty"`
-	AppKey      string `protobuf:"bytes,3,opt,name=app_key,json=appKey,proto3" json:"app_key,omitempty"`
-	MonthlyCust string `protobuf:"bytes,4,opt,name=monthly_cust,json=monthlyCust,proto3" json:"monthly_cust,omitempty"`
-	ExpressType int32  `protobuf:"varint,5,opt,name=express_type,json=expressType,proto3" json:"express_type,omitempty"`
-	PayMethod   int32  `protobuf:"varint,6,opt,name=pay_method,json=payMethod,proto3" json:"pay_method,omitempty"`
-	AccessToke  string `protobuf:"bytes,7,opt,name=access_toke,json=accessToke,proto3" json:"access_toke,omitempty"`
-	ExpiredAt   string `protobuf:"bytes,8,opt,name=expired_at,json=expiredAt,proto3" json:"expired_at,omitempty"`
-	AddressId   int64  `protobuf:"varint,9,opt,name=address_id,json=addressId,proto3" json:"address_id,omitempty"`
-	CreatedAt   string `protobuf:"bytes,10,opt,name=created_at,json=createdAt,proto3" json:"created_at,omitempty"`
-	UpdatedAt   string `protobuf:"bytes,11,opt,name=updated_at,json=updatedAt,proto3" json:"updated_at,omitempty"`
+	Id          int32  `protobuf:"varint,1,opt,name=id,proto3" json:"id"`
+	AppCode     string `protobuf:"bytes,2,opt,name=app_code,json=appCode,proto3" json:"app_code"`
+	AppKey      string `protobuf:"bytes,3,opt,name=app_key,json=appKey,proto3" json:"app_key"`
+	MonthlyCust string `protobuf:"bytes,4,opt,name=monthly_cust,json=monthlyCust,proto3" json:"monthly_cust"`
+	ExpressType int32  `protobuf:"varint,5,opt,name=express_type,json=expressType,proto3" json:"express_type"`
+	PayMethod   int32  `protobuf:"varint,6,opt,name=pay_method,json=payMethod,proto3" json:"pay_method"`
+	AccessToke  string `protobuf:"bytes,7,opt,name=access_toke,json=accessToke,proto3" json:"access_toke"`
+	ExpiredAt   string `protobuf:"bytes,8,opt,name=expired_at,json=expiredAt,proto3" json:"expired_at"`
+	AddressId   int64  `protobuf:"varint,9,opt,name=address_id,json=addressId,proto3" json:"address_id"`
+	CreatedAt   string `protobuf:"bytes,10,opt,name=created_at,json=createdAt,proto3" json:"created_at"`
+	UpdatedAt   string `protobuf:"bytes,11,opt,name=updated_at,json=updatedAt,proto3" json:"updated_at"`
 }
 
 func (x *FypConfig) Reset() {
@@ -158,9 +158,9 @@ type FypConfigResponse struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	Info   *common.Info  `protobuf:"bytes,1,opt,name=info,proto3" json:"info,omitempty"`
-	Error  *common.Error `protobuf:"bytes,2,opt,name=error,proto3" json:"error,omitempty"`
-	Entity *FypConfig    `protobuf:"bytes,3,opt,name=entity,proto3" json:"entity,omitempty"`
+	Info   *common.Info  `protobuf:"bytes,1,opt,name=info,proto3" json:"info"`
+	Error  *common.Error `protobuf:"bytes,2,opt,name=error,proto3" json:"error"`
+	Entity *FypConfig    `protobuf:"bytes,3,opt,name=entity,proto3" json:"entity"`
 }
 
 func (x *FypConfigResponse) Reset() {

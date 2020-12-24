@@ -45,8 +45,8 @@ message CouponWhere {
     int32 paged = 1;
     int32 page_size = 2;
     int32 top = 3;
-    //base params
     int64 id = 4;
+    // @inject_tag: gorm:"-"
     repeated int64 ids = 5;
     string keywords = 6;
     int32 status = 7;
@@ -97,8 +97,11 @@ message Coupon{
     string receive_type = 39;
     string created_at = 40;
     string updated_at = 41;
+    // @inject_tag: gorm:"foreignKey:CouponId"
     repeated CouponTicket tickets = 42;
+    // @inject_tag: gorm:"foreignKey:CouponId"
     repeated CouponGoods goodses = 43;
+    // @inject_tag: gorm:"-"
     repeated int64 ids = 44;
     bool is_receive = 45;// 是否可领取
 }

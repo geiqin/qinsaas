@@ -31,11 +31,11 @@ type FrontTableWhere struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	Paged     int32  `protobuf:"varint,1,opt,name=paged,proto3" json:"paged,omitempty"`
-	PageSize  int32  `protobuf:"varint,2,opt,name=page_size,json=pageSize,proto3" json:"page_size,omitempty"`
-	Top       int32  `protobuf:"varint,3,opt,name=top,proto3" json:"top,omitempty"`
-	TableId   int64  `protobuf:"varint,4,opt,name=table_id,json=tableId,proto3" json:"table_id,omitempty"`
-	TableName string `protobuf:"bytes,5,opt,name=table_name,json=tableName,proto3" json:"table_name,omitempty"`
+	Paged     int32  `protobuf:"varint,1,opt,name=paged,proto3" json:"paged"`
+	PageSize  int32  `protobuf:"varint,2,opt,name=page_size,json=pageSize,proto3" json:"page_size"`
+	Top       int32  `protobuf:"varint,3,opt,name=top,proto3" json:"top"`
+	TableId   int64  `protobuf:"varint,4,opt,name=table_id,json=tableId,proto3" json:"table_id"`
+	TableName string `protobuf:"bytes,5,opt,name=table_name,json=tableName,proto3" json:"table_name"`
 }
 
 func (x *FrontTableWhere) Reset() {
@@ -110,11 +110,12 @@ type FrontTableIn struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	TableId   int64     `protobuf:"varint,4,opt,name=table_id,json=tableId,proto3" json:"table_id,omitempty"`
-	TableName string    `protobuf:"bytes,5,opt,name=table_name,json=tableName,proto3" json:"table_name,omitempty"`
-	Status    int32     `protobuf:"varint,6,opt,name=status,proto3" json:"status,omitempty"` // 状态: 1-可下单,2-未开启堂食业务,3-不在营业时间内,4-不在配送时间内
-	Config    *InConfig `protobuf:"bytes,7,opt,name=config,proto3" json:"config,omitempty"`
-	Kinds     []*Kind   `protobuf:"bytes,8,rep,name=kinds,proto3" json:"kinds,omitempty"`
+	TableId   int64     `protobuf:"varint,4,opt,name=table_id,json=tableId,proto3" json:"table_id"`
+	TableName string    `protobuf:"bytes,5,opt,name=table_name,json=tableName,proto3" json:"table_name"`
+	Status    int32     `protobuf:"varint,6,opt,name=status,proto3" json:"status"` // 状态: 1-可下单,2-未开启堂食业务,3-不在营业时间内,4-不在配送时间内
+	Config    *InConfig `protobuf:"bytes,7,opt,name=config,proto3" json:"config"`
+	// @inject_tag: gorm:"-"
+	Kinds []*Kind `protobuf:"bytes,8,rep,name=kinds,proto3" json:"kinds" gorm:"-"`
 }
 
 func (x *FrontTableIn) Reset() {
@@ -189,9 +190,11 @@ type FrontTableOut struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	Status int32      `protobuf:"varint,1,opt,name=status,proto3" json:"status,omitempty"` // 状态: 1-可下单,2-未开启外卖业务,3-不在营业时间内,4-不在配送时间内
-	Config *OutConfig `protobuf:"bytes,2,opt,name=config,proto3" json:"config,omitempty"`
-	Kinds  []*Kind    `protobuf:"bytes,3,rep,name=kinds,proto3" json:"kinds,omitempty"`
+	Status int32 `protobuf:"varint,1,opt,name=status,proto3" json:"status"` // 状态: 1-可下单,2-未开启外卖业务,3-不在营业时间内,4-不在配送时间内
+	// @inject_tag: gorm:"-"
+	Config *OutConfig `protobuf:"bytes,2,opt,name=config,proto3" json:"config" gorm:"-"`
+	// @inject_tag: gorm:"-"
+	Kinds []*Kind `protobuf:"bytes,3,rep,name=kinds,proto3" json:"kinds" gorm:"-"`
 }
 
 func (x *FrontTableOut) Reset() {
@@ -252,11 +255,11 @@ type FrontTableInResponse struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	Entity *FrontTableIn   `protobuf:"bytes,1,opt,name=entity,proto3" json:"entity,omitempty"`
-	Pager  *common.Pager   `protobuf:"bytes,2,opt,name=pager,proto3" json:"pager,omitempty"`
-	Items  []*FrontTableIn `protobuf:"bytes,3,rep,name=items,proto3" json:"items,omitempty"`
-	Error  *common.Error   `protobuf:"bytes,4,opt,name=error,proto3" json:"error,omitempty"`
-	Info   *common.Info    `protobuf:"bytes,5,opt,name=info,proto3" json:"info,omitempty"`
+	Entity *FrontTableIn   `protobuf:"bytes,1,opt,name=entity,proto3" json:"entity"`
+	Pager  *common.Pager   `protobuf:"bytes,2,opt,name=pager,proto3" json:"pager"`
+	Items  []*FrontTableIn `protobuf:"bytes,3,rep,name=items,proto3" json:"items"`
+	Error  *common.Error   `protobuf:"bytes,4,opt,name=error,proto3" json:"error"`
+	Info   *common.Info    `protobuf:"bytes,5,opt,name=info,proto3" json:"info"`
 }
 
 func (x *FrontTableInResponse) Reset() {
@@ -331,11 +334,11 @@ type FrontTableOutResponse struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	Entity *FrontTableOut   `protobuf:"bytes,1,opt,name=entity,proto3" json:"entity,omitempty"`
-	Pager  *common.Pager    `protobuf:"bytes,2,opt,name=pager,proto3" json:"pager,omitempty"`
-	Items  []*FrontTableOut `protobuf:"bytes,3,rep,name=items,proto3" json:"items,omitempty"`
-	Error  *common.Error    `protobuf:"bytes,4,opt,name=error,proto3" json:"error,omitempty"`
-	Info   *common.Info     `protobuf:"bytes,5,opt,name=info,proto3" json:"info,omitempty"`
+	Entity *FrontTableOut   `protobuf:"bytes,1,opt,name=entity,proto3" json:"entity"`
+	Pager  *common.Pager    `protobuf:"bytes,2,opt,name=pager,proto3" json:"pager"`
+	Items  []*FrontTableOut `protobuf:"bytes,3,rep,name=items,proto3" json:"items"`
+	Error  *common.Error    `protobuf:"bytes,4,opt,name=error,proto3" json:"error"`
+	Info   *common.Info     `protobuf:"bytes,5,opt,name=info,proto3" json:"info"`
 }
 
 func (x *FrontTableOutResponse) Reset() {

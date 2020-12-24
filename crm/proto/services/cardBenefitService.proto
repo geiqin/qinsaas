@@ -20,6 +20,7 @@ message CardBenefit {
     string created_at =5;
     string updated_at =6;
     Benefit benefit =7;
+    // @inject_tag: gorm:"-"
     repeated int32 ids = 8;
 }
 

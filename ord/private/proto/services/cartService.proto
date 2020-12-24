@@ -35,6 +35,7 @@ message Cart {
     float discount = 4;
     float freight = 5;
     float amount = 6;
+    // @inject_tag: gorm:"-"
     repeated CartItem items = 7;
 }
 
@@ -48,6 +49,7 @@ message CartItem {
     float price =6;
     float tax_rate =7;
     float sub_total =8;
+    // @inject_tag: gorm:"-"
     GoodsInfo goods =9;
 }
 

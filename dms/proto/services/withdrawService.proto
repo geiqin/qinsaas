@@ -58,8 +58,11 @@ message Withdraw {
     string payment_at = 23;
     string created_at = 24;
     string updated_at = 25;
+    // @inject_tag: gorm:"-"
     Distributor distributor = 26;
+    // @inject_tag: gorm:"-"
     Leader leader = 27;
+    // @inject_tag: gorm:"-"
     CustomerInfo customer = 28;
 }
 
@@ -69,6 +72,7 @@ message WithdrawWhere {
     int32 top = 3;
     //base params
     int64 id = 4;
+    // @inject_tag: gorm:"-"
     repeated int64 ids = 5;
     int32 status = 6;
     int64 customer_id = 7;

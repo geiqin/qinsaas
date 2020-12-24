@@ -21,6 +21,7 @@ message Favorite {
     int64	item_id	=3;
     string	created_at	=4;
     string	updated_at	=5;
+    // @inject_tag: gorm:"-"
     ItemDisplay item =6;
 }
 
@@ -29,6 +30,7 @@ message FavoriteWhere {
     int32 page_size = 2;
     int32 top = 3;
     int64 id = 4;
+    // @inject_tag: gorm:"-"
     repeated int64 ids = 5;
     int64 customer_id = 6;
     int64 item_id	= 7;

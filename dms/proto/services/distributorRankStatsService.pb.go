@@ -30,17 +30,17 @@ type DistributorRankStats struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	Id                int64   `protobuf:"varint,1,opt,name=id,proto3" json:"id,omitempty"`
-	DistributorId     int64   `protobuf:"varint,2,opt,name=distributor_id,json=distributorId,proto3" json:"distributor_id,omitempty"`
-	RankId            int32   `protobuf:"varint,3,opt,name=rank_id,json=rankId,proto3" json:"rank_id,omitempty"`
-	RecommendNum      int32   `protobuf:"varint,4,opt,name=recommend_num,json=recommendNum,proto3" json:"recommend_num,omitempty"`
-	CustomerNum       int32   `protobuf:"varint,5,opt,name=customer_num,json=customerNum,proto3" json:"customer_num,omitempty"`
-	PromotionNum      int32   `protobuf:"varint,6,opt,name=promotion_num,json=promotionNum,proto3" json:"promotion_num,omitempty"`
-	ConsumptionNum    int32   `protobuf:"varint,7,opt,name=consumption_num,json=consumptionNum,proto3" json:"consumption_num,omitempty"`
-	PromotionAmount   float32 `protobuf:"fixed32,8,opt,name=promotion_amount,json=promotionAmount,proto3" json:"promotion_amount,omitempty"`
-	ConsumptionAmount float32 `protobuf:"fixed32,9,opt,name=consumption_amount,json=consumptionAmount,proto3" json:"consumption_amount,omitempty"`
-	CreatedAt         string  `protobuf:"bytes,10,opt,name=created_at,json=createdAt,proto3" json:"created_at,omitempty"`
-	UpdatedAt         string  `protobuf:"bytes,11,opt,name=updated_at,json=updatedAt,proto3" json:"updated_at,omitempty"`
+	Id                int64   `protobuf:"varint,1,opt,name=id,proto3" json:"id"`
+	DistributorId     int64   `protobuf:"varint,2,opt,name=distributor_id,json=distributorId,proto3" json:"distributor_id"`
+	RankId            int32   `protobuf:"varint,3,opt,name=rank_id,json=rankId,proto3" json:"rank_id"`
+	RecommendNum      int32   `protobuf:"varint,4,opt,name=recommend_num,json=recommendNum,proto3" json:"recommend_num"`
+	CustomerNum       int32   `protobuf:"varint,5,opt,name=customer_num,json=customerNum,proto3" json:"customer_num"`
+	PromotionNum      int32   `protobuf:"varint,6,opt,name=promotion_num,json=promotionNum,proto3" json:"promotion_num"`
+	ConsumptionNum    int32   `protobuf:"varint,7,opt,name=consumption_num,json=consumptionNum,proto3" json:"consumption_num"`
+	PromotionAmount   float32 `protobuf:"fixed32,8,opt,name=promotion_amount,json=promotionAmount,proto3" json:"promotion_amount"`
+	ConsumptionAmount float32 `protobuf:"fixed32,9,opt,name=consumption_amount,json=consumptionAmount,proto3" json:"consumption_amount"`
+	CreatedAt         string  `protobuf:"bytes,10,opt,name=created_at,json=createdAt,proto3" json:"created_at"`
+	UpdatedAt         string  `protobuf:"bytes,11,opt,name=updated_at,json=updatedAt,proto3" json:"updated_at"`
 }
 
 func (x *DistributorRankStats) Reset() {

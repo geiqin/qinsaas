@@ -35,6 +35,7 @@ message GlobalCfg {
     int64 poster_img_id = 21;
     string poster_img_url = 22;
     string poster_share_content = 23;
+    // @inject_tag: gorm:"-"
     repeated PosterGallery poster_galleries = 24;
 }
 

@@ -31,14 +31,15 @@ type Poster struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	GlobalCfgId        int64            `protobuf:"varint,1,opt,name=global_cfg_id,json=globalCfgId,proto3" json:"global_cfg_id,omitempty"`
-	IsOpenPoster       bool             `protobuf:"varint,2,opt,name=is_open_poster,json=isOpenPoster,proto3" json:"is_open_poster,omitempty"`
-	PosterShareUrl     string           `protobuf:"bytes,3,opt,name=poster_share_url,json=posterShareUrl,proto3" json:"poster_share_url,omitempty"`
-	PosterType         int32            `protobuf:"varint,4,opt,name=poster_type,json=posterType,proto3" json:"poster_type,omitempty"`
-	PosterImgId        int64            `protobuf:"varint,5,opt,name=poster_img_id,json=posterImgId,proto3" json:"poster_img_id,omitempty"`
-	PosterImgUrl       string           `protobuf:"bytes,6,opt,name=poster_img_url,json=posterImgUrl,proto3" json:"poster_img_url,omitempty"`
-	PosterShareContent string           `protobuf:"bytes,7,opt,name=poster_share_content,json=posterShareContent,proto3" json:"poster_share_content,omitempty"`
-	PosterGalleries    []*PosterGallery `protobuf:"bytes,24,rep,name=poster_galleries,json=posterGalleries,proto3" json:"poster_galleries,omitempty"`
+	GlobalCfgId        int64  `protobuf:"varint,1,opt,name=global_cfg_id,json=globalCfgId,proto3" json:"global_cfg_id"`
+	IsOpenPoster       bool   `protobuf:"varint,2,opt,name=is_open_poster,json=isOpenPoster,proto3" json:"is_open_poster"`
+	PosterShareUrl     string `protobuf:"bytes,3,opt,name=poster_share_url,json=posterShareUrl,proto3" json:"poster_share_url"`
+	PosterType         int32  `protobuf:"varint,4,opt,name=poster_type,json=posterType,proto3" json:"poster_type"`
+	PosterImgId        int64  `protobuf:"varint,5,opt,name=poster_img_id,json=posterImgId,proto3" json:"poster_img_id"`
+	PosterImgUrl       string `protobuf:"bytes,6,opt,name=poster_img_url,json=posterImgUrl,proto3" json:"poster_img_url"`
+	PosterShareContent string `protobuf:"bytes,7,opt,name=poster_share_content,json=posterShareContent,proto3" json:"poster_share_content"`
+	// @inject_tag: gorm:"-"
+	PosterGalleries []*PosterGallery `protobuf:"bytes,24,rep,name=poster_galleries,json=posterGalleries,proto3" json:"poster_galleries"`
 }
 
 func (x *Poster) Reset() {
@@ -134,9 +135,9 @@ type PosterResponse struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	Entity *Poster       `protobuf:"bytes,1,opt,name=entity,proto3" json:"entity,omitempty"`
-	Error  *common.Error `protobuf:"bytes,4,opt,name=error,proto3" json:"error,omitempty"`
-	Info   *common.Info  `protobuf:"bytes,5,opt,name=info,proto3" json:"info,omitempty"`
+	Entity *Poster       `protobuf:"bytes,1,opt,name=entity,proto3" json:"entity"`
+	Error  *common.Error `protobuf:"bytes,4,opt,name=error,proto3" json:"error"`
+	Info   *common.Info  `protobuf:"bytes,5,opt,name=info,proto3" json:"info"`
 }
 
 func (x *PosterResponse) Reset() {

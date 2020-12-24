@@ -30,6 +30,7 @@ message RoomTypeFacilityWhere {
     int32 top = 3;
     string keywords = 4;
     int32 id = 5;
+    // @inject_tag: gorm:"-"
     repeated int32 ids = 6;
     int32 room_type_facility_cat_id = 7;
 }

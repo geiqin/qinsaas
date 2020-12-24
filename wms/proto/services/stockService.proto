@@ -30,6 +30,7 @@ message StockWhere {
     int32 paged = 1;
     int32 page_size = 2;
     int64 id = 3;
+    // @inject_tag: gorm:"-"
     repeated int64 ids = 4;
     string type = 5;
     int32 sheet_type = 6;
@@ -37,6 +38,7 @@ message StockWhere {
     bool ok = 8;
     string failure = 9;
     int64 stock_id = 10;
+    // @inject_tag: gorm:"-"
     repeated int64 stock_ids = 11;
 }
 
@@ -56,6 +58,7 @@ message Stock {
     string failure = 13;
     string created_at = 14;
     string updated_at = 15;
+    // @inject_tag: gorm:"foreignKey:StockId"
     repeated StockDetail details =16;
 }
 

@@ -35,8 +35,11 @@ message Leader {
     int32 withdrew_num = 12;
     string created_at = 13;
     string updated_at = 14;
+    // @inject_tag: gorm:"-"
     repeated int64 ids = 15;
+    // @inject_tag: gorm:"-"
     Rank rank = 16;
+    // @inject_tag: gorm:"-"
     Distributor distributor = 17;
     string leader_name = 18;// 团长昵称
     string mobile = 19;// 手机号
@@ -53,6 +56,7 @@ message LeaderWhere {
     int32 rank_id = 5;
     string keywords =6;
     int64 id = 7;
+    // @inject_tag: gorm:"-"
     repeated int64 ids = 8;
     int64 distributor_id = 9;
     int64 customer_id = 10;

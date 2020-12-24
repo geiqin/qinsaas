@@ -8,6 +8,7 @@ message FanTrack {
     string source = 2;
     string created_at = 17;
     string updated_at = 18;
+    // @inject_tag: gorm:"-"
     repeated int64 ids = 20;
 }
 

@@ -37,8 +37,10 @@ message ExpressWhere {
   string sorting = 3;
   string keywords = 4;
   int64 id = 5;
+  // @inject_tag: gorm:"-"
   repeated int64 ids = 6;
   int64 express_id = 7;
+  // @inject_tag: gorm:"-"
   repeated int64 express_ids = 8;
 }
 
@@ -49,6 +51,7 @@ message Express {
   bool defaulted = 4;
   string created_at = 5;
   string updated_at = 6;
+  // @inject_tag: gorm:"foreignKey:ExpressId"
   repeated ExpressDetail details = 7;
 }
 
@@ -64,6 +67,7 @@ message ExpressDetail {
   string created_at = 9;
   string updated_at = 10;
   string area_content = 11;
+  // @inject_tag: gorm:"foreignKey:ExpressDetailId"
   repeated ExpressArea areas = 12;
 }
 

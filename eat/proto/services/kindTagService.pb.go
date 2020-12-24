@@ -31,12 +31,13 @@ type KindTagWhere struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	Paged    int32   `protobuf:"varint,1,opt,name=paged,proto3" json:"paged,omitempty"`
-	PageSize int32   `protobuf:"varint,2,opt,name=page_size,json=pageSize,proto3" json:"page_size,omitempty"`
-	Top      int32   `protobuf:"varint,3,opt,name=top,proto3" json:"top,omitempty"`
-	Id       int32   `protobuf:"varint,4,opt,name=id,proto3" json:"id,omitempty"`
-	Ids      []int32 `protobuf:"varint,5,rep,packed,name=ids,proto3" json:"ids,omitempty"`
-	IsSystem bool    `protobuf:"varint,6,opt,name=is_system,json=isSystem,proto3" json:"is_system,omitempty"`
+	Paged    int32 `protobuf:"varint,1,opt,name=paged,proto3" json:"paged"`
+	PageSize int32 `protobuf:"varint,2,opt,name=page_size,json=pageSize,proto3" json:"page_size"`
+	Top      int32 `protobuf:"varint,3,opt,name=top,proto3" json:"top"`
+	Id       int32 `protobuf:"varint,4,opt,name=id,proto3" json:"id"`
+	// @inject_tag: gorm:"-"
+	Ids      []int32 `protobuf:"varint,5,rep,packed,name=ids,proto3" json:"ids" gorm:"-"`
+	IsSystem bool    `protobuf:"varint,6,opt,name=is_system,json=isSystem,proto3" json:"is_system"`
 }
 
 func (x *KindTagWhere) Reset() {
@@ -118,14 +119,14 @@ type KindTag struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	Id int32 `protobuf:"varint,1,opt,name=id,proto3" json:"id,omitempty"`
+	Id int32 `protobuf:"varint,1,opt,name=id,proto3" json:"id"`
 	// @inject_tag: validate:"required" label:"菜单标签名称"
-	Name string `protobuf:"bytes,2,opt,name=name,proto3" json:"name,omitempty" validate:"required" label:"菜单标签名称"`
+	Name string `protobuf:"bytes,2,opt,name=name,proto3" json:"name" validate:"required" label:"菜单标签名称"`
 	// @inject_tag: validate:"required" label:"菜单图标"
-	Icon      string `protobuf:"bytes,3,opt,name=icon,proto3" json:"icon,omitempty" validate:"required" label:"菜单图标"`
-	IsSystem  bool   `protobuf:"varint,4,opt,name=is_system,json=isSystem,proto3" json:"is_system,omitempty"`
-	CreatedAt string `protobuf:"bytes,5,opt,name=created_at,json=createdAt,proto3" json:"created_at,omitempty"`
-	UpdatedAt string `protobuf:"bytes,6,opt,name=updated_at,json=updatedAt,proto3" json:"updated_at,omitempty"`
+	Icon      string `protobuf:"bytes,3,opt,name=icon,proto3" json:"icon" validate:"required" label:"菜单图标"`
+	IsSystem  bool   `protobuf:"varint,4,opt,name=is_system,json=isSystem,proto3" json:"is_system"`
+	CreatedAt string `protobuf:"bytes,5,opt,name=created_at,json=createdAt,proto3" json:"created_at"`
+	UpdatedAt string `protobuf:"bytes,6,opt,name=updated_at,json=updatedAt,proto3" json:"updated_at"`
 }
 
 func (x *KindTag) Reset() {
@@ -207,11 +208,11 @@ type KindTagResponse struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	Entity *KindTag      `protobuf:"bytes,1,opt,name=entity,proto3" json:"entity,omitempty"`
-	Pager  *common.Pager `protobuf:"bytes,2,opt,name=pager,proto3" json:"pager,omitempty"`
-	Items  []*KindTag    `protobuf:"bytes,3,rep,name=items,proto3" json:"items,omitempty"`
-	Error  *common.Error `protobuf:"bytes,4,opt,name=error,proto3" json:"error,omitempty"`
-	Info   *common.Info  `protobuf:"bytes,5,opt,name=info,proto3" json:"info,omitempty"`
+	Entity *KindTag      `protobuf:"bytes,1,opt,name=entity,proto3" json:"entity"`
+	Pager  *common.Pager `protobuf:"bytes,2,opt,name=pager,proto3" json:"pager"`
+	Items  []*KindTag    `protobuf:"bytes,3,rep,name=items,proto3" json:"items"`
+	Error  *common.Error `protobuf:"bytes,4,opt,name=error,proto3" json:"error"`
+	Info   *common.Info  `protobuf:"bytes,5,opt,name=info,proto3" json:"info"`
 }
 
 func (x *KindTagResponse) Reset() {

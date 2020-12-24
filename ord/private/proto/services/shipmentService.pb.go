@@ -32,25 +32,28 @@ type OrderShipment struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	Lng             string        `protobuf:"bytes,1,opt,name=lng,proto3" json:"lng,omitempty"`                                                   //定位的经度
-	Lat             string        `protobuf:"bytes,2,opt,name=lat,proto3" json:"lat,omitempty"`                                                   // 定位的纬度
-	IsFetch         bool          `protobuf:"varint,3,opt,name=is_fetch,json=isFetch,proto3" json:"is_fetch,omitempty"`                           // 是否可上门自提
-	IsDelivery      bool          `protobuf:"varint,4,opt,name=is_delivery,json=isDelivery,proto3" json:"is_delivery,omitempty"`                  // 是否可同城配送
-	IsExpress       bool          `protobuf:"varint,5,opt,name=is_express,json=isExpress,proto3" json:"is_express,omitempty"`                     // 是否可快递发货
-	Method          string        `protobuf:"bytes,6,opt,name=method,proto3" json:"method,omitempty"`                                             // 下单选择的配送方式
-	FetchCount      int32         `protobuf:"varint,7,opt,name=fetch_count,json=fetchCount,proto3" json:"fetch_count,omitempty"`                  // 自提点数量【上门自提】
-	FetchLocationId int64         `protobuf:"varint,8,opt,name=fetch_location_id,json=fetchLocationId,proto3" json:"fetch_location_id,omitempty"` // 下单选择的自提点ID【上门自提】
-	FetchAt         string        `protobuf:"bytes,9,opt,name=fetch_at,json=fetchAt,proto3" json:"fetch_at,omitempty"`                            // 下单选择的自提时间【上门自提】
-	Deliverable     bool          `protobuf:"varint,10,opt,name=deliverable,proto3" json:"deliverable,omitempty"`                                 // 收货地址是否在配送区域
-	DeliveryAt      string        `protobuf:"bytes,11,opt,name=delivery_at,json=deliveryAt,proto3" json:"delivery_at,omitempty"`                  // 下单选择的配送时间【同城配送】
-	ExpressFee      float32       `protobuf:"fixed32,12,opt,name=express_fee,json=expressFee,proto3" json:"express_fee,omitempty"`                // 快递发货运费
-	DeliveryFee     float32       `protobuf:"fixed32,13,opt,name=delivery_fee,json=deliveryFee,proto3" json:"delivery_fee,omitempty"`             // 同城配送配送费
-	StartPrice      float32       `protobuf:"fixed32,19,opt,name=start_price,json=startPrice,proto3" json:"start_price,omitempty"`                // 起送价
-	DeliveryInfo    *DeliveryInfo `protobuf:"bytes,14,opt,name=delivery_info,json=deliveryInfo,proto3" json:"delivery_info,omitempty"`            // 同城配送信息
-	FetchInfo       *FetchInfo    `protobuf:"bytes,15,opt,name=fetch_info,json=fetchInfo,proto3" json:"fetch_info,omitempty"`                     // 上门自提信息
-	ExpressInfo     *ExpressInfo  `protobuf:"bytes,16,opt,name=express_info,json=expressInfo,proto3" json:"express_info,omitempty"`               // 快递发货信息
-	StartTime       string        `protobuf:"bytes,17,opt,name=start_time,json=startTime,proto3" json:"start_time,omitempty"`                     // 选择的配送或自提的开始时间
-	EndTime         string        `protobuf:"bytes,18,opt,name=end_time,json=endTime,proto3" json:"end_time,omitempty"`                           // 选择的配送或自提的结束时间
+	Lng             string  `protobuf:"bytes,1,opt,name=lng,proto3" json:"lng"`                                                   //定位的经度
+	Lat             string  `protobuf:"bytes,2,opt,name=lat,proto3" json:"lat"`                                                   // 定位的纬度
+	IsFetch         bool    `protobuf:"varint,3,opt,name=is_fetch,json=isFetch,proto3" json:"is_fetch"`                           // 是否可上门自提
+	IsDelivery      bool    `protobuf:"varint,4,opt,name=is_delivery,json=isDelivery,proto3" json:"is_delivery"`                  // 是否可同城配送
+	IsExpress       bool    `protobuf:"varint,5,opt,name=is_express,json=isExpress,proto3" json:"is_express"`                     // 是否可快递发货
+	Method          string  `protobuf:"bytes,6,opt,name=method,proto3" json:"method"`                                             // 下单选择的配送方式
+	FetchCount      int32   `protobuf:"varint,7,opt,name=fetch_count,json=fetchCount,proto3" json:"fetch_count"`                  // 自提点数量【上门自提】
+	FetchLocationId int64   `protobuf:"varint,8,opt,name=fetch_location_id,json=fetchLocationId,proto3" json:"fetch_location_id"` // 下单选择的自提点ID【上门自提】
+	FetchAt         string  `protobuf:"bytes,9,opt,name=fetch_at,json=fetchAt,proto3" json:"fetch_at"`                            // 下单选择的自提时间【上门自提】
+	Deliverable     bool    `protobuf:"varint,10,opt,name=deliverable,proto3" json:"deliverable"`                                 // 收货地址是否在配送区域
+	DeliveryAt      string  `protobuf:"bytes,11,opt,name=delivery_at,json=deliveryAt,proto3" json:"delivery_at"`                  // 下单选择的配送时间【同城配送】
+	ExpressFee      float32 `protobuf:"fixed32,12,opt,name=express_fee,json=expressFee,proto3" json:"express_fee"`                // 快递发货运费
+	DeliveryFee     float32 `protobuf:"fixed32,13,opt,name=delivery_fee,json=deliveryFee,proto3" json:"delivery_fee"`             // 同城配送配送费
+	StartPrice      float32 `protobuf:"fixed32,19,opt,name=start_price,json=startPrice,proto3" json:"start_price"`                // 起送价
+	// @inject_tag: gorm:"-"
+	DeliveryInfo *DeliveryInfo `protobuf:"bytes,14,opt,name=delivery_info,json=deliveryInfo,proto3" json:"delivery_info" gorm:"-"` // 同城配送信息
+	// @inject_tag: gorm:"-"
+	FetchInfo *FetchInfo `protobuf:"bytes,15,opt,name=fetch_info,json=fetchInfo,proto3" json:"fetch_info" gorm:"-"` // 上门自提信息
+	// @inject_tag: gorm:"-"
+	ExpressInfo *ExpressInfo `protobuf:"bytes,16,opt,name=express_info,json=expressInfo,proto3" json:"express_info" gorm:"-"` // 快递发货信息
+	StartTime   string       `protobuf:"bytes,17,opt,name=start_time,json=startTime,proto3" json:"start_time"`                // 选择的配送或自提的开始时间
+	EndTime     string       `protobuf:"bytes,18,opt,name=end_time,json=endTime,proto3" json:"end_time"`                      // 选择的配送或自提的结束时间
 }
 
 func (x *OrderShipment) Reset() {
@@ -224,18 +227,20 @@ type FetchInfo struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	Id          int64     `protobuf:"varint,1,opt,name=id,proto3" json:"id,omitempty"`
-	Name        string    `protobuf:"bytes,2,opt,name=name,proto3" json:"name,omitempty"`
-	AreaId      int64     `protobuf:"varint,3,opt,name=area_id,json=areaId,proto3" json:"area_id,omitempty"`
-	Addr        string    `protobuf:"bytes,4,opt,name=addr,proto3" json:"addr,omitempty"`
-	Lng         string    `protobuf:"bytes,5,opt,name=lng,proto3" json:"lng,omitempty"`
-	Lat         string    `protobuf:"bytes,6,opt,name=lat,proto3" json:"lat,omitempty"`
-	Tel         string    `protobuf:"bytes,7,opt,name=tel,proto3" json:"tel,omitempty"`
-	Mobile      string    `protobuf:"bytes,8,opt,name=mobile,proto3" json:"mobile,omitempty"`
-	IsFetchTime bool      `protobuf:"varint,9,opt,name=is_fetch_time,json=isFetchTime,proto3" json:"is_fetch_time,omitempty"`
-	Distance    float32   `protobuf:"fixed32,10,opt,name=distance,proto3" json:"distance,omitempty"`
-	Galleries   []string  `protobuf:"bytes,11,rep,name=galleries,proto3" json:"galleries,omitempty"`
-	Area        *AreaInfo `protobuf:"bytes,12,opt,name=area,proto3" json:"area,omitempty"`
+	Id          int64   `protobuf:"varint,1,opt,name=id,proto3" json:"id"`
+	Name        string  `protobuf:"bytes,2,opt,name=name,proto3" json:"name"`
+	AreaId      int64   `protobuf:"varint,3,opt,name=area_id,json=areaId,proto3" json:"area_id"`
+	Addr        string  `protobuf:"bytes,4,opt,name=addr,proto3" json:"addr"`
+	Lng         string  `protobuf:"bytes,5,opt,name=lng,proto3" json:"lng"`
+	Lat         string  `protobuf:"bytes,6,opt,name=lat,proto3" json:"lat"`
+	Tel         string  `protobuf:"bytes,7,opt,name=tel,proto3" json:"tel"`
+	Mobile      string  `protobuf:"bytes,8,opt,name=mobile,proto3" json:"mobile"`
+	IsFetchTime bool    `protobuf:"varint,9,opt,name=is_fetch_time,json=isFetchTime,proto3" json:"is_fetch_time"`
+	Distance    float32 `protobuf:"fixed32,10,opt,name=distance,proto3" json:"distance"`
+	// @inject_tag: gorm:"-"
+	Galleries []string `protobuf:"bytes,11,rep,name=galleries,proto3" json:"galleries" gorm:"-"`
+	// @inject_tag: gorm:"-"
+	Area *AreaInfo `protobuf:"bytes,12,opt,name=area,proto3" json:"area" gorm:"-"`
 }
 
 func (x *FetchInfo) Reset() {
@@ -360,15 +365,15 @@ type DeliveryInfo struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	LocationId      int64   `protobuf:"varint,1,opt,name=location_id,json=locationId,proto3" json:"location_id,omitempty"`
-	Method          int32   `protobuf:"varint,2,opt,name=method,proto3" json:"method,omitempty"`
-	Template        int32   `protobuf:"varint,3,opt,name=template,proto3" json:"template,omitempty"`
-	RangeName       string  `protobuf:"bytes,4,opt,name=range_name,json=rangeName,proto3" json:"range_name,omitempty"`
-	RangeContent    string  `protobuf:"bytes,5,opt,name=range_content,json=rangeContent,proto3" json:"range_content,omitempty"`
-	RangeImageUrl   string  `protobuf:"bytes,6,opt,name=range_image_url,json=rangeImageUrl,proto3" json:"range_image_url,omitempty"`
-	RangeStartPrice float32 `protobuf:"fixed32,7,opt,name=range_start_price,json=rangeStartPrice,proto3" json:"range_start_price,omitempty"`
-	RangeFee        float32 `protobuf:"fixed32,8,opt,name=range_fee,json=rangeFee,proto3" json:"range_fee,omitempty"`
-	IsDeliveryTime  bool    `protobuf:"varint,9,opt,name=is_delivery_time,json=isDeliveryTime,proto3" json:"is_delivery_time,omitempty"`
+	LocationId      int64   `protobuf:"varint,1,opt,name=location_id,json=locationId,proto3" json:"location_id"`
+	Method          int32   `protobuf:"varint,2,opt,name=method,proto3" json:"method"`
+	Template        int32   `protobuf:"varint,3,opt,name=template,proto3" json:"template"`
+	RangeName       string  `protobuf:"bytes,4,opt,name=range_name,json=rangeName,proto3" json:"range_name"`
+	RangeContent    string  `protobuf:"bytes,5,opt,name=range_content,json=rangeContent,proto3" json:"range_content"`
+	RangeImageUrl   string  `protobuf:"bytes,6,opt,name=range_image_url,json=rangeImageUrl,proto3" json:"range_image_url"`
+	RangeStartPrice float32 `protobuf:"fixed32,7,opt,name=range_start_price,json=rangeStartPrice,proto3" json:"range_start_price"`
+	RangeFee        float32 `protobuf:"fixed32,8,opt,name=range_fee,json=rangeFee,proto3" json:"range_fee"`
+	IsDeliveryTime  bool    `protobuf:"varint,9,opt,name=is_delivery_time,json=isDeliveryTime,proto3" json:"is_delivery_time"`
 }
 
 func (x *DeliveryInfo) Reset() {
@@ -510,22 +515,23 @@ type ShipmentRequest struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	Method      string `protobuf:"bytes,1,opt,name=method,proto3" json:"method,omitempty"`
-	Type        string `protobuf:"bytes,2,opt,name=type,proto3" json:"type,omitempty"`
-	OrderId     int64  `protobuf:"varint,3,opt,name=order_id,json=orderId,proto3" json:"order_id,omitempty"`
-	IsDelivery  bool   `protobuf:"varint,4,opt,name=is_delivery,json=isDelivery,proto3" json:"is_delivery,omitempty"`
-	ShipperId   int32  `protobuf:"varint,5,opt,name=shipper_id,json=shipperId,proto3" json:"shipper_id,omitempty"`
-	LogisticsNo string `protobuf:"bytes,6,opt,name=logistics_no,json=logisticsNo,proto3" json:"logistics_no,omitempty"`
-	LocationId  int64  `protobuf:"varint,7,opt,name=location_id,json=locationId,proto3" json:"location_id,omitempty"`
-	FetchAt     string `protobuf:"bytes,8,opt,name=fetch_at,json=fetchAt,proto3" json:"fetch_at,omitempty"`
-	DeliveryAt  string `protobuf:"bytes,9,opt,name=delivery_at,json=deliveryAt,proto3" json:"delivery_at,omitempty"`
-	StartTime   string `protobuf:"bytes,10,opt,name=start_time,json=startTime,proto3" json:"start_time,omitempty"`
-	EndTime     string `protobuf:"bytes,11,opt,name=end_time,json=endTime,proto3" json:"end_time,omitempty"`
+	Method      string `protobuf:"bytes,1,opt,name=method,proto3" json:"method"`
+	Type        string `protobuf:"bytes,2,opt,name=type,proto3" json:"type"`
+	OrderId     int64  `protobuf:"varint,3,opt,name=order_id,json=orderId,proto3" json:"order_id"`
+	IsDelivery  bool   `protobuf:"varint,4,opt,name=is_delivery,json=isDelivery,proto3" json:"is_delivery"`
+	ShipperId   int32  `protobuf:"varint,5,opt,name=shipper_id,json=shipperId,proto3" json:"shipper_id"`
+	LogisticsNo string `protobuf:"bytes,6,opt,name=logistics_no,json=logisticsNo,proto3" json:"logistics_no"`
+	LocationId  int64  `protobuf:"varint,7,opt,name=location_id,json=locationId,proto3" json:"location_id"`
+	FetchAt     string `protobuf:"bytes,8,opt,name=fetch_at,json=fetchAt,proto3" json:"fetch_at"`
+	DeliveryAt  string `protobuf:"bytes,9,opt,name=delivery_at,json=deliveryAt,proto3" json:"delivery_at"`
+	StartTime   string `protobuf:"bytes,10,opt,name=start_time,json=startTime,proto3" json:"start_time"`
+	EndTime     string `protobuf:"bytes,11,opt,name=end_time,json=endTime,proto3" json:"end_time"`
 	// 订单发货的请求数据(同城配送)
-	DeliveryType int32                    `protobuf:"varint,12,opt,name=delivery_type,json=deliveryType,proto3" json:"delivery_type,omitempty"` // 配送方式【同城配送】: 1商家自配送, 2第三方同城配送
-	DeliveryerId int64                    `protobuf:"varint,13,opt,name=deliveryer_id,json=deliveryerId,proto3" json:"deliveryer_id,omitempty"` // 配送员ID
-	Details      []*ShipmentRequestDetail `protobuf:"bytes,14,rep,name=details,proto3" json:"details,omitempty"`
-	IsAuto       bool                     `protobuf:"varint,15,opt,name=is_auto,json=isAuto,proto3" json:"is_auto,omitempty"` // 是否自动发货(自动填单并发货)
+	DeliveryType int32 `protobuf:"varint,12,opt,name=delivery_type,json=deliveryType,proto3" json:"delivery_type"` // 配送方式【同城配送】: 1商家自配送, 2第三方同城配送
+	DeliveryerId int64 `protobuf:"varint,13,opt,name=deliveryer_id,json=deliveryerId,proto3" json:"deliveryer_id"` // 配送员ID
+	// @inject_tag: gorm:"-"
+	Details []*ShipmentRequestDetail `protobuf:"bytes,14,rep,name=details,proto3" json:"details" gorm:"-"`
+	IsAuto  bool                     `protobuf:"varint,15,opt,name=is_auto,json=isAuto,proto3" json:"is_auto"` // 是否自动发货(自动填单并发货)
 }
 
 func (x *ShipmentRequest) Reset() {
@@ -670,10 +676,10 @@ type ShipmentRequestDetail struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	OrderDetailId int64 `protobuf:"varint,1,opt,name=order_detail_id,json=orderDetailId,proto3" json:"order_detail_id,omitempty"`
-	ItemId        int64 `protobuf:"varint,2,opt,name=item_id,json=itemId,proto3" json:"item_id,omitempty"`
-	SkuId         int64 `protobuf:"varint,3,opt,name=sku_id,json=skuId,proto3" json:"sku_id,omitempty"`
-	Num           int32 `protobuf:"varint,4,opt,name=num,proto3" json:"num,omitempty"`
+	OrderDetailId int64 `protobuf:"varint,1,opt,name=order_detail_id,json=orderDetailId,proto3" json:"order_detail_id"`
+	ItemId        int64 `protobuf:"varint,2,opt,name=item_id,json=itemId,proto3" json:"item_id"`
+	SkuId         int64 `protobuf:"varint,3,opt,name=sku_id,json=skuId,proto3" json:"sku_id"`
+	Num           int32 `protobuf:"varint,4,opt,name=num,proto3" json:"num"`
 }
 
 func (x *ShipmentRequestDetail) Reset() {
@@ -741,8 +747,8 @@ type ShipmentResponse struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	Error *common.Error `protobuf:"bytes,4,opt,name=error,proto3" json:"error,omitempty"`
-	Info  *common.Info  `protobuf:"bytes,5,opt,name=info,proto3" json:"info,omitempty"`
+	Error *common.Error `protobuf:"bytes,4,opt,name=error,proto3" json:"error"`
+	Info  *common.Info  `protobuf:"bytes,5,opt,name=info,proto3" json:"info"`
 }
 
 func (x *ShipmentResponse) Reset() {

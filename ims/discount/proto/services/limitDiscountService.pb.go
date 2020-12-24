@@ -31,24 +31,26 @@ type LimitDiscount struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	Id              int64                 `protobuf:"varint,1,opt,name=id,proto3" json:"id,omitempty"`
-	Name            string                `protobuf:"bytes,2,opt,name=name,proto3" json:"name,omitempty"`
-	StartAt         string                `protobuf:"bytes,3,opt,name=start_at,json=startAt,proto3" json:"start_at,omitempty"`
-	EndAt           string                `protobuf:"bytes,4,opt,name=end_at,json=endAt,proto3" json:"end_at,omitempty"`
-	PeriodType      int32                 `protobuf:"varint,5,opt,name=period_type,json=periodType,proto3" json:"period_type,omitempty"`
-	PeriodStartTime string                `protobuf:"bytes,6,opt,name=period_start_time,json=periodStartTime,proto3" json:"period_start_time,omitempty"`
-	PeriodEndTime   string                `protobuf:"bytes,7,opt,name=period_end_time,json=periodEndTime,proto3" json:"period_end_time,omitempty"`
-	PeriodDays      string                `protobuf:"bytes,8,opt,name=period_days,json=periodDays,proto3" json:"period_days,omitempty"`
-	LimitType       int32                 `protobuf:"varint,9,opt,name=limit_type,json=limitType,proto3" json:"limit_type,omitempty"`
-	LimitNum        int32                 `protobuf:"varint,10,opt,name=limit_num,json=limitNum,proto3" json:"limit_num,omitempty"`
-	Lable           string                `protobuf:"bytes,11,opt,name=lable,proto3" json:"lable,omitempty"`
-	Erased          int32                 `protobuf:"varint,12,opt,name=erased,proto3" json:"erased,omitempty"`
-	Status          int32                 `protobuf:"varint,13,opt,name=status,proto3" json:"status,omitempty"`
-	StatusName      string                `protobuf:"bytes,14,opt,name=status_name,json=statusName,proto3" json:"status_name,omitempty"`
-	CreatedAt       string                `protobuf:"bytes,15,opt,name=created_at,json=createdAt,proto3" json:"created_at,omitempty"`
-	UpdatedAt       string                `protobuf:"bytes,16,opt,name=updated_at,json=updatedAt,proto3" json:"updated_at,omitempty"`
-	Goodses         []*LimitDiscountGoods `protobuf:"bytes,17,rep,name=goodses,proto3" json:"goodses,omitempty"`
-	Ids             []int64               `protobuf:"varint,18,rep,packed,name=ids,proto3" json:"ids,omitempty"`
+	Id              int64  `protobuf:"varint,1,opt,name=id,proto3" json:"id"`
+	Name            string `protobuf:"bytes,2,opt,name=name,proto3" json:"name"`
+	StartAt         string `protobuf:"bytes,3,opt,name=start_at,json=startAt,proto3" json:"start_at"`
+	EndAt           string `protobuf:"bytes,4,opt,name=end_at,json=endAt,proto3" json:"end_at"`
+	PeriodType      int32  `protobuf:"varint,5,opt,name=period_type,json=periodType,proto3" json:"period_type"`
+	PeriodStartTime string `protobuf:"bytes,6,opt,name=period_start_time,json=periodStartTime,proto3" json:"period_start_time"`
+	PeriodEndTime   string `protobuf:"bytes,7,opt,name=period_end_time,json=periodEndTime,proto3" json:"period_end_time"`
+	PeriodDays      string `protobuf:"bytes,8,opt,name=period_days,json=periodDays,proto3" json:"period_days"`
+	LimitType       int32  `protobuf:"varint,9,opt,name=limit_type,json=limitType,proto3" json:"limit_type"`
+	LimitNum        int32  `protobuf:"varint,10,opt,name=limit_num,json=limitNum,proto3" json:"limit_num"`
+	Lable           string `protobuf:"bytes,11,opt,name=lable,proto3" json:"lable"`
+	Erased          int32  `protobuf:"varint,12,opt,name=erased,proto3" json:"erased"`
+	Status          int32  `protobuf:"varint,13,opt,name=status,proto3" json:"status"`
+	StatusName      string `protobuf:"bytes,14,opt,name=status_name,json=statusName,proto3" json:"status_name"`
+	CreatedAt       string `protobuf:"bytes,15,opt,name=created_at,json=createdAt,proto3" json:"created_at"`
+	UpdatedAt       string `protobuf:"bytes,16,opt,name=updated_at,json=updatedAt,proto3" json:"updated_at"`
+	// @inject_tag: gorm:"foreignKey:LimitDiscountId"
+	Goodses []*LimitDiscountGoods `protobuf:"bytes,17,rep,name=goodses,proto3" json:"goodses" gorm:"foreignKey:LimitDiscountId"`
+	// @inject_tag: gorm:"-"
+	Ids []int64 `protobuf:"varint,18,rep,packed,name=ids,proto3" json:"ids" gorm:"-"`
 }
 
 func (x *LimitDiscount) Reset() {
@@ -215,11 +217,11 @@ type LimitDiscountResponse struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	Entity *LimitDiscount   `protobuf:"bytes,1,opt,name=entity,proto3" json:"entity,omitempty"`
-	Pager  *common.Pager    `protobuf:"bytes,2,opt,name=pager,proto3" json:"pager,omitempty"`
-	Items  []*LimitDiscount `protobuf:"bytes,3,rep,name=items,proto3" json:"items,omitempty"`
-	Error  *common.Error    `protobuf:"bytes,4,opt,name=error,proto3" json:"error,omitempty"`
-	Info   *common.Info     `protobuf:"bytes,5,opt,name=info,proto3" json:"info,omitempty"`
+	Entity *LimitDiscount   `protobuf:"bytes,1,opt,name=entity,proto3" json:"entity"`
+	Pager  *common.Pager    `protobuf:"bytes,2,opt,name=pager,proto3" json:"pager"`
+	Items  []*LimitDiscount `protobuf:"bytes,3,rep,name=items,proto3" json:"items"`
+	Error  *common.Error    `protobuf:"bytes,4,opt,name=error,proto3" json:"error"`
+	Info   *common.Info     `protobuf:"bytes,5,opt,name=info,proto3" json:"info"`
 }
 
 func (x *LimitDiscountResponse) Reset() {

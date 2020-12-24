@@ -30,36 +30,36 @@ type OrderDetail struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	Id           int64   `protobuf:"varint,1,opt,name=id,proto3" json:"id,omitempty"`
-	OrderId      int64   `protobuf:"varint,2,opt,name=order_id,json=orderId,proto3" json:"order_id,omitempty"`
-	ItemId       int64   `protobuf:"varint,3,opt,name=item_id,json=itemId,proto3" json:"item_id,omitempty"`
-	ThumbId      int64   `protobuf:"varint,4,opt,name=thumb_id,json=thumbId,proto3" json:"thumb_id,omitempty"`
-	ThumbUrl     string  `protobuf:"bytes,5,opt,name=thumb_url,json=thumbUrl,proto3" json:"thumb_url,omitempty"`
-	SkuId        int64   `protobuf:"varint,6,opt,name=sku_id,json=skuId,proto3" json:"sku_id,omitempty"`
-	ItemSn       string  `protobuf:"bytes,7,opt,name=item_sn,json=itemSn,proto3" json:"item_sn,omitempty"`
-	SkuSn        string  `protobuf:"bytes,8,opt,name=sku_sn,json=skuSn,proto3" json:"sku_sn,omitempty"`
-	ModelType    string  `protobuf:"bytes,9,opt,name=model_type,json=modelType,proto3" json:"model_type,omitempty"`
-	Name         string  `protobuf:"bytes,10,opt,name=name,proto3" json:"name,omitempty"`
-	Weight       float32 `protobuf:"fixed32,11,opt,name=weight,proto3" json:"weight,omitempty"`
-	Num          int32   `protobuf:"varint,12,opt,name=num,proto3" json:"num,omitempty"`
-	Price        float32 `protobuf:"fixed32,13,opt,name=price,proto3" json:"price,omitempty"`
-	TotalPrice   float32 `protobuf:"fixed32,14,opt,name=total_price,json=totalPrice,proto3" json:"total_price,omitempty"`
-	OriginPrice  float32 `protobuf:"fixed32,15,opt,name=origin_price,json=originPrice,proto3" json:"origin_price,omitempty"`
-	CostPrice    float32 `protobuf:"fixed32,16,opt,name=cost_price,json=costPrice,proto3" json:"cost_price,omitempty"`
-	BeforePrice  float32 `protobuf:"fixed32,17,opt,name=before_price,json=beforePrice,proto3" json:"before_price,omitempty"`
-	Modified     bool    `protobuf:"varint,18,opt,name=modified,proto3" json:"modified,omitempty"`
-	ShippedNum   int32   `protobuf:"varint,19,opt,name=shipped_num,json=shippedNum,proto3" json:"shipped_num,omitempty"`
-	Points       int32   `protobuf:"varint,20,opt,name=points,proto3" json:"points,omitempty"`
-	SaleType     string  `protobuf:"bytes,21,opt,name=sale_type,json=saleType,proto3" json:"sale_type,omitempty"`
-	Additional   string  `protobuf:"bytes,22,opt,name=additional,proto3" json:"additional,omitempty"`
-	Attached     bool    `protobuf:"varint,23,opt,name=attached,proto3" json:"attached,omitempty"`
-	AttachType   string  `protobuf:"bytes,24,opt,name=attach_type,json=attachType,proto3" json:"attach_type,omitempty"`
-	ShipStatus   string  `protobuf:"bytes,25,opt,name=ship_status,json=shipStatus,proto3" json:"ship_status,omitempty"`
-	RefundStatus string  `protobuf:"bytes,26,opt,name=refund_status,json=refundStatus,proto3" json:"refund_status,omitempty"`
-	PresentId    int64   `protobuf:"varint,27,opt,name=present_id,json=presentId,proto3" json:"present_id,omitempty"`
-	SkuSpecDesc  string  `protobuf:"bytes,28,opt,name=sku_spec_desc,json=skuSpecDesc,proto3" json:"sku_spec_desc,omitempty"`
-	CreatedAt    string  `protobuf:"bytes,29,opt,name=created_at,json=createdAt,proto3" json:"created_at,omitempty"`
-	UpdatedAt    string  `protobuf:"bytes,30,opt,name=updated_at,json=updatedAt,proto3" json:"updated_at,omitempty"`
+	Id           int64   `protobuf:"varint,1,opt,name=id,proto3" json:"id"`
+	OrderId      int64   `protobuf:"varint,2,opt,name=order_id,json=orderId,proto3" json:"order_id"`
+	ItemId       int64   `protobuf:"varint,3,opt,name=item_id,json=itemId,proto3" json:"item_id"`
+	ThumbId      int64   `protobuf:"varint,4,opt,name=thumb_id,json=thumbId,proto3" json:"thumb_id"`
+	ThumbUrl     string  `protobuf:"bytes,5,opt,name=thumb_url,json=thumbUrl,proto3" json:"thumb_url"`
+	SkuId        int64   `protobuf:"varint,6,opt,name=sku_id,json=skuId,proto3" json:"sku_id"`
+	ItemSn       string  `protobuf:"bytes,7,opt,name=item_sn,json=itemSn,proto3" json:"item_sn"`
+	SkuSn        string  `protobuf:"bytes,8,opt,name=sku_sn,json=skuSn,proto3" json:"sku_sn"`
+	ModelType    string  `protobuf:"bytes,9,opt,name=model_type,json=modelType,proto3" json:"model_type"`
+	Name         string  `protobuf:"bytes,10,opt,name=name,proto3" json:"name"`
+	Weight       float32 `protobuf:"fixed32,11,opt,name=weight,proto3" json:"weight"`
+	Num          int32   `protobuf:"varint,12,opt,name=num,proto3" json:"num"`
+	Price        float32 `protobuf:"fixed32,13,opt,name=price,proto3" json:"price"`
+	TotalPrice   float32 `protobuf:"fixed32,14,opt,name=total_price,json=totalPrice,proto3" json:"total_price"`
+	OriginPrice  float32 `protobuf:"fixed32,15,opt,name=origin_price,json=originPrice,proto3" json:"origin_price"`
+	CostPrice    float32 `protobuf:"fixed32,16,opt,name=cost_price,json=costPrice,proto3" json:"cost_price"`
+	BeforePrice  float32 `protobuf:"fixed32,17,opt,name=before_price,json=beforePrice,proto3" json:"before_price"`
+	Modified     bool    `protobuf:"varint,18,opt,name=modified,proto3" json:"modified"`
+	ShippedNum   int32   `protobuf:"varint,19,opt,name=shipped_num,json=shippedNum,proto3" json:"shipped_num"`
+	Points       int32   `protobuf:"varint,20,opt,name=points,proto3" json:"points"`
+	SaleType     string  `protobuf:"bytes,21,opt,name=sale_type,json=saleType,proto3" json:"sale_type"`
+	Additional   string  `protobuf:"bytes,22,opt,name=additional,proto3" json:"additional"`
+	Attached     bool    `protobuf:"varint,23,opt,name=attached,proto3" json:"attached"`
+	AttachType   string  `protobuf:"bytes,24,opt,name=attach_type,json=attachType,proto3" json:"attach_type"`
+	ShipStatus   string  `protobuf:"bytes,25,opt,name=ship_status,json=shipStatus,proto3" json:"ship_status"`
+	RefundStatus string  `protobuf:"bytes,26,opt,name=refund_status,json=refundStatus,proto3" json:"refund_status"`
+	PresentId    int64   `protobuf:"varint,27,opt,name=present_id,json=presentId,proto3" json:"present_id"`
+	SkuSpecDesc  string  `protobuf:"bytes,28,opt,name=sku_spec_desc,json=skuSpecDesc,proto3" json:"sku_spec_desc"`
+	CreatedAt    string  `protobuf:"bytes,29,opt,name=created_at,json=createdAt,proto3" json:"created_at"`
+	UpdatedAt    string  `protobuf:"bytes,30,opt,name=updated_at,json=updatedAt,proto3" json:"updated_at"`
 }
 
 func (x *OrderDetail) Reset() {

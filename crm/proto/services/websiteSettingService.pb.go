@@ -31,23 +31,23 @@ type WebsiteSetting struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	Id        int32  `protobuf:"varint,1,opt,name=id,proto3" json:"id,omitempty"`
-	Name      string `protobuf:"bytes,2,opt,name=name,proto3" json:"name,omitempty"`
-	RootUrl   string `protobuf:"bytes,3,opt,name=root_url,json=rootUrl,proto3" json:"root_url,omitempty"`
-	Keywords  string `protobuf:"bytes,4,opt,name=keywords,proto3" json:"keywords,omitempty"`
-	Describe  string `protobuf:"bytes,5,opt,name=describe,proto3" json:"describe,omitempty"`
-	Tel       string `protobuf:"bytes,6,opt,name=tel,proto3" json:"tel,omitempty"`
-	Mobile    string `protobuf:"bytes,7,opt,name=mobile,proto3" json:"mobile,omitempty"`
-	AreaId    int64  `protobuf:"varint,8,opt,name=area_id,json=areaId,proto3" json:"area_id,omitempty"`
-	Address   string `protobuf:"bytes,9,opt,name=address,proto3" json:"address,omitempty"`
-	Lng       string `protobuf:"bytes,10,opt,name=lng,proto3" json:"lng,omitempty"`
-	Lat       string `protobuf:"bytes,11,opt,name=lat,proto3" json:"lat,omitempty"`
-	Email     string `protobuf:"bytes,12,opt,name=email,proto3" json:"email,omitempty"`
-	Qq        string `protobuf:"bytes,13,opt,name=qq,proto3" json:"qq,omitempty"`
-	RecordNo  string `protobuf:"bytes,14,opt,name=record_no,json=recordNo,proto3" json:"record_no,omitempty"`
-	Copyright string `protobuf:"bytes,15,opt,name=copyright,proto3" json:"copyright,omitempty"`
-	CreatedAt string `protobuf:"bytes,16,opt,name=created_at,json=createdAt,proto3" json:"created_at,omitempty"`
-	UpdatedAt string `protobuf:"bytes,17,opt,name=updated_at,json=updatedAt,proto3" json:"updated_at,omitempty"`
+	Id        int32  `protobuf:"varint,1,opt,name=id,proto3" json:"id"`
+	Name      string `protobuf:"bytes,2,opt,name=name,proto3" json:"name"`
+	RootUrl   string `protobuf:"bytes,3,opt,name=root_url,json=rootUrl,proto3" json:"root_url"`
+	Keywords  string `protobuf:"bytes,4,opt,name=keywords,proto3" json:"keywords"`
+	Describe  string `protobuf:"bytes,5,opt,name=describe,proto3" json:"describe"`
+	Tel       string `protobuf:"bytes,6,opt,name=tel,proto3" json:"tel"`
+	Mobile    string `protobuf:"bytes,7,opt,name=mobile,proto3" json:"mobile"`
+	AreaId    int64  `protobuf:"varint,8,opt,name=area_id,json=areaId,proto3" json:"area_id"`
+	Address   string `protobuf:"bytes,9,opt,name=address,proto3" json:"address"`
+	Lng       string `protobuf:"bytes,10,opt,name=lng,proto3" json:"lng"`
+	Lat       string `protobuf:"bytes,11,opt,name=lat,proto3" json:"lat"`
+	Email     string `protobuf:"bytes,12,opt,name=email,proto3" json:"email"`
+	Qq        string `protobuf:"bytes,13,opt,name=qq,proto3" json:"qq"`
+	RecordNo  string `protobuf:"bytes,14,opt,name=record_no,json=recordNo,proto3" json:"record_no"`
+	Copyright string `protobuf:"bytes,15,opt,name=copyright,proto3" json:"copyright"`
+	CreatedAt string `protobuf:"bytes,16,opt,name=created_at,json=createdAt,proto3" json:"created_at"`
+	UpdatedAt string `protobuf:"bytes,17,opt,name=updated_at,json=updatedAt,proto3" json:"updated_at"`
 }
 
 func (x *WebsiteSetting) Reset() {
@@ -206,9 +206,9 @@ type WebsiteSettingResponse struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	Error  *common.Error   `protobuf:"bytes,1,opt,name=error,proto3" json:"error,omitempty"`
-	Info   *common.Info    `protobuf:"bytes,2,opt,name=info,proto3" json:"info,omitempty"`
-	Entity *WebsiteSetting `protobuf:"bytes,3,opt,name=entity,proto3" json:"entity,omitempty"`
+	Error  *common.Error   `protobuf:"bytes,1,opt,name=error,proto3" json:"error"`
+	Info   *common.Info    `protobuf:"bytes,2,opt,name=info,proto3" json:"info"`
+	Entity *WebsiteSetting `protobuf:"bytes,3,opt,name=entity,proto3" json:"entity"`
 }
 
 func (x *WebsiteSettingResponse) Reset() {

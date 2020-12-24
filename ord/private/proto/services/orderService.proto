@@ -117,14 +117,18 @@ message Order {
     string created_at =44;
     string updated_at =45;
     string platform_source =46;
+    // @inject_tag: gorm:"foreignKey:OrderId"
     OrderAddress address =54;
+    // @inject_tag: gorm:"foreignKey:OrderId"
     repeated OrderDetail details = 55;
+    // @inject_tag: gorm:"-"
     Customer customer = 56;
     string shipment_method = 57;
     float cash_exchange_money = 58;
     int32 cash_exchange_points = 59;
     bool is_distribution = 60;
     bool is_confirmed = 61; // 商家是否已接单
+    // @inject_tag: gorm:"-"
     OrderFood food = 62;
 }
 
@@ -165,6 +169,7 @@ message OrderWhere {
     string start_at = 20;
     string end_at = 21;
     bool paid = 22;
+    // @inject_tag: gorm:"-"
     repeated int64 ids = 23;
     string shipment_method = 24;
     string code = 25;

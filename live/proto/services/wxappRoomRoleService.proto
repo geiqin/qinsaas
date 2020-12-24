@@ -16,6 +16,7 @@ message WxappRoomRoleWhere {
     string sorting = 3;
     string username = 4;
     int32 role = 5;
+    // @inject_tag: gorm:"-"
     repeated int32 roles = 6;
     string keyword = 7;
 }
@@ -25,6 +26,7 @@ message WxappRoomRole {
     string nickname = 2;
     string openid = 3;
     string username = 4;
+    // @inject_tag: gorm:"-"
     repeated int32 role_list = 5;
     string updated_at = 6;
 }

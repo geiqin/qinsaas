@@ -32,6 +32,7 @@ message Goods {
     bool default = 7;
     string created_at = 8;
     string updated_at = 9;
+    // @inject_tag: gorm:"foreignKey:GoodsId"
     repeated GoodsCommission goods_commission = 10;
 }
 
@@ -40,6 +41,7 @@ message GoodsWhere {
     int32 page_size = 2;
     int32 top = 3;
     int64 id = 4;
+    // @inject_tag: gorm:"-"
     repeated int64 ids = 5;
     string keywords = 6;
     int32 cat_id = 7;
@@ -49,6 +51,7 @@ message GoodsWhere {
     int64 sku_id = 11;
     string item_name = 12;
     string item_price = 13;
+    // @inject_tag: gorm:"-"
     repeated int64 item_ids = 14;
     int64 customer_id = 15;
     bool client = 16;

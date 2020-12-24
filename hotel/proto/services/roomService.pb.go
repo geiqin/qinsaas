@@ -31,16 +31,16 @@ type Room struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	Id           int64  `protobuf:"varint,1,opt,name=id,proto3" json:"id,omitempty"`
-	RoomTypeId   int64  `protobuf:"varint,2,opt,name=room_type_id,json=roomTypeId,proto3" json:"room_type_id,omitempty"`
-	Code         string `protobuf:"bytes,3,opt,name=code,proto3" json:"code,omitempty"`
-	Sorting      int32  `protobuf:"varint,4,opt,name=sorting,proto3" json:"sorting,omitempty"`
-	Memo         string `protobuf:"bytes,5,opt,name=memo,proto3" json:"memo,omitempty"`
-	CleanStatus  int32  `protobuf:"varint,6,opt,name=clean_status,json=cleanStatus,proto3" json:"clean_status,omitempty"`
-	Status       int32  `protobuf:"varint,7,opt,name=status,proto3" json:"status,omitempty"`
-	CreatedAt    string `protobuf:"bytes,8,opt,name=created_at,json=createdAt,proto3" json:"created_at,omitempty"`
-	UpdatedAt    string `protobuf:"bytes,9,opt,name=updated_at,json=updatedAt,proto3" json:"updated_at,omitempty"`
-	RoomTypeName string `protobuf:"bytes,10,opt,name=room_type_name,json=roomTypeName,proto3" json:"room_type_name,omitempty"`
+	Id           int64  `protobuf:"varint,1,opt,name=id,proto3" json:"id"`
+	RoomTypeId   int64  `protobuf:"varint,2,opt,name=room_type_id,json=roomTypeId,proto3" json:"room_type_id"`
+	Code         string `protobuf:"bytes,3,opt,name=code,proto3" json:"code"`
+	Sorting      int32  `protobuf:"varint,4,opt,name=sorting,proto3" json:"sorting"`
+	Memo         string `protobuf:"bytes,5,opt,name=memo,proto3" json:"memo"`
+	CleanStatus  int32  `protobuf:"varint,6,opt,name=clean_status,json=cleanStatus,proto3" json:"clean_status"`
+	Status       int32  `protobuf:"varint,7,opt,name=status,proto3" json:"status"`
+	CreatedAt    string `protobuf:"bytes,8,opt,name=created_at,json=createdAt,proto3" json:"created_at"`
+	UpdatedAt    string `protobuf:"bytes,9,opt,name=updated_at,json=updatedAt,proto3" json:"updated_at"`
+	RoomTypeName string `protobuf:"bytes,10,opt,name=room_type_name,json=roomTypeName,proto3" json:"room_type_name"`
 }
 
 func (x *Room) Reset() {
@@ -150,16 +150,17 @@ type RoomWhere struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	Paged       int32   `protobuf:"varint,1,opt,name=paged,proto3" json:"paged,omitempty"`
-	PageSize    int32   `protobuf:"varint,2,opt,name=page_size,json=pageSize,proto3" json:"page_size,omitempty"`
-	Top         int32   `protobuf:"varint,3,opt,name=top,proto3" json:"top,omitempty"`
-	Keywords    string  `protobuf:"bytes,4,opt,name=keywords,proto3" json:"keywords,omitempty"`
-	Id          int64   `protobuf:"varint,5,opt,name=id,proto3" json:"id,omitempty"`
-	Ids         []int64 `protobuf:"varint,6,rep,packed,name=ids,proto3" json:"ids,omitempty"`
-	RoomTypeId  int64   `protobuf:"varint,7,opt,name=room_type_id,json=roomTypeId,proto3" json:"room_type_id,omitempty"`
-	CleanStatus int32   `protobuf:"varint,8,opt,name=clean_status,json=cleanStatus,proto3" json:"clean_status,omitempty"`
-	Status      int32   `protobuf:"varint,9,opt,name=status,proto3" json:"status,omitempty"`
-	Sorting     int32   `protobuf:"varint,10,opt,name=sorting,proto3" json:"sorting,omitempty"`
+	Paged    int32  `protobuf:"varint,1,opt,name=paged,proto3" json:"paged"`
+	PageSize int32  `protobuf:"varint,2,opt,name=page_size,json=pageSize,proto3" json:"page_size"`
+	Top      int32  `protobuf:"varint,3,opt,name=top,proto3" json:"top"`
+	Keywords string `protobuf:"bytes,4,opt,name=keywords,proto3" json:"keywords"`
+	Id       int64  `protobuf:"varint,5,opt,name=id,proto3" json:"id"`
+	// @inject_tag: gorm:"-"
+	Ids         []int64 `protobuf:"varint,6,rep,packed,name=ids,proto3" json:"ids" gorm:"-"`
+	RoomTypeId  int64   `protobuf:"varint,7,opt,name=room_type_id,json=roomTypeId,proto3" json:"room_type_id"`
+	CleanStatus int32   `protobuf:"varint,8,opt,name=clean_status,json=cleanStatus,proto3" json:"clean_status"`
+	Status      int32   `protobuf:"varint,9,opt,name=status,proto3" json:"status"`
+	Sorting     int32   `protobuf:"varint,10,opt,name=sorting,proto3" json:"sorting"`
 }
 
 func (x *RoomWhere) Reset() {
@@ -269,11 +270,11 @@ type RoomResponse struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	Error  *common.Error `protobuf:"bytes,1,opt,name=error,proto3" json:"error,omitempty"`
-	Info   *common.Info  `protobuf:"bytes,2,opt,name=info,proto3" json:"info,omitempty"`
-	Pager  *common.Pager `protobuf:"bytes,3,opt,name=pager,proto3" json:"pager,omitempty"`
-	Entity *Room         `protobuf:"bytes,4,opt,name=entity,proto3" json:"entity,omitempty"`
-	Items  []*Room       `protobuf:"bytes,5,rep,name=items,proto3" json:"items,omitempty"`
+	Error  *common.Error `protobuf:"bytes,1,opt,name=error,proto3" json:"error"`
+	Info   *common.Info  `protobuf:"bytes,2,opt,name=info,proto3" json:"info"`
+	Pager  *common.Pager `protobuf:"bytes,3,opt,name=pager,proto3" json:"pager"`
+	Entity *Room         `protobuf:"bytes,4,opt,name=entity,proto3" json:"entity"`
+	Items  []*Room       `protobuf:"bytes,5,rep,name=items,proto3" json:"items"`
 }
 
 func (x *RoomResponse) Reset() {

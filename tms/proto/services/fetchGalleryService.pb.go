@@ -30,14 +30,15 @@ type FetchGallery struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	Id        int64   `protobuf:"varint,1,opt,name=id,proto3" json:"id,omitempty"`
-	FetchId   int64   `protobuf:"varint,2,opt,name=fetch_id,json=fetchId,proto3" json:"fetch_id,omitempty"`
-	MediaId   int64   `protobuf:"varint,3,opt,name=media_id,json=mediaId,proto3" json:"media_id,omitempty"`
-	MediaUrl  string  `protobuf:"bytes,4,opt,name=media_url,json=mediaUrl,proto3" json:"media_url,omitempty"`
-	Defaulted bool    `protobuf:"varint,5,opt,name=defaulted,proto3" json:"defaulted,omitempty"`
-	CreatedAt string  `protobuf:"bytes,6,opt,name=created_at,json=createdAt,proto3" json:"created_at,omitempty"`
-	UpdatedAt string  `protobuf:"bytes,7,opt,name=updated_at,json=updatedAt,proto3" json:"updated_at,omitempty"`
-	Ids       []int64 `protobuf:"varint,8,rep,packed,name=ids,proto3" json:"ids,omitempty"`
+	Id        int64  `protobuf:"varint,1,opt,name=id,proto3" json:"id"`
+	FetchId   int64  `protobuf:"varint,2,opt,name=fetch_id,json=fetchId,proto3" json:"fetch_id"`
+	MediaId   int64  `protobuf:"varint,3,opt,name=media_id,json=mediaId,proto3" json:"media_id"`
+	MediaUrl  string `protobuf:"bytes,4,opt,name=media_url,json=mediaUrl,proto3" json:"media_url"`
+	Defaulted bool   `protobuf:"varint,5,opt,name=defaulted,proto3" json:"defaulted"`
+	CreatedAt string `protobuf:"bytes,6,opt,name=created_at,json=createdAt,proto3" json:"created_at"`
+	UpdatedAt string `protobuf:"bytes,7,opt,name=updated_at,json=updatedAt,proto3" json:"updated_at"`
+	// @inject_tag: gorm:"-"
+	Ids []int64 `protobuf:"varint,8,rep,packed,name=ids,proto3" json:"ids" gorm:"-"`
 }
 
 func (x *FetchGallery) Reset() {

@@ -18,6 +18,7 @@ message ItemGallery {
     bool defaulted	=8;
     string created_at	=9;
     string updated_at	=10;
+    // @inject_tag: gorm:"-"
     repeated  int64 ids  =11;
 }
 

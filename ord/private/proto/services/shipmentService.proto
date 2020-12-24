@@ -20,8 +20,11 @@ message OrderShipment {
     float express_fee = 12; // 快递发货运费
     float delivery_fee = 13; // 同城配送配送费
     float start_price = 19; // 起送价
+    // @inject_tag: gorm:"-"
     DeliveryInfo delivery_info = 14; // 同城配送信息
+    // @inject_tag: gorm:"-"
     FetchInfo fetch_info = 15; // 上门自提信息
+    // @inject_tag: gorm:"-"
     ExpressInfo express_info = 16; // 快递发货信息
     string start_time = 17; // 选择的配送或自提的开始时间
     string end_time = 18; // 选择的配送或自提的结束时间
@@ -38,7 +41,9 @@ message FetchInfo {
     string mobile = 8;
     bool is_fetch_time = 9;
     float distance = 10;
+    // @inject_tag: gorm:"-"
     repeated string galleries = 11;
+    // @inject_tag: gorm:"-"
     AreaInfo area = 12;
 }
 // 同城配送信息
@@ -74,6 +79,7 @@ message ShipmentRequest {
     // 订单发货的请求数据(同城配送)
     int32 delivery_type = 12; // 配送方式【同城配送】: 1商家自配送, 2第三方同城配送
     int64 deliveryer_id = 13; // 配送员ID
+    // @inject_tag: gorm:"-"
     repeated ShipmentRequestDetail details = 14;
     bool is_auto = 15;// 是否自动发货(自动填单并发货)
 }

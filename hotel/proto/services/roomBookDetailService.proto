@@ -27,6 +27,7 @@ message RoomBookDetailWhere {
     int32 paged = 1;
     int32 page_size = 2;
     int64 id = 3;
+    // @inject_tag: gorm:"-"
     repeated int64 ids = 4;
     int32 keywords_type = 5; // 查询关键字类型:1-客房姓名,2-证件号,3-手机号,4-房号
     string keywords = 6;
@@ -43,6 +44,7 @@ message RoomBookDetailWhere {
     string type = 17;
     string date = 18;
     bool is_settlement = 19;
+    // @inject_tag: gorm:"-"
     repeated RoomBookDetail items = 20;
 }
 
@@ -67,8 +69,11 @@ message RoomBookDetail {
     string book_mobile = 15;
     string created_at = 16;
     string updated_at = 17;
+    // @inject_tag: gorm:"foreignKey:RoomBookDetailId;"
     RoomCheckin room_checkin_info = 18;
+    // @inject_tag: gorm:"foreignKey:RoomBookDetailId;association_autocreate:false;association_autoupdate:false"
     repeated RoomBookPrice price_list = 20;
+    // @inject_tag: gorm:"-"
     repeated RoomBookDetail items = 21;
     int32 customer_type = 22;
 }

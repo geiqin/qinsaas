@@ -31,12 +31,13 @@ type Refunding struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	OrderId        int64   `protobuf:"varint,1,opt,name=order_id,json=orderId,proto3" json:"order_id,omitempty"`
-	OrderDetailIds []int64 `protobuf:"varint,2,rep,packed,name=order_detail_ids,json=orderDetailIds,proto3" json:"order_detail_ids,omitempty"`
-	ReturnPoints   int32   `protobuf:"varint,3,opt,name=return_points,json=returnPoints,proto3" json:"return_points,omitempty"`
-	DeductPoints   int32   `protobuf:"varint,4,opt,name=deduct_points,json=deductPoints,proto3" json:"deduct_points,omitempty"`
-	DeductMoney    float32 `protobuf:"fixed32,5,opt,name=deduct_money,json=deductMoney,proto3" json:"deduct_money,omitempty"`
-	PointsRate     int32   `protobuf:"varint,6,opt,name=points_rate,json=pointsRate,proto3" json:"points_rate,omitempty"`
+	OrderId int64 `protobuf:"varint,1,opt,name=order_id,json=orderId,proto3" json:"order_id"`
+	// @inject_tag: gorm:"-"
+	OrderDetailIds []int64 `protobuf:"varint,2,rep,packed,name=order_detail_ids,json=orderDetailIds,proto3" json:"order_detail_ids" gorm:"-"`
+	ReturnPoints   int32   `protobuf:"varint,3,opt,name=return_points,json=returnPoints,proto3" json:"return_points"`
+	DeductPoints   int32   `protobuf:"varint,4,opt,name=deduct_points,json=deductPoints,proto3" json:"deduct_points"`
+	DeductMoney    float32 `protobuf:"fixed32,5,opt,name=deduct_money,json=deductMoney,proto3" json:"deduct_money"`
+	PointsRate     int32   `protobuf:"varint,6,opt,name=points_rate,json=pointsRate,proto3" json:"points_rate"`
 }
 
 func (x *Refunding) Reset() {
@@ -118,11 +119,11 @@ type RefundingResponse struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	Entity *Refunding    `protobuf:"bytes,1,opt,name=entity,proto3" json:"entity,omitempty"`
-	Pager  *common.Pager `protobuf:"bytes,2,opt,name=pager,proto3" json:"pager,omitempty"`
-	Items  []*Refunding  `protobuf:"bytes,3,rep,name=items,proto3" json:"items,omitempty"`
-	Error  *common.Error `protobuf:"bytes,4,opt,name=error,proto3" json:"error,omitempty"`
-	Info   *common.Info  `protobuf:"bytes,5,opt,name=info,proto3" json:"info,omitempty"`
+	Entity *Refunding    `protobuf:"bytes,1,opt,name=entity,proto3" json:"entity"`
+	Pager  *common.Pager `protobuf:"bytes,2,opt,name=pager,proto3" json:"pager"`
+	Items  []*Refunding  `protobuf:"bytes,3,rep,name=items,proto3" json:"items"`
+	Error  *common.Error `protobuf:"bytes,4,opt,name=error,proto3" json:"error"`
+	Info   *common.Info  `protobuf:"bytes,5,opt,name=info,proto3" json:"info"`
 }
 
 func (x *RefundingResponse) Reset() {

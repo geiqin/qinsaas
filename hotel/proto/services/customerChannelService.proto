@@ -17,6 +17,7 @@ message CustomerChannelWhere {
   int32 paged = 1;
   int32 page_size = 2;
   int64 id = 3;
+  // @inject_tag: gorm:"-"
   repeated int64 ids = 4;
   int32 status = 5;
   string keywords = 6;

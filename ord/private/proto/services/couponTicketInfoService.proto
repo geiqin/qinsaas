@@ -9,6 +9,7 @@ message CouponTicket{
 	string start_at = 3;
 	string end_at = 4;
 	int64 coupon_id = 5;
+	// @inject_tag: gorm:"-"
 	CouponInfo coupon = 6;
 }
 

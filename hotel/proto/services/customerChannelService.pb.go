@@ -31,13 +31,14 @@ type CustomerChannelWhere struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	Paged    int32   `protobuf:"varint,1,opt,name=paged,proto3" json:"paged,omitempty"`
-	PageSize int32   `protobuf:"varint,2,opt,name=page_size,json=pageSize,proto3" json:"page_size,omitempty"`
-	Id       int64   `protobuf:"varint,3,opt,name=id,proto3" json:"id,omitempty"`
-	Ids      []int64 `protobuf:"varint,4,rep,packed,name=ids,proto3" json:"ids,omitempty"`
-	Status   int32   `protobuf:"varint,5,opt,name=status,proto3" json:"status,omitempty"`
-	Keywords string  `protobuf:"bytes,6,opt,name=keywords,proto3" json:"keywords,omitempty"`
-	Type     int32   `protobuf:"varint,7,opt,name=type,proto3" json:"type,omitempty"`
+	Paged    int32 `protobuf:"varint,1,opt,name=paged,proto3" json:"paged"`
+	PageSize int32 `protobuf:"varint,2,opt,name=page_size,json=pageSize,proto3" json:"page_size"`
+	Id       int64 `protobuf:"varint,3,opt,name=id,proto3" json:"id"`
+	// @inject_tag: gorm:"-"
+	Ids      []int64 `protobuf:"varint,4,rep,packed,name=ids,proto3" json:"ids" gorm:"-"`
+	Status   int32   `protobuf:"varint,5,opt,name=status,proto3" json:"status"`
+	Keywords string  `protobuf:"bytes,6,opt,name=keywords,proto3" json:"keywords"`
+	Type     int32   `protobuf:"varint,7,opt,name=type,proto3" json:"type"`
 }
 
 func (x *CustomerChannelWhere) Reset() {
@@ -126,27 +127,27 @@ type CustomerChannel struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	Id int64 `protobuf:"varint,1,opt,name=id,proto3" json:"id,omitempty"`
+	Id int64 `protobuf:"varint,1,opt,name=id,proto3" json:"id"`
 	// @inject_tag: validate:"required" label:"客源类型"
-	Type int32 `protobuf:"varint,2,opt,name=type,proto3" json:"type,omitempty"`
+	Type int32 `protobuf:"varint,2,opt,name=type,proto3" json:"type" validate:"required" label:"客源类型"`
 	// @inject_tag: validate:"required" label:"公司名称"
-	CompanyName string `protobuf:"bytes,3,opt,name=company_name,json=companyName,proto3" json:"company_name,omitempty"`
+	CompanyName string `protobuf:"bytes,3,opt,name=company_name,json=companyName,proto3" json:"company_name" validate:"required" label:"公司名称"`
 	// @inject_tag: validate:"required" label:"公司简称"
-	CompanyShortName string `protobuf:"bytes,4,opt,name=company_short_name,json=companyShortName,proto3" json:"company_short_name,omitempty"`
-	LegalPerson      string `protobuf:"bytes,5,opt,name=legal_person,json=legalPerson,proto3" json:"legal_person,omitempty"`
-	CreditCode       string `protobuf:"bytes,6,opt,name=credit_code,json=creditCode,proto3" json:"credit_code,omitempty"`
-	TaxpayerNum      string `protobuf:"bytes,7,opt,name=taxpayer_num,json=taxpayerNum,proto3" json:"taxpayer_num,omitempty"`
-	CompanyPhone     string `protobuf:"bytes,8,opt,name=company_phone,json=companyPhone,proto3" json:"company_phone,omitempty"`
-	BankName         string `protobuf:"bytes,9,opt,name=bank_name,json=bankName,proto3" json:"bank_name,omitempty"`
-	StartTime        string `protobuf:"bytes,10,opt,name=start_time,json=startTime,proto3" json:"start_time,omitempty"`
-	EndTime          string `protobuf:"bytes,11,opt,name=end_time,json=endTime,proto3" json:"end_time,omitempty"`
-	ContactName      string `protobuf:"bytes,12,opt,name=contact_name,json=contactName,proto3" json:"contact_name,omitempty"`
-	ContactPhone     string `protobuf:"bytes,13,opt,name=contact_phone,json=contactPhone,proto3" json:"contact_phone,omitempty"`
-	Memo             string `protobuf:"bytes,14,opt,name=memo,proto3" json:"memo,omitempty"`
-	Sorting          int32  `protobuf:"varint,15,opt,name=sorting,proto3" json:"sorting,omitempty"`
-	Status           int32  `protobuf:"varint,16,opt,name=status,proto3" json:"status,omitempty"`
-	CreatedAt        string `protobuf:"bytes,17,opt,name=created_at,json=createdAt,proto3" json:"created_at,omitempty"`
-	UpdatedAt        string `protobuf:"bytes,18,opt,name=updated_at,json=updatedAt,proto3" json:"updated_at,omitempty"`
+	CompanyShortName string `protobuf:"bytes,4,opt,name=company_short_name,json=companyShortName,proto3" json:"company_short_name" validate:"required" label:"公司简称"`
+	LegalPerson      string `protobuf:"bytes,5,opt,name=legal_person,json=legalPerson,proto3" json:"legal_person"`
+	CreditCode       string `protobuf:"bytes,6,opt,name=credit_code,json=creditCode,proto3" json:"credit_code"`
+	TaxpayerNum      string `protobuf:"bytes,7,opt,name=taxpayer_num,json=taxpayerNum,proto3" json:"taxpayer_num"`
+	CompanyPhone     string `protobuf:"bytes,8,opt,name=company_phone,json=companyPhone,proto3" json:"company_phone"`
+	BankName         string `protobuf:"bytes,9,opt,name=bank_name,json=bankName,proto3" json:"bank_name"`
+	StartTime        string `protobuf:"bytes,10,opt,name=start_time,json=startTime,proto3" json:"start_time"`
+	EndTime          string `protobuf:"bytes,11,opt,name=end_time,json=endTime,proto3" json:"end_time"`
+	ContactName      string `protobuf:"bytes,12,opt,name=contact_name,json=contactName,proto3" json:"contact_name"`
+	ContactPhone     string `protobuf:"bytes,13,opt,name=contact_phone,json=contactPhone,proto3" json:"contact_phone"`
+	Memo             string `protobuf:"bytes,14,opt,name=memo,proto3" json:"memo"`
+	Sorting          int32  `protobuf:"varint,15,opt,name=sorting,proto3" json:"sorting"`
+	Status           int32  `protobuf:"varint,16,opt,name=status,proto3" json:"status"`
+	CreatedAt        string `protobuf:"bytes,17,opt,name=created_at,json=createdAt,proto3" json:"created_at"`
+	UpdatedAt        string `protobuf:"bytes,18,opt,name=updated_at,json=updatedAt,proto3" json:"updated_at"`
 }
 
 func (x *CustomerChannel) Reset() {
@@ -312,11 +313,11 @@ type CustomerChannelResponse struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	Error  *common.Error      `protobuf:"bytes,1,opt,name=error,proto3" json:"error,omitempty"`
-	Info   *common.Info       `protobuf:"bytes,2,opt,name=info,proto3" json:"info,omitempty"`
-	Pager  *common.Pager      `protobuf:"bytes,3,opt,name=pager,proto3" json:"pager,omitempty"`
-	Entity *CustomerChannel   `protobuf:"bytes,4,opt,name=entity,proto3" json:"entity,omitempty"`
-	Items  []*CustomerChannel `protobuf:"bytes,5,rep,name=items,proto3" json:"items,omitempty"`
+	Error  *common.Error      `protobuf:"bytes,1,opt,name=error,proto3" json:"error"`
+	Info   *common.Info       `protobuf:"bytes,2,opt,name=info,proto3" json:"info"`
+	Pager  *common.Pager      `protobuf:"bytes,3,opt,name=pager,proto3" json:"pager"`
+	Entity *CustomerChannel   `protobuf:"bytes,4,opt,name=entity,proto3" json:"entity"`
+	Items  []*CustomerChannel `protobuf:"bytes,5,rep,name=items,proto3" json:"items"`
 }
 
 func (x *CustomerChannelResponse) Reset() {

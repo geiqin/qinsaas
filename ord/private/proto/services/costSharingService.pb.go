@@ -31,9 +31,10 @@ type CostSharingWhere struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	Order          *Order  `protobuf:"bytes,1,opt,name=order,proto3" json:"order,omitempty"`
-	OrderDetailId  int64   `protobuf:"varint,2,opt,name=orderDetailId,proto3" json:"orderDetailId,omitempty"`
-	OrderDetailIds []int64 `protobuf:"varint,3,rep,packed,name=orderDetailIds,proto3" json:"orderDetailIds,omitempty"`
+	Order         *Order `protobuf:"bytes,1,opt,name=order,proto3" json:"order"`
+	OrderDetailId int64  `protobuf:"varint,2,opt,name=orderDetailId,proto3" json:"orderDetailId"`
+	// @inject_tag: gorm:"-"
+	OrderDetailIds []int64 `protobuf:"varint,3,rep,packed,name=orderDetailIds,proto3" json:"orderDetailIds" gorm:"-"`
 }
 
 func (x *CostSharingWhere) Reset() {
@@ -94,7 +95,7 @@ type CostSharing struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	Money float32 `protobuf:"fixed32,1,opt,name=money,proto3" json:"money,omitempty"`
+	Money float32 `protobuf:"fixed32,1,opt,name=money,proto3" json:"money"`
 }
 
 func (x *CostSharing) Reset() {
@@ -141,11 +142,11 @@ type CostSharingResponse struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	Entity *CostSharing   `protobuf:"bytes,1,opt,name=entity,proto3" json:"entity,omitempty"`
-	Pager  *common.Pager  `protobuf:"bytes,2,opt,name=pager,proto3" json:"pager,omitempty"`
-	Items  []*CostSharing `protobuf:"bytes,3,rep,name=items,proto3" json:"items,omitempty"`
-	Error  *common.Error  `protobuf:"bytes,4,opt,name=error,proto3" json:"error,omitempty"`
-	Info   *common.Info   `protobuf:"bytes,5,opt,name=info,proto3" json:"info,omitempty"`
+	Entity *CostSharing   `protobuf:"bytes,1,opt,name=entity,proto3" json:"entity"`
+	Pager  *common.Pager  `protobuf:"bytes,2,opt,name=pager,proto3" json:"pager"`
+	Items  []*CostSharing `protobuf:"bytes,3,rep,name=items,proto3" json:"items"`
+	Error  *common.Error  `protobuf:"bytes,4,opt,name=error,proto3" json:"error"`
+	Info   *common.Info   `protobuf:"bytes,5,opt,name=info,proto3" json:"info"`
 }
 
 func (x *CostSharingResponse) Reset() {

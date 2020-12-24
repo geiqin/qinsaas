@@ -31,13 +31,13 @@ type OrderConfig struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	Id             int32  `protobuf:"varint,1,opt,name=id,proto3" json:"id,omitempty"`
-	AutoCloseHour  int32  `protobuf:"varint,2,opt,name=auto_close_hour,json=autoCloseHour,proto3" json:"auto_close_hour,omitempty"`
-	AutoReceiptDay int32  `protobuf:"varint,3,opt,name=auto_receipt_day,json=autoReceiptDay,proto3" json:"auto_receipt_day,omitempty"`
-	SafeguardDay   int32  `protobuf:"varint,4,opt,name=safeguard_day,json=safeguardDay,proto3" json:"safeguard_day,omitempty"`
-	IsAutoDelivery bool   `protobuf:"varint,5,opt,name=is_auto_delivery,json=isAutoDelivery,proto3" json:"is_auto_delivery,omitempty"`
-	CreatedAt      string `protobuf:"bytes,6,opt,name=created_at,json=createdAt,proto3" json:"created_at,omitempty"`
-	UpdatedAt      string `protobuf:"bytes,7,opt,name=updated_at,json=updatedAt,proto3" json:"updated_at,omitempty"`
+	Id             int32  `protobuf:"varint,1,opt,name=id,proto3" json:"id"`
+	AutoCloseHour  int32  `protobuf:"varint,2,opt,name=auto_close_hour,json=autoCloseHour,proto3" json:"auto_close_hour"`
+	AutoReceiptDay int32  `protobuf:"varint,3,opt,name=auto_receipt_day,json=autoReceiptDay,proto3" json:"auto_receipt_day"`
+	SafeguardDay   int32  `protobuf:"varint,4,opt,name=safeguard_day,json=safeguardDay,proto3" json:"safeguard_day"`
+	IsAutoDelivery bool   `protobuf:"varint,5,opt,name=is_auto_delivery,json=isAutoDelivery,proto3" json:"is_auto_delivery"`
+	CreatedAt      string `protobuf:"bytes,6,opt,name=created_at,json=createdAt,proto3" json:"created_at"`
+	UpdatedAt      string `protobuf:"bytes,7,opt,name=updated_at,json=updatedAt,proto3" json:"updated_at"`
 }
 
 func (x *OrderConfig) Reset() {
@@ -126,9 +126,9 @@ type OrderConfigResponse struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	Error  *common.Error `protobuf:"bytes,1,opt,name=error,proto3" json:"error,omitempty"`
-	Info   *common.Info  `protobuf:"bytes,2,opt,name=info,proto3" json:"info,omitempty"`
-	Entity *OrderConfig  `protobuf:"bytes,3,opt,name=entity,proto3" json:"entity,omitempty"`
+	Error  *common.Error `protobuf:"bytes,1,opt,name=error,proto3" json:"error"`
+	Info   *common.Info  `protobuf:"bytes,2,opt,name=info,proto3" json:"info"`
+	Entity *OrderConfig  `protobuf:"bytes,3,opt,name=entity,proto3" json:"entity"`
 }
 
 func (x *OrderConfigResponse) Reset() {

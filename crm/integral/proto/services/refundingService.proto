@@ -10,6 +10,7 @@ service RefundingService {
 
 message Refunding {
     int64 order_id = 1;
+    // @inject_tag: gorm:"-"
     repeated int64 order_detail_ids = 2;
     int32 return_points = 3;
     int32 deduct_points = 4;

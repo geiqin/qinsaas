@@ -30,13 +30,14 @@ type HotelBookReq struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	RoomPricePlanId int64               `protobuf:"varint,1,opt,name=room_price_plan_id,json=roomPricePlanId,proto3" json:"room_price_plan_id,omitempty"`
-	CheckinTime     string              `protobuf:"bytes,2,opt,name=checkin_time,json=checkinTime,proto3" json:"checkin_time,omitempty"`
-	CheckoutTime    string              `protobuf:"bytes,3,opt,name=checkout_time,json=checkoutTime,proto3" json:"checkout_time,omitempty"`
-	RoomNum         int32               `protobuf:"varint,4,opt,name=room_num,json=roomNum,proto3" json:"room_num,omitempty"`
-	IsExtraBed      bool                `protobuf:"varint,5,opt,name=is_extra_bed,json=isExtraBed,proto3" json:"is_extra_bed,omitempty"`      // 是否加床
-	BookRoomJson    string              `protobuf:"bytes,6,opt,name=book_room_json,json=bookRoomJson,proto3" json:"book_room_json,omitempty"` // 预留信息(json数据), 包括字段: name-字段名, value-值
-	BookCheckins    []*HotelBookCheckin `protobuf:"bytes,7,rep,name=book_checkins,json=bookCheckins,proto3" json:"book_checkins,omitempty"`
+	RoomPricePlanId int64  `protobuf:"varint,1,opt,name=room_price_plan_id,json=roomPricePlanId,proto3" json:"room_price_plan_id"`
+	CheckinTime     string `protobuf:"bytes,2,opt,name=checkin_time,json=checkinTime,proto3" json:"checkin_time"`
+	CheckoutTime    string `protobuf:"bytes,3,opt,name=checkout_time,json=checkoutTime,proto3" json:"checkout_time"`
+	RoomNum         int32  `protobuf:"varint,4,opt,name=room_num,json=roomNum,proto3" json:"room_num"`
+	IsExtraBed      bool   `protobuf:"varint,5,opt,name=is_extra_bed,json=isExtraBed,proto3" json:"is_extra_bed"`      // 是否加床
+	BookRoomJson    string `protobuf:"bytes,6,opt,name=book_room_json,json=bookRoomJson,proto3" json:"book_room_json"` // 预留信息(json数据), 包括字段: name-字段名, value-值
+	// @inject_tag: gorm:"-"
+	BookCheckins []*HotelBookCheckin `protobuf:"bytes,7,rep,name=book_checkins,json=bookCheckins,proto3" json:"book_checkins" gorm:"-"`
 }
 
 func (x *HotelBookReq) Reset() {
@@ -126,11 +127,12 @@ type HotelBookCheckin struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	GuestName         string              `protobuf:"bytes,1,opt,name=guest_name,json=guestName,proto3" json:"guest_name,omitempty"`
-	GuestMobile       string              `protobuf:"bytes,2,opt,name=guest_mobile,json=guestMobile,proto3" json:"guest_mobile,omitempty"`
-	GuestDocumentType int32               `protobuf:"varint,3,opt,name=guest_document_type,json=guestDocumentType,proto3" json:"guest_document_type,omitempty"`
-	GuestDocumentNo   string              `protobuf:"bytes,4,opt,name=guest_document_no,json=guestDocumentNo,proto3" json:"guest_document_no,omitempty"`
-	TogetherDetails   []*HotelBookCheckin `protobuf:"bytes,5,rep,name=together_details,json=togetherDetails,proto3" json:"together_details,omitempty"`
+	GuestName         string `protobuf:"bytes,1,opt,name=guest_name,json=guestName,proto3" json:"guest_name"`
+	GuestMobile       string `protobuf:"bytes,2,opt,name=guest_mobile,json=guestMobile,proto3" json:"guest_mobile"`
+	GuestDocumentType int32  `protobuf:"varint,3,opt,name=guest_document_type,json=guestDocumentType,proto3" json:"guest_document_type"`
+	GuestDocumentNo   string `protobuf:"bytes,4,opt,name=guest_document_no,json=guestDocumentNo,proto3" json:"guest_document_no"`
+	// @inject_tag: gorm:"-"
+	TogetherDetails []*HotelBookCheckin `protobuf:"bytes,5,rep,name=together_details,json=togetherDetails,proto3" json:"together_details" gorm:"-"`
 }
 
 func (x *HotelBookCheckin) Reset() {
@@ -205,23 +207,23 @@ type HotelBook struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	Bookable             bool    `protobuf:"varint,1,opt,name=bookable,proto3" json:"bookable,omitempty"`                                                         // 当前是否可预定
-	MaxBookCount         int32   `protobuf:"varint,2,opt,name=max_book_count,json=maxBookCount,proto3" json:"max_book_count,omitempty"`                           // 订单最多可预订房间数(0-不限)
-	MinBookCount         int32   `protobuf:"varint,3,opt,name=min_book_count,json=minBookCount,proto3" json:"min_book_count,omitempty"`                           // 订单最低预订房间数
-	BookDay              int32   `protobuf:"varint,4,opt,name=book_day,json=bookDay,proto3" json:"book_day,omitempty"`                                            // 最多可预定天数(0-不限)
-	AheadDate            string  `protobuf:"bytes,5,opt,name=ahead_date,json=aheadDate,proto3" json:"ahead_date,omitempty"`                                       // 可预定最晚的离店日期
-	BookRoomJson         string  `protobuf:"bytes,6,opt,name=book_room_json,json=bookRoomJson,proto3" json:"book_room_json,omitempty"`                            // 预留信息(json数据), 包括字段: name-字段名, tips_word-输入框内引导提示文案
-	IsBookContentConfirm bool    `protobuf:"varint,7,opt,name=is_book_content_confirm,json=isBookContentConfirm,proto3" json:"is_book_content_confirm,omitempty"` // 下单前是否需要进行预订须知确认
-	BookContent          string  `protobuf:"bytes,8,opt,name=book_content,json=bookContent,proto3" json:"book_content,omitempty"`                                 // 预定须知内容
-	BookName             string  `protobuf:"bytes,9,opt,name=book_name,json=bookName,proto3" json:"book_name,omitempty"`                                          // 房型名称
-	IsOnlineDeposit      bool    `protobuf:"varint,10,opt,name=is_online_deposit,json=isOnlineDeposit,proto3" json:"is_online_deposit,omitempty"`                 // 是否线上支付押金
-	GuestNum             int32   `protobuf:"varint,11,opt,name=guest_num,json=guestNum,proto3" json:"guest_num,omitempty"`                                        // 最多可住人数
-	IsNeedHousemate      bool    `protobuf:"varint,12,opt,name=is_need_housemate,json=isNeedHousemate,proto3" json:"is_need_housemate,omitempty"`                 // 是否填写同住人信息
-	IsExtraBed           bool    `protobuf:"varint,13,opt,name=is_extra_bed,json=isExtraBed,proto3" json:"is_extra_bed,omitempty"`                                // 可否加床
-	ExtraBedName         string  `protobuf:"bytes,14,opt,name=extra_bed_name,json=extraBedName,proto3" json:"extra_bed_name,omitempty"`                           // 加床自定义名称
-	ExtraBedPrice        float32 `protobuf:"fixed32,15,opt,name=extra_bed_price,json=extraBedPrice,proto3" json:"extra_bed_price,omitempty"`                      // 加床费
-	BreakfastCount       int32   `protobuf:"varint,16,opt,name=breakfast_count,json=breakfastCount,proto3" json:"breakfast_count,omitempty"`                      // 早餐份数
-	GiftContent          string  `protobuf:"bytes,17,opt,name=gift_content,json=giftContent,proto3" json:"gift_content,omitempty"`                                // 礼包内容
+	Bookable             bool    `protobuf:"varint,1,opt,name=bookable,proto3" json:"bookable"`                                                         // 当前是否可预定
+	MaxBookCount         int32   `protobuf:"varint,2,opt,name=max_book_count,json=maxBookCount,proto3" json:"max_book_count"`                           // 订单最多可预订房间数(0-不限)
+	MinBookCount         int32   `protobuf:"varint,3,opt,name=min_book_count,json=minBookCount,proto3" json:"min_book_count"`                           // 订单最低预订房间数
+	BookDay              int32   `protobuf:"varint,4,opt,name=book_day,json=bookDay,proto3" json:"book_day"`                                            // 最多可预定天数(0-不限)
+	AheadDate            string  `protobuf:"bytes,5,opt,name=ahead_date,json=aheadDate,proto3" json:"ahead_date"`                                       // 可预定最晚的离店日期
+	BookRoomJson         string  `protobuf:"bytes,6,opt,name=book_room_json,json=bookRoomJson,proto3" json:"book_room_json"`                            // 预留信息(json数据), 包括字段: name-字段名, tips_word-输入框内引导提示文案
+	IsBookContentConfirm bool    `protobuf:"varint,7,opt,name=is_book_content_confirm,json=isBookContentConfirm,proto3" json:"is_book_content_confirm"` // 下单前是否需要进行预订须知确认
+	BookContent          string  `protobuf:"bytes,8,opt,name=book_content,json=bookContent,proto3" json:"book_content"`                                 // 预定须知内容
+	BookName             string  `protobuf:"bytes,9,opt,name=book_name,json=bookName,proto3" json:"book_name"`                                          // 房型名称
+	IsOnlineDeposit      bool    `protobuf:"varint,10,opt,name=is_online_deposit,json=isOnlineDeposit,proto3" json:"is_online_deposit"`                 // 是否线上支付押金
+	GuestNum             int32   `protobuf:"varint,11,opt,name=guest_num,json=guestNum,proto3" json:"guest_num"`                                        // 最多可住人数
+	IsNeedHousemate      bool    `protobuf:"varint,12,opt,name=is_need_housemate,json=isNeedHousemate,proto3" json:"is_need_housemate"`                 // 是否填写同住人信息
+	IsExtraBed           bool    `protobuf:"varint,13,opt,name=is_extra_bed,json=isExtraBed,proto3" json:"is_extra_bed"`                                // 可否加床
+	ExtraBedName         string  `protobuf:"bytes,14,opt,name=extra_bed_name,json=extraBedName,proto3" json:"extra_bed_name"`                           // 加床自定义名称
+	ExtraBedPrice        float32 `protobuf:"fixed32,15,opt,name=extra_bed_price,json=extraBedPrice,proto3" json:"extra_bed_price"`                      // 加床费
+	BreakfastCount       int32   `protobuf:"varint,16,opt,name=breakfast_count,json=breakfastCount,proto3" json:"breakfast_count"`                      // 早餐份数
+	GiftContent          string  `protobuf:"bytes,17,opt,name=gift_content,json=giftContent,proto3" json:"gift_content"`                                // 礼包内容
 }
 
 func (x *HotelBook) Reset() {

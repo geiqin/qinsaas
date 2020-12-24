@@ -32,8 +32,8 @@ message LeaderStatementWhere {
     int32 paged = 1;
     int32 page_size = 2;
     int32 top = 3;
-    //base params
     int64 id = 4;
+    // @inject_tag: gorm:"-"
     repeated int64 ids = 5;
     string type = 6;
     int64 leader_id = 7;

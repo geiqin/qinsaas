@@ -30,20 +30,30 @@ message Buying {
     int64 customer_id = 9;
     int64 use_ticket_id = 10; //正在使用的优惠劵ID
     string message = 11; //买家留言(50字以内)
+    // @inject_tag: gorm:"-"
     repeated int64 available_ticket_ids = 12; //可以使用的优惠劵
+    // @inject_tag: gorm:"-"
     repeated BuyingItem items = 13;
+    // @inject_tag: gorm:"-"
     repeated string cart_row_ids = 14;
+    // @inject_tag: gorm:"-"
     repeated OrderCoupon coupons = 15;
+    // @inject_tag: gorm:"-"
     repeated OrderPromotion promotions = 16;
+    // @inject_tag: gorm:"-"
     OrderAddress address = 17;
+    // @inject_tag: gorm:"-"
     CouponTicket use_ticket = 18;
     string platform_source = 19; //下单来源
     float member_money = 20; // 会员优惠金额
     float limit_discount_money = 21; // 限时活动优惠金额
     float reward_money = 22; // 满减送活动优惠金额
     float coupon_money = 23; // 优惠券优惠金额
+    // @inject_tag: gorm:"-"
     OrderShipment shipment = 24; // 配送信息
+    // @inject_tag: gorm:"-"
     Integral integral = 26; // 积分信息
+    // @inject_tag: gorm:"-"
     OrderFood food = 27; // 餐饮商品信息
 }
 
@@ -61,6 +71,7 @@ message BuyingItem {
     float limit_discount_price =10;// 限时折扣价
     int32 limit_discount_num =11;// 享受限时折扣的商品数量
     int32 exchange_num =12;// 兑换券兑换商品的数量
+    // @inject_tag: gorm:"-"
     GoodsInfo goods =13;
     string cart_row_id = 14;
 }
@@ -75,9 +86,13 @@ message BuyingRequest{
     int32 pay_method =6; //选中的支付方式
     string platform_source =8; //下单来源
     int64 use_ticket_id =7; //选中的优惠劵凭证ID
+    // @inject_tag: gorm:"-"
     repeated BuyingItem items =9;
+    // @inject_tag: gorm:"-"
     OrderShipment shipment = 10; // 配送信息
+    // @inject_tag: gorm:"-"
     Integral integral = 11; // 积分信息
+    // @inject_tag: gorm:"-"
     OrderFood food = 12; // 餐饮商品信息
 }
 

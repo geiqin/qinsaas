@@ -32,7 +32,9 @@ message RoomList {
     int64 room_id = 1;
     string room_name = 2;
     int32 clean_status = 3; // 房间清洁状态:1-净房,2-脏房,3-维修房
+    // @inject_tag: gorm:"-"
     StatusDetail detail = 4;
+    // @inject_tag: gorm:"-"
     repeated StatusDetail details = 5;
 }
 
@@ -41,7 +43,9 @@ message StatusDetail {
     int32 occupy_status = 2; // 房间当天占用情况:1-空房,2-已在住,3-已预定,4-已保留
     float price = 3; // 当天房价
     int32 surplus_room_num = 4; // 剩余房间数
+    // @inject_tag: gorm:"-"
     RoomKeep room_keep = 5; // 房间保留信息
+    // @inject_tag: gorm:"-"
     RoomBookDetail room_book = 6; // 房间预定/入住信息
 
 }

@@ -10,5 +10,6 @@ message FetchGallery {
     bool	 defaulted = 5;
     string	 created_at	= 6;
     string	 updated_at	= 7;
+    // @inject_tag: gorm:"-"
     repeated int64 ids = 8;
 }

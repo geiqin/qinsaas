@@ -31,14 +31,15 @@ type OrderFoodWhere struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	Paged    int32   `protobuf:"varint,1,opt,name=paged,proto3" json:"paged,omitempty"`
-	PageSize int32   `protobuf:"varint,2,opt,name=page_size,json=pageSize,proto3" json:"page_size,omitempty"`
-	Top      int32   `protobuf:"varint,3,opt,name=top,proto3" json:"top,omitempty"`
-	Id       int64   `protobuf:"varint,4,opt,name=id,proto3" json:"id,omitempty"`
-	Ids      []int64 `protobuf:"varint,5,rep,packed,name=ids,proto3" json:"ids,omitempty"`
-	OrderId  int64   `protobuf:"varint,6,opt,name=order_id,json=orderId,proto3" json:"order_id,omitempty"`
-	TableId  int64   `protobuf:"varint,7,opt,name=table_id,json=tableId,proto3" json:"table_id,omitempty"`
-	Type     string  `protobuf:"bytes,8,opt,name=type,proto3" json:"type,omitempty"`
+	Paged    int32 `protobuf:"varint,1,opt,name=paged,proto3" json:"paged"`
+	PageSize int32 `protobuf:"varint,2,opt,name=page_size,json=pageSize,proto3" json:"page_size"`
+	Top      int32 `protobuf:"varint,3,opt,name=top,proto3" json:"top"`
+	Id       int64 `protobuf:"varint,4,opt,name=id,proto3" json:"id"`
+	// @inject_tag: gorm:"-"
+	Ids     []int64 `protobuf:"varint,5,rep,packed,name=ids,proto3" json:"ids" gorm:"-"`
+	OrderId int64   `protobuf:"varint,6,opt,name=order_id,json=orderId,proto3" json:"order_id"`
+	TableId int64   `protobuf:"varint,7,opt,name=table_id,json=tableId,proto3" json:"table_id"`
+	Type    string  `protobuf:"bytes,8,opt,name=type,proto3" json:"type"`
 }
 
 func (x *OrderFoodWhere) Reset() {
@@ -134,20 +135,20 @@ type OrderFood struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	Id                int64   `protobuf:"varint,1,opt,name=id,proto3" json:"id,omitempty"`
-	Type              string  `protobuf:"bytes,2,opt,name=type,proto3" json:"type,omitempty"`
-	OrderId           int64   `protobuf:"varint,3,opt,name=order_id,json=orderId,proto3" json:"order_id,omitempty"`
-	TableId           int64   `protobuf:"varint,4,opt,name=table_id,json=tableId,proto3" json:"table_id,omitempty"`
-	TableName         string  `protobuf:"bytes,5,opt,name=table_name,json=tableName,proto3" json:"table_name,omitempty"`
-	SurchargeType     int32   `protobuf:"varint,6,opt,name=surcharge_type,json=surchargeType,proto3" json:"surcharge_type,omitempty"`
-	SurchargeFee      float32 `protobuf:"fixed32,7,opt,name=surcharge_fee,json=surchargeFee,proto3" json:"surcharge_fee,omitempty"`
-	SurchargeFeeName  string  `protobuf:"bytes,8,opt,name=surcharge_fee_name,json=surchargeFeeName,proto3" json:"surcharge_fee_name,omitempty"`
-	TotalSurchargeFee float32 `protobuf:"fixed32,9,opt,name=total_surcharge_fee,json=totalSurchargeFee,proto3" json:"total_surcharge_fee,omitempty"`
-	BoxFee            float32 `protobuf:"fixed32,10,opt,name=box_fee,json=boxFee,proto3" json:"box_fee,omitempty"`
-	GuestNum          int32   `protobuf:"varint,11,opt,name=guest_num,json=guestNum,proto3" json:"guest_num,omitempty"`
-	IsSettlement      bool    `protobuf:"varint,12,opt,name=is_settlement,json=isSettlement,proto3" json:"is_settlement,omitempty"`
-	CreatedAt         string  `protobuf:"bytes,13,opt,name=created_at,json=createdAt,proto3" json:"created_at,omitempty"`
-	UpdatedAt         string  `protobuf:"bytes,14,opt,name=updated_at,json=updatedAt,proto3" json:"updated_at,omitempty"`
+	Id                int64   `protobuf:"varint,1,opt,name=id,proto3" json:"id"`
+	Type              string  `protobuf:"bytes,2,opt,name=type,proto3" json:"type"`
+	OrderId           int64   `protobuf:"varint,3,opt,name=order_id,json=orderId,proto3" json:"order_id"`
+	TableId           int64   `protobuf:"varint,4,opt,name=table_id,json=tableId,proto3" json:"table_id"`
+	TableName         string  `protobuf:"bytes,5,opt,name=table_name,json=tableName,proto3" json:"table_name"`
+	SurchargeType     int32   `protobuf:"varint,6,opt,name=surcharge_type,json=surchargeType,proto3" json:"surcharge_type"`
+	SurchargeFee      float32 `protobuf:"fixed32,7,opt,name=surcharge_fee,json=surchargeFee,proto3" json:"surcharge_fee"`
+	SurchargeFeeName  string  `protobuf:"bytes,8,opt,name=surcharge_fee_name,json=surchargeFeeName,proto3" json:"surcharge_fee_name"`
+	TotalSurchargeFee float32 `protobuf:"fixed32,9,opt,name=total_surcharge_fee,json=totalSurchargeFee,proto3" json:"total_surcharge_fee"`
+	BoxFee            float32 `protobuf:"fixed32,10,opt,name=box_fee,json=boxFee,proto3" json:"box_fee"`
+	GuestNum          int32   `protobuf:"varint,11,opt,name=guest_num,json=guestNum,proto3" json:"guest_num"`
+	IsSettlement      bool    `protobuf:"varint,12,opt,name=is_settlement,json=isSettlement,proto3" json:"is_settlement"`
+	CreatedAt         string  `protobuf:"bytes,13,opt,name=created_at,json=createdAt,proto3" json:"created_at"`
+	UpdatedAt         string  `protobuf:"bytes,14,opt,name=updated_at,json=updatedAt,proto3" json:"updated_at"`
 }
 
 func (x *OrderFood) Reset() {
@@ -285,11 +286,11 @@ type OrderFoodResponse struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	Entity *OrderFood    `protobuf:"bytes,1,opt,name=entity,proto3" json:"entity,omitempty"`
-	Pager  *common.Pager `protobuf:"bytes,2,opt,name=pager,proto3" json:"pager,omitempty"`
-	Items  []*OrderFood  `protobuf:"bytes,3,rep,name=items,proto3" json:"items,omitempty"`
-	Error  *common.Error `protobuf:"bytes,4,opt,name=error,proto3" json:"error,omitempty"`
-	Info   *common.Info  `protobuf:"bytes,5,opt,name=info,proto3" json:"info,omitempty"`
+	Entity *OrderFood    `protobuf:"bytes,1,opt,name=entity,proto3" json:"entity"`
+	Pager  *common.Pager `protobuf:"bytes,2,opt,name=pager,proto3" json:"pager"`
+	Items  []*OrderFood  `protobuf:"bytes,3,rep,name=items,proto3" json:"items"`
+	Error  *common.Error `protobuf:"bytes,4,opt,name=error,proto3" json:"error"`
+	Info   *common.Info  `protobuf:"bytes,5,opt,name=info,proto3" json:"info"`
 }
 
 func (x *OrderFoodResponse) Reset() {

@@ -31,13 +31,14 @@ type MarketChannelWhere struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	Paged    int32   `protobuf:"varint,1,opt,name=paged,proto3" json:"paged,omitempty"`
-	PageSize int32   `protobuf:"varint,2,opt,name=page_size,json=pageSize,proto3" json:"page_size,omitempty"`
-	Id       int32   `protobuf:"varint,3,opt,name=id,proto3" json:"id,omitempty"`
-	Ids      []int32 `protobuf:"varint,4,rep,packed,name=ids,proto3" json:"ids,omitempty"`
-	Status   int32   `protobuf:"varint,5,opt,name=status,proto3" json:"status,omitempty"`
-	Keywords string  `protobuf:"bytes,6,opt,name=keywords,proto3" json:"keywords,omitempty"`
-	Default  bool    `protobuf:"varint,7,opt,name=default,proto3" json:"default,omitempty"`
+	Paged    int32 `protobuf:"varint,1,opt,name=paged,proto3" json:"paged"`
+	PageSize int32 `protobuf:"varint,2,opt,name=page_size,json=pageSize,proto3" json:"page_size"`
+	Id       int32 `protobuf:"varint,3,opt,name=id,proto3" json:"id"`
+	// @inject_tag: gorm:"-"
+	Ids      []int32 `protobuf:"varint,4,rep,packed,name=ids,proto3" json:"ids" gorm:"-"`
+	Status   int32   `protobuf:"varint,5,opt,name=status,proto3" json:"status"`
+	Keywords string  `protobuf:"bytes,6,opt,name=keywords,proto3" json:"keywords"`
+	Default  bool    `protobuf:"varint,7,opt,name=default,proto3" json:"default"`
 }
 
 func (x *MarketChannelWhere) Reset() {
@@ -126,15 +127,15 @@ type MarketChannel struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	Id int32 `protobuf:"varint,1,opt,name=id,proto3" json:"id,omitempty"`
+	Id int32 `protobuf:"varint,1,opt,name=id,proto3" json:"id"`
 	// @inject_tag: validate:"required" label:"名称"
-	Name      string `protobuf:"bytes,2,opt,name=name,proto3" json:"name,omitempty"`
-	Sorting   int32  `protobuf:"varint,3,opt,name=sorting,proto3" json:"sorting,omitempty"`
-	Memo      string `protobuf:"bytes,4,opt,name=memo,proto3" json:"memo,omitempty"`
-	Default   bool   `protobuf:"varint,5,opt,name=default,proto3" json:"default,omitempty"`
-	Status    int32  `protobuf:"varint,6,opt,name=status,proto3" json:"status,omitempty"`
-	CreatedAt string `protobuf:"bytes,7,opt,name=created_at,json=createdAt,proto3" json:"created_at,omitempty"`
-	UpdatedAt string `protobuf:"bytes,8,opt,name=updated_at,json=updatedAt,proto3" json:"updated_at,omitempty"`
+	Name      string `protobuf:"bytes,2,opt,name=name,proto3" json:"name" validate:"required" label:"名称"`
+	Sorting   int32  `protobuf:"varint,3,opt,name=sorting,proto3" json:"sorting"`
+	Memo      string `protobuf:"bytes,4,opt,name=memo,proto3" json:"memo"`
+	Default   bool   `protobuf:"varint,5,opt,name=default,proto3" json:"default"`
+	Status    int32  `protobuf:"varint,6,opt,name=status,proto3" json:"status"`
+	CreatedAt string `protobuf:"bytes,7,opt,name=created_at,json=createdAt,proto3" json:"created_at"`
+	UpdatedAt string `protobuf:"bytes,8,opt,name=updated_at,json=updatedAt,proto3" json:"updated_at"`
 }
 
 func (x *MarketChannel) Reset() {
@@ -230,11 +231,11 @@ type MarketChannelResponse struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	Error  *common.Error    `protobuf:"bytes,1,opt,name=error,proto3" json:"error,omitempty"`
-	Info   *common.Info     `protobuf:"bytes,2,opt,name=info,proto3" json:"info,omitempty"`
-	Pager  *common.Pager    `protobuf:"bytes,3,opt,name=pager,proto3" json:"pager,omitempty"`
-	Entity *MarketChannel   `protobuf:"bytes,4,opt,name=entity,proto3" json:"entity,omitempty"`
-	Items  []*MarketChannel `protobuf:"bytes,5,rep,name=items,proto3" json:"items,omitempty"`
+	Error  *common.Error    `protobuf:"bytes,1,opt,name=error,proto3" json:"error"`
+	Info   *common.Info     `protobuf:"bytes,2,opt,name=info,proto3" json:"info"`
+	Pager  *common.Pager    `protobuf:"bytes,3,opt,name=pager,proto3" json:"pager"`
+	Entity *MarketChannel   `protobuf:"bytes,4,opt,name=entity,proto3" json:"entity"`
+	Items  []*MarketChannel `protobuf:"bytes,5,rep,name=items,proto3" json:"items"`
 }
 
 func (x *MarketChannelResponse) Reset() {

@@ -4,6 +4,7 @@ option go_package = ".;services";
 import "common/base.proto";
 import "skuService.proto";
 import "specService.proto";
+
 service ItemPriceService {
     rpc Set (PriceScheme) returns (PriceSchemeResponse) {}
     rpc Get (ItemPrice) returns (ItemPriceResponse) {}
@@ -19,6 +20,7 @@ message ItemPrice {
     string	method	=6;
     float	price	=7;
     float	discount	=8;
+    // @inject_tag: gorm:"-"
     Sku sku =9;
 }
 

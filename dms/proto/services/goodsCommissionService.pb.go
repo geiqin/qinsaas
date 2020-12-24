@@ -31,14 +31,15 @@ type GoodsCommission struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	Id          int64   `protobuf:"varint,1,opt,name=id,proto3" json:"id,omitempty"`
-	GoodsId     int64   `protobuf:"varint,2,opt,name=goods_id,json=goodsId,proto3" json:"goods_id,omitempty"`
-	RankId      int32   `protobuf:"varint,3,opt,name=rank_id,json=rankId,proto3" json:"rank_id,omitempty"`
-	PrimaryRate float32 `protobuf:"fixed32,4,opt,name=primary_rate,json=primaryRate,proto3" json:"primary_rate,omitempty"`
-	SecondRate  float32 `protobuf:"fixed32,5,opt,name=second_rate,json=secondRate,proto3" json:"second_rate,omitempty"`
-	CreatedAt   string  `protobuf:"bytes,6,opt,name=created_at,json=createdAt,proto3" json:"created_at,omitempty"`
-	UpdatedAt   string  `protobuf:"bytes,7,opt,name=updated_at,json=updatedAt,proto3" json:"updated_at,omitempty"`
-	Rank        *Rank   `protobuf:"bytes,8,opt,name=rank,proto3" json:"rank,omitempty"`
+	Id          int64   `protobuf:"varint,1,opt,name=id,proto3" json:"id"`
+	GoodsId     int64   `protobuf:"varint,2,opt,name=goods_id,json=goodsId,proto3" json:"goods_id"`
+	RankId      int32   `protobuf:"varint,3,opt,name=rank_id,json=rankId,proto3" json:"rank_id"`
+	PrimaryRate float32 `protobuf:"fixed32,4,opt,name=primary_rate,json=primaryRate,proto3" json:"primary_rate"`
+	SecondRate  float32 `protobuf:"fixed32,5,opt,name=second_rate,json=secondRate,proto3" json:"second_rate"`
+	CreatedAt   string  `protobuf:"bytes,6,opt,name=created_at,json=createdAt,proto3" json:"created_at"`
+	UpdatedAt   string  `protobuf:"bytes,7,opt,name=updated_at,json=updatedAt,proto3" json:"updated_at"`
+	// @inject_tag: gorm:"-"
+	Rank *Rank `protobuf:"bytes,8,opt,name=rank,proto3" json:"rank" gorm:"-"`
 }
 
 func (x *GoodsCommission) Reset() {
@@ -134,12 +135,12 @@ type MyGoodsCommission struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	ItemId          int64   `protobuf:"varint,1,opt,name=item_id,json=itemId,proto3" json:"item_id,omitempty"`
-	SkuId           int64   `protobuf:"varint,2,opt,name=sku_id,json=skuId,proto3" json:"sku_id,omitempty"`
-	IsDistributor   bool    `protobuf:"varint,3,opt,name=is_distributor,json=isDistributor,proto3" json:"is_distributor,omitempty"`        // 用户是否分销员
-	Disabled        bool    `protobuf:"varint,4,opt,name=disabled,proto3" json:"disabled,omitempty"`                                       // 商品是否参与分销
-	CommissionMoney float32 `protobuf:"fixed32,5,opt,name=commission_money,json=commissionMoney,proto3" json:"commission_money,omitempty"` // 商品最大佣金
-	ShareUrl        string  `protobuf:"bytes,6,opt,name=share_url,json=shareUrl,proto3" json:"share_url,omitempty"`                        // 分销图标
+	ItemId          int64   `protobuf:"varint,1,opt,name=item_id,json=itemId,proto3" json:"item_id"`
+	SkuId           int64   `protobuf:"varint,2,opt,name=sku_id,json=skuId,proto3" json:"sku_id"`
+	IsDistributor   bool    `protobuf:"varint,3,opt,name=is_distributor,json=isDistributor,proto3" json:"is_distributor"`        // 用户是否分销员
+	Disabled        bool    `protobuf:"varint,4,opt,name=disabled,proto3" json:"disabled"`                                       // 商品是否参与分销
+	CommissionMoney float32 `protobuf:"fixed32,5,opt,name=commission_money,json=commissionMoney,proto3" json:"commission_money"` // 商品最大佣金
+	ShareUrl        string  `protobuf:"bytes,6,opt,name=share_url,json=shareUrl,proto3" json:"share_url"`                        // 分销图标
 }
 
 func (x *MyGoodsCommission) Reset() {
@@ -221,11 +222,11 @@ type GoodsCommissionResponse struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	Entity *GoodsCommission   `protobuf:"bytes,1,opt,name=entity,proto3" json:"entity,omitempty"`
-	Pager  *common.Pager      `protobuf:"bytes,2,opt,name=pager,proto3" json:"pager,omitempty"`
-	Items  []*GoodsCommission `protobuf:"bytes,3,rep,name=items,proto3" json:"items,omitempty"`
-	Error  *common.Error      `protobuf:"bytes,4,opt,name=error,proto3" json:"error,omitempty"`
-	Info   *common.Info       `protobuf:"bytes,5,opt,name=info,proto3" json:"info,omitempty"`
+	Entity *GoodsCommission   `protobuf:"bytes,1,opt,name=entity,proto3" json:"entity"`
+	Pager  *common.Pager      `protobuf:"bytes,2,opt,name=pager,proto3" json:"pager"`
+	Items  []*GoodsCommission `protobuf:"bytes,3,rep,name=items,proto3" json:"items"`
+	Error  *common.Error      `protobuf:"bytes,4,opt,name=error,proto3" json:"error"`
+	Info   *common.Info       `protobuf:"bytes,5,opt,name=info,proto3" json:"info"`
 }
 
 func (x *GoodsCommissionResponse) Reset() {
@@ -300,11 +301,11 @@ type MyGoodsCommissionResponse struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	Entity *MyGoodsCommission   `protobuf:"bytes,1,opt,name=entity,proto3" json:"entity,omitempty"`
-	Pager  *common.Pager        `protobuf:"bytes,2,opt,name=pager,proto3" json:"pager,omitempty"`
-	Items  []*MyGoodsCommission `protobuf:"bytes,3,rep,name=items,proto3" json:"items,omitempty"`
-	Error  *common.Error        `protobuf:"bytes,4,opt,name=error,proto3" json:"error,omitempty"`
-	Info   *common.Info         `protobuf:"bytes,5,opt,name=info,proto3" json:"info,omitempty"`
+	Entity *MyGoodsCommission   `protobuf:"bytes,1,opt,name=entity,proto3" json:"entity"`
+	Pager  *common.Pager        `protobuf:"bytes,2,opt,name=pager,proto3" json:"pager"`
+	Items  []*MyGoodsCommission `protobuf:"bytes,3,rep,name=items,proto3" json:"items"`
+	Error  *common.Error        `protobuf:"bytes,4,opt,name=error,proto3" json:"error"`
+	Info   *common.Info         `protobuf:"bytes,5,opt,name=info,proto3" json:"info"`
 }
 
 func (x *MyGoodsCommissionResponse) Reset() {

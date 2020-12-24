@@ -30,6 +30,7 @@ message NavItem {
     string extra = 9;
     string created_at = 10;
     string updated_at = 11;
+    // @inject_tag: gorm:"foreignKey:NavItemId"
     repeated NavItem children = 12;
     string alias = 13;
 }

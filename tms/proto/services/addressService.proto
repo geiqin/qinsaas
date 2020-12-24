@@ -21,6 +21,7 @@ message AddressWhere {
     string sorting = 3;
     string keywords = 4;
     int64 id = 5;
+    // @inject_tag: gorm:"-"
     repeated int64 ids = 6;
     int32 type = 7;
     bool is_default = 8;
@@ -37,7 +38,9 @@ message Address {
     string mobile = 8;
     string created_at = 9;
     string updated_at = 10;
+    // @inject_tag: gorm:"-"
     AreaInfo area = 11;
+    // @inject_tag: gorm:"foreignKey:AddressId"
     repeated AddressType address_types = 12;
 }
 

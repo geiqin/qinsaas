@@ -19,7 +19,9 @@ message Credit {
   float balance =5;
   string created_at =6;
   string updated_at =7;
+  // @inject_tag: gorm:"-"
   Customer customer =8;
+  // @inject_tag: gorm:"-"
   repeated int64 ids = 9;
   string name = 10;
   string display_name =11;
@@ -27,6 +29,7 @@ message Credit {
   string mobile =13;
   string contacts = 14;
   int64 cid = 15;//客户表的客户id
+  // @inject_tag: gorm:"foreignKey:CreditId"
   repeated CreditRecord credit_records = 16;
 }
 

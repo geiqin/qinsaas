@@ -31,31 +31,31 @@ type RoomPricePlan struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	Id int64 `protobuf:"varint,1,opt,name=id,proto3" json:"id,omitempty"`
+	Id int64 `protobuf:"varint,1,opt,name=id,proto3" json:"id"`
 	// @inject_tag: validate:"required" label:"房型"
-	RoomTypeId int64 `protobuf:"varint,2,opt,name=room_type_id,json=roomTypeId,proto3" json:"room_type_id,omitempty" validate:"required" label:"房型"`
+	RoomTypeId int64 `protobuf:"varint,2,opt,name=room_type_id,json=roomTypeId,proto3" json:"room_type_id" validate:"required" label:"房型"`
 	// @inject_tag: validate:"required" label:"名称"
-	PlanName string `protobuf:"bytes,3,opt,name=plan_name,json=planName,proto3" json:"plan_name,omitempty" validate:"required" label:"名称"`
+	PlanName string `protobuf:"bytes,3,opt,name=plan_name,json=planName,proto3" json:"plan_name" validate:"required" label:"名称"`
 	// @inject_tag: validate:"required" label:"标准价"
-	Price    float32 `protobuf:"fixed32,4,opt,name=price,proto3" json:"price,omitempty" validate:"required" label:"标准价"`
-	MinPrice float32 `protobuf:"fixed32,5,opt,name=min_price,json=minPrice,proto3" json:"min_price,omitempty"`
-	MaxPrice float32 `protobuf:"fixed32,6,opt,name=max_price,json=maxPrice,proto3" json:"max_price,omitempty"`
+	Price    float32 `protobuf:"fixed32,4,opt,name=price,proto3" json:"price" validate:"required" label:"标准价"`
+	MinPrice float32 `protobuf:"fixed32,5,opt,name=min_price,json=minPrice,proto3" json:"min_price"`
+	MaxPrice float32 `protobuf:"fixed32,6,opt,name=max_price,json=maxPrice,proto3" json:"max_price"`
 	// @inject_tag: validate:"required" label:"收款方式"
-	PayType        int32 `protobuf:"varint,7,opt,name=pay_type,json=payType,proto3" json:"pay_type,omitempty" validate:"required" label:"收款方式"`
-	CanCouponCode  bool  `protobuf:"varint,8,opt,name=can_coupon_code,json=canCouponCode,proto3" json:"can_coupon_code,omitempty"` // 是否可使用优惠券抵扣
-	CanCashCode    bool  `protobuf:"varint,9,opt,name=can_cash_code,json=canCashCode,proto3" json:"can_cash_code,omitempty"`       // 是否可使用现金券抵扣
-	PriceType      int32 `protobuf:"varint,10,opt,name=price_type,json=priceType,proto3" json:"price_type,omitempty"`
-	BreakfastCount int32 `protobuf:"varint,11,opt,name=breakfast_count,json=breakfastCount,proto3" json:"breakfast_count,omitempty"`
+	PayType        int32 `protobuf:"varint,7,opt,name=pay_type,json=payType,proto3" json:"pay_type" validate:"required" label:"收款方式"`
+	CanCouponCode  bool  `protobuf:"varint,8,opt,name=can_coupon_code,json=canCouponCode,proto3" json:"can_coupon_code"` // 是否可使用优惠券抵扣
+	CanCashCode    bool  `protobuf:"varint,9,opt,name=can_cash_code,json=canCashCode,proto3" json:"can_cash_code"`       // 是否可使用现金券抵扣
+	PriceType      int32 `protobuf:"varint,10,opt,name=price_type,json=priceType,proto3" json:"price_type"`
+	BreakfastCount int32 `protobuf:"varint,11,opt,name=breakfast_count,json=breakfastCount,proto3" json:"breakfast_count"`
 	// @inject_tag: validate:"required" label:"房量数量"
-	CanSalesCount      int32  `protobuf:"varint,12,opt,name=can_sales_count,json=canSalesCount,proto3" json:"can_sales_count,omitempty" validate:"required" label:"房量数量"`
-	SalesCount         int32  `protobuf:"varint,13,opt,name=sales_count,json=salesCount,proto3" json:"sales_count,omitempty"`
-	SalesStrategyType  int32  `protobuf:"varint,14,opt,name=sales_strategy_type,json=salesStrategyType,proto3" json:"sales_strategy_type,omitempty"`
-	SalesStrategyValue int32  `protobuf:"varint,15,opt,name=sales_strategy_value,json=salesStrategyValue,proto3" json:"sales_strategy_value,omitempty"`
-	GiftContent        string `protobuf:"bytes,16,opt,name=gift_content,json=giftContent,proto3" json:"gift_content,omitempty"`
-	IsOpen             bool   `protobuf:"varint,17,opt,name=is_open,json=isOpen,proto3" json:"is_open,omitempty"`
-	Sorting            int32  `protobuf:"varint,18,opt,name=sorting,proto3" json:"sorting,omitempty"`
-	CreatedAt          string `protobuf:"bytes,19,opt,name=created_at,json=createdAt,proto3" json:"created_at,omitempty"`
-	UpdatedAt          string `protobuf:"bytes,20,opt,name=updated_at,json=updatedAt,proto3" json:"updated_at,omitempty"`
+	CanSalesCount      int32  `protobuf:"varint,12,opt,name=can_sales_count,json=canSalesCount,proto3" json:"can_sales_count" validate:"required" label:"房量数量"`
+	SalesCount         int32  `protobuf:"varint,13,opt,name=sales_count,json=salesCount,proto3" json:"sales_count"`
+	SalesStrategyType  int32  `protobuf:"varint,14,opt,name=sales_strategy_type,json=salesStrategyType,proto3" json:"sales_strategy_type"`
+	SalesStrategyValue int32  `protobuf:"varint,15,opt,name=sales_strategy_value,json=salesStrategyValue,proto3" json:"sales_strategy_value"`
+	GiftContent        string `protobuf:"bytes,16,opt,name=gift_content,json=giftContent,proto3" json:"gift_content"`
+	IsOpen             bool   `protobuf:"varint,17,opt,name=is_open,json=isOpen,proto3" json:"is_open"`
+	Sorting            int32  `protobuf:"varint,18,opt,name=sorting,proto3" json:"sorting"`
+	CreatedAt          string `protobuf:"bytes,19,opt,name=created_at,json=createdAt,proto3" json:"created_at"`
+	UpdatedAt          string `protobuf:"bytes,20,opt,name=updated_at,json=updatedAt,proto3" json:"updated_at"`
 }
 
 func (x *RoomPricePlan) Reset() {
@@ -235,15 +235,15 @@ type RoomPricePlanWhere struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	Paged      int32   `protobuf:"varint,1,opt,name=paged,proto3" json:"paged,omitempty"`
-	PageSize   int32   `protobuf:"varint,2,opt,name=page_size,json=pageSize,proto3" json:"page_size,omitempty"`
-	Top        int32   `protobuf:"varint,3,opt,name=top,proto3" json:"top,omitempty"`
-	Keywords   string  `protobuf:"bytes,4,opt,name=keywords,proto3" json:"keywords,omitempty"`
-	Id         int64   `protobuf:"varint,5,opt,name=id,proto3" json:"id,omitempty"`
-	Ids        []int64 `protobuf:"varint,6,rep,packed,name=ids,proto3" json:"ids,omitempty"`
-	RoomTypeId int64   `protobuf:"varint,7,opt,name=room_type_id,json=roomTypeId,proto3" json:"room_type_id,omitempty"`
-	IsOpen     bool    `protobuf:"varint,8,opt,name=is_open,json=isOpen,proto3" json:"is_open,omitempty"`
-	Sorting    int32   `protobuf:"varint,9,opt,name=sorting,proto3" json:"sorting,omitempty"`
+	Paged      int32   `protobuf:"varint,1,opt,name=paged,proto3" json:"paged"`
+	PageSize   int32   `protobuf:"varint,2,opt,name=page_size,json=pageSize,proto3" json:"page_size"`
+	Top        int32   `protobuf:"varint,3,opt,name=top,proto3" json:"top"`
+	Keywords   string  `protobuf:"bytes,4,opt,name=keywords,proto3" json:"keywords"`
+	Id         int64   `protobuf:"varint,5,opt,name=id,proto3" json:"id"`
+	Ids        []int64 `protobuf:"varint,6,rep,packed,name=ids,proto3" json:"ids"`
+	RoomTypeId int64   `protobuf:"varint,7,opt,name=room_type_id,json=roomTypeId,proto3" json:"room_type_id"`
+	IsOpen     bool    `protobuf:"varint,8,opt,name=is_open,json=isOpen,proto3" json:"is_open"`
+	Sorting    int32   `protobuf:"varint,9,opt,name=sorting,proto3" json:"sorting"`
 }
 
 func (x *RoomPricePlanWhere) Reset() {
@@ -346,11 +346,11 @@ type RoomPricePlanResponse struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	Error  *common.Error    `protobuf:"bytes,1,opt,name=error,proto3" json:"error,omitempty"`
-	Info   *common.Info     `protobuf:"bytes,2,opt,name=info,proto3" json:"info,omitempty"`
-	Pager  *common.Pager    `protobuf:"bytes,3,opt,name=pager,proto3" json:"pager,omitempty"`
-	Entity *RoomPricePlan   `protobuf:"bytes,4,opt,name=entity,proto3" json:"entity,omitempty"`
-	Items  []*RoomPricePlan `protobuf:"bytes,5,rep,name=items,proto3" json:"items,omitempty"`
+	Error  *common.Error    `protobuf:"bytes,1,opt,name=error,proto3" json:"error"`
+	Info   *common.Info     `protobuf:"bytes,2,opt,name=info,proto3" json:"info"`
+	Pager  *common.Pager    `protobuf:"bytes,3,opt,name=pager,proto3" json:"pager"`
+	Entity *RoomPricePlan   `protobuf:"bytes,4,opt,name=entity,proto3" json:"entity"`
+	Items  []*RoomPricePlan `protobuf:"bytes,5,rep,name=items,proto3" json:"items"`
 }
 
 func (x *RoomPricePlanResponse) Reset() {

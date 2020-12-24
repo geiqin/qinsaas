@@ -31,9 +31,10 @@ type FypCall struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	OrderId     int64    `protobuf:"varint,1,opt,name=order_id,json=orderId,proto3" json:"order_id,omitempty"`
-	LogisticsNo string   `protobuf:"bytes,2,opt,name=logistics_no,json=logisticsNo,proto3" json:"logistics_no,omitempty"`
-	Shipper     *Shipper `protobuf:"bytes,3,opt,name=shipper,proto3" json:"shipper,omitempty"`
+	OrderId     int64  `protobuf:"varint,1,opt,name=order_id,json=orderId,proto3" json:"order_id"`
+	LogisticsNo string `protobuf:"bytes,2,opt,name=logistics_no,json=logisticsNo,proto3" json:"logistics_no"`
+	// @inject_tag: gorm:"-"
+	Shipper *Shipper `protobuf:"bytes,3,opt,name=shipper,proto3" json:"shipper" gorm:"-"`
 }
 
 func (x *FypCall) Reset() {
@@ -94,9 +95,9 @@ type FypCallResponse struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	Info   *common.Info  `protobuf:"bytes,1,opt,name=info,proto3" json:"info,omitempty"`
-	Error  *common.Error `protobuf:"bytes,2,opt,name=error,proto3" json:"error,omitempty"`
-	Entity *FypCall      `protobuf:"bytes,3,opt,name=entity,proto3" json:"entity,omitempty"`
+	Info   *common.Info  `protobuf:"bytes,1,opt,name=info,proto3" json:"info"`
+	Error  *common.Error `protobuf:"bytes,2,opt,name=error,proto3" json:"error"`
+	Entity *FypCall      `protobuf:"bytes,3,opt,name=entity,proto3" json:"entity"`
 }
 
 func (x *FypCallResponse) Reset() {

@@ -17,6 +17,7 @@ message RewardStep {
     int32 present_num = 11;
     string created_at = 12;
     string updated_at = 13;
+    // @inject_tag: gorm:"foreignKey:RewardStepId"
     repeated RewardCoupon coupons = 14;
     bool free_postage = 15; // 是否包邮
 }

@@ -25,7 +25,9 @@ message Relationship {
     string last_continue_at =7;
     string created_at = 8;
     string updated_at = 9;
+    // @inject_tag: gorm:"-"
     Distributor distributor = 10;
+    // @inject_tag: gorm:"-"
     Distributor invitee = 11;
 }
 

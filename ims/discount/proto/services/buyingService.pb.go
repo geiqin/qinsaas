@@ -32,18 +32,20 @@ type Buying struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	Solution           string        `protobuf:"bytes,1,opt,name=solution,proto3" json:"solution,omitempty"`
-	Count              int32         `protobuf:"varint,2,opt,name=count,proto3" json:"count,omitempty"`
-	Total              float32       `protobuf:"fixed32,3,opt,name=total,proto3" json:"total,omitempty"`
-	Discount           float32       `protobuf:"fixed32,4,opt,name=discount,proto3" json:"discount,omitempty"`
-	Freight            float32       `protobuf:"fixed32,5,opt,name=freight,proto3" json:"freight,omitempty"`
-	Amount             float32       `protobuf:"fixed32,6,opt,name=amount,proto3" json:"amount,omitempty"`
-	AddressId          int64         `protobuf:"varint,7,opt,name=address_id,json=addressId,proto3" json:"address_id,omitempty"`
-	CustomerId         int64         `protobuf:"varint,8,opt,name=customer_id,json=customerId,proto3" json:"customer_id,omitempty"`
-	UseTicketId        int64         `protobuf:"varint,9,opt,name=use_ticket_id,json=useTicketId,proto3" json:"use_ticket_id,omitempty"`                              //正在使用的优惠劵ID
-	AvailableTicketIds []int64       `protobuf:"varint,10,rep,packed,name=available_ticket_ids,json=availableTicketIds,proto3" json:"available_ticket_ids,omitempty"` //可以使用的优惠劵
-	Items              []*BuyingItem `protobuf:"bytes,11,rep,name=items,proto3" json:"items,omitempty"`
-	Changed            bool          `protobuf:"varint,12,opt,name=changed,proto3" json:"changed,omitempty"`
+	Solution    string  `protobuf:"bytes,1,opt,name=solution,proto3" json:"solution"`
+	Count       int32   `protobuf:"varint,2,opt,name=count,proto3" json:"count"`
+	Total       float32 `protobuf:"fixed32,3,opt,name=total,proto3" json:"total"`
+	Discount    float32 `protobuf:"fixed32,4,opt,name=discount,proto3" json:"discount"`
+	Freight     float32 `protobuf:"fixed32,5,opt,name=freight,proto3" json:"freight"`
+	Amount      float32 `protobuf:"fixed32,6,opt,name=amount,proto3" json:"amount"`
+	AddressId   int64   `protobuf:"varint,7,opt,name=address_id,json=addressId,proto3" json:"address_id"`
+	CustomerId  int64   `protobuf:"varint,8,opt,name=customer_id,json=customerId,proto3" json:"customer_id"`
+	UseTicketId int64   `protobuf:"varint,9,opt,name=use_ticket_id,json=useTicketId,proto3" json:"use_ticket_id"` //正在使用的优惠劵ID
+	// @inject_tag: gorm:"-"
+	AvailableTicketIds []int64 `protobuf:"varint,10,rep,packed,name=available_ticket_ids,json=availableTicketIds,proto3" json:"available_ticket_ids" gorm:"-"` //可以使用的优惠劵
+	// @inject_tag: gorm:"-"
+	Items   []*BuyingItem `protobuf:"bytes,11,rep,name=items,proto3" json:"items" gorm:"-"`
+	Changed bool          `protobuf:"varint,12,opt,name=changed,proto3" json:"changed"`
 }
 
 func (x *Buying) Reset() {
@@ -168,13 +170,13 @@ type BuyingItem struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	ItemId      int64   `protobuf:"varint,1,opt,name=item_id,json=itemId,proto3" json:"item_id,omitempty"`
-	SkuId       int64   `protobuf:"varint,2,opt,name=sku_id,json=skuId,proto3" json:"sku_id,omitempty"`
-	Num         int32   `protobuf:"varint,3,opt,name=num,proto3" json:"num,omitempty"`
-	Price       float32 `protobuf:"fixed32,4,opt,name=price,proto3" json:"price,omitempty"`
-	OriginPrice float32 `protobuf:"fixed32,5,opt,name=origin_price,json=originPrice,proto3" json:"origin_price,omitempty"`
-	SubTotal    float32 `protobuf:"fixed32,6,opt,name=sub_total,json=subTotal,proto3" json:"sub_total,omitempty"`
-	PromotionId int64   `protobuf:"varint,7,opt,name=promotion_id,json=promotionId,proto3" json:"promotion_id,omitempty"`
+	ItemId      int64   `protobuf:"varint,1,opt,name=item_id,json=itemId,proto3" json:"item_id"`
+	SkuId       int64   `protobuf:"varint,2,opt,name=sku_id,json=skuId,proto3" json:"sku_id"`
+	Num         int32   `protobuf:"varint,3,opt,name=num,proto3" json:"num"`
+	Price       float32 `protobuf:"fixed32,4,opt,name=price,proto3" json:"price"`
+	OriginPrice float32 `protobuf:"fixed32,5,opt,name=origin_price,json=originPrice,proto3" json:"origin_price"`
+	SubTotal    float32 `protobuf:"fixed32,6,opt,name=sub_total,json=subTotal,proto3" json:"sub_total"`
+	PromotionId int64   `protobuf:"varint,7,opt,name=promotion_id,json=promotionId,proto3" json:"promotion_id"`
 }
 
 func (x *BuyingItem) Reset() {
@@ -263,11 +265,11 @@ type BuyingResponse struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	Entity *Buying       `protobuf:"bytes,1,opt,name=entity,proto3" json:"entity,omitempty"`
-	Pager  *common.Pager `protobuf:"bytes,2,opt,name=pager,proto3" json:"pager,omitempty"`
-	Items  []*Buying     `protobuf:"bytes,3,rep,name=items,proto3" json:"items,omitempty"`
-	Error  *common.Error `protobuf:"bytes,4,opt,name=error,proto3" json:"error,omitempty"`
-	Info   *common.Info  `protobuf:"bytes,5,opt,name=info,proto3" json:"info,omitempty"`
+	Entity *Buying       `protobuf:"bytes,1,opt,name=entity,proto3" json:"entity"`
+	Pager  *common.Pager `protobuf:"bytes,2,opt,name=pager,proto3" json:"pager"`
+	Items  []*Buying     `protobuf:"bytes,3,rep,name=items,proto3" json:"items"`
+	Error  *common.Error `protobuf:"bytes,4,opt,name=error,proto3" json:"error"`
+	Info   *common.Info  `protobuf:"bytes,5,opt,name=info,proto3" json:"info"`
 }
 
 func (x *BuyingResponse) Reset() {

@@ -18,6 +18,7 @@ message GoodsCommission {
     float second_rate = 5;
     string created_at = 6;
     string updated_at = 7;
+    // @inject_tag: gorm:"-"
     Rank rank = 8;
 }
 

@@ -27,6 +27,7 @@ message CashAccount {
     string status = 9;
     string created_at = 10;
     string updated_at = 11;
+    // @inject_tag: gorm:"-"
     Distributor distributor=12;
 }
 

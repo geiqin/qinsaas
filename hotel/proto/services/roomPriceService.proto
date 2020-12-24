@@ -17,6 +17,7 @@ message RoomPriceWhere {
     string date = 5;
     string start_date = 6;
     string end_date = 7;
+    // @inject_tag: gorm:"-"
     repeated int64 room_price_plan_ids = 9;
     bool is_valid = 10;
 }
@@ -32,6 +33,7 @@ message RoomPrice {
     float price = 8;
     string created_at = 10;
     string updated_at = 11;
+    // @inject_tag: gorm:"foreignKey:RoomPriceId"
     repeated RoomPriceVipcard vipcards = 12;
     float min_price = 13;
     float max_price = 14;

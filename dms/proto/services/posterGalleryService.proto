@@ -21,6 +21,7 @@ message PosterGalleryWhere {
     int32 page_size = 2;
     string sorting = 3;
     int64 id = 4;
+    // @inject_tag: gorm:"-"
     repeated int64 ids = 5;
 }
 

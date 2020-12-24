@@ -45,14 +45,19 @@ message SettlementConfirmByEatIn {
     float discount = 3;
     float amount = 4;
     int64 use_ticket_id = 5; //正在使用的优惠劵ID
+    // @inject_tag: gorm:"-"
     repeated int64 available_ticket_ids = 6; //可以使用的优惠劵
+    // @inject_tag: gorm:"-"
     repeated BuyingItem items = 7;
+    // @inject_tag: gorm:"-"
     CouponTicket use_ticket = 8;
     float member_money = 10; // 会员优惠金额
     float limit_discount_money = 11; // 限时活动优惠金额
     float reward_money = 12; // 满减送活动优惠金额
     float coupon_money = 13; // 优惠券优惠金额
+    // @inject_tag: gorm:"-"
     Integral integral = 14; // 积分信息
+    // @inject_tag: gorm:"-"
     OrderFood food = 15; // 餐饮商品信息
 }
 

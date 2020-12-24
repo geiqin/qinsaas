@@ -31,15 +31,16 @@ type FetchWhere struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	Paged    int32   `protobuf:"varint,1,opt,name=paged,proto3" json:"paged,omitempty"`
-	PageSize int32   `protobuf:"varint,2,opt,name=page_size,json=pageSize,proto3" json:"page_size,omitempty"`
-	Sorting  string  `protobuf:"bytes,3,opt,name=sorting,proto3" json:"sorting,omitempty"`
-	Keywords string  `protobuf:"bytes,4,opt,name=keywords,proto3" json:"keywords,omitempty"`
-	Id       int64   `protobuf:"varint,5,opt,name=id,proto3" json:"id,omitempty"`
-	Ids      []int64 `protobuf:"varint,6,rep,packed,name=ids,proto3" json:"ids,omitempty"`
-	Lng      string  `protobuf:"bytes,7,opt,name=lng,proto3" json:"lng,omitempty"`
-	Lat      string  `protobuf:"bytes,8,opt,name=lat,proto3" json:"lat,omitempty"`
-	Name     string  `protobuf:"bytes,9,opt,name=name,proto3" json:"name,omitempty"`
+	Paged    int32  `protobuf:"varint,1,opt,name=paged,proto3" json:"paged"`
+	PageSize int32  `protobuf:"varint,2,opt,name=page_size,json=pageSize,proto3" json:"page_size"`
+	Sorting  string `protobuf:"bytes,3,opt,name=sorting,proto3" json:"sorting"`
+	Keywords string `protobuf:"bytes,4,opt,name=keywords,proto3" json:"keywords"`
+	Id       int64  `protobuf:"varint,5,opt,name=id,proto3" json:"id"`
+	// @inject_tag: gorm:"-"
+	Ids  []int64 `protobuf:"varint,6,rep,packed,name=ids,proto3" json:"ids" gorm:"-"`
+	Lng  string  `protobuf:"bytes,7,opt,name=lng,proto3" json:"lng"`
+	Lat  string  `protobuf:"bytes,8,opt,name=lat,proto3" json:"lat"`
+	Name string  `protobuf:"bytes,9,opt,name=name,proto3" json:"name"`
 }
 
 func (x *FetchWhere) Reset() {
@@ -142,33 +143,39 @@ type Fetch struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	Id                     int64           `protobuf:"varint,1,opt,name=id,proto3" json:"id,omitempty"`
-	Name                   string          `protobuf:"bytes,2,opt,name=name,proto3" json:"name,omitempty"`
-	AreaId                 int64           `protobuf:"varint,3,opt,name=area_id,json=areaId,proto3" json:"area_id,omitempty"`
-	Addr                   string          `protobuf:"bytes,4,opt,name=addr,proto3" json:"addr,omitempty"`
-	Lng                    string          `protobuf:"bytes,5,opt,name=lng,proto3" json:"lng,omitempty"`
-	Lat                    string          `protobuf:"bytes,6,opt,name=lat,proto3" json:"lat,omitempty"`
-	Tel                    string          `protobuf:"bytes,7,opt,name=tel,proto3" json:"tel,omitempty"`
-	Mobile                 string          `protobuf:"bytes,8,opt,name=mobile,proto3" json:"mobile,omitempty"`
-	Reception              string          `protobuf:"bytes,9,opt,name=reception,proto3" json:"reception,omitempty"`
-	ReceptionRepeatWeeks   int32           `protobuf:"varint,10,opt,name=reception_repeat_weeks,json=receptionRepeatWeeks,proto3" json:"reception_repeat_weeks,omitempty"`
-	ReceptionRepeatWeekArr []int32         `protobuf:"varint,11,rep,packed,name=reception_repeat_week_arr,json=receptionRepeatWeekArr,proto3" json:"reception_repeat_week_arr,omitempty"`
-	IsFetchTime            bool            `protobuf:"varint,12,opt,name=is_fetch_time,json=isFetchTime,proto3" json:"is_fetch_time,omitempty"`
-	Fetch                  string          `protobuf:"bytes,13,opt,name=fetch,proto3" json:"fetch,omitempty"`
-	FetchRepeatWeeks       int32           `protobuf:"varint,14,opt,name=fetch_repeat_weeks,json=fetchRepeatWeeks,proto3" json:"fetch_repeat_weeks,omitempty"`
-	FetchRepeatWeekArr     []int32         `protobuf:"varint,15,rep,packed,name=fetch_repeat_week_arr,json=fetchRepeatWeekArr,proto3" json:"fetch_repeat_week_arr,omitempty"`
-	SubFetchTime           string          `protobuf:"bytes,16,opt,name=sub_fetch_time,json=subFetchTime,proto3" json:"sub_fetch_time,omitempty"`
-	Appointment            string          `protobuf:"bytes,17,opt,name=appointment,proto3" json:"appointment,omitempty"`
-	AppointmentNum         int32           `protobuf:"varint,18,opt,name=appointment_num,json=appointmentNum,proto3" json:"appointment_num,omitempty"`
-	MaxAppointmentNum      int32           `protobuf:"varint,19,opt,name=max_appointment_num,json=maxAppointmentNum,proto3" json:"max_appointment_num,omitempty"`
-	Memo                   string          `protobuf:"bytes,20,opt,name=memo,proto3" json:"memo,omitempty"`
-	CreatedAt              string          `protobuf:"bytes,21,opt,name=created_at,json=createdAt,proto3" json:"created_at,omitempty"`
-	UpdatedAt              string          `protobuf:"bytes,22,opt,name=updated_at,json=updatedAt,proto3" json:"updated_at,omitempty"`
-	ReceptionTimes         []*Times        `protobuf:"bytes,23,rep,name=reception_times,json=receptionTimes,proto3" json:"reception_times,omitempty"`
-	FetchTimes             []*Times        `protobuf:"bytes,24,rep,name=fetch_times,json=fetchTimes,proto3" json:"fetch_times,omitempty"`
-	Galleries              []*FetchGallery `protobuf:"bytes,25,rep,name=galleries,proto3" json:"galleries,omitempty"`
-	Area                   *AreaInfo       `protobuf:"bytes,26,opt,name=area,proto3" json:"area,omitempty"`
-	Distance               float32         `protobuf:"fixed32,27,opt,name=distance,proto3" json:"distance,omitempty"`
+	Id                   int64  `protobuf:"varint,1,opt,name=id,proto3" json:"id"`
+	Name                 string `protobuf:"bytes,2,opt,name=name,proto3" json:"name"`
+	AreaId               int64  `protobuf:"varint,3,opt,name=area_id,json=areaId,proto3" json:"area_id"`
+	Addr                 string `protobuf:"bytes,4,opt,name=addr,proto3" json:"addr"`
+	Lng                  string `protobuf:"bytes,5,opt,name=lng,proto3" json:"lng"`
+	Lat                  string `protobuf:"bytes,6,opt,name=lat,proto3" json:"lat"`
+	Tel                  string `protobuf:"bytes,7,opt,name=tel,proto3" json:"tel"`
+	Mobile               string `protobuf:"bytes,8,opt,name=mobile,proto3" json:"mobile"`
+	Reception            string `protobuf:"bytes,9,opt,name=reception,proto3" json:"reception"`
+	ReceptionRepeatWeeks int32  `protobuf:"varint,10,opt,name=reception_repeat_weeks,json=receptionRepeatWeeks,proto3" json:"reception_repeat_weeks"`
+	// @inject_tag: gorm:"-"
+	ReceptionRepeatWeekArr []int32 `protobuf:"varint,11,rep,packed,name=reception_repeat_week_arr,json=receptionRepeatWeekArr,proto3" json:"reception_repeat_week_arr" gorm:"-"`
+	IsFetchTime            bool    `protobuf:"varint,12,opt,name=is_fetch_time,json=isFetchTime,proto3" json:"is_fetch_time"`
+	Fetch                  string  `protobuf:"bytes,13,opt,name=fetch,proto3" json:"fetch"`
+	FetchRepeatWeeks       int32   `protobuf:"varint,14,opt,name=fetch_repeat_weeks,json=fetchRepeatWeeks,proto3" json:"fetch_repeat_weeks"`
+	// @inject_tag: gorm:"-"
+	FetchRepeatWeekArr []int32 `protobuf:"varint,15,rep,packed,name=fetch_repeat_week_arr,json=fetchRepeatWeekArr,proto3" json:"fetch_repeat_week_arr" gorm:"-"`
+	SubFetchTime       string  `protobuf:"bytes,16,opt,name=sub_fetch_time,json=subFetchTime,proto3" json:"sub_fetch_time"`
+	Appointment        string  `protobuf:"bytes,17,opt,name=appointment,proto3" json:"appointment"`
+	AppointmentNum     int32   `protobuf:"varint,18,opt,name=appointment_num,json=appointmentNum,proto3" json:"appointment_num"`
+	MaxAppointmentNum  int32   `protobuf:"varint,19,opt,name=max_appointment_num,json=maxAppointmentNum,proto3" json:"max_appointment_num"`
+	Memo               string  `protobuf:"bytes,20,opt,name=memo,proto3" json:"memo"`
+	CreatedAt          string  `protobuf:"bytes,21,opt,name=created_at,json=createdAt,proto3" json:"created_at"`
+	UpdatedAt          string  `protobuf:"bytes,22,opt,name=updated_at,json=updatedAt,proto3" json:"updated_at"`
+	// @inject_tag: gorm:"-"
+	ReceptionTimes []*Times `protobuf:"bytes,23,rep,name=reception_times,json=receptionTimes,proto3" json:"reception_times" gorm:"-"`
+	// @inject_tag: gorm:"-"
+	FetchTimes []*Times `protobuf:"bytes,24,rep,name=fetch_times,json=fetchTimes,proto3" json:"fetch_times" gorm:"-"`
+	// @inject_tag: gorm:"foreignKey:FetchId"
+	Galleries []*FetchGallery `protobuf:"bytes,25,rep,name=galleries,proto3" json:"galleries" gorm:"foreignKey:FetchId"`
+	// @inject_tag: gorm:"-"
+	Area     *AreaInfo `protobuf:"bytes,26,opt,name=area,proto3" json:"area" gorm:"-"`
+	Distance float32   `protobuf:"fixed32,27,opt,name=distance,proto3" json:"distance"`
 }
 
 func (x *Fetch) Reset() {
@@ -397,11 +404,11 @@ type FetchResponse struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	Entity *Fetch        `protobuf:"bytes,1,opt,name=entity,proto3" json:"entity,omitempty"`
-	Pager  *common.Pager `protobuf:"bytes,2,opt,name=pager,proto3" json:"pager,omitempty"`
-	Items  []*Fetch      `protobuf:"bytes,3,rep,name=items,proto3" json:"items,omitempty"`
-	Error  *common.Error `protobuf:"bytes,4,opt,name=error,proto3" json:"error,omitempty"`
-	Info   *common.Info  `protobuf:"bytes,5,opt,name=info,proto3" json:"info,omitempty"`
+	Entity *Fetch        `protobuf:"bytes,1,opt,name=entity,proto3" json:"entity"`
+	Pager  *common.Pager `protobuf:"bytes,2,opt,name=pager,proto3" json:"pager"`
+	Items  []*Fetch      `protobuf:"bytes,3,rep,name=items,proto3" json:"items"`
+	Error  *common.Error `protobuf:"bytes,4,opt,name=error,proto3" json:"error"`
+	Info   *common.Info  `protobuf:"bytes,5,opt,name=info,proto3" json:"info"`
 }
 
 func (x *FetchResponse) Reset() {

@@ -17,6 +17,7 @@ message RoomKeepWhere {
     string date = 5;
     string start_date = 6;
     string end_date = 7;
+    // @inject_tag: gorm:"-"
     repeated int64 room_type_ids = 8;
 }
 
@@ -33,6 +34,7 @@ message RoomKeep {
     string memo = 10;
     string created_at = 11;
     string updated_at = 12;
+    // @inject_tag: gorm:"-"
     repeated int64 room_type_ids = 13;
 }
 

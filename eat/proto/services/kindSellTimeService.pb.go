@@ -30,10 +30,10 @@ type KindSellTime struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	Id        int64  `protobuf:"varint,1,opt,name=id,proto3" json:"id,omitempty"`
-	KindId    int64  `protobuf:"varint,2,opt,name=kind_id,json=kindId,proto3" json:"kind_id,omitempty"`
-	StartTime string `protobuf:"bytes,3,opt,name=start_time,json=startTime,proto3" json:"start_time,omitempty"`
-	EndTime   string `protobuf:"bytes,4,opt,name=end_time,json=endTime,proto3" json:"end_time,omitempty"`
+	Id        int64  `protobuf:"varint,1,opt,name=id,proto3" json:"id"`
+	KindId    int64  `protobuf:"varint,2,opt,name=kind_id,json=kindId,proto3" json:"kind_id"`
+	StartTime string `protobuf:"bytes,3,opt,name=start_time,json=startTime,proto3" json:"start_time"`
+	EndTime   string `protobuf:"bytes,4,opt,name=end_time,json=endTime,proto3" json:"end_time"`
 }
 
 func (x *KindSellTime) Reset() {

@@ -31,12 +31,13 @@ type RoomTypeFacilityCat struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	Id int32 `protobuf:"varint,1,opt,name=id,proto3" json:"id,omitempty"`
+	Id int32 `protobuf:"varint,1,opt,name=id,proto3" json:"id"`
 	// @inject_tag: validate:"required" label:"服务类型名称"
-	Name      string              `protobuf:"bytes,2,opt,name=name,proto3" json:"name,omitempty" validate:"required" label:"服务类型名称"`
-	CreatedAt string              `protobuf:"bytes,3,opt,name=created_at,json=createdAt,proto3" json:"created_at,omitempty"`
-	UpdatedAt string              `protobuf:"bytes,4,opt,name=updated_at,json=updatedAt,proto3" json:"updated_at,omitempty"`
-	Items     []*RoomTypeFacility `protobuf:"bytes,5,rep,name=items,proto3" json:"items,omitempty"`
+	Name      string `protobuf:"bytes,2,opt,name=name,proto3" json:"name" validate:"required" label:"服务类型名称"`
+	CreatedAt string `protobuf:"bytes,3,opt,name=created_at,json=createdAt,proto3" json:"created_at"`
+	UpdatedAt string `protobuf:"bytes,4,opt,name=updated_at,json=updatedAt,proto3" json:"updated_at"`
+	// @inject_tag: gorm:"foreignKey:RoomTypeFacilityCatId"
+	Items []*RoomTypeFacility `protobuf:"bytes,5,rep,name=items,proto3" json:"items" gorm:"foreignKey:RoomTypeFacilityCatId"`
 }
 
 func (x *RoomTypeFacilityCat) Reset() {
@@ -111,12 +112,13 @@ type RoomTypeFacilityCatWhere struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	Paged    int32   `protobuf:"varint,1,opt,name=paged,proto3" json:"paged,omitempty"`
-	PageSize int32   `protobuf:"varint,2,opt,name=page_size,json=pageSize,proto3" json:"page_size,omitempty"`
-	Top      int32   `protobuf:"varint,3,opt,name=top,proto3" json:"top,omitempty"`
-	Keywords string  `protobuf:"bytes,4,opt,name=keywords,proto3" json:"keywords,omitempty"`
-	Id       int32   `protobuf:"varint,5,opt,name=id,proto3" json:"id,omitempty"`
-	Ids      []int32 `protobuf:"varint,6,rep,packed,name=ids,proto3" json:"ids,omitempty"`
+	Paged    int32  `protobuf:"varint,1,opt,name=paged,proto3" json:"paged"`
+	PageSize int32  `protobuf:"varint,2,opt,name=page_size,json=pageSize,proto3" json:"page_size"`
+	Top      int32  `protobuf:"varint,3,opt,name=top,proto3" json:"top"`
+	Keywords string `protobuf:"bytes,4,opt,name=keywords,proto3" json:"keywords"`
+	Id       int32  `protobuf:"varint,5,opt,name=id,proto3" json:"id"`
+	// @inject_tag: gorm:"-"
+	Ids []int32 `protobuf:"varint,6,rep,packed,name=ids,proto3" json:"ids" gorm:"-"`
 }
 
 func (x *RoomTypeFacilityCatWhere) Reset() {
@@ -198,11 +200,11 @@ type RoomTypeFacilityCatResponse struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	Error  *common.Error          `protobuf:"bytes,1,opt,name=error,proto3" json:"error,omitempty"`
-	Info   *common.Info           `protobuf:"bytes,2,opt,name=info,proto3" json:"info,omitempty"`
-	Pager  *common.Pager          `protobuf:"bytes,3,opt,name=pager,proto3" json:"pager,omitempty"`
-	Entity *RoomTypeFacilityCat   `protobuf:"bytes,4,opt,name=entity,proto3" json:"entity,omitempty"`
-	Items  []*RoomTypeFacilityCat `protobuf:"bytes,5,rep,name=items,proto3" json:"items,omitempty"`
+	Error  *common.Error          `protobuf:"bytes,1,opt,name=error,proto3" json:"error"`
+	Info   *common.Info           `protobuf:"bytes,2,opt,name=info,proto3" json:"info"`
+	Pager  *common.Pager          `protobuf:"bytes,3,opt,name=pager,proto3" json:"pager"`
+	Entity *RoomTypeFacilityCat   `protobuf:"bytes,4,opt,name=entity,proto3" json:"entity"`
+	Items  []*RoomTypeFacilityCat `protobuf:"bytes,5,rep,name=items,proto3" json:"items"`
 }
 
 func (x *RoomTypeFacilityCatResponse) Reset() {

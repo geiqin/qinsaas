@@ -20,6 +20,7 @@ message TableWhere {
     int32 page_size = 2;
     int32 top = 3;
     int64 id = 4;
+    // @inject_tag: gorm:"-"
     repeated int64 ids = 5;
     int32 status = 6;
     string keywords = 7;

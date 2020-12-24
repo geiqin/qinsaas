@@ -31,18 +31,18 @@ type CreditRecord struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	Id         int64   `protobuf:"varint,1,opt,name=id,proto3" json:"id,omitempty"`
-	CreditId   int64   `protobuf:"varint,2,opt,name=credit_id,json=creditId,proto3" json:"credit_id,omitempty"`
-	CustomerId int64   `protobuf:"varint,3,opt,name=customer_id,json=customerId,proto3" json:"customer_id,omitempty"`
-	Direction  string  `protobuf:"bytes,4,opt,name=direction,proto3" json:"direction,omitempty"`
-	Amount     float32 `protobuf:"fixed32,5,opt,name=amount,proto3" json:"amount,omitempty"`
-	Type       int32   `protobuf:"varint,6,opt,name=type,proto3" json:"type,omitempty"`
-	OrderId    int64   `protobuf:"varint,7,opt,name=order_id,json=orderId,proto3" json:"order_id,omitempty"`
-	OrderSn    string  `protobuf:"bytes,8,opt,name=order_sn,json=orderSn,proto3" json:"order_sn,omitempty"`
-	Balance    float32 `protobuf:"fixed32,9,opt,name=balance,proto3" json:"balance,omitempty"`
-	Memo       string  `protobuf:"bytes,10,opt,name=memo,proto3" json:"memo,omitempty"`
-	CreatedAt  string  `protobuf:"bytes,11,opt,name=created_at,json=createdAt,proto3" json:"created_at,omitempty"`
-	UpdatedAt  string  `protobuf:"bytes,12,opt,name=updated_at,json=updatedAt,proto3" json:"updated_at,omitempty"`
+	Id         int64   `protobuf:"varint,1,opt,name=id,proto3" json:"id"`
+	CreditId   int64   `protobuf:"varint,2,opt,name=credit_id,json=creditId,proto3" json:"credit_id"`
+	CustomerId int64   `protobuf:"varint,3,opt,name=customer_id,json=customerId,proto3" json:"customer_id"`
+	Direction  string  `protobuf:"bytes,4,opt,name=direction,proto3" json:"direction"`
+	Amount     float32 `protobuf:"fixed32,5,opt,name=amount,proto3" json:"amount"`
+	Type       int32   `protobuf:"varint,6,opt,name=type,proto3" json:"type"`
+	OrderId    int64   `protobuf:"varint,7,opt,name=order_id,json=orderId,proto3" json:"order_id"`
+	OrderSn    string  `protobuf:"bytes,8,opt,name=order_sn,json=orderSn,proto3" json:"order_sn"`
+	Balance    float32 `protobuf:"fixed32,9,opt,name=balance,proto3" json:"balance"`
+	Memo       string  `protobuf:"bytes,10,opt,name=memo,proto3" json:"memo"`
+	CreatedAt  string  `protobuf:"bytes,11,opt,name=created_at,json=createdAt,proto3" json:"created_at"`
+	UpdatedAt  string  `protobuf:"bytes,12,opt,name=updated_at,json=updatedAt,proto3" json:"updated_at"`
 }
 
 func (x *CreditRecord) Reset() {
@@ -167,13 +167,13 @@ type CreditRecordWhere struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	Paged    int32 `protobuf:"varint,1,opt,name=paged,proto3" json:"paged,omitempty"`
-	PageSize int32 `protobuf:"varint,2,opt,name=page_size,json=pageSize,proto3" json:"page_size,omitempty"`
+	Paged    int32 `protobuf:"varint,1,opt,name=paged,proto3" json:"paged"`
+	PageSize int32 `protobuf:"varint,2,opt,name=page_size,json=pageSize,proto3" json:"page_size"`
 	//以下为自定义参数
-	CustomerId int64  `protobuf:"varint,3,opt,name=customer_id,json=customerId,proto3" json:"customer_id,omitempty"`
-	CustomerSn string `protobuf:"bytes,4,opt,name=customer_sn,json=customerSn,proto3" json:"customer_sn,omitempty"`
-	Name       string `protobuf:"bytes,5,opt,name=name,proto3" json:"name,omitempty"`
-	Mobile     string `protobuf:"bytes,6,opt,name=mobile,proto3" json:"mobile,omitempty"`
+	CustomerId int64  `protobuf:"varint,3,opt,name=customer_id,json=customerId,proto3" json:"customer_id"`
+	CustomerSn string `protobuf:"bytes,4,opt,name=customer_sn,json=customerSn,proto3" json:"customer_sn"`
+	Name       string `protobuf:"bytes,5,opt,name=name,proto3" json:"name"`
+	Mobile     string `protobuf:"bytes,6,opt,name=mobile,proto3" json:"mobile"`
 }
 
 func (x *CreditRecordWhere) Reset() {
@@ -256,11 +256,11 @@ type CreditRecordResponse struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	Entity *CreditRecord   `protobuf:"bytes,1,opt,name=entity,proto3" json:"entity,omitempty"`
-	Pager  *common.Pager   `protobuf:"bytes,2,opt,name=pager,proto3" json:"pager,omitempty"`
-	Items  []*CreditRecord `protobuf:"bytes,3,rep,name=items,proto3" json:"items,omitempty"`
-	Error  *common.Error   `protobuf:"bytes,4,opt,name=error,proto3" json:"error,omitempty"`
-	Info   *common.Info    `protobuf:"bytes,5,opt,name=info,proto3" json:"info,omitempty"`
+	Entity *CreditRecord   `protobuf:"bytes,1,opt,name=entity,proto3" json:"entity"`
+	Pager  *common.Pager   `protobuf:"bytes,2,opt,name=pager,proto3" json:"pager"`
+	Items  []*CreditRecord `protobuf:"bytes,3,rep,name=items,proto3" json:"items"`
+	Error  *common.Error   `protobuf:"bytes,4,opt,name=error,proto3" json:"error"`
+	Info   *common.Info    `protobuf:"bytes,5,opt,name=info,proto3" json:"info"`
 }
 
 func (x *CreditRecordResponse) Reset() {

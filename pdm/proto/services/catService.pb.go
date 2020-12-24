@@ -31,18 +31,19 @@ type Cat struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	Id        int32  `protobuf:"varint,1,opt,name=id,proto3" json:"id,omitempty"`
-	Slug      string `protobuf:"bytes,2,opt,name=slug,proto3" json:"slug,omitempty"`
-	Name      string `protobuf:"bytes,3,opt,name=name,proto3" json:"name,omitempty"`
-	CatId     int32  `protobuf:"varint,4,opt,name=cat_id,json=catId,proto3" json:"cat_id,omitempty"`
-	Depth     int32  `protobuf:"varint,5,opt,name=depth,proto3" json:"depth,omitempty"`
-	MediaId   int64  `protobuf:"varint,6,opt,name=media_id,json=mediaId,proto3" json:"media_id,omitempty"`
-	MediaUrl  string `protobuf:"bytes,7,opt,name=media_url,json=mediaUrl,proto3" json:"media_url,omitempty"`
-	Memo      string `protobuf:"bytes,8,opt,name=memo,proto3" json:"memo,omitempty"`
-	Sorting   int32  `protobuf:"varint,9,opt,name=sorting,proto3" json:"sorting,omitempty"`
-	CreatedAt string `protobuf:"bytes,10,opt,name=created_at,json=createdAt,proto3" json:"created_at,omitempty"`
-	UpdatedAt string `protobuf:"bytes,11,opt,name=updated_at,json=updatedAt,proto3" json:"updated_at,omitempty"`
-	Children  []*Cat `protobuf:"bytes,12,rep,name=children,proto3" json:"children,omitempty"`
+	Id        int32  `protobuf:"varint,1,opt,name=id,proto3" json:"id"`
+	Slug      string `protobuf:"bytes,2,opt,name=slug,proto3" json:"slug"`
+	Name      string `protobuf:"bytes,3,opt,name=name,proto3" json:"name"`
+	CatId     int32  `protobuf:"varint,4,opt,name=cat_id,json=catId,proto3" json:"cat_id"`
+	Depth     int32  `protobuf:"varint,5,opt,name=depth,proto3" json:"depth"`
+	MediaId   int64  `protobuf:"varint,6,opt,name=media_id,json=mediaId,proto3" json:"media_id"`
+	MediaUrl  string `protobuf:"bytes,7,opt,name=media_url,json=mediaUrl,proto3" json:"media_url"`
+	Memo      string `protobuf:"bytes,8,opt,name=memo,proto3" json:"memo"`
+	Sorting   int32  `protobuf:"varint,9,opt,name=sorting,proto3" json:"sorting"`
+	CreatedAt string `protobuf:"bytes,10,opt,name=created_at,json=createdAt,proto3" json:"created_at"`
+	UpdatedAt string `protobuf:"bytes,11,opt,name=updated_at,json=updatedAt,proto3" json:"updated_at"`
+	// @inject_tag: gorm:"foreignKey:CatId"
+	Children []*Cat `protobuf:"bytes,12,rep,name=children,proto3" json:"children" gorm:"foreignKey:CatId"`
 }
 
 func (x *Cat) Reset() {
@@ -166,11 +167,11 @@ type CatResponse struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	Entity *Cat          `protobuf:"bytes,1,opt,name=entity,proto3" json:"entity,omitempty"`
-	Pager  *common.Pager `protobuf:"bytes,2,opt,name=pager,proto3" json:"pager,omitempty"`
-	Items  []*Cat        `protobuf:"bytes,3,rep,name=items,proto3" json:"items,omitempty"`
-	Error  *common.Error `protobuf:"bytes,4,opt,name=error,proto3" json:"error,omitempty"`
-	Info   *common.Info  `protobuf:"bytes,5,opt,name=info,proto3" json:"info,omitempty"`
+	Entity *Cat          `protobuf:"bytes,1,opt,name=entity,proto3" json:"entity"`
+	Pager  *common.Pager `protobuf:"bytes,2,opt,name=pager,proto3" json:"pager"`
+	Items  []*Cat        `protobuf:"bytes,3,rep,name=items,proto3" json:"items"`
+	Error  *common.Error `protobuf:"bytes,4,opt,name=error,proto3" json:"error"`
+	Info   *common.Info  `protobuf:"bytes,5,opt,name=info,proto3" json:"info"`
 }
 
 func (x *CatResponse) Reset() {

@@ -25,8 +25,10 @@ message TeamWhere {
     string keywords = 6;
     repeated int64 ids = 7;
     int64 distributor_id = 8;
+    // @inject_tag: gorm:"-"
     repeated int64 distributor_ids = 9;
     int64 leader_id = 10;
+    // @inject_tag: gorm:"-"
     repeated int64 leader_ids = 11;
 }
 
@@ -34,6 +36,7 @@ message TeamBasic {
     int64 id = 1;
     int64 distributor_id = 2;
     int64 leader_id = 3;
+    // @inject_tag: gorm:"-"
     Distributor distributor = 4;
     string created_at = 5;
     string updated_at = 6;

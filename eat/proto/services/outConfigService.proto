@@ -29,7 +29,9 @@ message OutConfig {
     bool is_cash_out_pay = 17;
     string created_at = 18;
     string updated_at = 19;
+    // @inject_tag: gorm:"-"
     repeated  TimeConfig open_times = 20;
+    // @inject_tag: gorm:"-"
     repeated  TimeConfig self_take_times = 21;
 }
 

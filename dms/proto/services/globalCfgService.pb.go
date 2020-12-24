@@ -31,30 +31,31 @@ type GlobalCfg struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	Id                      int64            `protobuf:"varint,1,opt,name=id,proto3" json:"id,omitempty"`
-	Name                    string           `protobuf:"bytes,2,opt,name=name,proto3" json:"name,omitempty"`
-	ShareId                 int64            `protobuf:"varint,3,opt,name=share_id,json=shareId,proto3" json:"share_id,omitempty"`
-	ShareUrl                string           `protobuf:"bytes,4,opt,name=share_url,json=shareUrl,proto3" json:"share_url,omitempty"`
-	Mode                    int32            `protobuf:"varint,5,opt,name=mode,proto3" json:"mode,omitempty"`
-	SettleMethod            int32            `protobuf:"varint,6,opt,name=settle_method,json=settleMethod,proto3" json:"settle_method,omitempty"`
-	IsRecruit               bool             `protobuf:"varint,7,opt,name=is_recruit,json=isRecruit,proto3" json:"is_recruit,omitempty"`
-	IsChecked               bool             `protobuf:"varint,8,opt,name=is_checked,json=isChecked,proto3" json:"is_checked,omitempty"`
-	IsInnerBuy              bool             `protobuf:"varint,9,opt,name=is_inner_buy,json=isInnerBuy,proto3" json:"is_inner_buy,omitempty"`
-	IsCommissionDisplay     bool             `protobuf:"varint,10,opt,name=is_commission_display,json=isCommissionDisplay,proto3" json:"is_commission_display,omitempty"`
-	IsCommissionRateDisplay bool             `protobuf:"varint,11,opt,name=is_commission_rate_display,json=isCommissionRateDisplay,proto3" json:"is_commission_rate_display,omitempty"`
-	AutoUpgrade             bool             `protobuf:"varint,12,opt,name=auto_upgrade,json=autoUpgrade,proto3" json:"auto_upgrade,omitempty"`
-	RelateExpire            int32            `protobuf:"varint,13,opt,name=relate_expire,json=relateExpire,proto3" json:"relate_expire,omitempty"`
-	RelateRob               int32            `protobuf:"varint,14,opt,name=relate_rob,json=relateRob,proto3" json:"relate_rob,omitempty"`
-	RelateProtectDays       int32            `protobuf:"varint,15,opt,name=relate_protect_days,json=relateProtectDays,proto3" json:"relate_protect_days,omitempty"`
-	IsInnerRelate           bool             `protobuf:"varint,16,opt,name=is_inner_relate,json=isInnerRelate,proto3" json:"is_inner_relate,omitempty"`
-	IsBonusSame             bool             `protobuf:"varint,17,opt,name=is_bonus_same,json=isBonusSame,proto3" json:"is_bonus_same,omitempty"`
-	IsOpenPoster            bool             `protobuf:"varint,18,opt,name=is_open_poster,json=isOpenPoster,proto3" json:"is_open_poster,omitempty"`
-	PosterShareUrl          string           `protobuf:"bytes,19,opt,name=poster_share_url,json=posterShareUrl,proto3" json:"poster_share_url,omitempty"`
-	PosterType              int32            `protobuf:"varint,20,opt,name=poster_type,json=posterType,proto3" json:"poster_type,omitempty"`
-	PosterImgId             int64            `protobuf:"varint,21,opt,name=poster_img_id,json=posterImgId,proto3" json:"poster_img_id,omitempty"`
-	PosterImgUrl            string           `protobuf:"bytes,22,opt,name=poster_img_url,json=posterImgUrl,proto3" json:"poster_img_url,omitempty"`
-	PosterShareContent      string           `protobuf:"bytes,23,opt,name=poster_share_content,json=posterShareContent,proto3" json:"poster_share_content,omitempty"`
-	PosterGalleries         []*PosterGallery `protobuf:"bytes,24,rep,name=poster_galleries,json=posterGalleries,proto3" json:"poster_galleries,omitempty"`
+	Id                      int64  `protobuf:"varint,1,opt,name=id,proto3" json:"id"`
+	Name                    string `protobuf:"bytes,2,opt,name=name,proto3" json:"name"`
+	ShareId                 int64  `protobuf:"varint,3,opt,name=share_id,json=shareId,proto3" json:"share_id"`
+	ShareUrl                string `protobuf:"bytes,4,opt,name=share_url,json=shareUrl,proto3" json:"share_url"`
+	Mode                    int32  `protobuf:"varint,5,opt,name=mode,proto3" json:"mode"`
+	SettleMethod            int32  `protobuf:"varint,6,opt,name=settle_method,json=settleMethod,proto3" json:"settle_method"`
+	IsRecruit               bool   `protobuf:"varint,7,opt,name=is_recruit,json=isRecruit,proto3" json:"is_recruit"`
+	IsChecked               bool   `protobuf:"varint,8,opt,name=is_checked,json=isChecked,proto3" json:"is_checked"`
+	IsInnerBuy              bool   `protobuf:"varint,9,opt,name=is_inner_buy,json=isInnerBuy,proto3" json:"is_inner_buy"`
+	IsCommissionDisplay     bool   `protobuf:"varint,10,opt,name=is_commission_display,json=isCommissionDisplay,proto3" json:"is_commission_display"`
+	IsCommissionRateDisplay bool   `protobuf:"varint,11,opt,name=is_commission_rate_display,json=isCommissionRateDisplay,proto3" json:"is_commission_rate_display"`
+	AutoUpgrade             bool   `protobuf:"varint,12,opt,name=auto_upgrade,json=autoUpgrade,proto3" json:"auto_upgrade"`
+	RelateExpire            int32  `protobuf:"varint,13,opt,name=relate_expire,json=relateExpire,proto3" json:"relate_expire"`
+	RelateRob               int32  `protobuf:"varint,14,opt,name=relate_rob,json=relateRob,proto3" json:"relate_rob"`
+	RelateProtectDays       int32  `protobuf:"varint,15,opt,name=relate_protect_days,json=relateProtectDays,proto3" json:"relate_protect_days"`
+	IsInnerRelate           bool   `protobuf:"varint,16,opt,name=is_inner_relate,json=isInnerRelate,proto3" json:"is_inner_relate"`
+	IsBonusSame             bool   `protobuf:"varint,17,opt,name=is_bonus_same,json=isBonusSame,proto3" json:"is_bonus_same"`
+	IsOpenPoster            bool   `protobuf:"varint,18,opt,name=is_open_poster,json=isOpenPoster,proto3" json:"is_open_poster"`
+	PosterShareUrl          string `protobuf:"bytes,19,opt,name=poster_share_url,json=posterShareUrl,proto3" json:"poster_share_url"`
+	PosterType              int32  `protobuf:"varint,20,opt,name=poster_type,json=posterType,proto3" json:"poster_type"`
+	PosterImgId             int64  `protobuf:"varint,21,opt,name=poster_img_id,json=posterImgId,proto3" json:"poster_img_id"`
+	PosterImgUrl            string `protobuf:"bytes,22,opt,name=poster_img_url,json=posterImgUrl,proto3" json:"poster_img_url"`
+	PosterShareContent      string `protobuf:"bytes,23,opt,name=poster_share_content,json=posterShareContent,proto3" json:"poster_share_content"`
+	// @inject_tag: gorm:"-"
+	PosterGalleries []*PosterGallery `protobuf:"bytes,24,rep,name=poster_galleries,json=posterGalleries,proto3" json:"poster_galleries" gorm:"-"`
 }
 
 func (x *GlobalCfg) Reset() {
@@ -262,11 +263,11 @@ type GlobalCfgResponse struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	Entity *GlobalCfg    `protobuf:"bytes,1,opt,name=entity,proto3" json:"entity,omitempty"`
-	Pager  *common.Pager `protobuf:"bytes,2,opt,name=pager,proto3" json:"pager,omitempty"`
-	Items  []*GlobalCfg  `protobuf:"bytes,3,rep,name=items,proto3" json:"items,omitempty"`
-	Error  *common.Error `protobuf:"bytes,4,opt,name=error,proto3" json:"error,omitempty"`
-	Info   *common.Info  `protobuf:"bytes,5,opt,name=info,proto3" json:"info,omitempty"`
+	Entity *GlobalCfg    `protobuf:"bytes,1,opt,name=entity,proto3" json:"entity"`
+	Pager  *common.Pager `protobuf:"bytes,2,opt,name=pager,proto3" json:"pager"`
+	Items  []*GlobalCfg  `protobuf:"bytes,3,rep,name=items,proto3" json:"items"`
+	Error  *common.Error `protobuf:"bytes,4,opt,name=error,proto3" json:"error"`
+	Info   *common.Info  `protobuf:"bytes,5,opt,name=info,proto3" json:"info"`
 }
 
 func (x *GlobalCfgResponse) Reset() {

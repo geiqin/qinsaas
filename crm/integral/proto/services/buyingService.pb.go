@@ -32,15 +32,16 @@ type Buying struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	Total              float32       `protobuf:"fixed32,1,opt,name=total,proto3" json:"total,omitempty"`
-	Count              int32         `protobuf:"varint,2,opt,name=count,proto3" json:"count,omitempty"`
-	Freight            float32       `protobuf:"fixed32,3,opt,name=freight,proto3" json:"freight,omitempty"`                                                  // 运费
-	Amount             float32       `protobuf:"fixed32,4,opt,name=amount,proto3" json:"amount,omitempty"`                                                    // 实际支付金额(包含运费)
-	Points             int32         `protobuf:"varint,5,opt,name=points,proto3" json:"points,omitempty"`                                                     // 用户可用的积分
-	CashExchangeMoney  float32       `protobuf:"fixed32,6,opt,name=cash_exchange_money,json=cashExchangeMoney,proto3" json:"cash_exchange_money,omitempty"`   // 抵现金额
-	CashExchangePoints int32         `protobuf:"varint,7,opt,name=cash_exchange_points,json=cashExchangePoints,proto3" json:"cash_exchange_points,omitempty"` // 抵现的积分
-	IntegralName       string        `protobuf:"bytes,8,opt,name=integral_name,json=integralName,proto3" json:"integral_name,omitempty"`                      // 积分显示的名称
-	Items              []*BuyingItem `protobuf:"bytes,9,rep,name=items,proto3" json:"items,omitempty"`
+	Total              float32 `protobuf:"fixed32,1,opt,name=total,proto3" json:"total"`
+	Count              int32   `protobuf:"varint,2,opt,name=count,proto3" json:"count"`
+	Freight            float32 `protobuf:"fixed32,3,opt,name=freight,proto3" json:"freight"`                                                  // 运费
+	Amount             float32 `protobuf:"fixed32,4,opt,name=amount,proto3" json:"amount"`                                                    // 实际支付金额(包含运费)
+	Points             int32   `protobuf:"varint,5,opt,name=points,proto3" json:"points"`                                                     // 用户可用的积分
+	CashExchangeMoney  float32 `protobuf:"fixed32,6,opt,name=cash_exchange_money,json=cashExchangeMoney,proto3" json:"cash_exchange_money"`   // 抵现金额
+	CashExchangePoints int32   `protobuf:"varint,7,opt,name=cash_exchange_points,json=cashExchangePoints,proto3" json:"cash_exchange_points"` // 抵现的积分
+	IntegralName       string  `protobuf:"bytes,8,opt,name=integral_name,json=integralName,proto3" json:"integral_name"`                      // 积分显示的名称
+	// @inject_tag: gorm:"-"
+	Items []*BuyingItem `protobuf:"bytes,9,rep,name=items,proto3" json:"items" gorm:"-"`
 }
 
 func (x *Buying) Reset() {
@@ -144,12 +145,12 @@ type BuyingItem struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	ItemId      int64   `protobuf:"varint,1,opt,name=item_id,json=itemId,proto3" json:"item_id,omitempty"`
-	SkuId       int64   `protobuf:"varint,2,opt,name=sku_id,json=skuId,proto3" json:"sku_id,omitempty"`
-	Num         int32   `protobuf:"varint,3,opt,name=num,proto3" json:"num,omitempty"`
-	Price       float32 `protobuf:"fixed32,4,opt,name=price,proto3" json:"price,omitempty"`
-	OriginPrice float32 `protobuf:"fixed32,5,opt,name=origin_price,json=originPrice,proto3" json:"origin_price,omitempty"`
-	SubTotal    float32 `protobuf:"fixed32,6,opt,name=sub_total,json=subTotal,proto3" json:"sub_total,omitempty"`
+	ItemId      int64   `protobuf:"varint,1,opt,name=item_id,json=itemId,proto3" json:"item_id"`
+	SkuId       int64   `protobuf:"varint,2,opt,name=sku_id,json=skuId,proto3" json:"sku_id"`
+	Num         int32   `protobuf:"varint,3,opt,name=num,proto3" json:"num"`
+	Price       float32 `protobuf:"fixed32,4,opt,name=price,proto3" json:"price"`
+	OriginPrice float32 `protobuf:"fixed32,5,opt,name=origin_price,json=originPrice,proto3" json:"origin_price"`
+	SubTotal    float32 `protobuf:"fixed32,6,opt,name=sub_total,json=subTotal,proto3" json:"sub_total"`
 }
 
 func (x *BuyingItem) Reset() {
@@ -231,11 +232,11 @@ type BuyingResponse struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	Entity *Buying       `protobuf:"bytes,1,opt,name=entity,proto3" json:"entity,omitempty"`
-	Pager  *common.Pager `protobuf:"bytes,2,opt,name=pager,proto3" json:"pager,omitempty"`
-	Items  []*Buying     `protobuf:"bytes,3,rep,name=items,proto3" json:"items,omitempty"`
-	Error  *common.Error `protobuf:"bytes,4,opt,name=error,proto3" json:"error,omitempty"`
-	Info   *common.Info  `protobuf:"bytes,5,opt,name=info,proto3" json:"info,omitempty"`
+	Entity *Buying       `protobuf:"bytes,1,opt,name=entity,proto3" json:"entity"`
+	Pager  *common.Pager `protobuf:"bytes,2,opt,name=pager,proto3" json:"pager"`
+	Items  []*Buying     `protobuf:"bytes,3,rep,name=items,proto3" json:"items"`
+	Error  *common.Error `protobuf:"bytes,4,opt,name=error,proto3" json:"error"`
+	Info   *common.Info  `protobuf:"bytes,5,opt,name=info,proto3" json:"info"`
 }
 
 func (x *BuyingResponse) Reset() {

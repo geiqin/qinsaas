@@ -31,13 +31,13 @@ type WithdrawCfg struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	Id               int64   `protobuf:"varint,1,opt,name=id,proto3" json:"id,omitempty"`
-	MinMoney         float32 `protobuf:"fixed32,2,opt,name=min_money,json=minMoney,proto3" json:"min_money,omitempty"`                           //单笔最小提现金额
-	MaxMoney         float32 `protobuf:"fixed32,3,opt,name=max_money,json=maxMoney,proto3" json:"max_money,omitempty"`                           //单笔最大提现金额
-	ServiceMoneyRate float32 `protobuf:"fixed32,4,opt,name=service_money_rate,json=serviceMoneyRate,proto3" json:"service_money_rate,omitempty"` //提现手续费比例
-	MinServiceMoney  float32 `protobuf:"fixed32,5,opt,name=min_service_money,json=minServiceMoney,proto3" json:"min_service_money,omitempty"`    //单笔最低收取的提现手续费
-	CreatedAt        string  `protobuf:"bytes,6,opt,name=created_at,json=createdAt,proto3" json:"created_at,omitempty"`
-	UpdatedAt        string  `protobuf:"bytes,7,opt,name=updated_at,json=updatedAt,proto3" json:"updated_at,omitempty"`
+	Id               int64   `protobuf:"varint,1,opt,name=id,proto3" json:"id"`
+	MinMoney         float32 `protobuf:"fixed32,2,opt,name=min_money,json=minMoney,proto3" json:"min_money"`                           //单笔最小提现金额
+	MaxMoney         float32 `protobuf:"fixed32,3,opt,name=max_money,json=maxMoney,proto3" json:"max_money"`                           //单笔最大提现金额
+	ServiceMoneyRate float32 `protobuf:"fixed32,4,opt,name=service_money_rate,json=serviceMoneyRate,proto3" json:"service_money_rate"` //提现手续费比例
+	MinServiceMoney  float32 `protobuf:"fixed32,5,opt,name=min_service_money,json=minServiceMoney,proto3" json:"min_service_money"`    //单笔最低收取的提现手续费
+	CreatedAt        string  `protobuf:"bytes,6,opt,name=created_at,json=createdAt,proto3" json:"created_at"`
+	UpdatedAt        string  `protobuf:"bytes,7,opt,name=updated_at,json=updatedAt,proto3" json:"updated_at"`
 }
 
 func (x *WithdrawCfg) Reset() {
@@ -126,11 +126,11 @@ type WithdrawCfgResponse struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	Entity *WithdrawCfg   `protobuf:"bytes,1,opt,name=entity,proto3" json:"entity,omitempty"`
-	Pager  *common.Pager  `protobuf:"bytes,2,opt,name=pager,proto3" json:"pager,omitempty"`
-	Items  []*WithdrawCfg `protobuf:"bytes,3,rep,name=items,proto3" json:"items,omitempty"`
-	Error  *common.Error  `protobuf:"bytes,4,opt,name=error,proto3" json:"error,omitempty"`
-	Info   *common.Info   `protobuf:"bytes,5,opt,name=info,proto3" json:"info,omitempty"`
+	Entity *WithdrawCfg   `protobuf:"bytes,1,opt,name=entity,proto3" json:"entity"`
+	Pager  *common.Pager  `protobuf:"bytes,2,opt,name=pager,proto3" json:"pager"`
+	Items  []*WithdrawCfg `protobuf:"bytes,3,rep,name=items,proto3" json:"items"`
+	Error  *common.Error  `protobuf:"bytes,4,opt,name=error,proto3" json:"error"`
+	Info   *common.Info   `protobuf:"bytes,5,opt,name=info,proto3" json:"info"`
 }
 
 func (x *WithdrawCfgResponse) Reset() {

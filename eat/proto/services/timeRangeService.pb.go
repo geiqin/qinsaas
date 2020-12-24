@@ -30,11 +30,11 @@ type TimeRange struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	Id           int64  `protobuf:"varint,1,opt,name=id,proto3" json:"id,omitempty"`
-	TimeConfigId int64  `protobuf:"varint,2,opt,name=time_config_id,json=timeConfigId,proto3" json:"time_config_id,omitempty"`
-	StartTime    string `protobuf:"bytes,3,opt,name=start_time,json=startTime,proto3" json:"start_time,omitempty"`
-	EndTime      string `protobuf:"bytes,4,opt,name=end_time,json=endTime,proto3" json:"end_time,omitempty"`
-	Weeks        string `protobuf:"bytes,5,opt,name=weeks,proto3" json:"weeks,omitempty"`
+	Id           int64  `protobuf:"varint,1,opt,name=id,proto3" json:"id"`
+	TimeConfigId int64  `protobuf:"varint,2,opt,name=time_config_id,json=timeConfigId,proto3" json:"time_config_id"`
+	StartTime    string `protobuf:"bytes,3,opt,name=start_time,json=startTime,proto3" json:"start_time"`
+	EndTime      string `protobuf:"bytes,4,opt,name=end_time,json=endTime,proto3" json:"end_time"`
+	Weeks        string `protobuf:"bytes,5,opt,name=weeks,proto3" json:"weeks"`
 }
 
 func (x *TimeRange) Reset() {

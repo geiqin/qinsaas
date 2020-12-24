@@ -31,16 +31,17 @@ type ShipmentWhere struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	Paged        int32   `protobuf:"varint,1,opt,name=paged,proto3" json:"paged,omitempty"`
-	PageSize     int32   `protobuf:"varint,2,opt,name=page_size,json=pageSize,proto3" json:"page_size,omitempty"`
-	Sorting      string  `protobuf:"bytes,3,opt,name=sorting,proto3" json:"sorting,omitempty"`
-	Keywords     string  `protobuf:"bytes,4,opt,name=keywords,proto3" json:"keywords,omitempty"`
-	Id           int64   `protobuf:"varint,5,opt,name=id,proto3" json:"id,omitempty"`
-	Ids          []int64 `protobuf:"varint,6,rep,packed,name=ids,proto3" json:"ids,omitempty"`
-	Type         string  `protobuf:"bytes,7,opt,name=type,proto3" json:"type,omitempty"`
-	Method       string  `protobuf:"bytes,8,opt,name=method,proto3" json:"method,omitempty"`
-	OrderId      int64   `protobuf:"varint,9,opt,name=order_id,json=orderId,proto3" json:"order_id,omitempty"`
-	DeliveryType int32   `protobuf:"varint,10,opt,name=delivery_type,json=deliveryType,proto3" json:"delivery_type,omitempty"`
+	Paged    int32  `protobuf:"varint,1,opt,name=paged,proto3" json:"paged"`
+	PageSize int32  `protobuf:"varint,2,opt,name=page_size,json=pageSize,proto3" json:"page_size"`
+	Sorting  string `protobuf:"bytes,3,opt,name=sorting,proto3" json:"sorting"`
+	Keywords string `protobuf:"bytes,4,opt,name=keywords,proto3" json:"keywords"`
+	Id       int64  `protobuf:"varint,5,opt,name=id,proto3" json:"id"`
+	// @inject_tag: gorm:"-"
+	Ids          []int64 `protobuf:"varint,6,rep,packed,name=ids,proto3" json:"ids" gorm:"-"`
+	Type         string  `protobuf:"bytes,7,opt,name=type,proto3" json:"type"`
+	Method       string  `protobuf:"bytes,8,opt,name=method,proto3" json:"method"`
+	OrderId      int64   `protobuf:"varint,9,opt,name=order_id,json=orderId,proto3" json:"order_id"`
+	DeliveryType int32   `protobuf:"varint,10,opt,name=delivery_type,json=deliveryType,proto3" json:"delivery_type"`
 }
 
 func (x *ShipmentWhere) Reset() {
@@ -150,41 +151,44 @@ type Shipment struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	Id             int64             `protobuf:"varint,1,opt,name=id,proto3" json:"id,omitempty"`
-	DeliverySn     string            `protobuf:"bytes,2,opt,name=delivery_sn,json=deliverySn,proto3" json:"delivery_sn,omitempty"`
-	OrderId        int64             `protobuf:"varint,3,opt,name=order_id,json=orderId,proto3" json:"order_id,omitempty"`
-	Method         string            `protobuf:"bytes,4,opt,name=method,proto3" json:"method,omitempty"`
-	Type           string            `protobuf:"bytes,5,opt,name=type,proto3" json:"type,omitempty"`
-	Freight        float32           `protobuf:"fixed32,6,opt,name=freight,proto3" json:"freight,omitempty"`
-	Protected      bool              `protobuf:"varint,7,opt,name=protected,proto3" json:"protected,omitempty"`
-	IsDelivery     bool              `protobuf:"varint,8,opt,name=is_delivery,json=isDelivery,proto3" json:"is_delivery,omitempty"`
-	ShipperId      int32             `protobuf:"varint,9,opt,name=shipper_id,json=shipperId,proto3" json:"shipper_id,omitempty"`
-	LogisticsNo    string            `protobuf:"bytes,10,opt,name=logistics_no,json=logisticsNo,proto3" json:"logistics_no,omitempty"`
-	FetchCode      string            `protobuf:"bytes,11,opt,name=fetch_code,json=fetchCode,proto3" json:"fetch_code,omitempty"`
-	LocationId     int64             `protobuf:"varint,12,opt,name=location_id,json=locationId,proto3" json:"location_id,omitempty"`
-	FetchAt        string            `protobuf:"bytes,13,opt,name=fetch_at,json=fetchAt,proto3" json:"fetch_at,omitempty"`
-	DeliveryAt     string            `protobuf:"bytes,14,opt,name=delivery_at,json=deliveryAt,proto3" json:"delivery_at,omitempty"`
-	DeliveryType   int32             `protobuf:"varint,33,opt,name=delivery_type,json=deliveryType,proto3" json:"delivery_type,omitempty"`
-	CustomerId     int64             `protobuf:"varint,15,opt,name=customer_id,json=customerId,proto3" json:"customer_id,omitempty"`
-	ReceiverName   string            `protobuf:"bytes,16,opt,name=receiver_name,json=receiverName,proto3" json:"receiver_name,omitempty"`
-	ReceiverAreaId int64             `protobuf:"varint,17,opt,name=receiver_area_id,json=receiverAreaId,proto3" json:"receiver_area_id,omitempty"`
-	ReceiverAddr   string            `protobuf:"bytes,18,opt,name=receiver_addr,json=receiverAddr,proto3" json:"receiver_addr,omitempty"`
-	ReceiverZip    string            `protobuf:"bytes,19,opt,name=receiver_zip,json=receiverZip,proto3" json:"receiver_zip,omitempty"`
-	ReceiverTel    string            `protobuf:"bytes,20,opt,name=receiver_tel,json=receiverTel,proto3" json:"receiver_tel,omitempty"`
-	ReceiverMobile string            `protobuf:"bytes,21,opt,name=receiver_mobile,json=receiverMobile,proto3" json:"receiver_mobile,omitempty"`
-	ReceiverEmail  string            `protobuf:"bytes,22,opt,name=receiver_email,json=receiverEmail,proto3" json:"receiver_email,omitempty"`
-	OpId           int64             `protobuf:"varint,23,opt,name=op_id,json=opId,proto3" json:"op_id,omitempty"`
-	Status         string            `protobuf:"bytes,24,opt,name=status,proto3" json:"status,omitempty"`
-	Memo           string            `protobuf:"bytes,25,opt,name=memo,proto3" json:"memo,omitempty"`
-	ArrivedAt      string            `protobuf:"bytes,26,opt,name=arrived_at,json=arrivedAt,proto3" json:"arrived_at,omitempty"`
-	CreatedAt      string            `protobuf:"bytes,27,opt,name=created_at,json=createdAt,proto3" json:"created_at,omitempty"`
-	UpdatedAt      string            `protobuf:"bytes,28,opt,name=updated_at,json=updatedAt,proto3" json:"updated_at,omitempty"`
-	Details        []*ShipmentDetail `protobuf:"bytes,29,rep,name=details,proto3" json:"details,omitempty"`
-	StartTime      string            `protobuf:"bytes,30,opt,name=start_time,json=startTime,proto3" json:"start_time,omitempty"`
-	EndTime        string            `protobuf:"bytes,31,opt,name=end_time,json=endTime,proto3" json:"end_time,omitempty"`
-	ShippedAt      string            `protobuf:"bytes,32,opt,name=shipped_at,json=shippedAt,proto3" json:"shipped_at,omitempty"`
-	Shipper        *Shipper          `protobuf:"bytes,34,opt,name=shipper,proto3" json:"shipper,omitempty"`
-	Location       *Fetch            `protobuf:"bytes,35,opt,name=location,proto3" json:"location,omitempty"`
+	Id             int64   `protobuf:"varint,1,opt,name=id,proto3" json:"id"`
+	DeliverySn     string  `protobuf:"bytes,2,opt,name=delivery_sn,json=deliverySn,proto3" json:"delivery_sn"`
+	OrderId        int64   `protobuf:"varint,3,opt,name=order_id,json=orderId,proto3" json:"order_id"`
+	Method         string  `protobuf:"bytes,4,opt,name=method,proto3" json:"method"`
+	Type           string  `protobuf:"bytes,5,opt,name=type,proto3" json:"type"`
+	Freight        float32 `protobuf:"fixed32,6,opt,name=freight,proto3" json:"freight"`
+	Protected      bool    `protobuf:"varint,7,opt,name=protected,proto3" json:"protected"`
+	IsDelivery     bool    `protobuf:"varint,8,opt,name=is_delivery,json=isDelivery,proto3" json:"is_delivery"`
+	ShipperId      int32   `protobuf:"varint,9,opt,name=shipper_id,json=shipperId,proto3" json:"shipper_id"`
+	LogisticsNo    string  `protobuf:"bytes,10,opt,name=logistics_no,json=logisticsNo,proto3" json:"logistics_no"`
+	FetchCode      string  `protobuf:"bytes,11,opt,name=fetch_code,json=fetchCode,proto3" json:"fetch_code"`
+	LocationId     int64   `protobuf:"varint,12,opt,name=location_id,json=locationId,proto3" json:"location_id"`
+	FetchAt        string  `protobuf:"bytes,13,opt,name=fetch_at,json=fetchAt,proto3" json:"fetch_at"`
+	DeliveryAt     string  `protobuf:"bytes,14,opt,name=delivery_at,json=deliveryAt,proto3" json:"delivery_at"`
+	DeliveryType   int32   `protobuf:"varint,33,opt,name=delivery_type,json=deliveryType,proto3" json:"delivery_type"`
+	CustomerId     int64   `protobuf:"varint,15,opt,name=customer_id,json=customerId,proto3" json:"customer_id"`
+	ReceiverName   string  `protobuf:"bytes,16,opt,name=receiver_name,json=receiverName,proto3" json:"receiver_name"`
+	ReceiverAreaId int64   `protobuf:"varint,17,opt,name=receiver_area_id,json=receiverAreaId,proto3" json:"receiver_area_id"`
+	ReceiverAddr   string  `protobuf:"bytes,18,opt,name=receiver_addr,json=receiverAddr,proto3" json:"receiver_addr"`
+	ReceiverZip    string  `protobuf:"bytes,19,opt,name=receiver_zip,json=receiverZip,proto3" json:"receiver_zip"`
+	ReceiverTel    string  `protobuf:"bytes,20,opt,name=receiver_tel,json=receiverTel,proto3" json:"receiver_tel"`
+	ReceiverMobile string  `protobuf:"bytes,21,opt,name=receiver_mobile,json=receiverMobile,proto3" json:"receiver_mobile"`
+	ReceiverEmail  string  `protobuf:"bytes,22,opt,name=receiver_email,json=receiverEmail,proto3" json:"receiver_email"`
+	OpId           int64   `protobuf:"varint,23,opt,name=op_id,json=opId,proto3" json:"op_id"`
+	Status         string  `protobuf:"bytes,24,opt,name=status,proto3" json:"status"`
+	Memo           string  `protobuf:"bytes,25,opt,name=memo,proto3" json:"memo"`
+	ArrivedAt      string  `protobuf:"bytes,26,opt,name=arrived_at,json=arrivedAt,proto3" json:"arrived_at"`
+	CreatedAt      string  `protobuf:"bytes,27,opt,name=created_at,json=createdAt,proto3" json:"created_at"`
+	UpdatedAt      string  `protobuf:"bytes,28,opt,name=updated_at,json=updatedAt,proto3" json:"updated_at"`
+	// @inject_tag: gorm:"foreignKey:ShipmentId"
+	Details   []*ShipmentDetail `protobuf:"bytes,29,rep,name=details,proto3" json:"details" gorm:"foreignKey:ShipmentId"`
+	StartTime string            `protobuf:"bytes,30,opt,name=start_time,json=startTime,proto3" json:"start_time"`
+	EndTime   string            `protobuf:"bytes,31,opt,name=end_time,json=endTime,proto3" json:"end_time"`
+	ShippedAt string            `protobuf:"bytes,32,opt,name=shipped_at,json=shippedAt,proto3" json:"shipped_at"`
+	// @inject_tag: gorm:"-"
+	Shipper *Shipper `protobuf:"bytes,34,opt,name=shipper,proto3" json:"shipper" gorm:"-"`
+	// @inject_tag: gorm:"-"
+	Location *Fetch `protobuf:"bytes,35,opt,name=location,proto3" json:"location" gorm:"-"`
 }
 
 func (x *Shipment) Reset() {
@@ -469,15 +473,16 @@ type ShipmentDetail struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	Id            int64      `protobuf:"varint,1,opt,name=id,proto3" json:"id,omitempty"`
-	ShipmentId    int64      `protobuf:"varint,2,opt,name=shipment_id,json=shipmentId,proto3" json:"shipment_id,omitempty"`
-	OrderDetailId int64      `protobuf:"varint,3,opt,name=order_detail_id,json=orderDetailId,proto3" json:"order_detail_id,omitempty"`
-	ItemId        int64      `protobuf:"varint,4,opt,name=item_id,json=itemId,proto3" json:"item_id,omitempty"`
-	SkuId         int64      `protobuf:"varint,5,opt,name=sku_id,json=skuId,proto3" json:"sku_id,omitempty"`
-	Num           int32      `protobuf:"varint,6,opt,name=num,proto3" json:"num,omitempty"`
-	CreatedAt     string     `protobuf:"bytes,7,opt,name=created_at,json=createdAt,proto3" json:"created_at,omitempty"`
-	UpdatedAt     string     `protobuf:"bytes,8,opt,name=updated_at,json=updatedAt,proto3" json:"updated_at,omitempty"`
-	Goods         *GoodsInfo `protobuf:"bytes,9,opt,name=goods,proto3" json:"goods,omitempty"`
+	Id            int64  `protobuf:"varint,1,opt,name=id,proto3" json:"id"`
+	ShipmentId    int64  `protobuf:"varint,2,opt,name=shipment_id,json=shipmentId,proto3" json:"shipment_id"`
+	OrderDetailId int64  `protobuf:"varint,3,opt,name=order_detail_id,json=orderDetailId,proto3" json:"order_detail_id"`
+	ItemId        int64  `protobuf:"varint,4,opt,name=item_id,json=itemId,proto3" json:"item_id"`
+	SkuId         int64  `protobuf:"varint,5,opt,name=sku_id,json=skuId,proto3" json:"sku_id"`
+	Num           int32  `protobuf:"varint,6,opt,name=num,proto3" json:"num"`
+	CreatedAt     string `protobuf:"bytes,7,opt,name=created_at,json=createdAt,proto3" json:"created_at"`
+	UpdatedAt     string `protobuf:"bytes,8,opt,name=updated_at,json=updatedAt,proto3" json:"updated_at"`
+	// @inject_tag: gorm:"-"
+	Goods *GoodsInfo `protobuf:"bytes,9,opt,name=goods,proto3" json:"goods" gorm:"-"`
 }
 
 func (x *ShipmentDetail) Reset() {
@@ -580,11 +585,11 @@ type ShipmentResponse struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	Entity *Shipment     `protobuf:"bytes,1,opt,name=entity,proto3" json:"entity,omitempty"`
-	Pager  *common.Pager `protobuf:"bytes,2,opt,name=pager,proto3" json:"pager,omitempty"`
-	Items  []*Shipment   `protobuf:"bytes,3,rep,name=items,proto3" json:"items,omitempty"`
-	Error  *common.Error `protobuf:"bytes,4,opt,name=error,proto3" json:"error,omitempty"`
-	Info   *common.Info  `protobuf:"bytes,5,opt,name=info,proto3" json:"info,omitempty"`
+	Entity *Shipment     `protobuf:"bytes,1,opt,name=entity,proto3" json:"entity"`
+	Pager  *common.Pager `protobuf:"bytes,2,opt,name=pager,proto3" json:"pager"`
+	Items  []*Shipment   `protobuf:"bytes,3,rep,name=items,proto3" json:"items"`
+	Error  *common.Error `protobuf:"bytes,4,opt,name=error,proto3" json:"error"`
+	Info   *common.Info  `protobuf:"bytes,5,opt,name=info,proto3" json:"info"`
 }
 
 func (x *ShipmentResponse) Reset() {

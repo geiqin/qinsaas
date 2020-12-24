@@ -31,29 +31,32 @@ type Leader struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	Id              int64        `protobuf:"varint,1,opt,name=id,proto3" json:"id,omitempty"`
-	DistributorId   int64        `protobuf:"varint,2,opt,name=distributor_id,json=distributorId,proto3" json:"distributor_id,omitempty"`
-	RankId          int64        `protobuf:"varint,3,opt,name=rank_id,json=rankId,proto3" json:"rank_id,omitempty"`
-	CustomerId      int64        `protobuf:"varint,25,opt,name=customer_id,json=customerId,proto3" json:"customer_id,omitempty"`
-	TeamCount       int32        `protobuf:"varint,4,opt,name=team_count,json=teamCount,proto3" json:"team_count,omitempty"`
-	Bonus           float32      `protobuf:"fixed32,5,opt,name=bonus,proto3" json:"bonus,omitempty"`
-	TotalBonus      float32      `protobuf:"fixed32,6,opt,name=total_bonus,json=totalBonus,proto3" json:"total_bonus,omitempty"`
-	ApplyBonus      float32      `protobuf:"fixed32,7,opt,name=apply_bonus,json=applyBonus,proto3" json:"apply_bonus,omitempty"`
-	WaitSettleBonus float32      `protobuf:"fixed32,8,opt,name=wait_settle_bonus,json=waitSettleBonus,proto3" json:"wait_settle_bonus,omitempty"`
-	WaitGrantBonus  float32      `protobuf:"fixed32,9,opt,name=wait_grant_bonus,json=waitGrantBonus,proto3" json:"wait_grant_bonus,omitempty"`
-	FrozenBonus     float32      `protobuf:"fixed32,10,opt,name=frozen_bonus,json=frozenBonus,proto3" json:"frozen_bonus,omitempty"`
-	WithdrewBonus   float32      `protobuf:"fixed32,11,opt,name=withdrew_bonus,json=withdrewBonus,proto3" json:"withdrew_bonus,omitempty"`
-	WithdrewNum     int32        `protobuf:"varint,12,opt,name=withdrew_num,json=withdrewNum,proto3" json:"withdrew_num,omitempty"`
-	CreatedAt       string       `protobuf:"bytes,13,opt,name=created_at,json=createdAt,proto3" json:"created_at,omitempty"`
-	UpdatedAt       string       `protobuf:"bytes,14,opt,name=updated_at,json=updatedAt,proto3" json:"updated_at,omitempty"`
-	Ids             []int64      `protobuf:"varint,15,rep,packed,name=ids,proto3" json:"ids,omitempty"`
-	Rank            *Rank        `protobuf:"bytes,16,opt,name=rank,proto3" json:"rank,omitempty"`
-	Distributor     *Distributor `protobuf:"bytes,17,opt,name=distributor,proto3" json:"distributor,omitempty"`
-	LeaderName      string       `protobuf:"bytes,18,opt,name=leader_name,json=leaderName,proto3" json:"leader_name,omitempty"` // 团长昵称
-	Mobile          string       `protobuf:"bytes,19,opt,name=mobile,proto3" json:"mobile,omitempty"`                           // 手机号
-	AvatarUrl       string       `protobuf:"bytes,20,opt,name=avatar_url,json=avatarUrl,proto3" json:"avatar_url,omitempty"`    // 用户头像
-	RankName        string       `protobuf:"bytes,21,opt,name=rank_name,json=rankName,proto3" json:"rank_name,omitempty"`       // 等级名称
-	Status          int32        `protobuf:"varint,22,opt,name=status,proto3" json:"status,omitempty"`
+	Id              int64   `protobuf:"varint,1,opt,name=id,proto3" json:"id"`
+	DistributorId   int64   `protobuf:"varint,2,opt,name=distributor_id,json=distributorId,proto3" json:"distributor_id"`
+	RankId          int64   `protobuf:"varint,3,opt,name=rank_id,json=rankId,proto3" json:"rank_id"`
+	CustomerId      int64   `protobuf:"varint,25,opt,name=customer_id,json=customerId,proto3" json:"customer_id"`
+	TeamCount       int32   `protobuf:"varint,4,opt,name=team_count,json=teamCount,proto3" json:"team_count"`
+	Bonus           float32 `protobuf:"fixed32,5,opt,name=bonus,proto3" json:"bonus"`
+	TotalBonus      float32 `protobuf:"fixed32,6,opt,name=total_bonus,json=totalBonus,proto3" json:"total_bonus"`
+	ApplyBonus      float32 `protobuf:"fixed32,7,opt,name=apply_bonus,json=applyBonus,proto3" json:"apply_bonus"`
+	WaitSettleBonus float32 `protobuf:"fixed32,8,opt,name=wait_settle_bonus,json=waitSettleBonus,proto3" json:"wait_settle_bonus"`
+	WaitGrantBonus  float32 `protobuf:"fixed32,9,opt,name=wait_grant_bonus,json=waitGrantBonus,proto3" json:"wait_grant_bonus"`
+	FrozenBonus     float32 `protobuf:"fixed32,10,opt,name=frozen_bonus,json=frozenBonus,proto3" json:"frozen_bonus"`
+	WithdrewBonus   float32 `protobuf:"fixed32,11,opt,name=withdrew_bonus,json=withdrewBonus,proto3" json:"withdrew_bonus"`
+	WithdrewNum     int32   `protobuf:"varint,12,opt,name=withdrew_num,json=withdrewNum,proto3" json:"withdrew_num"`
+	CreatedAt       string  `protobuf:"bytes,13,opt,name=created_at,json=createdAt,proto3" json:"created_at"`
+	UpdatedAt       string  `protobuf:"bytes,14,opt,name=updated_at,json=updatedAt,proto3" json:"updated_at"`
+	// @inject_tag: gorm:"-"
+	Ids []int64 `protobuf:"varint,15,rep,packed,name=ids,proto3" json:"ids"`
+	// @inject_tag: gorm:"-"
+	Rank *Rank `protobuf:"bytes,16,opt,name=rank,proto3" json:"rank"`
+	// @inject_tag: gorm:"-"
+	Distributor *Distributor `protobuf:"bytes,17,opt,name=distributor,proto3" json:"distributor"`
+	LeaderName  string       `protobuf:"bytes,18,opt,name=leader_name,json=leaderName,proto3" json:"leader_name"` // 团长昵称
+	Mobile      string       `protobuf:"bytes,19,opt,name=mobile,proto3" json:"mobile"`                           // 手机号
+	AvatarUrl   string       `protobuf:"bytes,20,opt,name=avatar_url,json=avatarUrl,proto3" json:"avatar_url"`    // 用户头像
+	RankName    string       `protobuf:"bytes,21,opt,name=rank_name,json=rankName,proto3" json:"rank_name"`       // 等级名称
+	Status      int32        `protobuf:"varint,22,opt,name=status,proto3" json:"status"`
 }
 
 func (x *Leader) Reset() {
@@ -254,17 +257,18 @@ type LeaderWhere struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	Paged         int32   `protobuf:"varint,1,opt,name=paged,proto3" json:"paged,omitempty"`
-	PageSize      int32   `protobuf:"varint,2,opt,name=page_size,json=pageSize,proto3" json:"page_size,omitempty"`
-	Sorting       string  `protobuf:"bytes,3,opt,name=sorting,proto3" json:"sorting,omitempty"`
-	Mobile        string  `protobuf:"bytes,4,opt,name=mobile,proto3" json:"mobile,omitempty"`
-	RankId        int32   `protobuf:"varint,5,opt,name=rank_id,json=rankId,proto3" json:"rank_id,omitempty"`
-	Keywords      string  `protobuf:"bytes,6,opt,name=keywords,proto3" json:"keywords,omitempty"`
-	Id            int64   `protobuf:"varint,7,opt,name=id,proto3" json:"id,omitempty"`
-	Ids           []int64 `protobuf:"varint,8,rep,packed,name=ids,proto3" json:"ids,omitempty"`
-	DistributorId int64   `protobuf:"varint,9,opt,name=distributor_id,json=distributorId,proto3" json:"distributor_id,omitempty"`
-	CustomerId    int64   `protobuf:"varint,10,opt,name=customer_id,json=customerId,proto3" json:"customer_id,omitempty"`
-	Status        int32   `protobuf:"varint,11,opt,name=status,proto3" json:"status,omitempty"`
+	Paged    int32  `protobuf:"varint,1,opt,name=paged,proto3" json:"paged"`
+	PageSize int32  `protobuf:"varint,2,opt,name=page_size,json=pageSize,proto3" json:"page_size"`
+	Sorting  string `protobuf:"bytes,3,opt,name=sorting,proto3" json:"sorting"`
+	Mobile   string `protobuf:"bytes,4,opt,name=mobile,proto3" json:"mobile"`
+	RankId   int32  `protobuf:"varint,5,opt,name=rank_id,json=rankId,proto3" json:"rank_id"`
+	Keywords string `protobuf:"bytes,6,opt,name=keywords,proto3" json:"keywords"`
+	Id       int64  `protobuf:"varint,7,opt,name=id,proto3" json:"id"`
+	// @inject_tag: gorm:"-"
+	Ids           []int64 `protobuf:"varint,8,rep,packed,name=ids,proto3" json:"ids"`
+	DistributorId int64   `protobuf:"varint,9,opt,name=distributor_id,json=distributorId,proto3" json:"distributor_id"`
+	CustomerId    int64   `protobuf:"varint,10,opt,name=customer_id,json=customerId,proto3" json:"customer_id"`
+	Status        int32   `protobuf:"varint,11,opt,name=status,proto3" json:"status"`
 }
 
 func (x *LeaderWhere) Reset() {
@@ -381,11 +385,11 @@ type LeaderResponse struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	Entity *Leader       `protobuf:"bytes,1,opt,name=entity,proto3" json:"entity,omitempty"`
-	Pager  *common.Pager `protobuf:"bytes,2,opt,name=pager,proto3" json:"pager,omitempty"`
-	Items  []*Leader     `protobuf:"bytes,3,rep,name=items,proto3" json:"items,omitempty"`
-	Error  *common.Error `protobuf:"bytes,4,opt,name=error,proto3" json:"error,omitempty"`
-	Info   *common.Info  `protobuf:"bytes,5,opt,name=info,proto3" json:"info,omitempty"`
+	Entity *Leader       `protobuf:"bytes,1,opt,name=entity,proto3" json:"entity"`
+	Pager  *common.Pager `protobuf:"bytes,2,opt,name=pager,proto3" json:"pager"`
+	Items  []*Leader     `protobuf:"bytes,3,rep,name=items,proto3" json:"items"`
+	Error  *common.Error `protobuf:"bytes,4,opt,name=error,proto3" json:"error"`
+	Info   *common.Info  `protobuf:"bytes,5,opt,name=info,proto3" json:"info"`
 }
 
 func (x *LeaderResponse) Reset() {

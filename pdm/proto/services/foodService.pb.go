@@ -30,11 +30,11 @@ type Food struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	Id       int64   `protobuf:"varint,1,opt,name=id,proto3" json:"id,omitempty"`
-	ItemId   int64   `protobuf:"varint,2,opt,name=item_id,json=itemId,proto3" json:"item_id,omitempty"`
-	FoodType string  `protobuf:"bytes,3,opt,name=food_type,json=foodType,proto3" json:"food_type,omitempty"`
-	KindId   int64   `protobuf:"varint,4,opt,name=kind_id,json=kindId,proto3" json:"kind_id,omitempty"`
-	BoxFee   float32 `protobuf:"fixed32,5,opt,name=box_fee,json=boxFee,proto3" json:"box_fee,omitempty"`
+	Id       int64   `protobuf:"varint,1,opt,name=id,proto3" json:"id"`
+	ItemId   int64   `protobuf:"varint,2,opt,name=item_id,json=itemId,proto3" json:"item_id"`
+	FoodType string  `protobuf:"bytes,3,opt,name=food_type,json=foodType,proto3" json:"food_type"`
+	KindId   int64   `protobuf:"varint,4,opt,name=kind_id,json=kindId,proto3" json:"kind_id"`
+	BoxFee   float32 `protobuf:"fixed32,5,opt,name=box_fee,json=boxFee,proto3" json:"box_fee"`
 }
 
 func (x *Food) Reset() {

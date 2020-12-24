@@ -31,27 +31,29 @@ type OutConfig struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	Id                     int32         `protobuf:"varint,1,opt,name=id,proto3" json:"id,omitempty"`
-	IsOpen                 bool          `protobuf:"varint,2,opt,name=is_open,json=isOpen,proto3" json:"is_open,omitempty"`
-	HourType               int32         `protobuf:"varint,3,opt,name=hour_type,json=hourType,proto3" json:"hour_type,omitempty"`
-	WholeStartTime         string        `protobuf:"bytes,4,opt,name=whole_start_time,json=wholeStartTime,proto3" json:"whole_start_time,omitempty"`
-	WholeEndTime           string        `protobuf:"bytes,5,opt,name=whole_end_time,json=wholeEndTime,proto3" json:"whole_end_time,omitempty"`
-	SelfTakeHourType       int32         `protobuf:"varint,6,opt,name=self_take_hour_type,json=selfTakeHourType,proto3" json:"self_take_hour_type,omitempty"`
-	SelfTakeWholeStartTime string        `protobuf:"bytes,7,opt,name=self_take_whole_start_time,json=selfTakeWholeStartTime,proto3" json:"self_take_whole_start_time,omitempty"`
-	SelfTakeWholeEndTime   string        `protobuf:"bytes,8,opt,name=self_take_whole_end_time,json=selfTakeWholeEndTime,proto3" json:"self_take_whole_end_time,omitempty"`
-	IsImmediateDelivery    bool          `protobuf:"varint,9,opt,name=is_immediate_delivery,json=isImmediateDelivery,proto3" json:"is_immediate_delivery,omitempty"`
-	IsReserveDelivery      bool          `protobuf:"varint,10,opt,name=is_reserve_delivery,json=isReserveDelivery,proto3" json:"is_reserve_delivery,omitempty"`
-	ReserveDeliverTime     string        `protobuf:"bytes,11,opt,name=reserve_deliver_time,json=reserveDeliverTime,proto3" json:"reserve_deliver_time,omitempty"`
-	ReserveDeliverDay      int32         `protobuf:"varint,12,opt,name=reserve_deliver_day,json=reserveDeliverDay,proto3" json:"reserve_deliver_day,omitempty"`
-	IsSelfTake             bool          `protobuf:"varint,13,opt,name=is_self_take,json=isSelfTake,proto3" json:"is_self_take,omitempty"`
-	SelfTakeTime           string        `protobuf:"bytes,14,opt,name=self_take_time,json=selfTakeTime,proto3" json:"self_take_time,omitempty"`
-	SelfTakeDay            int32         `protobuf:"varint,15,opt,name=self_take_day,json=selfTakeDay,proto3" json:"self_take_day,omitempty"`
-	IsAutoTakingOrder      bool          `protobuf:"varint,16,opt,name=is_auto_taking_order,json=isAutoTakingOrder,proto3" json:"is_auto_taking_order,omitempty"`
-	IsCashOutPay           bool          `protobuf:"varint,17,opt,name=is_cash_out_pay,json=isCashOutPay,proto3" json:"is_cash_out_pay,omitempty"`
-	CreatedAt              string        `protobuf:"bytes,18,opt,name=created_at,json=createdAt,proto3" json:"created_at,omitempty"`
-	UpdatedAt              string        `protobuf:"bytes,19,opt,name=updated_at,json=updatedAt,proto3" json:"updated_at,omitempty"`
-	OpenTimes              []*TimeConfig `protobuf:"bytes,20,rep,name=open_times,json=openTimes,proto3" json:"open_times,omitempty"`
-	SelfTakeTimes          []*TimeConfig `protobuf:"bytes,21,rep,name=self_take_times,json=selfTakeTimes,proto3" json:"self_take_times,omitempty"`
+	Id                     int32  `protobuf:"varint,1,opt,name=id,proto3" json:"id"`
+	IsOpen                 bool   `protobuf:"varint,2,opt,name=is_open,json=isOpen,proto3" json:"is_open"`
+	HourType               int32  `protobuf:"varint,3,opt,name=hour_type,json=hourType,proto3" json:"hour_type"`
+	WholeStartTime         string `protobuf:"bytes,4,opt,name=whole_start_time,json=wholeStartTime,proto3" json:"whole_start_time"`
+	WholeEndTime           string `protobuf:"bytes,5,opt,name=whole_end_time,json=wholeEndTime,proto3" json:"whole_end_time"`
+	SelfTakeHourType       int32  `protobuf:"varint,6,opt,name=self_take_hour_type,json=selfTakeHourType,proto3" json:"self_take_hour_type"`
+	SelfTakeWholeStartTime string `protobuf:"bytes,7,opt,name=self_take_whole_start_time,json=selfTakeWholeStartTime,proto3" json:"self_take_whole_start_time"`
+	SelfTakeWholeEndTime   string `protobuf:"bytes,8,opt,name=self_take_whole_end_time,json=selfTakeWholeEndTime,proto3" json:"self_take_whole_end_time"`
+	IsImmediateDelivery    bool   `protobuf:"varint,9,opt,name=is_immediate_delivery,json=isImmediateDelivery,proto3" json:"is_immediate_delivery"`
+	IsReserveDelivery      bool   `protobuf:"varint,10,opt,name=is_reserve_delivery,json=isReserveDelivery,proto3" json:"is_reserve_delivery"`
+	ReserveDeliverTime     string `protobuf:"bytes,11,opt,name=reserve_deliver_time,json=reserveDeliverTime,proto3" json:"reserve_deliver_time"`
+	ReserveDeliverDay      int32  `protobuf:"varint,12,opt,name=reserve_deliver_day,json=reserveDeliverDay,proto3" json:"reserve_deliver_day"`
+	IsSelfTake             bool   `protobuf:"varint,13,opt,name=is_self_take,json=isSelfTake,proto3" json:"is_self_take"`
+	SelfTakeTime           string `protobuf:"bytes,14,opt,name=self_take_time,json=selfTakeTime,proto3" json:"self_take_time"`
+	SelfTakeDay            int32  `protobuf:"varint,15,opt,name=self_take_day,json=selfTakeDay,proto3" json:"self_take_day"`
+	IsAutoTakingOrder      bool   `protobuf:"varint,16,opt,name=is_auto_taking_order,json=isAutoTakingOrder,proto3" json:"is_auto_taking_order"`
+	IsCashOutPay           bool   `protobuf:"varint,17,opt,name=is_cash_out_pay,json=isCashOutPay,proto3" json:"is_cash_out_pay"`
+	CreatedAt              string `protobuf:"bytes,18,opt,name=created_at,json=createdAt,proto3" json:"created_at"`
+	UpdatedAt              string `protobuf:"bytes,19,opt,name=updated_at,json=updatedAt,proto3" json:"updated_at"`
+	// @inject_tag: gorm:"-"
+	OpenTimes []*TimeConfig `protobuf:"bytes,20,rep,name=open_times,json=openTimes,proto3" json:"open_times" gorm:"-"`
+	// @inject_tag: gorm:"-"
+	SelfTakeTimes []*TimeConfig `protobuf:"bytes,21,rep,name=self_take_times,json=selfTakeTimes,proto3" json:"self_take_times" gorm:"-"`
 }
 
 func (x *OutConfig) Reset() {
@@ -238,11 +240,11 @@ type OutConfigResponse struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	Entity *OutConfig    `protobuf:"bytes,1,opt,name=entity,proto3" json:"entity,omitempty"`
-	Pager  *common.Pager `protobuf:"bytes,2,opt,name=pager,proto3" json:"pager,omitempty"`
-	Items  []*OutConfig  `protobuf:"bytes,3,rep,name=items,proto3" json:"items,omitempty"`
-	Error  *common.Error `protobuf:"bytes,4,opt,name=error,proto3" json:"error,omitempty"`
-	Info   *common.Info  `protobuf:"bytes,5,opt,name=info,proto3" json:"info,omitempty"`
+	Entity *OutConfig    `protobuf:"bytes,1,opt,name=entity,proto3" json:"entity"`
+	Pager  *common.Pager `protobuf:"bytes,2,opt,name=pager,proto3" json:"pager"`
+	Items  []*OutConfig  `protobuf:"bytes,3,rep,name=items,proto3" json:"items"`
+	Error  *common.Error `protobuf:"bytes,4,opt,name=error,proto3" json:"error"`
+	Info   *common.Info  `protobuf:"bytes,5,opt,name=info,proto3" json:"info"`
 }
 
 func (x *OutConfigResponse) Reset() {

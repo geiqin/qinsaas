@@ -31,17 +31,19 @@ type Relationship struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	Id             int64        `protobuf:"varint,1,opt,name=id,proto3" json:"id,omitempty"`
-	DistributorId  int64        `protobuf:"varint,2,opt,name=distributor_id,json=distributorId,proto3" json:"distributor_id,omitempty"`
-	CustomerId     int64        `protobuf:"varint,3,opt,name=customer_id,json=customerId,proto3" json:"customer_id,omitempty"`
-	Type           int32        `protobuf:"varint,4,opt,name=type,proto3" json:"type,omitempty"`
-	Status         string       `protobuf:"bytes,5,opt,name=status,proto3" json:"status,omitempty"`
-	ContinueNum    int32        `protobuf:"varint,6,opt,name=continue_num,json=continueNum,proto3" json:"continue_num,omitempty"`
-	LastContinueAt string       `protobuf:"bytes,7,opt,name=last_continue_at,json=lastContinueAt,proto3" json:"last_continue_at,omitempty"`
-	CreatedAt      string       `protobuf:"bytes,8,opt,name=created_at,json=createdAt,proto3" json:"created_at,omitempty"`
-	UpdatedAt      string       `protobuf:"bytes,9,opt,name=updated_at,json=updatedAt,proto3" json:"updated_at,omitempty"`
-	Distributor    *Distributor `protobuf:"bytes,10,opt,name=distributor,proto3" json:"distributor,omitempty"`
-	Invitee        *Distributor `protobuf:"bytes,11,opt,name=invitee,proto3" json:"invitee,omitempty"`
+	Id             int64  `protobuf:"varint,1,opt,name=id,proto3" json:"id"`
+	DistributorId  int64  `protobuf:"varint,2,opt,name=distributor_id,json=distributorId,proto3" json:"distributor_id"`
+	CustomerId     int64  `protobuf:"varint,3,opt,name=customer_id,json=customerId,proto3" json:"customer_id"`
+	Type           int32  `protobuf:"varint,4,opt,name=type,proto3" json:"type"`
+	Status         string `protobuf:"bytes,5,opt,name=status,proto3" json:"status"`
+	ContinueNum    int32  `protobuf:"varint,6,opt,name=continue_num,json=continueNum,proto3" json:"continue_num"`
+	LastContinueAt string `protobuf:"bytes,7,opt,name=last_continue_at,json=lastContinueAt,proto3" json:"last_continue_at"`
+	CreatedAt      string `protobuf:"bytes,8,opt,name=created_at,json=createdAt,proto3" json:"created_at"`
+	UpdatedAt      string `protobuf:"bytes,9,opt,name=updated_at,json=updatedAt,proto3" json:"updated_at"`
+	// @inject_tag: gorm:"-"
+	Distributor *Distributor `protobuf:"bytes,10,opt,name=distributor,proto3" json:"distributor"`
+	// @inject_tag: gorm:"-"
+	Invitee *Distributor `protobuf:"bytes,11,opt,name=invitee,proto3" json:"invitee"`
 }
 
 func (x *Relationship) Reset() {
@@ -158,11 +160,11 @@ type RelationshipWhere struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	Paged    int32  `protobuf:"varint,1,opt,name=paged,proto3" json:"paged,omitempty"`
-	PageSize int32  `protobuf:"varint,2,opt,name=page_size,json=pageSize,proto3" json:"page_size,omitempty"`
-	Sorting  string `protobuf:"bytes,3,opt,name=sorting,proto3" json:"sorting,omitempty"`
-	Type     int32  `protobuf:"varint,4,opt,name=type,proto3" json:"type,omitempty"`
-	Status   string `protobuf:"bytes,5,opt,name=status,proto3" json:"status,omitempty"`
+	Paged    int32  `protobuf:"varint,1,opt,name=paged,proto3" json:"paged"`
+	PageSize int32  `protobuf:"varint,2,opt,name=page_size,json=pageSize,proto3" json:"page_size"`
+	Sorting  string `protobuf:"bytes,3,opt,name=sorting,proto3" json:"sorting"`
+	Type     int32  `protobuf:"varint,4,opt,name=type,proto3" json:"type"`
+	Status   string `protobuf:"bytes,5,opt,name=status,proto3" json:"status"`
 }
 
 func (x *RelationshipWhere) Reset() {
@@ -237,11 +239,11 @@ type RelationshipResponse struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	Entity *Relationship   `protobuf:"bytes,1,opt,name=entity,proto3" json:"entity,omitempty"`
-	Pager  *common.Pager   `protobuf:"bytes,2,opt,name=pager,proto3" json:"pager,omitempty"`
-	Items  []*Relationship `protobuf:"bytes,3,rep,name=items,proto3" json:"items,omitempty"`
-	Error  *common.Error   `protobuf:"bytes,4,opt,name=error,proto3" json:"error,omitempty"`
-	Info   *common.Info    `protobuf:"bytes,5,opt,name=info,proto3" json:"info,omitempty"`
+	Entity *Relationship   `protobuf:"bytes,1,opt,name=entity,proto3" json:"entity"`
+	Pager  *common.Pager   `protobuf:"bytes,2,opt,name=pager,proto3" json:"pager"`
+	Items  []*Relationship `protobuf:"bytes,3,rep,name=items,proto3" json:"items"`
+	Error  *common.Error   `protobuf:"bytes,4,opt,name=error,proto3" json:"error"`
+	Info   *common.Info    `protobuf:"bytes,5,opt,name=info,proto3" json:"info"`
 }
 
 func (x *RelationshipResponse) Reset() {

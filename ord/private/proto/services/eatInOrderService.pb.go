@@ -31,9 +31,9 @@ type SettlementRequestByEatIn struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	OrderId     int64 `protobuf:"varint,1,opt,name=order_id,json=orderId,proto3" json:"order_id,omitempty"`
-	UseTicketId int64 `protobuf:"varint,2,opt,name=use_ticket_id,json=useTicketId,proto3" json:"use_ticket_id,omitempty"` // 使用的优惠劵凭证ID
-	IsUseJf     bool  `protobuf:"varint,3,opt,name=is_use_jf,json=isUseJf,proto3" json:"is_use_jf,omitempty"`             // 是否使用积分抵扣
+	OrderId     int64 `protobuf:"varint,1,opt,name=order_id,json=orderId,proto3" json:"order_id"`
+	UseTicketId int64 `protobuf:"varint,2,opt,name=use_ticket_id,json=useTicketId,proto3" json:"use_ticket_id"` // 使用的优惠劵凭证ID
+	IsUseJf     bool  `protobuf:"varint,3,opt,name=is_use_jf,json=isUseJf,proto3" json:"is_use_jf"`             // 是否使用积分抵扣
 }
 
 func (x *SettlementRequestByEatIn) Reset() {
@@ -95,20 +95,25 @@ type SettlementConfirmByEatIn struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	Count              int32         `protobuf:"varint,1,opt,name=count,proto3" json:"count,omitempty"`
-	Total              float32       `protobuf:"fixed32,2,opt,name=total,proto3" json:"total,omitempty"`
-	Discount           float32       `protobuf:"fixed32,3,opt,name=discount,proto3" json:"discount,omitempty"`
-	Amount             float32       `protobuf:"fixed32,4,opt,name=amount,proto3" json:"amount,omitempty"`
-	UseTicketId        int64         `protobuf:"varint,5,opt,name=use_ticket_id,json=useTicketId,proto3" json:"use_ticket_id,omitempty"`                             //正在使用的优惠劵ID
-	AvailableTicketIds []int64       `protobuf:"varint,6,rep,packed,name=available_ticket_ids,json=availableTicketIds,proto3" json:"available_ticket_ids,omitempty"` //可以使用的优惠劵
-	Items              []*BuyingItem `protobuf:"bytes,7,rep,name=items,proto3" json:"items,omitempty"`
-	UseTicket          *CouponTicket `protobuf:"bytes,8,opt,name=use_ticket,json=useTicket,proto3" json:"use_ticket,omitempty"`
-	MemberMoney        float32       `protobuf:"fixed32,10,opt,name=member_money,json=memberMoney,proto3" json:"member_money,omitempty"`                        // 会员优惠金额
-	LimitDiscountMoney float32       `protobuf:"fixed32,11,opt,name=limit_discount_money,json=limitDiscountMoney,proto3" json:"limit_discount_money,omitempty"` // 限时活动优惠金额
-	RewardMoney        float32       `protobuf:"fixed32,12,opt,name=reward_money,json=rewardMoney,proto3" json:"reward_money,omitempty"`                        // 满减送活动优惠金额
-	CouponMoney        float32       `protobuf:"fixed32,13,opt,name=coupon_money,json=couponMoney,proto3" json:"coupon_money,omitempty"`                        // 优惠券优惠金额
-	Integral           *Integral     `protobuf:"bytes,14,opt,name=integral,proto3" json:"integral,omitempty"`                                                   // 积分信息
-	Food               *OrderFood    `protobuf:"bytes,15,opt,name=food,proto3" json:"food,omitempty"`                                                           // 餐饮商品信息
+	Count       int32   `protobuf:"varint,1,opt,name=count,proto3" json:"count"`
+	Total       float32 `protobuf:"fixed32,2,opt,name=total,proto3" json:"total"`
+	Discount    float32 `protobuf:"fixed32,3,opt,name=discount,proto3" json:"discount"`
+	Amount      float32 `protobuf:"fixed32,4,opt,name=amount,proto3" json:"amount"`
+	UseTicketId int64   `protobuf:"varint,5,opt,name=use_ticket_id,json=useTicketId,proto3" json:"use_ticket_id"` //正在使用的优惠劵ID
+	// @inject_tag: gorm:"-"
+	AvailableTicketIds []int64 `protobuf:"varint,6,rep,packed,name=available_ticket_ids,json=availableTicketIds,proto3" json:"available_ticket_ids" gorm:"-"` //可以使用的优惠劵
+	// @inject_tag: gorm:"-"
+	Items []*BuyingItem `protobuf:"bytes,7,rep,name=items,proto3" json:"items" gorm:"-"`
+	// @inject_tag: gorm:"-"
+	UseTicket          *CouponTicket `protobuf:"bytes,8,opt,name=use_ticket,json=useTicket,proto3" json:"use_ticket" gorm:"-"`
+	MemberMoney        float32       `protobuf:"fixed32,10,opt,name=member_money,json=memberMoney,proto3" json:"member_money"`                        // 会员优惠金额
+	LimitDiscountMoney float32       `protobuf:"fixed32,11,opt,name=limit_discount_money,json=limitDiscountMoney,proto3" json:"limit_discount_money"` // 限时活动优惠金额
+	RewardMoney        float32       `protobuf:"fixed32,12,opt,name=reward_money,json=rewardMoney,proto3" json:"reward_money"`                        // 满减送活动优惠金额
+	CouponMoney        float32       `protobuf:"fixed32,13,opt,name=coupon_money,json=couponMoney,proto3" json:"coupon_money"`                        // 优惠券优惠金额
+	// @inject_tag: gorm:"-"
+	Integral *Integral `protobuf:"bytes,14,opt,name=integral,proto3" json:"integral" gorm:"-"` // 积分信息
+	// @inject_tag: gorm:"-"
+	Food *OrderFood `protobuf:"bytes,15,opt,name=food,proto3" json:"food" gorm:"-"` // 餐饮商品信息
 }
 
 func (x *SettlementConfirmByEatIn) Reset() {
@@ -246,11 +251,11 @@ type SettlementConfirmByEatInResponse struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	Entity *SettlementConfirmByEatIn   `protobuf:"bytes,1,opt,name=entity,proto3" json:"entity,omitempty"`
-	Pager  *common.Pager               `protobuf:"bytes,2,opt,name=pager,proto3" json:"pager,omitempty"`
-	Items  []*SettlementConfirmByEatIn `protobuf:"bytes,3,rep,name=items,proto3" json:"items,omitempty"`
-	Error  *common.Error               `protobuf:"bytes,4,opt,name=error,proto3" json:"error,omitempty"`
-	Info   *common.Info                `protobuf:"bytes,5,opt,name=info,proto3" json:"info,omitempty"`
+	Entity *SettlementConfirmByEatIn   `protobuf:"bytes,1,opt,name=entity,proto3" json:"entity"`
+	Pager  *common.Pager               `protobuf:"bytes,2,opt,name=pager,proto3" json:"pager"`
+	Items  []*SettlementConfirmByEatIn `protobuf:"bytes,3,rep,name=items,proto3" json:"items"`
+	Error  *common.Error               `protobuf:"bytes,4,opt,name=error,proto3" json:"error"`
+	Info   *common.Info                `protobuf:"bytes,5,opt,name=info,proto3" json:"info"`
 }
 
 func (x *SettlementConfirmByEatInResponse) Reset() {

@@ -31,19 +31,19 @@ type CommissionDetail struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	Id              int64   `protobuf:"varint,1,opt,name=id,proto3" json:"id,omitempty"`
-	CommissionId    int64   `protobuf:"varint,2,opt,name=commission_id,json=commissionId,proto3" json:"commission_id,omitempty"`
-	OrderDetailId   int64   `protobuf:"varint,3,opt,name=order_detail_id,json=orderDetailId,proto3" json:"order_detail_id,omitempty"`
-	ItemId          int64   `protobuf:"varint,4,opt,name=item_id,json=itemId,proto3" json:"item_id,omitempty"`
-	SkuId           int64   `protobuf:"varint,5,opt,name=sku_id,json=skuId,proto3" json:"sku_id,omitempty"`
-	Name            string  `protobuf:"bytes,6,opt,name=name,proto3" json:"name,omitempty"`
-	ThumbUrl        string  `protobuf:"bytes,7,opt,name=thumb_url,json=thumbUrl,proto3" json:"thumb_url,omitempty"`
-	Num             int32   `protobuf:"varint,8,opt,name=num,proto3" json:"num,omitempty"`
-	Price           float32 `protobuf:"fixed32,9,opt,name=price,proto3" json:"price,omitempty"`
-	CommissionRate  float32 `protobuf:"fixed32,10,opt,name=commission_rate,json=commissionRate,proto3" json:"commission_rate,omitempty"`
-	CommissionMoney float32 `protobuf:"fixed32,11,opt,name=commission_money,json=commissionMoney,proto3" json:"commission_money,omitempty"`
-	CreatedAt       string  `protobuf:"bytes,12,opt,name=created_at,json=createdAt,proto3" json:"created_at,omitempty"`
-	UpdatedAt       string  `protobuf:"bytes,13,opt,name=updated_at,json=updatedAt,proto3" json:"updated_at,omitempty"`
+	Id              int64   `protobuf:"varint,1,opt,name=id,proto3" json:"id"`
+	CommissionId    int64   `protobuf:"varint,2,opt,name=commission_id,json=commissionId,proto3" json:"commission_id"`
+	OrderDetailId   int64   `protobuf:"varint,3,opt,name=order_detail_id,json=orderDetailId,proto3" json:"order_detail_id"`
+	ItemId          int64   `protobuf:"varint,4,opt,name=item_id,json=itemId,proto3" json:"item_id"`
+	SkuId           int64   `protobuf:"varint,5,opt,name=sku_id,json=skuId,proto3" json:"sku_id"`
+	Name            string  `protobuf:"bytes,6,opt,name=name,proto3" json:"name"`
+	ThumbUrl        string  `protobuf:"bytes,7,opt,name=thumb_url,json=thumbUrl,proto3" json:"thumb_url"`
+	Num             int32   `protobuf:"varint,8,opt,name=num,proto3" json:"num"`
+	Price           float32 `protobuf:"fixed32,9,opt,name=price,proto3" json:"price"`
+	CommissionRate  float32 `protobuf:"fixed32,10,opt,name=commission_rate,json=commissionRate,proto3" json:"commission_rate"`
+	CommissionMoney float32 `protobuf:"fixed32,11,opt,name=commission_money,json=commissionMoney,proto3" json:"commission_money"`
+	CreatedAt       string  `protobuf:"bytes,12,opt,name=created_at,json=createdAt,proto3" json:"created_at"`
+	UpdatedAt       string  `protobuf:"bytes,13,opt,name=updated_at,json=updatedAt,proto3" json:"updated_at"`
 }
 
 func (x *CommissionDetail) Reset() {
@@ -174,11 +174,11 @@ type CommissionDetailResponse struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	Entity *CommissionDetail   `protobuf:"bytes,1,opt,name=entity,proto3" json:"entity,omitempty"`
-	Pager  *common.Pager       `protobuf:"bytes,2,opt,name=pager,proto3" json:"pager,omitempty"`
-	Items  []*CommissionDetail `protobuf:"bytes,3,rep,name=items,proto3" json:"items,omitempty"`
-	Error  *common.Error       `protobuf:"bytes,4,opt,name=error,proto3" json:"error,omitempty"`
-	Info   *common.Info        `protobuf:"bytes,5,opt,name=info,proto3" json:"info,omitempty"`
+	Entity *CommissionDetail   `protobuf:"bytes,1,opt,name=entity,proto3" json:"entity"`
+	Pager  *common.Pager       `protobuf:"bytes,2,opt,name=pager,proto3" json:"pager"`
+	Items  []*CommissionDetail `protobuf:"bytes,3,rep,name=items,proto3" json:"items"`
+	Error  *common.Error       `protobuf:"bytes,4,opt,name=error,proto3" json:"error"`
+	Info   *common.Info        `protobuf:"bytes,5,opt,name=info,proto3" json:"info"`
 }
 
 func (x *CommissionDetailResponse) Reset() {

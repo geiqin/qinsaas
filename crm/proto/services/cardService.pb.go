@@ -31,28 +31,30 @@ type Card struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	Id            int32          `protobuf:"varint,1,opt,name=id,proto3" json:"id,omitempty"`
-	Name          string         `protobuf:"bytes,2,opt,name=name,proto3" json:"name,omitempty"`
-	CardBg        string         `protobuf:"bytes,3,opt,name=card_bg,json=cardBg,proto3" json:"card_bg,omitempty"`
-	Term          int32          `protobuf:"varint,4,opt,name=term,proto3" json:"term,omitempty"`
-	TermDays      int32          `protobuf:"varint,5,opt,name=term_days,json=termDays,proto3" json:"term_days,omitempty"`
-	TermStartDate string         `protobuf:"bytes,6,opt,name=term_start_date,json=termStartDate,proto3" json:"term_start_date,omitempty"`
-	TermEndDate   string         `protobuf:"bytes,7,opt,name=term_end_date,json=termEndDate,proto3" json:"term_end_date,omitempty"`
-	Method        int32          `protobuf:"varint,8,opt,name=method,proto3" json:"method,omitempty"`
-	Fee           float32        `protobuf:"fixed32,9,opt,name=fee,proto3" json:"fee,omitempty"`
-	Stock         int32          `protobuf:"varint,10,opt,name=stock,proto3" json:"stock,omitempty"`
-	Code          string         `protobuf:"bytes,11,opt,name=code,proto3" json:"code,omitempty"`
-	TotalPayment  int32          `protobuf:"varint,12,opt,name=total_payment,json=totalPayment,proto3" json:"total_payment,omitempty"`
-	TotalConsume  float32        `protobuf:"fixed32,13,opt,name=total_consume,json=totalConsume,proto3" json:"total_consume,omitempty"`
-	TotalIntegral int32          `protobuf:"varint,14,opt,name=total_integral,json=totalIntegral,proto3" json:"total_integral,omitempty"`
-	Description   string         `protobuf:"bytes,15,opt,name=description,proto3" json:"description,omitempty"`
-	Phone         string         `protobuf:"bytes,16,opt,name=phone,proto3" json:"phone,omitempty"`
-	Disabled      bool           `protobuf:"varint,17,opt,name=disabled,proto3" json:"disabled,omitempty"`
-	CreatedAt     string         `protobuf:"bytes,19,opt,name=created_at,json=createdAt,proto3" json:"created_at,omitempty"`
-	UpdatedAt     string         `protobuf:"bytes,20,opt,name=updated_at,json=updatedAt,proto3" json:"updated_at,omitempty"`
-	CardBenefits  []*CardBenefit `protobuf:"bytes,21,rep,name=card_benefits,json=cardBenefits,proto3" json:"card_benefits,omitempty"`
-	Ids           []int32        `protobuf:"varint,22,rep,packed,name=ids,proto3" json:"ids,omitempty"`
-	Status        int32          `protobuf:"varint,23,opt,name=status,proto3" json:"status,omitempty"`
+	Id            int32   `protobuf:"varint,1,opt,name=id,proto3" json:"id"`
+	Name          string  `protobuf:"bytes,2,opt,name=name,proto3" json:"name"`
+	CardBg        string  `protobuf:"bytes,3,opt,name=card_bg,json=cardBg,proto3" json:"card_bg"`
+	Term          int32   `protobuf:"varint,4,opt,name=term,proto3" json:"term"`
+	TermDays      int32   `protobuf:"varint,5,opt,name=term_days,json=termDays,proto3" json:"term_days"`
+	TermStartDate string  `protobuf:"bytes,6,opt,name=term_start_date,json=termStartDate,proto3" json:"term_start_date"`
+	TermEndDate   string  `protobuf:"bytes,7,opt,name=term_end_date,json=termEndDate,proto3" json:"term_end_date"`
+	Method        int32   `protobuf:"varint,8,opt,name=method,proto3" json:"method"`
+	Fee           float32 `protobuf:"fixed32,9,opt,name=fee,proto3" json:"fee"`
+	Stock         int32   `protobuf:"varint,10,opt,name=stock,proto3" json:"stock"`
+	Code          string  `protobuf:"bytes,11,opt,name=code,proto3" json:"code"`
+	TotalPayment  int32   `protobuf:"varint,12,opt,name=total_payment,json=totalPayment,proto3" json:"total_payment"`
+	TotalConsume  float32 `protobuf:"fixed32,13,opt,name=total_consume,json=totalConsume,proto3" json:"total_consume"`
+	TotalIntegral int32   `protobuf:"varint,14,opt,name=total_integral,json=totalIntegral,proto3" json:"total_integral"`
+	Description   string  `protobuf:"bytes,15,opt,name=description,proto3" json:"description"`
+	Phone         string  `protobuf:"bytes,16,opt,name=phone,proto3" json:"phone"`
+	Disabled      bool    `protobuf:"varint,17,opt,name=disabled,proto3" json:"disabled"`
+	CreatedAt     string  `protobuf:"bytes,19,opt,name=created_at,json=createdAt,proto3" json:"created_at"`
+	UpdatedAt     string  `protobuf:"bytes,20,opt,name=updated_at,json=updatedAt,proto3" json:"updated_at"`
+	// &inject_tag: gorm:"foreignKey:CardId"
+	CardBenefits []*CardBenefit `protobuf:"bytes,21,rep,name=card_benefits,json=cardBenefits,proto3" json:"card_benefits"`
+	// @inject_tag: gorm:"-"
+	Ids    []int32 `protobuf:"varint,22,rep,packed,name=ids,proto3" json:"ids" gorm:"-"`
+	Status int32   `protobuf:"varint,23,opt,name=status,proto3" json:"status"`
 }
 
 func (x *Card) Reset() {
@@ -247,12 +249,12 @@ type CardWhere struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	Paged    int32 `protobuf:"varint,1,opt,name=paged,proto3" json:"paged,omitempty"`
-	PageSize int32 `protobuf:"varint,2,opt,name=page_size,json=pageSize,proto3" json:"page_size,omitempty"`
+	Paged    int32 `protobuf:"varint,1,opt,name=paged,proto3" json:"paged"`
+	PageSize int32 `protobuf:"varint,2,opt,name=page_size,json=pageSize,proto3" json:"page_size"`
 	//以下为自定义参数
-	Name   string `protobuf:"bytes,3,opt,name=name,proto3" json:"name,omitempty"`
-	Status int32  `protobuf:"varint,4,opt,name=status,proto3" json:"status,omitempty"` //状态 1使用中   2 已禁用  3已过期
-	Method int32  `protobuf:"varint,5,opt,name=method,proto3" json:"method,omitempty"` //领取方式：1 直接领取   2 付费购买
+	Name   string `protobuf:"bytes,3,opt,name=name,proto3" json:"name"`
+	Status int32  `protobuf:"varint,4,opt,name=status,proto3" json:"status"` //状态 1使用中   2 已禁用  3已过期
+	Method int32  `protobuf:"varint,5,opt,name=method,proto3" json:"method"` //领取方式：1 直接领取   2 付费购买
 }
 
 func (x *CardWhere) Reset() {
@@ -328,11 +330,11 @@ type CardResponse struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	Entity *Card         `protobuf:"bytes,1,opt,name=entity,proto3" json:"entity,omitempty"`
-	Pager  *common.Pager `protobuf:"bytes,2,opt,name=pager,proto3" json:"pager,omitempty"`
-	Items  []*Card       `protobuf:"bytes,3,rep,name=items,proto3" json:"items,omitempty"`
-	Error  *common.Error `protobuf:"bytes,4,opt,name=error,proto3" json:"error,omitempty"`
-	Info   *common.Info  `protobuf:"bytes,5,opt,name=info,proto3" json:"info,omitempty"`
+	Entity *Card         `protobuf:"bytes,1,opt,name=entity,proto3" json:"entity"`
+	Pager  *common.Pager `protobuf:"bytes,2,opt,name=pager,proto3" json:"pager"`
+	Items  []*Card       `protobuf:"bytes,3,rep,name=items,proto3" json:"items"`
+	Error  *common.Error `protobuf:"bytes,4,opt,name=error,proto3" json:"error"`
+	Info   *common.Info  `protobuf:"bytes,5,opt,name=info,proto3" json:"info"`
 }
 
 func (x *CardResponse) Reset() {

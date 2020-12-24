@@ -31,16 +31,17 @@ type PurchaseWhere struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	Paged       int32   `protobuf:"varint,1,opt,name=paged,proto3" json:"paged,omitempty"`
-	PageSize    int32   `protobuf:"varint,2,opt,name=page_size,json=pageSize,proto3" json:"page_size,omitempty"`
-	Id          int64   `protobuf:"varint,3,opt,name=id,proto3" json:"id,omitempty"`
-	Ids         []int64 `protobuf:"varint,4,rep,packed,name=ids,proto3" json:"ids,omitempty"`
-	Type        string  `protobuf:"bytes,5,opt,name=type,proto3" json:"type,omitempty"`
-	Status      int32   `protobuf:"varint,6,opt,name=status,proto3" json:"status,omitempty"`
-	Ok          bool    `protobuf:"varint,7,opt,name=ok,proto3" json:"ok,omitempty"`
-	Failure     string  `protobuf:"bytes,8,opt,name=failure,proto3" json:"failure,omitempty"`
-	PurchaseId  int64   `protobuf:"varint,9,opt,name=purchase_id,json=purchaseId,proto3" json:"purchase_id,omitempty"`
-	PurchaseIds []int64 `protobuf:"varint,10,rep,packed,name=purchase_ids,json=purchaseIds,proto3" json:"purchase_ids,omitempty"`
+	Paged      int32   `protobuf:"varint,1,opt,name=paged,proto3" json:"paged"`
+	PageSize   int32   `protobuf:"varint,2,opt,name=page_size,json=pageSize,proto3" json:"page_size"`
+	Id         int64   `protobuf:"varint,3,opt,name=id,proto3" json:"id"`
+	Ids        []int64 `protobuf:"varint,4,rep,packed,name=ids,proto3" json:"ids"`
+	Type       string  `protobuf:"bytes,5,opt,name=type,proto3" json:"type"`
+	Status     int32   `protobuf:"varint,6,opt,name=status,proto3" json:"status"`
+	Ok         bool    `protobuf:"varint,7,opt,name=ok,proto3" json:"ok"`
+	Failure    string  `protobuf:"bytes,8,opt,name=failure,proto3" json:"failure"`
+	PurchaseId int64   `protobuf:"varint,9,opt,name=purchase_id,json=purchaseId,proto3" json:"purchase_id"`
+	// @inject_tag: gorm:"-"
+	PurchaseIds []int64 `protobuf:"varint,10,rep,packed,name=purchase_ids,json=purchaseIds,proto3" json:"purchase_ids" gorm:"-"`
 }
 
 func (x *PurchaseWhere) Reset() {
@@ -150,21 +151,22 @@ type Purchase struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	Id            int64             `protobuf:"varint,1,opt,name=id,proto3" json:"id,omitempty"`
-	PurchaseSn    string            `protobuf:"bytes,2,opt,name=purchase_sn,json=purchaseSn,proto3" json:"purchase_sn,omitempty"`
-	Type          string            `protobuf:"bytes,3,opt,name=type,proto3" json:"type,omitempty"`
-	SourceNo      string            `protobuf:"bytes,4,opt,name=source_no,json=sourceNo,proto3" json:"source_no,omitempty"`
-	UserId        int64             `protobuf:"varint,5,opt,name=user_id,json=userId,proto3" json:"user_id,omitempty"`
-	Memo          string            `protobuf:"bytes,6,opt,name=memo,proto3" json:"memo,omitempty"`
-	RowTotal      int32             `protobuf:"varint,7,opt,name=row_total,json=rowTotal,proto3" json:"row_total,omitempty"`
-	QuantityTotal int32             `protobuf:"varint,8,opt,name=quantity_total,json=quantityTotal,proto3" json:"quantity_total,omitempty"`
-	HandledAt     string            `protobuf:"bytes,9,opt,name=handled_at,json=handledAt,proto3" json:"handled_at,omitempty"`
-	Status        int32             `protobuf:"varint,10,opt,name=status,proto3" json:"status,omitempty"`
-	Failure       string            `protobuf:"bytes,11,opt,name=failure,proto3" json:"failure,omitempty"`
-	CreatedAt     string            `protobuf:"bytes,12,opt,name=created_at,json=createdAt,proto3" json:"created_at,omitempty"`
-	UpdatedAt     string            `protobuf:"bytes,13,opt,name=updated_at,json=updatedAt,proto3" json:"updated_at,omitempty"`
-	Details       []*PurchaseDetail `protobuf:"bytes,14,rep,name=details,proto3" json:"details,omitempty"`
-	Ok            bool              `protobuf:"varint,15,opt,name=ok,proto3" json:"ok,omitempty"` //确定操作
+	Id            int64  `protobuf:"varint,1,opt,name=id,proto3" json:"id"`
+	PurchaseSn    string `protobuf:"bytes,2,opt,name=purchase_sn,json=purchaseSn,proto3" json:"purchase_sn"`
+	Type          string `protobuf:"bytes,3,opt,name=type,proto3" json:"type"`
+	SourceNo      string `protobuf:"bytes,4,opt,name=source_no,json=sourceNo,proto3" json:"source_no"`
+	UserId        int64  `protobuf:"varint,5,opt,name=user_id,json=userId,proto3" json:"user_id"`
+	Memo          string `protobuf:"bytes,6,opt,name=memo,proto3" json:"memo"`
+	RowTotal      int32  `protobuf:"varint,7,opt,name=row_total,json=rowTotal,proto3" json:"row_total"`
+	QuantityTotal int32  `protobuf:"varint,8,opt,name=quantity_total,json=quantityTotal,proto3" json:"quantity_total"`
+	HandledAt     string `protobuf:"bytes,9,opt,name=handled_at,json=handledAt,proto3" json:"handled_at"`
+	Status        int32  `protobuf:"varint,10,opt,name=status,proto3" json:"status"`
+	Failure       string `protobuf:"bytes,11,opt,name=failure,proto3" json:"failure"`
+	CreatedAt     string `protobuf:"bytes,12,opt,name=created_at,json=createdAt,proto3" json:"created_at"`
+	UpdatedAt     string `protobuf:"bytes,13,opt,name=updated_at,json=updatedAt,proto3" json:"updated_at"`
+	// @inject_tag: gorm:"foreignKey:PurchaseId"
+	Details []*PurchaseDetail `protobuf:"bytes,14,rep,name=details,proto3" json:"details" gorm:"foreignKey:PurchaseId"`
+	Ok      bool              `protobuf:"varint,15,opt,name=ok,proto3" json:"ok"` //确定操作
 }
 
 func (x *Purchase) Reset() {
@@ -309,11 +311,11 @@ type PurchaseResponse struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	Entity *Purchase     `protobuf:"bytes,1,opt,name=entity,proto3" json:"entity,omitempty"`
-	Pager  *common.Pager `protobuf:"bytes,2,opt,name=pager,proto3" json:"pager,omitempty"`
-	Items  []*Purchase   `protobuf:"bytes,3,rep,name=items,proto3" json:"items,omitempty"`
-	Error  *common.Error `protobuf:"bytes,4,opt,name=error,proto3" json:"error,omitempty"`
-	Info   *common.Info  `protobuf:"bytes,5,opt,name=info,proto3" json:"info,omitempty"`
+	Entity *Purchase     `protobuf:"bytes,1,opt,name=entity,proto3" json:"entity"`
+	Pager  *common.Pager `protobuf:"bytes,2,opt,name=pager,proto3" json:"pager"`
+	Items  []*Purchase   `protobuf:"bytes,3,rep,name=items,proto3" json:"items"`
+	Error  *common.Error `protobuf:"bytes,4,opt,name=error,proto3" json:"error"`
+	Info   *common.Info  `protobuf:"bytes,5,opt,name=info,proto3" json:"info"`
 }
 
 func (x *PurchaseResponse) Reset() {

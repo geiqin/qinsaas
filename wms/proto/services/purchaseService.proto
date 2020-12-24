@@ -38,6 +38,7 @@ message PurchaseWhere {
     bool ok = 7;
     string failure = 8;
     int64 purchase_id = 9;
+    // @inject_tag: gorm:"-"
     repeated int64 purchase_ids = 10;
 }
 
@@ -55,6 +56,7 @@ message Purchase {
     string failure = 11;
     string created_at = 12;
     string updated_at = 13;
+    // @inject_tag: gorm:"foreignKey:PurchaseId"
     repeated PurchaseDetail details =14;
     bool ok =15; //确定操作
 }

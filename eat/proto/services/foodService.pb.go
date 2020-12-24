@@ -31,15 +31,16 @@ type FoodWhere struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	Paged    int32   `protobuf:"varint,1,opt,name=paged,proto3" json:"paged,omitempty"`
-	PageSize int32   `protobuf:"varint,2,opt,name=page_size,json=pageSize,proto3" json:"page_size,omitempty"`
-	Top      int32   `protobuf:"varint,3,opt,name=top,proto3" json:"top,omitempty"`
-	Id       int64   `protobuf:"varint,4,opt,name=id,proto3" json:"id,omitempty"`
-	Ids      []int64 `protobuf:"varint,5,rep,packed,name=ids,proto3" json:"ids,omitempty"`
-	ItemId   int64   `protobuf:"varint,6,opt,name=item_id,json=itemId,proto3" json:"item_id,omitempty"`
-	FoodType string  `protobuf:"bytes,7,opt,name=food_type,json=foodType,proto3" json:"food_type,omitempty"`
-	KindId   int64   `protobuf:"varint,8,opt,name=kind_id,json=kindId,proto3" json:"kind_id,omitempty"`
-	IsClient bool    `protobuf:"varint,9,opt,name=is_client,json=isClient,proto3" json:"is_client,omitempty"`
+	Paged    int32 `protobuf:"varint,1,opt,name=paged,proto3" json:"paged"`
+	PageSize int32 `protobuf:"varint,2,opt,name=page_size,json=pageSize,proto3" json:"page_size"`
+	Top      int32 `protobuf:"varint,3,opt,name=top,proto3" json:"top"`
+	Id       int64 `protobuf:"varint,4,opt,name=id,proto3" json:"id"`
+	// @inject_tag: gorm:"-"
+	Ids      []int64 `protobuf:"varint,5,rep,packed,name=ids,proto3" json:"ids" gorm:"-"`
+	ItemId   int64   `protobuf:"varint,6,opt,name=item_id,json=itemId,proto3" json:"item_id"`
+	FoodType string  `protobuf:"bytes,7,opt,name=food_type,json=foodType,proto3" json:"food_type"`
+	KindId   int64   `protobuf:"varint,8,opt,name=kind_id,json=kindId,proto3" json:"kind_id"`
+	IsClient bool    `protobuf:"varint,9,opt,name=is_client,json=isClient,proto3" json:"is_client"`
 }
 
 func (x *FoodWhere) Reset() {
@@ -142,13 +143,13 @@ type Food struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	Id        int64   `protobuf:"varint,1,opt,name=id,proto3" json:"id,omitempty"`
-	ItemId    int64   `protobuf:"varint,2,opt,name=item_id,json=itemId,proto3" json:"item_id,omitempty"`
-	FoodType  string  `protobuf:"bytes,3,opt,name=food_type,json=foodType,proto3" json:"food_type,omitempty"`
-	KindId    int64   `protobuf:"varint,4,opt,name=kind_id,json=kindId,proto3" json:"kind_id,omitempty"`
-	BoxFee    float32 `protobuf:"fixed32,5,opt,name=box_fee,json=boxFee,proto3" json:"box_fee,omitempty"`
-	CreatedAt string  `protobuf:"bytes,6,opt,name=created_at,json=createdAt,proto3" json:"created_at,omitempty"`
-	UpdatedAt string  `protobuf:"bytes,7,opt,name=updated_at,json=updatedAt,proto3" json:"updated_at,omitempty"`
+	Id        int64   `protobuf:"varint,1,opt,name=id,proto3" json:"id"`
+	ItemId    int64   `protobuf:"varint,2,opt,name=item_id,json=itemId,proto3" json:"item_id"`
+	FoodType  string  `protobuf:"bytes,3,opt,name=food_type,json=foodType,proto3" json:"food_type"`
+	KindId    int64   `protobuf:"varint,4,opt,name=kind_id,json=kindId,proto3" json:"kind_id"`
+	BoxFee    float32 `protobuf:"fixed32,5,opt,name=box_fee,json=boxFee,proto3" json:"box_fee"`
+	CreatedAt string  `protobuf:"bytes,6,opt,name=created_at,json=createdAt,proto3" json:"created_at"`
+	UpdatedAt string  `protobuf:"bytes,7,opt,name=updated_at,json=updatedAt,proto3" json:"updated_at"`
 }
 
 func (x *Food) Reset() {
@@ -237,11 +238,11 @@ type FoodResponse struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	Entity *Food         `protobuf:"bytes,1,opt,name=entity,proto3" json:"entity,omitempty"`
-	Pager  *common.Pager `protobuf:"bytes,2,opt,name=pager,proto3" json:"pager,omitempty"`
-	Items  []*Food       `protobuf:"bytes,3,rep,name=items,proto3" json:"items,omitempty"`
-	Error  *common.Error `protobuf:"bytes,4,opt,name=error,proto3" json:"error,omitempty"`
-	Info   *common.Info  `protobuf:"bytes,5,opt,name=info,proto3" json:"info,omitempty"`
+	Entity *Food         `protobuf:"bytes,1,opt,name=entity,proto3" json:"entity"`
+	Pager  *common.Pager `protobuf:"bytes,2,opt,name=pager,proto3" json:"pager"`
+	Items  []*Food       `protobuf:"bytes,3,rep,name=items,proto3" json:"items"`
+	Error  *common.Error `protobuf:"bytes,4,opt,name=error,proto3" json:"error"`
+	Info   *common.Info  `protobuf:"bytes,5,opt,name=info,proto3" json:"info"`
 }
 
 func (x *FoodResponse) Reset() {

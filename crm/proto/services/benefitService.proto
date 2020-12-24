@@ -26,6 +26,7 @@ message Benefit {
     string memo =10;
     string created_at =11;
     string updated_at =12;
+    // @inject_tag: gorm:"-"
     repeated int32 ids = 13;
 }
 
