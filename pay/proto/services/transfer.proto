@@ -1,0 +1,84 @@
+syntax = "proto3";
+
+package services;
+option go_package =".;services";
+import "common/base.proto";
+
+//转账服务
+service TransferService {
+    //创建转账
+    rpc Create (Transfer) returns (TransferResponse) {}
+    //获得转账信息
+    rpc Get (Transfer) returns (TransferResponse) {}
+    //查询转账
+    rpc Search (TransferWhere) returns (TransferResponse) {}
+    // 转账到企业银行账户
+    rpc ToCorpBank(TransferRequest) returns (TransferResponse) {}
+    //转账到微信个人钱包
+    rpc ToWxWallet(TransferRequest) returns (TransferResponse) {}
+    //转账到支付宝账户
+    rpc ToAliAccount(TransferRequest) returns (TransferResponse) {}
+}
+
+
+
+//转账
+message Transfer{
+    int64 id = 1;
+    string transfer_sn = 2;
+    int64 paygate_id = 3;
+    string type = 4;
+    string channel = 5; //wx_wallet
+    string recipient = 6;
+    string real_name = 7;
+    float amount = 8;
+    string currency = 9;
+    string order_type = 10;
+    int64 order_id = 11;
+    string order_sn = 12;
+    string memo = 13;
+    string extra = 14;
+    string metadata = 15;
+    string status = 16;
+    int64 customer_id = 17;
+    string open_id = 18;
+    string finished_at =19;
+    string created_at = 20;
+    string updated_at = 21;
+}
+
+message TransferRequest {
+    float amount = 1;
+    string currency = 2;
+    int64 customer_id = 3;
+    string extra = 4;
+    string memo = 5;
+    string metadata = 6;
+    string order_type = 7;
+    int64 order_id = 8;
+    string order_sn = 9;
+}
+
+message TransferWhere {
+    int32 paged = 1;
+    int32 page_size = 2;
+    int32 top = 3;
+    //base params
+    int64 id = 4;
+    string type = 5;
+    string real_name = 6;
+    string keywords = 8;
+    string status =9;
+    string start_date =13;
+    string end_date =14;
+}
+
+
+//
+message TransferResponse {
+    Transfer entity = 1;
+    common.Pager pager =2;
+    repeated Transfer items = 3;
+    common.Error error = 4;
+    common.Info info =5;
+}

@@ -1,0 +1,56 @@
+syntax = "proto3";
+
+package services;
+option go_package =".;services";
+import "common/base.proto";
+
+
+//退款服务
+service RefundService {
+    //创建退款
+    rpc Create (Refund) returns (RefundResponse) {}
+    //修改退款
+    rpc Update (Refund) returns (RefundResponse) {}
+    //删除退款
+    rpc Delete (Refund) returns (RefundResponse) {}
+    //获得退款信息
+    rpc Get (Refund) returns (RefundResponse) {}
+    //查询退款
+    rpc Search (common.BaseWhere) returns (RefundResponse) {}
+}
+
+//退款
+message Refund{
+    int64 id = 1;
+    string refund_sn = 2;
+    float total_fee = 3;
+    float refund_fee = 4;
+    string currency = 5;
+    int64 charge_id = 8;
+    string charge_sn = 9;
+    string charge_transaction_no = 10;
+    string target_user_type = 11;
+    int64 target_user_id = 12;
+    string refund_desc = 13;
+    string refund_source = 14;
+    string metadata = 15;
+    string return_extra = 16;
+    string transaction_no = 17;
+    int64 safeguard_id = 18;
+    string safeguard_sn = 19;
+    string status = 20;
+    string finished_at = 21;
+    string created_at = 22;
+    string updated_at = 23;
+
+}
+
+
+//
+message RefundResponse {
+    Refund entity = 1;
+    common.Pager pager =2;
+    repeated Refund items = 3;
+    common.Error error = 4;
+    common.Info info =5;
+}

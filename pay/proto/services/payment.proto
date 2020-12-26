@@ -1,0 +1,64 @@
+syntax = "proto3";
+
+package services;
+option go_package =".;services";
+import "common/base.proto";
+import "charge.proto";
+
+
+//微信支付
+service WeixinService {
+    //小程序支付
+    rpc MiniPay (PaymentRequest) returns (WeixinResponse) {}
+    //H5支付
+    rpc H5Pay (PaymentRequest) returns (WeixinResponse) {}
+    //APP支付
+    rpc AppPay (PaymentRequest) returns (WeixinResponse) {}
+    //提交付款码支付
+    rpc MicroPay (PaymentRequest) returns (WeixinResponse) {}
+}
+
+//支付宝支付
+service AlipayService {
+    //手机网站支付接口2.0（手机网站支付）
+    rpc WapPay (PaymentRequest) returns (PaymentResponse) {}
+    //统一收单下单并支付页面接口（电脑网站支付）
+    rpc PagePay (PaymentRequest) returns (PaymentResponse) {}
+    //APP支付接口2.0（APP支付）
+    rpc AppPay (PaymentRequest) returns (PaymentResponse) {}
+}
+
+message Weixin{
+    string time_stamp =2;
+    string nonce_str =3;
+    string package =4;
+    string sign_type =5;
+    string pay_sign =6;
+}
+
+message WeixinResponse {
+    Weixin entity = 1;
+    common.Error error = 4;
+    common.Info info =5;
+}
+
+//支付请求
+message PaymentRequest{
+    string type =1;
+    int64 order_id = 2;
+    string order_sn = 3;
+    float amount = 4;
+    string currency = 5;
+    string subject = 6;
+    string body = 7;
+    string extra = 8;
+    string channel = 9;
+}
+
+
+//支付应答
+message PaymentResponse {
+    Charge entity = 1;
+    common.Error error = 4;
+    common.Info info =5;
+}

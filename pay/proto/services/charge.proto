@@ -1,0 +1,62 @@
+syntax = "proto3";
+
+package services;
+option go_package =".;services";
+import "common/base.proto";
+
+//支付凭证
+service ChargeService {
+    //删除支付凭证
+    rpc Delete (Charge) returns (ChargeResponse) {}
+    //获得支付凭证
+    rpc Get (Charge) returns (ChargeResponse) {}
+    //查询支付凭证
+    rpc Search (common.BaseWhere) returns (ChargeResponse) {}
+}
+
+//支付凭证
+message Charge{
+    int64 id = 1;
+    string charge_sn = 2;
+    bool lived = 3;
+    bool paid = 4;
+    bool refunded = 5;
+    bool reversed = 6;
+    int64 paygate_id = 7;
+    string open_id = 8;
+    string target_user_type = 9;
+    int64 target_user_id = 10;
+    string type = 11;
+    int64 order_id = 12;
+    string order_sn = 13;
+    float amount = 14;
+    string currency = 15;
+    string subject = 16;
+    string body = 17;
+    string extra = 18;
+    string channel = 19;
+    string trade_type = 20;
+    string transaction_no = 21;
+    float refunded_amount = 22;
+    string failure_code = 23;
+    string failure_msg = 24;
+    string credential = 25;
+    string client_ip = 26;
+    string memo = 27;
+    string metadata = 28;
+    string status = 29;
+    string paid_at = 30;
+    string expired_at = 31;
+    string created_at = 32;
+    string updated_at = 33;
+}
+
+
+//
+message ChargeResponse {
+    Charge entity = 1;
+    common.Pager pager =2;
+    repeated Charge items = 3;
+    common.Error error = 4;
+    common.Info info =5;
+}
