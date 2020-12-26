@@ -31,27 +31,26 @@ type Card struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	Id            int32   `protobuf:"varint,1,opt,name=id,proto3" json:"id"`
-	Name          string  `protobuf:"bytes,2,opt,name=name,proto3" json:"name"`
-	CardBg        string  `protobuf:"bytes,3,opt,name=card_bg,json=cardBg,proto3" json:"card_bg"`
-	Term          int32   `protobuf:"varint,4,opt,name=term,proto3" json:"term"`
-	TermDays      int32   `protobuf:"varint,5,opt,name=term_days,json=termDays,proto3" json:"term_days"`
-	TermStartDate string  `protobuf:"bytes,6,opt,name=term_start_date,json=termStartDate,proto3" json:"term_start_date"`
-	TermEndDate   string  `protobuf:"bytes,7,opt,name=term_end_date,json=termEndDate,proto3" json:"term_end_date"`
-	Method        int32   `protobuf:"varint,8,opt,name=method,proto3" json:"method"`
-	Fee           float32 `protobuf:"fixed32,9,opt,name=fee,proto3" json:"fee"`
-	Stock         int32   `protobuf:"varint,10,opt,name=stock,proto3" json:"stock"`
-	Code          string  `protobuf:"bytes,11,opt,name=code,proto3" json:"code"`
-	TotalPayment  int32   `protobuf:"varint,12,opt,name=total_payment,json=totalPayment,proto3" json:"total_payment"`
-	TotalConsume  float32 `protobuf:"fixed32,13,opt,name=total_consume,json=totalConsume,proto3" json:"total_consume"`
-	TotalIntegral int32   `protobuf:"varint,14,opt,name=total_integral,json=totalIntegral,proto3" json:"total_integral"`
-	Description   string  `protobuf:"bytes,15,opt,name=description,proto3" json:"description"`
-	Phone         string  `protobuf:"bytes,16,opt,name=phone,proto3" json:"phone"`
-	Disabled      bool    `protobuf:"varint,17,opt,name=disabled,proto3" json:"disabled"`
-	CreatedAt     string  `protobuf:"bytes,19,opt,name=created_at,json=createdAt,proto3" json:"created_at"`
-	UpdatedAt     string  `protobuf:"bytes,20,opt,name=updated_at,json=updatedAt,proto3" json:"updated_at"`
-	// &inject_tag: gorm:"foreignKey:CardId"
-	CardBenefits []*CardBenefit `protobuf:"bytes,21,rep,name=card_benefits,json=cardBenefits,proto3" json:"card_benefits"`
+	Id            int32          `protobuf:"varint,1,opt,name=id,proto3" json:"id"`
+	Name          string         `protobuf:"bytes,2,opt,name=name,proto3" json:"name"`
+	CardBg        string         `protobuf:"bytes,3,opt,name=card_bg,json=cardBg,proto3" json:"card_bg"`
+	Term          int32          `protobuf:"varint,4,opt,name=term,proto3" json:"term"`
+	TermDays      int32          `protobuf:"varint,5,opt,name=term_days,json=termDays,proto3" json:"term_days"`
+	TermStartDate string         `protobuf:"bytes,6,opt,name=term_start_date,json=termStartDate,proto3" json:"term_start_date"`
+	TermEndDate   string         `protobuf:"bytes,7,opt,name=term_end_date,json=termEndDate,proto3" json:"term_end_date"`
+	Method        int32          `protobuf:"varint,8,opt,name=method,proto3" json:"method"`
+	Fee           float32        `protobuf:"fixed32,9,opt,name=fee,proto3" json:"fee"`
+	Stock         int32          `protobuf:"varint,10,opt,name=stock,proto3" json:"stock"`
+	Code          string         `protobuf:"bytes,11,opt,name=code,proto3" json:"code"`
+	TotalPayment  int32          `protobuf:"varint,12,opt,name=total_payment,json=totalPayment,proto3" json:"total_payment"`
+	TotalConsume  float32        `protobuf:"fixed32,13,opt,name=total_consume,json=totalConsume,proto3" json:"total_consume"`
+	TotalIntegral int32          `protobuf:"varint,14,opt,name=total_integral,json=totalIntegral,proto3" json:"total_integral"`
+	Description   string         `protobuf:"bytes,15,opt,name=description,proto3" json:"description"`
+	Phone         string         `protobuf:"bytes,16,opt,name=phone,proto3" json:"phone"`
+	Disabled      bool           `protobuf:"varint,17,opt,name=disabled,proto3" json:"disabled"`
+	CreatedAt     string         `protobuf:"bytes,19,opt,name=created_at,json=createdAt,proto3" json:"created_at"`
+	UpdatedAt     string         `protobuf:"bytes,20,opt,name=updated_at,json=updatedAt,proto3" json:"updated_at"`
+	CardBenefits  []*CardBenefit `protobuf:"bytes,21,rep,name=card_benefits,json=cardBenefits,proto3"`
 	// @inject_tag: gorm:"-"
 	Ids    []int32 `protobuf:"varint,22,rep,packed,name=ids,proto3" json:"ids" gorm:"-"`
 	Status int32   `protobuf:"varint,23,opt,name=status,proto3" json:"status"`

@@ -60,6 +60,7 @@ message CartRequest {
     int64 sku_id =3;
     string direction =4;
     int32 num =5;
+    // @inject_tag: gorm:"-"
     repeated string row_ids =6;
 }
 

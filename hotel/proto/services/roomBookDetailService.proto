@@ -69,9 +69,8 @@ message RoomBookDetail {
     string book_mobile = 15;
     string created_at = 16;
     string updated_at = 17;
-    // @inject_tag: gorm:"foreignKey:RoomBookDetailId;"
     RoomCheckin room_checkin_info = 18;
-    // @inject_tag: gorm:"foreignKey:RoomBookDetailId;association_autocreate:false;association_autoupdate:false"
+    // @inject_tag: gorm:"association_autocreate:false;association_autoupdate:false"
     repeated RoomBookPrice price_list = 20;
     // @inject_tag: gorm:"-"
     repeated RoomBookDetail items = 21;

@@ -85,14 +85,13 @@ type TimeConfig struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	Id           int64  `protobuf:"varint,1,opt,name=id,proto3" json:"id"`
-	BusinessType string `protobuf:"bytes,2,opt,name=business_type,json=businessType,proto3" json:"business_type"`
-	TimeType     int32  `protobuf:"varint,3,opt,name=time_type,json=timeType,proto3" json:"time_type"`
-	FieldName    string `protobuf:"bytes,4,opt,name=field_name,json=fieldName,proto3" json:"field_name"`
-	CreatedAt    string `protobuf:"bytes,5,opt,name=created_at,json=createdAt,proto3" json:"created_at"`
-	UpdatedAt    string `protobuf:"bytes,6,opt,name=updated_at,json=updatedAt,proto3" json:"updated_at"`
-	// @inject_tag: gorm:"foreignKey:TimeConfigId"
-	TimeRanges []*TimeRange `protobuf:"bytes,7,rep,name=time_ranges,json=timeRanges,proto3" json:"time_ranges" gorm:"foreignKey:TimeConfigId"`
+	Id           int64        `protobuf:"varint,1,opt,name=id,proto3" json:"id"`
+	BusinessType string       `protobuf:"bytes,2,opt,name=business_type,json=businessType,proto3" json:"business_type"`
+	TimeType     int32        `protobuf:"varint,3,opt,name=time_type,json=timeType,proto3" json:"time_type"`
+	FieldName    string       `protobuf:"bytes,4,opt,name=field_name,json=fieldName,proto3" json:"field_name"`
+	CreatedAt    string       `protobuf:"bytes,5,opt,name=created_at,json=createdAt,proto3" json:"created_at"`
+	UpdatedAt    string       `protobuf:"bytes,6,opt,name=updated_at,json=updatedAt,proto3" json:"updated_at"`
+	TimeRanges   []*TimeRange `protobuf:"bytes,7,rep,name=time_ranges,json=timeRanges,proto3" json:"time_ranges"`
 }
 
 func (x *TimeConfig) Reset() {

@@ -51,7 +51,6 @@ message Vipcard {
     string created_at =11;
     string updated_at =12;
     string deleted_at =13;
-    // @inject_tag: `gorm:"-"`
     Card card =14;
     // @inject_tag: `gorm:"-"`
     repeated int64 ids =15;

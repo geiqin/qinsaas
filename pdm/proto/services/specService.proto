@@ -22,7 +22,6 @@ message Spec {
     int32	sorting	=6;
     string	created_at	=7;
     string	updated_at	=8;
-    // @inject_tag: gorm:"foreignKey:SpecId"
     repeated SpecValue values=9;
 }
 

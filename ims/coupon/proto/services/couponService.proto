@@ -97,9 +97,7 @@ message Coupon{
     string receive_type = 39;
     string created_at = 40;
     string updated_at = 41;
-    // @inject_tag: gorm:"foreignKey:CouponId"
     repeated CouponTicket tickets = 42;
-    // @inject_tag: gorm:"foreignKey:CouponId"
     repeated CouponGoods goodses = 43;
     // @inject_tag: gorm:"-"
     repeated int64 ids = 44;

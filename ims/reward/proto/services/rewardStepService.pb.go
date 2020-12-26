@@ -31,22 +31,21 @@ type RewardStep struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	Id             int64   `protobuf:"varint,1,opt,name=id,proto3" json:"id"`
-	RewardId       int64   `protobuf:"varint,2,opt,name=reward_id,json=rewardId,proto3" json:"reward_id"`
-	UnitType       int32   `protobuf:"varint,3,opt,name=unit_type,json=unitType,proto3" json:"unit_type"`
-	ConditionPrice float32 `protobuf:"fixed32,4,opt,name=condition_price,json=conditionPrice,proto3" json:"condition_price"`
-	ConditionNum   int32   `protobuf:"varint,5,opt,name=condition_num,json=conditionNum,proto3" json:"condition_num"`
-	Preferent      int32   `protobuf:"varint,6,opt,name=preferent,proto3" json:"preferent"`
-	Money          float32 `protobuf:"fixed32,7,opt,name=money,proto3" json:"money"`
-	Discount       float32 `protobuf:"fixed32,8,opt,name=discount,proto3" json:"discount"`
-	Point          int32   `protobuf:"varint,9,opt,name=point,proto3" json:"point"`
-	PresentId      int64   `protobuf:"varint,10,opt,name=present_id,json=presentId,proto3" json:"present_id"`
-	PresentNum     int32   `protobuf:"varint,11,opt,name=present_num,json=presentNum,proto3" json:"present_num"`
-	CreatedAt      string  `protobuf:"bytes,12,opt,name=created_at,json=createdAt,proto3" json:"created_at"`
-	UpdatedAt      string  `protobuf:"bytes,13,opt,name=updated_at,json=updatedAt,proto3" json:"updated_at"`
-	// @inject_tag: gorm:"foreignKey:RewardStepId"
-	Coupons     []*RewardCoupon `protobuf:"bytes,14,rep,name=coupons,proto3" json:"coupons" gorm:"foreignKey:RewardStepId"`
-	FreePostage bool            `protobuf:"varint,15,opt,name=free_postage,json=freePostage,proto3" json:"free_postage"` // 是否包邮
+	Id             int64           `protobuf:"varint,1,opt,name=id,proto3" json:"id"`
+	RewardId       int64           `protobuf:"varint,2,opt,name=reward_id,json=rewardId,proto3" json:"reward_id"`
+	UnitType       int32           `protobuf:"varint,3,opt,name=unit_type,json=unitType,proto3" json:"unit_type"`
+	ConditionPrice float32         `protobuf:"fixed32,4,opt,name=condition_price,json=conditionPrice,proto3" json:"condition_price"`
+	ConditionNum   int32           `protobuf:"varint,5,opt,name=condition_num,json=conditionNum,proto3" json:"condition_num"`
+	Preferent      int32           `protobuf:"varint,6,opt,name=preferent,proto3" json:"preferent"`
+	Money          float32         `protobuf:"fixed32,7,opt,name=money,proto3" json:"money"`
+	Discount       float32         `protobuf:"fixed32,8,opt,name=discount,proto3" json:"discount"`
+	Point          int32           `protobuf:"varint,9,opt,name=point,proto3" json:"point"`
+	PresentId      int64           `protobuf:"varint,10,opt,name=present_id,json=presentId,proto3" json:"present_id"`
+	PresentNum     int32           `protobuf:"varint,11,opt,name=present_num,json=presentNum,proto3" json:"present_num"`
+	CreatedAt      string          `protobuf:"bytes,12,opt,name=created_at,json=createdAt,proto3" json:"created_at"`
+	UpdatedAt      string          `protobuf:"bytes,13,opt,name=updated_at,json=updatedAt,proto3" json:"updated_at"`
+	Coupons        []*RewardCoupon `protobuf:"bytes,14,rep,name=coupons,proto3" json:"coupons"`
+	FreePostage    bool            `protobuf:"varint,15,opt,name=free_postage,json=freePostage,proto3" json:"free_postage"` // 是否包邮
 }
 
 func (x *RewardStep) Reset() {

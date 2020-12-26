@@ -170,9 +170,8 @@ type Fetch struct {
 	// @inject_tag: gorm:"-"
 	ReceptionTimes []*Times `protobuf:"bytes,23,rep,name=reception_times,json=receptionTimes,proto3" json:"reception_times" gorm:"-"`
 	// @inject_tag: gorm:"-"
-	FetchTimes []*Times `protobuf:"bytes,24,rep,name=fetch_times,json=fetchTimes,proto3" json:"fetch_times" gorm:"-"`
-	// @inject_tag: gorm:"foreignKey:FetchId"
-	Galleries []*FetchGallery `protobuf:"bytes,25,rep,name=galleries,proto3" json:"galleries" gorm:"foreignKey:FetchId"`
+	FetchTimes []*Times        `protobuf:"bytes,24,rep,name=fetch_times,json=fetchTimes,proto3" json:"fetch_times" gorm:"-"`
+	Galleries  []*FetchGallery `protobuf:"bytes,25,rep,name=galleries,proto3" json:"galleries"`
 	// @inject_tag: gorm:"-"
 	Area     *AreaInfo `protobuf:"bytes,26,opt,name=area,proto3" json:"area" gorm:"-"`
 	Distance float32   `protobuf:"fixed32,27,opt,name=distance,proto3" json:"distance"`

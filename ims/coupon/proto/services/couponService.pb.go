@@ -152,50 +152,48 @@ type Coupon struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	Id                   int64   `protobuf:"varint,1,opt,name=id,proto3" json:"id"`
-	CouponSn             string  `protobuf:"bytes,3,opt,name=coupon_sn,json=couponSn,proto3" json:"coupon_sn"`
-	Title                string  `protobuf:"bytes,4,opt,name=title,proto3" json:"title"`
-	Total                int32   `protobuf:"varint,5,opt,name=total,proto3" json:"total"`
-	Stock                int32   `protobuf:"varint,6,opt,name=stock,proto3" json:"stock"`
-	IsAtLeast            bool    `protobuf:"varint,7,opt,name=is_at_least,json=isAtLeast,proto3" json:"is_at_least"`
-	AtLeast              float32 `protobuf:"fixed32,8,opt,name=at_least,json=atLeast,proto3" json:"at_least"`
-	EffectiveType        int32   `protobuf:"varint,9,opt,name=effective_type,json=effectiveType,proto3" json:"effective_type"`
-	EffectiveFixedTerm   int32   `protobuf:"varint,10,opt,name=effective_fixed_term,json=effectiveFixedTerm,proto3" json:"effective_fixed_term"`
-	EffectiveStartAt     string  `protobuf:"bytes,11,opt,name=effective_start_at,json=effectiveStartAt,proto3" json:"effective_start_at"`
-	EffectiveEndAt       string  `protobuf:"bytes,12,opt,name=effective_end_at,json=effectiveEndAt,proto3" json:"effective_end_at"`
-	ExpireNotice         bool    `protobuf:"varint,13,opt,name=expire_notice,json=expireNotice,proto3" json:"expire_notice"`
-	IsExpired            bool    `protobuf:"varint,14,opt,name=is_expired,json=isExpired,proto3" json:"is_expired"`
-	IsOngoing            bool    `protobuf:"varint,15,opt,name=is_ongoing,json=isOngoing,proto3" json:"is_ongoing"`
-	IsForbidPreference   bool    `protobuf:"varint,16,opt,name=is_forbid_preference,json=isForbidPreference,proto3" json:"is_forbid_preference"`
-	IsShare              bool    `protobuf:"varint,17,opt,name=is_share,json=isShare,proto3" json:"is_share"`
-	IsCancel             bool    `protobuf:"varint,18,opt,name=is_cancel,json=isCancel,proto3" json:"is_cancel"`
-	IsDelete             bool    `protobuf:"varint,19,opt,name=is_delete,json=isDelete,proto3" json:"is_delete"`
-	IsSyncWeixin         bool    `protobuf:"varint,20,opt,name=is_sync_weixin,json=isSyncWeixin,proto3" json:"is_sync_weixin"`
-	NeedUserLevel        int32   `protobuf:"varint,21,opt,name=need_user_level,json=needUserLevel,proto3" json:"need_user_level"`
-	PreferentialType     int32   `protobuf:"varint,22,opt,name=preferential_type,json=preferentialType,proto3" json:"preferential_type"`
-	PreferentialMoney    float32 `protobuf:"fixed32,23,opt,name=preferential_money,json=preferentialMoney,proto3" json:"preferential_money"`
-	PreferentialDiscount float32 `protobuf:"fixed32,24,opt,name=preferential_discount,json=preferentialDiscount,proto3" json:"preferential_discount"`
-	Quota                int32   `protobuf:"varint,25,opt,name=quota,proto3" json:"quota"`
-	ExchangeNum          int32   `protobuf:"varint,26,opt,name=exchange_num,json=exchangeNum,proto3" json:"exchange_num"`
-	RangeType            string  `protobuf:"bytes,27,opt,name=range_type,json=rangeType,proto3" json:"range_type"`
-	ServicePhone         string  `protobuf:"bytes,28,opt,name=service_phone,json=servicePhone,proto3" json:"service_phone"`
-	TotalFansTaked       int32   `protobuf:"varint,29,opt,name=total_fans_taked,json=totalFansTaked,proto3" json:"total_fans_taked"`
-	TotalFansUsed        int32   `protobuf:"varint,30,opt,name=total_fans_used,json=totalFansUsed,proto3" json:"total_fans_used"`
-	TotalTaked           int32   `protobuf:"varint,31,opt,name=total_taked,json=totalTaked,proto3" json:"total_taked"`
-	TotalUsed            int32   `protobuf:"varint,32,opt,name=total_used,json=totalUsed,proto3" json:"total_used"`
-	CouponUrl            string  `protobuf:"bytes,33,opt,name=coupon_url,json=couponUrl,proto3" json:"coupon_url"`
-	Description          string  `protobuf:"bytes,34,opt,name=description,proto3" json:"description"`
-	Status               int32   `protobuf:"varint,35,opt,name=status,proto3" json:"status"`
-	WeixinTitle          string  `protobuf:"bytes,36,opt,name=weixin_title,json=weixinTitle,proto3" json:"weixin_title"`
-	WeixinSubTitle       string  `protobuf:"bytes,37,opt,name=weixin_sub_title,json=weixinSubTitle,proto3" json:"weixin_sub_title"`
-	WeixinColor          string  `protobuf:"bytes,38,opt,name=weixin_color,json=weixinColor,proto3" json:"weixin_color"`
-	ReceiveType          string  `protobuf:"bytes,39,opt,name=receive_type,json=receiveType,proto3" json:"receive_type"`
-	CreatedAt            string  `protobuf:"bytes,40,opt,name=created_at,json=createdAt,proto3" json:"created_at"`
-	UpdatedAt            string  `protobuf:"bytes,41,opt,name=updated_at,json=updatedAt,proto3" json:"updated_at"`
-	// @inject_tag: gorm:"foreignKey:CouponId"
-	Tickets []*CouponTicket `protobuf:"bytes,42,rep,name=tickets,proto3" json:"tickets" gorm:"foreignKey:CouponId"`
-	// @inject_tag: gorm:"foreignKey:CouponId"
-	Goodses []*CouponGoods `protobuf:"bytes,43,rep,name=goodses,proto3" json:"goodses" gorm:"foreignKey:CouponId"`
+	Id                   int64           `protobuf:"varint,1,opt,name=id,proto3" json:"id"`
+	CouponSn             string          `protobuf:"bytes,3,opt,name=coupon_sn,json=couponSn,proto3" json:"coupon_sn"`
+	Title                string          `protobuf:"bytes,4,opt,name=title,proto3" json:"title"`
+	Total                int32           `protobuf:"varint,5,opt,name=total,proto3" json:"total"`
+	Stock                int32           `protobuf:"varint,6,opt,name=stock,proto3" json:"stock"`
+	IsAtLeast            bool            `protobuf:"varint,7,opt,name=is_at_least,json=isAtLeast,proto3" json:"is_at_least"`
+	AtLeast              float32         `protobuf:"fixed32,8,opt,name=at_least,json=atLeast,proto3" json:"at_least"`
+	EffectiveType        int32           `protobuf:"varint,9,opt,name=effective_type,json=effectiveType,proto3" json:"effective_type"`
+	EffectiveFixedTerm   int32           `protobuf:"varint,10,opt,name=effective_fixed_term,json=effectiveFixedTerm,proto3" json:"effective_fixed_term"`
+	EffectiveStartAt     string          `protobuf:"bytes,11,opt,name=effective_start_at,json=effectiveStartAt,proto3" json:"effective_start_at"`
+	EffectiveEndAt       string          `protobuf:"bytes,12,opt,name=effective_end_at,json=effectiveEndAt,proto3" json:"effective_end_at"`
+	ExpireNotice         bool            `protobuf:"varint,13,opt,name=expire_notice,json=expireNotice,proto3" json:"expire_notice"`
+	IsExpired            bool            `protobuf:"varint,14,opt,name=is_expired,json=isExpired,proto3" json:"is_expired"`
+	IsOngoing            bool            `protobuf:"varint,15,opt,name=is_ongoing,json=isOngoing,proto3" json:"is_ongoing"`
+	IsForbidPreference   bool            `protobuf:"varint,16,opt,name=is_forbid_preference,json=isForbidPreference,proto3" json:"is_forbid_preference"`
+	IsShare              bool            `protobuf:"varint,17,opt,name=is_share,json=isShare,proto3" json:"is_share"`
+	IsCancel             bool            `protobuf:"varint,18,opt,name=is_cancel,json=isCancel,proto3" json:"is_cancel"`
+	IsDelete             bool            `protobuf:"varint,19,opt,name=is_delete,json=isDelete,proto3" json:"is_delete"`
+	IsSyncWeixin         bool            `protobuf:"varint,20,opt,name=is_sync_weixin,json=isSyncWeixin,proto3" json:"is_sync_weixin"`
+	NeedUserLevel        int32           `protobuf:"varint,21,opt,name=need_user_level,json=needUserLevel,proto3" json:"need_user_level"`
+	PreferentialType     int32           `protobuf:"varint,22,opt,name=preferential_type,json=preferentialType,proto3" json:"preferential_type"`
+	PreferentialMoney    float32         `protobuf:"fixed32,23,opt,name=preferential_money,json=preferentialMoney,proto3" json:"preferential_money"`
+	PreferentialDiscount float32         `protobuf:"fixed32,24,opt,name=preferential_discount,json=preferentialDiscount,proto3" json:"preferential_discount"`
+	Quota                int32           `protobuf:"varint,25,opt,name=quota,proto3" json:"quota"`
+	ExchangeNum          int32           `protobuf:"varint,26,opt,name=exchange_num,json=exchangeNum,proto3" json:"exchange_num"`
+	RangeType            string          `protobuf:"bytes,27,opt,name=range_type,json=rangeType,proto3" json:"range_type"`
+	ServicePhone         string          `protobuf:"bytes,28,opt,name=service_phone,json=servicePhone,proto3" json:"service_phone"`
+	TotalFansTaked       int32           `protobuf:"varint,29,opt,name=total_fans_taked,json=totalFansTaked,proto3" json:"total_fans_taked"`
+	TotalFansUsed        int32           `protobuf:"varint,30,opt,name=total_fans_used,json=totalFansUsed,proto3" json:"total_fans_used"`
+	TotalTaked           int32           `protobuf:"varint,31,opt,name=total_taked,json=totalTaked,proto3" json:"total_taked"`
+	TotalUsed            int32           `protobuf:"varint,32,opt,name=total_used,json=totalUsed,proto3" json:"total_used"`
+	CouponUrl            string          `protobuf:"bytes,33,opt,name=coupon_url,json=couponUrl,proto3" json:"coupon_url"`
+	Description          string          `protobuf:"bytes,34,opt,name=description,proto3" json:"description"`
+	Status               int32           `protobuf:"varint,35,opt,name=status,proto3" json:"status"`
+	WeixinTitle          string          `protobuf:"bytes,36,opt,name=weixin_title,json=weixinTitle,proto3" json:"weixin_title"`
+	WeixinSubTitle       string          `protobuf:"bytes,37,opt,name=weixin_sub_title,json=weixinSubTitle,proto3" json:"weixin_sub_title"`
+	WeixinColor          string          `protobuf:"bytes,38,opt,name=weixin_color,json=weixinColor,proto3" json:"weixin_color"`
+	ReceiveType          string          `protobuf:"bytes,39,opt,name=receive_type,json=receiveType,proto3" json:"receive_type"`
+	CreatedAt            string          `protobuf:"bytes,40,opt,name=created_at,json=createdAt,proto3" json:"created_at"`
+	UpdatedAt            string          `protobuf:"bytes,41,opt,name=updated_at,json=updatedAt,proto3" json:"updated_at"`
+	Tickets              []*CouponTicket `protobuf:"bytes,42,rep,name=tickets,proto3" json:"tickets"`
+	Goodses              []*CouponGoods  `protobuf:"bytes,43,rep,name=goodses,proto3" json:"goodses"`
 	// @inject_tag: gorm:"-"
 	Ids       []int64 `protobuf:"varint,44,rep,packed,name=ids,proto3" json:"ids" gorm:"-"`
 	IsReceive bool    `protobuf:"varint,45,opt,name=is_receive,json=isReceive,proto3" json:"is_receive"` // 是否可领取

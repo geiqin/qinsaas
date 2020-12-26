@@ -71,32 +71,25 @@ type Item struct {
 	ListedAt          string  `protobuf:"bytes,38,opt,name=listed_at,json=listedAt,proto3" json:"listed_at"`
 	CreatedAt         string  `protobuf:"bytes,39,opt,name=created_at,json=createdAt,proto3" json:"created_at"`
 	UpdatedAt         string  `protobuf:"bytes,40,opt,name=updated_at,json=updatedAt,proto3" json:"updated_at"`
-	// @inject_tag: gorm:"-"
-	Brand *Brand `protobuf:"bytes,41,opt,name=brand,proto3" json:"brand" gorm:"-"`
-	// @inject_tag: gorm:"many2many:item_cats;"
-	Cats []*Cat `protobuf:"bytes,42,rep,name=cats,proto3" json:"cats" gorm:"many2many:item_cats;"`
+	Brand             *Brand  `protobuf:"bytes,41,opt,name=brand,proto3" json:"brand"`
+	// @inject_tag: gorm:"many2many:item_cats;association_autoupdate:false"
+	Cats []*Cat `protobuf:"bytes,42,rep,name=cats,proto3" json:"cats" gorm:"many2many:item_cats;association_autoupdate:false"`
 	// @inject_tag: gorm:"many2many:item_tags;"
-	Tags []*Tag `protobuf:"bytes,43,rep,name=tags,proto3" json:"tags" gorm:"many2many:item_tags;"`
-	// @inject_tag: gorm:"foreignKey:ItemId"
-	Skus []*Sku `protobuf:"bytes,44,rep,name=skus,proto3" json:"skus" gorm:"foreignKey:ItemId"`
-	// @inject_tag: gorm:"foreignKey:ItemId"
-	Galleries []*ItemGallery `protobuf:"bytes,45,rep,name=galleries,proto3" json:"galleries" gorm:"foreignKey:ItemId"`
-	// @inject_tag: gorm:"foreignKey:ItemId"
-	Prices []*ItemPrice `protobuf:"bytes,46,rep,name=prices,proto3" json:"prices" gorm:"foreignKey:ItemId"`
-	// @inject_tag: gorm:"foreignKey:ItemId"
-	Rights []*ItemRight `protobuf:"bytes,47,rep,name=rights,proto3" json:"rights" gorm:"foreignKey:ItemId"`
-	// @inject_tag: gorm:"foreignKey:ItemId"
-	SpecIndexes []*SpecItemIndex `protobuf:"bytes,48,rep,name=spec_indexes,json=specIndexes,proto3" json:"spec_indexes" gorm:"foreignKey:ItemId"` //规格更新专用
+	Tags        []*Tag           `protobuf:"bytes,43,rep,name=tags,proto3" json:"tags" gorm:"many2many:item_tags;"`
+	Skus        []*Sku           `protobuf:"bytes,44,rep,name=skus,proto3" json:"skus"`
+	Galleries   []*ItemGallery   `protobuf:"bytes,45,rep,name=galleries,proto3" json:"galleries"`
+	Prices      []*ItemPrice     `protobuf:"bytes,46,rep,name=prices,proto3" json:"prices"`
+	Rights      []*ItemRight     `protobuf:"bytes,47,rep,name=rights,proto3" json:"rights"`
+	SpecIndexes []*SpecItemIndex `protobuf:"bytes,48,rep,name=spec_indexes,json=specIndexes,proto3" json:"spec_indexes"` //规格更新专用
 	// @inject_tag: gorm:"-"
 	Ids []int64 `protobuf:"varint,49,rep,packed,name=ids,proto3" json:"ids" gorm:"-"`
 	// @inject_tag: gorm:"many2many:spec_item_indices;"
 	Specs []*Spec `protobuf:"bytes,50,rep,name=specs,proto3" json:"specs" gorm:"many2many:spec_item_indices;"` //(详情显示专用)
 	// @inject_tag: gorm:"-"
-	Skuitem   *Sku  `protobuf:"bytes,51,opt,name=skuitem,proto3" json:"skuitem" gorm:"-"`  //单一规格商品（在购物车，营销活动等场景用到）
-	SkuId     int64 `protobuf:"varint,52,opt,name=sku_id,json=skuId,proto3" json:"sku_id"` //单一规格商品输入参数（在获取规格商品时使用）
-	IsPresale bool  `protobuf:"varint,53,opt,name=is_presale,json=isPresale,proto3" json:"is_presale"`
-	// @inject_tag: gorm:"foreignKey:ItemId"
-	ItemPresale *ItemPresale `protobuf:"bytes,54,opt,name=item_presale,json=itemPresale,proto3" json:"item_presale" gorm:"foreignKey:ItemId"`
+	Skuitem     *Sku         `protobuf:"bytes,51,opt,name=skuitem,proto3" json:"skuitem" gorm:"-"`  //单一规格商品（在购物车，营销活动等场景用到）
+	SkuId       int64        `protobuf:"varint,52,opt,name=sku_id,json=skuId,proto3" json:"sku_id"` //单一规格商品输入参数（在获取规格商品时使用）
+	IsPresale   bool         `protobuf:"varint,53,opt,name=is_presale,json=isPresale,proto3" json:"is_presale"`
+	ItemPresale *ItemPresale `protobuf:"bytes,54,opt,name=item_presale,json=itemPresale,proto3" json:"item_presale"`
 	IsSku       bool         `protobuf:"varint,55,opt,name=is_sku,json=isSku,proto3" json:"is_sku"` // 是否多规格商品
 	// @inject_tag: gorm:"-"
 	Food     *Food  `protobuf:"bytes,56,opt,name=food,proto3" json:"food" gorm:"-"` // 餐饮商品附加信息
@@ -1035,16 +1028,13 @@ type ItemDisplay struct {
 	Weight       float32 `protobuf:"fixed32,22,opt,name=weight,proto3" json:"weight"`
 	ReviewNum    int32   `protobuf:"varint,23,opt,name=review_num,json=reviewNum,proto3" json:"review_num"`
 	ViewCount    int32   `protobuf:"varint,24,opt,name=view_count,json=viewCount,proto3" json:"view_count"`
-	// @inject_tag: gorm:"-"
-	Brand *Brand `protobuf:"bytes,25,opt,name=brand,proto3" json:"brand" gorm:"-"`
-	// @inject_tag: gorm:"many2many:item_cats;"
-	Cats []*Cat `protobuf:"bytes,26,rep,name=cats,proto3" json:"cats" gorm:"many2many:item_cats;"`
+	Brand        *Brand  `protobuf:"bytes,25,opt,name=brand,proto3" json:"brand"`
+	// @inject_tag: gorm:"many2many:item_cats;association_autoupdate:false"
+	Cats []*Cat `protobuf:"bytes,26,rep,name=cats,proto3" json:"cats" gorm:"many2many:item_cats;association_autoupdate:false"`
 	// @inject_tag: gorm:"many2many:item_tags;"
-	Tags []*Tag `protobuf:"bytes,27,rep,name=tags,proto3" json:"tags" gorm:"many2many:item_tags;"`
-	// @inject_tag: gorm:"foreignKey:ItemId"
-	Skus []*Sku `protobuf:"bytes,28,rep,name=skus,proto3" json:"skus" gorm:"foreignKey:ItemId"`
-	// @inject_tag: gorm:"foreignKey:ItemId"
-	Galleries []*ItemGallery `protobuf:"bytes,29,rep,name=galleries,proto3" json:"galleries" gorm:"foreignKey:ItemId"`
+	Tags      []*Tag         `protobuf:"bytes,27,rep,name=tags,proto3" json:"tags" gorm:"many2many:item_tags;"`
+	Skus      []*Sku         `protobuf:"bytes,28,rep,name=skus,proto3" json:"skus"`
+	Galleries []*ItemGallery `protobuf:"bytes,29,rep,name=galleries,proto3" json:"galleries"`
 	// @inject_tag: gorm:"many2many:spec_item_indices;"
 	Specs                 []*Spec `protobuf:"bytes,30,rep,name=specs,proto3" json:"specs" gorm:"many2many:spec_item_indices;"`                            //(详情显示专用)
 	IsMemberGoods         bool    `protobuf:"varint,31,opt,name=is_member_goods,json=isMemberGoods,proto3" json:"is_member_goods"`                        // 是否会员专享

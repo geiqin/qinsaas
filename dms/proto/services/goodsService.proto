@@ -32,7 +32,6 @@ message Goods {
     bool default = 7;
     string created_at = 8;
     string updated_at = 9;
-    // @inject_tag: gorm:"foreignKey:GoodsId"
     repeated GoodsCommission goods_commission = 10;
 }
 

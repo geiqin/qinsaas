@@ -36,7 +36,7 @@ type PosterGalleryWhere struct {
 	Sorting  string `protobuf:"bytes,3,opt,name=sorting,proto3" json:"sorting"`
 	Id       int64  `protobuf:"varint,4,opt,name=id,proto3" json:"id"`
 	// @inject_tag: gorm:"-"
-	Ids []int64 `protobuf:"varint,5,rep,packed,name=ids,proto3" json:"ids"`
+	Ids []int64 `protobuf:"varint,5,rep,packed,name=ids,proto3" json:"ids" gorm:"-"`
 }
 
 func (x *PosterGalleryWhere) Reset() {

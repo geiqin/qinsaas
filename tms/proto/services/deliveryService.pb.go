@@ -150,9 +150,8 @@ type Delivery struct {
 	CreatedAt             string  `protobuf:"bytes,27,opt,name=created_at,json=createdAt,proto3" json:"created_at"`
 	UpdatedAt             string  `protobuf:"bytes,28,opt,name=updated_at,json=updatedAt,proto3" json:"updated_at"`
 	// @inject_tag: gorm:"-"
-	DeliveryTimes []*Times `protobuf:"bytes,29,rep,name=delivery_times,json=deliveryTimes,proto3" json:"delivery_times" gorm:"-"`
-	// @inject_tag: gorm:"foreignKey:DeliveryId"
-	Ranges []*DeliveryRange `protobuf:"bytes,30,rep,name=ranges,proto3" json:"ranges" gorm:"foreignKey:DeliveryId"`
+	DeliveryTimes []*Times         `protobuf:"bytes,29,rep,name=delivery_times,json=deliveryTimes,proto3" json:"delivery_times" gorm:"-"`
+	Ranges        []*DeliveryRange `protobuf:"bytes,30,rep,name=ranges,proto3" json:"ranges"`
 }
 
 func (x *Delivery) Reset() {

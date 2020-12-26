@@ -42,8 +42,7 @@ type Cat struct {
 	Sorting   int32  `protobuf:"varint,9,opt,name=sorting,proto3" json:"sorting"`
 	CreatedAt string `protobuf:"bytes,10,opt,name=created_at,json=createdAt,proto3" json:"created_at"`
 	UpdatedAt string `protobuf:"bytes,11,opt,name=updated_at,json=updatedAt,proto3" json:"updated_at"`
-	// @inject_tag: gorm:"foreignKey:CatId"
-	Children []*Cat `protobuf:"bytes,12,rep,name=children,proto3" json:"children" gorm:"foreignKey:CatId"`
+	Children  []*Cat `protobuf:"bytes,12,rep,name=children,proto3" json:"children"`
 }
 
 func (x *Cat) Reset() {

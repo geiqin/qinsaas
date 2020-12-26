@@ -119,16 +119,15 @@ type IntegralRule struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	Id          int64   `protobuf:"varint,1,opt,name=id,proto3" json:"id"`
-	Points      int32   `protobuf:"varint,2,opt,name=points,proto3" json:"points"`
-	ReceiveType int32   `protobuf:"varint,3,opt,name=receive_type,json=receiveType,proto3" json:"receive_type"`
-	DealCount   int32   `protobuf:"varint,4,opt,name=deal_count,json=dealCount,proto3" json:"deal_count"`
-	DealAmount  float32 `protobuf:"fixed32,5,opt,name=deal_amount,json=dealAmount,proto3" json:"deal_amount"`
-	GoodsType   int32   `protobuf:"varint,6,opt,name=goods_type,json=goodsType,proto3" json:"goods_type"`
-	CreatedAt   string  `protobuf:"bytes,7,opt,name=created_at,json=createdAt,proto3" json:"created_at"`
-	UpdatedAt   string  `protobuf:"bytes,8,opt,name=updated_at,json=updatedAt,proto3" json:"updated_at"`
-	// @inject_tag: gorm:"foreignKey:IntegralRuleId"
-	Goods []*IntegralGoods `protobuf:"bytes,9,rep,name=goods,proto3" json:"goods" gorm:"foreignKey:IntegralRuleId"`
+	Id          int64            `protobuf:"varint,1,opt,name=id,proto3" json:"id"`
+	Points      int32            `protobuf:"varint,2,opt,name=points,proto3" json:"points"`
+	ReceiveType int32            `protobuf:"varint,3,opt,name=receive_type,json=receiveType,proto3" json:"receive_type"`
+	DealCount   int32            `protobuf:"varint,4,opt,name=deal_count,json=dealCount,proto3" json:"deal_count"`
+	DealAmount  float32          `protobuf:"fixed32,5,opt,name=deal_amount,json=dealAmount,proto3" json:"deal_amount"`
+	GoodsType   int32            `protobuf:"varint,6,opt,name=goods_type,json=goodsType,proto3" json:"goods_type"`
+	CreatedAt   string           `protobuf:"bytes,7,opt,name=created_at,json=createdAt,proto3" json:"created_at"`
+	UpdatedAt   string           `protobuf:"bytes,8,opt,name=updated_at,json=updatedAt,proto3" json:"updated_at"`
+	Goods       []*IntegralGoods `protobuf:"bytes,9,rep,name=goods,proto3" json:"goods"`
 }
 
 func (x *IntegralRule) Reset() {

@@ -40,7 +40,6 @@ message Address {
     string updated_at = 10;
     // @inject_tag: gorm:"-"
     AreaInfo area = 11;
-    // @inject_tag: gorm:"foreignKey:AddressId"
     repeated AddressType address_types = 12;
 }
 

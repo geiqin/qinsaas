@@ -35,7 +35,6 @@ message Delivery {
     string arrived_at = 23;
     string created_at = 24;
     string updated_at = 25;
-    // @inject_tag: gorm:"foreignKey:DeliveryId"
     repeated DeliveryDetail details = 26;
     int64 safeguard_id = 27;
 }

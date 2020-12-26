@@ -65,7 +65,6 @@ message Delivery {
     string updated_at = 28;
     // @inject_tag: gorm:"-"
     repeated Times delivery_times = 29;
-    // @inject_tag: gorm:"foreignKey:DeliveryId"
     repeated DeliveryRange ranges = 30;
 }
 

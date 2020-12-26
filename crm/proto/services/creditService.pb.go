@@ -31,25 +31,23 @@ type Credit struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	Id         int64   `protobuf:"varint,1,opt,name=id,proto3" json:"id"`
-	CustomerId int64   `protobuf:"varint,2,opt,name=customer_id,json=customerId,proto3" json:"customer_id"`
-	Status     bool    `protobuf:"varint,3,opt,name=status,proto3" json:"status"`
-	UpperLimit float32 `protobuf:"fixed32,4,opt,name=upper_limit,json=upperLimit,proto3" json:"upper_limit"`
-	Balance    float32 `protobuf:"fixed32,5,opt,name=balance,proto3" json:"balance"`
-	CreatedAt  string  `protobuf:"bytes,6,opt,name=created_at,json=createdAt,proto3" json:"created_at"`
-	UpdatedAt  string  `protobuf:"bytes,7,opt,name=updated_at,json=updatedAt,proto3" json:"updated_at"`
+	Id         int64     `protobuf:"varint,1,opt,name=id,proto3" json:"id"`
+	CustomerId int64     `protobuf:"varint,2,opt,name=customer_id,json=customerId,proto3" json:"customer_id"`
+	Status     bool      `protobuf:"varint,3,opt,name=status,proto3" json:"status"`
+	UpperLimit float32   `protobuf:"fixed32,4,opt,name=upper_limit,json=upperLimit,proto3" json:"upper_limit"`
+	Balance    float32   `protobuf:"fixed32,5,opt,name=balance,proto3" json:"balance"`
+	CreatedAt  string    `protobuf:"bytes,6,opt,name=created_at,json=createdAt,proto3" json:"created_at"`
+	UpdatedAt  string    `protobuf:"bytes,7,opt,name=updated_at,json=updatedAt,proto3" json:"updated_at"`
+	Customer   *Customer `protobuf:"bytes,8,opt,name=customer,proto3" json:"customer"`
 	// @inject_tag: gorm:"-"
-	Customer *Customer `protobuf:"bytes,8,opt,name=customer,proto3" json:"customer" gorm:"-"`
-	// @inject_tag: gorm:"-"
-	Ids         []int64 `protobuf:"varint,9,rep,packed,name=ids,proto3" json:"ids" gorm:"-"`
-	Name        string  `protobuf:"bytes,10,opt,name=name,proto3" json:"name"`
-	DisplayName string  `protobuf:"bytes,11,opt,name=display_name,json=displayName,proto3" json:"display_name"`
-	Realname    string  `protobuf:"bytes,12,opt,name=realname,proto3" json:"realname"`
-	Mobile      string  `protobuf:"bytes,13,opt,name=mobile,proto3" json:"mobile"`
-	Contacts    string  `protobuf:"bytes,14,opt,name=contacts,proto3" json:"contacts"`
-	Cid         int64   `protobuf:"varint,15,opt,name=cid,proto3" json:"cid"` //客户表的客户id
-	// @inject_tag: gorm:"foreignKey:CreditId"
-	CreditRecords []*CreditRecord `protobuf:"bytes,16,rep,name=credit_records,json=creditRecords,proto3" json:"credit_records" gorm:"foreignKey:CreditId"`
+	Ids           []int64         `protobuf:"varint,9,rep,packed,name=ids,proto3" json:"ids" gorm:"-"`
+	Name          string          `protobuf:"bytes,10,opt,name=name,proto3" json:"name"`
+	DisplayName   string          `protobuf:"bytes,11,opt,name=display_name,json=displayName,proto3" json:"display_name"`
+	Realname      string          `protobuf:"bytes,12,opt,name=realname,proto3" json:"realname"`
+	Mobile        string          `protobuf:"bytes,13,opt,name=mobile,proto3" json:"mobile"`
+	Contacts      string          `protobuf:"bytes,14,opt,name=contacts,proto3" json:"contacts"`
+	Cid           int64           `protobuf:"varint,15,opt,name=cid,proto3" json:"cid"` //客户表的客户id
+	CreditRecords []*CreditRecord `protobuf:"bytes,16,rep,name=credit_records,json=creditRecords,proto3" json:"credit_records"`
 }
 
 func (x *Credit) Reset() {

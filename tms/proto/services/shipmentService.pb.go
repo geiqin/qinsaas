@@ -151,42 +151,40 @@ type Shipment struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	Id             int64   `protobuf:"varint,1,opt,name=id,proto3" json:"id"`
-	DeliverySn     string  `protobuf:"bytes,2,opt,name=delivery_sn,json=deliverySn,proto3" json:"delivery_sn"`
-	OrderId        int64   `protobuf:"varint,3,opt,name=order_id,json=orderId,proto3" json:"order_id"`
-	Method         string  `protobuf:"bytes,4,opt,name=method,proto3" json:"method"`
-	Type           string  `protobuf:"bytes,5,opt,name=type,proto3" json:"type"`
-	Freight        float32 `protobuf:"fixed32,6,opt,name=freight,proto3" json:"freight"`
-	Protected      bool    `protobuf:"varint,7,opt,name=protected,proto3" json:"protected"`
-	IsDelivery     bool    `protobuf:"varint,8,opt,name=is_delivery,json=isDelivery,proto3" json:"is_delivery"`
-	ShipperId      int32   `protobuf:"varint,9,opt,name=shipper_id,json=shipperId,proto3" json:"shipper_id"`
-	LogisticsNo    string  `protobuf:"bytes,10,opt,name=logistics_no,json=logisticsNo,proto3" json:"logistics_no"`
-	FetchCode      string  `protobuf:"bytes,11,opt,name=fetch_code,json=fetchCode,proto3" json:"fetch_code"`
-	LocationId     int64   `protobuf:"varint,12,opt,name=location_id,json=locationId,proto3" json:"location_id"`
-	FetchAt        string  `protobuf:"bytes,13,opt,name=fetch_at,json=fetchAt,proto3" json:"fetch_at"`
-	DeliveryAt     string  `protobuf:"bytes,14,opt,name=delivery_at,json=deliveryAt,proto3" json:"delivery_at"`
-	DeliveryType   int32   `protobuf:"varint,33,opt,name=delivery_type,json=deliveryType,proto3" json:"delivery_type"`
-	CustomerId     int64   `protobuf:"varint,15,opt,name=customer_id,json=customerId,proto3" json:"customer_id"`
-	ReceiverName   string  `protobuf:"bytes,16,opt,name=receiver_name,json=receiverName,proto3" json:"receiver_name"`
-	ReceiverAreaId int64   `protobuf:"varint,17,opt,name=receiver_area_id,json=receiverAreaId,proto3" json:"receiver_area_id"`
-	ReceiverAddr   string  `protobuf:"bytes,18,opt,name=receiver_addr,json=receiverAddr,proto3" json:"receiver_addr"`
-	ReceiverZip    string  `protobuf:"bytes,19,opt,name=receiver_zip,json=receiverZip,proto3" json:"receiver_zip"`
-	ReceiverTel    string  `protobuf:"bytes,20,opt,name=receiver_tel,json=receiverTel,proto3" json:"receiver_tel"`
-	ReceiverMobile string  `protobuf:"bytes,21,opt,name=receiver_mobile,json=receiverMobile,proto3" json:"receiver_mobile"`
-	ReceiverEmail  string  `protobuf:"bytes,22,opt,name=receiver_email,json=receiverEmail,proto3" json:"receiver_email"`
-	OpId           int64   `protobuf:"varint,23,opt,name=op_id,json=opId,proto3" json:"op_id"`
-	Status         string  `protobuf:"bytes,24,opt,name=status,proto3" json:"status"`
-	Memo           string  `protobuf:"bytes,25,opt,name=memo,proto3" json:"memo"`
-	ArrivedAt      string  `protobuf:"bytes,26,opt,name=arrived_at,json=arrivedAt,proto3" json:"arrived_at"`
-	CreatedAt      string  `protobuf:"bytes,27,opt,name=created_at,json=createdAt,proto3" json:"created_at"`
-	UpdatedAt      string  `protobuf:"bytes,28,opt,name=updated_at,json=updatedAt,proto3" json:"updated_at"`
-	// @inject_tag: gorm:"foreignKey:ShipmentId"
-	Details   []*ShipmentDetail `protobuf:"bytes,29,rep,name=details,proto3" json:"details" gorm:"foreignKey:ShipmentId"`
-	StartTime string            `protobuf:"bytes,30,opt,name=start_time,json=startTime,proto3" json:"start_time"`
-	EndTime   string            `protobuf:"bytes,31,opt,name=end_time,json=endTime,proto3" json:"end_time"`
-	ShippedAt string            `protobuf:"bytes,32,opt,name=shipped_at,json=shippedAt,proto3" json:"shipped_at"`
-	// @inject_tag: gorm:"-"
-	Shipper *Shipper `protobuf:"bytes,34,opt,name=shipper,proto3" json:"shipper" gorm:"-"`
+	Id             int64             `protobuf:"varint,1,opt,name=id,proto3" json:"id"`
+	DeliverySn     string            `protobuf:"bytes,2,opt,name=delivery_sn,json=deliverySn,proto3" json:"delivery_sn"`
+	OrderId        int64             `protobuf:"varint,3,opt,name=order_id,json=orderId,proto3" json:"order_id"`
+	Method         string            `protobuf:"bytes,4,opt,name=method,proto3" json:"method"`
+	Type           string            `protobuf:"bytes,5,opt,name=type,proto3" json:"type"`
+	Freight        float32           `protobuf:"fixed32,6,opt,name=freight,proto3" json:"freight"`
+	Protected      bool              `protobuf:"varint,7,opt,name=protected,proto3" json:"protected"`
+	IsDelivery     bool              `protobuf:"varint,8,opt,name=is_delivery,json=isDelivery,proto3" json:"is_delivery"`
+	ShipperId      int32             `protobuf:"varint,9,opt,name=shipper_id,json=shipperId,proto3" json:"shipper_id"`
+	LogisticsNo    string            `protobuf:"bytes,10,opt,name=logistics_no,json=logisticsNo,proto3" json:"logistics_no"`
+	FetchCode      string            `protobuf:"bytes,11,opt,name=fetch_code,json=fetchCode,proto3" json:"fetch_code"`
+	LocationId     int64             `protobuf:"varint,12,opt,name=location_id,json=locationId,proto3" json:"location_id"`
+	FetchAt        string            `protobuf:"bytes,13,opt,name=fetch_at,json=fetchAt,proto3" json:"fetch_at"`
+	DeliveryAt     string            `protobuf:"bytes,14,opt,name=delivery_at,json=deliveryAt,proto3" json:"delivery_at"`
+	DeliveryType   int32             `protobuf:"varint,33,opt,name=delivery_type,json=deliveryType,proto3" json:"delivery_type"`
+	CustomerId     int64             `protobuf:"varint,15,opt,name=customer_id,json=customerId,proto3" json:"customer_id"`
+	ReceiverName   string            `protobuf:"bytes,16,opt,name=receiver_name,json=receiverName,proto3" json:"receiver_name"`
+	ReceiverAreaId int64             `protobuf:"varint,17,opt,name=receiver_area_id,json=receiverAreaId,proto3" json:"receiver_area_id"`
+	ReceiverAddr   string            `protobuf:"bytes,18,opt,name=receiver_addr,json=receiverAddr,proto3" json:"receiver_addr"`
+	ReceiverZip    string            `protobuf:"bytes,19,opt,name=receiver_zip,json=receiverZip,proto3" json:"receiver_zip"`
+	ReceiverTel    string            `protobuf:"bytes,20,opt,name=receiver_tel,json=receiverTel,proto3" json:"receiver_tel"`
+	ReceiverMobile string            `protobuf:"bytes,21,opt,name=receiver_mobile,json=receiverMobile,proto3" json:"receiver_mobile"`
+	ReceiverEmail  string            `protobuf:"bytes,22,opt,name=receiver_email,json=receiverEmail,proto3" json:"receiver_email"`
+	OpId           int64             `protobuf:"varint,23,opt,name=op_id,json=opId,proto3" json:"op_id"`
+	Status         string            `protobuf:"bytes,24,opt,name=status,proto3" json:"status"`
+	Memo           string            `protobuf:"bytes,25,opt,name=memo,proto3" json:"memo"`
+	ArrivedAt      string            `protobuf:"bytes,26,opt,name=arrived_at,json=arrivedAt,proto3" json:"arrived_at"`
+	CreatedAt      string            `protobuf:"bytes,27,opt,name=created_at,json=createdAt,proto3" json:"created_at"`
+	UpdatedAt      string            `protobuf:"bytes,28,opt,name=updated_at,json=updatedAt,proto3" json:"updated_at"`
+	Details        []*ShipmentDetail `protobuf:"bytes,29,rep,name=details,proto3" json:"details"`
+	StartTime      string            `protobuf:"bytes,30,opt,name=start_time,json=startTime,proto3" json:"start_time"`
+	EndTime        string            `protobuf:"bytes,31,opt,name=end_time,json=endTime,proto3" json:"end_time"`
+	ShippedAt      string            `protobuf:"bytes,32,opt,name=shipped_at,json=shippedAt,proto3" json:"shipped_at"`
+	Shipper        *Shipper          `protobuf:"bytes,34,opt,name=shipper,proto3" json:"shipper"`
 	// @inject_tag: gorm:"-"
 	Location *Fetch `protobuf:"bytes,35,opt,name=location,proto3" json:"location" gorm:"-"`
 }

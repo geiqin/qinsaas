@@ -50,7 +50,6 @@ message Rank {
     bool is_bind_mobile =18;
     float join_fee =19;
     bool defaulted =20;
-    // @inject_tag: gorm:"foreignKey:RankId"
     repeated GoodsCondition goodses =21;
     // @inject_tag: gorm:"-"
     repeated int32 ids =22;

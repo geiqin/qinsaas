@@ -31,17 +31,16 @@ type Track struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	Id           int64  `protobuf:"varint,1,opt,name=id,proto3" json:"id"`
-	ShipperCode  string `protobuf:"bytes,2,opt,name=shipper_code,json=shipperCode,proto3" json:"shipper_code"`
-	OrderCode    string `protobuf:"bytes,3,opt,name=order_code,json=orderCode,proto3" json:"order_code"`
-	LogisticCode string `protobuf:"bytes,4,opt,name=logistic_code,json=logisticCode,proto3" json:"logistic_code"`
-	Success      bool   `protobuf:"varint,5,opt,name=success,proto3" json:"success"`
-	Reason       string `protobuf:"bytes,6,opt,name=reason,proto3" json:"reason"`
-	State        string `protobuf:"bytes,7,opt,name=state,proto3" json:"state"`
-	StateEx      string `protobuf:"bytes,8,opt,name=stateEx,proto3" json:"stateEx"`
-	Location     string `protobuf:"bytes,9,opt,name=location,proto3" json:"location"`
-	// @inject_tag: gorm:"foreignKey:TrackId"
-	Details      []*TrackDetail `protobuf:"bytes,10,rep,name=details,proto3" json:"details" gorm:"foreignKey:TrackId"`
+	Id           int64          `protobuf:"varint,1,opt,name=id,proto3" json:"id"`
+	ShipperCode  string         `protobuf:"bytes,2,opt,name=shipper_code,json=shipperCode,proto3" json:"shipper_code"`
+	OrderCode    string         `protobuf:"bytes,3,opt,name=order_code,json=orderCode,proto3" json:"order_code"`
+	LogisticCode string         `protobuf:"bytes,4,opt,name=logistic_code,json=logisticCode,proto3" json:"logistic_code"`
+	Success      bool           `protobuf:"varint,5,opt,name=success,proto3" json:"success"`
+	Reason       string         `protobuf:"bytes,6,opt,name=reason,proto3" json:"reason"`
+	State        string         `protobuf:"bytes,7,opt,name=state,proto3" json:"state"`
+	StateEx      string         `protobuf:"bytes,8,opt,name=stateEx,proto3" json:"stateEx"`
+	Location     string         `protobuf:"bytes,9,opt,name=location,proto3" json:"location"`
+	Details      []*TrackDetail `protobuf:"bytes,10,rep,name=details,proto3" json:"details"`
 	CustomerName string         `protobuf:"bytes,11,opt,name=customer_name,json=customerName,proto3" json:"customer_name"`
 }
 

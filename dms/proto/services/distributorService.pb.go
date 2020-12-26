@@ -54,8 +54,7 @@ type Distributor struct {
 	Status               int32   `protobuf:"varint,21,opt,name=status,proto3" json:"status"`
 	CreatedAt            string  `protobuf:"bytes,22,opt,name=created_at,json=createdAt,proto3" json:"created_at"`
 	UpdatedAt            string  `protobuf:"bytes,23,opt,name=updated_at,json=updatedAt,proto3" json:"updated_at"`
-	// @inject_tag: gorm:"-"
-	Rank *Rank `protobuf:"bytes,24,opt,name=rank,proto3" json:"rank" gorm:"-"`
+	Rank                 *Rank   `protobuf:"bytes,24,opt,name=rank,proto3" json:"rank"`
 	// @inject_tag: gorm:"ForeignKey:inviter_id"
 	Inviter *Distributor `protobuf:"bytes,25,opt,name=inviter,proto3" json:"inviter" gorm:"ForeignKey:inviter_id"`
 	// @inject_tag: gorm:"-"

@@ -223,17 +223,20 @@ type PriceScheme struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	ItemId          int64        `protobuf:"varint,1,opt,name=item_id,json=itemId,proto3" json:"item_id"`
-	ItemSn          string       `protobuf:"bytes,2,opt,name=item_sn,json=itemSn,proto3" json:"item_sn"`
-	ItemName        string       `protobuf:"bytes,3,opt,name=item_name,json=itemName,proto3" json:"item_name"`
-	ItemPrice       float32      `protobuf:"fixed32,4,opt,name=item_price,json=itemPrice,proto3" json:"item_price"`
-	ItemOriginPrice float32      `protobuf:"fixed32,5,opt,name=item_origin_price,json=itemOriginPrice,proto3" json:"item_origin_price"`
-	ModelType       string       `protobuf:"bytes,7,opt,name=model_type,json=modelType,proto3" json:"model_type"`
-	Type            string       `protobuf:"bytes,8,opt,name=type,proto3" json:"type"`
-	Method          string       `protobuf:"bytes,9,opt,name=method,proto3" json:"method"`
-	Details         []*ItemPrice `protobuf:"bytes,10,rep,name=details,proto3" json:"details"`
-	Skus            []*Sku       `protobuf:"bytes,11,rep,name=skus,proto3" json:"skus"`
-	Specs           []*Spec      `protobuf:"bytes,12,rep,name=specs,proto3" json:"specs"`
+	ItemId          int64   `protobuf:"varint,1,opt,name=item_id,json=itemId,proto3" json:"item_id"`
+	ItemSn          string  `protobuf:"bytes,2,opt,name=item_sn,json=itemSn,proto3" json:"item_sn"`
+	ItemName        string  `protobuf:"bytes,3,opt,name=item_name,json=itemName,proto3" json:"item_name"`
+	ItemPrice       float32 `protobuf:"fixed32,4,opt,name=item_price,json=itemPrice,proto3" json:"item_price"`
+	ItemOriginPrice float32 `protobuf:"fixed32,5,opt,name=item_origin_price,json=itemOriginPrice,proto3" json:"item_origin_price"`
+	ModelType       string  `protobuf:"bytes,7,opt,name=model_type,json=modelType,proto3" json:"model_type"`
+	Type            string  `protobuf:"bytes,8,opt,name=type,proto3" json:"type"`
+	Method          string  `protobuf:"bytes,9,opt,name=method,proto3" json:"method"`
+	// @inject_tag: gorm:"-"
+	Details []*ItemPrice `protobuf:"bytes,10,rep,name=details,proto3" json:"details" gorm:"-"`
+	// @inject_tag: gorm:"-"
+	Skus []*Sku `protobuf:"bytes,11,rep,name=skus,proto3" json:"skus" gorm:"-"`
+	// @inject_tag: gorm:"-"
+	Specs []*Spec `protobuf:"bytes,12,rep,name=specs,proto3" json:"specs" gorm:"-"`
 }
 
 func (x *PriceScheme) Reset() {

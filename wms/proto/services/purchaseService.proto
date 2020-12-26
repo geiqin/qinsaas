@@ -56,7 +56,6 @@ message Purchase {
     string failure = 11;
     string created_at = 12;
     string updated_at = 13;
-    // @inject_tag: gorm:"foreignKey:PurchaseId"
     repeated PurchaseDetail details =14;
     bool ok =15; //确定操作
 }

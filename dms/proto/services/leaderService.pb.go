@@ -47,10 +47,8 @@ type Leader struct {
 	CreatedAt       string  `protobuf:"bytes,13,opt,name=created_at,json=createdAt,proto3" json:"created_at"`
 	UpdatedAt       string  `protobuf:"bytes,14,opt,name=updated_at,json=updatedAt,proto3" json:"updated_at"`
 	// @inject_tag: gorm:"-"
-	Ids []int64 `protobuf:"varint,15,rep,packed,name=ids,proto3" json:"ids"`
-	// @inject_tag: gorm:"-"
-	Rank *Rank `protobuf:"bytes,16,opt,name=rank,proto3" json:"rank"`
-	// @inject_tag: gorm:"-"
+	Ids         []int64      `protobuf:"varint,15,rep,packed,name=ids,proto3" json:"ids" gorm:"-"`
+	Rank        *Rank        `protobuf:"bytes,16,opt,name=rank,proto3" json:"rank"`
 	Distributor *Distributor `protobuf:"bytes,17,opt,name=distributor,proto3" json:"distributor"`
 	LeaderName  string       `protobuf:"bytes,18,opt,name=leader_name,json=leaderName,proto3" json:"leader_name"` // 团长昵称
 	Mobile      string       `protobuf:"bytes,19,opt,name=mobile,proto3" json:"mobile"`                           // 手机号

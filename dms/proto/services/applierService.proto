@@ -54,9 +54,7 @@ message Applier {
     string addons = 10;
     string created_at = 11;
     string updated_at = 12;
-    // @inject_tag: gorm:"-"
     Distributor distributor = 13;
-    // @inject_tag: gorm:"-"
     Rank rank = 14;
     string invite_sn = 15;
     // @inject_tag: gorm:"-"
@@ -79,9 +77,7 @@ message ApplierResponse {
 
 message ApplyInfo {
     bool is_apply = 1;
-    // @inject_tag: gorm:"-"
     Applier applier = 2;
-    // @inject_tag: gorm:"-"
     repeated Rank ranks = 3;
     // @inject_tag: gorm:"-"
     repeated ApplierCondition condition = 4;

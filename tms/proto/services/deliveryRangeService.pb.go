@@ -30,18 +30,17 @@ type DeliveryRange struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	Id            int32   `protobuf:"varint,1,opt,name=id,proto3" json:"id"`
-	DeliveryId    int64   `protobuf:"varint,2,opt,name=delivery_id,json=deliveryId,proto3" json:"delivery_id"`
-	AreaName      string  `protobuf:"bytes,3,opt,name=area_name,json=areaName,proto3" json:"area_name"`
-	StartPrice    float32 `protobuf:"fixed32,4,opt,name=start_price,json=startPrice,proto3" json:"start_price"`
-	DeliveryPrice float32 `protobuf:"fixed32,5,opt,name=delivery_price,json=deliveryPrice,proto3" json:"delivery_price"`
-	Method        int32   `protobuf:"varint,6,opt,name=method,proto3" json:"method"`
-	RegionRadius  float32 `protobuf:"fixed32,7,opt,name=region_radius,json=regionRadius,proto3" json:"region_radius"`
-	RegionData    string  `protobuf:"bytes,8,opt,name=region_data,json=regionData,proto3" json:"region_data"`
-	CreatedAt     string  `protobuf:"bytes,9,opt,name=created_at,json=createdAt,proto3" json:"created_at"`
-	UpdatedAt     string  `protobuf:"bytes,10,opt,name=updated_at,json=updatedAt,proto3" json:"updated_at"`
-	// @inject_tag: gorm:"foreignKey:DeliveryRangeId"
-	Coordinate []*DeliveryMap `protobuf:"bytes,11,rep,name=coordinate,proto3" json:"coordinate" gorm:"foreignKey:DeliveryRangeId"`
+	Id            int32          `protobuf:"varint,1,opt,name=id,proto3" json:"id"`
+	DeliveryId    int64          `protobuf:"varint,2,opt,name=delivery_id,json=deliveryId,proto3" json:"delivery_id"`
+	AreaName      string         `protobuf:"bytes,3,opt,name=area_name,json=areaName,proto3" json:"area_name"`
+	StartPrice    float32        `protobuf:"fixed32,4,opt,name=start_price,json=startPrice,proto3" json:"start_price"`
+	DeliveryPrice float32        `protobuf:"fixed32,5,opt,name=delivery_price,json=deliveryPrice,proto3" json:"delivery_price"`
+	Method        int32          `protobuf:"varint,6,opt,name=method,proto3" json:"method"`
+	RegionRadius  float32        `protobuf:"fixed32,7,opt,name=region_radius,json=regionRadius,proto3" json:"region_radius"`
+	RegionData    string         `protobuf:"bytes,8,opt,name=region_data,json=regionData,proto3" json:"region_data"`
+	CreatedAt     string         `protobuf:"bytes,9,opt,name=created_at,json=createdAt,proto3" json:"created_at"`
+	UpdatedAt     string         `protobuf:"bytes,10,opt,name=updated_at,json=updatedAt,proto3" json:"updated_at"`
+	Coordinate    []*DeliveryMap `protobuf:"bytes,11,rep,name=coordinate,proto3" json:"coordinate"`
 }
 
 func (x *DeliveryRange) Reset() {

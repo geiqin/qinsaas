@@ -59,12 +59,10 @@ message Shipment {
     string arrived_at = 26;
     string created_at = 27;
     string updated_at = 28;
-    // @inject_tag: gorm:"foreignKey:ShipmentId"
     repeated ShipmentDetail details = 29;
     string start_time = 30;
     string end_time = 31;
     string shipped_at = 32;
-    // @inject_tag: gorm:"-"
     Shipper shipper = 34;
     // @inject_tag: gorm:"-"
     Fetch location = 35;

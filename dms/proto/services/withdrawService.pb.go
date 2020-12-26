@@ -57,11 +57,11 @@ type Withdraw struct {
 	CreatedAt        string  `protobuf:"bytes,24,opt,name=created_at,json=createdAt,proto3" json:"created_at"`
 	UpdatedAt        string  `protobuf:"bytes,25,opt,name=updated_at,json=updatedAt,proto3" json:"updated_at"`
 	// @inject_tag: gorm:"-"
-	Distributor *Distributor `protobuf:"bytes,26,opt,name=distributor,proto3" json:"distributor"`
+	Distributor *Distributor `protobuf:"bytes,26,opt,name=distributor,proto3" json:"distributor" gorm:"-"`
 	// @inject_tag: gorm:"-"
-	Leader *Leader `protobuf:"bytes,27,opt,name=leader,proto3" json:"leader"`
+	Leader *Leader `protobuf:"bytes,27,opt,name=leader,proto3" json:"leader" gorm:"-"`
 	// @inject_tag: gorm:"-"
-	Customer *CustomerInfo `protobuf:"bytes,28,opt,name=customer,proto3" json:"customer"`
+	Customer *CustomerInfo `protobuf:"bytes,28,opt,name=customer,proto3" json:"customer" gorm:"-"`
 }
 
 func (x *Withdraw) Reset() {
@@ -303,7 +303,7 @@ type WithdrawWhere struct {
 	//base params
 	Id int64 `protobuf:"varint,4,opt,name=id,proto3" json:"id"`
 	// @inject_tag: gorm:"-"
-	Ids        []int64 `protobuf:"varint,5,rep,packed,name=ids,proto3" json:"ids"`
+	Ids        []int64 `protobuf:"varint,5,rep,packed,name=ids,proto3" json:"ids" gorm:"-"`
 	Status     int32   `protobuf:"varint,6,opt,name=status,proto3" json:"status"`
 	CustomerId int64   `protobuf:"varint,7,opt,name=customer_id,json=customerId,proto3" json:"customer_id"`
 	StartAt    string  `protobuf:"bytes,8,opt,name=start_at,json=startAt,proto3" json:"start_at"`

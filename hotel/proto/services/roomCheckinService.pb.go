@@ -31,16 +31,15 @@ type RoomCheckin struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	Id                int64  `protobuf:"varint,1,opt,name=id,proto3" json:"id"`
-	RoomBookId        int64  `protobuf:"varint,2,opt,name=room_book_id,json=roomBookId,proto3" json:"room_book_id"`
-	RoomBookDetailId  int64  `protobuf:"varint,3,opt,name=room_book_detail_id,json=roomBookDetailId,proto3" json:"room_book_detail_id"`
-	GuestMobile       string `protobuf:"bytes,4,opt,name=guest_mobile,json=guestMobile,proto3" json:"guest_mobile"`
-	GuestName         string `protobuf:"bytes,5,opt,name=guest_name,json=guestName,proto3" json:"guest_name"`
-	GuestDocumentType int32  `protobuf:"varint,6,opt,name=guest_document_type,json=guestDocumentType,proto3" json:"guest_document_type"`
-	GuestDocumentNo   string `protobuf:"bytes,7,opt,name=guest_document_no,json=guestDocumentNo,proto3" json:"guest_document_no"`
-	RoomCheckinId     int64  `protobuf:"varint,8,opt,name=room_checkin_id,json=roomCheckinId,proto3" json:"room_checkin_id"`
-	// @inject_tag: gorm:"foreignKey:RoomCheckinId"
-	TogetherDetails []*RoomCheckin `protobuf:"bytes,9,rep,name=together_details,json=togetherDetails,proto3" json:"together_details" gorm:"foreignKey:RoomCheckinId"`
+	Id                int64          `protobuf:"varint,1,opt,name=id,proto3" json:"id"`
+	RoomBookId        int64          `protobuf:"varint,2,opt,name=room_book_id,json=roomBookId,proto3" json:"room_book_id"`
+	RoomBookDetailId  int64          `protobuf:"varint,3,opt,name=room_book_detail_id,json=roomBookDetailId,proto3" json:"room_book_detail_id"`
+	GuestMobile       string         `protobuf:"bytes,4,opt,name=guest_mobile,json=guestMobile,proto3" json:"guest_mobile"`
+	GuestName         string         `protobuf:"bytes,5,opt,name=guest_name,json=guestName,proto3" json:"guest_name"`
+	GuestDocumentType int32          `protobuf:"varint,6,opt,name=guest_document_type,json=guestDocumentType,proto3" json:"guest_document_type"`
+	GuestDocumentNo   string         `protobuf:"bytes,7,opt,name=guest_document_no,json=guestDocumentNo,proto3" json:"guest_document_no"`
+	RoomCheckinId     int64          `protobuf:"varint,8,opt,name=room_checkin_id,json=roomCheckinId,proto3" json:"room_checkin_id"`
+	TogetherDetails   []*RoomCheckin `protobuf:"bytes,9,rep,name=together_details,json=togetherDetails,proto3" json:"together_details"`
 }
 
 func (x *RoomCheckin) Reset() {

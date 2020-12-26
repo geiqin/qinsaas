@@ -134,20 +134,19 @@ type NavItem struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	Id          int64  `protobuf:"varint,1,opt,name=id,proto3" json:"id"`
-	NavId       int64  `protobuf:"varint,2,opt,name=nav_id,json=navId,proto3" json:"nav_id"`
-	Title       string `protobuf:"bytes,3,opt,name=title,proto3" json:"title"`
-	Name        string `protobuf:"bytes,4,opt,name=name,proto3" json:"name"`
-	NavItemId   int64  `protobuf:"varint,5,opt,name=nav_item_id,json=navItemId,proto3" json:"nav_item_id"`
-	ObjectType  string `protobuf:"bytes,6,opt,name=object_type,json=objectType,proto3" json:"object_type"`
-	ObjectValue string `protobuf:"bytes,7,opt,name=object_value,json=objectValue,proto3" json:"object_value"`
-	Sorting     int32  `protobuf:"varint,8,opt,name=sorting,proto3" json:"sorting"`
-	Extra       string `protobuf:"bytes,9,opt,name=extra,proto3" json:"extra"`
-	CreatedAt   string `protobuf:"bytes,10,opt,name=created_at,json=createdAt,proto3" json:"created_at"`
-	UpdatedAt   string `protobuf:"bytes,11,opt,name=updated_at,json=updatedAt,proto3" json:"updated_at"`
-	// @inject_tag: gorm:"foreignKey:NavItemId"
-	Children []*NavItem `protobuf:"bytes,12,rep,name=children,proto3" json:"children" gorm:"foreignKey:NavItemId"`
-	Alias    string     `protobuf:"bytes,13,opt,name=alias,proto3" json:"alias"`
+	Id          int64      `protobuf:"varint,1,opt,name=id,proto3" json:"id"`
+	NavId       int64      `protobuf:"varint,2,opt,name=nav_id,json=navId,proto3" json:"nav_id"`
+	Title       string     `protobuf:"bytes,3,opt,name=title,proto3" json:"title"`
+	Name        string     `protobuf:"bytes,4,opt,name=name,proto3" json:"name"`
+	NavItemId   int64      `protobuf:"varint,5,opt,name=nav_item_id,json=navItemId,proto3" json:"nav_item_id"`
+	ObjectType  string     `protobuf:"bytes,6,opt,name=object_type,json=objectType,proto3" json:"object_type"`
+	ObjectValue string     `protobuf:"bytes,7,opt,name=object_value,json=objectValue,proto3" json:"object_value"`
+	Sorting     int32      `protobuf:"varint,8,opt,name=sorting,proto3" json:"sorting"`
+	Extra       string     `protobuf:"bytes,9,opt,name=extra,proto3" json:"extra"`
+	CreatedAt   string     `protobuf:"bytes,10,opt,name=created_at,json=createdAt,proto3" json:"created_at"`
+	UpdatedAt   string     `protobuf:"bytes,11,opt,name=updated_at,json=updatedAt,proto3" json:"updated_at"`
+	Children    []*NavItem `protobuf:"bytes,12,rep,name=children,proto3" json:"children"`
+	Alias       string     `protobuf:"bytes,13,opt,name=alias,proto3" json:"alias"`
 }
 
 func (x *NavItem) Reset() {

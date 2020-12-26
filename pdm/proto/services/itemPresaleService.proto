@@ -4,8 +4,7 @@ option go_package = ".;services";
 import "common/base.proto";
 
 service ItemPresaleService {
-    rpc Create (ItemPresale) returns (ItemPresaleResponse) {
-    }
+    rpc Create (ItemPresale) returns (ItemPresaleResponse) {}
 }
 
 message ItemPresale {

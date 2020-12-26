@@ -136,14 +136,13 @@ type Express struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	Id             int64  `protobuf:"varint,1,opt,name=id,proto3" json:"id"`
-	Name           string `protobuf:"bytes,2,opt,name=name,proto3" json:"name"`
-	ChargingMethod int32  `protobuf:"varint,3,opt,name=charging_method,json=chargingMethod,proto3" json:"charging_method"`
-	Defaulted      bool   `protobuf:"varint,4,opt,name=defaulted,proto3" json:"defaulted"`
-	CreatedAt      string `protobuf:"bytes,5,opt,name=created_at,json=createdAt,proto3" json:"created_at"`
-	UpdatedAt      string `protobuf:"bytes,6,opt,name=updated_at,json=updatedAt,proto3" json:"updated_at"`
-	// @inject_tag: gorm:"foreignKey:ExpressId"
-	Details []*ExpressDetail `protobuf:"bytes,7,rep,name=details,proto3" json:"details" gorm:"foreignKey:ExpressId"`
+	Id             int64            `protobuf:"varint,1,opt,name=id,proto3" json:"id"`
+	Name           string           `protobuf:"bytes,2,opt,name=name,proto3" json:"name"`
+	ChargingMethod int32            `protobuf:"varint,3,opt,name=charging_method,json=chargingMethod,proto3" json:"charging_method"`
+	Defaulted      bool             `protobuf:"varint,4,opt,name=defaulted,proto3" json:"defaulted"`
+	CreatedAt      string           `protobuf:"bytes,5,opt,name=created_at,json=createdAt,proto3" json:"created_at"`
+	UpdatedAt      string           `protobuf:"bytes,6,opt,name=updated_at,json=updatedAt,proto3" json:"updated_at"`
+	Details        []*ExpressDetail `protobuf:"bytes,7,rep,name=details,proto3" json:"details"`
 }
 
 func (x *Express) Reset() {
@@ -232,19 +231,18 @@ type ExpressDetail struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	Id               int64   `protobuf:"varint,1,opt,name=id,proto3" json:"id"`
-	ExpressId        int64   `protobuf:"varint,2,opt,name=express_id,json=expressId,proto3" json:"express_id"`
-	FirstWeight      float32 `protobuf:"fixed32,3,opt,name=first_weight,json=firstWeight,proto3" json:"first_weight"`
-	FirstNumber      int32   `protobuf:"varint,4,opt,name=first_number,json=firstNumber,proto3" json:"first_number"`
-	ExpressFee       float32 `protobuf:"fixed32,5,opt,name=express_fee,json=expressFee,proto3" json:"express_fee"`
-	AdditionalWeight float32 `protobuf:"fixed32,6,opt,name=additional_weight,json=additionalWeight,proto3" json:"additional_weight"`
-	AdditionalNumber int32   `protobuf:"varint,7,opt,name=additional_number,json=additionalNumber,proto3" json:"additional_number"`
-	AdditionalFee    float32 `protobuf:"fixed32,8,opt,name=additional_fee,json=additionalFee,proto3" json:"additional_fee"`
-	CreatedAt        string  `protobuf:"bytes,9,opt,name=created_at,json=createdAt,proto3" json:"created_at"`
-	UpdatedAt        string  `protobuf:"bytes,10,opt,name=updated_at,json=updatedAt,proto3" json:"updated_at"`
-	AreaContent      string  `protobuf:"bytes,11,opt,name=area_content,json=areaContent,proto3" json:"area_content"`
-	// @inject_tag: gorm:"foreignKey:ExpressDetailId"
-	Areas []*ExpressArea `protobuf:"bytes,12,rep,name=areas,proto3" json:"areas" gorm:"foreignKey:ExpressDetailId"`
+	Id               int64          `protobuf:"varint,1,opt,name=id,proto3" json:"id"`
+	ExpressId        int64          `protobuf:"varint,2,opt,name=express_id,json=expressId,proto3" json:"express_id"`
+	FirstWeight      float32        `protobuf:"fixed32,3,opt,name=first_weight,json=firstWeight,proto3" json:"first_weight"`
+	FirstNumber      int32          `protobuf:"varint,4,opt,name=first_number,json=firstNumber,proto3" json:"first_number"`
+	ExpressFee       float32        `protobuf:"fixed32,5,opt,name=express_fee,json=expressFee,proto3" json:"express_fee"`
+	AdditionalWeight float32        `protobuf:"fixed32,6,opt,name=additional_weight,json=additionalWeight,proto3" json:"additional_weight"`
+	AdditionalNumber int32          `protobuf:"varint,7,opt,name=additional_number,json=additionalNumber,proto3" json:"additional_number"`
+	AdditionalFee    float32        `protobuf:"fixed32,8,opt,name=additional_fee,json=additionalFee,proto3" json:"additional_fee"`
+	CreatedAt        string         `protobuf:"bytes,9,opt,name=created_at,json=createdAt,proto3" json:"created_at"`
+	UpdatedAt        string         `protobuf:"bytes,10,opt,name=updated_at,json=updatedAt,proto3" json:"updated_at"`
+	AreaContent      string         `protobuf:"bytes,11,opt,name=area_content,json=areaContent,proto3" json:"area_content"`
+	Areas            []*ExpressArea `protobuf:"bytes,12,rep,name=areas,proto3" json:"areas"`
 }
 
 func (x *ExpressDetail) Reset() {

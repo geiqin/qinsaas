@@ -143,20 +143,19 @@ type RoomPrice struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	Id              int64   `protobuf:"varint,1,opt,name=id,proto3" json:"id"`
-	RoomTypeId      int64   `protobuf:"varint,2,opt,name=room_type_id,json=roomTypeId,proto3" json:"room_type_id"`
-	RoomPricePlanId int64   `protobuf:"varint,3,opt,name=room_price_plan_id,json=roomPricePlanId,proto3" json:"room_price_plan_id"`
-	StartDate       string  `protobuf:"bytes,4,opt,name=start_date,json=startDate,proto3" json:"start_date"`
-	EndDate         string  `protobuf:"bytes,5,opt,name=end_date,json=endDate,proto3" json:"end_date"`
-	RepeatType      int32   `protobuf:"varint,6,opt,name=repeat_type,json=repeatType,proto3" json:"repeat_type"`
-	RepeatWeeks     string  `protobuf:"bytes,7,opt,name=repeat_weeks,json=repeatWeeks,proto3" json:"repeat_weeks"`
-	Price           float32 `protobuf:"fixed32,8,opt,name=price,proto3" json:"price"`
-	CreatedAt       string  `protobuf:"bytes,10,opt,name=created_at,json=createdAt,proto3" json:"created_at"`
-	UpdatedAt       string  `protobuf:"bytes,11,opt,name=updated_at,json=updatedAt,proto3" json:"updated_at"`
-	// @inject_tag: gorm:"foreignKey:RoomPriceId"
-	Vipcards []*RoomPriceVipcard `protobuf:"bytes,12,rep,name=vipcards,proto3" json:"vipcards" gorm:"foreignKey:RoomPriceId"`
-	MinPrice float32             `protobuf:"fixed32,13,opt,name=min_price,json=minPrice,proto3" json:"min_price"`
-	MaxPrice float32             `protobuf:"fixed32,14,opt,name=max_price,json=maxPrice,proto3" json:"max_price"`
+	Id              int64               `protobuf:"varint,1,opt,name=id,proto3" json:"id"`
+	RoomTypeId      int64               `protobuf:"varint,2,opt,name=room_type_id,json=roomTypeId,proto3" json:"room_type_id"`
+	RoomPricePlanId int64               `protobuf:"varint,3,opt,name=room_price_plan_id,json=roomPricePlanId,proto3" json:"room_price_plan_id"`
+	StartDate       string              `protobuf:"bytes,4,opt,name=start_date,json=startDate,proto3" json:"start_date"`
+	EndDate         string              `protobuf:"bytes,5,opt,name=end_date,json=endDate,proto3" json:"end_date"`
+	RepeatType      int32               `protobuf:"varint,6,opt,name=repeat_type,json=repeatType,proto3" json:"repeat_type"`
+	RepeatWeeks     string              `protobuf:"bytes,7,opt,name=repeat_weeks,json=repeatWeeks,proto3" json:"repeat_weeks"`
+	Price           float32             `protobuf:"fixed32,8,opt,name=price,proto3" json:"price"`
+	CreatedAt       string              `protobuf:"bytes,10,opt,name=created_at,json=createdAt,proto3" json:"created_at"`
+	UpdatedAt       string              `protobuf:"bytes,11,opt,name=updated_at,json=updatedAt,proto3" json:"updated_at"`
+	Vipcards        []*RoomPriceVipcard `protobuf:"bytes,12,rep,name=vipcards,proto3" json:"vipcards"`
+	MinPrice        float32             `protobuf:"fixed32,13,opt,name=min_price,json=minPrice,proto3" json:"min_price"`
+	MaxPrice        float32             `protobuf:"fixed32,14,opt,name=max_price,json=maxPrice,proto3" json:"max_price"`
 }
 
 func (x *RoomPrice) Reset() {

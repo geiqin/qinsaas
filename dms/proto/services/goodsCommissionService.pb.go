@@ -38,8 +38,7 @@ type GoodsCommission struct {
 	SecondRate  float32 `protobuf:"fixed32,5,opt,name=second_rate,json=secondRate,proto3" json:"second_rate"`
 	CreatedAt   string  `protobuf:"bytes,6,opt,name=created_at,json=createdAt,proto3" json:"created_at"`
 	UpdatedAt   string  `protobuf:"bytes,7,opt,name=updated_at,json=updatedAt,proto3" json:"updated_at"`
-	// @inject_tag: gorm:"-"
-	Rank *Rank `protobuf:"bytes,8,opt,name=rank,proto3" json:"rank" gorm:"-"`
+	Rank        *Rank   `protobuf:"bytes,8,opt,name=rank,proto3" json:"rank"`
 }
 
 func (x *GoodsCommission) Reset() {

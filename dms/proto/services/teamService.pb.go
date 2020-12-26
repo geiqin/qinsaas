@@ -31,19 +31,20 @@ type TeamWhere struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	Paged         int32   `protobuf:"varint,1,opt,name=paged,proto3" json:"paged"`
-	PageSize      int32   `protobuf:"varint,2,opt,name=page_size,json=pageSize,proto3" json:"page_size"`
-	Top           int32   `protobuf:"varint,3,opt,name=top,proto3" json:"top"`
-	Id            int64   `protobuf:"varint,4,opt,name=id,proto3" json:"id"`
-	Mobile        string  `protobuf:"bytes,5,opt,name=mobile,proto3" json:"mobile"`
-	Keywords      string  `protobuf:"bytes,6,opt,name=keywords,proto3" json:"keywords"`
-	Ids           []int64 `protobuf:"varint,7,rep,packed,name=ids,proto3" json:"ids"`
+	Paged    int32  `protobuf:"varint,1,opt,name=paged,proto3" json:"paged"`
+	PageSize int32  `protobuf:"varint,2,opt,name=page_size,json=pageSize,proto3" json:"page_size"`
+	Top      int32  `protobuf:"varint,3,opt,name=top,proto3" json:"top"`
+	Id       int64  `protobuf:"varint,4,opt,name=id,proto3" json:"id"`
+	Mobile   string `protobuf:"bytes,5,opt,name=mobile,proto3" json:"mobile"`
+	Keywords string `protobuf:"bytes,6,opt,name=keywords,proto3" json:"keywords"`
+	// @inject_tag: gorm:"-"
+	Ids           []int64 `protobuf:"varint,7,rep,packed,name=ids,proto3" json:"ids" gorm:"-"`
 	DistributorId int64   `protobuf:"varint,8,opt,name=distributor_id,json=distributorId,proto3" json:"distributor_id"`
 	// @inject_tag: gorm:"-"
-	DistributorIds []int64 `protobuf:"varint,9,rep,packed,name=distributor_ids,json=distributorIds,proto3" json:"distributor_ids"`
+	DistributorIds []int64 `protobuf:"varint,9,rep,packed,name=distributor_ids,json=distributorIds,proto3" json:"distributor_ids" gorm:"-"`
 	LeaderId       int64   `protobuf:"varint,10,opt,name=leader_id,json=leaderId,proto3" json:"leader_id"`
 	// @inject_tag: gorm:"-"
-	LeaderIds []int64 `protobuf:"varint,11,rep,packed,name=leader_ids,json=leaderIds,proto3" json:"leader_ids"`
+	LeaderIds []int64 `protobuf:"varint,11,rep,packed,name=leader_ids,json=leaderIds,proto3" json:"leader_ids" gorm:"-"`
 }
 
 func (x *TeamWhere) Reset() {
@@ -160,13 +161,12 @@ type TeamBasic struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	Id            int64 `protobuf:"varint,1,opt,name=id,proto3" json:"id"`
-	DistributorId int64 `protobuf:"varint,2,opt,name=distributor_id,json=distributorId,proto3" json:"distributor_id"`
-	LeaderId      int64 `protobuf:"varint,3,opt,name=leader_id,json=leaderId,proto3" json:"leader_id"`
-	// @inject_tag: gorm:"-"
-	Distributor *Distributor `protobuf:"bytes,4,opt,name=distributor,proto3" json:"distributor"`
-	CreatedAt   string       `protobuf:"bytes,5,opt,name=created_at,json=createdAt,proto3" json:"created_at"`
-	UpdatedAt   string       `protobuf:"bytes,6,opt,name=updated_at,json=updatedAt,proto3" json:"updated_at"`
+	Id            int64        `protobuf:"varint,1,opt,name=id,proto3" json:"id"`
+	DistributorId int64        `protobuf:"varint,2,opt,name=distributor_id,json=distributorId,proto3" json:"distributor_id"`
+	LeaderId      int64        `protobuf:"varint,3,opt,name=leader_id,json=leaderId,proto3" json:"leader_id"`
+	Distributor   *Distributor `protobuf:"bytes,4,opt,name=distributor,proto3" json:"distributor"`
+	CreatedAt     string       `protobuf:"bytes,5,opt,name=created_at,json=createdAt,proto3" json:"created_at"`
+	UpdatedAt     string       `protobuf:"bytes,6,opt,name=updated_at,json=updatedAt,proto3" json:"updated_at"`
 }
 
 func (x *TeamBasic) Reset() {

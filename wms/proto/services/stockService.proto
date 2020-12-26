@@ -58,7 +58,6 @@ message Stock {
     string failure = 13;
     string created_at = 14;
     string updated_at = 15;
-    // @inject_tag: gorm:"foreignKey:StockId"
     repeated StockDetail details =16;
 }
 

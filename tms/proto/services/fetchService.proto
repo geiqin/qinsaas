@@ -71,7 +71,6 @@ message Fetch {
   repeated Times reception_times = 23;
   // @inject_tag: gorm:"-"
   repeated Times fetch_times = 24;
-  // @inject_tag: gorm:"foreignKey:FetchId"
   repeated FetchGallery galleries = 25;
   // @inject_tag: gorm:"-"
   AreaInfo area = 26;

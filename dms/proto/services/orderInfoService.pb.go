@@ -48,7 +48,7 @@ type OrderInfo struct {
 	CanLogistics   bool    `protobuf:"varint,17,opt,name=can_logistics,json=canLogistics,proto3" json:"can_logistics"`        // 是否可查看物流
 	OrderCreatedAt string  `protobuf:"bytes,18,opt,name=order_created_at,json=orderCreatedAt,proto3" json:"order_created_at"` // 下单时间
 	// @inject_tag: gorm:"-"
-	OrderDetails []*OrderDetailInfo `protobuf:"bytes,19,rep,name=order_details,json=orderDetails,proto3" json:"order_details"`
+	OrderDetails []*OrderDetailInfo `protobuf:"bytes,19,rep,name=order_details,json=orderDetails,proto3" json:"order_details" gorm:"-"`
 	LeaderId     int64              `protobuf:"varint,20,opt,name=leader_id,json=leaderId,proto3" json:"leader_id"`            // 团长ID
 	LeaderName   string             `protobuf:"bytes,21,opt,name=leader_name,json=leaderName,proto3" json:"leader_name"`       // 团长昵称
 	LeaderMobile string             `protobuf:"bytes,22,opt,name=leader_mobile,json=leaderMobile,proto3" json:"leader_mobile"` // 团长手机号码

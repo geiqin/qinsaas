@@ -35,7 +35,6 @@ message OrderPromotion {
     int32 point = 7;
     string created_at = 8;
     string updated_at = 9;
-    // @inject_tag: gorm:"foreignKey:OrderPromotionId"
     repeated OrderPromotionGoods goodses = 10;
 }
 

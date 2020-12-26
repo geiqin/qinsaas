@@ -74,15 +74,12 @@ message Safeguard {
     string checked_at = 24;
     string created_at = 25;
     string updated_at = 26;
-    // @inject_tag: gorm:"foreignKey:SafeguardId"
     repeated SafeguardDetail details = 27;
-    // @inject_tag: gorm:"foreignKey:SafeguardId"
     repeated SafeguardImage images = 28;
     // @inject_tag: gorm:"-"
     SafeguardAddress address = 29;// 维权收货人地址
     // @inject_tag: gorm:"-"
     SafeguardReturnExpress return_express = 30;// 买家退货填写的退货物流信息
-    // @inject_tag: gorm:"-"
     Order order = 31;
     int32 return_points = 32;
     int32 deduct_points = 33;

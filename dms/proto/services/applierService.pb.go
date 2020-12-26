@@ -143,23 +143,21 @@ type Applier struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	Id            int64  `protobuf:"varint,1,opt,name=id,proto3" json:"id"`
-	DistributorId int64  `protobuf:"varint,2,opt,name=distributor_id,json=distributorId,proto3" json:"distributor_id"`
-	RankId        int32  `protobuf:"varint,3,opt,name=rank_id,json=rankId,proto3" json:"rank_id"`
-	DisplayName   string `protobuf:"bytes,4,opt,name=display_name,json=displayName,proto3" json:"display_name"`
-	Autoed        bool   `protobuf:"varint,5,opt,name=autoed,proto3" json:"autoed"`
-	CustomerId    int64  `protobuf:"varint,6,opt,name=customer_id,json=customerId,proto3" json:"customer_id"`
-	Status        string `protobuf:"bytes,7,opt,name=status,proto3" json:"status"`
-	Reason        string `protobuf:"bytes,8,opt,name=reason,proto3" json:"reason"`
-	Remarks       string `protobuf:"bytes,9,opt,name=remarks,proto3" json:"remarks"`
-	Addons        string `protobuf:"bytes,10,opt,name=addons,proto3" json:"addons"`
-	CreatedAt     string `protobuf:"bytes,11,opt,name=created_at,json=createdAt,proto3" json:"created_at"`
-	UpdatedAt     string `protobuf:"bytes,12,opt,name=updated_at,json=updatedAt,proto3" json:"updated_at"`
-	// @inject_tag: gorm:"-"
-	Distributor *Distributor `protobuf:"bytes,13,opt,name=distributor,proto3" json:"distributor" gorm:"-"`
-	// @inject_tag: gorm:"-"
-	Rank     *Rank  `protobuf:"bytes,14,opt,name=rank,proto3" json:"rank" gorm:"-"`
-	InviteSn string `protobuf:"bytes,15,opt,name=invite_sn,json=inviteSn,proto3" json:"invite_sn"`
+	Id            int64        `protobuf:"varint,1,opt,name=id,proto3" json:"id"`
+	DistributorId int64        `protobuf:"varint,2,opt,name=distributor_id,json=distributorId,proto3" json:"distributor_id"`
+	RankId        int32        `protobuf:"varint,3,opt,name=rank_id,json=rankId,proto3" json:"rank_id"`
+	DisplayName   string       `protobuf:"bytes,4,opt,name=display_name,json=displayName,proto3" json:"display_name"`
+	Autoed        bool         `protobuf:"varint,5,opt,name=autoed,proto3" json:"autoed"`
+	CustomerId    int64        `protobuf:"varint,6,opt,name=customer_id,json=customerId,proto3" json:"customer_id"`
+	Status        string       `protobuf:"bytes,7,opt,name=status,proto3" json:"status"`
+	Reason        string       `protobuf:"bytes,8,opt,name=reason,proto3" json:"reason"`
+	Remarks       string       `protobuf:"bytes,9,opt,name=remarks,proto3" json:"remarks"`
+	Addons        string       `protobuf:"bytes,10,opt,name=addons,proto3" json:"addons"`
+	CreatedAt     string       `protobuf:"bytes,11,opt,name=created_at,json=createdAt,proto3" json:"created_at"`
+	UpdatedAt     string       `protobuf:"bytes,12,opt,name=updated_at,json=updatedAt,proto3" json:"updated_at"`
+	Distributor   *Distributor `protobuf:"bytes,13,opt,name=distributor,proto3" json:"distributor"`
+	Rank          *Rank        `protobuf:"bytes,14,opt,name=rank,proto3" json:"rank"`
+	InviteSn      string       `protobuf:"bytes,15,opt,name=invite_sn,json=inviteSn,proto3" json:"invite_sn"`
 	// @inject_tag: gorm:"-"
 	Condition *ApplierCondition `protobuf:"bytes,16,opt,name=condition,proto3" json:"condition" gorm:"-"`
 	// @inject_tag: gorm:"-"
@@ -433,11 +431,9 @@ type ApplyInfo struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	IsApply bool `protobuf:"varint,1,opt,name=is_apply,json=isApply,proto3" json:"is_apply"`
-	// @inject_tag: gorm:"-"
-	Applier *Applier `protobuf:"bytes,2,opt,name=applier,proto3" json:"applier" gorm:"-"`
-	// @inject_tag: gorm:"-"
-	Ranks []*Rank `protobuf:"bytes,3,rep,name=ranks,proto3" json:"ranks" gorm:"-"`
+	IsApply bool     `protobuf:"varint,1,opt,name=is_apply,json=isApply,proto3" json:"is_apply"`
+	Applier *Applier `protobuf:"bytes,2,opt,name=applier,proto3" json:"applier"`
+	Ranks   []*Rank  `protobuf:"bytes,3,rep,name=ranks,proto3" json:"ranks"`
 	// @inject_tag: gorm:"-"
 	Condition []*ApplierCondition `protobuf:"bytes,4,rep,name=condition,proto3" json:"condition" gorm:"-"`
 	// @inject_tag: gorm:"-"

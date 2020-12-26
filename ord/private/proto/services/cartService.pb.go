@@ -239,12 +239,13 @@ type CartRequest struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	RowId     string   `protobuf:"bytes,1,opt,name=row_id,json=rowId,proto3" json:"row_id"`
-	ItemId    int64    `protobuf:"varint,2,opt,name=item_id,json=itemId,proto3" json:"item_id"`
-	SkuId     int64    `protobuf:"varint,3,opt,name=sku_id,json=skuId,proto3" json:"sku_id"`
-	Direction string   `protobuf:"bytes,4,opt,name=direction,proto3" json:"direction"`
-	Num       int32    `protobuf:"varint,5,opt,name=num,proto3" json:"num"`
-	RowIds    []string `protobuf:"bytes,6,rep,name=row_ids,json=rowIds,proto3" json:"row_ids"`
+	RowId     string `protobuf:"bytes,1,opt,name=row_id,json=rowId,proto3" json:"row_id"`
+	ItemId    int64  `protobuf:"varint,2,opt,name=item_id,json=itemId,proto3" json:"item_id"`
+	SkuId     int64  `protobuf:"varint,3,opt,name=sku_id,json=skuId,proto3" json:"sku_id"`
+	Direction string `protobuf:"bytes,4,opt,name=direction,proto3" json:"direction"`
+	Num       int32  `protobuf:"varint,5,opt,name=num,proto3" json:"num"`
+	// @inject_tag: gorm:"-"
+	RowIds []string `protobuf:"bytes,6,rep,name=row_ids,json=rowIds,proto3" json:"row_ids" gorm:"-"`
 }
 
 func (x *CartRequest) Reset() {

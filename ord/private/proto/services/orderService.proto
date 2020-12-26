@@ -117,9 +117,7 @@ message Order {
     string created_at =44;
     string updated_at =45;
     string platform_source =46;
-    // @inject_tag: gorm:"foreignKey:OrderId"
     OrderAddress address =54;
-    // @inject_tag: gorm:"foreignKey:OrderId"
     repeated OrderDetail details = 55;
     // @inject_tag: gorm:"-"
     Customer customer = 56;

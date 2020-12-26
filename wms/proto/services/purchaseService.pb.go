@@ -151,22 +151,21 @@ type Purchase struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	Id            int64  `protobuf:"varint,1,opt,name=id,proto3" json:"id"`
-	PurchaseSn    string `protobuf:"bytes,2,opt,name=purchase_sn,json=purchaseSn,proto3" json:"purchase_sn"`
-	Type          string `protobuf:"bytes,3,opt,name=type,proto3" json:"type"`
-	SourceNo      string `protobuf:"bytes,4,opt,name=source_no,json=sourceNo,proto3" json:"source_no"`
-	UserId        int64  `protobuf:"varint,5,opt,name=user_id,json=userId,proto3" json:"user_id"`
-	Memo          string `protobuf:"bytes,6,opt,name=memo,proto3" json:"memo"`
-	RowTotal      int32  `protobuf:"varint,7,opt,name=row_total,json=rowTotal,proto3" json:"row_total"`
-	QuantityTotal int32  `protobuf:"varint,8,opt,name=quantity_total,json=quantityTotal,proto3" json:"quantity_total"`
-	HandledAt     string `protobuf:"bytes,9,opt,name=handled_at,json=handledAt,proto3" json:"handled_at"`
-	Status        int32  `protobuf:"varint,10,opt,name=status,proto3" json:"status"`
-	Failure       string `protobuf:"bytes,11,opt,name=failure,proto3" json:"failure"`
-	CreatedAt     string `protobuf:"bytes,12,opt,name=created_at,json=createdAt,proto3" json:"created_at"`
-	UpdatedAt     string `protobuf:"bytes,13,opt,name=updated_at,json=updatedAt,proto3" json:"updated_at"`
-	// @inject_tag: gorm:"foreignKey:PurchaseId"
-	Details []*PurchaseDetail `protobuf:"bytes,14,rep,name=details,proto3" json:"details" gorm:"foreignKey:PurchaseId"`
-	Ok      bool              `protobuf:"varint,15,opt,name=ok,proto3" json:"ok"` //确定操作
+	Id            int64             `protobuf:"varint,1,opt,name=id,proto3" json:"id"`
+	PurchaseSn    string            `protobuf:"bytes,2,opt,name=purchase_sn,json=purchaseSn,proto3" json:"purchase_sn"`
+	Type          string            `protobuf:"bytes,3,opt,name=type,proto3" json:"type"`
+	SourceNo      string            `protobuf:"bytes,4,opt,name=source_no,json=sourceNo,proto3" json:"source_no"`
+	UserId        int64             `protobuf:"varint,5,opt,name=user_id,json=userId,proto3" json:"user_id"`
+	Memo          string            `protobuf:"bytes,6,opt,name=memo,proto3" json:"memo"`
+	RowTotal      int32             `protobuf:"varint,7,opt,name=row_total,json=rowTotal,proto3" json:"row_total"`
+	QuantityTotal int32             `protobuf:"varint,8,opt,name=quantity_total,json=quantityTotal,proto3" json:"quantity_total"`
+	HandledAt     string            `protobuf:"bytes,9,opt,name=handled_at,json=handledAt,proto3" json:"handled_at"`
+	Status        int32             `protobuf:"varint,10,opt,name=status,proto3" json:"status"`
+	Failure       string            `protobuf:"bytes,11,opt,name=failure,proto3" json:"failure"`
+	CreatedAt     string            `protobuf:"bytes,12,opt,name=created_at,json=createdAt,proto3" json:"created_at"`
+	UpdatedAt     string            `protobuf:"bytes,13,opt,name=updated_at,json=updatedAt,proto3" json:"updated_at"`
+	Details       []*PurchaseDetail `protobuf:"bytes,14,rep,name=details,proto3" json:"details"`
+	Ok            bool              `protobuf:"varint,15,opt,name=ok,proto3" json:"ok"` //确定操作
 }
 
 func (x *Purchase) Reset() {

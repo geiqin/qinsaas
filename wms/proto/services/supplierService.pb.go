@@ -31,23 +31,22 @@ type Supplier struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	Id            int64  `protobuf:"varint,1,opt,name=id,proto3" json:"id"`
-	Code          string `protobuf:"bytes,2,opt,name=code,proto3" json:"code"`
-	Name          string `protobuf:"bytes,3,opt,name=name,proto3" json:"name"`
-	Shortname     string `protobuf:"bytes,4,opt,name=shortname,proto3" json:"shortname"`
-	RegistedCode  string `protobuf:"bytes,5,opt,name=registed_code,json=registedCode,proto3" json:"registed_code"`
-	SupplyType    string `protobuf:"bytes,6,opt,name=supply_type,json=supplyType,proto3" json:"supply_type"`
-	LogisticsType int32  `protobuf:"varint,7,opt,name=logistics_type,json=logisticsType,proto3" json:"logistics_type"`
-	Website       string `protobuf:"bytes,8,opt,name=website,proto3" json:"website"`
-	AreaId        int64  `protobuf:"varint,9,opt,name=area_id,json=areaId,proto3" json:"area_id"`
-	Address       string `protobuf:"bytes,10,opt,name=address,proto3" json:"address"`
-	Memo          string `protobuf:"bytes,11,opt,name=memo,proto3" json:"memo"`
-	Verified      bool   `protobuf:"varint,12,opt,name=verified,proto3" json:"verified"`
-	Status        int32  `protobuf:"varint,13,opt,name=status,proto3" json:"status"`
-	CreatedAt     string `protobuf:"bytes,14,opt,name=created_at,json=createdAt,proto3" json:"created_at"`
-	UpdatedAt     string `protobuf:"bytes,15,opt,name=updated_at,json=updatedAt,proto3" json:"updated_at"`
-	// @inject_tag: gorm:"foreignKey:SupplierId"
-	Contacts []*SupplierContact `protobuf:"bytes,16,rep,name=contacts,proto3" json:"contacts" gorm:"foreignKey:SupplierId"`
+	Id            int64              `protobuf:"varint,1,opt,name=id,proto3" json:"id"`
+	Code          string             `protobuf:"bytes,2,opt,name=code,proto3" json:"code"`
+	Name          string             `protobuf:"bytes,3,opt,name=name,proto3" json:"name"`
+	Shortname     string             `protobuf:"bytes,4,opt,name=shortname,proto3" json:"shortname"`
+	RegistedCode  string             `protobuf:"bytes,5,opt,name=registed_code,json=registedCode,proto3" json:"registed_code"`
+	SupplyType    string             `protobuf:"bytes,6,opt,name=supply_type,json=supplyType,proto3" json:"supply_type"`
+	LogisticsType int32              `protobuf:"varint,7,opt,name=logistics_type,json=logisticsType,proto3" json:"logistics_type"`
+	Website       string             `protobuf:"bytes,8,opt,name=website,proto3" json:"website"`
+	AreaId        int64              `protobuf:"varint,9,opt,name=area_id,json=areaId,proto3" json:"area_id"`
+	Address       string             `protobuf:"bytes,10,opt,name=address,proto3" json:"address"`
+	Memo          string             `protobuf:"bytes,11,opt,name=memo,proto3" json:"memo"`
+	Verified      bool               `protobuf:"varint,12,opt,name=verified,proto3" json:"verified"`
+	Status        int32              `protobuf:"varint,13,opt,name=status,proto3" json:"status"`
+	CreatedAt     string             `protobuf:"bytes,14,opt,name=created_at,json=createdAt,proto3" json:"created_at"`
+	UpdatedAt     string             `protobuf:"bytes,15,opt,name=updated_at,json=updatedAt,proto3" json:"updated_at"`
+	Contacts      []*SupplierContact `protobuf:"bytes,16,rep,name=contacts,proto3" json:"contacts"`
 }
 
 func (x *Supplier) Reset() {

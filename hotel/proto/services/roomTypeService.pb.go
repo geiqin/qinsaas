@@ -46,24 +46,21 @@ type RoomType struct {
 	ExtraBedPrice   float32 `protobuf:"fixed32,10,opt,name=extra_bed_price,json=extraBedPrice,proto3" json:"extra_bed_price"`
 	ExtraBedName    string  `protobuf:"bytes,11,opt,name=extra_bed_name,json=extraBedName,proto3" json:"extra_bed_name"`
 	// @inject_tag: validate:"required" label:"房型介绍"
-	Detail               string `protobuf:"bytes,12,opt,name=detail,proto3" json:"detail" validate:"required" label:"房型介绍"`
-	Sorting              int32  `protobuf:"varint,13,opt,name=sorting,proto3" json:"sorting"`
-	SoldNum              int32  `protobuf:"varint,14,opt,name=sold_num,json=soldNum,proto3" json:"sold_num"`
-	RoomNum              int32  `protobuf:"varint,15,opt,name=room_num,json=roomNum,proto3" json:"room_num"`
-	RoomPricePlanNum     int32  `protobuf:"varint,25,opt,name=room_price_plan_num,json=roomPricePlanNum,proto3" json:"room_price_plan_num"`
-	RoomPricePlanOpenNum int32  `protobuf:"varint,26,opt,name=room_price_plan_open_num,json=roomPricePlanOpenNum,proto3" json:"room_price_plan_open_num"`
-	CreatedAt            string `protobuf:"bytes,16,opt,name=created_at,json=createdAt,proto3" json:"created_at"`
-	UpdatedAt            string `protobuf:"bytes,17,opt,name=updated_at,json=updatedAt,proto3" json:"updated_at"`
-	// @inject_tag: gorm:"foreignKey:RoomTypeId"
-	Galleries []*RoomTypeGallery `protobuf:"bytes,18,rep,name=galleries,proto3" json:"galleries" gorm:"foreignKey:RoomTypeId"`
+	Detail               string             `protobuf:"bytes,12,opt,name=detail,proto3" json:"detail" validate:"required" label:"房型介绍"`
+	Sorting              int32              `protobuf:"varint,13,opt,name=sorting,proto3" json:"sorting"`
+	SoldNum              int32              `protobuf:"varint,14,opt,name=sold_num,json=soldNum,proto3" json:"sold_num"`
+	RoomNum              int32              `protobuf:"varint,15,opt,name=room_num,json=roomNum,proto3" json:"room_num"`
+	RoomPricePlanNum     int32              `protobuf:"varint,25,opt,name=room_price_plan_num,json=roomPricePlanNum,proto3" json:"room_price_plan_num"`
+	RoomPricePlanOpenNum int32              `protobuf:"varint,26,opt,name=room_price_plan_open_num,json=roomPricePlanOpenNum,proto3" json:"room_price_plan_open_num"`
+	CreatedAt            string             `protobuf:"bytes,16,opt,name=created_at,json=createdAt,proto3" json:"created_at"`
+	UpdatedAt            string             `protobuf:"bytes,17,opt,name=updated_at,json=updatedAt,proto3" json:"updated_at"`
+	Galleries            []*RoomTypeGallery `protobuf:"bytes,18,rep,name=galleries,proto3" json:"galleries"`
 	// @inject_tag: gorm:"many2many:room_type_facility_relations;association_autoupdate:false"
 	Facilities []*RoomTypeFacility `protobuf:"bytes,19,rep,name=facilities,proto3" json:"facilities" gorm:"many2many:room_type_facility_relations;association_autoupdate:false"`
 	// @inject_tag: gorm:"many2many:room_type_tag_relations;association_autoupdate:false"
-	Tags []*RoomTypeTag `protobuf:"bytes,20,rep,name=tags,proto3" json:"tags" gorm:"many2many:room_type_tag_relations;association_autoupdate:false"`
-	// @inject_tag: gorm:"foreignKey:RoomTypeId"
-	Rooms []*Room `protobuf:"bytes,21,rep,name=rooms,proto3" json:"rooms" gorm:"foreignKey:RoomTypeId"`
-	// @inject_tag: gorm:"foreignKey:RoomTypeId"
-	PricePlans []*RoomPricePlan `protobuf:"bytes,22,rep,name=price_plans,json=pricePlans,proto3" json:"price_plans" gorm:"foreignKey:RoomTypeId"`
+	Tags       []*RoomTypeTag   `protobuf:"bytes,20,rep,name=tags,proto3" json:"tags" gorm:"many2many:room_type_tag_relations;association_autoupdate:false"`
+	Rooms      []*Room          `protobuf:"bytes,21,rep,name=rooms,proto3" json:"rooms"`
+	PricePlans []*RoomPricePlan `protobuf:"bytes,22,rep,name=price_plans,json=pricePlans,proto3" json:"price_plans"`
 	// @inject_tag: gorm:"-"
 	RoomTypeFacilityIds []int32 `protobuf:"varint,23,rep,packed,name=room_type_facility_ids,json=roomTypeFacilityIds,proto3" json:"room_type_facility_ids" gorm:"-"`
 	// @inject_tag: gorm:"-"

@@ -36,7 +36,7 @@ type RankWhere struct {
 	Top      int32 `protobuf:"varint,3,opt,name=top,proto3" json:"top"`
 	Id       int64 `protobuf:"varint,4,opt,name=id,proto3" json:"id"`
 	// @inject_tag: gorm:"-"
-	Ids  []int64 `protobuf:"varint,5,rep,packed,name=ids,proto3" json:"ids"`
+	Ids  []int64 `protobuf:"varint,5,rep,packed,name=ids,proto3" json:"ids" gorm:"-"`
 	Type string  `protobuf:"bytes,6,opt,name=type,proto3" json:"type"`
 }
 
@@ -119,30 +119,29 @@ type Rank struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	Id              int32   `protobuf:"varint,1,opt,name=id,proto3" json:"id"`
-	Name            string  `protobuf:"bytes,2,opt,name=name,proto3" json:"name"`
-	PrimaryRate     float32 `protobuf:"fixed32,3,opt,name=primary_rate,json=primaryRate,proto3" json:"primary_rate"`
-	SecondRate      float32 `protobuf:"fixed32,4,opt,name=second_rate,json=secondRate,proto3" json:"second_rate"`
-	ThreeRate       float32 `protobuf:"fixed32,5,opt,name=three_rate,json=threeRate,proto3" json:"three_rate"`
-	RewardMoney     float32 `protobuf:"fixed32,6,opt,name=reward_money,json=rewardMoney,proto3" json:"reward_money"`
-	MonthDrawMoney  float32 `protobuf:"fixed32,7,opt,name=month_draw_money,json=monthDrawMoney,proto3" json:"month_draw_money"`
-	MonthDrawNum    int32   `protobuf:"varint,8,opt,name=month_draw_num,json=monthDrawNum,proto3" json:"month_draw_num"`
-	LevelId         int32   `protobuf:"varint,9,opt,name=level_id,json=levelId,proto3" json:"level_id"`
-	IsCondition     bool    `protobuf:"varint,10,opt,name=is_condition,json=isCondition,proto3" json:"is_condition"`
-	PromotionAmount float32 `protobuf:"fixed32,11,opt,name=promotion_amount,json=promotionAmount,proto3" json:"promotion_amount"`
-	PrimaryNum      int32   `protobuf:"varint,12,opt,name=primary_num,json=primaryNum,proto3" json:"primary_num"`
-	SecondNum       int32   `protobuf:"varint,13,opt,name=second_num,json=secondNum,proto3" json:"second_num"`
-	IsBought        bool    `protobuf:"varint,14,opt,name=is_bought,json=isBought,proto3" json:"is_bought"`
-	ConsumeAmount   float32 `protobuf:"fixed32,15,opt,name=consume_amount,json=consumeAmount,proto3" json:"consume_amount"`
-	ConsumeNum      int32   `protobuf:"varint,16,opt,name=consume_num,json=consumeNum,proto3" json:"consume_num"`
-	IsBindIdcard    bool    `protobuf:"varint,17,opt,name=is_bind_idcard,json=isBindIdcard,proto3" json:"is_bind_idcard"`
-	IsBindMobile    bool    `protobuf:"varint,18,opt,name=is_bind_mobile,json=isBindMobile,proto3" json:"is_bind_mobile"`
-	JoinFee         float32 `protobuf:"fixed32,19,opt,name=join_fee,json=joinFee,proto3" json:"join_fee"`
-	Defaulted       bool    `protobuf:"varint,20,opt,name=defaulted,proto3" json:"defaulted"`
-	// @inject_tag: gorm:"foreignKey:RankId"
-	Goodses []*GoodsCondition `protobuf:"bytes,21,rep,name=goodses,proto3" json:"goodses"`
+	Id              int32             `protobuf:"varint,1,opt,name=id,proto3" json:"id"`
+	Name            string            `protobuf:"bytes,2,opt,name=name,proto3" json:"name"`
+	PrimaryRate     float32           `protobuf:"fixed32,3,opt,name=primary_rate,json=primaryRate,proto3" json:"primary_rate"`
+	SecondRate      float32           `protobuf:"fixed32,4,opt,name=second_rate,json=secondRate,proto3" json:"second_rate"`
+	ThreeRate       float32           `protobuf:"fixed32,5,opt,name=three_rate,json=threeRate,proto3" json:"three_rate"`
+	RewardMoney     float32           `protobuf:"fixed32,6,opt,name=reward_money,json=rewardMoney,proto3" json:"reward_money"`
+	MonthDrawMoney  float32           `protobuf:"fixed32,7,opt,name=month_draw_money,json=monthDrawMoney,proto3" json:"month_draw_money"`
+	MonthDrawNum    int32             `protobuf:"varint,8,opt,name=month_draw_num,json=monthDrawNum,proto3" json:"month_draw_num"`
+	LevelId         int32             `protobuf:"varint,9,opt,name=level_id,json=levelId,proto3" json:"level_id"`
+	IsCondition     bool              `protobuf:"varint,10,opt,name=is_condition,json=isCondition,proto3" json:"is_condition"`
+	PromotionAmount float32           `protobuf:"fixed32,11,opt,name=promotion_amount,json=promotionAmount,proto3" json:"promotion_amount"`
+	PrimaryNum      int32             `protobuf:"varint,12,opt,name=primary_num,json=primaryNum,proto3" json:"primary_num"`
+	SecondNum       int32             `protobuf:"varint,13,opt,name=second_num,json=secondNum,proto3" json:"second_num"`
+	IsBought        bool              `protobuf:"varint,14,opt,name=is_bought,json=isBought,proto3" json:"is_bought"`
+	ConsumeAmount   float32           `protobuf:"fixed32,15,opt,name=consume_amount,json=consumeAmount,proto3" json:"consume_amount"`
+	ConsumeNum      int32             `protobuf:"varint,16,opt,name=consume_num,json=consumeNum,proto3" json:"consume_num"`
+	IsBindIdcard    bool              `protobuf:"varint,17,opt,name=is_bind_idcard,json=isBindIdcard,proto3" json:"is_bind_idcard"`
+	IsBindMobile    bool              `protobuf:"varint,18,opt,name=is_bind_mobile,json=isBindMobile,proto3" json:"is_bind_mobile"`
+	JoinFee         float32           `protobuf:"fixed32,19,opt,name=join_fee,json=joinFee,proto3" json:"join_fee"`
+	Defaulted       bool              `protobuf:"varint,20,opt,name=defaulted,proto3" json:"defaulted"`
+	Goodses         []*GoodsCondition `protobuf:"bytes,21,rep,name=goodses,proto3" json:"goodses"`
 	// @inject_tag: gorm:"-"
-	Ids         []int32 `protobuf:"varint,22,rep,packed,name=ids,proto3" json:"ids"`
+	Ids         []int32 `protobuf:"varint,22,rep,packed,name=ids,proto3" json:"ids" gorm:"-"`
 	Type        string  `protobuf:"bytes,23,opt,name=type,proto3" json:"type"`
 	TeamRate    float32 `protobuf:"fixed32,24,opt,name=team_rate,json=teamRate,proto3" json:"team_rate"`
 	IsChecked   bool    `protobuf:"varint,25,opt,name=is_checked,json=isChecked,proto3" json:"is_checked"`

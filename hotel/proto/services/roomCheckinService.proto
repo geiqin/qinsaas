@@ -12,7 +12,6 @@ message RoomCheckin {
     int32 guest_document_type = 6;
     string guest_document_no = 7;
     int64 room_checkin_id = 8;
-    // @inject_tag: gorm:"foreignKey:RoomCheckinId"
     repeated RoomCheckin together_details = 9;
 }
 

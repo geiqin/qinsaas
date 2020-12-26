@@ -33,9 +33,7 @@ message Reward {
     string description = 8;
     string created_at = 9;
     string updated_at = 10;
-    // @inject_tag: gorm:"foreignKey:RewardId"
     repeated RewardGoods goodses = 11;
-    // @inject_tag: gorm:"foreignKey:RewardId"
     repeated RewardStep steps = 12;
     bool looped = 13; // 是否循环满减
     int32 status = 14;

@@ -58,7 +58,6 @@ message RoomBook {
     int32 status = 15;
     string created_at = 16;
     string updated_at = 17;
-    // @inject_tag: gorm:"foreignKey:RoomBookId"
     repeated RoomBookDetail details = 18;
     // @inject_tag: gorm:"-"
     repeated AllRoomTypeAndAvailableRoom detail_req = 19;
@@ -91,7 +90,9 @@ message AllRoomTypeAndAvailableRoom {
     int32 room_num = 6; // 预定房间数量
     int32 breakfast_num = 7; // 早餐份数
     bool is_checked = 8; // 是否已选择
+    // @inject_tag: gorm:"-"
     repeated BookRoomList room_list = 9;
+    // @inject_tag: gorm:"-"
     repeated BookPriceList price_list = 10;
 }
 

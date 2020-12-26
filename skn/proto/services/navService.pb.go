@@ -111,14 +111,13 @@ type Nav struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	Id        int64  `protobuf:"varint,1,opt,name=id,proto3" json:"id"`
-	Title     string `protobuf:"bytes,2,opt,name=title,proto3" json:"title"`
-	Name      string `protobuf:"bytes,3,opt,name=name,proto3" json:"name"`
-	Memo      string `protobuf:"bytes,4,opt,name=memo,proto3" json:"memo"`
-	CreatedAt string `protobuf:"bytes,5,opt,name=created_at,json=createdAt,proto3" json:"created_at"`
-	UpdatedAt string `protobuf:"bytes,6,opt,name=updated_at,json=updatedAt,proto3" json:"updated_at"`
-	// @inject_tag: gorm:"foreignKey:NavId"
-	Items []*NavItem `protobuf:"bytes,7,rep,name=items,proto3" json:"items" gorm:"foreignKey:NavId"`
+	Id        int64      `protobuf:"varint,1,opt,name=id,proto3" json:"id"`
+	Title     string     `protobuf:"bytes,2,opt,name=title,proto3" json:"title"`
+	Name      string     `protobuf:"bytes,3,opt,name=name,proto3" json:"name"`
+	Memo      string     `protobuf:"bytes,4,opt,name=memo,proto3" json:"memo"`
+	CreatedAt string     `protobuf:"bytes,5,opt,name=created_at,json=createdAt,proto3" json:"created_at"`
+	UpdatedAt string     `protobuf:"bytes,6,opt,name=updated_at,json=updatedAt,proto3" json:"updated_at"`
+	Items     []*NavItem `protobuf:"bytes,7,rep,name=items,proto3" json:"items"`
 }
 
 func (x *Nav) Reset() {

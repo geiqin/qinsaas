@@ -42,7 +42,6 @@ message Check {
     string failure = 8;
     string created_at = 9;
     string updated_at = 10;
-    // @inject_tag: gorm:"foreignKey:CheckId"
     repeated CheckDetail details =11;
 }
 

@@ -31,13 +31,12 @@ type Favorite struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	Id         int64  `protobuf:"varint,1,opt,name=id,proto3" json:"id"`
-	CustomerId int64  `protobuf:"varint,2,opt,name=customer_id,json=customerId,proto3" json:"customer_id"`
-	ItemId     int64  `protobuf:"varint,3,opt,name=item_id,json=itemId,proto3" json:"item_id"`
-	CreatedAt  string `protobuf:"bytes,4,opt,name=created_at,json=createdAt,proto3" json:"created_at"`
-	UpdatedAt  string `protobuf:"bytes,5,opt,name=updated_at,json=updatedAt,proto3" json:"updated_at"`
-	// @inject_tag: gorm:"-"
-	Item *ItemDisplay `protobuf:"bytes,6,opt,name=item,proto3" json:"item" gorm:"-"`
+	Id         int64        `protobuf:"varint,1,opt,name=id,proto3" json:"id"`
+	CustomerId int64        `protobuf:"varint,2,opt,name=customer_id,json=customerId,proto3" json:"customer_id"`
+	ItemId     int64        `protobuf:"varint,3,opt,name=item_id,json=itemId,proto3" json:"item_id"`
+	CreatedAt  string       `protobuf:"bytes,4,opt,name=created_at,json=createdAt,proto3" json:"created_at"`
+	UpdatedAt  string       `protobuf:"bytes,5,opt,name=updated_at,json=updatedAt,proto3" json:"updated_at"`
+	Item       *ItemDisplay `protobuf:"bytes,6,opt,name=item,proto3" json:"item"`
 }
 
 func (x *Favorite) Reset() {

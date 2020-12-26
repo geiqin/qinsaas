@@ -34,7 +34,6 @@ message Supplier {
     int32 status = 13;
     string created_at = 14;
     string updated_at = 15;
-    // @inject_tag: gorm:"foreignKey:SupplierId"
     repeated SupplierContact contacts =16;
 }
 

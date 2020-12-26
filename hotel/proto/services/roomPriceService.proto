@@ -33,7 +33,6 @@ message RoomPrice {
     float price = 8;
     string created_at = 10;
     string updated_at = 11;
-    // @inject_tag: gorm:"foreignKey:RoomPriceId"
     repeated RoomPriceVipcard vipcards = 12;
     float min_price = 13;
     float max_price = 14;

@@ -35,11 +35,9 @@ message Commission {
     int64 operator_id = 17;
     string created_at = 18;
     string updated_at = 19;
-    // @inject_tag: gorm:"foreignKey:CommissionId"
     repeated CommissionDetail details = 20;
-    // @inject_tag: gorm:"-"
+    // @inject_tag: gorm:"ForeignKey:invitee_id"
     Distributor invitee  = 21;
-    // @inject_tag: gorm:"-"
     Distributor distributor = 22;
     string order_status = 23;
 }

@@ -44,8 +44,7 @@ type Vipcard struct {
 	CreatedAt    string `protobuf:"bytes,11,opt,name=created_at,json=createdAt,proto3" json:"created_at"`
 	UpdatedAt    string `protobuf:"bytes,12,opt,name=updated_at,json=updatedAt,proto3" json:"updated_at"`
 	DeletedAt    string `protobuf:"bytes,13,opt,name=deleted_at,json=deletedAt,proto3" json:"deleted_at"`
-	// @inject_tag: `gorm:"-"`
-	Card *Card `protobuf:"bytes,14,opt,name=card,proto3" json:"card" gorm:"-"`
+	Card         *Card  `protobuf:"bytes,14,opt,name=card,proto3" json:"card"`
 	// @inject_tag: `gorm:"-"`
 	Ids []int64 `protobuf:"varint,15,rep,packed,name=ids,proto3" json:"ids" gorm:"-"`
 }

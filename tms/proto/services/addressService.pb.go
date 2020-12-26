@@ -146,9 +146,8 @@ type Address struct {
 	CreatedAt string `protobuf:"bytes,9,opt,name=created_at,json=createdAt,proto3" json:"created_at"`
 	UpdatedAt string `protobuf:"bytes,10,opt,name=updated_at,json=updatedAt,proto3" json:"updated_at"`
 	// @inject_tag: gorm:"-"
-	Area *AreaInfo `protobuf:"bytes,11,opt,name=area,proto3" json:"area" gorm:"-"`
-	// @inject_tag: gorm:"foreignKey:AddressId"
-	AddressTypes []*AddressType `protobuf:"bytes,12,rep,name=address_types,json=addressTypes,proto3" json:"address_types" gorm:"foreignKey:AddressId"`
+	Area         *AreaInfo      `protobuf:"bytes,11,opt,name=area,proto3" json:"area" gorm:"-"`
+	AddressTypes []*AddressType `protobuf:"bytes,12,rep,name=address_types,json=addressTypes,proto3" json:"address_types"`
 }
 
 func (x *Address) Reset() {

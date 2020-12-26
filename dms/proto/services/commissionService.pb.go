@@ -31,29 +31,27 @@ type Commission struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	Id             int64   `protobuf:"varint,1,opt,name=id,proto3" json:"id"`
-	CommissionSn   string  `protobuf:"bytes,2,opt,name=commission_sn,json=commissionSn,proto3" json:"commission_sn"`
-	OrderId        int64   `protobuf:"varint,3,opt,name=order_id,json=orderId,proto3" json:"order_id"`
-	OrderSn        string  `protobuf:"bytes,4,opt,name=order_sn,json=orderSn,proto3" json:"order_sn"`
-	PlatformSource string  `protobuf:"bytes,5,opt,name=platform_source,json=platformSource,proto3" json:"platform_source"`
-	OrderAmount    float32 `protobuf:"fixed32,6,opt,name=order_amount,json=orderAmount,proto3" json:"order_amount"`
-	DistributorId  int64   `protobuf:"varint,7,opt,name=distributor_id,json=distributorId,proto3" json:"distributor_id"`
-	InviteeId      int64   `protobuf:"varint,8,opt,name=invitee_id,json=inviteeId,proto3" json:"invitee_id"`
-	Direction      bool    `protobuf:"varint,9,opt,name=direction,proto3" json:"direction"`
-	Money          float32 `protobuf:"fixed32,10,opt,name=money,proto3" json:"money"`
-	IncomeType     string  `protobuf:"bytes,11,opt,name=income_type,json=incomeType,proto3" json:"income_type"`
-	IncomeRate     float32 `protobuf:"fixed32,12,opt,name=income_rate,json=incomeRate,proto3" json:"income_rate"`
-	Status         int32   `protobuf:"varint,15,opt,name=status,proto3" json:"status"`
-	Memo           string  `protobuf:"bytes,16,opt,name=memo,proto3" json:"memo"`
-	OperatorId     int64   `protobuf:"varint,17,opt,name=operator_id,json=operatorId,proto3" json:"operator_id"`
-	CreatedAt      string  `protobuf:"bytes,18,opt,name=created_at,json=createdAt,proto3" json:"created_at"`
-	UpdatedAt      string  `protobuf:"bytes,19,opt,name=updated_at,json=updatedAt,proto3" json:"updated_at"`
-	// @inject_tag: gorm:"foreignKey:CommissionId"
-	Details []*CommissionDetail `protobuf:"bytes,20,rep,name=details,proto3" json:"details" gorm:"foreignKey:CommissionId"`
-	// @inject_tag: gorm:"-"
-	Invitee *Distributor `protobuf:"bytes,21,opt,name=invitee,proto3" json:"invitee" gorm:"-"`
-	// @inject_tag: gorm:"-"
-	Distributor *Distributor `protobuf:"bytes,22,opt,name=distributor,proto3" json:"distributor" gorm:"-"`
+	Id             int64               `protobuf:"varint,1,opt,name=id,proto3" json:"id"`
+	CommissionSn   string              `protobuf:"bytes,2,opt,name=commission_sn,json=commissionSn,proto3" json:"commission_sn"`
+	OrderId        int64               `protobuf:"varint,3,opt,name=order_id,json=orderId,proto3" json:"order_id"`
+	OrderSn        string              `protobuf:"bytes,4,opt,name=order_sn,json=orderSn,proto3" json:"order_sn"`
+	PlatformSource string              `protobuf:"bytes,5,opt,name=platform_source,json=platformSource,proto3" json:"platform_source"`
+	OrderAmount    float32             `protobuf:"fixed32,6,opt,name=order_amount,json=orderAmount,proto3" json:"order_amount"`
+	DistributorId  int64               `protobuf:"varint,7,opt,name=distributor_id,json=distributorId,proto3" json:"distributor_id"`
+	InviteeId      int64               `protobuf:"varint,8,opt,name=invitee_id,json=inviteeId,proto3" json:"invitee_id"`
+	Direction      bool                `protobuf:"varint,9,opt,name=direction,proto3" json:"direction"`
+	Money          float32             `protobuf:"fixed32,10,opt,name=money,proto3" json:"money"`
+	IncomeType     string              `protobuf:"bytes,11,opt,name=income_type,json=incomeType,proto3" json:"income_type"`
+	IncomeRate     float32             `protobuf:"fixed32,12,opt,name=income_rate,json=incomeRate,proto3" json:"income_rate"`
+	Status         int32               `protobuf:"varint,15,opt,name=status,proto3" json:"status"`
+	Memo           string              `protobuf:"bytes,16,opt,name=memo,proto3" json:"memo"`
+	OperatorId     int64               `protobuf:"varint,17,opt,name=operator_id,json=operatorId,proto3" json:"operator_id"`
+	CreatedAt      string              `protobuf:"bytes,18,opt,name=created_at,json=createdAt,proto3" json:"created_at"`
+	UpdatedAt      string              `protobuf:"bytes,19,opt,name=updated_at,json=updatedAt,proto3" json:"updated_at"`
+	Details        []*CommissionDetail `protobuf:"bytes,20,rep,name=details,proto3" json:"details"`
+	// @inject_tag: gorm:"ForeignKey:invitee_id"
+	Invitee     *Distributor `protobuf:"bytes,21,opt,name=invitee,proto3" json:"invitee" gorm:"ForeignKey:invitee_id"`
+	Distributor *Distributor `protobuf:"bytes,22,opt,name=distributor,proto3" json:"distributor"`
 	OrderStatus string       `protobuf:"bytes,23,opt,name=order_status,json=orderStatus,proto3" json:"order_status"`
 }
 

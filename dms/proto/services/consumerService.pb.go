@@ -31,25 +31,24 @@ type Consumer struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	Id                  int64   `protobuf:"varint,1,opt,name=id,proto3" json:"id"`
-	DistributorId       int64   `protobuf:"varint,2,opt,name=distributor_id,json=distributorId,proto3" json:"distributor_id"`
-	CustomerId          int64   `protobuf:"varint,3,opt,name=customer_id,json=customerId,proto3" json:"customer_id"`
-	OrderNum            int32   `protobuf:"varint,4,opt,name=order_num,json=orderNum,proto3" json:"order_num"`
-	OrderAmount         float32 `protobuf:"fixed32,5,opt,name=order_amount,json=orderAmount,proto3" json:"order_amount"`
-	TotalOrderNum       int32   `protobuf:"varint,6,opt,name=total_order_num,json=totalOrderNum,proto3" json:"total_order_num"`
-	TotalOrderAmount    float32 `protobuf:"fixed32,7,opt,name=total_order_amount,json=totalOrderAmount,proto3" json:"total_order_amount"`
-	Status              int32   `protobuf:"varint,8,opt,name=status,proto3" json:"status"`
-	ChangeNum           int32   `protobuf:"varint,9,opt,name=change_num,json=changeNum,proto3" json:"change_num"`
-	LastChangeAt        string  `protobuf:"bytes,10,opt,name=last_change_at,json=lastChangeAt,proto3" json:"last_change_at"`
-	JoinAt              string  `protobuf:"bytes,11,opt,name=join_at,json=joinAt,proto3" json:"join_at"`
-	Mobile              string  `protobuf:"bytes,12,opt,name=mobile,proto3" json:"mobile"`
-	ConsumerDisplayName string  `protobuf:"bytes,13,opt,name=consumer_display_name,json=consumerDisplayName,proto3" json:"consumer_display_name"`
-	ConsumerAvatarUrl   string  `protobuf:"bytes,14,opt,name=consumer_avatar_url,json=consumerAvatarUrl,proto3" json:"consumer_avatar_url"`
-	DisDisplayName      string  `protobuf:"bytes,15,opt,name=dis_display_name,json=disDisplayName,proto3" json:"dis_display_name"`
-	CreatedAt           string  `protobuf:"bytes,16,opt,name=created_at,json=createdAt,proto3" json:"created_at"`
-	UpdatedAt           string  `protobuf:"bytes,17,opt,name=updated_at,json=updatedAt,proto3" json:"updated_at"`
-	// @inject_tag: gorm:"-"
-	Distributor *Distributor `protobuf:"bytes,18,opt,name=distributor,proto3" json:"distributor" gorm:"-"`
+	Id                  int64        `protobuf:"varint,1,opt,name=id,proto3" json:"id"`
+	DistributorId       int64        `protobuf:"varint,2,opt,name=distributor_id,json=distributorId,proto3" json:"distributor_id"`
+	CustomerId          int64        `protobuf:"varint,3,opt,name=customer_id,json=customerId,proto3" json:"customer_id"`
+	OrderNum            int32        `protobuf:"varint,4,opt,name=order_num,json=orderNum,proto3" json:"order_num"`
+	OrderAmount         float32      `protobuf:"fixed32,5,opt,name=order_amount,json=orderAmount,proto3" json:"order_amount"`
+	TotalOrderNum       int32        `protobuf:"varint,6,opt,name=total_order_num,json=totalOrderNum,proto3" json:"total_order_num"`
+	TotalOrderAmount    float32      `protobuf:"fixed32,7,opt,name=total_order_amount,json=totalOrderAmount,proto3" json:"total_order_amount"`
+	Status              int32        `protobuf:"varint,8,opt,name=status,proto3" json:"status"`
+	ChangeNum           int32        `protobuf:"varint,9,opt,name=change_num,json=changeNum,proto3" json:"change_num"`
+	LastChangeAt        string       `protobuf:"bytes,10,opt,name=last_change_at,json=lastChangeAt,proto3" json:"last_change_at"`
+	JoinAt              string       `protobuf:"bytes,11,opt,name=join_at,json=joinAt,proto3" json:"join_at"`
+	Mobile              string       `protobuf:"bytes,12,opt,name=mobile,proto3" json:"mobile"`
+	ConsumerDisplayName string       `protobuf:"bytes,13,opt,name=consumer_display_name,json=consumerDisplayName,proto3" json:"consumer_display_name"`
+	ConsumerAvatarUrl   string       `protobuf:"bytes,14,opt,name=consumer_avatar_url,json=consumerAvatarUrl,proto3" json:"consumer_avatar_url"`
+	DisDisplayName      string       `protobuf:"bytes,15,opt,name=dis_display_name,json=disDisplayName,proto3" json:"dis_display_name"`
+	CreatedAt           string       `protobuf:"bytes,16,opt,name=created_at,json=createdAt,proto3" json:"created_at"`
+	UpdatedAt           string       `protobuf:"bytes,17,opt,name=updated_at,json=updatedAt,proto3" json:"updated_at"`
+	Distributor         *Distributor `protobuf:"bytes,18,opt,name=distributor,proto3" json:"distributor"`
 }
 
 func (x *Consumer) Reset() {

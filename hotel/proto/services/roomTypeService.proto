@@ -49,15 +49,12 @@ message RoomType {
     int32 room_price_plan_open_num = 26;
     string created_at = 16;
     string updated_at = 17;
-    // @inject_tag: gorm:"foreignKey:RoomTypeId"
     repeated RoomTypeGallery galleries = 18;
     // @inject_tag: gorm:"many2many:room_type_facility_relations;association_autoupdate:false"
     repeated RoomTypeFacility facilities = 19;
     // @inject_tag: gorm:"many2many:room_type_tag_relations;association_autoupdate:false"
     repeated RoomTypeTag tags = 20;
-    // @inject_tag: gorm:"foreignKey:RoomTypeId"
     repeated Room rooms = 21;
-    // @inject_tag: gorm:"foreignKey:RoomTypeId"
     repeated RoomPricePlan price_plans = 22;
     // @inject_tag: gorm:"-"
     repeated int32 room_type_facility_ids = 23;

@@ -31,16 +31,15 @@ type Spec struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	Id        int32  `protobuf:"varint,1,opt,name=id,proto3" json:"id"`
-	Name      string `protobuf:"bytes,2,opt,name=name,proto3" json:"name"`
-	SpecType  string `protobuf:"bytes,3,opt,name=spec_type,json=specType,proto3" json:"spec_type"`
-	ShowStyle string `protobuf:"bytes,4,opt,name=show_style,json=showStyle,proto3" json:"show_style"`
-	Memo      string `protobuf:"bytes,5,opt,name=memo,proto3" json:"memo"`
-	Sorting   int32  `protobuf:"varint,6,opt,name=sorting,proto3" json:"sorting"`
-	CreatedAt string `protobuf:"bytes,7,opt,name=created_at,json=createdAt,proto3" json:"created_at"`
-	UpdatedAt string `protobuf:"bytes,8,opt,name=updated_at,json=updatedAt,proto3" json:"updated_at"`
-	// @inject_tag: gorm:"foreignKey:SpecId"
-	Values []*SpecValue `protobuf:"bytes,9,rep,name=values,proto3" json:"values" gorm:"foreignKey:SpecId"`
+	Id        int32        `protobuf:"varint,1,opt,name=id,proto3" json:"id"`
+	Name      string       `protobuf:"bytes,2,opt,name=name,proto3" json:"name"`
+	SpecType  string       `protobuf:"bytes,3,opt,name=spec_type,json=specType,proto3" json:"spec_type"`
+	ShowStyle string       `protobuf:"bytes,4,opt,name=show_style,json=showStyle,proto3" json:"show_style"`
+	Memo      string       `protobuf:"bytes,5,opt,name=memo,proto3" json:"memo"`
+	Sorting   int32        `protobuf:"varint,6,opt,name=sorting,proto3" json:"sorting"`
+	CreatedAt string       `protobuf:"bytes,7,opt,name=created_at,json=createdAt,proto3" json:"created_at"`
+	UpdatedAt string       `protobuf:"bytes,8,opt,name=updated_at,json=updatedAt,proto3" json:"updated_at"`
+	Values    []*SpecValue `protobuf:"bytes,9,rep,name=values,proto3" json:"values"`
 }
 
 func (x *Spec) Reset() {

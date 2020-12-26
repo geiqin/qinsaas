@@ -160,23 +160,22 @@ type Stock struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	Id            int64  `protobuf:"varint,1,opt,name=id,proto3" json:"id"`
-	StockSn       string `protobuf:"bytes,2,opt,name=stock_sn,json=stockSn,proto3" json:"stock_sn"`
-	Type          string `protobuf:"bytes,3,opt,name=type,proto3" json:"type"`
-	SheetType     int32  `protobuf:"varint,4,opt,name=sheet_type,json=sheetType,proto3" json:"sheet_type"`
-	HandledAt     string `protobuf:"bytes,5,opt,name=handled_at,json=handledAt,proto3" json:"handled_at"`
-	SourceNo      string `protobuf:"bytes,6,opt,name=source_no,json=sourceNo,proto3" json:"source_no"`
-	UserId        int64  `protobuf:"varint,7,opt,name=user_id,json=userId,proto3" json:"user_id"`
-	Autoed        bool   `protobuf:"varint,8,opt,name=autoed,proto3" json:"autoed"`
-	Memo          string `protobuf:"bytes,9,opt,name=memo,proto3" json:"memo"`
-	RowTotal      int32  `protobuf:"varint,10,opt,name=row_total,json=rowTotal,proto3" json:"row_total"`
-	QuantityTotal int32  `protobuf:"varint,11,opt,name=quantity_total,json=quantityTotal,proto3" json:"quantity_total"`
-	Status        int32  `protobuf:"varint,12,opt,name=status,proto3" json:"status"`
-	Failure       string `protobuf:"bytes,13,opt,name=failure,proto3" json:"failure"`
-	CreatedAt     string `protobuf:"bytes,14,opt,name=created_at,json=createdAt,proto3" json:"created_at"`
-	UpdatedAt     string `protobuf:"bytes,15,opt,name=updated_at,json=updatedAt,proto3" json:"updated_at"`
-	// @inject_tag: gorm:"foreignKey:StockId"
-	Details []*StockDetail `protobuf:"bytes,16,rep,name=details,proto3" json:"details" gorm:"foreignKey:StockId"`
+	Id            int64          `protobuf:"varint,1,opt,name=id,proto3" json:"id"`
+	StockSn       string         `protobuf:"bytes,2,opt,name=stock_sn,json=stockSn,proto3" json:"stock_sn"`
+	Type          string         `protobuf:"bytes,3,opt,name=type,proto3" json:"type"`
+	SheetType     int32          `protobuf:"varint,4,opt,name=sheet_type,json=sheetType,proto3" json:"sheet_type"`
+	HandledAt     string         `protobuf:"bytes,5,opt,name=handled_at,json=handledAt,proto3" json:"handled_at"`
+	SourceNo      string         `protobuf:"bytes,6,opt,name=source_no,json=sourceNo,proto3" json:"source_no"`
+	UserId        int64          `protobuf:"varint,7,opt,name=user_id,json=userId,proto3" json:"user_id"`
+	Autoed        bool           `protobuf:"varint,8,opt,name=autoed,proto3" json:"autoed"`
+	Memo          string         `protobuf:"bytes,9,opt,name=memo,proto3" json:"memo"`
+	RowTotal      int32          `protobuf:"varint,10,opt,name=row_total,json=rowTotal,proto3" json:"row_total"`
+	QuantityTotal int32          `protobuf:"varint,11,opt,name=quantity_total,json=quantityTotal,proto3" json:"quantity_total"`
+	Status        int32          `protobuf:"varint,12,opt,name=status,proto3" json:"status"`
+	Failure       string         `protobuf:"bytes,13,opt,name=failure,proto3" json:"failure"`
+	CreatedAt     string         `protobuf:"bytes,14,opt,name=created_at,json=createdAt,proto3" json:"created_at"`
+	UpdatedAt     string         `protobuf:"bytes,15,opt,name=updated_at,json=updatedAt,proto3" json:"updated_at"`
+	Details       []*StockDetail `protobuf:"bytes,16,rep,name=details,proto3" json:"details"`
 }
 
 func (x *Stock) Reset() {

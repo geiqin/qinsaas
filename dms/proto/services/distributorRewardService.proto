@@ -147,7 +147,6 @@ message DistReward {
     int32 withdrew_num = 13;
     string created_at = 14;
     string updated_at = 15;
-    // @inject_tag: gorm:"-"
     Distributor distributor = 16;
 }
 
@@ -166,9 +165,7 @@ message DistRewardRecord {
     int32 status = 12;
     string created_at = 13;
     string updated_at = 14;
-    // @inject_tag: gorm:"-"
     Distributor distributor = 15;
-    // @inject_tag: gorm:"foreignKey:DistRewardRecordId"
     DistRewardRecordDetail details = 16;
 }
 

@@ -31,14 +31,13 @@ type Goods struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	Id        int64  `protobuf:"varint,1,opt,name=id,proto3" json:"id"`
-	ItemId    int64  `protobuf:"varint,2,opt,name=item_id,json=itemId,proto3" json:"item_id"`
-	SkuId     int64  `protobuf:"varint,3,opt,name=sku_id,json=skuId,proto3" json:"sku_id"`
-	Disabled  bool   `protobuf:"varint,6,opt,name=disabled,proto3" json:"disabled"`
-	Default   bool   `protobuf:"varint,7,opt,name=default,proto3" json:"default"`
-	CreatedAt string `protobuf:"bytes,8,opt,name=created_at,json=createdAt,proto3" json:"created_at"`
-	UpdatedAt string `protobuf:"bytes,9,opt,name=updated_at,json=updatedAt,proto3" json:"updated_at"`
-	// @inject_tag: gorm:"foreignKey:GoodsId"
+	Id              int64              `protobuf:"varint,1,opt,name=id,proto3" json:"id"`
+	ItemId          int64              `protobuf:"varint,2,opt,name=item_id,json=itemId,proto3" json:"item_id"`
+	SkuId           int64              `protobuf:"varint,3,opt,name=sku_id,json=skuId,proto3" json:"sku_id"`
+	Disabled        bool               `protobuf:"varint,6,opt,name=disabled,proto3" json:"disabled"`
+	Default         bool               `protobuf:"varint,7,opt,name=default,proto3" json:"default"`
+	CreatedAt       string             `protobuf:"bytes,8,opt,name=created_at,json=createdAt,proto3" json:"created_at"`
+	UpdatedAt       string             `protobuf:"bytes,9,opt,name=updated_at,json=updatedAt,proto3" json:"updated_at"`
 	GoodsCommission []*GoodsCommission `protobuf:"bytes,10,rep,name=goods_commission,json=goodsCommission,proto3" json:"goods_commission"`
 }
 
@@ -140,7 +139,7 @@ type GoodsWhere struct {
 	Top      int32 `protobuf:"varint,3,opt,name=top,proto3" json:"top"`
 	Id       int64 `protobuf:"varint,4,opt,name=id,proto3" json:"id"`
 	// @inject_tag: gorm:"-"
-	Ids       []int64 `protobuf:"varint,5,rep,packed,name=ids,proto3" json:"ids"`
+	Ids       []int64 `protobuf:"varint,5,rep,packed,name=ids,proto3" json:"ids" gorm:"-"`
 	Keywords  string  `protobuf:"bytes,6,opt,name=keywords,proto3" json:"keywords"`
 	CatId     int32   `protobuf:"varint,7,opt,name=cat_id,json=catId,proto3" json:"cat_id"`
 	Type      string  `protobuf:"bytes,8,opt,name=type,proto3" json:"type"`
@@ -150,7 +149,7 @@ type GoodsWhere struct {
 	ItemName  string  `protobuf:"bytes,12,opt,name=item_name,json=itemName,proto3" json:"item_name"`
 	ItemPrice string  `protobuf:"bytes,13,opt,name=item_price,json=itemPrice,proto3" json:"item_price"`
 	// @inject_tag: gorm:"-"
-	ItemIds    []int64 `protobuf:"varint,14,rep,packed,name=item_ids,json=itemIds,proto3" json:"item_ids"`
+	ItemIds    []int64 `protobuf:"varint,14,rep,packed,name=item_ids,json=itemIds,proto3" json:"item_ids" gorm:"-"`
 	CustomerId int64   `protobuf:"varint,15,opt,name=customer_id,json=customerId,proto3" json:"customer_id"`
 	Client     bool    `protobuf:"varint,16,opt,name=client,proto3" json:"client"`
 	Disabled   bool    `protobuf:"varint,17,opt,name=disabled,proto3" json:"disabled"`

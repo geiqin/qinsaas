@@ -45,8 +45,7 @@ type LeaderBonus struct {
 	Status         int32   `protobuf:"varint,12,opt,name=status,proto3" json:"status"`
 	CreatedAt      string  `protobuf:"bytes,13,opt,name=created_at,json=createdAt,proto3" json:"created_at"`
 	UpdatedAt      string  `protobuf:"bytes,14,opt,name=updated_at,json=updatedAt,proto3" json:"updated_at"`
-	// @inject_tag: gorm:"-"
-	Leader *Leader `protobuf:"bytes,15,opt,name=leader,proto3" json:"leader"`
+	Leader         *Leader `protobuf:"bytes,15,opt,name=leader,proto3" json:"leader"`
 }
 
 func (x *LeaderBonus) Reset() {
@@ -202,7 +201,7 @@ type LeaderBonusWhere struct {
 	StartDate string `protobuf:"bytes,9,opt,name=start_date,json=startDate,proto3" json:"start_date"`
 	EndDate   string `protobuf:"bytes,10,opt,name=end_date,json=endDate,proto3" json:"end_date"`
 	// @inject_tag: gorm:"-"
-	Ids      []int64 `protobuf:"varint,11,rep,packed,name=ids,proto3" json:"ids"`
+	Ids      []int64 `protobuf:"varint,11,rep,packed,name=ids,proto3" json:"ids" gorm:"-"`
 	LeaderId int64   `protobuf:"varint,12,opt,name=leader_id,json=leaderId,proto3" json:"leader_id"`
 }
 
@@ -430,7 +429,7 @@ type LeaderPerformanceWhere struct {
 	Keywords string `protobuf:"bytes,6,opt,name=keywords,proto3" json:"keywords"`
 	Id       int64  `protobuf:"varint,7,opt,name=id,proto3" json:"id"`
 	// @inject_tag: gorm:"-"
-	Ids []int64 `protobuf:"varint,8,rep,packed,name=ids,proto3" json:"ids"`
+	Ids []int64 `protobuf:"varint,8,rep,packed,name=ids,proto3" json:"ids" gorm:"-"`
 }
 
 func (x *LeaderPerformanceWhere) Reset() {

@@ -43,8 +43,11 @@ message PriceScheme {
     string	model_type	=7;
     string type = 8;
     string method =9;
+    // @inject_tag: gorm:"-"
     repeated ItemPrice details = 10;
+    // @inject_tag: gorm:"-"
     repeated Sku skus  =11;
+    // @inject_tag: gorm:"-"
     repeated Spec specs =12;
 }
 

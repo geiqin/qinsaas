@@ -31,19 +31,18 @@ type CashAccount struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	Id              int64  `protobuf:"varint,1,opt,name=id,proto3" json:"id"`
-	DistributorId   int64  `protobuf:"varint,2,opt,name=distributor_id,json=distributorId,proto3" json:"distributor_id"`
-	Type            string `protobuf:"bytes,3,opt,name=type,proto3" json:"type"`
-	RealName        string `protobuf:"bytes,4,opt,name=real_name,json=realName,proto3" json:"real_name"`
-	PayeeName       string `protobuf:"bytes,5,opt,name=payee_name,json=payeeName,proto3" json:"payee_name"`
-	PayeeAccount    string `protobuf:"bytes,6,opt,name=payee_account,json=payeeAccount,proto3" json:"payee_account"`
-	PayeeBank       string `protobuf:"bytes,7,opt,name=payee_bank,json=payeeBank,proto3" json:"payee_bank"`
-	PlatformAccount string `protobuf:"bytes,8,opt,name=platform_account,json=platformAccount,proto3" json:"platform_account"`
-	Status          string `protobuf:"bytes,9,opt,name=status,proto3" json:"status"`
-	CreatedAt       string `protobuf:"bytes,10,opt,name=created_at,json=createdAt,proto3" json:"created_at"`
-	UpdatedAt       string `protobuf:"bytes,11,opt,name=updated_at,json=updatedAt,proto3" json:"updated_at"`
-	// @inject_tag: gorm:"-"
-	Distributor *Distributor `protobuf:"bytes,12,opt,name=distributor,proto3" json:"distributor" gorm:"-"`
+	Id              int64        `protobuf:"varint,1,opt,name=id,proto3" json:"id"`
+	DistributorId   int64        `protobuf:"varint,2,opt,name=distributor_id,json=distributorId,proto3" json:"distributor_id"`
+	Type            string       `protobuf:"bytes,3,opt,name=type,proto3" json:"type"`
+	RealName        string       `protobuf:"bytes,4,opt,name=real_name,json=realName,proto3" json:"real_name"`
+	PayeeName       string       `protobuf:"bytes,5,opt,name=payee_name,json=payeeName,proto3" json:"payee_name"`
+	PayeeAccount    string       `protobuf:"bytes,6,opt,name=payee_account,json=payeeAccount,proto3" json:"payee_account"`
+	PayeeBank       string       `protobuf:"bytes,7,opt,name=payee_bank,json=payeeBank,proto3" json:"payee_bank"`
+	PlatformAccount string       `protobuf:"bytes,8,opt,name=platform_account,json=platformAccount,proto3" json:"platform_account"`
+	Status          string       `protobuf:"bytes,9,opt,name=status,proto3" json:"status"`
+	CreatedAt       string       `protobuf:"bytes,10,opt,name=created_at,json=createdAt,proto3" json:"created_at"`
+	UpdatedAt       string       `protobuf:"bytes,11,opt,name=updated_at,json=updatedAt,proto3" json:"updated_at"`
+	Distributor     *Distributor `protobuf:"bytes,12,opt,name=distributor,proto3" json:"distributor"`
 }
 
 func (x *CashAccount) Reset() {

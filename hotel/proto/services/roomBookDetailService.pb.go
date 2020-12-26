@@ -239,23 +239,22 @@ type RoomBookDetail struct {
 	// @inject_tag: validate:"required" label:"房型ID"
 	RoomTypeId int64 `protobuf:"varint,4,opt,name=room_type_id,json=roomTypeId,proto3" json:"room_type_id" validate:"required" label:"房型ID"`
 	// @inject_tag: validate:"required" label:"房型名称"
-	RoomTypeName string  `protobuf:"bytes,5,opt,name=room_type_name,json=roomTypeName,proto3" json:"room_type_name" validate:"required" label:"房型名称"`
-	RoomId       int64   `protobuf:"varint,6,opt,name=room_id,json=roomId,proto3" json:"room_id"`
-	RoomName     string  `protobuf:"bytes,7,opt,name=room_name,json=roomName,proto3" json:"room_name"`
-	BreakfastNum int32   `protobuf:"varint,8,opt,name=breakfast_num,json=breakfastNum,proto3" json:"breakfast_num"`
-	TotalPrice   float32 `protobuf:"fixed32,9,opt,name=total_price,json=totalPrice,proto3" json:"total_price"`
-	CheckinTime  string  `protobuf:"bytes,10,opt,name=checkin_time,json=checkinTime,proto3" json:"checkin_time"`
-	CheckoutTime string  `protobuf:"bytes,11,opt,name=checkout_time,json=checkoutTime,proto3" json:"checkout_time"`
-	DayNum       int32   `protobuf:"varint,12,opt,name=day_num,json=dayNum,proto3" json:"day_num"`
-	Status       int32   `protobuf:"varint,13,opt,name=status,proto3" json:"status"`
-	BookName     string  `protobuf:"bytes,14,opt,name=book_name,json=bookName,proto3" json:"book_name"`
-	BookMobile   string  `protobuf:"bytes,15,opt,name=book_mobile,json=bookMobile,proto3" json:"book_mobile"`
-	CreatedAt    string  `protobuf:"bytes,16,opt,name=created_at,json=createdAt,proto3" json:"created_at"`
-	UpdatedAt    string  `protobuf:"bytes,17,opt,name=updated_at,json=updatedAt,proto3" json:"updated_at"`
-	// @inject_tag: gorm:"foreignKey:RoomBookDetailId;"
-	RoomCheckinInfo *RoomCheckin `protobuf:"bytes,18,opt,name=room_checkin_info,json=roomCheckinInfo,proto3" json:"room_checkin_info" gorm:"foreignKey:RoomBookDetailId;"`
-	// @inject_tag: gorm:"foreignKey:RoomBookDetailId;association_autocreate:false;association_autoupdate:false"
-	PriceList []*RoomBookPrice `protobuf:"bytes,20,rep,name=price_list,json=priceList,proto3" json:"price_list" gorm:"foreignKey:RoomBookDetailId;association_autocreate:false;association_autoupdate:false"`
+	RoomTypeName    string       `protobuf:"bytes,5,opt,name=room_type_name,json=roomTypeName,proto3" json:"room_type_name" validate:"required" label:"房型名称"`
+	RoomId          int64        `protobuf:"varint,6,opt,name=room_id,json=roomId,proto3" json:"room_id"`
+	RoomName        string       `protobuf:"bytes,7,opt,name=room_name,json=roomName,proto3" json:"room_name"`
+	BreakfastNum    int32        `protobuf:"varint,8,opt,name=breakfast_num,json=breakfastNum,proto3" json:"breakfast_num"`
+	TotalPrice      float32      `protobuf:"fixed32,9,opt,name=total_price,json=totalPrice,proto3" json:"total_price"`
+	CheckinTime     string       `protobuf:"bytes,10,opt,name=checkin_time,json=checkinTime,proto3" json:"checkin_time"`
+	CheckoutTime    string       `protobuf:"bytes,11,opt,name=checkout_time,json=checkoutTime,proto3" json:"checkout_time"`
+	DayNum          int32        `protobuf:"varint,12,opt,name=day_num,json=dayNum,proto3" json:"day_num"`
+	Status          int32        `protobuf:"varint,13,opt,name=status,proto3" json:"status"`
+	BookName        string       `protobuf:"bytes,14,opt,name=book_name,json=bookName,proto3" json:"book_name"`
+	BookMobile      string       `protobuf:"bytes,15,opt,name=book_mobile,json=bookMobile,proto3" json:"book_mobile"`
+	CreatedAt       string       `protobuf:"bytes,16,opt,name=created_at,json=createdAt,proto3" json:"created_at"`
+	UpdatedAt       string       `protobuf:"bytes,17,opt,name=updated_at,json=updatedAt,proto3" json:"updated_at"`
+	RoomCheckinInfo *RoomCheckin `protobuf:"bytes,18,opt,name=room_checkin_info,json=roomCheckinInfo,proto3" json:"room_checkin_info"`
+	// @inject_tag: gorm:"association_autocreate:false;association_autoupdate:false"
+	PriceList []*RoomBookPrice `protobuf:"bytes,20,rep,name=price_list,json=priceList,proto3" json:"price_list" gorm:"association_autocreate:false;association_autoupdate:false"`
 	// @inject_tag: gorm:"-"
 	Items        []*RoomBookDetail `protobuf:"bytes,21,rep,name=items,proto3" json:"items" gorm:"-"`
 	CustomerType int32             `protobuf:"varint,22,opt,name=customer_type,json=customerType,proto3" json:"customer_type"`

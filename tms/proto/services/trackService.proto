@@ -17,7 +17,6 @@ message Track {
   string state =7;
   string stateEx =8;
   string location  =9;
-  // @inject_tag: gorm:"foreignKey:TrackId"
   repeated  TrackDetail details=10;
   string customer_name = 11;
 }

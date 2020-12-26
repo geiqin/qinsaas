@@ -31,19 +31,17 @@ type Relationship struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	Id             int64  `protobuf:"varint,1,opt,name=id,proto3" json:"id"`
-	DistributorId  int64  `protobuf:"varint,2,opt,name=distributor_id,json=distributorId,proto3" json:"distributor_id"`
-	CustomerId     int64  `protobuf:"varint,3,opt,name=customer_id,json=customerId,proto3" json:"customer_id"`
-	Type           int32  `protobuf:"varint,4,opt,name=type,proto3" json:"type"`
-	Status         string `protobuf:"bytes,5,opt,name=status,proto3" json:"status"`
-	ContinueNum    int32  `protobuf:"varint,6,opt,name=continue_num,json=continueNum,proto3" json:"continue_num"`
-	LastContinueAt string `protobuf:"bytes,7,opt,name=last_continue_at,json=lastContinueAt,proto3" json:"last_continue_at"`
-	CreatedAt      string `protobuf:"bytes,8,opt,name=created_at,json=createdAt,proto3" json:"created_at"`
-	UpdatedAt      string `protobuf:"bytes,9,opt,name=updated_at,json=updatedAt,proto3" json:"updated_at"`
-	// @inject_tag: gorm:"-"
-	Distributor *Distributor `protobuf:"bytes,10,opt,name=distributor,proto3" json:"distributor"`
-	// @inject_tag: gorm:"-"
-	Invitee *Distributor `protobuf:"bytes,11,opt,name=invitee,proto3" json:"invitee"`
+	Id             int64        `protobuf:"varint,1,opt,name=id,proto3" json:"id"`
+	DistributorId  int64        `protobuf:"varint,2,opt,name=distributor_id,json=distributorId,proto3" json:"distributor_id"`
+	CustomerId     int64        `protobuf:"varint,3,opt,name=customer_id,json=customerId,proto3" json:"customer_id"`
+	Type           int32        `protobuf:"varint,4,opt,name=type,proto3" json:"type"`
+	Status         string       `protobuf:"bytes,5,opt,name=status,proto3" json:"status"`
+	ContinueNum    int32        `protobuf:"varint,6,opt,name=continue_num,json=continueNum,proto3" json:"continue_num"`
+	LastContinueAt string       `protobuf:"bytes,7,opt,name=last_continue_at,json=lastContinueAt,proto3" json:"last_continue_at"`
+	CreatedAt      string       `protobuf:"bytes,8,opt,name=created_at,json=createdAt,proto3" json:"created_at"`
+	UpdatedAt      string       `protobuf:"bytes,9,opt,name=updated_at,json=updatedAt,proto3" json:"updated_at"`
+	Distributor    *Distributor `protobuf:"bytes,10,opt,name=distributor,proto3" json:"distributor"`
+	Invitee        *Distributor `protobuf:"bytes,11,opt,name=invitee,proto3" json:"invitee"`
 }
 
 func (x *Relationship) Reset() {

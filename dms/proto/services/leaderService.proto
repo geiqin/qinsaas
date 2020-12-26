@@ -37,9 +37,7 @@ message Leader {
     string updated_at = 14;
     // @inject_tag: gorm:"-"
     repeated int64 ids = 15;
-    // @inject_tag: gorm:"-"
     Rank rank = 16;
-    // @inject_tag: gorm:"-"
     Distributor distributor = 17;
     string leader_name = 18;// 团长昵称
     string mobile = 19;// 手机号

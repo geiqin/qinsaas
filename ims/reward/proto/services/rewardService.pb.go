@@ -31,23 +31,21 @@ type Reward struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	Id            int64  `protobuf:"varint,1,opt,name=id,proto3" json:"id"`
-	Name          string `protobuf:"bytes,2,opt,name=name,proto3" json:"name"`
-	StartAt       string `protobuf:"bytes,3,opt,name=start_at,json=startAt,proto3" json:"start_at"`
-	EndAt         string `protobuf:"bytes,4,opt,name=end_at,json=endAt,proto3" json:"end_at"`
-	RangeType     int32  `protobuf:"varint,5,opt,name=range_type,json=rangeType,proto3" json:"range_type"`
-	ConditionType int32  `protobuf:"varint,6,opt,name=condition_type,json=conditionType,proto3" json:"condition_type"`
-	StepNum       int32  `protobuf:"varint,7,opt,name=step_num,json=stepNum,proto3" json:"step_num"`
-	Description   string `protobuf:"bytes,8,opt,name=description,proto3" json:"description"`
-	CreatedAt     string `protobuf:"bytes,9,opt,name=created_at,json=createdAt,proto3" json:"created_at"`
-	UpdatedAt     string `protobuf:"bytes,10,opt,name=updated_at,json=updatedAt,proto3" json:"updated_at"`
-	// @inject_tag: gorm:"foreignKey:RewardId"
-	Goodses []*RewardGoods `protobuf:"bytes,11,rep,name=goodses,proto3" json:"goodses" gorm:"foreignKey:RewardId"`
-	// @inject_tag: gorm:"foreignKey:RewardId"
-	Steps      []*RewardStep `protobuf:"bytes,12,rep,name=steps,proto3" json:"steps" gorm:"foreignKey:RewardId"`
-	Looped     bool          `protobuf:"varint,13,opt,name=looped,proto3" json:"looped"` // 是否循环满减
-	Status     int32         `protobuf:"varint,14,opt,name=status,proto3" json:"status"`
-	StatusName string        `protobuf:"bytes,15,opt,name=status_name,json=statusName,proto3" json:"status_name"`
+	Id            int64          `protobuf:"varint,1,opt,name=id,proto3" json:"id"`
+	Name          string         `protobuf:"bytes,2,opt,name=name,proto3" json:"name"`
+	StartAt       string         `protobuf:"bytes,3,opt,name=start_at,json=startAt,proto3" json:"start_at"`
+	EndAt         string         `protobuf:"bytes,4,opt,name=end_at,json=endAt,proto3" json:"end_at"`
+	RangeType     int32          `protobuf:"varint,5,opt,name=range_type,json=rangeType,proto3" json:"range_type"`
+	ConditionType int32          `protobuf:"varint,6,opt,name=condition_type,json=conditionType,proto3" json:"condition_type"`
+	StepNum       int32          `protobuf:"varint,7,opt,name=step_num,json=stepNum,proto3" json:"step_num"`
+	Description   string         `protobuf:"bytes,8,opt,name=description,proto3" json:"description"`
+	CreatedAt     string         `protobuf:"bytes,9,opt,name=created_at,json=createdAt,proto3" json:"created_at"`
+	UpdatedAt     string         `protobuf:"bytes,10,opt,name=updated_at,json=updatedAt,proto3" json:"updated_at"`
+	Goodses       []*RewardGoods `protobuf:"bytes,11,rep,name=goodses,proto3" json:"goodses"`
+	Steps         []*RewardStep  `protobuf:"bytes,12,rep,name=steps,proto3" json:"steps"`
+	Looped        bool           `protobuf:"varint,13,opt,name=looped,proto3" json:"looped"` // 是否循环满减
+	Status        int32          `protobuf:"varint,14,opt,name=status,proto3" json:"status"`
+	StatusName    string         `protobuf:"bytes,15,opt,name=status_name,json=statusName,proto3" json:"status_name"`
 }
 
 func (x *Reward) Reset() {

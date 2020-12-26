@@ -29,7 +29,6 @@ message Nav {
     string memo = 4;
     string created_at = 5;
     string updated_at = 6;
-    // @inject_tag: gorm:"foreignKey:NavId"
     repeated NavItem items = 7;
 }
 

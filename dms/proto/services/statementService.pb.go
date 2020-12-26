@@ -164,7 +164,7 @@ type StatementWhere struct {
 	//base params
 	Id int64 `protobuf:"varint,4,opt,name=id,proto3" json:"id"`
 	// @inject_tag: gorm:"-"
-	Ids          []int64 `protobuf:"varint,5,rep,packed,name=ids,proto3" json:"ids"`
+	Ids          []int64 `protobuf:"varint,5,rep,packed,name=ids,proto3" json:"ids" gorm:"-"`
 	Type         string  `protobuf:"bytes,6,opt,name=type,proto3" json:"type"`
 	TargetId     int64   `protobuf:"varint,7,opt,name=target_id,json=targetId,proto3" json:"target_id"`
 	SourceType   string  `protobuf:"bytes,8,opt,name=source_type,json=sourceType,proto3" json:"source_type"`

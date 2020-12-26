@@ -56,7 +56,6 @@ message Distributor {
     int32 status = 21;
     string created_at = 22;
     string updated_at = 23;
-    // @inject_tag: gorm:"-"
     Rank rank = 24;
     // @inject_tag: gorm:"ForeignKey:inviter_id"
     Distributor inviter = 25;

@@ -31,7 +31,6 @@ message IntegralRule {
     int32 goods_type = 6;
     string created_at = 7;
     string updated_at = 8;
-    // @inject_tag: gorm:"foreignKey:IntegralRuleId"
     repeated IntegralGoods goods = 9;
 }
 
