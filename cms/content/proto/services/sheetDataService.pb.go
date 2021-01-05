@@ -31,13 +31,13 @@ type SheetData struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	Id             int64      `protobuf:"varint,1,opt,name=id,proto3" json:"id,omitempty"`
-	SheetId        int32      `protobuf:"varint,2,opt,name=sheet_id,json=sheetId,proto3" json:"sheet_id,omitempty"`
-	SheetWriterId  int64      `protobuf:"varint,3,opt,name=sheet_writer_id,json=sheetWriterId,proto3" json:"sheet_writer_id,omitempty"`
-	SheetAttrId    int32      `protobuf:"varint,4,opt,name=sheet_attr_id,json=sheetAttrId,proto3" json:"sheet_attr_id,omitempty"`
-	SheetAttrValue string     `protobuf:"bytes,5,opt,name=sheet_attr_value,json=sheetAttrValue,proto3" json:"sheet_attr_value,omitempty"`
-	SheetAttrName  string     `protobuf:"bytes,6,opt,name=sheet_attr_name,json=sheetAttrName,proto3" json:"sheet_attr_name,omitempty"`
-	Detail         *SheetAttr `protobuf:"bytes,7,opt,name=detail,proto3" json:"detail,omitempty"`
+	Id             int64      `protobuf:"varint,1,opt,name=id,proto3" json:"id"`
+	SheetId        int32      `protobuf:"varint,2,opt,name=sheet_id,json=sheetId,proto3" json:"sheet_id"`
+	SheetWriterId  int64      `protobuf:"varint,3,opt,name=sheet_writer_id,json=sheetWriterId,proto3" json:"sheet_writer_id"`
+	SheetAttrId    int32      `protobuf:"varint,4,opt,name=sheet_attr_id,json=sheetAttrId,proto3" json:"sheet_attr_id"`
+	SheetAttrValue string     `protobuf:"bytes,5,opt,name=sheet_attr_value,json=sheetAttrValue,proto3" json:"sheet_attr_value"`
+	SheetAttrName  string     `protobuf:"bytes,6,opt,name=sheet_attr_name,json=sheetAttrName,proto3" json:"sheet_attr_name"`
+	Detail         *SheetAttr `protobuf:"bytes,7,opt,name=detail,proto3" json:"detail"`
 }
 
 func (x *SheetData) Reset() {

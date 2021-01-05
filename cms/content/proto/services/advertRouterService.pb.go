@@ -32,12 +32,12 @@ type AdvertRouter struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	Id        int32  `protobuf:"varint,1,opt,name=id,proto3" json:"id,omitempty"`
-	Slug      string `protobuf:"bytes,2,opt,name=slug,proto3" json:"slug,omitempty"`
-	Name      string `protobuf:"bytes,3,opt,name=name,proto3" json:"name,omitempty"`
-	Url       string `protobuf:"bytes,4,opt,name=url,proto3" json:"url,omitempty"`
-	CreatedAt string `protobuf:"bytes,5,opt,name=created_at,json=createdAt,proto3" json:"created_at,omitempty"`
-	UpdatedAt string `protobuf:"bytes,6,opt,name=updated_at,json=updatedAt,proto3" json:"updated_at,omitempty"`
+	Id        int32  `protobuf:"varint,1,opt,name=id,proto3" json:"id"`
+	Slug      string `protobuf:"bytes,2,opt,name=slug,proto3" json:"slug"`
+	Name      string `protobuf:"bytes,3,opt,name=name,proto3" json:"name"`
+	Url       string `protobuf:"bytes,4,opt,name=url,proto3" json:"url"`
+	CreatedAt string `protobuf:"bytes,5,opt,name=created_at,json=createdAt,proto3" json:"created_at"`
+	UpdatedAt string `protobuf:"bytes,6,opt,name=updated_at,json=updatedAt,proto3" json:"updated_at"`
 }
 
 func (x *AdvertRouter) Reset() {
@@ -120,11 +120,11 @@ type AdvertRouterResponse struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	Entity *AdvertRouter   `protobuf:"bytes,1,opt,name=entity,proto3" json:"entity,omitempty"`
-	Pager  *common.Pager   `protobuf:"bytes,2,opt,name=pager,proto3" json:"pager,omitempty"`
-	Items  []*AdvertRouter `protobuf:"bytes,3,rep,name=items,proto3" json:"items,omitempty"`
-	Error  *common.Error   `protobuf:"bytes,4,opt,name=error,proto3" json:"error,omitempty"`
-	Info   *common.Info    `protobuf:"bytes,5,opt,name=info,proto3" json:"info,omitempty"`
+	Entity *AdvertRouter   `protobuf:"bytes,1,opt,name=entity,proto3" json:"entity"`
+	Pager  *common.Pager   `protobuf:"bytes,2,opt,name=pager,proto3" json:"pager"`
+	Items  []*AdvertRouter `protobuf:"bytes,3,rep,name=items,proto3" json:"items"`
+	Error  *common.Error   `protobuf:"bytes,4,opt,name=error,proto3" json:"error"`
+	Info   *common.Info    `protobuf:"bytes,5,opt,name=info,proto3" json:"info"`
 }
 
 func (x *AdvertRouterResponse) Reset() {

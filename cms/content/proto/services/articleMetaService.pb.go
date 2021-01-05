@@ -31,12 +31,12 @@ type ArticleMeta struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	Id          int32      `protobuf:"varint,1,opt,name=id,proto3" json:"id,omitempty"`
-	ArticleId   int64      `protobuf:"varint,2,opt,name=article_id,json=articleId,proto3" json:"article_id,omitempty"`
-	AttributeId int32      `protobuf:"varint,3,opt,name=attribute_id,json=attributeId,proto3" json:"attribute_id,omitempty"`
-	MetaValue   string     `protobuf:"bytes,4,opt,name=meta_value,json=metaValue,proto3" json:"meta_value,omitempty"`
-	MetaName    string     `protobuf:"bytes,5,opt,name=meta_name,json=metaName,proto3" json:"meta_name,omitempty"`
-	Attribute   *Attribute `protobuf:"bytes,6,opt,name=attribute,proto3" json:"attribute,omitempty"`
+	Id          int32      `protobuf:"varint,1,opt,name=id,proto3" json:"id"`
+	ArticleId   int64      `protobuf:"varint,2,opt,name=article_id,json=articleId,proto3" json:"article_id"`
+	AttributeId int32      `protobuf:"varint,3,opt,name=attribute_id,json=attributeId,proto3" json:"attribute_id"`
+	MetaValue   string     `protobuf:"bytes,4,opt,name=meta_value,json=metaValue,proto3" json:"meta_value"`
+	MetaName    string     `protobuf:"bytes,5,opt,name=meta_name,json=metaName,proto3" json:"meta_name"`
+	Attribute   *Attribute `protobuf:"bytes,6,opt,name=attribute,proto3" json:"attribute"`
 }
 
 func (x *ArticleMeta) Reset() {

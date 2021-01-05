@@ -31,11 +31,11 @@ type SheetAttrQueries struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	AttrId      int64  `protobuf:"varint,1,opt,name=attr_id,json=attrId,proto3" json:"attr_id,omitempty"`               // 字段ID
-	Name        string `protobuf:"bytes,2,opt,name=name,proto3" json:"name,omitempty"`                                  // 字段名
-	QueryMethod string `protobuf:"bytes,3,opt,name=query_method,json=queryMethod,proto3" json:"query_method,omitempty"` // 查询方式
-	Value       string `protobuf:"bytes,4,opt,name=value,proto3" json:"value,omitempty"`                                // 值1
-	Value2      string `protobuf:"bytes,5,opt,name=value2,proto3" json:"value2,omitempty"`                              // 值2【区间查询使用】
+	AttrId      int64  `protobuf:"varint,1,opt,name=attr_id,json=attrId,proto3" json:"attr_id"`               // 字段ID
+	Name        string `protobuf:"bytes,2,opt,name=name,proto3" json:"name"`                                  // 字段名
+	QueryMethod string `protobuf:"bytes,3,opt,name=query_method,json=queryMethod,proto3" json:"query_method"` // 查询方式
+	Value       string `protobuf:"bytes,4,opt,name=value,proto3" json:"value"`                                // 值1
+	Value2      string `protobuf:"bytes,5,opt,name=value2,proto3" json:"value2"`                              // 值2【区间查询使用】
 }
 
 func (x *SheetAttrQueries) Reset() {
@@ -110,13 +110,13 @@ type SheetWriterWhere struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	Paged       int32               `protobuf:"varint,1,opt,name=paged,proto3" json:"paged,omitempty"`
-	PageSize    int32               `protobuf:"varint,2,opt,name=page_size,json=pageSize,proto3" json:"page_size,omitempty"`
-	Id          int64               `protobuf:"varint,3,opt,name=id,proto3" json:"id,omitempty"`
-	Ids         []int64             `protobuf:"varint,4,rep,packed,name=ids,proto3" json:"ids,omitempty"`
-	CustomerId  int64               `protobuf:"varint,5,opt,name=customer_id,json=customerId,proto3" json:"customer_id,omitempty"`
-	SheetId     int32               `protobuf:"varint,6,opt,name=sheet_id,json=sheetId,proto3" json:"sheet_id,omitempty"`
-	AttrQueries []*SheetAttrQueries `protobuf:"bytes,7,rep,name=attr_queries,json=attrQueries,proto3" json:"attr_queries,omitempty"`
+	Paged       int32               `protobuf:"varint,1,opt,name=paged,proto3" json:"paged"`
+	PageSize    int32               `protobuf:"varint,2,opt,name=page_size,json=pageSize,proto3" json:"page_size"`
+	Id          int64               `protobuf:"varint,3,opt,name=id,proto3" json:"id"`
+	Ids         []int64             `protobuf:"varint,4,rep,packed,name=ids,proto3" json:"ids"`
+	CustomerId  int64               `protobuf:"varint,5,opt,name=customer_id,json=customerId,proto3" json:"customer_id"`
+	SheetId     int32               `protobuf:"varint,6,opt,name=sheet_id,json=sheetId,proto3" json:"sheet_id"`
+	AttrQueries []*SheetAttrQueries `protobuf:"bytes,7,rep,name=attr_queries,json=attrQueries,proto3" json:"attr_queries"`
 }
 
 func (x *SheetWriterWhere) Reset() {
@@ -205,14 +205,14 @@ type SheetWriter struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	Id         int64        `protobuf:"varint,1,opt,name=id,proto3" json:"id,omitempty"`
-	SheetId    int32        `protobuf:"varint,2,opt,name=sheet_id,json=sheetId,proto3" json:"sheet_id,omitempty"`
-	CustomerId int64        `protobuf:"varint,3,opt,name=customer_id,json=customerId,proto3" json:"customer_id,omitempty"`
-	Source     string       `protobuf:"bytes,4,opt,name=source,proto3" json:"source,omitempty"`
-	CreatedAt  string       `protobuf:"bytes,5,opt,name=created_at,json=createdAt,proto3" json:"created_at,omitempty"`
-	UpdatedAt  string       `protobuf:"bytes,6,opt,name=updated_at,json=updatedAt,proto3" json:"updated_at,omitempty"`
-	SheetData  []*SheetData `protobuf:"bytes,7,rep,name=sheet_data,json=sheetData,proto3" json:"sheet_data,omitempty"`
-	Customer   *Customer    `protobuf:"bytes,8,opt,name=customer,proto3" json:"customer,omitempty"`
+	Id         int64        `protobuf:"varint,1,opt,name=id,proto3" json:"id"`
+	SheetId    int32        `protobuf:"varint,2,opt,name=sheet_id,json=sheetId,proto3" json:"sheet_id"`
+	CustomerId int64        `protobuf:"varint,3,opt,name=customer_id,json=customerId,proto3" json:"customer_id"`
+	Source     string       `protobuf:"bytes,4,opt,name=source,proto3" json:"source"`
+	CreatedAt  string       `protobuf:"bytes,5,opt,name=created_at,json=createdAt,proto3" json:"created_at"`
+	UpdatedAt  string       `protobuf:"bytes,6,opt,name=updated_at,json=updatedAt,proto3" json:"updated_at"`
+	SheetData  []*SheetData `protobuf:"bytes,7,rep,name=sheet_data,json=sheetData,proto3" json:"sheet_data"`
+	Customer   *Customer    `protobuf:"bytes,8,opt,name=customer,proto3" json:"customer"`
 }
 
 func (x *SheetWriter) Reset() {
@@ -308,11 +308,11 @@ type SheetWriterResponse struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	Error  *common.Error  `protobuf:"bytes,1,opt,name=error,proto3" json:"error,omitempty"`
-	Info   *common.Info   `protobuf:"bytes,2,opt,name=info,proto3" json:"info,omitempty"`
-	Pager  *common.Pager  `protobuf:"bytes,3,opt,name=pager,proto3" json:"pager,omitempty"`
-	Entity *SheetWriter   `protobuf:"bytes,4,opt,name=entity,proto3" json:"entity,omitempty"`
-	Items  []*SheetWriter `protobuf:"bytes,5,rep,name=items,proto3" json:"items,omitempty"`
+	Error  *common.Error  `protobuf:"bytes,1,opt,name=error,proto3" json:"error"`
+	Info   *common.Info   `protobuf:"bytes,2,opt,name=info,proto3" json:"info"`
+	Pager  *common.Pager  `protobuf:"bytes,3,opt,name=pager,proto3" json:"pager"`
+	Entity *SheetWriter   `protobuf:"bytes,4,opt,name=entity,proto3" json:"entity"`
+	Items  []*SheetWriter `protobuf:"bytes,5,rep,name=items,proto3" json:"items"`
 }
 
 func (x *SheetWriterResponse) Reset() {

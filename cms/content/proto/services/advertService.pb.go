@@ -31,19 +31,19 @@ type Advert struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	Id               int32  `protobuf:"varint,1,opt,name=id,proto3" json:"id,omitempty"`
-	Title            string `protobuf:"bytes,2,opt,name=title,proto3" json:"title,omitempty"`
-	AdvertPositionId int32  `protobuf:"varint,3,opt,name=advert_position_id,json=advertPositionId,proto3" json:"advert_position_id,omitempty"`
-	MediaType        int32  `protobuf:"varint,4,opt,name=media_type,json=mediaType,proto3" json:"media_type,omitempty"`
-	MediaId          int64  `protobuf:"varint,5,opt,name=media_id,json=mediaId,proto3" json:"media_id,omitempty"`
-	MediaUrl         string `protobuf:"bytes,6,opt,name=media_url,json=mediaUrl,proto3" json:"media_url,omitempty"`
-	VideoId          int64  `protobuf:"varint,7,opt,name=video_id,json=videoId,proto3" json:"video_id,omitempty"`
-	VideoUrl         string `protobuf:"bytes,8,opt,name=video_url,json=videoUrl,proto3" json:"video_url,omitempty"`
-	Type             string `protobuf:"bytes,9,opt,name=type,proto3" json:"type,omitempty"`
-	Url              string `protobuf:"bytes,10,opt,name=url,proto3" json:"url,omitempty"`
-	Tooltip          string `protobuf:"bytes,11,opt,name=tooltip,proto3" json:"tooltip,omitempty"`
-	CreatedAt        string `protobuf:"bytes,12,opt,name=created_at,json=createdAt,proto3" json:"created_at,omitempty"`
-	UpdatedAt        string `protobuf:"bytes,13,opt,name=updated_at,json=updatedAt,proto3" json:"updated_at,omitempty"`
+	Id               int32  `protobuf:"varint,1,opt,name=id,proto3" json:"id"`
+	Title            string `protobuf:"bytes,2,opt,name=title,proto3" json:"title"`
+	AdvertPositionId int32  `protobuf:"varint,3,opt,name=advert_position_id,json=advertPositionId,proto3" json:"advert_position_id"`
+	MediaType        int32  `protobuf:"varint,4,opt,name=media_type,json=mediaType,proto3" json:"media_type"`
+	MediaId          int64  `protobuf:"varint,5,opt,name=media_id,json=mediaId,proto3" json:"media_id"`
+	MediaUrl         string `protobuf:"bytes,6,opt,name=media_url,json=mediaUrl,proto3" json:"media_url"`
+	VideoId          int64  `protobuf:"varint,7,opt,name=video_id,json=videoId,proto3" json:"video_id"`
+	VideoUrl         string `protobuf:"bytes,8,opt,name=video_url,json=videoUrl,proto3" json:"video_url"`
+	Type             string `protobuf:"bytes,9,opt,name=type,proto3" json:"type"`
+	Url              string `protobuf:"bytes,10,opt,name=url,proto3" json:"url"`
+	Tooltip          string `protobuf:"bytes,11,opt,name=tooltip,proto3" json:"tooltip"`
+	CreatedAt        string `protobuf:"bytes,12,opt,name=created_at,json=createdAt,proto3" json:"created_at"`
+	UpdatedAt        string `protobuf:"bytes,13,opt,name=updated_at,json=updatedAt,proto3" json:"updated_at"`
 }
 
 func (x *Advert) Reset() {
@@ -174,10 +174,10 @@ type AdvertWhere struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	Paged            int32  `protobuf:"varint,1,opt,name=paged,proto3" json:"paged,omitempty"`
-	PageSize         int32  `protobuf:"varint,2,opt,name=page_size,json=pageSize,proto3" json:"page_size,omitempty"`
-	Slug             string `protobuf:"bytes,3,opt,name=slug,proto3" json:"slug,omitempty"`
-	AdvertPositionId int32  `protobuf:"varint,4,opt,name=advert_position_id,json=advertPositionId,proto3" json:"advert_position_id,omitempty"`
+	Paged            int32  `protobuf:"varint,1,opt,name=paged,proto3" json:"paged"`
+	PageSize         int32  `protobuf:"varint,2,opt,name=page_size,json=pageSize,proto3" json:"page_size"`
+	Slug             string `protobuf:"bytes,3,opt,name=slug,proto3" json:"slug"`
+	AdvertPositionId int32  `protobuf:"varint,4,opt,name=advert_position_id,json=advertPositionId,proto3" json:"advert_position_id"`
 }
 
 func (x *AdvertWhere) Reset() {
@@ -246,11 +246,11 @@ type AdvertResponse struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	Entity *Advert       `protobuf:"bytes,1,opt,name=entity,proto3" json:"entity,omitempty"`
-	Pager  *common.Pager `protobuf:"bytes,2,opt,name=pager,proto3" json:"pager,omitempty"`
-	Items  []*Advert     `protobuf:"bytes,3,rep,name=items,proto3" json:"items,omitempty"`
-	Error  *common.Error `protobuf:"bytes,4,opt,name=error,proto3" json:"error,omitempty"`
-	Info   *common.Info  `protobuf:"bytes,5,opt,name=info,proto3" json:"info,omitempty"`
+	Entity *Advert       `protobuf:"bytes,1,opt,name=entity,proto3" json:"entity"`
+	Pager  *common.Pager `protobuf:"bytes,2,opt,name=pager,proto3" json:"pager"`
+	Items  []*Advert     `protobuf:"bytes,3,rep,name=items,proto3" json:"items"`
+	Error  *common.Error `protobuf:"bytes,4,opt,name=error,proto3" json:"error"`
+	Info   *common.Info  `protobuf:"bytes,5,opt,name=info,proto3" json:"info"`
 }
 
 func (x *AdvertResponse) Reset() {

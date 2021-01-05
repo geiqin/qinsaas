@@ -31,11 +31,11 @@ type AttributeTypeWhere struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	Paged    int32   `protobuf:"varint,1,opt,name=paged,proto3" json:"paged,omitempty"`
-	PageSize int32   `protobuf:"varint,2,opt,name=page_size,json=pageSize,proto3" json:"page_size,omitempty"`
-	Id       int32   `protobuf:"varint,3,opt,name=id,proto3" json:"id,omitempty"`
-	Ids      []int32 `protobuf:"varint,4,rep,packed,name=ids,proto3" json:"ids,omitempty"`
-	Keywords string  `protobuf:"bytes,5,opt,name=keywords,proto3" json:"keywords,omitempty"`
+	Paged    int32   `protobuf:"varint,1,opt,name=paged,proto3" json:"paged"`
+	PageSize int32   `protobuf:"varint,2,opt,name=page_size,json=pageSize,proto3" json:"page_size"`
+	Id       int32   `protobuf:"varint,3,opt,name=id,proto3" json:"id"`
+	Ids      []int32 `protobuf:"varint,4,rep,packed,name=ids,proto3" json:"ids" gorm:"-"`
+	Keywords string  `protobuf:"bytes,5,opt,name=keywords,proto3" json:"keywords"`
 }
 
 func (x *AttributeTypeWhere) Reset() {
@@ -110,12 +110,12 @@ type AttributeType struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	Id        int32        `protobuf:"varint,1,opt,name=id,proto3" json:"id,omitempty"`
-	Name      string       `protobuf:"bytes,2,opt,name=name,proto3" json:"name,omitempty"`
-	Memo      string       `protobuf:"bytes,3,opt,name=memo,proto3" json:"memo,omitempty"`
-	CreatedAt string       `protobuf:"bytes,4,opt,name=created_at,json=createdAt,proto3" json:"created_at,omitempty"`
-	UpdatedAt string       `protobuf:"bytes,5,opt,name=updated_at,json=updatedAt,proto3" json:"updated_at,omitempty"`
-	Attr      []*Attribute `protobuf:"bytes,6,rep,name=attr,proto3" json:"attr,omitempty"`
+	Id        int32        `protobuf:"varint,1,opt,name=id,proto3" json:"id"`
+	Name      string       `protobuf:"bytes,2,opt,name=name,proto3" json:"name"`
+	Memo      string       `protobuf:"bytes,3,opt,name=memo,proto3" json:"memo"`
+	CreatedAt string       `protobuf:"bytes,4,opt,name=created_at,json=createdAt,proto3" json:"created_at"`
+	UpdatedAt string       `protobuf:"bytes,5,opt,name=updated_at,json=updatedAt,proto3" json:"updated_at"`
+	Attr      []*Attribute `protobuf:"bytes,6,rep,name=attr,proto3" json:"attr"`
 }
 
 func (x *AttributeType) Reset() {
@@ -197,11 +197,11 @@ type AttributeTypeResponse struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	Error  *common.Error    `protobuf:"bytes,1,opt,name=error,proto3" json:"error,omitempty"`
-	Info   *common.Info     `protobuf:"bytes,2,opt,name=info,proto3" json:"info,omitempty"`
-	Pager  *common.Pager    `protobuf:"bytes,3,opt,name=pager,proto3" json:"pager,omitempty"`
-	Entity *AttributeType   `protobuf:"bytes,4,opt,name=entity,proto3" json:"entity,omitempty"`
-	Items  []*AttributeType `protobuf:"bytes,5,rep,name=items,proto3" json:"items,omitempty"`
+	Error  *common.Error    `protobuf:"bytes,1,opt,name=error,proto3" json:"error"`
+	Info   *common.Info     `protobuf:"bytes,2,opt,name=info,proto3" json:"info"`
+	Pager  *common.Pager    `protobuf:"bytes,3,opt,name=pager,proto3" json:"pager"`
+	Entity *AttributeType   `protobuf:"bytes,4,opt,name=entity,proto3" json:"entity"`
+	Items  []*AttributeType `protobuf:"bytes,5,rep,name=items,proto3" json:"items"`
 }
 
 func (x *AttributeTypeResponse) Reset() {

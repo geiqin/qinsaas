@@ -32,42 +32,42 @@ type Article struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	Id             int64  `protobuf:"varint,1,opt,name=id,proto3" json:"id,omitempty"`
-	Title          string `protobuf:"bytes,2,opt,name=title,proto3" json:"title,omitempty"`
-	Name           string `protobuf:"bytes,3,opt,name=name,proto3" json:"name,omitempty"`
-	Content        string `protobuf:"bytes,4,opt,name=content,proto3" json:"content,omitempty"`
-	Excerpt        string `protobuf:"bytes,5,opt,name=excerpt,proto3" json:"excerpt,omitempty"`
-	Type           string `protobuf:"bytes,6,opt,name=type,proto3" json:"type,omitempty"`
-	MimeType       string `protobuf:"bytes,7,opt,name=mime_type,json=mimeType,proto3" json:"mime_type,omitempty"`
-	Keywords       string `protobuf:"bytes,8,opt,name=keywords,proto3" json:"keywords,omitempty"`
-	ThumbId        int64  `protobuf:"varint,9,opt,name=thumb_id,json=thumbId,proto3" json:"thumb_id,omitempty"`
-	ThumbUrl       string `protobuf:"bytes,10,opt,name=thumb_url,json=thumbUrl,proto3" json:"thumb_url,omitempty"`
-	ParentId       int64  `protobuf:"varint,11,opt,name=parent_id,json=parentId,proto3" json:"parent_id,omitempty"`
-	Drafted        bool   `protobuf:"varint,12,opt,name=drafted,proto3" json:"drafted,omitempty"`
-	Status         string `protobuf:"bytes,13,opt,name=status,proto3" json:"status,omitempty"`
-	CommentEnabled bool   `protobuf:"varint,14,opt,name=comment_enabled,json=commentEnabled,proto3" json:"comment_enabled,omitempty"`
-	CommentCount   int32  `protobuf:"varint,15,opt,name=comment_count,json=commentCount,proto3" json:"comment_count,omitempty"`
-	ViewCount      int32  `protobuf:"varint,16,opt,name=view_count,json=viewCount,proto3" json:"view_count,omitempty"`
-	System         bool   `protobuf:"varint,17,opt,name=system,proto3" json:"system,omitempty"`
-	Sorting        int32  `protobuf:"varint,18,opt,name=sorting,proto3" json:"sorting,omitempty"`
-	UserId         int64  `protobuf:"varint,19,opt,name=user_id,json=userId,proto3" json:"user_id,omitempty"`
+	Id             int64  `protobuf:"varint,1,opt,name=id,proto3" json:"id"`
+	Title          string `protobuf:"bytes,2,opt,name=title,proto3" json:"title"`
+	Name           string `protobuf:"bytes,3,opt,name=name,proto3" json:"name"`
+	Content        string `protobuf:"bytes,4,opt,name=content,proto3" json:"content"`
+	Excerpt        string `protobuf:"bytes,5,opt,name=excerpt,proto3" json:"excerpt"`
+	Type           string `protobuf:"bytes,6,opt,name=type,proto3" json:"type"`
+	MimeType       string `protobuf:"bytes,7,opt,name=mime_type,json=mimeType,proto3" json:"mime_type"`
+	Keywords       string `protobuf:"bytes,8,opt,name=keywords,proto3" json:"keywords"`
+	ThumbId        int64  `protobuf:"varint,9,opt,name=thumb_id,json=thumbId,proto3" json:"thumb_id"`
+	ThumbUrl       string `protobuf:"bytes,10,opt,name=thumb_url,json=thumbUrl,proto3" json:"thumb_url"`
+	ParentId       int64  `protobuf:"varint,11,opt,name=parent_id,json=parentId,proto3" json:"parent_id"`
+	Drafted        bool   `protobuf:"varint,12,opt,name=drafted,proto3" json:"drafted"`
+	Status         string `protobuf:"bytes,13,opt,name=status,proto3" json:"status"`
+	CommentEnabled bool   `protobuf:"varint,14,opt,name=comment_enabled,json=commentEnabled,proto3" json:"comment_enabled"`
+	CommentCount   int32  `protobuf:"varint,15,opt,name=comment_count,json=commentCount,proto3" json:"comment_count"`
+	ViewCount      int32  `protobuf:"varint,16,opt,name=view_count,json=viewCount,proto3" json:"view_count"`
+	System         bool   `protobuf:"varint,17,opt,name=system,proto3" json:"system"`
+	Sorting        int32  `protobuf:"varint,18,opt,name=sorting,proto3" json:"sorting"`
+	UserId         int64  `protobuf:"varint,19,opt,name=user_id,json=userId,proto3" json:"user_id"`
 	//google.protobuf.Timestamp published_at =20;
-	PublishedAt string `protobuf:"bytes,20,opt,name=published_at,json=publishedAt,proto3" json:"published_at,omitempty"`
-	CreatedAt   string `protobuf:"bytes,21,opt,name=created_at,json=createdAt,proto3" json:"created_at,omitempty"`
-	UpdatedAt   string `protobuf:"bytes,22,opt,name=updated_at,json=updatedAt,proto3" json:"updated_at,omitempty"`
+	PublishedAt string `protobuf:"bytes,20,opt,name=published_at,json=publishedAt,proto3" json:"published_at"`
+	CreatedAt   string `protobuf:"bytes,21,opt,name=created_at,json=createdAt,proto3" json:"created_at"`
+	UpdatedAt   string `protobuf:"bytes,22,opt,name=updated_at,json=updatedAt,proto3" json:"updated_at"`
 	// gorm:"many2many:article_cats;"
-	Cats []*Cat `protobuf:"bytes,23,rep,name=cats,proto3" json:"cats,omitempty"`
+	Cats []*Cat `protobuf:"bytes,23,rep,name=cats,proto3" json:"cats" gorm:"many2many:article_cats;"`
 	// gorm:"many2many:article_tags;"
-	Tags            []*Tag            `protobuf:"bytes,24,rep,name=tags,proto3" json:"tags,omitempty"`
-	Ids             []int32           `protobuf:"varint,25,rep,packed,name=ids,proto3" json:"ids,omitempty"`
-	AttributeTypeId int32             `protobuf:"varint,26,opt,name=attribute_type_id,json=attributeTypeId,proto3" json:"attribute_type_id,omitempty"`
-	Metas           []*ArticleMeta    `protobuf:"bytes,27,rep,name=metas,proto3" json:"metas,omitempty"`
-	Galleries       []*ArticleGallery `protobuf:"bytes,28,rep,name=galleries,proto3" json:"galleries,omitempty"`
-	PreArticle      *Article          `protobuf:"bytes,29,opt,name=pre_article,json=preArticle,proto3" json:"pre_article,omitempty"`    // 上一篇文章
-	NextArticle     *Article          `protobuf:"bytes,30,opt,name=next_article,json=nextArticle,proto3" json:"next_article,omitempty"` // 下一篇文章
-	STitle          string            `protobuf:"bytes,31,opt,name=s_title,json=sTitle,proto3" json:"s_title,omitempty"`
-	SDescribe       string            `protobuf:"bytes,32,opt,name=s_describe,json=sDescribe,proto3" json:"s_describe,omitempty"`
-	SKeywords       string            `protobuf:"bytes,33,opt,name=s_keywords,json=sKeywords,proto3" json:"s_keywords,omitempty"`
+	Tags            []*Tag            `protobuf:"bytes,24,rep,name=tags,proto3" json:"tags" gorm:"many2many:article_tags;"`
+	Ids             []int32           `protobuf:"varint,25,rep,packed,name=ids,proto3" json:"ids" gorm:"-"`
+	AttributeTypeId int32             `protobuf:"varint,26,opt,name=attribute_type_id,json=attributeTypeId,proto3" json:"attribute_type_id"`
+	Metas           []*ArticleMeta    `protobuf:"bytes,27,rep,name=metas,proto3" json:"metas"`
+	Galleries       []*ArticleGallery `protobuf:"bytes,28,rep,name=galleries,proto3" json:"galleries"`
+	PreArticle      *Article          `protobuf:"bytes,29,opt,name=pre_article,json=preArticle,proto3" json:"pre_article" gorm:"-"`     // 上一篇文章
+	NextArticle     *Article          `protobuf:"bytes,30,opt,name=next_article,json=nextArticle,proto3" json:"next_article"  gorm:"-"` // 下一篇文章
+	STitle          string            `protobuf:"bytes,31,opt,name=s_title,json=sTitle,proto3" json:"s_title"`
+	SDescribe       string            `protobuf:"bytes,32,opt,name=s_describe,json=sDescribe,proto3" json:"s_describe"`
+	SKeywords       string            `protobuf:"bytes,33,opt,name=s_keywords,json=sKeywords,proto3" json:"s_keywords"`
 }
 
 func (x *Article) Reset() {
@@ -339,21 +339,21 @@ type ArticleWhere struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	Paged       int32               `protobuf:"varint,1,opt,name=paged,proto3" json:"paged,omitempty"`
-	PageSize    int32               `protobuf:"varint,2,opt,name=page_size,json=pageSize,proto3" json:"page_size,omitempty"`
-	Top         int32               `protobuf:"varint,3,opt,name=top,proto3" json:"top,omitempty"`
-	Title       string              `protobuf:"bytes,4,opt,name=title,proto3" json:"title,omitempty"`
-	CatId       int32               `protobuf:"varint,5,opt,name=cat_id,json=catId,proto3" json:"cat_id,omitempty"`
-	CatSlug     string              `protobuf:"bytes,6,opt,name=cat_slug,json=catSlug,proto3" json:"cat_slug,omitempty"`
-	Type        string              `protobuf:"bytes,7,opt,name=type,proto3" json:"type,omitempty"`
-	Names       []string            `protobuf:"bytes,8,rep,name=names,proto3" json:"names,omitempty"`
-	Id          int64               `protobuf:"varint,9,opt,name=id,proto3" json:"id,omitempty"`
-	IsInclude   bool                `protobuf:"varint,10,opt,name=is_include,json=isInclude,proto3" json:"is_include,omitempty"` // 是否包含上一篇、下一篇文章
-	Drafted     bool                `protobuf:"varint,11,opt,name=drafted,proto3" json:"drafted,omitempty"`                      // 是否草稿
-	Status      string              `protobuf:"bytes,12,opt,name=status,proto3" json:"status,omitempty"`
-	IsClient    bool                `protobuf:"varint,13,opt,name=is_client,json=isClient,proto3" json:"is_client,omitempty"` // 是否客户端展示
-	CatSlugs    []*CatSlugs         `protobuf:"bytes,14,rep,name=cat_slugs,json=catSlugs,proto3" json:"cat_slugs,omitempty"`
-	AttrQueries []*SheetAttrQueries `protobuf:"bytes,15,rep,name=attr_queries,json=attrQueries,proto3" json:"attr_queries,omitempty"`
+	Paged       int32               `protobuf:"varint,1,opt,name=paged,proto3" json:"paged"`
+	PageSize    int32               `protobuf:"varint,2,opt,name=page_size,json=pageSize,proto3" json:"page_size"`
+	Top         int32               `protobuf:"varint,3,opt,name=top,proto3" json:"top"`
+	Title       string              `protobuf:"bytes,4,opt,name=title,proto3" json:"title"`
+	CatId       int32               `protobuf:"varint,5,opt,name=cat_id,json=catId,proto3" json:"cat_id"`
+	CatSlug     string              `protobuf:"bytes,6,opt,name=cat_slug,json=catSlug,proto3" json:"cat_slug"`
+	Type        string              `protobuf:"bytes,7,opt,name=type,proto3" json:"type"`
+	Names       []string            `protobuf:"bytes,8,rep,name=names,proto3" json:"names"`
+	Id          int64               `protobuf:"varint,9,opt,name=id,proto3" json:"id"`
+	IsInclude   bool                `protobuf:"varint,10,opt,name=is_include,json=isInclude,proto3" json:"is_include"` // 是否包含上一篇、下一篇文章
+	Drafted     bool                `protobuf:"varint,11,opt,name=drafted,proto3" json:"drafted"`                      // 是否草稿
+	Status      string              `protobuf:"bytes,12,opt,name=status,proto3" json:"status"`
+	IsClient    bool                `protobuf:"varint,13,opt,name=is_client,json=isClient,proto3" json:"is_client"` // 是否客户端展示
+	CatSlugs    []*CatSlugs         `protobuf:"bytes,14,rep,name=cat_slugs,json=catSlugs,proto3" json:"cat_slugs"`
+	AttrQueries []*SheetAttrQueries `protobuf:"bytes,15,rep,name=attr_queries,json=attrQueries,proto3" json:"attr_queries"`
 }
 
 func (x *ArticleWhere) Reset() {
@@ -498,10 +498,10 @@ type CatSlugs struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	CatId   int32      `protobuf:"varint,1,opt,name=cat_id,json=catId,proto3" json:"cat_id,omitempty"`
-	CatSlug string     `protobuf:"bytes,2,opt,name=cat_slug,json=catSlug,proto3" json:"cat_slug,omitempty"`
-	Top     int32      `protobuf:"varint,3,opt,name=top,proto3" json:"top,omitempty"`
-	Items   []*Article `protobuf:"bytes,4,rep,name=items,proto3" json:"items,omitempty"`
+	CatId   int32      `protobuf:"varint,1,opt,name=cat_id,json=catId,proto3" json:"cat_id"`
+	CatSlug string     `protobuf:"bytes,2,opt,name=cat_slug,json=catSlug,proto3" json:"cat_slug"`
+	Top     int32      `protobuf:"varint,3,opt,name=top,proto3" json:"top"`
+	Items   []*Article `protobuf:"bytes,4,rep,name=items,proto3" json:"items"`
 }
 
 func (x *CatSlugs) Reset() {
@@ -569,11 +569,11 @@ type ArticleResponse struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	Entity *Article      `protobuf:"bytes,1,opt,name=entity,proto3" json:"entity,omitempty"`
-	Pager  *common.Pager `protobuf:"bytes,2,opt,name=pager,proto3" json:"pager,omitempty"`
-	Items  []*Article    `protobuf:"bytes,3,rep,name=items,proto3" json:"items,omitempty"`
-	Error  *common.Error `protobuf:"bytes,4,opt,name=error,proto3" json:"error,omitempty"`
-	Info   *common.Info  `protobuf:"bytes,5,opt,name=info,proto3" json:"info,omitempty"`
+	Entity *Article      `protobuf:"bytes,1,opt,name=entity,proto3" json:"entity"`
+	Pager  *common.Pager `protobuf:"bytes,2,opt,name=pager,proto3" json:"pager"`
+	Items  []*Article    `protobuf:"bytes,3,rep,name=items,proto3" json:"items"`
+	Error  *common.Error `protobuf:"bytes,4,opt,name=error,proto3" json:"error"`
+	Info   *common.Info  `protobuf:"bytes,5,opt,name=info,proto3" json:"info"`
 }
 
 func (x *ArticleResponse) Reset() {
@@ -648,11 +648,11 @@ type CatSlugsResponse struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	Entity *CatSlugs     `protobuf:"bytes,1,opt,name=entity,proto3" json:"entity,omitempty"`
-	Pager  *common.Pager `protobuf:"bytes,2,opt,name=pager,proto3" json:"pager,omitempty"`
-	Items  []*CatSlugs   `protobuf:"bytes,3,rep,name=items,proto3" json:"items,omitempty"`
-	Error  *common.Error `protobuf:"bytes,4,opt,name=error,proto3" json:"error,omitempty"`
-	Info   *common.Info  `protobuf:"bytes,5,opt,name=info,proto3" json:"info,omitempty"`
+	Entity *CatSlugs     `protobuf:"bytes,1,opt,name=entity,proto3" json:"entity"`
+	Pager  *common.Pager `protobuf:"bytes,2,opt,name=pager,proto3" json:"pager"`
+	Items  []*CatSlugs   `protobuf:"bytes,3,rep,name=items,proto3" json:"items"`
+	Error  *common.Error `protobuf:"bytes,4,opt,name=error,proto3" json:"error"`
+	Info   *common.Info  `protobuf:"bytes,5,opt,name=info,proto3" json:"info"`
 }
 
 func (x *CatSlugsResponse) Reset() {

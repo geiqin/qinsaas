@@ -31,17 +31,17 @@ type Customer struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	Id          int64  `protobuf:"varint,1,opt,name=id,proto3" json:"id,omitempty"`
-	CustomerSn  string `protobuf:"bytes,2,opt,name=customer_sn,json=customerSn,proto3" json:"customer_sn,omitempty"`
-	Name        string `protobuf:"bytes,3,opt,name=name,proto3" json:"name,omitempty"`
-	DisplayName string `protobuf:"bytes,4,opt,name=display_name,json=displayName,proto3" json:"display_name,omitempty"`
-	Realname    string `protobuf:"bytes,5,opt,name=realname,proto3" json:"realname,omitempty"`
-	Idcard      string `protobuf:"bytes,6,opt,name=idcard,proto3" json:"idcard,omitempty"`
-	Gender      int32  `protobuf:"varint,7,opt,name=gender,proto3" json:"gender,omitempty"`
-	Mobile      string `protobuf:"bytes,8,opt,name=mobile,proto3" json:"mobile,omitempty"`
-	Email       string `protobuf:"bytes,9,opt,name=email,proto3" json:"email,omitempty"`
-	AvatarId    int64  `protobuf:"varint,10,opt,name=avatar_id,json=avatarId,proto3" json:"avatar_id,omitempty"`
-	AvatarUrl   string `protobuf:"bytes,11,opt,name=avatar_url,json=avatarUrl,proto3" json:"avatar_url,omitempty"`
+	Id          int64  `protobuf:"varint,1,opt,name=id,proto3" json:"id"`
+	CustomerSn  string `protobuf:"bytes,2,opt,name=customer_sn,json=customerSn,proto3" json:"customer_sn"`
+	Name        string `protobuf:"bytes,3,opt,name=name,proto3" json:"name"`
+	DisplayName string `protobuf:"bytes,4,opt,name=display_name,json=displayName,proto3" json:"display_name"`
+	Realname    string `protobuf:"bytes,5,opt,name=realname,proto3" json:"realname"`
+	Idcard      string `protobuf:"bytes,6,opt,name=idcard,proto3" json:"idcard"`
+	Gender      int32  `protobuf:"varint,7,opt,name=gender,proto3" json:"gender"`
+	Mobile      string `protobuf:"bytes,8,opt,name=mobile,proto3" json:"mobile"`
+	Email       string `protobuf:"bytes,9,opt,name=email,proto3" json:"email"`
+	AvatarId    int64  `protobuf:"varint,10,opt,name=avatar_id,json=avatarId,proto3" json:"avatar_id"`
+	AvatarUrl   string `protobuf:"bytes,11,opt,name=avatar_url,json=avatarUrl,proto3" json:"avatar_url"`
 }
 
 func (x *Customer) Reset() {

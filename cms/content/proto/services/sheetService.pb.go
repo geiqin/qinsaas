@@ -31,13 +31,13 @@ type SheetWhere struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	Paged    int32   `protobuf:"varint,1,opt,name=paged,proto3" json:"paged,omitempty"`
-	PageSize int32   `protobuf:"varint,2,opt,name=page_size,json=pageSize,proto3" json:"page_size,omitempty"`
-	Id       int32   `protobuf:"varint,3,opt,name=id,proto3" json:"id,omitempty"`
-	Ids      []int32 `protobuf:"varint,4,rep,packed,name=ids,proto3" json:"ids,omitempty"`
-	Title    string  `protobuf:"bytes,5,opt,name=title,proto3" json:"title,omitempty"`
-	Keywords string  `protobuf:"bytes,6,opt,name=keywords,proto3" json:"keywords,omitempty"`
-	Slug     string  `protobuf:"bytes,7,opt,name=slug,proto3" json:"slug,omitempty"`
+	Paged    int32   `protobuf:"varint,1,opt,name=paged,proto3" json:"paged"`
+	PageSize int32   `protobuf:"varint,2,opt,name=page_size,json=pageSize,proto3" json:"page_size"`
+	Id       int32   `protobuf:"varint,3,opt,name=id,proto3" json:"id"`
+	Ids      []int32 `protobuf:"varint,4,rep,packed,name=ids,proto3" json:"ids" gorm:"-"`
+	Title    string  `protobuf:"bytes,5,opt,name=title,proto3" json:"title"`
+	Keywords string  `protobuf:"bytes,6,opt,name=keywords,proto3" json:"keywords"`
+	Slug     string  `protobuf:"bytes,7,opt,name=slug,proto3" json:"slug"`
 }
 
 func (x *SheetWhere) Reset() {
@@ -126,21 +126,21 @@ type Sheet struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	Id             int32        `protobuf:"varint,1,opt,name=id,proto3" json:"id,omitempty"`
-	Slug           string       `protobuf:"bytes,2,opt,name=slug,proto3" json:"slug,omitempty"`
-	Title          string       `protobuf:"bytes,3,opt,name=title,proto3" json:"title,omitempty"`
-	Memo           string       `protobuf:"bytes,4,opt,name=memo,proto3" json:"memo,omitempty"`
-	Content        string       `protobuf:"bytes,5,opt,name=content,proto3" json:"content,omitempty"`
-	Keywords       string       `protobuf:"bytes,6,opt,name=keywords,proto3" json:"keywords,omitempty"`
-	ExpiryDate     string       `protobuf:"bytes,7,opt,name=expiry_date,json=expiryDate,proto3" json:"expiry_date,omitempty"`
-	Picture        string       `protobuf:"bytes,8,opt,name=picture,proto3" json:"picture,omitempty"`
-	SucceedTip     string       `protobuf:"bytes,9,opt,name=succeed_tip,json=succeedTip,proto3" json:"succeed_tip,omitempty"`
-	FailedTip      string       `protobuf:"bytes,10,opt,name=failed_tip,json=failedTip,proto3" json:"failed_tip,omitempty"`
-	CreatedAt      string       `protobuf:"bytes,11,opt,name=created_at,json=createdAt,proto3" json:"created_at,omitempty"`
-	UpdatedAt      string       `protobuf:"bytes,12,opt,name=updated_at,json=updatedAt,proto3" json:"updated_at,omitempty"`
-	SheetAttr      []*SheetAttr `protobuf:"bytes,13,rep,name=sheet_attr,json=sheetAttr,proto3" json:"sheet_attr,omitempty"`
-	CanSubmitUser  bool         `protobuf:"varint,14,opt,name=can_submit_user,json=canSubmitUser,proto3" json:"can_submit_user,omitempty"`
-	CanSubmitAdmin bool         `protobuf:"varint,15,opt,name=can_submit_admin,json=canSubmitAdmin,proto3" json:"can_submit_admin,omitempty"`
+	Id             int32        `protobuf:"varint,1,opt,name=id,proto3" json:"id"`
+	Slug           string       `protobuf:"bytes,2,opt,name=slug,proto3" json:"slug"`
+	Title          string       `protobuf:"bytes,3,opt,name=title,proto3" json:"title"`
+	Memo           string       `protobuf:"bytes,4,opt,name=memo,proto3" json:"memo"`
+	Content        string       `protobuf:"bytes,5,opt,name=content,proto3" json:"content"`
+	Keywords       string       `protobuf:"bytes,6,opt,name=keywords,proto3" json:"keywords"`
+	ExpiryDate     string       `protobuf:"bytes,7,opt,name=expiry_date,json=expiryDate,proto3" json:"expiry_date"`
+	Picture        string       `protobuf:"bytes,8,opt,name=picture,proto3" json:"picture"`
+	SucceedTip     string       `protobuf:"bytes,9,opt,name=succeed_tip,json=succeedTip,proto3" json:"succeed_tip"`
+	FailedTip      string       `protobuf:"bytes,10,opt,name=failed_tip,json=failedTip,proto3" json:"failed_tip"`
+	CreatedAt      string       `protobuf:"bytes,11,opt,name=created_at,json=createdAt,proto3" json:"created_at"`
+	UpdatedAt      string       `protobuf:"bytes,12,opt,name=updated_at,json=updatedAt,proto3" json:"updated_at"`
+	SheetAttr      []*SheetAttr `protobuf:"bytes,13,rep,name=sheet_attr,json=sheetAttr,proto3" json:"sheet_attr"`
+	CanSubmitUser  bool         `protobuf:"varint,14,opt,name=can_submit_user,json=canSubmitUser,proto3" json:"can_submit_user"`
+	CanSubmitAdmin bool         `protobuf:"varint,15,opt,name=can_submit_admin,json=canSubmitAdmin,proto3" json:"can_submit_admin"`
 }
 
 func (x *Sheet) Reset() {
@@ -285,11 +285,11 @@ type SheetResponse struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	Error  *common.Error `protobuf:"bytes,1,opt,name=error,proto3" json:"error,omitempty"`
-	Info   *common.Info  `protobuf:"bytes,2,opt,name=info,proto3" json:"info,omitempty"`
-	Pager  *common.Pager `protobuf:"bytes,3,opt,name=pager,proto3" json:"pager,omitempty"`
-	Entity *Sheet        `protobuf:"bytes,4,opt,name=entity,proto3" json:"entity,omitempty"`
-	Items  []*Sheet      `protobuf:"bytes,5,rep,name=items,proto3" json:"items,omitempty"`
+	Error  *common.Error `protobuf:"bytes,1,opt,name=error,proto3" json:"error"`
+	Info   *common.Info  `protobuf:"bytes,2,opt,name=info,proto3" json:"info"`
+	Pager  *common.Pager `protobuf:"bytes,3,opt,name=pager,proto3" json:"pager"`
+	Entity *Sheet        `protobuf:"bytes,4,opt,name=entity,proto3" json:"entity"`
+	Items  []*Sheet      `protobuf:"bytes,5,rep,name=items,proto3" json:"items"`
 }
 
 func (x *SheetResponse) Reset() {

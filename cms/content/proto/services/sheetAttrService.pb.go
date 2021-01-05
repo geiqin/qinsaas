@@ -31,13 +31,13 @@ type SheetAttrWhere struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	Paged    int32   `protobuf:"varint,1,opt,name=paged,proto3" json:"paged,omitempty"`
-	PageSize int32   `protobuf:"varint,2,opt,name=page_size,json=pageSize,proto3" json:"page_size,omitempty"`
-	Id       int32   `protobuf:"varint,3,opt,name=id,proto3" json:"id,omitempty"`
-	Ids      []int32 `protobuf:"varint,4,rep,packed,name=ids,proto3" json:"ids,omitempty"`
-	Name     string  `protobuf:"bytes,5,opt,name=name,proto3" json:"name,omitempty"`
-	Keywords string  `protobuf:"bytes,6,opt,name=keywords,proto3" json:"keywords,omitempty"`
-	SheetId  int32   `protobuf:"varint,7,opt,name=sheet_id,json=sheetId,proto3" json:"sheet_id,omitempty"`
+	Paged    int32   `protobuf:"varint,1,opt,name=paged,proto3" json:"paged"`
+	PageSize int32   `protobuf:"varint,2,opt,name=page_size,json=pageSize,proto3" json:"page_size"`
+	Id       int32   `protobuf:"varint,3,opt,name=id,proto3" json:"id"`
+	Ids      []int32 `protobuf:"varint,4,rep,packed,name=ids,proto3" json:"ids" gorm:"-"`
+	Name     string  `protobuf:"bytes,5,opt,name=name,proto3" json:"name"`
+	Keywords string  `protobuf:"bytes,6,opt,name=keywords,proto3" json:"keywords"`
+	SheetId  int32   `protobuf:"varint,7,opt,name=sheet_id,json=sheetId,proto3" json:"sheet_id"`
 }
 
 func (x *SheetAttrWhere) Reset() {
@@ -126,21 +126,21 @@ type SheetAttr struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	Id            int32  `protobuf:"varint,1,opt,name=id,proto3" json:"id,omitempty"`
-	SheetId       int32  `protobuf:"varint,2,opt,name=sheet_id,json=sheetId,proto3" json:"sheet_id,omitempty"`
-	Name          string `protobuf:"bytes,3,opt,name=name,proto3" json:"name,omitempty"`
-	DisplayName   string `protobuf:"bytes,4,opt,name=display_name,json=displayName,proto3" json:"display_name,omitempty"`
-	Type          string `protobuf:"bytes,5,opt,name=type,proto3" json:"type,omitempty"`
-	Required      bool   `protobuf:"varint,6,opt,name=required,proto3" json:"required,omitempty"`
-	Rule          string `protobuf:"bytes,7,opt,name=rule,proto3" json:"rule,omitempty"`
-	Tip           string `protobuf:"bytes,8,opt,name=tip,proto3" json:"tip,omitempty"`
-	Sorting       int32  `protobuf:"varint,9,opt,name=sorting,proto3" json:"sorting,omitempty"`
-	Data          string `protobuf:"bytes,10,opt,name=data,proto3" json:"data,omitempty"`
-	CreatedAt     string `protobuf:"bytes,11,opt,name=created_at,json=createdAt,proto3" json:"created_at,omitempty"`
-	UpdatedAt     string `protobuf:"bytes,12,opt,name=updated_at,json=updatedAt,proto3" json:"updated_at,omitempty"`
-	IsDisplayList bool   `protobuf:"varint,13,opt,name=is_display_list,json=isDisplayList,proto3" json:"is_display_list,omitempty"`
-	IsQuery       bool   `protobuf:"varint,14,opt,name=is_query,json=isQuery,proto3" json:"is_query,omitempty"`
-	QueryMethod   string `protobuf:"bytes,15,opt,name=query_method,json=queryMethod,proto3" json:"query_method,omitempty"`
+	Id            int32  `protobuf:"varint,1,opt,name=id,proto3" json:"id"`
+	SheetId       int32  `protobuf:"varint,2,opt,name=sheet_id,json=sheetId,proto3" json:"sheet_id"`
+	Name          string `protobuf:"bytes,3,opt,name=name,proto3" json:"name"`
+	DisplayName   string `protobuf:"bytes,4,opt,name=display_name,json=displayName,proto3" json:"display_name"`
+	Type          string `protobuf:"bytes,5,opt,name=type,proto3" json:"type"`
+	Required      bool   `protobuf:"varint,6,opt,name=required,proto3" json:"required"`
+	Rule          string `protobuf:"bytes,7,opt,name=rule,proto3" json:"rule"`
+	Tip           string `protobuf:"bytes,8,opt,name=tip,proto3" json:"tip"`
+	Sorting       int32  `protobuf:"varint,9,opt,name=sorting,proto3" json:"sorting"`
+	Data          string `protobuf:"bytes,10,opt,name=data,proto3" json:"data"`
+	CreatedAt     string `protobuf:"bytes,11,opt,name=created_at,json=createdAt,proto3" json:"created_at"`
+	UpdatedAt     string `protobuf:"bytes,12,opt,name=updated_at,json=updatedAt,proto3" json:"updated_at"`
+	IsDisplayList bool   `protobuf:"varint,13,opt,name=is_display_list,json=isDisplayList,proto3" json:"is_display_list"`
+	IsQuery       bool   `protobuf:"varint,14,opt,name=is_query,json=isQuery,proto3" json:"is_query"`
+	QueryMethod   string `protobuf:"bytes,15,opt,name=query_method,json=queryMethod,proto3" json:"query_method"`
 }
 
 func (x *SheetAttr) Reset() {
@@ -285,11 +285,11 @@ type SheetAttrResponse struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	Error  *common.Error `protobuf:"bytes,1,opt,name=error,proto3" json:"error,omitempty"`
-	Info   *common.Info  `protobuf:"bytes,2,opt,name=info,proto3" json:"info,omitempty"`
-	Pager  *common.Pager `protobuf:"bytes,3,opt,name=pager,proto3" json:"pager,omitempty"`
-	Entity *SheetAttr    `protobuf:"bytes,4,opt,name=entity,proto3" json:"entity,omitempty"`
-	Items  []*SheetAttr  `protobuf:"bytes,5,rep,name=items,proto3" json:"items,omitempty"`
+	Error  *common.Error `protobuf:"bytes,1,opt,name=error,proto3" json:"error"`
+	Info   *common.Info  `protobuf:"bytes,2,opt,name=info,proto3" json:"info"`
+	Pager  *common.Pager `protobuf:"bytes,3,opt,name=pager,proto3" json:"pager"`
+	Entity *SheetAttr    `protobuf:"bytes,4,opt,name=entity,proto3" json:"entity"`
+	Items  []*SheetAttr  `protobuf:"bytes,5,rep,name=items,proto3" json:"items"`
 }
 
 func (x *SheetAttrResponse) Reset() {

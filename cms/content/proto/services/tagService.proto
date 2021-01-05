@@ -22,7 +22,6 @@ message Tag {
     int32 article_count =6;
     string created_at =7;
     string updated_at =8;
-    repeated Tag children = 9;
     repeated int32 ids = 10;
 }
 
