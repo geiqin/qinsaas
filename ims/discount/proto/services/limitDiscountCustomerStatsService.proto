@@ -1,0 +1,45 @@
+syntax = "proto3";
+package services;
+option go_package = ".;services";
+import "common/base.proto";
+import "limitDiscountService.proto";
+import "customerInfoService.proto";
+
+service LimitDiscountCustomerStatsService {
+    // 查询限时折扣活动用户统计
+    rpc Search (LimitDiscountCustomerStatsWhere) returns (LimitDiscountCustomerStatsResponse) {}
+    // 获取限时折扣活动用户统计
+    rpc Get (LimitDiscountCustomerStatsWhere) returns (LimitDiscountCustomerStatsResponse) {}
+}
+
+message LimitDiscountCustomerStatsWhere {
+    int32 paged = 1;
+    int32 page_size = 2;
+    int32 top = 3;
+    int64 id = 4;
+    int64 limit_discount_id = 5;
+    int64 customer_id = 6;
+}
+
+message LimitDiscountCustomerStats {
+    int64 id = 1;
+    int64 limit_discount_id = 2;
+    int64 customer_id = 3;
+    float pay_amount = 4;
+    float discount_amount = 5;
+    int32 pay_num = 6;
+    int32 goods_num = 7;
+    string created_at = 8;
+    string updated_at = 9;
+    LimitDiscount limit_discount = 10;
+    // @inject_tag: gorm:"-"
+    CustomerInfo customer = 11;
+}
+
+message LimitDiscountCustomerStatsResponse {
+    LimitDiscountCustomerStats entity = 1;
+    common.Pager pager =2;
+    repeated LimitDiscountCustomerStats items = 3;
+    common.Error error = 4;
+    common.Info info =5;
+}

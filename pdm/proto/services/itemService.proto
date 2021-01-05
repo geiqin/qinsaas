@@ -209,28 +209,32 @@ message ItemDisplay {
     float	weight	=22;
     int32	review_num	=23;
     int32	view_count	=24;
-    Brand brand =25;
+    int32	brand_id =25;
+    Brand brand =26;
     // @inject_tag: gorm:"many2many:item_cats;association_autoupdate:false"
-    repeated Cat cats =26;
+    repeated Cat cats =27;
     // @inject_tag: gorm:"many2many:item_tags;"
-    repeated Tag tags =27;
-    repeated  Sku skus  =28;
-    repeated  ItemGallery galleries  =29;
-    // @inject_tag: gorm:"many2many:spec_item_indices;"
-    repeated  Spec specs  =30; //(详情显示专用)
-    bool is_member_goods = 31; // 是否会员专享
-    bool is_buy = 32; // 商品是否可购买
-    bool is_member = 33; // 登录用户是否会员
-    float member_price = 34; // 会员价
-    bool is_distribution = 35; // 是否参与分销
-    string distribution_share_icon = 36; // 分销图标
-    bool listed = 37;
-    bool is_sku = 38; // 是否多规格商品
+    repeated Tag tags =28;
     // @inject_tag: gorm:"-"
-    Food food = 39; // 餐饮商品附加信息
-    int32	buy_quota	= 40;
-    int64	video_id	=41;
-    string	video_url	=42;
+    repeated  Sku skus  =29;
+    // @inject_tag: gorm:"-"
+    repeated  ItemGallery galleries  =30;
+    // @inject_tag: gorm:"many2many:spec_item_indices;"
+    repeated  Spec specs  =31; //(详情显示专用)
+    bool is_member_goods = 32; // 是否会员专享
+    bool is_buy = 33; // 商品是否可购买
+    bool is_member = 34; // 登录用户是否会员
+    float member_price = 35; // 会员价
+    bool is_distribution = 36; // 是否参与分销
+    string distribution_share_icon = 37; // 分销图标
+    bool listed = 38;
+    bool is_sku = 39; // 是否多规格商品
+    // @inject_tag: gorm:"-"
+    Food food = 40; // 餐饮商品附加信息
+    int32	buy_quota	= 41;
+    int64	video_id	=42;
+    string	video_url	=43;
+    int64 sku_id =44;
 }
 
 message ItemDisplayWhere {
