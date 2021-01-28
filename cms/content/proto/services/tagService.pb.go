@@ -32,15 +32,16 @@ type Tag struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	Id           int32   `protobuf:"varint,1,opt,name=id,proto3" json:"id"`
-	Name         string  `protobuf:"bytes,2,opt,name=name,proto3" json:"name"`
-	Slug         string  `protobuf:"bytes,3,opt,name=slug,proto3" json:"slug"`
-	ParentId     int32   `protobuf:"varint,4,opt,name=parent_id,json=parentId,proto3" json:"parent_id"`
-	Memo         string  `protobuf:"bytes,5,opt,name=memo,proto3" json:"memo"`
-	ArticleCount int32   `protobuf:"varint,6,opt,name=article_count,json=articleCount,proto3" json:"article_count"`
-	CreatedAt    string  `protobuf:"bytes,7,opt,name=created_at,json=createdAt,proto3" json:"created_at"`
-	UpdatedAt    string  `protobuf:"bytes,8,opt,name=updated_at,json=updatedAt,proto3" json:"updated_at"`
-	Ids          []int32 `protobuf:"varint,10,rep,packed,name=ids,proto3" json:"ids" gorm:"-"`
+	Id           int32  `protobuf:"varint,1,opt,name=id,proto3" json:"id"`
+	Name         string `protobuf:"bytes,2,opt,name=name,proto3" json:"name"`
+	Slug         string `protobuf:"bytes,3,opt,name=slug,proto3" json:"slug"`
+	ParentId     int32  `protobuf:"varint,4,opt,name=parent_id,json=parentId,proto3" json:"parent_id"`
+	Memo         string `protobuf:"bytes,5,opt,name=memo,proto3" json:"memo"`
+	ArticleCount int32  `protobuf:"varint,6,opt,name=article_count,json=articleCount,proto3" json:"article_count"`
+	CreatedAt    string `protobuf:"bytes,7,opt,name=created_at,json=createdAt,proto3" json:"created_at"`
+	UpdatedAt    string `protobuf:"bytes,8,opt,name=updated_at,json=updatedAt,proto3" json:"updated_at"`
+	// @inject_tag: gorm:"-"
+	Ids []int32 `protobuf:"varint,10,rep,packed,name=ids,proto3" json:"ids" gorm:"-"`
 }
 
 func (x *Tag) Reset() {

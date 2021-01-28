@@ -17,6 +17,7 @@ message SheetAttrWhere {
     int32 paged = 1;
     int32 page_size = 2;
     int32 id = 3;
+    // @inject_tag: gorm:"-"
     repeated int32 ids = 4;
     string name = 5;
     string keywords = 6;

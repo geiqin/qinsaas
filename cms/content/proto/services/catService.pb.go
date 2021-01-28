@@ -31,12 +31,14 @@ type CatWhere struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	Paged    int32    `protobuf:"varint,1,opt,name=paged,proto3" json:"paged"`
-	PageSize int32    `protobuf:"varint,2,opt,name=page_size,json=pageSize,proto3" json:"page_size"`
-	Top      int32    `protobuf:"varint,3,opt,name=top,proto3" json:"top"`
-	Slug     string   `protobuf:"bytes,4,opt,name=slug,proto3" json:"slug"`
-	Slugs    []string `protobuf:"bytes,5,rep,name=slugs,proto3" json:"slugs"  gorm:"-"`
-	Ids      []int32  `protobuf:"varint,6,rep,packed,name=ids,proto3" json:"ids" gorm:"-"`
+	Paged    int32  `protobuf:"varint,1,opt,name=paged,proto3" json:"paged"`
+	PageSize int32  `protobuf:"varint,2,opt,name=page_size,json=pageSize,proto3" json:"page_size"`
+	Top      int32  `protobuf:"varint,3,opt,name=top,proto3" json:"top"`
+	Slug     string `protobuf:"bytes,4,opt,name=slug,proto3" json:"slug"`
+	// @inject_tag: gorm:"-"
+	Slugs []string `protobuf:"bytes,5,rep,name=slugs,proto3" json:"slugs" gorm:"-"`
+	// @inject_tag: gorm:"-"
+	Ids []int32 `protobuf:"varint,6,rep,packed,name=ids,proto3" json:"ids" gorm:"-"`
 }
 
 func (x *CatWhere) Reset() {
@@ -119,21 +121,22 @@ type Cat struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	Id           int32   `protobuf:"varint,1,opt,name=id,proto3" json:"id"`
-	Name         string  `protobuf:"bytes,2,opt,name=name,proto3" json:"name"`
-	Slug         string  `protobuf:"bytes,3,opt,name=slug,proto3" json:"slug"`
-	CatId        int32   `protobuf:"varint,4,opt,name=cat_id,json=catId,proto3" json:"cat_id"`
-	ThumbId      int64   `protobuf:"varint,5,opt,name=thumb_id,json=thumbId,proto3" json:"thumb_id"`
-	ThumbUrl     string  `protobuf:"bytes,6,opt,name=thumb_url,json=thumbUrl,proto3" json:"thumb_url"`
-	Depth        string  `protobuf:"bytes,7,opt,name=depth,proto3" json:"depth"`
-	Description  string  `protobuf:"bytes,8,opt,name=description,proto3" json:"description"`
-	System       bool    `protobuf:"varint,17,opt,name=system,proto3" json:"system"`
-	Sorting      int32   `protobuf:"varint,9,opt,name=sorting,proto3" json:"sorting"`
-	ArticleCount int32   `protobuf:"varint,10,opt,name=article_count,json=articleCount,proto3" json:"article_count"`
-	CreatedAt    string  `protobuf:"bytes,11,opt,name=created_at,json=createdAt,proto3" json:"created_at"`
-	UpdatedAt    string  `protobuf:"bytes,12,opt,name=updated_at,json=updatedAt,proto3" json:"updated_at"`
-	Children     []*Cat  `protobuf:"bytes,13,rep,name=children,proto3" json:"children"`
-	Ids          []int32 `protobuf:"varint,14,rep,packed,name=ids,proto3" json:"ids" gorm:"-"`
+	Id           int32  `protobuf:"varint,1,opt,name=id,proto3" json:"id"`
+	Name         string `protobuf:"bytes,2,opt,name=name,proto3" json:"name"`
+	Slug         string `protobuf:"bytes,3,opt,name=slug,proto3" json:"slug"`
+	CatId        int32  `protobuf:"varint,4,opt,name=cat_id,json=catId,proto3" json:"cat_id"`
+	ThumbId      int64  `protobuf:"varint,5,opt,name=thumb_id,json=thumbId,proto3" json:"thumb_id"`
+	ThumbUrl     string `protobuf:"bytes,6,opt,name=thumb_url,json=thumbUrl,proto3" json:"thumb_url"`
+	Depth        string `protobuf:"bytes,7,opt,name=depth,proto3" json:"depth"`
+	Description  string `protobuf:"bytes,8,opt,name=description,proto3" json:"description"`
+	System       bool   `protobuf:"varint,17,opt,name=system,proto3" json:"system"`
+	Sorting      int32  `protobuf:"varint,9,opt,name=sorting,proto3" json:"sorting"`
+	ArticleCount int32  `protobuf:"varint,10,opt,name=article_count,json=articleCount,proto3" json:"article_count"`
+	CreatedAt    string `protobuf:"bytes,11,opt,name=created_at,json=createdAt,proto3" json:"created_at"`
+	UpdatedAt    string `protobuf:"bytes,12,opt,name=updated_at,json=updatedAt,proto3" json:"updated_at"`
+	Children     []*Cat `protobuf:"bytes,13,rep,name=children,proto3" json:"children"`
+	// @inject_tag: gorm:"-"
+	Ids []int32 `protobuf:"varint,14,rep,packed,name=ids,proto3" json:"ids" gorm:"-"`
 }
 
 func (x *Cat) Reset() {

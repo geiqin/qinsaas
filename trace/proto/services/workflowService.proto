@@ -1,0 +1,40 @@
+syntax = "proto3";
+package services;
+option go_package = ".;services";
+import "common/base.proto";
+import "workflowStepService.proto";
+
+service WorkflowService {
+    rpc Create (Workflow) returns (WorkflowResponse);
+    rpc Update (Workflow) returns (WorkflowResponse);
+    rpc Search (WorkflowWhere) returns (WorkflowResponse);
+    rpc Delete (WorkflowWhere) returns (WorkflowResponse);
+    rpc Get (WorkflowWhere) returns (WorkflowResponse);
+    rpc List (WorkflowWhere) returns (WorkflowResponse);
+}
+
+message WorkflowWhere {
+    int32 paged = 1;
+    int32 page_size = 2;
+    int64 id = 3;
+    // @inject_tag: gorm:"-"
+    repeated int64 ids = 4;
+    string keywords = 5;
+}
+
+message Workflow {
+    int64 id = 1;
+    string name = 2;
+    int32 step_num = 3;
+    string created_at = 4;
+    string updated_at = 5;
+    repeated WorkflowStep steps = 6;
+}
+
+message WorkflowResponse {
+    common.Error error = 1;
+    common.Info info = 2;
+    common.Pager pager = 3;
+    Workflow entity = 4;
+    repeated Workflow items = 5;
+}

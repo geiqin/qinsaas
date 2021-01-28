@@ -1,0 +1,50 @@
+syntax = "proto3";
+package services;
+option go_package = ".;services";
+import "common/base.proto";
+import "customerInfoService.proto";
+import "areaInfoService.proto";
+import "codingService.proto";
+
+service CodeRecordService {
+    rpc Search (CodeRecordWhere) returns (CodeRecordResponse);
+    rpc List (CodeRecordWhere) returns (CodeRecordResponse);
+    rpc Get (CodeRecordWhere) returns (CodeRecordResponse);
+}
+
+message CodeRecordWhere {
+    int32 paged = 1;
+    int32 page_size = 2;
+    int64 id = 3;
+    // @inject_tag: gorm:"-"
+    repeated int64 ids = 4;
+    string keywords = 5;
+    int64 customer_id = 6;
+    int64 area_id = 7;
+    int32 method = 8;
+    int64 coding_id = 9;
+}
+
+message CodeRecord {
+    int64 id = 1;
+    int32 method = 2;
+    int64 customer_id = 3;
+    int64 area_id = 4;
+    int64 coding_id = 5;
+    int64 current_count = 6;
+    string created_at = 7;
+    string updated_at = 8;
+    // @inject_tag: gorm:"-"
+    CustomerInfo customer = 9;
+    // @inject_tag: gorm:"-"
+    AreaInfo area = 10;
+    Coding coding = 11;
+}
+
+message CodeRecordResponse {
+    common.Error error = 1;
+    common.Info info = 2;
+    common.Pager pager = 3;
+    CodeRecord entity = 4;
+    repeated CodeRecord items = 5;
+}

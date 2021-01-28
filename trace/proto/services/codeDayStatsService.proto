@@ -1,0 +1,40 @@
+syntax = "proto3";
+package services;
+option go_package = ".;services";
+import "common/base.proto";
+
+service CodeDayStatsService {
+    rpc Get (CodeDayStatsWhere) returns (CodeDayStatsResponse);
+    rpc Search (CodeDayStatsWhere) returns (CodeDayStatsResponse);
+    rpc List (CodeDayStatsWhere) returns (CodeDayStatsResponse);
+}
+
+message CodeDayStatsWhere {
+    int32 paged = 1;
+    int32 page_size = 2;
+    int64 id = 3;
+    // @inject_tag: gorm:"-"
+    repeated int64 ids = 4;
+    string start_date = 5;
+    string end_date = 6;
+}
+
+message CodeDayStats {
+    int64 id = 1;
+    int64 total = 2;
+    int64 scan_total = 3;
+    int64 input_total = 4;
+    float scan_proportion = 5;
+    float input_proportion = 6;
+    string stats_date = 7;
+    string created_at = 8;
+    string updated_at = 9;
+}
+
+message CodeDayStatsResponse {
+    common.Error error = 1;
+    common.Info info = 2;
+    common.Pager pager = 3;
+    CodeDayStats entity = 4;
+    repeated CodeDayStats items = 5;
+}

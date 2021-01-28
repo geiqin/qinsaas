@@ -1,0 +1,12 @@
+syntax = "proto3";
+package services;
+option go_package = ".;services";
+import "metaFieldService.proto";
+
+message ProductMeta {
+    int64 id = 1;
+    int64 product_id = 2;
+    int32 meta_field_id = 3;
+    string meta_field_value = 4;
+    MetaField meta_field = 5;
+}

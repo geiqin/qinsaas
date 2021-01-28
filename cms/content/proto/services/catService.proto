@@ -18,7 +18,9 @@ message CatWhere {
     int32 page_size =2;
     int32 top = 3;
     string slug = 4;
+    // @inject_tag: gorm:"-"
     repeated string slugs = 5;
+    // @inject_tag: gorm:"-"
     repeated int32 ids = 6;
 }
 
@@ -38,6 +40,7 @@ message Cat {
     string created_at =11;
     string updated_at =12;
     repeated Cat children = 13;
+    // @inject_tag: gorm:"-"
     repeated int32 ids = 14;
 }
 

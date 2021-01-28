@@ -1,0 +1,17 @@
+syntax = "proto3";
+package services;
+option go_package = ".;services";
+
+message CustomerInfo {
+    int64 id = 1;
+    string customer_sn = 2;
+    string name = 3;
+    string display_name = 4;
+    string realname = 5;
+    string idcard = 6;
+    int32 gender = 7;
+    string mobile = 8;
+    string email = 9;
+    int64 avatar_id = 10;
+    string avatar_url = 11;
+}

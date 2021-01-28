@@ -22,6 +22,7 @@ message Tag {
     int32 article_count =6;
     string created_at =7;
     string updated_at =8;
+    // @inject_tag: gorm:"-"
     repeated int32 ids = 10;
 }
 

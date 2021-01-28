@@ -43,7 +43,8 @@ type AdvertPosition struct {
 	CreatedAt string    `protobuf:"bytes,9,opt,name=created_at,json=createdAt,proto3" json:"created_at"`
 	UpdatedAt string    `protobuf:"bytes,10,opt,name=updated_at,json=updatedAt,proto3" json:"updated_at"`
 	Adverts   []*Advert `protobuf:"bytes,11,rep,name=adverts,proto3" json:"adverts"`
-	Ids       []int32   `protobuf:"varint,12,rep,packed,name=ids,proto3" json:"ids" gorm:"-"`
+	// @inject_tag: gorm:"-"
+	Ids []int32 `protobuf:"varint,12,rep,packed,name=ids,proto3" json:"ids" gorm:"-"`
 }
 
 func (x *AdvertPosition) Reset() {

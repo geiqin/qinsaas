@@ -1,0 +1,50 @@
+syntax = "proto3";
+package services;
+option go_package = ".;services";
+import "common/base.proto";
+import "codeStatsDetailService.proto";
+
+service CodingService {
+    rpc Create (Coding) returns (CodingResponse);
+    rpc Update (Coding) returns (CodingResponse);
+    rpc Search (CodingWhere) returns (CodingResponse);
+    rpc Delete (CodingWhere) returns (CodingResponse);
+    rpc Get (CodingWhere) returns (CodingResponse);
+}
+
+service FrontCodingService {
+    // 溯源码验证
+    rpc Verify (CodingWhere) returns (CodingResponse);
+}
+
+message CodingWhere {
+    int32 paged = 1;
+    int32 page_size = 2;
+    int64 id = 3;
+    // @inject_tag: gorm:"-"
+    repeated int64 ids = 4;
+    string keywords = 5;
+    int64 product_id = 6;
+    int64 product_batch_id = 7;
+    string code = 8;
+    int64 area_id = 9;
+    string from = 10; // 扫码查询识别标识from=qrcode
+}
+
+message Coding {
+    int64 id = 1;
+    int64 product_id = 2;
+    int64 product_batch_id = 3;
+    string code = 4;
+    string created_at = 5;
+    string updated_at = 6;
+    CodeStatsDetail detail = 7;
+}
+
+message CodingResponse {
+    common.Error error = 1;
+    common.Info info = 2;
+    common.Pager pager = 3;
+    Coding entity = 4;
+    repeated Coding items = 5;
+}

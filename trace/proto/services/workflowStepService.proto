@@ -1,0 +1,20 @@
+syntax = "proto3";
+package services;
+option go_package = ".;services";
+import "metaClassService.proto";
+import "workflowRecordService.proto";
+
+message WorkflowStep {
+    int64 id = 1;
+    int64 workflow_id = 2;
+    string name = 3;
+    int32 sorting = 4;
+    bool is_check = 5;
+    int64 role_id = 6;
+    string role_name = 7;
+    int32 meta_class_id = 8;
+    string created_at = 9;
+    string updated_at = 10;
+    MetaClass meta_class = 11;
+    repeated WorkflowRecord records = 12;
+}

@@ -27,6 +27,7 @@ message AdvertPosition {
   string created_at =9;
   string updated_at =10;
   repeated  Advert  adverts  =11;
+  // @inject_tag: gorm:"-"
   repeated int32 ids = 12;
 }
 

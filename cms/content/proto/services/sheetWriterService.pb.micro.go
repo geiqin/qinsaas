@@ -4,8 +4,8 @@
 package services
 
 import (
-	_ "github.com/geiqin/microkit/protobuf/common"
 	fmt "fmt"
+	_ "github.com/geiqin/microkit/protobuf/common"
 	proto "github.com/golang/protobuf/proto"
 	math "math"
 )
@@ -337,4 +337,65 @@ func (h *mySheetWriterServiceHandler) List(ctx context.Context, in *SheetWriterW
 
 func (h *mySheetWriterServiceHandler) GetForm(ctx context.Context, in *SheetWhere, out *SheetResponse) error {
 	return h.MySheetWriterServiceHandler.GetForm(ctx, in, out)
+}
+
+// Api Endpoints for FrontSheetWriterService service
+
+func NewFrontSheetWriterServiceEndpoints() []*api.Endpoint {
+	return []*api.Endpoint{}
+}
+
+// Client API for FrontSheetWriterService service
+
+type FrontSheetWriterService interface {
+	// 查询所有提交记录(管理员提交、用户提交)
+	Search(ctx context.Context, in *SheetWriterWhere, opts ...client.CallOption) (*SheetWriterResponse, error)
+}
+
+type frontSheetWriterService struct {
+	c    client.Client
+	name string
+}
+
+func NewFrontSheetWriterService(name string, c client.Client) FrontSheetWriterService {
+	return &frontSheetWriterService{
+		c:    c,
+		name: name,
+	}
+}
+
+func (c *frontSheetWriterService) Search(ctx context.Context, in *SheetWriterWhere, opts ...client.CallOption) (*SheetWriterResponse, error) {
+	req := c.c.NewRequest(c.name, "FrontSheetWriterService.Search", in)
+	out := new(SheetWriterResponse)
+	err := c.c.Call(ctx, req, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+// Server API for FrontSheetWriterService service
+
+type FrontSheetWriterServiceHandler interface {
+	// 查询所有提交记录(管理员提交、用户提交)
+	Search(context.Context, *SheetWriterWhere, *SheetWriterResponse) error
+}
+
+func RegisterFrontSheetWriterServiceHandler(s server.Server, hdlr FrontSheetWriterServiceHandler, opts ...server.HandlerOption) error {
+	type frontSheetWriterService interface {
+		Search(ctx context.Context, in *SheetWriterWhere, out *SheetWriterResponse) error
+	}
+	type FrontSheetWriterService struct {
+		frontSheetWriterService
+	}
+	h := &frontSheetWriterServiceHandler{hdlr}
+	return s.Handle(s.NewHandler(&FrontSheetWriterService{h}, opts...))
+}
+
+type frontSheetWriterServiceHandler struct {
+	FrontSheetWriterServiceHandler
+}
+
+func (h *frontSheetWriterServiceHandler) Search(ctx context.Context, in *SheetWriterWhere, out *SheetWriterResponse) error {
+	return h.FrontSheetWriterServiceHandler.Search(ctx, in, out)
 }

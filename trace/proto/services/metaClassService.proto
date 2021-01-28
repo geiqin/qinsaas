@@ -1,0 +1,39 @@
+syntax = "proto3";
+package services;
+option go_package = ".;services";
+import "common/base.proto";
+import "metaFieldService.proto";
+
+service MetaClassService {
+    rpc Create (MetaClass) returns (MetaClassResponse);
+    rpc Update (MetaClass) returns (MetaClassResponse);
+    rpc Search (MetaClassWhere) returns (MetaClassResponse);
+    rpc List (MetaClassWhere) returns (MetaClassResponse);
+    rpc Delete (MetaClassWhere) returns (MetaClassResponse);
+    rpc Get (MetaClassWhere) returns (MetaClassResponse);
+}
+
+message MetaClassWhere {
+    int32 paged = 1;
+    int32 page_size = 2;
+    int32 id = 3;
+    // @inject_tag: gorm:"-"
+    repeated int32 ids = 4;
+    string keywords = 5;
+}
+
+message MetaClass {
+    int32 id = 1;
+    string name = 2;
+    string created_at = 3;
+    string updated_at = 4;
+    repeated MetaField fields = 5;
+}
+
+message MetaClassResponse {
+    common.Error error = 1;
+    common.Info info = 2;
+    common.Pager pager = 3;
+    MetaClass entity = 4;
+    repeated MetaClass items = 5;
+}

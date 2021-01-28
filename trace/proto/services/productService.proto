@@ -1,0 +1,52 @@
+syntax = "proto3";
+package services;
+option go_package = ".;services";
+import "common/base.proto";
+import "productGalleryService.proto";
+import "productMetaService.proto";
+
+service ProductService {
+    rpc Create (Product) returns (ProductResponse);
+    rpc Update (Product) returns (ProductResponse);
+    rpc Search (ProductWhere) returns (ProductResponse);
+    rpc Delete (ProductWhere) returns (ProductResponse);
+    rpc Get (ProductWhere) returns (ProductResponse);
+}
+
+service FrontProductService {
+    rpc Search (ProductWhere) returns (ProductResponse);
+    rpc Get (ProductWhere) returns (ProductResponse);
+}
+
+message ProductWhere {
+    int32 paged = 1;
+    int32 page_size = 2;
+    int64 id = 3;
+    // @inject_tag: gorm:"-"
+    repeated int64 ids = 4;
+    string keywords = 5;
+    int32 meta_class_id = 6;
+}
+
+message Product {
+    int64 id = 1;
+    string product_no = 2;
+    string barcode = 3;
+    string name = 4;
+    int64 thumb_id = 5;
+    string thumb_url = 6;
+    string content = 7;
+    int32 meta_class_id = 8;
+    string created_at = 9;
+    string updated_at = 10;
+    repeated ProductGallery galleries = 11;
+    repeated ProductMeta metas = 12;
+}
+
+message ProductResponse {
+    common.Error error = 1;
+    common.Info info = 2;
+    common.Pager pager = 3;
+    Product entity = 4;
+    repeated Product items = 5;
+}

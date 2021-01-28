@@ -25,6 +25,11 @@ service MySheetWriterService {
     rpc GetForm (SheetWhere) returns (SheetResponse) {}
 }
 
+service FrontSheetWriterService {
+    // 查询所有提交记录(管理员提交、用户提交)
+    rpc Search (SheetWriterWhere) returns (SheetWriterResponse) {}
+}
+
 message SheetAttrQueries {
     int64 attr_id = 1; // 字段ID
     string name = 2; // 字段名
@@ -37,9 +42,11 @@ message SheetWriterWhere {
     int32 paged = 1;
     int32 page_size = 2;
     int64 id = 3;
+    // @inject_tag: gorm:"-"
     repeated int64 ids = 4;
     int64 customer_id = 5;
     int32 sheet_id = 6;
+    // @inject_tag: gorm:"-"
     repeated SheetAttrQueries attr_queries = 7;
 }
 
@@ -51,6 +58,7 @@ message SheetWriter {
     string created_at = 5;
     string updated_at = 6;
     repeated  SheetData sheet_data = 7;
+    // @inject_tag: gorm:"-"
     Customer customer = 8;
 }
 

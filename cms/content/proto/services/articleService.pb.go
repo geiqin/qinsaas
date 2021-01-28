@@ -55,19 +55,22 @@ type Article struct {
 	PublishedAt string `protobuf:"bytes,20,opt,name=published_at,json=publishedAt,proto3" json:"published_at"`
 	CreatedAt   string `protobuf:"bytes,21,opt,name=created_at,json=createdAt,proto3" json:"created_at"`
 	UpdatedAt   string `protobuf:"bytes,22,opt,name=updated_at,json=updatedAt,proto3" json:"updated_at"`
-	// gorm:"many2many:article_cats;"
+	// @inject_tag: gorm:"many2many:article_cats;"
 	Cats []*Cat `protobuf:"bytes,23,rep,name=cats,proto3" json:"cats" gorm:"many2many:article_cats;"`
-	// gorm:"many2many:article_tags;"
-	Tags            []*Tag            `protobuf:"bytes,24,rep,name=tags,proto3" json:"tags" gorm:"many2many:article_tags;"`
+	// @inject_tag: gorm:"many2many:article_tags;"
+	Tags []*Tag `protobuf:"bytes,24,rep,name=tags,proto3" json:"tags" gorm:"many2many:article_tags;"`
+	// @inject_tag: gorm:"-"
 	Ids             []int32           `protobuf:"varint,25,rep,packed,name=ids,proto3" json:"ids" gorm:"-"`
 	AttributeTypeId int32             `protobuf:"varint,26,opt,name=attribute_type_id,json=attributeTypeId,proto3" json:"attribute_type_id"`
 	Metas           []*ArticleMeta    `protobuf:"bytes,27,rep,name=metas,proto3" json:"metas"`
 	Galleries       []*ArticleGallery `protobuf:"bytes,28,rep,name=galleries,proto3" json:"galleries"`
-	PreArticle      *Article          `protobuf:"bytes,29,opt,name=pre_article,json=preArticle,proto3" json:"pre_article" gorm:"-"`     // 上一篇文章
-	NextArticle     *Article          `protobuf:"bytes,30,opt,name=next_article,json=nextArticle,proto3" json:"next_article"  gorm:"-"` // 下一篇文章
-	STitle          string            `protobuf:"bytes,31,opt,name=s_title,json=sTitle,proto3" json:"s_title"`
-	SDescribe       string            `protobuf:"bytes,32,opt,name=s_describe,json=sDescribe,proto3" json:"s_describe"`
-	SKeywords       string            `protobuf:"bytes,33,opt,name=s_keywords,json=sKeywords,proto3" json:"s_keywords"`
+	// @inject_tag: gorm:"-"
+	PreArticle *Article `protobuf:"bytes,29,opt,name=pre_article,json=preArticle,proto3" json:"pre_article" gorm:"-"` // 上一篇文章
+	// @inject_tag: gorm:"-"
+	NextArticle *Article `protobuf:"bytes,30,opt,name=next_article,json=nextArticle,proto3" json:"next_article" gorm:"-"` // 下一篇文章
+	STitle      string   `protobuf:"bytes,31,opt,name=s_title,json=sTitle,proto3" json:"s_title"`
+	SDescribe   string   `protobuf:"bytes,32,opt,name=s_describe,json=sDescribe,proto3" json:"s_describe"`
+	SKeywords   string   `protobuf:"bytes,33,opt,name=s_keywords,json=sKeywords,proto3" json:"s_keywords"`
 }
 
 func (x *Article) Reset() {
@@ -339,21 +342,24 @@ type ArticleWhere struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	Paged       int32               `protobuf:"varint,1,opt,name=paged,proto3" json:"paged"`
-	PageSize    int32               `protobuf:"varint,2,opt,name=page_size,json=pageSize,proto3" json:"page_size"`
-	Top         int32               `protobuf:"varint,3,opt,name=top,proto3" json:"top"`
-	Title       string              `protobuf:"bytes,4,opt,name=title,proto3" json:"title"`
-	CatId       int32               `protobuf:"varint,5,opt,name=cat_id,json=catId,proto3" json:"cat_id"`
-	CatSlug     string              `protobuf:"bytes,6,opt,name=cat_slug,json=catSlug,proto3" json:"cat_slug"`
-	Type        string              `protobuf:"bytes,7,opt,name=type,proto3" json:"type"`
-	Names       []string            `protobuf:"bytes,8,rep,name=names,proto3" json:"names"`
-	Id          int64               `protobuf:"varint,9,opt,name=id,proto3" json:"id"`
-	IsInclude   bool                `protobuf:"varint,10,opt,name=is_include,json=isInclude,proto3" json:"is_include"` // 是否包含上一篇、下一篇文章
-	Drafted     bool                `protobuf:"varint,11,opt,name=drafted,proto3" json:"drafted"`                      // 是否草稿
-	Status      string              `protobuf:"bytes,12,opt,name=status,proto3" json:"status"`
-	IsClient    bool                `protobuf:"varint,13,opt,name=is_client,json=isClient,proto3" json:"is_client"` // 是否客户端展示
-	CatSlugs    []*CatSlugs         `protobuf:"bytes,14,rep,name=cat_slugs,json=catSlugs,proto3" json:"cat_slugs"`
-	AttrQueries []*SheetAttrQueries `protobuf:"bytes,15,rep,name=attr_queries,json=attrQueries,proto3" json:"attr_queries"`
+	Paged    int32  `protobuf:"varint,1,opt,name=paged,proto3" json:"paged"`
+	PageSize int32  `protobuf:"varint,2,opt,name=page_size,json=pageSize,proto3" json:"page_size"`
+	Top      int32  `protobuf:"varint,3,opt,name=top,proto3" json:"top"`
+	Title    string `protobuf:"bytes,4,opt,name=title,proto3" json:"title"`
+	CatId    int32  `protobuf:"varint,5,opt,name=cat_id,json=catId,proto3" json:"cat_id"`
+	CatSlug  string `protobuf:"bytes,6,opt,name=cat_slug,json=catSlug,proto3" json:"cat_slug"`
+	Type     string `protobuf:"bytes,7,opt,name=type,proto3" json:"type"`
+	// @inject_tag: gorm:"-"
+	Names     []string `protobuf:"bytes,8,rep,name=names,proto3" json:"names" gorm:"-"`
+	Id        int64    `protobuf:"varint,9,opt,name=id,proto3" json:"id"`
+	IsInclude bool     `protobuf:"varint,10,opt,name=is_include,json=isInclude,proto3" json:"is_include"` // 是否包含上一篇、下一篇文章
+	Drafted   bool     `protobuf:"varint,11,opt,name=drafted,proto3" json:"drafted"`                      // 是否草稿
+	Status    string   `protobuf:"bytes,12,opt,name=status,proto3" json:"status"`
+	IsClient  bool     `protobuf:"varint,13,opt,name=is_client,json=isClient,proto3" json:"is_client"` // 是否客户端展示
+	// @inject_tag: gorm:"-"
+	CatSlugs []*CatSlugs `protobuf:"bytes,14,rep,name=cat_slugs,json=catSlugs,proto3" json:"cat_slugs" gorm:"-"`
+	// @inject_tag: gorm:"-"
+	AttrQueries []*SheetAttrQueries `protobuf:"bytes,15,rep,name=attr_queries,json=attrQueries,proto3" json:"attr_queries" gorm:"-"`
 }
 
 func (x *ArticleWhere) Reset() {
@@ -498,10 +504,11 @@ type CatSlugs struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	CatId   int32      `protobuf:"varint,1,opt,name=cat_id,json=catId,proto3" json:"cat_id"`
-	CatSlug string     `protobuf:"bytes,2,opt,name=cat_slug,json=catSlug,proto3" json:"cat_slug"`
-	Top     int32      `protobuf:"varint,3,opt,name=top,proto3" json:"top"`
-	Items   []*Article `protobuf:"bytes,4,rep,name=items,proto3" json:"items"`
+	CatId   int32  `protobuf:"varint,1,opt,name=cat_id,json=catId,proto3" json:"cat_id"`
+	CatSlug string `protobuf:"bytes,2,opt,name=cat_slug,json=catSlug,proto3" json:"cat_slug"`
+	Top     int32  `protobuf:"varint,3,opt,name=top,proto3" json:"top"`
+	// @inject_tag: gorm:"-"
+	Items []*Article `protobuf:"bytes,4,rep,name=items,proto3" json:"items" gorm:"-"`
 }
 
 func (x *CatSlugs) Reset() {

@@ -53,15 +53,18 @@ message Article {
     string published_at =20;
     string created_at =21;
     string updated_at =22;
-    // gorm:"many2many:article_cats;"
+    // @inject_tag: gorm:"many2many:article_cats;"
     repeated Cat cats = 23;
-    // gorm:"many2many:article_tags;"
+    // @inject_tag: gorm:"many2many:article_tags;"
     repeated Tag tags = 24;
+    // @inject_tag: gorm:"-"
     repeated int32 ids = 25;
     int32 attribute_type_id = 26;
     repeated ArticleMeta metas = 27;
     repeated ArticleGallery galleries = 28;
+    // @inject_tag: gorm:"-"
     Article pre_article = 29; // 上一篇文章
+    // @inject_tag: gorm:"-"
     Article next_article = 30; // 下一篇文章
     string s_title = 31;
     string s_describe = 32;
@@ -77,13 +80,16 @@ message ArticleWhere {
     int32 cat_id = 5;
     string cat_slug	 = 6;
     string type	=7;
+    // @inject_tag: gorm:"-"
     repeated string names = 8;
     int64 id = 9;
     bool is_include = 10;// 是否包含上一篇、下一篇文章
     bool drafted = 11;// 是否草稿
     string status = 12;
     bool is_client = 13; // 是否客户端展示
+    // @inject_tag: gorm:"-"
     repeated CatSlugs cat_slugs = 14;
+    // @inject_tag: gorm:"-"
     repeated SheetAttrQueries attr_queries = 15;
 }
 
@@ -91,6 +97,7 @@ message CatSlugs {
     int32 cat_id = 1;
     string cat_slug	 = 2;
     int32 top = 3;
+    // @inject_tag: gorm:"-"
     repeated Article items = 4;
 }
 

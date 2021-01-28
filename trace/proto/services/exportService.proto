@@ -1,0 +1,21 @@
+syntax = "proto3";
+package services;
+option go_package = ".;services";
+import "common/base.proto";
+
+service ExportService {
+
+}
+
+message Export {
+    string download_url = 1;
+    int32 file_size = 2;
+}
+
+message ExportResponse {
+    Export entity = 1;
+    common.Pager pager =2;
+    repeated Export items = 3;
+    common.Error error = 4;
+    common.Info info =5;
+}

@@ -1,0 +1,51 @@
+syntax = "proto3";
+package services;
+option go_package = ".;services";
+import "common/base.proto";
+
+service MetaFieldService {
+    rpc Create (MetaField) returns (MetaFieldResponse);
+    rpc Update (MetaField) returns (MetaFieldResponse);
+    rpc Search (MetaFieldWhere) returns (MetaFieldResponse);
+    rpc List (MetaFieldWhere) returns (MetaFieldResponse);
+    rpc Delete (MetaFieldWhere) returns (MetaFieldResponse);
+    rpc Get (MetaFieldWhere) returns (MetaFieldResponse);
+}
+
+message MetaFieldWhere {
+    int32 paged = 1;
+    int32 page_size = 2;
+    int32 id = 3;
+    // @inject_tag: gorm:"-"
+    repeated int32 ids = 4;
+    string keywords = 5;
+    int32 meta_class_id = 6;
+    // @inject_tag: gorm:"-"
+    repeated int32 meta_class_ids = 7;
+}
+
+message MetaField {
+    int32 id = 1;
+    int32 meta_class_id = 2;
+    string name = 3;
+    string display_name = 4;
+    string type = 5;
+    bool required = 6;
+    string rule = 7;
+    string tip = 8;
+    int32 sorting = 9;
+    string data = 10;
+    bool show_in_list = 11;
+    bool is_query = 12;
+    string query_method = 13;
+    string created_at = 14;
+    string updated_at = 15;
+}
+
+message MetaFieldResponse {
+    common.Error error = 1;
+    common.Info info = 2;
+    common.Pager pager = 3;
+    MetaField entity = 4;
+    repeated MetaField items = 5;
+}
