@@ -32,25 +32,25 @@ type Menu struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	Id            int32   `protobuf:"varint,1,opt,name=id,proto3" json:"id,omitempty"`
-	Name          string  `protobuf:"bytes,3,opt,name=name,proto3" json:"name,omitempty"`
-	Title         string  `protobuf:"bytes,4,opt,name=title,proto3" json:"title,omitempty"`
-	TitleEn       string  `protobuf:"bytes,5,opt,name=title_en,json=titleEn,proto3" json:"title_en,omitempty"`
-	Icon          string  `protobuf:"bytes,6,opt,name=icon,proto3" json:"icon,omitempty"`
-	Nocache       bool    `protobuf:"varint,7,opt,name=nocache,proto3" json:"nocache,omitempty"`
-	Meta          string  `protobuf:"bytes,8,opt,name=meta,proto3" json:"meta,omitempty"`
-	MenuId        int64   `protobuf:"varint,9,opt,name=menu_id,json=menuId,proto3" json:"menu_id,omitempty"`
-	RedirectUrl   string  `protobuf:"bytes,10,opt,name=redirect_url,json=redirectUrl,proto3" json:"redirect_url,omitempty"`
-	ContainRoutes string  `protobuf:"bytes,11,opt,name=contain_routes,json=containRoutes,proto3" json:"contain_routes,omitempty"`
-	PermissionId  int64   `protobuf:"varint,12,opt,name=permission_id,json=permissionId,proto3" json:"permission_id,omitempty"`
-	HideSidebar   bool    `protobuf:"varint,13,opt,name=hide_sidebar,json=hideSidebar,proto3" json:"hide_sidebar,omitempty"`
-	Disabled      bool    `protobuf:"varint,14,opt,name=disabled,proto3" json:"disabled,omitempty"`
-	Sorting       string  `protobuf:"bytes,15,opt,name=sorting,proto3" json:"sorting,omitempty"`
-	Memo          string  `protobuf:"bytes,16,opt,name=memo,proto3" json:"memo,omitempty"`
-	CreatedAt     string  `protobuf:"bytes,17,opt,name=created_at,json=createdAt,proto3" json:"created_at,omitempty"`
-	UpdatedAt     string  `protobuf:"bytes,18,opt,name=updated_at,json=updatedAt,proto3" json:"updated_at,omitempty"`
-	Children      []*Menu `protobuf:"bytes,19,rep,name=children,proto3" json:"children,omitempty"`
-	Ids           []int64 `protobuf:"varint,20,rep,packed,name=ids,proto3" json:"ids,omitempty"`
+	Id            int32   `protobuf:"varint,1,opt,name=id,proto3" json:"id"`
+	Name          string  `protobuf:"bytes,3,opt,name=name,proto3" json:"name"`
+	Title         string  `protobuf:"bytes,4,opt,name=title,proto3" json:"title"`
+	TitleEn       string  `protobuf:"bytes,5,opt,name=title_en,json=titleEn,proto3" json:"title_en"`
+	Icon          string  `protobuf:"bytes,6,opt,name=icon,proto3" json:"icon"`
+	Nocache       bool    `protobuf:"varint,7,opt,name=nocache,proto3" json:"nocache"`
+	Meta          string  `protobuf:"bytes,8,opt,name=meta,proto3" json:"meta"`
+	MenuId        int64   `protobuf:"varint,9,opt,name=menu_id,json=menuId,proto3" json:"menu_id"`
+	RedirectUrl   string  `protobuf:"bytes,10,opt,name=redirect_url,json=redirectUrl,proto3" json:"redirect_url"`
+	ContainRoutes string  `protobuf:"bytes,11,opt,name=contain_routes,json=containRoutes,proto3" json:"contain_routes"`
+	PermissionId  int64   `protobuf:"varint,12,opt,name=permission_id,json=permissionId,proto3" json:"permission_id"`
+	HideSidebar   bool    `protobuf:"varint,13,opt,name=hide_sidebar,json=hideSidebar,proto3" json:"hide_sidebar"`
+	Disabled      bool    `protobuf:"varint,14,opt,name=disabled,proto3" json:"disabled"`
+	Sorting       string  `protobuf:"bytes,15,opt,name=sorting,proto3" json:"sorting"`
+	Memo          string  `protobuf:"bytes,16,opt,name=memo,proto3" json:"memo"`
+	CreatedAt     string  `protobuf:"bytes,17,opt,name=created_at,json=createdAt,proto3" json:"created_at"`
+	UpdatedAt     string  `protobuf:"bytes,18,opt,name=updated_at,json=updatedAt,proto3" json:"updated_at"`
+	Children      []*Menu `protobuf:"bytes,19,rep,name=children,proto3" json:"children"`
+	Ids           []int64 `protobuf:"varint,20,rep,packed,name=ids,proto3" json:"ids" gorm:"-"`
 }
 
 func (x *Menu) Reset() {
@@ -223,15 +223,15 @@ type MenuWhere struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	Paged    int32  `protobuf:"varint,1,opt,name=paged,proto3" json:"paged,omitempty"`
-	PageSize int32  `protobuf:"varint,2,opt,name=page_size,json=pageSize,proto3" json:"page_size,omitempty"`
-	Sorting  string `protobuf:"bytes,3,opt,name=sorting,proto3" json:"sorting,omitempty"`
+	Paged    int32  `protobuf:"varint,1,opt,name=paged,proto3" json:"paged"`
+	PageSize int32  `protobuf:"varint,2,opt,name=page_size,json=pageSize,proto3" json:"page_size"`
+	Sorting  string `protobuf:"bytes,3,opt,name=sorting,proto3" json:"sorting"`
 	//base params
-	Id      int64   `protobuf:"varint,4,opt,name=id,proto3" json:"id,omitempty"`
-	Name    string  `protobuf:"bytes,5,opt,name=name,proto3" json:"name,omitempty"`
-	MenuId  int64   `protobuf:"varint,6,opt,name=menu_id,json=menuId,proto3" json:"menu_id,omitempty"`
-	StoreId int64   `protobuf:"varint,7,opt,name=store_id,json=storeId,proto3" json:"store_id,omitempty"`
-	Ids     []int64 `protobuf:"varint,8,rep,packed,name=ids,proto3" json:"ids,omitempty"`
+	Id      int64   `protobuf:"varint,4,opt,name=id,proto3" json:"id"`
+	Name    string  `protobuf:"bytes,5,opt,name=name,proto3" json:"name"`
+	MenuId  int64   `protobuf:"varint,6,opt,name=menu_id,json=menuId,proto3" json:"menu_id"`
+	StoreId int64   `protobuf:"varint,7,opt,name=store_id,json=storeId,proto3" json:"store_id"`
+	Ids     []int64 `protobuf:"varint,8,rep,packed,name=ids,proto3" json:"ids"`
 }
 
 func (x *MenuWhere) Reset() {
@@ -328,11 +328,11 @@ type MenuResponse struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	Entity *Menu         `protobuf:"bytes,1,opt,name=entity,proto3" json:"entity,omitempty"`
-	Pager  *common.Pager `protobuf:"bytes,2,opt,name=pager,proto3" json:"pager,omitempty"`
-	Items  []*Menu       `protobuf:"bytes,3,rep,name=items,proto3" json:"items,omitempty"`
-	Error  *common.Error `protobuf:"bytes,4,opt,name=error,proto3" json:"error,omitempty"`
-	Info   *common.Info  `protobuf:"bytes,5,opt,name=info,proto3" json:"info,omitempty"`
+	Entity *Menu         `protobuf:"bytes,1,opt,name=entity,proto3" json:"entity"`
+	Pager  *common.Pager `protobuf:"bytes,2,opt,name=pager,proto3" json:"pager"`
+	Items  []*Menu       `protobuf:"bytes,3,rep,name=items,proto3" json:"items"`
+	Error  *common.Error `protobuf:"bytes,4,opt,name=error,proto3" json:"error"`
+	Info   *common.Info  `protobuf:"bytes,5,opt,name=info,proto3" json:"info"`
 }
 
 func (x *MenuResponse) Reset() {

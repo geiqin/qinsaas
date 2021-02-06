@@ -32,13 +32,13 @@ type Dict struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	Id         int32  `protobuf:"varint,1,opt,name=id,proto3" json:"id,omitempty"`
-	DictTypeId int32  `protobuf:"varint,2,opt,name=dict_type_id,json=dictTypeId,proto3" json:"dict_type_id,omitempty"`
-	Value      string `protobuf:"bytes,3,opt,name=value,proto3" json:"value,omitempty"`
-	Text       string `protobuf:"bytes,4,opt,name=text,proto3" json:"text,omitempty"`        //键名
-	Term       string `protobuf:"bytes,5,opt,name=term,proto3" json:"term,omitempty"`        //分组
-	Memo       string `protobuf:"bytes,6,opt,name=memo,proto3" json:"memo,omitempty"`        //备注
-	Sorting    int32  `protobuf:"varint,7,opt,name=sorting,proto3" json:"sorting,omitempty"` //排序
+	Id         int32  `protobuf:"varint,1,opt,name=id,proto3" json:"id"`
+	DictTypeId int32  `protobuf:"varint,2,opt,name=dict_type_id,json=dictTypeId,proto3" json:"dict_type_id"`
+	Value      string `protobuf:"bytes,3,opt,name=value,proto3" json:"value"`
+	Text       string `protobuf:"bytes,4,opt,name=text,proto3" json:"text"`        //键名
+	Term       string `protobuf:"bytes,5,opt,name=term,proto3" json:"term"`        //分组
+	Memo       string `protobuf:"bytes,6,opt,name=memo,proto3" json:"memo"`        //备注
+	Sorting    int32  `protobuf:"varint,7,opt,name=sorting,proto3" json:"sorting"` //排序
 }
 
 func (x *Dict) Reset() {
@@ -128,12 +128,12 @@ type DictResponse struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	Entity *Dict            `protobuf:"bytes,1,opt,name=entity,proto3" json:"entity,omitempty"`
-	Pager  *common.Pager    `protobuf:"bytes,2,opt,name=pager,proto3" json:"pager,omitempty"`
-	Items  []*Dict          `protobuf:"bytes,3,rep,name=items,proto3" json:"items,omitempty"`
-	Error  *common.Error    `protobuf:"bytes,4,opt,name=error,proto3" json:"error,omitempty"`
-	Info   *common.Info     `protobuf:"bytes,5,opt,name=info,proto3" json:"info,omitempty"`
-	Maps   map[string]*Dict `protobuf:"bytes,6,rep,name=maps,proto3" json:"maps,omitempty" protobuf_key:"bytes,1,opt,name=key,proto3" protobuf_val:"bytes,2,opt,name=value,proto3"`
+	Entity *Dict            `protobuf:"bytes,1,opt,name=entity,proto3" json:"entity"`
+	Pager  *common.Pager    `protobuf:"bytes,2,opt,name=pager,proto3" json:"pager"`
+	Items  []*Dict          `protobuf:"bytes,3,rep,name=items,proto3" json:"items"`
+	Error  *common.Error    `protobuf:"bytes,4,opt,name=error,proto3" json:"error"`
+	Info   *common.Info     `protobuf:"bytes,5,opt,name=info,proto3" json:"info"`
+	Maps   map[string]*Dict `protobuf:"bytes,6,rep,name=maps,proto3" json:"maps" protobuf_key:"bytes,1,opt,name=key,proto3" protobuf_val:"bytes,2,opt,name=value,proto3"`
 }
 
 func (x *DictResponse) Reset() {

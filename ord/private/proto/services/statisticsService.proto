@@ -40,5 +40,6 @@ message StatsRequest {
     string start_at = 6;
     string end_at = 7;
     string statistic_at = 8;
-
+    // @inject_tag: gorm:"-"
+    repeated int64 customer_ids = 9;
 }

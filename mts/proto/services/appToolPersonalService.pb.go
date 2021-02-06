@@ -31,15 +31,15 @@ type AppToolPersonalWhere struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	Paged      int32   `protobuf:"varint,1,opt,name=paged,proto3" json:"paged,omitempty"`
-	PageSize   int32   `protobuf:"varint,2,opt,name=page_size,json=pageSize,proto3" json:"page_size,omitempty"`
-	Keywords   string  `protobuf:"bytes,3,opt,name=keywords,proto3" json:"keywords,omitempty"`
-	Id         int64   `protobuf:"varint,4,opt,name=id,proto3" json:"id,omitempty"`
-	Ids        []int64 `protobuf:"varint,5,rep,packed,name=ids,proto3" json:"ids,omitempty"`
-	StoreId    int64   `protobuf:"varint,6,opt,name=store_id,json=storeId,proto3" json:"store_id,omitempty"`
-	UserId     int64   `protobuf:"varint,7,opt,name=user_id,json=userId,proto3" json:"user_id,omitempty"`
-	AppToolId  int32   `protobuf:"varint,8,opt,name=app_tool_id,json=appToolId,proto3" json:"app_tool_id,omitempty"`
-	AppToolIds []int32 `protobuf:"varint,9,rep,packed,name=app_tool_ids,json=appToolIds,proto3" json:"app_tool_ids,omitempty"`
+	Paged      int32   `protobuf:"varint,1,opt,name=paged,proto3" json:"paged"`
+	PageSize   int32   `protobuf:"varint,2,opt,name=page_size,json=pageSize,proto3" json:"page_size"`
+	Keywords   string  `protobuf:"bytes,3,opt,name=keywords,proto3" json:"keywords"`
+	Id         int64   `protobuf:"varint,4,opt,name=id,proto3" json:"id"`
+	Ids        []int64 `protobuf:"varint,5,rep,packed,name=ids,proto3" json:"ids"`
+	StoreId    int64   `protobuf:"varint,6,opt,name=store_id,json=storeId,proto3" json:"store_id"`
+	UserId     int64   `protobuf:"varint,7,opt,name=user_id,json=userId,proto3" json:"user_id"`
+	AppToolId  int32   `protobuf:"varint,8,opt,name=app_tool_id,json=appToolId,proto3" json:"app_tool_id"`
+	AppToolIds []int32 `protobuf:"varint,9,rep,packed,name=app_tool_ids,json=appToolIds,proto3" json:"app_tool_ids"`
 }
 
 func (x *AppToolPersonalWhere) Reset() {
@@ -142,14 +142,14 @@ type AppToolPersonal struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	Id int64 `protobuf:"varint,1,opt,name=id,proto3" json:"id,omitempty"`
+	Id int64 `protobuf:"varint,1,opt,name=id,proto3" json:"id"`
 	//    int64 store_id = 2;
 	//    int64 user_id = 3;
-	AppToolId int32    `protobuf:"varint,4,opt,name=app_tool_id,json=appToolId,proto3" json:"app_tool_id,omitempty"`
-	Sorting   int32    `protobuf:"varint,5,opt,name=sorting,proto3" json:"sorting,omitempty"`
-	CreatedAt string   `protobuf:"bytes,6,opt,name=created_at,json=createdAt,proto3" json:"created_at,omitempty"`
-	UpdatedAt string   `protobuf:"bytes,7,opt,name=updated_at,json=updatedAt,proto3" json:"updated_at,omitempty"`
-	Tool      *AppTool `protobuf:"bytes,8,opt,name=tool,proto3" json:"tool,omitempty"`
+	AppToolId int32    `protobuf:"varint,4,opt,name=app_tool_id,json=appToolId,proto3" json:"app_tool_id"`
+	Sorting   int32    `protobuf:"varint,5,opt,name=sorting,proto3" json:"sorting"`
+	CreatedAt string   `protobuf:"bytes,6,opt,name=created_at,json=createdAt,proto3" json:"created_at"`
+	UpdatedAt string   `protobuf:"bytes,7,opt,name=updated_at,json=updatedAt,proto3" json:"updated_at"`
+	Tool      *AppTool `protobuf:"bytes,8,opt,name=tool,proto3" json:"tool"`
 }
 
 func (x *AppToolPersonal) Reset() {
@@ -231,11 +231,11 @@ type AppToolPersonalResponse struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	Entity *AppToolPersonal   `protobuf:"bytes,1,opt,name=entity,proto3" json:"entity,omitempty"`
-	Pager  *common.Pager      `protobuf:"bytes,2,opt,name=pager,proto3" json:"pager,omitempty"`
-	Items  []*AppToolPersonal `protobuf:"bytes,3,rep,name=items,proto3" json:"items,omitempty"`
-	Error  *common.Error      `protobuf:"bytes,4,opt,name=error,proto3" json:"error,omitempty"`
-	Info   *common.Info       `protobuf:"bytes,5,opt,name=info,proto3" json:"info,omitempty"`
+	Entity *AppToolPersonal   `protobuf:"bytes,1,opt,name=entity,proto3" json:"entity"`
+	Pager  *common.Pager      `protobuf:"bytes,2,opt,name=pager,proto3" json:"pager"`
+	Items  []*AppToolPersonal `protobuf:"bytes,3,rep,name=items,proto3" json:"items"`
+	Error  *common.Error      `protobuf:"bytes,4,opt,name=error,proto3" json:"error"`
+	Info   *common.Info       `protobuf:"bytes,5,opt,name=info,proto3" json:"info"`
 }
 
 func (x *AppToolPersonalResponse) Reset() {
