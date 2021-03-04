@@ -31,13 +31,13 @@ type AppToolWhere struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	Paged         int32   `protobuf:"varint,1,opt,name=paged,proto3" json:"paged,omitempty"`
-	PageSize      int32   `protobuf:"varint,2,opt,name=page_size,json=pageSize,proto3" json:"page_size,omitempty"`
-	Keywords      string  `protobuf:"bytes,3,opt,name=keywords,proto3" json:"keywords,omitempty"`
-	Id            int32   `protobuf:"varint,4,opt,name=id,proto3" json:"id,omitempty"`
-	Ids           []int32 `protobuf:"varint,5,rep,packed,name=ids,proto3" json:"ids,omitempty"`
-	AppToolTypeId int32   `protobuf:"varint,6,opt,name=app_tool_type_id,json=appToolTypeId,proto3" json:"app_tool_type_id,omitempty"`
-	Disabled      bool    `protobuf:"varint,7,opt,name=disabled,proto3" json:"disabled,omitempty"`
+	Paged         int32   `protobuf:"varint,1,opt,name=paged,proto3" json:"paged"`
+	PageSize      int32   `protobuf:"varint,2,opt,name=page_size,json=pageSize,proto3" json:"page_size"`
+	Keywords      string  `protobuf:"bytes,3,opt,name=keywords,proto3" json:"keywords"`
+	Id            int32   `protobuf:"varint,4,opt,name=id,proto3" json:"id"`
+	Ids           []int32 `protobuf:"varint,5,rep,packed,name=ids,proto3" json:"ids"`
+	AppToolTypeId int32   `protobuf:"varint,6,opt,name=app_tool_type_id,json=appToolTypeId,proto3" json:"app_tool_type_id"`
+	Disabled      bool    `protobuf:"varint,7,opt,name=disabled,proto3" json:"disabled"`
 }
 
 func (x *AppToolWhere) Reset() {
@@ -127,18 +127,18 @@ type AppTool struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	Id            int32  `protobuf:"varint,1,opt,name=id,proto3" json:"id,omitempty"`
-	AppToolTypeId int32  `protobuf:"varint,2,opt,name=app_tool_type_id,json=appToolTypeId,proto3" json:"app_tool_type_id,omitempty"`
-	Slug          string `protobuf:"bytes,3,opt,name=slug,proto3" json:"slug,omitempty"`
-	Name          string `protobuf:"bytes,4,opt,name=name,proto3" json:"name,omitempty"`
-	Mode          string `protobuf:"bytes,5,opt,name=mode,proto3" json:"mode,omitempty"`
-	Icon          string `protobuf:"bytes,6,opt,name=icon,proto3" json:"icon,omitempty"`
-	Url           string `protobuf:"bytes,7,opt,name=url,proto3" json:"url,omitempty"`
-	Memo          string `protobuf:"bytes,8,opt,name=memo,proto3" json:"memo,omitempty"`
-	Disabled      bool   `protobuf:"varint,9,opt,name=disabled,proto3" json:"disabled,omitempty"`
-	Tags          string `protobuf:"bytes,10,opt,name=tags,proto3" json:"tags,omitempty"`
-	CreatedAt     string `protobuf:"bytes,11,opt,name=created_at,json=createdAt,proto3" json:"created_at,omitempty"`
-	UpdatedAt     string `protobuf:"bytes,12,opt,name=updated_at,json=updatedAt,proto3" json:"updated_at,omitempty"`
+	Id            int32  `protobuf:"varint,1,opt,name=id,proto3" json:"id"`
+	AppToolTypeId int32  `protobuf:"varint,2,opt,name=app_tool_type_id,json=appToolTypeId,proto3" json:"app_tool_type_id"`
+	Slug          string `protobuf:"bytes,3,opt,name=slug,proto3" json:"slug"`
+	Name          string `protobuf:"bytes,4,opt,name=name,proto3" json:"name"`
+	Mode          string `protobuf:"bytes,5,opt,name=mode,proto3" json:"mode"`
+	Icon          string `protobuf:"bytes,6,opt,name=icon,proto3" json:"icon"`
+	Url           string `protobuf:"bytes,7,opt,name=url,proto3" json:"url"`
+	Memo          string `protobuf:"bytes,8,opt,name=memo,proto3" json:"memo"`
+	Disabled      bool   `protobuf:"varint,9,opt,name=disabled,proto3" json:"disabled"`
+	Tags          string `protobuf:"bytes,10,opt,name=tags,proto3" json:"tags"`
+	CreatedAt     string `protobuf:"bytes,11,opt,name=created_at,json=createdAt,proto3" json:"created_at"`
+	UpdatedAt     string `protobuf:"bytes,12,opt,name=updated_at,json=updatedAt,proto3" json:"updated_at"`
 }
 
 func (x *AppTool) Reset() {
@@ -263,11 +263,11 @@ type AppToolResponse struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	Entity *AppTool      `protobuf:"bytes,1,opt,name=entity,proto3" json:"entity,omitempty"`
-	Pager  *common.Pager `protobuf:"bytes,2,opt,name=pager,proto3" json:"pager,omitempty"`
-	Items  []*AppTool    `protobuf:"bytes,3,rep,name=items,proto3" json:"items,omitempty"`
-	Error  *common.Error `protobuf:"bytes,4,opt,name=error,proto3" json:"error,omitempty"`
-	Info   *common.Info  `protobuf:"bytes,5,opt,name=info,proto3" json:"info,omitempty"`
+	Entity *AppTool      `protobuf:"bytes,1,opt,name=entity,proto3" json:"entity"`
+	Pager  *common.Pager `protobuf:"bytes,2,opt,name=pager,proto3" json:"pager"`
+	Items  []*AppTool    `protobuf:"bytes,3,rep,name=items,proto3" json:"items"`
+	Error  *common.Error `protobuf:"bytes,4,opt,name=error,proto3" json:"error"`
+	Info   *common.Info  `protobuf:"bytes,5,opt,name=info,proto3" json:"info"`
 }
 
 func (x *AppToolResponse) Reset() {

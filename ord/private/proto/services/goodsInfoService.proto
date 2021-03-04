@@ -24,5 +24,5 @@ message GoodsInfo {
 	string sku_spec_desc =19;
 	int32 min_buy = 20;
 	int32 buy_quota = 21;
-
+	bool is_sku = 22;
 }

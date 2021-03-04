@@ -32,11 +32,11 @@ type DictType struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	Id       int32   `protobuf:"varint,1,opt,name=id,proto3" json:"id,omitempty"`
-	Name     string  `protobuf:"bytes,2,opt,name=name,proto3" json:"name,omitempty"`
-	Title    string  `protobuf:"bytes,3,opt,name=title,proto3" json:"title,omitempty"`
-	Editable bool    `protobuf:"varint,4,opt,name=editable,proto3" json:"editable,omitempty"`
-	Dicts    []*Dict `protobuf:"bytes,5,rep,name=dicts,proto3" json:"dicts,omitempty"`
+	Id       int32   `protobuf:"varint,1,opt,name=id,proto3" json:"id"`
+	Name     string  `protobuf:"bytes,2,opt,name=name,proto3" json:"name"`
+	Title    string  `protobuf:"bytes,3,opt,name=title,proto3" json:"title"`
+	Editable bool    `protobuf:"varint,4,opt,name=editable,proto3" json:"editable"`
+	Dicts    []*Dict `protobuf:"bytes,5,rep,name=dicts,proto3" json:"dicts"`
 }
 
 func (x *DictType) Reset() {
@@ -111,7 +111,7 @@ type DictTypeRequest struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	Types []string `protobuf:"bytes,1,rep,name=types,proto3" json:"types,omitempty"`
+	Types []string `protobuf:"bytes,1,rep,name=types,proto3" json:"types"`
 }
 
 func (x *DictTypeRequest) Reset() {
@@ -158,11 +158,11 @@ type DictTypeResponse struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	Entity *DictType     `protobuf:"bytes,1,opt,name=entity,proto3" json:"entity,omitempty"`
-	Pager  *common.Pager `protobuf:"bytes,2,opt,name=pager,proto3" json:"pager,omitempty"`
-	Items  []*DictType   `protobuf:"bytes,3,rep,name=items,proto3" json:"items,omitempty"`
-	Error  *common.Error `protobuf:"bytes,4,opt,name=error,proto3" json:"error,omitempty"`
-	Info   *common.Info  `protobuf:"bytes,5,opt,name=info,proto3" json:"info,omitempty"`
+	Entity *DictType     `protobuf:"bytes,1,opt,name=entity,proto3" json:"entity"`
+	Pager  *common.Pager `protobuf:"bytes,2,opt,name=pager,proto3" json:"pager"`
+	Items  []*DictType   `protobuf:"bytes,3,rep,name=items,proto3" json:"items"`
+	Error  *common.Error `protobuf:"bytes,4,opt,name=error,proto3" json:"error"`
+	Info   *common.Info  `protobuf:"bytes,5,opt,name=info,proto3" json:"info"`
 }
 
 func (x *DictTypeResponse) Reset() {

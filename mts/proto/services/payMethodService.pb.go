@@ -31,13 +31,13 @@ type PayMethod struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	Id       int64  `protobuf:"varint,1,opt,name=id,proto3" json:"id,omitempty"`
-	Name     string `protobuf:"bytes,2,opt,name=name,proto3" json:"name,omitempty"`
-	Title    string `protobuf:"bytes,3,opt,name=title,proto3" json:"title,omitempty"`
-	Icon     string `protobuf:"bytes,4,opt,name=icon,proto3" json:"icon,omitempty"`
-	Memo     string `protobuf:"bytes,5,opt,name=memo,proto3" json:"memo,omitempty"`
-	Supports string `protobuf:"bytes,6,opt,name=supports,proto3" json:"supports,omitempty"`
-	Disabled bool   `protobuf:"varint,7,opt,name=disabled,proto3" json:"disabled,omitempty"`
+	Id       int64  `protobuf:"varint,1,opt,name=id,proto3" json:"id"`
+	Name     string `protobuf:"bytes,2,opt,name=name,proto3" json:"name"`
+	Title    string `protobuf:"bytes,3,opt,name=title,proto3" json:"title"`
+	Icon     string `protobuf:"bytes,4,opt,name=icon,proto3" json:"icon"`
+	Memo     string `protobuf:"bytes,5,opt,name=memo,proto3" json:"memo"`
+	Supports string `protobuf:"bytes,6,opt,name=supports,proto3" json:"supports"`
+	Disabled bool   `protobuf:"varint,7,opt,name=disabled,proto3" json:"disabled"`
 }
 
 func (x *PayMethod) Reset() {
@@ -126,15 +126,15 @@ type PayMethodWhere struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	Paged    int32  `protobuf:"varint,1,opt,name=paged,proto3" json:"paged,omitempty"`
-	PageSize int32  `protobuf:"varint,2,opt,name=page_size,json=pageSize,proto3" json:"page_size,omitempty"`
-	Sorting  string `protobuf:"bytes,3,opt,name=sorting,proto3" json:"sorting,omitempty"`
-	Id       int64  `protobuf:"varint,4,opt,name=id,proto3" json:"id,omitempty"`
-	Name     string `protobuf:"bytes,5,opt,name=name,proto3" json:"name,omitempty"`
-	Title    string `protobuf:"bytes,6,opt,name=title,proto3" json:"title,omitempty"`
-	StoreId  int64  `protobuf:"varint,7,opt,name=store_id,json=storeId,proto3" json:"store_id,omitempty"`
-	Channel  string `protobuf:"bytes,8,opt,name=channel,proto3" json:"channel,omitempty"`
-	Status   int64  `protobuf:"varint,9,opt,name=status,proto3" json:"status,omitempty"`
+	Paged    int32  `protobuf:"varint,1,opt,name=paged,proto3" json:"paged"`
+	PageSize int32  `protobuf:"varint,2,opt,name=page_size,json=pageSize,proto3" json:"page_size"`
+	Sorting  string `protobuf:"bytes,3,opt,name=sorting,proto3" json:"sorting"`
+	Id       int64  `protobuf:"varint,4,opt,name=id,proto3" json:"id"`
+	Name     string `protobuf:"bytes,5,opt,name=name,proto3" json:"name"`
+	Title    string `protobuf:"bytes,6,opt,name=title,proto3" json:"title"`
+	StoreId  int64  `protobuf:"varint,7,opt,name=store_id,json=storeId,proto3" json:"store_id"`
+	Channel  string `protobuf:"bytes,8,opt,name=channel,proto3" json:"channel"`
+	Status   int64  `protobuf:"varint,9,opt,name=status,proto3" json:"status"`
 }
 
 func (x *PayMethodWhere) Reset() {
@@ -238,11 +238,11 @@ type PayMethodResponse struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	Entity *PayMethod    `protobuf:"bytes,1,opt,name=entity,proto3" json:"entity,omitempty"`
-	Pager  *common.Pager `protobuf:"bytes,2,opt,name=pager,proto3" json:"pager,omitempty"`
-	Items  []*PayMethod  `protobuf:"bytes,3,rep,name=items,proto3" json:"items,omitempty"`
-	Error  *common.Error `protobuf:"bytes,4,opt,name=error,proto3" json:"error,omitempty"`
-	Info   *common.Info  `protobuf:"bytes,5,opt,name=info,proto3" json:"info,omitempty"`
+	Entity *PayMethod    `protobuf:"bytes,1,opt,name=entity,proto3" json:"entity"`
+	Pager  *common.Pager `protobuf:"bytes,2,opt,name=pager,proto3" json:"pager"`
+	Items  []*PayMethod  `protobuf:"bytes,3,rep,name=items,proto3" json:"items"`
+	Error  *common.Error `protobuf:"bytes,4,opt,name=error,proto3" json:"error"`
+	Info   *common.Info  `protobuf:"bytes,5,opt,name=info,proto3" json:"info"`
 }
 
 func (x *PayMethodResponse) Reset() {

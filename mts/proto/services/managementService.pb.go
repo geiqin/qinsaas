@@ -31,11 +31,11 @@ type Management struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	Id      int64  `protobuf:"varint,1,opt,name=id,proto3" json:"id,omitempty"`
-	UserId  int64  `protobuf:"varint,2,opt,name=user_id,json=userId,proto3" json:"user_id,omitempty"`
-	StoreId int64  `protobuf:"varint,3,opt,name=store_id,json=storeId,proto3" json:"store_id,omitempty"`
-	RoleId  int64  `protobuf:"varint,4,opt,name=role_id,json=roleId,proto3" json:"role_id,omitempty"`
-	Store   *Store `protobuf:"bytes,5,opt,name=store,proto3" json:"store,omitempty"`
+	Id      int64  `protobuf:"varint,1,opt,name=id,proto3" json:"id"`
+	UserId  int64  `protobuf:"varint,2,opt,name=user_id,json=userId,proto3" json:"user_id"`
+	StoreId int64  `protobuf:"varint,3,opt,name=store_id,json=storeId,proto3" json:"store_id"`
+	RoleId  int64  `protobuf:"varint,4,opt,name=role_id,json=roleId,proto3" json:"role_id"`
+	Store   *Store `protobuf:"bytes,5,opt,name=store,proto3" json:"store"`
 }
 
 func (x *Management) Reset() {
@@ -110,10 +110,10 @@ type FlagResponse struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	Tags  []string      `protobuf:"bytes,1,rep,name=tags,proto3" json:"tags,omitempty"`
-	Alias []string      `protobuf:"bytes,2,rep,name=alias,proto3" json:"alias,omitempty"`
-	Error *common.Error `protobuf:"bytes,3,opt,name=error,proto3" json:"error,omitempty"`
-	Info  *common.Info  `protobuf:"bytes,4,opt,name=info,proto3" json:"info,omitempty"`
+	Tags  []string      `protobuf:"bytes,1,rep,name=tags,proto3" json:"tags"`
+	Alias []string      `protobuf:"bytes,2,rep,name=alias,proto3" json:"alias"`
+	Error *common.Error `protobuf:"bytes,3,opt,name=error,proto3" json:"error"`
+	Info  *common.Info  `protobuf:"bytes,4,opt,name=info,proto3" json:"info"`
 }
 
 func (x *FlagResponse) Reset() {
@@ -182,11 +182,11 @@ type ManagementResponse struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	Entity *Management   `protobuf:"bytes,1,opt,name=entity,proto3" json:"entity,omitempty"`
-	Pager  *common.Pager `protobuf:"bytes,2,opt,name=pager,proto3" json:"pager,omitempty"`
-	Items  []*Management `protobuf:"bytes,3,rep,name=items,proto3" json:"items,omitempty"`
-	Error  *common.Error `protobuf:"bytes,4,opt,name=error,proto3" json:"error,omitempty"`
-	Info   *common.Info  `protobuf:"bytes,5,opt,name=info,proto3" json:"info,omitempty"`
+	Entity *Management   `protobuf:"bytes,1,opt,name=entity,proto3" json:"entity"`
+	Pager  *common.Pager `protobuf:"bytes,2,opt,name=pager,proto3" json:"pager"`
+	Items  []*Management `protobuf:"bytes,3,rep,name=items,proto3" json:"items"`
+	Error  *common.Error `protobuf:"bytes,4,opt,name=error,proto3" json:"error"`
+	Info   *common.Info  `protobuf:"bytes,5,opt,name=info,proto3" json:"info"`
 }
 
 func (x *ManagementResponse) Reset() {

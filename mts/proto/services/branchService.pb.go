@@ -31,19 +31,19 @@ type Branch struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	Id        int64   `protobuf:"varint,1,opt,name=id,proto3" json:"id,omitempty"`
-	Slug      string  `protobuf:"bytes,2,opt,name=slug,proto3" json:"slug,omitempty"`
-	Name      string  `protobuf:"bytes,3,opt,name=name,proto3" json:"name,omitempty"`
-	StoreId   int64   `protobuf:"varint,4,opt,name=store_id,json=storeId,proto3" json:"store_id,omitempty"`
-	AreaId    int64   `protobuf:"varint,5,opt,name=area_id,json=areaId,proto3" json:"area_id,omitempty"`
-	Address   string  `protobuf:"bytes,6,opt,name=address,proto3" json:"address,omitempty"`
-	Lng       string  `protobuf:"bytes,7,opt,name=lng,proto3" json:"lng,omitempty"`
-	Lat       string  `protobuf:"bytes,8,opt,name=lat,proto3" json:"lat,omitempty"`
-	CreatorId int64   `protobuf:"varint,9,opt,name=creator_id,json=creatorId,proto3" json:"creator_id,omitempty"`
-	Locked    bool    `protobuf:"varint,10,opt,name=locked,proto3" json:"locked,omitempty"`
-	CreatedAt string  `protobuf:"bytes,11,opt,name=created_at,json=createdAt,proto3" json:"created_at,omitempty"`
-	UpdatedAt string  `protobuf:"bytes,12,opt,name=updated_at,json=updatedAt,proto3" json:"updated_at,omitempty"`
-	Ids       []int64 `protobuf:"varint,13,rep,packed,name=ids,proto3" json:"ids,omitempty"`
+	Id        int64   `protobuf:"varint,1,opt,name=id,proto3" json:"id"`
+	Slug      string  `protobuf:"bytes,2,opt,name=slug,proto3" json:"slug"`
+	Name      string  `protobuf:"bytes,3,opt,name=name,proto3" json:"name"`
+	StoreId   int64   `protobuf:"varint,4,opt,name=store_id,json=storeId,proto3" json:"store_id"`
+	AreaId    int64   `protobuf:"varint,5,opt,name=area_id,json=areaId,proto3" json:"area_id"`
+	Address   string  `protobuf:"bytes,6,opt,name=address,proto3" json:"address"`
+	Lng       string  `protobuf:"bytes,7,opt,name=lng,proto3" json:"lng"`
+	Lat       string  `protobuf:"bytes,8,opt,name=lat,proto3" json:"lat"`
+	CreatorId int64   `protobuf:"varint,9,opt,name=creator_id,json=creatorId,proto3" json:"creator_id"`
+	Locked    bool    `protobuf:"varint,10,opt,name=locked,proto3" json:"locked"`
+	CreatedAt string  `protobuf:"bytes,11,opt,name=created_at,json=createdAt,proto3" json:"created_at"`
+	UpdatedAt string  `protobuf:"bytes,12,opt,name=updated_at,json=updatedAt,proto3" json:"updated_at"`
+	Ids       []int64 `protobuf:"varint,13,rep,packed,name=ids,proto3" json:"ids"`
 }
 
 func (x *Branch) Reset() {
@@ -175,11 +175,11 @@ type BranchResponse struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	Entity *Branch       `protobuf:"bytes,1,opt,name=entity,proto3" json:"entity,omitempty"`
-	Pager  *common.Pager `protobuf:"bytes,2,opt,name=pager,proto3" json:"pager,omitempty"`
-	Items  []*Branch     `protobuf:"bytes,3,rep,name=items,proto3" json:"items,omitempty"`
-	Error  *common.Error `protobuf:"bytes,4,opt,name=error,proto3" json:"error,omitempty"`
-	Info   *common.Info  `protobuf:"bytes,5,opt,name=info,proto3" json:"info,omitempty"`
+	Entity *Branch       `protobuf:"bytes,1,opt,name=entity,proto3" json:"entity"`
+	Pager  *common.Pager `protobuf:"bytes,2,opt,name=pager,proto3" json:"pager"`
+	Items  []*Branch     `protobuf:"bytes,3,rep,name=items,proto3" json:"items"`
+	Error  *common.Error `protobuf:"bytes,4,opt,name=error,proto3" json:"error"`
+	Info   *common.Info  `protobuf:"bytes,5,opt,name=info,proto3" json:"info"`
 }
 
 func (x *BranchResponse) Reset() {

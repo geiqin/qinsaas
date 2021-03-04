@@ -1,0 +1,16 @@
+syntax = "proto3";
+package services;
+option go_package = ".;services";
+import "common/base.proto";
+import "orderService.proto";
+
+service MyCapitalService {
+  //提交充值订单
+  rpc Submit (CapitalRequest) returns (OrderResponse) {}
+}
+
+
+message CapitalRequest {
+  int64 customer_id = 1; //可选项（商家为客户充值）
+  float money =2;
+}
