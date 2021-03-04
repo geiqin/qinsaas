@@ -50,7 +50,7 @@ type Card struct {
 	Disabled      bool           `protobuf:"varint,17,opt,name=disabled,proto3" json:"disabled"`
 	CreatedAt     string         `protobuf:"bytes,19,opt,name=created_at,json=createdAt,proto3" json:"created_at"`
 	UpdatedAt     string         `protobuf:"bytes,20,opt,name=updated_at,json=updatedAt,proto3" json:"updated_at"`
-	CardBenefits  []*CardBenefit `protobuf:"bytes,21,rep,name=card_benefits,json=cardBenefits,proto3"`
+	CardBenefits  []*CardBenefit `protobuf:"bytes,21,rep,name=card_benefits,json=cardBenefits,proto3" json:"card_benefits"`
 	// @inject_tag: gorm:"-"
 	Ids    []int32 `protobuf:"varint,22,rep,packed,name=ids,proto3" json:"ids" gorm:"-"`
 	Status int32   `protobuf:"varint,23,opt,name=status,proto3" json:"status"`

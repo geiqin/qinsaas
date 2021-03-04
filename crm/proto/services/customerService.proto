@@ -40,6 +40,8 @@ service CustomerService {
     rpc SetCards (Customer) returns (CustomerResponse) {}
     //修改客户手机号
     rpc UpdateMobile (Customer) returns (CustomerResponse) {}
+    // 是否是新用户
+    rpc IsNew (CustomerWhere) returns (CustomerResponse) {}
 }
 
 service MyCustomerService {
@@ -115,6 +117,7 @@ message CustomerWhere {
     string old_pwd = 19;
     string new_pwd = 20;
     string confirm_pwd = 21;
+    string date = 22;
 }
 
 //

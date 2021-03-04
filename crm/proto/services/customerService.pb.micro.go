@@ -75,6 +75,8 @@ type CustomerService interface {
 	SetCards(ctx context.Context, in *Customer, opts ...client.CallOption) (*CustomerResponse, error)
 	//修改客户手机号
 	UpdateMobile(ctx context.Context, in *Customer, opts ...client.CallOption) (*CustomerResponse, error)
+	// 是否是新用户
+	IsNew(ctx context.Context, in *CustomerWhere, opts ...client.CallOption) (*CustomerResponse, error)
 }
 
 type customerService struct {
@@ -249,6 +251,16 @@ func (c *customerService) UpdateMobile(ctx context.Context, in *Customer, opts .
 	return out, nil
 }
 
+func (c *customerService) IsNew(ctx context.Context, in *CustomerWhere, opts ...client.CallOption) (*CustomerResponse, error) {
+	req := c.c.NewRequest(c.name, "CustomerService.IsNew", in)
+	out := new(CustomerResponse)
+	err := c.c.Call(ctx, req, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
 // Server API for CustomerService service
 
 type CustomerServiceHandler interface {
@@ -284,6 +296,8 @@ type CustomerServiceHandler interface {
 	SetCards(context.Context, *Customer, *CustomerResponse) error
 	//修改客户手机号
 	UpdateMobile(context.Context, *Customer, *CustomerResponse) error
+	// 是否是新用户
+	IsNew(context.Context, *CustomerWhere, *CustomerResponse) error
 }
 
 func RegisterCustomerServiceHandler(s server.Server, hdlr CustomerServiceHandler, opts ...server.HandlerOption) error {
@@ -304,6 +318,7 @@ func RegisterCustomerServiceHandler(s server.Server, hdlr CustomerServiceHandler
 		SetTags(ctx context.Context, in *Customer, out *CustomerResponse) error
 		SetCards(ctx context.Context, in *Customer, out *CustomerResponse) error
 		UpdateMobile(ctx context.Context, in *Customer, out *CustomerResponse) error
+		IsNew(ctx context.Context, in *CustomerWhere, out *CustomerResponse) error
 	}
 	type CustomerService struct {
 		customerService
@@ -378,6 +393,10 @@ func (h *customerServiceHandler) SetCards(ctx context.Context, in *Customer, out
 
 func (h *customerServiceHandler) UpdateMobile(ctx context.Context, in *Customer, out *CustomerResponse) error {
 	return h.CustomerServiceHandler.UpdateMobile(ctx, in, out)
+}
+
+func (h *customerServiceHandler) IsNew(ctx context.Context, in *CustomerWhere, out *CustomerResponse) error {
+	return h.CustomerServiceHandler.IsNew(ctx, in, out)
 }
 
 // Api Endpoints for MyCustomerService service

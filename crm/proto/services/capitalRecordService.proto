@@ -3,6 +3,13 @@ package services;
 option go_package =".;services";
 import "common/base.proto";
 
+service MyCapitalRecordService {
+  //获得我的余额记录信息
+  rpc Get (CapitalRecord) returns (CapitalRecordResponse) {}
+  //查询我的余额记录信息
+  rpc Search (CapitalRecordWhere) returns (CapitalRecordResponse) {}
+}
+
 service CapitalRecordService {
   //增加余额（增加）
   rpc Income (CapitalRecord) returns (CapitalRecordResponse) {}

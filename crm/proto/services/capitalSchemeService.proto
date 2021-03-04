@@ -1,0 +1,58 @@
+syntax = "proto3";
+package services;
+option go_package =".;services";
+import "common/base.proto";
+
+service CapitalSchemeService {
+  //增加充值方案
+  rpc Create (CapitalScheme) returns (CapitalSchemeResponse) {}
+  //修改充值方案
+  rpc Update (CapitalScheme) returns (CapitalSchemeResponse) {}
+  //获得充值方案信息
+  rpc Get (CapitalScheme) returns (CapitalSchemeResponse) {}
+  //查询充值方案信息
+  rpc Search (CapitalSchemeWhere) returns (CapitalSchemeResponse) {}
+  //有效方案列表
+  rpc List (CapitalSchemeWhere) returns (CapitalSchemeResponse) {}
+  //根据金额匹配最优方案
+  rpc Matching (CapitalSchemeWhere) returns (CapitalSchemeResponse) {}
+}
+
+message CapitalScheme {
+  int64 id =1;
+  string name=2;
+  string start_at =3;
+  string end_at=4;
+  int32 condition_type =5;
+  float condition_value =6;
+  float give_money =7;
+  int32 give_score =8;
+  int32 stock =9;
+  string memo =10;
+  string created_at =11;
+  string updated_at =12;
+
+}
+
+
+//查询参数
+message CapitalSchemeWhere {
+  int32 paged = 1;
+  int32 page_size = 2;
+  //以下为自定义参数
+  int64 start_at =3;
+  string end_at =4;
+  string condition_type =5;
+  float money =6;
+  string name =8;
+}
+
+
+//
+message CapitalSchemeResponse {
+  CapitalScheme entity = 1;
+  common.Pager pager =2;
+  repeated CapitalScheme items = 3;
+  common.Error error = 4;
+  common.Info info =5;
+}
