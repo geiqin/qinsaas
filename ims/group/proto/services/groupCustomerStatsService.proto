@@ -1,0 +1,38 @@
+syntax = "proto3";
+package services;
+option go_package = ".;services";
+import "common/base.proto";
+import "groupService.proto";
+import "customerInfoService.proto";
+import "groupStatsService.proto";
+
+service GroupCustomerStatsService {
+    // 查询活动统计
+    rpc Search (GroupStatsWhere) returns (GroupCustomerStatsResponse) {}
+    // 获取活动统计
+    rpc Get (GroupStatsWhere) returns (GroupCustomerStatsResponse) {}
+    // 获取活动统计列表
+    rpc List (GroupStatsWhere) returns (GroupCustomerStatsResponse) {}
+}
+
+message GroupCustomerStats {
+    int64 id = 1;
+    int64 group_id = 2;
+    int64 customer_id = 3;
+    float pay_amount = 4;
+    float discount_amount = 5;
+    int32 pay_num = 6;
+    int32 goods_num = 7;
+    string created_at = 8;
+    string updated_at = 9;
+    Group group = 10;
+    CustomerInfo customer = 11;
+}
+
+message GroupCustomerStatsResponse {
+    GroupCustomerStats entity = 1;
+    common.Pager pager = 2;
+    repeated GroupCustomerStats items = 3;
+    common.Error error = 4;
+    common.Info info = 5;
+}

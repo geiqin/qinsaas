@@ -1,0 +1,54 @@
+syntax = "proto3";
+package services;
+option go_package = ";services";
+import "common/base.proto";
+import "groupTeamMemberService.proto";
+
+service GroupTeamService {
+    rpc Create (GroupTeamWhere) returns(GroupTeamResponse) {}
+    rpc Search (GroupTeamWhere) returns(GroupTeamResponse) {}
+    rpc List (GroupTeamWhere) returns(GroupTeamResponse) {}
+    rpc Get (GroupTeamWhere) returns(GroupTeamResponse) {}
+    rpc Delete (GroupTeamWhere) returns(GroupTeamResponse) {}
+}
+
+service FrontGroupTeamService {
+    rpc Get (GroupTeamWhere) returns(GroupTeamResponse) {}
+}
+
+message GroupTeamWhere {
+    int32 paged = 1;
+    int32 page_size = 2;
+    string sorting = 3;
+    string keywords = 4;
+    int64 id = 5;
+    // @inject_tag: gorm:"-"
+    repeated int64 ids = 6;
+    int64 group_id = 7;
+    int32 status = 8;
+    int64 item_id = 9;
+}
+
+message GroupTeam {
+    int64 id = 1;
+    string team_no = 2;
+    int64 group_id = 3;
+    int32 join_required_num = 4;
+    int32 join_remain_num = 5;
+    string expire_at = 6;
+    int32 type = 7;
+    string finished_at = 8;
+    string remark = 9;
+    int32 status = 10;
+    string created_at = 11;
+    string updated_at = 12;
+    repeated GroupTeamMember members = 13;
+}
+
+message GroupTeamResponse {
+    GroupTeam entity = 1;
+    common.Pager pager =2;
+    repeated GroupTeam items = 3;
+    common.Error error = 4;
+    common.Info info =5;
+}

@@ -10,6 +10,7 @@ import "couponTicketInfoService.proto";
 import "shipmentService.proto";
 import "integralService.proto";
 import "orderFoodService.proto";
+import "groupBuyingService.proto";
 
 service BuyingService {
     //计算优惠
@@ -55,6 +56,8 @@ message Buying {
     Integral integral = 26; // 积分信息
     // @inject_tag: gorm:"-"
     OrderFood food = 27; // 餐饮商品信息
+    GroupOrderReq group_req = 28;// 拼团订单请求数据
+    GroupOrderRes group_res = 29;// 拼团订单数据
 }
 
 //购买清单明细

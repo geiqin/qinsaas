@@ -1,0 +1,58 @@
+syntax = "proto3";
+package services;
+option go_package = ".;services";
+import "common/base.proto";
+
+service BuyingService {
+    // 拼团确认/提交订单时调用
+    rpc Calculate (BuyingReq) returns (BuyingResponse) {}
+    // 拼团订单创建后调用
+    rpc AfterCreateOrder(BuyingReq) returns (BuyingResponse) {}
+}
+
+message BuyingReq {
+    int64 order_id = 1; // 订单ID
+    int64 group_id = 2; // 拼团活动ID
+    int64 group_ladder_id = 3; // 选择的几人团
+    int64 group_team_id = 4; // 选择的拼团ID
+    int64 customer_id = 5; // 会员ID
+    repeated BuyingItem items = 6;
+}
+
+message BuyingRes {
+    int64 group_id = 1;
+    int64 group_ladder_id = 2;
+    int64 group_team_id = 3;
+    float price = 4; // 拼团价
+    float leader_price = 5; // 团长拼团价
+    bool is_free = 6; // 是否包邮
+    bool is_stack_coupon = 7; // 是否叠加优惠券
+    bool is_stack_integral = 8; // 是否叠加积分抵现
+    bool is_buy = 9; // 是否可购买
+    bool is_limit = 10; // 是否限购
+    int32 limit_total_num = 11; // 活动每人总限购数【限购时有效】
+    int32 limit_unit_num = 12; // 每单每人限购数【限购时有效】
+    int32 max_total_num = 13; // 本次总限购数最大的购买数【限购时有效】
+    int32 max_unit_num = 14; // 本次每单每人限购数最大的购买数【限购时有效】
+    int32 collection_type = 15; // 团长代收: 0-无需代收,1-可选择团长代收,2-必须由团长代收
+    int64 collection_order_id = 16; // 团长代收的订单ID【用于获取代收地址】
+    string not_buy_reason = 17; // 不可购买原因
+}
+
+//购买清单明细
+message BuyingItem {
+    int64 item_id = 1;
+    int64 sku_id = 2;
+    int32 num = 3;
+    float price = 4;
+    float origin_price = 5;
+    float sub_total = 6;
+}
+
+message BuyingResponse {
+    BuyingRes entity = 1;
+    common.Pager pager = 2;
+    repeated BuyingRes items = 3;
+    common.Error error = 4;
+    common.Info info = 5;
+}

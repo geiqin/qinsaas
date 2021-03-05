@@ -1,0 +1,28 @@
+syntax = "proto3";
+package services;
+option go_package = ".;services";
+import "common/base.proto";
+import "orderService.proto";
+import "buyingService.proto";
+
+service MyGroupOrderService {
+    // 下单确认
+    rpc Confirm (BuyingRequest) returns (BuyingResponse) {}
+    // 提交订单
+    rpc Submit (BuyingRequest) returns (OrderResponse) {}
+}
+
+service GroupOrderService {
+    // 成团后的订单处理
+    rpc AfterToGroup (ToGroupWhere) returns (ToGroupResponse) {}
+}
+
+message ToGroupWhere {
+    int64 order_id = 1;
+    int64 group_team_id = 2;
+}
+
+message ToGroupResponse {
+    common.Error error = 4;
+    common.Info info =5;
+}

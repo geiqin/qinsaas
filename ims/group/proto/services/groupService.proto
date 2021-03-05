@@ -1,0 +1,75 @@
+syntax = "proto3";
+package services;
+option go_package = ".;services";
+import "common/base.proto";
+import "groupLadderService.proto";
+
+service GroupService {
+    rpc Create(Group) returns (GroupResponse) {}
+    rpc Update(Group) returns (GroupResponse) {}
+    rpc Get(GroupWhere) returns (GroupResponse) {}
+    rpc Delete(GroupWhere) returns (GroupResponse) {}
+    rpc ToInvalid(GroupWhere) returns (GroupResponse) {}
+    rpc Search(GroupWhere) returns (GroupResponse) {}
+    rpc List(GroupWhere) returns (GroupResponse) {}
+}
+
+service FrontGroupService {
+    rpc Get(GroupWhere) returns (GroupResponse) {}
+}
+
+message GroupWhere {
+    int32 paged = 1;
+    int32 page_size = 2;
+    string sorting = 3;
+    string keywords = 4;
+    int64 id = 5;
+    // @inject_tag: gorm:"-"
+    repeated int64 ids = 6;
+    int32 type = 7;
+    int32 status = 8;
+    int64 item_id = 9;
+    bool is_valid = 10;
+    string start_at = 11;
+    string end_at = 12;
+}
+
+message Group {
+    int64 id = 1;
+    string name = 2;
+    int32 type = 3;
+    string start_at = 4;
+    string end_at = 5;
+    int64 item_id = 6;
+    int32 expire_day = 7;
+    int32 expire_hour = 8;
+    int32 expire_minute = 9;
+    bool is_stack = 10;
+    int32 stack = 11;
+    bool is_limit = 12;
+    int32 limit_total_num = 13;
+    int32 limit_unit_num = 14;
+    bool is_together = 15;
+    bool is_simulate = 16;
+    int32 lowest_num = 17;
+    bool is_collection = 18;
+    int32 collection_type = 19;
+    bool is_leader_discount = 20;
+    float leader_price = 21;
+    bool is_free = 22;
+    bool is_preview = 23;
+    int32 status = 24;
+    string created_at = 25;
+    string updated_at = 26;
+    repeated GroupLadder ladders = 27;
+    bool is_stack_coupon = 28; // 是否叠加优惠券
+    bool is_stack_integral = 29; // 是否叠加积分抵现
+}
+
+message GroupResponse {
+    Group entity = 1;
+    common.Pager pager =2;
+    repeated Group items = 3;
+    common.Error error = 4;
+    common.Info info =5;
+}
