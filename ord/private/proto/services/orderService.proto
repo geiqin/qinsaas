@@ -8,6 +8,7 @@ import "orderAddressService.proto";
 import "shipmentService.proto";
 import "orderCouponService.proto";
 import "orderFoodService.proto";
+import "groupBuyingService.proto";
 
 service MyOrderService {
     //确认订单
@@ -128,6 +129,8 @@ message Order {
     bool is_confirmed = 61; // 商家是否已接单
     // @inject_tag: gorm:"-"
     OrderFood food = 62;
+    // @inject_tag: gorm:"-"
+    OrderGroup group = 63;
 }
 
 message Customer {

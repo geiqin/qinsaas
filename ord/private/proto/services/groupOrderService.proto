@@ -13,8 +13,10 @@ service MyGroupOrderService {
 }
 
 service GroupOrderService {
-    // 成团后的订单处理
-    rpc AfterToGroup (ToGroupWhere) returns (ToGroupResponse) {}
+    // 拼团成团成功后的订单处理
+    rpc AfterGroupSuccess (ToGroupWhere) returns (ToGroupResponse) {}
+    // 拼团成团失败的订单处理
+    rpc AfterGroupFail (ToGroupWhere) returns (ToGroupResponse) {}
 }
 
 message ToGroupWhere {

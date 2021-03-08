@@ -123,8 +123,10 @@ func NewGroupOrderServiceEndpoints() []*api.Endpoint {
 // Client API for GroupOrderService service
 
 type GroupOrderService interface {
-	// 成团后的订单处理
-	AfterToGroup(ctx context.Context, in *ToGroupWhere, opts ...client.CallOption) (*ToGroupResponse, error)
+	// 拼团成团成功后的订单处理
+	AfterGroupSuccess(ctx context.Context, in *ToGroupWhere, opts ...client.CallOption) (*ToGroupResponse, error)
+	// 拼团成团失败的订单处理
+	AfterGroupFail(ctx context.Context, in *ToGroupWhere, opts ...client.CallOption) (*ToGroupResponse, error)
 }
 
 type groupOrderService struct {
@@ -139,8 +141,18 @@ func NewGroupOrderService(name string, c client.Client) GroupOrderService {
 	}
 }
 
-func (c *groupOrderService) AfterToGroup(ctx context.Context, in *ToGroupWhere, opts ...client.CallOption) (*ToGroupResponse, error) {
-	req := c.c.NewRequest(c.name, "GroupOrderService.AfterToGroup", in)
+func (c *groupOrderService) AfterGroupSuccess(ctx context.Context, in *ToGroupWhere, opts ...client.CallOption) (*ToGroupResponse, error) {
+	req := c.c.NewRequest(c.name, "GroupOrderService.AfterGroupSuccess", in)
+	out := new(ToGroupResponse)
+	err := c.c.Call(ctx, req, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *groupOrderService) AfterGroupFail(ctx context.Context, in *ToGroupWhere, opts ...client.CallOption) (*ToGroupResponse, error) {
+	req := c.c.NewRequest(c.name, "GroupOrderService.AfterGroupFail", in)
 	out := new(ToGroupResponse)
 	err := c.c.Call(ctx, req, out, opts...)
 	if err != nil {
@@ -152,13 +164,16 @@ func (c *groupOrderService) AfterToGroup(ctx context.Context, in *ToGroupWhere, 
 // Server API for GroupOrderService service
 
 type GroupOrderServiceHandler interface {
-	// 成团后的订单处理
-	AfterToGroup(context.Context, *ToGroupWhere, *ToGroupResponse) error
+	// 拼团成团成功后的订单处理
+	AfterGroupSuccess(context.Context, *ToGroupWhere, *ToGroupResponse) error
+	// 拼团成团失败的订单处理
+	AfterGroupFail(context.Context, *ToGroupWhere, *ToGroupResponse) error
 }
 
 func RegisterGroupOrderServiceHandler(s server.Server, hdlr GroupOrderServiceHandler, opts ...server.HandlerOption) error {
 	type groupOrderService interface {
-		AfterToGroup(ctx context.Context, in *ToGroupWhere, out *ToGroupResponse) error
+		AfterGroupSuccess(ctx context.Context, in *ToGroupWhere, out *ToGroupResponse) error
+		AfterGroupFail(ctx context.Context, in *ToGroupWhere, out *ToGroupResponse) error
 	}
 	type GroupOrderService struct {
 		groupOrderService
@@ -171,6 +186,10 @@ type groupOrderServiceHandler struct {
 	GroupOrderServiceHandler
 }
 
-func (h *groupOrderServiceHandler) AfterToGroup(ctx context.Context, in *ToGroupWhere, out *ToGroupResponse) error {
-	return h.GroupOrderServiceHandler.AfterToGroup(ctx, in, out)
+func (h *groupOrderServiceHandler) AfterGroupSuccess(ctx context.Context, in *ToGroupWhere, out *ToGroupResponse) error {
+	return h.GroupOrderServiceHandler.AfterGroupSuccess(ctx, in, out)
+}
+
+func (h *groupOrderServiceHandler) AfterGroupFail(ctx context.Context, in *ToGroupWhere, out *ToGroupResponse) error {
+	return h.GroupOrderServiceHandler.AfterGroupFail(ctx, in, out)
 }
