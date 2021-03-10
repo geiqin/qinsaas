@@ -37,19 +37,19 @@ type GroupStatsWhere struct {
 	Keywords string `protobuf:"bytes,4,opt,name=keywords,proto3" json:"keywords"`
 	Id       int64  `protobuf:"varint,5,opt,name=id,proto3" json:"id"`
 	// @inject_tag: gorm:"-"
-	Ids       []int64 `protobuf:"varint,6,rep,packed,name=ids,proto3" json:"ids"`
+	Ids       []int64 `protobuf:"varint,6,rep,packed,name=ids,proto3" json:"ids" gorm:"-"`
 	StartDate string  `protobuf:"bytes,7,opt,name=start_date,json=startDate,proto3" json:"start_date"`
 	EndDate   string  `protobuf:"bytes,8,opt,name=end_date,json=endDate,proto3" json:"end_date"`
 	GroupId   int64   `protobuf:"varint,9,opt,name=group_id,json=groupId,proto3" json:"group_id"`
 	// @inject_tag: gorm:"-"
-	GroupIds   []int64 `protobuf:"varint,10,rep,packed,name=group_ids,json=groupIds,proto3" json:"group_ids"`
+	GroupIds   []int64 `protobuf:"varint,10,rep,packed,name=group_ids,json=groupIds,proto3" json:"group_ids" gorm:"-"`
 	StatsDate  string  `protobuf:"bytes,11,opt,name=stats_date,json=statsDate,proto3" json:"stats_date"`
 	CustomerId int64   `protobuf:"varint,12,opt,name=customer_id,json=customerId,proto3" json:"customer_id"`
 	// @inject_tag: gorm:"-"
-	CustomerIds []int64 `protobuf:"varint,13,rep,packed,name=customer_ids,json=customerIds,proto3" json:"customer_ids"`
+	CustomerIds []int64 `protobuf:"varint,13,rep,packed,name=customer_ids,json=customerIds,proto3" json:"customer_ids" gorm:"-"`
 	ItemId      int64   `protobuf:"varint,14,opt,name=item_id,json=itemId,proto3" json:"item_id"`
 	// @inject_tag: gorm:"-"
-	ItemIds []int64 `protobuf:"varint,15,rep,packed,name=item_ids,json=itemIds,proto3" json:"item_ids"`
+	ItemIds []int64 `protobuf:"varint,15,rep,packed,name=item_ids,json=itemIds,proto3" json:"item_ids" gorm:"-"`
 }
 
 func (x *GroupStatsWhere) Reset() {

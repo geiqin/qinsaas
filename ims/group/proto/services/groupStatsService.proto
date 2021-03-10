@@ -5,11 +5,11 @@ import "common/base.proto";
 import "groupService.proto";
 
 service GroupStatsService {
-    // 查询活动统计
+    // 查询活动汇总统计
     rpc Search (GroupStatsWhere) returns (GroupStatsResponse) {}
-    // 获取活动统计
+    // 获取活动汇总统计
     rpc Get (GroupStatsWhere) returns (GroupStatsResponse) {}
-    // 获取活动统计列表
+    // 获取活动汇总统计列表
     rpc List (GroupStatsWhere) returns (GroupStatsResponse) {}
     // 重置统计
     rpc Reset (common.Empty) returns (GroupStatsResponse) {}

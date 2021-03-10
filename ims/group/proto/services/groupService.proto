@@ -3,6 +3,7 @@ package services;
 option go_package = ".;services";
 import "common/base.proto";
 import "groupLadderService.proto";
+import "groupTeamService.proto";
 
 service GroupService {
     rpc Create(Group) returns (GroupResponse) {}
@@ -64,6 +65,8 @@ message Group {
     repeated GroupLadder ladders = 27;
     bool is_stack_coupon = 28; // 是否叠加优惠券
     bool is_stack_integral = 29; // 是否叠加积分抵现
+    // @inject_tag: gorm:"-"
+    repeated GroupTeam wait_teams = 30; // 待成团的拼团列表
 }
 
 message GroupResponse {

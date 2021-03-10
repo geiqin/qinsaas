@@ -33,7 +33,7 @@ type BuyingReq struct {
 
 	OrderId       int64         `protobuf:"varint,1,opt,name=order_id,json=orderId,proto3" json:"order_id"`                     // 订单ID
 	GroupId       int64         `protobuf:"varint,2,opt,name=group_id,json=groupId,proto3" json:"group_id"`                     // 拼团活动ID
-	GroupLadderId int64         `protobuf:"varint,3,opt,name=group_ladder_id,json=groupLadderId,proto3" json:"group_ladder_id"` // 选择的几人团【阶梯拼团时必选】
+	GroupLadderId int64         `protobuf:"varint,3,opt,name=group_ladder_id,json=groupLadderId,proto3" json:"group_ladder_id"` // 选择的几人团
 	GroupTeamId   int64         `protobuf:"varint,4,opt,name=group_team_id,json=groupTeamId,proto3" json:"group_team_id"`       // 选择的拼团ID
 	CustomerId    int64         `protobuf:"varint,5,opt,name=customer_id,json=customerId,proto3" json:"customer_id"`            // 会员ID
 	Items         []*BuyingItem `protobuf:"bytes,6,rep,name=items,proto3" json:"items"`

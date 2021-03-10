@@ -43,11 +43,11 @@ func NewGroupStatsServiceEndpoints() []*api.Endpoint {
 // Client API for GroupStatsService service
 
 type GroupStatsService interface {
-	// 查询活动统计
+	// 查询活动汇总统计
 	Search(ctx context.Context, in *GroupStatsWhere, opts ...client.CallOption) (*GroupStatsResponse, error)
-	// 获取活动统计
+	// 获取活动汇总统计
 	Get(ctx context.Context, in *GroupStatsWhere, opts ...client.CallOption) (*GroupStatsResponse, error)
-	// 获取活动统计列表
+	// 获取活动汇总统计列表
 	List(ctx context.Context, in *GroupStatsWhere, opts ...client.CallOption) (*GroupStatsResponse, error)
 	// 重置统计
 	Reset(ctx context.Context, in *common.Empty, opts ...client.CallOption) (*GroupStatsResponse, error)
@@ -108,11 +108,11 @@ func (c *groupStatsService) Reset(ctx context.Context, in *common.Empty, opts ..
 // Server API for GroupStatsService service
 
 type GroupStatsServiceHandler interface {
-	// 查询活动统计
+	// 查询活动汇总统计
 	Search(context.Context, *GroupStatsWhere, *GroupStatsResponse) error
-	// 获取活动统计
+	// 获取活动汇总统计
 	Get(context.Context, *GroupStatsWhere, *GroupStatsResponse) error
-	// 获取活动统计列表
+	// 获取活动汇总统计列表
 	List(context.Context, *GroupStatsWhere, *GroupStatsResponse) error
 	// 重置统计
 	Reset(context.Context, *common.Empty, *GroupStatsResponse) error
